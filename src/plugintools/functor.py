@@ -1,56 +1,22 @@
 import pkg_resources
 
-def build_plugin_manager_doc(self):
-    self.__doc__ = []
-    if self._brief:
-        self.__doc__.append(self._brief)
-        self.__doc__.append('')
-    if self._details:
-        self.__doc__.append(self._details)
-        self.__doc__.append('')
-    self.__doc__.append(":Available Implementations:")
-    self.__doc__.extend(" - \'" + plugin.name + '\'' for plugin in pkg_resources.iter_entry_points(self._group))
-    self.__doc__.extend(" - \'" + plugin + '\'' for plugin in self._cache)
-    self.__doc__ = '\n'.join(self.__doc__)
-
-class PluginManagerImplementationDescriptor(object):
+class PluginFunctorDescriptor(object):
     """A plugin plugin manager descriptor that returns and sets plugin_manager implementations
     """
 
     def __get__(self, obj, objtype):
-        if hasattr(obj, '_plugin'):
-            plugin = obj._plugin
-            while plugin in obj._cache:
-                plugin = obj._cache[plugin]
-            if callable(plugin):
-                return plugin
-            else:
-                return pkg_resources.iter_entry_points(obj._group, plugin).next().load()
+        plugin = obj.plugin
+        if plugin:
+            return obj[plugin]
         else:
             def __call__(self, *args, **kwargs):
                 """No plugin selected"""
                 raise NotImplementedError("An plugin must be selected using \'plugin\' field")
             return __call__
 
-class PluginManagerIdentificationDescriptor(object):
-    """
-    """
+class PluginFunctor(object):
 
-    def __get__(self, obj, cls):
-        if not hasattr(obj, '_plugin'):
-            raise ValueError('\'plugin\' identification not setted')
-        return obj._plugin
-
-    def __set__(self, obj, plugin):
-        obj._plugin = plugin
-        build_plugin_manager_doc(obj)
-
-
-class PluginManager(object):
-
-    __call__ = PluginManagerImplementationDescriptor()
-
-    plugin = PluginManagerIdentificationDescriptor()
+    __call__ = PluginFunctorDescriptor()
 
     def __init__(self, group, brief="", details=""):
         """Create a plugin manager"""
@@ -58,7 +24,6 @@ class PluginManager(object):
         self._brief = brief
         self._details = details
         self._cache = dict()
-        build_plugin_manager_doc(self)
 
     def __iter__(self):
         for key in self._cache.keys():
@@ -74,9 +39,12 @@ class PluginManager(object):
     def __getitem__(self, plugin):
         """
         """
-        plugin, self.plugin = self.plugin, plugin
-        plugin, self.plugin = self.__call__, plugin
-        return plugin
+        while plugin in self._cache:
+            plugin = obj._cache[plugin]
+        if callable(plugin):
+            return plugin
+        else:
+            return pkg_resources.iter_entry_points(self._group, plugin).next().load()
 
     def __setitem__(self, plugin, implementation):
         if not isinstance(plugin, basestring):
@@ -91,4 +59,32 @@ class PluginManager(object):
             self._cache[plugin] = implementation
         else:
             raise TypeError('must be callable or a basestring instance')
-        build_plugin_manager_doc(self)
+
+    @property
+    def __doc__(self):
+        __doc__ = []
+        if self._brief:
+            __doc__.append(self._brief)
+            __doc__.append('')
+        if self._details:
+            __doc__.append(self._details)
+            __doc__.append('')
+        __doc__.append(":Available Implementations:")
+        __doc__.extend(" - \'" + plugin.name + '\'' for plugin in pkg_resources.iter_entry_points(self._group))
+        __doc__.extend(" - \'" + plugin + '\'' for plugin in self._cache)
+        return '\n'.join(__doc__)
+
+    @property
+    def group(self):
+        return self._group
+
+    @property
+    def plugin(self):
+        return getattr(self, '__plugin', None)
+
+    @plugin.setter
+    def plugin(self, plugin):
+        if not plugin in self:
+            raise ValueError('\'plugin\' parameter should be one of ' + ', '.join('\'' + name + '\'' for plugin in self))
+        else:
+            self._plugin = plugin
