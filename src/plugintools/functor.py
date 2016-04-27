@@ -9,9 +9,9 @@ class PluginFunctorDescriptor(object):
         if plugin:
             return obj[plugin]
         else:
-            def __call__(self, *args, **kwargs):
+            def __call__(self):
                 """No plugin selected"""
-                raise NotImplementedError("An plugin must be selected using \'plugin\' field")
+                raise NotImplementedError("A \'" + self.group + "\' plugin must be selected using \'plugin\' field")
             return __call__
 
 class PluginFunctor(object):
@@ -40,7 +40,7 @@ class PluginFunctor(object):
         """
         """
         while plugin in self._cache:
-            plugin = obj._cache[plugin]
+            plugin = self._cache[plugin]
         if callable(plugin):
             return plugin
         else:
@@ -62,17 +62,17 @@ class PluginFunctor(object):
 
     @property
     def __doc__(self):
-        __doc__ = []
+        doc = []
         if self._brief:
-            __doc__.append(self._brief)
-            __doc__.append('')
+            doc.append(self._brief)
+            doc.append('')
         if self._details:
-            __doc__.append(self._details)
-            __doc__.append('')
-        __doc__.append(":Available Implementations:")
-        __doc__.extend(" - \'" + plugin.name + '\'' for plugin in pkg_resources.iter_entry_points(self._group))
-        __doc__.extend(" - \'" + plugin + '\'' for plugin in self._cache)
-        return '\n'.join(__doc__)
+            doc.append(self._details)
+            doc.append('')
+        doc.append(":Available Implementations:")
+        doc.extend(" - \'" + plugin.name + '\'' for plugin in pkg_resources.iter_entry_points(self._group))
+        doc.extend(" - \'" + plugin + '\'' for plugin in self._cache)
+        return '\n'.join(doc)
 
     @property
     def group(self):
@@ -85,6 +85,6 @@ class PluginFunctor(object):
     @plugin.setter
     def plugin(self, plugin):
         if not plugin in self:
-            raise ValueError('\'plugin\' parameter should be one of ' + ', '.join('\'' + name + '\'' for plugin in self))
+            raise ValueError('\'plugin\' parameter should be one of ' + ', '.join('\'' + plugin + '\'' for plugin in self))
         else:
             self._plugin = plugin
