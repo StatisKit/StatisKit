@@ -85,7 +85,7 @@ class PluginFunctor(object):
 
     @plugin.setter
     def plugin(self, plugin):
-        if not plugin in self:
+        if plugin not in self:
             raise ValueError('\'plugin\' parameter should be one of ' + ', '.join('\'' + plugin + '\'' for plugin in self))
         else:
             self._plugin = plugin
