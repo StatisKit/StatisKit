@@ -9,9 +9,9 @@ class PluginFunctorDescriptor(object):
         if plugin:
             return obj[plugin]
         else:
-            def __call__(self):
+            def __call__():
                 """No plugin selected"""
-                raise NotImplementedError("A \'" + self.group + "\' plugin must be selected using \'plugin\' field")
+                raise NotImplementedError("A plugin must be selected using \'plugin\' field")
             return __call__
 
 class PluginFunctor(object):
@@ -26,10 +26,12 @@ class PluginFunctor(object):
         self._cache = dict()
 
     def __iter__(self):
-        for key in self._cache.keys():
-            yield key
-        for plugin in pkg_resources.iter_entry_points(self._group):
-            yield plugin.name
+        def listing():
+            for key in self._cache.keys():
+                yield key
+            for plugin in pkg_resources.iter_entry_points(self._group):
+                yield plugin.name
+        return sorted(listing()).__iter__()
 
     def __contains__(self, plugin):
         """
@@ -70,8 +72,7 @@ class PluginFunctor(object):
             doc.append(self._details)
             doc.append('')
         doc.append(":Available Implementations:")
-        doc.extend(" - \'" + plugin.name + '\'' for plugin in pkg_resources.iter_entry_points(self._group))
-        doc.extend(" - \'" + plugin + '\'' for plugin in self._cache)
+        doc.extend(" - '" + plugin + "'" for plugin in self)
         return '\n'.join(doc)
 
     @property
@@ -80,7 +81,7 @@ class PluginFunctor(object):
 
     @property
     def plugin(self):
-        return getattr(self, '__plugin', None)
+        return getattr(self, '_plugin', None)
 
     @plugin.setter
     def plugin(self, plugin):

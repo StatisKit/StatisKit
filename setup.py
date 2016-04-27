@@ -7,4 +7,5 @@ setup(name = "PluginTools",
       version = "0.1.0",
       packages = packages,
       package_dir = {"" : "src"},
-      author = 'Pierre Fernique')
+      author = 'Pierre Fernique',
+      entry_points = {'plugintools.hello_world' : 'en = plugintools.hello_world_en:hello_world'})
