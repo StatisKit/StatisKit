@@ -55,7 +55,7 @@ class PluginFunctor(object):
             self._cache[plugin] = implementation
         elif isinstance(implementation, basestring):
             if implementation not in self:
-                raise ValueError('\'implementation\' parameter must be an existing plugin')
+                raise ValueError('\'implementation\' parameter must be one of ' + ', '.join('\'' + plugin + '\'' for plugin in self))
             if plugin == implementation:
                 raise ValueError('\'plugin\' and \'implementation\' parameters cannot have the same value')
             self._cache[plugin] = implementation
@@ -74,10 +74,6 @@ class PluginFunctor(object):
         doc.append(":Available Implementations:")
         doc.extend(" - '" + plugin + "'" for plugin in self)
         return '\n'.join(doc)
-
-    @property
-    def group(self):
-        return self._group
 
     @property
     def plugin(self):

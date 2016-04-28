@@ -27,6 +27,8 @@ class TestFunctor(unittest.TestCase):
     def test_set(self):
         def fr():
             return 'salut'
+        with self.assertRaises(ValueError):
+            self.hello_world.plugin = 'fr'
         self.hello_world['fr'] = fr
         self.assertIn('fr', self.hello_world)
         self.hello_world.plugin = 'fr'
