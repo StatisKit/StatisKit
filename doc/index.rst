@@ -10,33 +10,60 @@
 ..                                                                                  ..
 .. ................................................................................ ..
 
-.. StatisKit documentation master file, created by
-   sphinx-quickstart on Wed Apr 27 08:29:50 2016.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+|NAME| : |BRIEF|
+================
 
-Welcome to StatisKit's documentation!
-=====================================
 
-Contents:
+.. sidebar:: Summary
+
+    :Version: |VERSION|
+    :Status: |BUILD| |COVERAGE| |HEALTH|
+    :Author: see `Authors`_ section
+    :License: |LICENSENAME| (see `License`_ section)
+
+.. |BUILD| image:: https://travis-ci.org/StatisKit/StatisKit.svg?branch=master
+
+.. |COVERAGE| image:: https://coveralls.io/repos/github/StatisKit/StatisKit/badge.svg?branch=master
+
+.. |HEALTH| image:: https://landscape.io/github/StatisKit/StatisKit/master/landscape.svg?style=flat
+
+
+Documentation
+=============
 
 .. toctree::
-   :maxdepth: 2
+    :maxdepth: 2
 
+    User guide <user/index.rst>
+    Developper guide <developper/index.rst>
+    Maintener guide <maintener/index.rst>
+    Reference guide <reference/index.rst>
+    
+Authors
+=======
 
+.. include:: ../AUTHORS.rst
 
-Indices and tables
-==================
+License
+=======
+
+|NAME| is distributed under the |LICENSELINK|_.
+
+.. |LICENSELINK| replace:: |LICENSENAME| license
+
+.. _LICENSELINK : license.html
+
+Indices
+=======
 
 * :ref:`genindex`
 * :ref:`modindex`
-* :ref:`search`
 
 .. MngIt
 
-.. |NAME| replace:: 
+.. |NAME| replace:: StatisKit
 
-.. |BRIEF| replace:: 
+.. |BRIEF| replace:: Brief description
 
 .. |VERSION| replace:: v0.1.0
 
