@@ -1,0 +1,16 @@
+about:
+  brief: ''
+  name: ''
+  version: v0.1.0
+authors:
+  basename: AUTHORS.rst
+  format: '* {name} <{email}> ({score})'
+  plugin: commit
+license:
+  basename: LICENSE.rst
+  plugin: CeCILL-C
+  width: 78
+rst:
+  plugin: default
+version:
+  plugin: semantic
