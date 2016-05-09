@@ -1,6 +1,7 @@
 about:
   brief: ''
   name: ''
+  version: v0.1.0
 authors:
   basename: AUTHORS.rst
   format: '* {name} <{email}> ({score})'
