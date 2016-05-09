@@ -6,7 +6,7 @@ If not, go to the GitHub help page concerning `repository forking <https://help.
 
 .. note::
 
-    According to this documentation, the :code:`upstream master` remote branch refers to the master branch of the repository on the *StatisKit* organization account and :code:`origin master` remote branch to the repository fork on your personal account.
+    According to this documentation, the :code:`upstream master` remote branch refers to the master repository on the *StatisKit* organization account and :code:`origin master` remote branch to the repository fork on your personal account.
 
 
 .. blockdiag::
@@ -52,7 +52,7 @@ Since all your master branches are up to date, you can create your local branch
 
 and push it to your personal repository
 
-.. code-block::
+.. code-block:: bash
 
     git push --set-upstream origin work_in_progress
 
