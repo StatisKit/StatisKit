@@ -54,7 +54,7 @@ and push it to your personal repository
 
 .. code-block::
 
-    git push --set-upstream work_in_progress
+    git push --set-upstream origin work_in_progress
 
 .. note::
 
