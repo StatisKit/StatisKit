@@ -49,7 +49,11 @@ extensions = [
     'sphinx.ext.mathjax',
     'sphinx.ext.ifconfig',
     'sphinx.ext.viewcode',
+    'sphinxcontrib.blockdiag',
 ]
+
+# Fontpath for blockdiag (truetype font)
+blockdiag_fontpath = '/usr/share/fonts/truetype/ipafont/ipagp.ttf'
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
