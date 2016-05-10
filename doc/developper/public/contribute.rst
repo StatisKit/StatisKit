@@ -17,16 +17,20 @@ This workflow is assuming that you forked the official repository in your person
     blockdiag {
 
         A [label = "Branch", shape="roundedbox", description="See `Create a development branch`_ section. |br|
-                                                              In order to enable code review from mainteners, the development must be short |br|
-                                                              (i.e. one branch for one task such as new feature, bug fix...)."];
+                                                              In order to enable code review from mainteners, |br|
+                                                              the development must be short (i.e. one branch |br|
+                                                              for one task such as new feature, bug fix...)."];
         B [label = "Work", shape="roundedbox", description="See `Work on your modifications`_ section. |br|
-                                                            In order to benefit from tools developped by mainteners and ensure code quality, |br|
+                                                            In order to benefit from tools developped by |br|
+                                                            mainteners and ensure code quality, |br|
                                                             the development must respect some guidelines."];
         C [label = "Commit", shape="roundedbox", description="See `Commit your modifications`_ section."];
-        D [label = "Upload ?", shape="diamond", description="If you want to upload your modifications to your personal repository, |br|
-                                                             you shoud use the :code:`git push` command."];
-        E [label = "Finished ?", shape="diamond", description="If your work on the branch is done, you should submit your modifications |br|
-                                                               to the official repository."];
+        D [label = "Upload ?", shape="diamond", description="If you want to upload your modifications to |br|
+                                                             your personal repository, you shoud use the |br|
+                                                             :code:`git push` command."];
+        E [label = "Finished ?", shape="diamond", description="If your work on the branch is done, you |br|
+                                                               should submit your modifications to the |br|
+                                                               official repository."];
         F [label = "Submit", shape="roundedbox", description="See `Submit your modifications`_ section."];
         
         A -> B -> C;
@@ -47,30 +51,6 @@ This workflow is assuming that you forked the official repository in your person
 .. |br| raw:: html
 
    <br />
-
-.. raw:: html
-
-    <div style="margin: 0 auto; width: 100%;">
-
-+------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Name       | Description                                                                                                                                                                               |
-+============+===========================================================================================================================================================================================+
-| Branch     | See `Create a development branch`_ section. In order to enable code review from mainteners, the development must be short (i.e. one branch for one task such as new feature, bug fix...). |
-+------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Work       | See `Work on your modifications`_ section. In order to benefit from tools developped by mainteners and ensure code quality, the development must respect some guidelines.                 |
-+------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Commit     | See `Commit your modifications`_ section.                                                                                                                                                 |
-+------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Upload ?   | If you want to upload your modifications to your personal repository, you shoud use the :code:`git push` command.                                                                         |
-+------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Finished ? | If your work on the branch is done, you should submit your modifications to the official repository.                                                                                      |
-+------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Submit     | See `Submit your modifications`_ section.                                                                                                                                                 |
-+------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-
-.. raw:: html
-
-    </div>
 
 Create a development branch
 ===========================
