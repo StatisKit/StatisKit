@@ -1,6 +1,6 @@
 about:
-  brief: meta-repository providing general documentation and tools for the **StatisKit**
-    Organization
+  brief: 'meta-repository providing general documentation and tools
+    for the **StatisKit** Organization'
   name: StatisKit
   version: v0.1.0
 authors:
