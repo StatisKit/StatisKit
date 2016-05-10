@@ -8,10 +8,10 @@ When using **Git** you should constently keep in mind the following warning:
     Never work on master, always on a branch
 
 In order to contribute to an official repository of **StatisKit** we therefore recommand to follow the following workflow.
-This workflow is assuming that you forked the official repository in your personal account and cloned it (see :doc:`fork`).
 
 .. blockdiag::
     :align: center
+    :scale: 500%
     :desctable:
     
     blockdiag {
@@ -27,10 +27,12 @@ This workflow is assuming that you forked the official repository in your person
         C [label = "Commit", shape="roundedbox", description="See `Commit your modifications`_ section."];
         D [label = "Upload ?", shape="diamond", description="If you want to upload your modifications to |br|
                                                              your personal repository, you shoud use the |br|
-                                                             :code:`git push` command."];
+                                                             :code:`git push` command. Otherwise, you can |br|
+                                                             continue to add commits."];
         E [label = "Finished ?", shape="diamond", description="If your work on the branch is done, you |br|
                                                                should submit your modifications to the |br|
-                                                               official repository."];
+                                                               official repository. Otherwise, you can |br|
+                                                               continue to add commits."];
         F [label = "Submit", shape="roundedbox", description="See `Submit your modifications`_ section."];
         
         A -> B -> C;
@@ -51,6 +53,10 @@ This workflow is assuming that you forked the official repository in your person
 .. |br| raw:: html
 
    <br />
+
+.. note::
+
+    In the following we assume that This workflow is assuming that you forked the official repository in your personal account and cloned it (see :doc:`fork`).
 
 Create a development branch
 ===========================
