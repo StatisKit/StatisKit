@@ -64,6 +64,19 @@ This workflow is assuming that you forked the official repository in your person
 | Submit     | See `Submit your modifications`_ section.                                                                                                                                                 |
 +------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
+.. raw:: html
+
+    <table style="margin-left:auto; margin-right:auto;">
+        <tr>
+            <th>Name</th>
+            <th>Description</th> 
+        </tr>
+        <tr>
+            <td>Branch</td>
+            <td>See `Create a development branch`_ section. In order to enable code review from mainteners, the development must be short (i.e. one branch for one task such as new feature, bug fix...).</td>
+        </tr>
+    </table>
+
 Create a development branch
 ===========================
 
