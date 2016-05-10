@@ -6,6 +6,6 @@ The workflow describe here is mainly inspired from OpenAlea and Virtual Plants `
 .. toctree::
     :maxdepth: 2
 
-    configure
     create
+    fork
     contribute

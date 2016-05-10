@@ -52,6 +52,8 @@ extensions = [
     'sphinxcontrib.blockdiag',
 ]
 
+todo_include_todos = True
+
 # Fontpath for blockdiag (truetype font)
 blockdiag_fontpath = '/usr/share/fonts/truetype/ipafont/ipagp.ttf'
 
