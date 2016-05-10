@@ -11,29 +11,39 @@ In order to contribute to an official repository of **StatisKit** we therefore r
 
 .. blockdiag::
     :align: center
-    :scale: 500%
     :desctable:
     
     blockdiag {
 
-        A [label = "Branch", shape="roundedbox", description="See `Create a development branch`_ section. |br|
-                                                              In order to enable code review from mainteners, |br|
-                                                              the development must be short (i.e. one branch |br|
-                                                              for one task such as new feature, bug fix...)."];
-        B [label = "Work", shape="roundedbox", description="See `Work on your modifications`_ section. |br|
-                                                            In order to benefit from tools developped by |br|
-                                                            mainteners and ensure code quality, |br|
-                                                            the development must respect some guidelines."];
-        C [label = "Commit", shape="roundedbox", description="See `Commit your modifications`_ section."];
-        D [label = "Upload ?", shape="diamond", description="If you want to upload your modifications to |br|
-                                                             your personal repository, you shoud use the |br|
-                                                             :code:`git push` command. Otherwise, you can |br|
-                                                             continue to add commits."];
-        E [label = "Finished ?", shape="diamond", description="If your work on the branch is done, you |br|
-                                                               should submit your modifications to the |br|
-                                                               official repository. Otherwise, you can |br|
-                                                               continue to add commits."];
-        F [label = "Submit", shape="roundedbox", description="See `Submit your modifications`_ section."];
+        A [label = "Branch", shape="roundedbox",
+           description="See `Create a development branch`_ section. In order |br|
+                        to enable code review from mainteners, the |br|
+                        development must be short (i.e. one branch for one |br|
+                        task such as new feature, bug fix...)."];
+        B [label = "Work", shape="roundedbox",
+           description="See `Work on your modifications`_ section. In order |br|
+                        to benefit from tools developped by mainteners and |br|
+                        ensure code quality, the development must respect |br|
+                        some guidelines."];
+        C [label = "Commit", shape="roundedbox",
+           description="See `Commit your modifications`_ section. Commits |br|
+                        are snapshots of the repository. There are useful |br|
+                        in particular for versionning software or create |br|
+                        backups."];
+        D [label = "Upload ?", shape="diamond",
+           description="If you want to upload your modifications to your |br|
+                        personal repository, you shoud use the :code:`git push` |br|
+                        command. Otherwise, you can continue to add |br|
+                        commits."];
+        E [label = "Finished ?", shape="diamond",
+           description="If your work on the branch is done, you should |br|
+                        submit your modifications to the official repository. |br|
+                        Otherwise, you can continue to add commits."];
+        F [label = "Submit", shape="roundedbox",
+           description="See `Submit your modifications`_ section. In order |br|
+                        to integrate your modifications to the official |br|
+                        repository, you must submit your modifications |br|
+                        that will be integrated by **StatisKit** mainteners."];
         
         A -> B -> C;
         C -> D;
@@ -56,7 +66,7 @@ In order to contribute to an official repository of **StatisKit** we therefore r
 
 .. note::
 
-    In the following we assume that This workflow is assuming that you forked the official repository in your personal account and cloned it (see :doc:`fork`).
+    In the following we assume that you forked the official repository in your personal account and cloned it according to previous recommendations (see :doc:`fork`).
 
 Create a development branch
 ===========================
@@ -147,26 +157,34 @@ For this step the :code:`git status`, :code:`git add` and :code:`git rm` command
 Commit
 ------
 
-Once 
-Please write a good commit message and try to limit using the :code:`-m` flag.
+Once the index is build as desired, it must be committed in order to make another snapshot of the repository.
+This is done using the :code:`git commit` command.
+If you leave off the :code:`-m` option, this command open your favorite editor (see :doc:`../git`) where you can construct a message associated to the commit.
+Two commits are distinguished:
 
-Using
-
-.. code-block:: bash
+Backup & service commits
+    These commits are not corresponding to particular development stages and can be used when uploading is a neccessity.
+    For example these commits arise when a developper wants to:
     
-    git commit
+    * Remotly save his developments.
+    * Use a service (see :doc:`create`).
 
-should open your favorite editor (see :doc:`configure`) where you can construct a better commit by following some of these simple steps (the reader can refer to the `A Better Git Commit <https://web-design-weekly.com/2013/09/01/a-better-git-commit/>`_ message to more informations):
+    For this type of commits, please use the :code:`git commit -m "<shortdesc>"` command where :code:`<shortdesc>` is a short summary of the commit.
+    This summary should be less that 50 characters.
 
-* The first line should be a short summary.
-  Referencing the bug number or the main accomplishment of the change (e.g “Fixes issue #8976″).
-  This is the title of your commit and should be less than 50 characters.
+Developement commits
+    The commits are all commits not considered as backup. 
+    Please avoid the usage of the :code:`-m` option and produce a nice commit message using the follwing steps (the reader can refer to the `A Better Git Commit <https://web-design-weekly.com/2013/09/01/a-better-git-commit/>`_ message to more informations):
 
-* Then a line break.
-
-* Followed by a longer detailed description about the things that changed.
-  This section is a really good place to explain what and why.
-  You could cover statistics, performance wins, roadblocks, etc. The text should be wrapped at 72 characters.
+    * The first line should be a short summary.
+      Referencing the bug number or the main accomplishment of the change (e.g “Fixes issue #8976″).
+      This is the title of your commit and should be less than 50 characters.
+      
+    * Then a line break.
+      
+    * Followed by a longer detailed description about the things that changed.
+      This section is a really good place to explain what and why.
+      You could cover statistics, performance wins, roadblocks, etc. The text should be wrapped at 72 characters.
 
 .. note::
 
@@ -186,22 +204,6 @@ should open your favorite editor (see :doc:`configure`) where you can construct 
         git commit
 
     that will also add new files.
-
-.. blockdiag::
-
-   blockdiag {
-       A [label = "Is the commit a save ?", shape="diamond"];
-       B [label = ":code:`git commit -m 'A short message'", shape="roundedbox"];
-       C [label = "Commit your\nmodifications", shape="roundedbox"];
-       D [label = "Work\nfinished ?", shape="diamond"];
-       E [label = "Submit your\nmodifications", shape="roundedbox"];
-
-       A -> B -> C;
-       C -> D;
-       D -> B [label = "No"];
-       D -> E [label = "Yes"];
-   }
-
 
 Submit your modifications
 =========================
