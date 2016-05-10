@@ -1,5 +1,5 @@
-:abbr:`VCS (Version Control System)` configuration
-**************************************************
+Configuration
+*************
 
 Git
 ===

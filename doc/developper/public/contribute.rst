@@ -154,8 +154,8 @@ For this step the :code:`git status`, :code:`git add` and :code:`git rm` command
     Therefore in order to add only relevant files, the :code:`.gitignore` file is of most importance (see :doc:`create`). 
 
 
-Commit
-------
+The **Git** Commit
+------------------
 
 Once the index is build as desired, it must be committed in order to make another snapshot of the repository.
 This is done using the :code:`git commit` command.
@@ -207,3 +207,59 @@ Developement commits
 
 Submit your modifications
 =========================
+
+Prepare your pull-request
+-------------------------
+
+Before submitting your modifications, you must recover changes from :code:`upstream master` remote branch in your local :code:`master` branch
+
+.. code-block:: bash
+
+        git checkout master
+        git pull upstream master
+
+and upload the changes in your :code:`origin master` remote branch
+
+.. code-block:: bash
+
+        git push
+        
+Then, you must rebase your local development branch with your local :code:`master` branch.
+
+.. code-block:: bash
+
+        git checkout work_in_progress
+        git rebase master
+
+If conflicts occur, fix conflicts for each file and finish rebase
+
+.. code-block:: bash
+
+        git rebase --continue
+
+.. note::
+
+    Any file modified when fixing conflicts should be added using the :code:`git add <pathspec>` command.
+
+If anything has gone wrong, you can abort reabase
+
+.. code-block:: bash
+
+        git rebase --abort
+
+Create your pull-request
+------------------------
+
+On github interface, select your branch :code:`work_in_progress` and click on pull-request (see this `post <https://help.github.com/articles/using-pull-requests/>`_ for more details).
+
+.. warning::
+
+    You must see the following message::
+
+        Able to merge
+        These branches can be automatically merged
+
+    If it's not the case, the :code:`upstream master` has probably diverged.
+    You must therefore turn back to previous step (see `Prepare your pull-request`_ section).
+
+Now it is OK ! As your branch is very clean, other developers have absolutely nothing to do to integrate your work (except to review your changes) and so they will certainly integrate it.
