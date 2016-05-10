@@ -15,6 +15,7 @@ This workflow is assuming that you forked the official repository in your person
     :desctable:
     
     blockdiag {
+
         A [label = "Branch", shape="roundedbox", description="See `Create a development branch`_ section. |br|
                                                               In order to enable code review from mainteners, the development must be short |br|
                                                               (i.e. one branch for one task such as new feature, bug fix...)."];
@@ -30,10 +31,17 @@ This workflow is assuming that you forked the official repository in your person
         
         A -> B -> C;
         C -> D;
-        D -> B [label = "No"];
-        D -> E [label = "Yes"];
+            
+        D -> B;
         E -> B [label = "No"];
-        E -> F [label = "Yes"];
+
+        group {
+            orientation = portrait;
+            color = "#FFFFFF";
+            
+            D -> E;
+            E -> F;
+        }
     }
 
 .. |br| raw:: html
