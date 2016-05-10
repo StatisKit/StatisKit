@@ -9,21 +9,31 @@
 ..  received a copy of the legalcode along with this work. If not, see              ..
 ..  <http://www.cecill.info/licences/Licence_CeCILL-C_V1-en.html>.                  ..
 ..                                                                                  ..
-..  File authors: Pierre Fernique <pfernique@gmail.com> (3)                         ..
+..  File authors: Pierre Fernique <pfernique@gmail.com> (1)                         ..
 ..                                                                                  ..
 .. ................................................................................ ..
 
-Fork and clone a repository
-###########################
+|NAME|: |BRIEF|
+###############
 
+.. list-table::
+    :stub-columns: 1
 
-In the following we assume that you previously forked the official repository to your personal account.
-If not, go to the GitHub help page concerning `repository forking <https://help.github.com/articles/fork-a-repo>`_.
+    * - Version
+      - |VERSION|
+    * - Status
+      - |BUILD| |COVERAGE| |HEALTH| 
+    * - Authors
+      - see |AUTHORSFILE|_ file
+    * - License
+      - |LICENSENAME| (see |LICENSEFILE|_ file)
 
-.. note::
+.. |BUILD| image:: https://travis-ci.org/StatisKit/StatisKit.svg?branch=master
 
-    According to this documentation, the :code:`upstream master` remote branch refers to the master repository on the *StatisKit* organization account and :code:`origin master` remote branch to the repository fork on your personal account.
-    
+.. |COVERAGE| image:: https://coveralls.io/repos/github/StatisKit/StatisKit/badge.svg?branch=master
+
+.. |HEALTH| image:: https://landscape.io/github/StatisKit/StatisKit/master/landscape.svg?style=flat
+
 .. MngIt
 
 .. |NAME| replace:: StatisKit
