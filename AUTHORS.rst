@@ -1,1 +1,1 @@
-* Pierre Fernique <pfernique@gmail.com> (3)
+* Pierre Fernique <pfernique@gmail.com> (28)

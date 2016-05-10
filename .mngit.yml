@@ -1,6 +1,7 @@
 about:
-  brief: ''
-  name: ''
+  brief: '**StatisKit** is a meta-repository providing general documentation and tools
+    for the **StatisKit** Organization'
+  name: StatisKit
   version: v0.1.0
 authors:
   basename: AUTHORS.rst
