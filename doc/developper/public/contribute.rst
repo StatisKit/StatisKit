@@ -1,37 +1,40 @@
 Contribute to a repository
 ##########################
 
-In the following we assume that you previously forked the official repository to your personal account.
-If not, go to the GitHub help page concerning `repository forking <https://help.github.com/articles/fork-a-repo>`_.
-
-.. note::
-
-    According to this documentation, the :code:`upstream master` remote branch refers to the master repository on the *StatisKit* organization account and :code:`origin master` remote branch to the repository fork on your personal account.
-
-
-.. blockdiag::
-
-   blockdiag {
-       A [label = "Create a development branch", shape="roundedbox"];
-       B [label = "Work on your\nmodifications", shape="roundedbox"];
-       C [label = "Commit your\nmodifications", shape="roundedbox"];
-       D [label = "Work\nfinished ?", shape="diamond"];
-       E [label = "Submit your\nmodifications", shape="roundedbox"];
-
-       A -> B -> C;
-       C -> D;
-       D -> B [label = "No"];
-       D -> E [label = "Yes"];
-   }
-
-Create a development branch
-===========================
+When using **Git** you should constently keep in mind the following warning:
 
 .. warning::
     
     Never work on master, always on a branch
 
-In order to create a development branch, you must first synchronize your :code:`master` local branch with the :code:`upstream master` remote branch (This step ensure that you have all previously accepted modifications in the official repository).
+In order to contribute to an official repository of **StatisKit** we therefore recommand to follow the following workflow.
+This workflow is assuming that you forked the official repository in your personal account and cloned it (see :doc:`fork`).
+
+.. blockdiag::
+    :align: center
+    :desctable:
+    
+    blockdiag {
+        A [label = "Branch", shape="roundedbox", description="See `Create a development branch`_ section. In order to enable code review from mainteners, the development must be short (i.e. one branch for one task such as new feature, bug fix...)."];
+        B [label = "Work", shape="roundedbox", description="See `Work on your modifications`_ section. In order to enable code review from mainteners, benefit from tools developped by mainteners and ensure code quality, the development must respect some guidelines."];
+        C [label = "Commit", shape="roundedbox", description="See `Commit your modifications`_ section"];
+        D [label = "Upload ?", shape="diamond", description="If you want to upload your modifications to your personal repository, you shoud use the :code:`git push` command"];
+        E [label = "Finished ?", shape="diamond", description="If your work on the branch is done, you should submit your modifications to the official repository"];
+        F [label = "Submit", shape="roundedbox", description="See `Submit your modifications`_ section"];
+        
+        A -> B -> C;
+        C -> D;
+        D -> B [label = "No"];
+        D -> E [label = "Yes"];
+        E -> B [label = "No"];
+        E -> F [label = "Yes"];
+    }
+
+Create a development branch
+===========================
+
+In order to create a development branch, you must first synchronize your :code:`master` local branch with the :code:`upstream master` remote branch.
+This step ensure that you have all previously accepted modifications in the official repository.
 
 .. code-block:: bash
 
@@ -56,9 +59,6 @@ and push it to your personal repository
 
     git push --set-upstream origin work_in_progress
 
-.. note::
-
-    In order to enable code review from mainteners, the development must be short (i.e. one branch for one task sucha as new feature, bug fix...).
 
 .. note::
 
@@ -71,30 +71,56 @@ Work on your modifications
 Commit your modifications
 =========================
 
-In order to commit your modifications you must first precise which files to add, remove or modify in the remote **Git** repository.
-Stores the current contents of the index in a new commit along with a log message from the user describing the changes.
-For this step the :code:`git status`, :code:`git add` and :code:`git remove` commands are your friends:
+.. warning::
+
+    The commit of modifications with **Git** is quite different from **Subversion**.
+
+The *repository index*
+----------------------
+
+In **Git**, the *repository index* notion is primordial (see the this `post <http://www.gitguys.com/topics/whats-the-deal-with-the-git-index/>`_ for more details).
+In short, files in the *repository index* are files that would be committed to the repository if you used the :code:`git commit` command.
+However, files in the *repository index* are not committed to the repository until you use the :code:`git commit` command.
+Therefore, in order to commit your modifications you must first build the *repository index* using file additions and removals.
+For this step the :code:`git status`, :code:`git add` and :code:`git rm` commands are your friends:
 
 :code:`git status`
-    Give a
+    Tells you what files:
 
-:code:`git add`
-    Incrementally "add" changes to the index before using the commit command 
+    * have been added to the *repository index*,
+    * exists in the working tree but are not in the *repository index*,
+    * have different contents between the working tree and the *repository index*.
+
+:code:`git add <pathspec>`
+    Add the :code:`<pathspec>` file to the repository index.
     
     .. warning::
     
-        Contrarily to subversion, the :code:`git add` command must be performed not only for adding new files.
-        Even modified files must be "added".
-        
-        .. note::
-        
-            :code:`git add -A`
+        Contrarily to **Subversion**, with **Git** the :code:`git add` command must be performed not only for adding new files but also for modified files.
+        By default no file is added in the index.
+       
+    For more details, refers to the **Git** manual (:code:`git add --help`).
 
-:code:`git remove`
-    Remove files from the working tree and the index, again before using the commit command;
+:code:`git rm <pathspec>`
+    Remove the :code:`<pathspec>` file from the working tree and the index.
+    For more details, refers to the **Git** manual (:code:`git remove --help`).
+
+    .. note::
+
+        If you do not want to remove the  :code:`<pathspec>` file from you working tree but only in the *repository index* use :code:`git rm --cached <pathspec>` instead.
+
+.. note::
+
+    Since the incremental addition or removal of files can be tidious, the commands :code:`git add -A` can be of most interest.
+    This command will also add files that were created.
+    Therefore in order to add only relevant files, the :code:`.gitignore` file is of most importance (see :doc:`create`). 
 
 
-Please write a good commit message and try to limit using the `-m` commit flag.
+Commit
+------
+
+Once 
+Please write a good commit message and try to limit using the :code:`-m` flag.
 
 Using
 
@@ -113,6 +139,41 @@ should open your favorite editor (see :doc:`configure`) where you can construct 
 * Followed by a longer detailed description about the things that changed.
   This section is a really good place to explain what and why.
   You could cover statistics, performance wins, roadblocks, etc. The text should be wrapped at 72 characters.
+
+.. note::
+
+    If you want to add to your index deleted or modified files when committing, you can use the :code:`-a` flag.
+    The command
+
+    .. code-block:: bash
+    
+        git commit -a
+
+    is used for automatically staged files that have been modified and deleted, but new files you have not told **Git** about are not affected.
+    In this fact this command is different from the commands
+
+    .. code-block:: bash
+
+        git add -A
+        git commit
+
+    that will also add new files.
+
+.. blockdiag::
+
+   blockdiag {
+       A [label = "Is the commit a save ?", shape="diamond"];
+       B [label = ":code:`git commit -m 'A short message'", shape="roundedbox"];
+       C [label = "Commit your\nmodifications", shape="roundedbox"];
+       D [label = "Work\nfinished ?", shape="diamond"];
+       E [label = "Submit your\nmodifications", shape="roundedbox"];
+
+       A -> B -> C;
+       C -> D;
+       D -> B [label = "No"];
+       D -> E [label = "Yes"];
+   }
+
 
 Submit your modifications
 =========================

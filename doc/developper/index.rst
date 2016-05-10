@@ -1,8 +1,7 @@
 Developper guide
 ################
 
-Development of a **StatisKit** repository must  be done using a Version Control System (VCS).
-for now, only **Git** VCS is officially supported (see :doc:`git`).
+Development of a **StatisKit** repository is done using **Git** :abbr:`VCS (Version Control System)` (see :doc:`git`).
 This development can be done in two ways:
 
 * The **public** way, that is done using **GitHub** (see :doc:`public/index` section).
@@ -17,3 +16,4 @@ This development can be done in two ways:
 
     public/index
     private/index
+
