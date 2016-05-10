@@ -254,11 +254,7 @@ On github interface, select your branch :code:`work_in_progress` and click on pu
 
 .. warning::
 
-    You must see the following message::
-
-        Able to merge
-        These branches can be automatically merged
-
+    You must see the following message: "Able to merge. These branches can be automatically merged".
     If it's not the case, the :code:`upstream master` has probably diverged.
     You must therefore turn back to previous step (see `Prepare your pull-request`_ section).
 
