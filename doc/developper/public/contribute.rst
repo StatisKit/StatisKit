@@ -15,12 +15,18 @@ This workflow is assuming that you forked the official repository in your person
     :desctable:
     
     blockdiag {
-        A [label = "Branch", shape="roundedbox", description="See `Create a development branch`_ section. In order to enable code review from mainteners, the development must be short (i.e. one branch for one task such as new feature, bug fix...)."];
-        B [label = "Work", shape="roundedbox", description="See `Work on your modifications`_ section. In order to enable code review from mainteners, benefit from tools developped by mainteners and ensure code quality, the development must respect some guidelines."];
-        C [label = "Commit", shape="roundedbox", description="See `Commit your modifications`_ section"];
-        D [label = "Upload ?", shape="diamond", description="If you want to upload your modifications to your personal repository, you shoud use the :code:`git push` command"];
-        E [label = "Finished ?", shape="diamond", description="If your work on the branch is done, you should submit your modifications to the official repository"];
-        F [label = "Submit", shape="roundedbox", description="See `Submit your modifications`_ section"];
+        A [label = "Branch", shape="roundedbox", description="See `Create a development branch`_ section. |br|
+                                                              In order to enable code review from mainteners, the development must be short |br|
+                                                              (i.e. one branch for one task such as new feature, bug fix...)."];
+        B [label = "Work", shape="roundedbox", description="See `Work on your modifications`_ section. |br|
+                                                            In order to benefit from tools developped by mainteners and ensure code quality, |br|
+                                                            the development must respect some guidelines."];
+        C [label = "Commit", shape="roundedbox", description="See `Commit your modifications`_ section."];
+        D [label = "Upload ?", shape="diamond", description="If you want to upload your modifications to your personal repository, |br|
+                                                             you shoud use the :code:`git push` command."];
+        E [label = "Finished ?", shape="diamond", description="If your work on the branch is done, you should submit your modifications |br|
+                                                               to the official repository."];
+        F [label = "Submit", shape="roundedbox", description="See `Submit your modifications`_ section."];
         
         A -> B -> C;
         C -> D;
@@ -29,6 +35,10 @@ This workflow is assuming that you forked the official repository in your person
         E -> B [label = "No"];
         E -> F [label = "Yes"];
     }
+
+.. |br| raw:: html
+
+   <br />
 
 Create a development branch
 ===========================
