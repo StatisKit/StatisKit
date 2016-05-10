@@ -262,4 +262,21 @@ On github interface, select your branch :code:`work_in_progress` and click on pu
     If it's not the case, the :code:`upstream master` has probably diverged.
     You must therefore turn back to previous step (see `Prepare your pull-request`_ section).
 
-Now it is OK ! As your branch is very clean, other developers have absolutely nothing to do to integrate your work (except to review your changes) and so they will certainly integrate it.
+If all steps described in the workflow are respected, your branch is clean and mainteners have absolutely nothing to do to integrate your work (except to review your changes) and so it will certainly be integrated.
+
+.. note::
+
+    Once your branch is integrated in the :code:`upstream master`, it is recommanded to to delete your branch:
+
+    * On your local repository,
+
+      .. code-block:: bash
+      
+            git checkout master
+            git branch -d work_in_progress
+
+    * On your personal repository,
+
+      .. code-block:: bash
+      
+            git push origin --delete work_in_progress

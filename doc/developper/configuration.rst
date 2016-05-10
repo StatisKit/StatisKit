@@ -43,6 +43,12 @@ For commits, you can configure the editor used for editing commit messages using
     
           git config --global core.editor "gvim --nofork"
 
+.. note::
+
+    For more informations on **Git** the reader can refer to these sites:
+
+    * `Git homepage <https://git-scm.com/>`_.
+    * `Getting Git Right <https://www.atlassian.com/git/>`_.
 
 GitHub
 ======
