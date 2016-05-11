@@ -24,19 +24,11 @@ Create a new repository
 Initialize the repository
 =========================
 
-The initialization of a repository is first made on `GitHub <https://help.github.com/articles/create-a-repo/>`_ by clicking on the |NEWBUTTON| button of the **StatisKit** `organization page <https://github.com/StatisKit>`_ (see :numref:`organization_page`).
+The initialization of a repository is first made on GitHub (see this `page <https://help.github.com/articles/create-a-repo/>`_ for more details).
+First go to the **StatisKit** `organization page <https://github.com/StatisKit>`_ and click on the |NEWBUTTON|.
 
 .. |NEWBUTTON| image:: plus_new_repository_button.png
                   :alt: the new repository button
-
-.. _organization_page:
-
-.. figure:: organization_page.png
-   :align: center
-
-   Partial snapshot of the **StatisKit** organization repository page.
-
-   The |NEWBUTTON| is located at above the repository list of the **StatisKit** organization repository page.
 
 |CREATEBUTTON| |GITIGNOREMENU|  |LICENSEMENU| 
 
