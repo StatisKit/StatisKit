@@ -30,10 +30,15 @@
 
 .. |BUILD| image:: https://travis-ci.org/StatisKit/StatisKit.svg?branch=master
            :target: https://travis-ci.org/StatisKit/StatisKit
+           :alt: Build
 
 .. |COVERAGE| image:: https://coveralls.io/repos/github/StatisKit/StatisKit/badge.svg?branch=master
+              :target: https://coveralls.io/github/StatisKit/StatisKit?branch=master
+              :alt: Coverage
 
 .. |HEALTH| image:: https://landscape.io/github/StatisKit/StatisKit/master/landscape.svg?style=flat
+            :target: https://landscape.io/github/StatisKit/StatisKit/master
+            :alt: Health
 
 .. MngIt
 
