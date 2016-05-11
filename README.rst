@@ -29,6 +29,7 @@
       - |LICENSENAME| (see |LICENSEFILE|_ file)
 
 .. |BUILD| image:: https://travis-ci.org/StatisKit/StatisKit.svg?branch=master
+           :target: https://travis-ci.org/StatisKit/StatisKit
 
 .. |COVERAGE| image:: https://coveralls.io/repos/github/StatisKit/StatisKit/badge.svg?branch=master
 
