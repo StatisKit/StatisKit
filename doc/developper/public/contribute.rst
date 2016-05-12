@@ -104,13 +104,13 @@ Since all your master branches are up to date, you can create your local branch
 
 .. code-block:: bash
 
-    git checkout -b work_in_progress
+    git checkout -b <branchname>
 
 and push it to your personal repository
 
 .. code-block:: bash
 
-    git push --set-upstream origin work_in_progress
+    git push --set-upstream origin <branchname>
 
 
 .. note::
@@ -243,7 +243,7 @@ Then, you must rebase your local development branch with your local :code:`maste
 
 .. code-block:: bash
 
-        git checkout work_in_progress
+        git checkout <branchname>
         git rebase master
 
 If conflicts occur, fix conflicts for each file and finish rebase
@@ -265,7 +265,7 @@ If anything has gone wrong, you can abort reabase
 Create your pull-request
 ------------------------
 
-On github interface, select your branch :code:`work_in_progress` and click on pull-request (see this `post <https://help.github.com/articles/using-pull-requests/>`_ for more details).
+On github interface, select your branch :code:`<branchname>` and click on pull-request (see this `post <https://help.github.com/articles/using-pull-requests/>`_ for more details).
 
 .. warning::
 
@@ -284,13 +284,13 @@ If all steps described in the workflow are respected, your branch is clean and m
       .. code-block:: bash
       
             git checkout master
-            git branch -d work_in_progress
+            git branch -d <branchname>
 
     * On your personal repository,
 
       .. code-block:: bash
       
-            git push origin --delete work_in_progress
+            git push origin --delete <branchname>
 
 .. MngIt
 
