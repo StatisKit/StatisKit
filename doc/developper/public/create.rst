@@ -44,18 +44,23 @@ Once the name entered, click on |CREATEBUTTON|.
                :alt: the new repository button
 
 .. |REPOSITORYNAME| image:: repository_name.png
+                    :scale: 100%
                     :alt: the repository name field
 
 .. |CREATEBUTTON| image:: create_repository_button.png
+                  :scale: 100%
                   :alt: the create repository button
 
 .. |READMEBOX| image:: add_readme_box.png
+               :scale: 100%
                :alt: the add readme box not checked
 
 .. |GITIGNOREMENU| image:: add_gitignore_menu.png
+                   :scale: 100%
                    :alt: the ignore menu set to :code:`None`
 
 .. |LICENSEMENU| image:: add_license_menu.png
+                 :scale: 100%
                  :alt: the license menu set to :code:`None`
 
 Complete the repository
