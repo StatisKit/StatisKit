@@ -22,7 +22,7 @@
     * - Version
       - |VERSION|
     * - Status
-      - |BUILD| |COVERAGE| |HEALTH| 
+      - |BUILD| |COVERAGE| |HEALTH| |DOCS|
     * - Authors
       - see |AUTHORSFILE|_ file
     * - License
@@ -39,6 +39,10 @@
 .. |HEALTH| image:: https://landscape.io/github/StatisKit/StatisKit/master/landscape.svg?style=flat
             :target: https://landscape.io/github/StatisKit/StatisKit/master
             :alt: Health
+
+.. |DOCS| image:: https://readthedocs.org/projects/statiskit/badge/?version=latest
+          :target: http://statiskit.readthedocs.io/en/latest/?badge=latest
+          :alt: Documentation
 
 .. MngIt
 
