@@ -68,16 +68,16 @@ Complete the repository
 
 For now your repository is empty 
 
-.. code-block:: bash
+.. code-block:: console
 
     cd ~/Desktop
 
-.. code-block:: bash
+.. code-block:: console
 
     git clone git@github.com:StatisKit/StatisKit-Tree.git
 
 
-.. code-block:: bash
+.. code-block:: console
 
     cd StatisKit-Tree
     mkdir doc
@@ -87,11 +87,11 @@ For now your repository is empty
     git add doc README.rst
     git commit -m 'Add the repository'
 
-.. code-block:: bash
+.. code-block:: console
 
     mngit init --name=StatisKit-Tree --brief=Statistical analysis of tree-indexed data
 
-.. code-block:: bash
+.. code-block:: console
 
     mngit authors
     mngit version
@@ -100,16 +100,16 @@ For now your repository is empty
     mngit sphinx
     mngit update
 
-.. code-block:: bash
+.. code-block:: console
 
     git add AUTHORS.rst LICENSE.rst
     git commit -a --amend --no-edit
 
-.. code-block:: bash
+.. code-block:: console
 
     git push
 
-.. code-block:: bash
+.. code-block:: console
 
     cd ..
     rm -rf StatisKit-Tree
