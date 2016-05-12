@@ -26,10 +26,14 @@ Initialize the repository
 
 The initialization of a repository is first made on GitHub (see this `page <https://help.github.com/articles/create-a-repo/>`_ for more details).
 First go to the **StatisKit** `organization page <https://github.com/StatisKit>`_ and click on the |NEWBUTTON|.
-This will lead you to a page where you must fill |REPOSITORYNAME| with a short, memorable and explicit name.
-For repositories that are concerning statistical methods, the name must begin with :code:`StatisKit-`.
-For instance :code:`StatisKit-Core` denote a repository that contains basic statistical classes and methods (dataframes, classical univariate and multivariate distributions or regressions) that will be used in repositories containing more complex statistical methodology (e.g. :code:`StatisKit-Tree`).
-Once the name entered, click on |CREATEBUTTON|.
+
+This will lead you to a page where you must fill the following two fields:
+
+* |REPOSITORYNAME| with a short, memorable and explicit name.
+  For repositories that are concerning statistical methods, the name must begin with :code:`StatisKit-`.
+  For instance :code:`StatisKit-Core` denote a repository that contains basic statistical classes and methods (dataframes, classical univariate and multivariate distributions or regressions) that will be used in repositories containing more complex statistical methodology (e.g. :code:`StatisKit-Tree`).
+* |REPOSITORYDESC| with a short and explicit description of the repository purposes.
+Once these both steps done, click on |CREATEBUTTON|.
 
 .. warning::
 
@@ -62,6 +66,10 @@ Once the name entered, click on |CREATEBUTTON|.
 .. |LICENSEMENU| image:: add_license_menu.png
                  :scale: 100%
                  :alt: the license menu set to :code:`None`
+                 
+.. |REPOSITORYDESC| image:: repository_desc.png
+                    :scale: 100%
+                    :alt: the repository description field
 
 Complete the repository
 =======================
