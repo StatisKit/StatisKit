@@ -40,7 +40,8 @@ Once the name entered, click on |CREATEBUTTON|.
     * Do not select a license (|LICENSEMENU|).
 
 .. |NEWBUTTON| image:: plus_new_repository_button.png
-                  :alt: the new repository button
+               :scale: 100%
+               :alt: the new repository button
 
 .. |REPOSITORYNAME| image:: repository_name.png
                     :alt: the repository name field
