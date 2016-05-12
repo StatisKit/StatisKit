@@ -40,47 +40,53 @@ Once the name entered, click on |CREATEBUTTON|.
     * Do not select a license (|LICENSEMENU|).
 
 .. |NEWBUTTON| image:: plus_new_repository_button.png
-                  :alt: the new repository button
+               :scale: 100%
+               :alt: the new repository button
 
 .. |REPOSITORYNAME| image:: repository_name.png
+                    :scale: 100%
                     :alt: the repository name field
 
 .. |CREATEBUTTON| image:: create_repository_button.png
+                  :scale: 100%
                   :alt: the create repository button
 
 .. |READMEBOX| image:: add_readme_box.png
+               :scale: 100%
                :alt: the add readme box not checked
 
 .. |GITIGNOREMENU| image:: add_gitignore_menu.png
+                   :scale: 100%
                    :alt: the ignore menu set to :code:`None`
 
 .. |LICENSEMENU| image:: add_license_menu.png
+                 :scale: 100%
                  :alt: the license menu set to :code:`None`
 
 Complete the repository
 =======================
 
 For now your repository is empty and you will need to complete it in order to respect **StatisKit** standards.
-For instance, let consider that you initialized a reposiory named :code:`Repository`, then you must open a terminal and
+For instance, let consider that you initialized a reposiory named :code:`<repository>`, then you must open a terminal and
 
 1. Clone the **GitHub** repository
    
-   .. code-block:: bash
+   .. code-block:: console
    
-        git clone git@github.com:StatisKit/Repository.git
+        git clone git@github.com:StatisKit/<repository>.git
 
 2. Enter in local repository directory
 
-   .. code-block:: bash
+   .. code-block:: console
 
-        cd Repository
+        cd <repository>
 
 3. Run the following shell :download:`script <repository.sh>`
 
-   .. code-block:: bash
+   .. code-block:: console
 
         wget statiskit.readthedocs.io/en/latest/developper/public/repository.sh
-        bash repository.sh --name Repository --brief
+        bash repository.sh --name <repository> --brief
 
    This script requires the **MngIt** package and execute the following commands
    
@@ -90,10 +96,10 @@ For instance, let consider that you initialized a reposiory named :code:`Reposit
 
 4. Remove the local repository
    
-   .. code-block:: bash
+   .. code-block:: console
 
         cd ..
-        rm -rf Repository
+        rm -rf <repository>
 
 
 Activate repository services

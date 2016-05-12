@@ -89,28 +89,28 @@ Create a development branch
 In order to create a development branch, you must first synchronize your :code:`master` local branch with the :code:`upstream master` remote branch.
 This step ensure that you have all previously accepted modifications in the official repository.
 
-.. code-block:: bash
+.. code-block:: console
 
     git checkout master
     git pull upstream master
 
 Then, you must push modifications to your :code:`origin master` remote branch
 
-.. code-block:: bash
+.. code-block:: console
 
     git push
 
 Since all your master branches are up to date, you can create your local branch
 
-.. code-block:: bash
+.. code-block:: console
 
-    git checkout -b work_in_progress
+    git checkout -b <branchname>
 
 and push it to your personal repository
 
-.. code-block:: bash
+.. code-block:: console
 
-    git push --set-upstream origin work_in_progress
+    git push --set-upstream origin <branchname>
 
 
 .. note::
@@ -174,7 +174,7 @@ The **Git** Commit
 
 Once the index is build as desired, it must be committed in order to make another snapshot of the repository.
 This is done using the :code:`git commit` command.
-If you leave off the :code:`-m` option, this command open your favorite editor (see :doc:`../git`) where you can construct a message associated to the commit.
+If you leave off the :code:`-m` option, this command open your favorite editor (see :doc:`../configuration`) where you can construct a message associated to the commit.
 Two commits are distinguished:
 
 Backup & service commits
@@ -206,14 +206,14 @@ Developement commits
     If you want to add to your index deleted or modified files when committing, you can use the :code:`-a` flag.
     The command
 
-    .. code-block:: bash
+    .. code-block:: console
     
         git commit -a
 
     is used for automatically staged files that have been modified and deleted, but new files you have not told **Git** about are not affected.
     In this fact this command is different from the commands
 
-    .. code-block:: bash
+    .. code-block:: console
 
         git add -A
         git commit
@@ -228,27 +228,27 @@ Prepare your pull-request
 
 Before submitting your modifications, you must recover changes from :code:`upstream master` remote branch in your local :code:`master` branch
 
-.. code-block:: bash
+.. code-block:: console
 
         git checkout master
         git pull upstream master
 
 and upload the changes in your :code:`origin master` remote branch
 
-.. code-block:: bash
+.. code-block:: console
 
         git push
         
 Then, you must rebase your local development branch with your local :code:`master` branch.
 
-.. code-block:: bash
+.. code-block:: console
 
-        git checkout work_in_progress
+        git checkout <branchname>
         git rebase master
 
 If conflicts occur, fix conflicts for each file and finish rebase
 
-.. code-block:: bash
+.. code-block:: console
 
         git rebase --continue
 
@@ -258,14 +258,14 @@ If conflicts occur, fix conflicts for each file and finish rebase
 
 If anything has gone wrong, you can abort reabase
 
-.. code-block:: bash
+.. code-block:: console
 
         git rebase --abort
 
 Create your pull-request
 ------------------------
 
-On github interface, select your branch :code:`work_in_progress` and click on pull-request (see this `post <https://help.github.com/articles/using-pull-requests/>`_ for more details).
+On github interface, select your branch :code:`<branchname>` and click on pull-request (see this `post <https://help.github.com/articles/using-pull-requests/>`_ for more details).
 
 .. warning::
 
@@ -281,16 +281,16 @@ If all steps described in the workflow are respected, your branch is clean and m
 
     * On your local repository,
 
-      .. code-block:: bash
+      .. code-block:: console
       
             git checkout master
-            git branch -d work_in_progress
+            git branch -d <branchname>
 
     * On your personal repository,
 
-      .. code-block:: bash
+      .. code-block:: console
       
-            git push origin --delete work_in_progress
+            git push origin --delete <branchname>
 
 .. MngIt
 
