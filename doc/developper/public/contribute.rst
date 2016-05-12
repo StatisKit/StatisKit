@@ -96,19 +96,19 @@ This step ensure that you have all previously accepted modifications in the offi
 
 Then, you must push modifications to your :code:`origin master` remote branch
 
-.. code-block:: bash
+.. code-block:: console
 
     git push
 
 Since all your master branches are up to date, you can create your local branch
 
-.. code-block:: bash
+.. code-block:: console
 
     git checkout -b <branchname>
 
 and push it to your personal repository
 
-.. code-block:: bash
+.. code-block:: console
 
     git push --set-upstream origin <branchname>
 
@@ -206,14 +206,14 @@ Developement commits
     If you want to add to your index deleted or modified files when committing, you can use the :code:`-a` flag.
     The command
 
-    .. code-block:: bash
+    .. code-block:: console
     
         git commit -a
 
     is used for automatically staged files that have been modified and deleted, but new files you have not told **Git** about are not affected.
     In this fact this command is different from the commands
 
-    .. code-block:: bash
+    .. code-block:: console
 
         git add -A
         git commit
@@ -228,27 +228,27 @@ Prepare your pull-request
 
 Before submitting your modifications, you must recover changes from :code:`upstream master` remote branch in your local :code:`master` branch
 
-.. code-block:: bash
+.. code-block:: console
 
         git checkout master
         git pull upstream master
 
 and upload the changes in your :code:`origin master` remote branch
 
-.. code-block:: bash
+.. code-block:: console
 
         git push
         
 Then, you must rebase your local development branch with your local :code:`master` branch.
 
-.. code-block:: bash
+.. code-block:: console
 
         git checkout <branchname>
         git rebase master
 
 If conflicts occur, fix conflicts for each file and finish rebase
 
-.. code-block:: bash
+.. code-block:: console
 
         git rebase --continue
 
@@ -258,7 +258,7 @@ If conflicts occur, fix conflicts for each file and finish rebase
 
 If anything has gone wrong, you can abort reabase
 
-.. code-block:: bash
+.. code-block:: console
 
         git rebase --abort
 
@@ -281,14 +281,14 @@ If all steps described in the workflow are respected, your branch is clean and m
 
     * On your local repository,
 
-      .. code-block:: bash
+      .. code-block:: console
       
             git checkout master
             git branch -d <branchname>
 
     * On your personal repository,
 
-      .. code-block:: bash
+      .. code-block:: console
       
             git push origin --delete <branchname>
 
