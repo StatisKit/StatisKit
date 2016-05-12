@@ -60,53 +60,40 @@ Once the name entered, click on |CREATEBUTTON|.
 Complete the repository
 =======================
 
-For now your repository is empty 
+For now your repository is empty and you will need to complete it in order to respect **StatisKit** standards.
+For instance, let consider that you initialized a reposiory named :code:`Repository`, then you must open a terminal and
 
-.. code-block:: bash
+1. Clone the **GitHub** repository
+   
+   .. code-block:: bash
+   
+        git clone git@github.com:StatisKit/Repository.git
 
-    cd ~/Desktop
+2. Enter in local repository directory
 
-.. code-block:: bash
+   .. code-block:: bash
 
-    git clone git@github.com:StatisKit/StatisKit-Tree.git
+        cd Repository
 
+3. Run the following shell :download:`script <repository.sh>`
 
-.. code-block:: bash
+   .. code-block:: bash
 
-    cd StatisKit-Tree
-    mkdir doc
-    touch doc/index.rst
-    mkdir src
-    touch README.rst
-    git add doc README.rst
-    git commit -m 'Add the repository'
+        wget statiskit.readthedocs.io/en/latest/developper/public/repository.sh
+        bash repository.sh --name Repository --brief
 
-.. code-block:: bash
+   This script requires the **MngIt** package and execute the following commands
+   
+   .. literalinclude:: repository.sh
+      :language: bash
+      :linenos:
 
-    mngit init --name=StatisKit-Tree --brief=Statistical analysis of tree-indexed data
+4. Remove the local repository
+   
+   .. code-block:: bash
 
-.. code-block:: bash
-
-    mngit authors
-    mngit version
-    mngit license --plugin=CeCILL-C
-    mngit rst
-    mngit sphinx
-    mngit update
-
-.. code-block:: bash
-
-    git add AUTHORS.rst LICENSE.rst
-    git commit -a --amend --no-edit
-
-.. code-block:: bash
-
-    git push
-
-.. code-block:: bash
-
-    cd ..
-    rm -rf StatisKit-Tree
+        cd ..
+        rm -rf Repository
 
 
 Activate repository services
