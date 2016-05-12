@@ -89,7 +89,7 @@ Create a development branch
 In order to create a development branch, you must first synchronize your :code:`master` local branch with the :code:`upstream master` remote branch.
 This step ensure that you have all previously accepted modifications in the official repository.
 
-.. code-block:: bash
+.. code-block:: console
 
     git checkout master
     git pull upstream master
