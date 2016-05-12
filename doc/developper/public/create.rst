@@ -75,7 +75,7 @@ Complete the repository
 =======================
 
 For now your repository is empty and you will need to complete it in order to respect **StatisKit** standards.
-For instance, let consider that you initialized a reposiory named :code:`<repository>`, then you must open a terminal and
+For instance, let consider that you initialized a repository denoted by :code:`<repository>`, then you must open a terminal and
 
 1. Clone the **GitHub** repository
    
@@ -94,7 +94,7 @@ For instance, let consider that you initialized a reposiory named :code:`<reposi
    .. code-block:: console
 
         wget statiskit.readthedocs.io/en/latest/developper/public/repository.sh
-        bash repository.sh --name <repository> --brief
+        bash repository.sh
 
    This script requires the **MngIt** package and execute the following commands
    
