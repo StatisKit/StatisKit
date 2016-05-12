@@ -174,7 +174,7 @@ The **Git** Commit
 
 Once the index is build as desired, it must be committed in order to make another snapshot of the repository.
 This is done using the :code:`git commit` command.
-If you leave off the :code:`-m` option, this command open your favorite editor (see :doc:`../git`) where you can construct a message associated to the commit.
+If you leave off the :code:`-m` option, this command open your favorite editor (see :doc:`../configuration`) where you can construct a message associated to the commit.
 Two commits are distinguished:
 
 Backup & service commits
