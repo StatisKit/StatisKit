@@ -29,6 +29,7 @@
 
 .. |HEALTH| image:: https://landscape.io/github/StatisKit/StatisKit/master/landscape.svg?style=flat
 
+{% copyright %}
 
 Documentation
 =============
