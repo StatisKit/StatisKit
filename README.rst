@@ -9,7 +9,7 @@
 ..  received a copy of the legalcode along with this work. If not, see              ..
 ..  <http://www.cecill.info/licences/Licence_CeCILL-C_V1-en.html>.                  ..
 ..                                                                                  ..
-..  File authors: Pierre Fernique <pfernique@gmail.com> (6)                         ..
+..  File authors: Pierre Fernique <pfernique@gmail.com> (7)                         ..
 ..                                                                                  ..
 .. ................................................................................ ..
 
@@ -59,7 +59,7 @@
                 :target: https://landscape.io/github/StatisKit/StatisKit/master
                 :alt: Landscape
 
-.. |READTHEDOCS| image:: https://StatisKit.readthedocs.io/badge/?version=latest
+.. |READTHEDOCS| image:: https://readthedocs.org/projects/StatisKit/badge/?version=latest
                 :target: http://StatisKit.readthedocs.io/en/latest
                 :alt: Read the Docs
 
