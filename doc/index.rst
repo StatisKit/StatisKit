@@ -60,6 +60,8 @@ Indices
 
 .. |DETAILS| unicode:: U+0020
 
+.. |VERSION| replace:: 0.1.0
+
 .. |AUTHORSFILE| replace:: AUTHORS.rst
 
 .. _AUTHORSFILE : AUTHORS.rst

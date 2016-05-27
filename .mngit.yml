@@ -1,6 +1,7 @@
 about:
   brief: Python plugin system
   name: PluginTools
+  version: 0.1.0
 authors:
   basename: AUTHORS.rst
   format: '* {name} <{email}> ({score})'
@@ -27,3 +28,5 @@ rst:
 travis:
   account: StatisKit
   project: PluginTools
+version:
+  plugin: semantic
