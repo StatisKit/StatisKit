@@ -22,7 +22,7 @@ Git
 Git is a free and open source distributed :abbr:`VCS (Version Control System)`.
 If **Git** is not configured you should configure it for your computer.
 
-.. code-block:: bash
+.. code-block:: console
 
     git config --global user.name "Firstname Lastname"
     git config --global user.email firstname.lastname@domain
@@ -37,7 +37,7 @@ For more details the reader can refer to the **Git** `getting started page <http
 
 For commits, you can configure the editor used for editing commit messages using the following command line for `Vim <http://www.vim.org/>`_ 
   
-.. code-block:: bash
+.. code-block:: console
   
     git config --global core.editor vim
 
@@ -48,13 +48,13 @@ For commits, you can configure the editor used for editing commit messages using
     
     * For  `Gedit <https://wiki.gnome.org/Apps/Gedit>`_, you must add the flags :code:`-w -s`.
       
-      .. code-block:: bash
+      .. code-block:: console
       
           git config --global core.editor "gedit -w -s"
 
     * For `GVim <http://www.vim.org/>`_, you must add the flag :code:`--nofork`.
 
-      .. code-block:: bash
+      .. code-block:: console
     
           git config --global core.editor "gvim --nofork"
 
@@ -71,6 +71,7 @@ GitHub
 If you do not have a **GitHub** account you must create one at this `address <https://github.com/>`_.
 For contribution to **StatisKit** repositories you doesn't need to be part of the **StatisKit** organization (see :doc:`public/index`).
 Yet, if you feel you should, contact `any maintenance team member <https://github.com/orgs/StatisKit/teams/maintenance>`_.
+
 .. MngIt
 
 .. |NAME| replace:: StatisKit

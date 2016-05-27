@@ -55,6 +55,8 @@ extensions = [
     'sphinxcontrib.blockdiag',
 ]
 
+numfig = True
+
 todo_include_todos = True
 
 # Fontpath for blockdiag (truetype font)
@@ -74,7 +76,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'StatisKit'
-copyright = u'2016, Pierre Fernique, Jean Peyhardi'
+copyright = u'2016, |AUTHORS|'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
