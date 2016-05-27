@@ -6,24 +6,24 @@ authors:
   format: '* {name} <{email}> ({score})'
   plugin: commit
 coveralls:
-  account: ''
+  account: StatisKit
   host: github
-  project: ''
+  project: PluginTools
 landscape:
-  account: ''
+  account: StatisKit
   host: github
-  project: ''
+  project: PluginTools
 license:
   basename: LICENSE.rst
   plugin: CeCILL-C
   width: 78
 readthedocs:
-  project: ''
+  project: PluginTools
 rst:
   plugin: default
   target:
   - README.rst
   - doc/index.rst
 travis:
-  account: ''
-  project: ''
+  account: StatisKit
+  project: PluginTools
