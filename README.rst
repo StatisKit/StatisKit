@@ -9,7 +9,7 @@
 ..  received a copy of the legalcode along with this work. If not, see              ..
 ..  <http://www.cecill.info/licences/Licence_CeCILL-C_V1-en.html>.                  ..
 ..                                                                                  ..
-..  File authors: Pierre Fernique <pfernique@gmail.com> (1)                         ..
+..  File authors: Pierre Fernique <pfernique@gmail.com> (7)                         ..
 ..                                                                                  ..
 .. ................................................................................ ..
 
@@ -22,27 +22,11 @@
     * - Version
       - |VERSION|
     * - Status
-      - |BUILD| |COVERAGE| |HEALTH| |DOCS|
+      - |TRAVIS| |COVERALLS| |LANDSCAPE| |READTHEDOCS|
     * - Authors
       - see |AUTHORSFILE|_ file
     * - License
       - |LICENSENAME| (see |LICENSEFILE|_ file)
-
-.. |BUILD| image:: https://travis-ci.org/StatisKit/StatisKit.svg?branch=master
-           :target: https://travis-ci.org/StatisKit/StatisKit
-           :alt: Build
-
-.. |COVERAGE| image:: https://coveralls.io/repos/github/StatisKit/StatisKit/badge.svg?branch=master
-              :target: https://coveralls.io/github/StatisKit/StatisKit?branch=master
-              :alt: Coverage
-
-.. |HEALTH| image:: https://landscape.io/github/StatisKit/StatisKit/master/landscape.svg?style=flat
-            :target: https://landscape.io/github/StatisKit/StatisKit/master
-            :alt: Health
-
-.. |DOCS| image:: https://readthedocs.org/projects/statiskit/badge/?version=latest
-          :target: http://statiskit.readthedocs.io/en/latest/?badge=latest
-          :alt: Documentation
 
 .. MngIt
 
@@ -50,7 +34,9 @@
 
 .. |BRIEF| replace:: meta-repository providing general documentation and tools for the **StatisKit** Organization
 
-.. |VERSION| replace:: v0.1.0
+.. |DETAILS| unicode:: U+0020
+
+.. |VERSION| replace:: 0.1.0
 
 .. |AUTHORSFILE| replace:: AUTHORS.rst
 
@@ -61,5 +47,20 @@
 .. |LICENSEFILE| replace:: LICENSE.rst
 
 .. _LICENSEFILE : LICENSE.rst
+
+.. |TRAVIS| image:: https://travis-ci.org/StatisKit/StatisKit.svg?branch=master
+            :alt: Travis
+
+.. |COVERALLS| image:: https://coveralls.io/repos/github/StatisKit/StatisKit/badge.svg?branch=master
+               :target: https://coveralls.io/repos/github/StatisKit/StatisKit
+               :alt: Coveralls
+
+.. |LANDSCAPE| image:: https://landscape.io/github/StatisKit/StatisKit/master/landscape.svg?style=flat
+                :target: https://landscape.io/github/StatisKit/StatisKit/master
+                :alt: Landscape
+
+.. |READTHEDOCS| image:: https://readthedocs.org/projects/StatisKit/badge/?version=latest
+                :target: http://StatisKit.readthedocs.io/en/latest
+                :alt: Read the Docs
 
 .. MngIt

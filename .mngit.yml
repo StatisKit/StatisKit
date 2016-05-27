@@ -1,20 +1,36 @@
 about:
-  brief: 'meta-repository providing general documentation and tools
-    for the **StatisKit** Organization'
-  name: StatisKit
   authors:
-      - Pierre Fernique
+  - Pierre Fernique
+  brief: meta-repository providing general documentation and tools for the **StatisKit**
+    Organization
   email: pfernique@gmail.com
-  version: v0.1.0
+  name: StatisKit
+  version: 0.1.0
 authors:
   basename: AUTHORS.rst
   format: '* {name} <{email}> ({score})'
   plugin: commit
+coveralls:
+  account: StatisKit
+  host: github
+  project: StatisKit
+landscape:
+  account: StatisKit
+  host: github
+  project: StatisKit
 license:
   basename: LICENSE.rst
   plugin: CeCILL-C
   width: 78
+readthedocs:
+  project: StatisKit
 rst:
   plugin: default
+  target:
+  - README.rst
+  - doc/index.rst
+travis:
+  account: StatisKit
+  project: StatisKit
 version:
   plugin: semantic
