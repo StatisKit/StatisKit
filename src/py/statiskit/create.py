@@ -2,6 +2,7 @@ import os
 from mako.template import Template
 from statiskit.tools import list_input
 import yaml
+from distutils.util import strtobool
 
 INDEX = Template(text=r"""\
 |NAME|: |BRIEF|
@@ -119,7 +120,7 @@ except ImportError:
 
 def overwrite(filename):
     if os.path.exists(filename):
-        return list_input("Overwrite the '" + filename + "' file", ['y', 'n'], 'n') == 'y'
+        return strtobool(raw_input("Overwrite the '" + filename + "' file [y/n]: "))
     else:
         return True
 
