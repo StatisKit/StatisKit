@@ -123,11 +123,30 @@ def overwrite(filename):
     else:
         return True
 
-def create(reponame, languages):
-    if 'py' not in languages and os.path.exists(os.path.join(reponame, 'src', 'py')):
-        languages.append('py')
-    if 'cpp' not in languages and os.path.exists(os.path.join(reponame, 'src', 'cpp')):
-        languages.append('cpp')
+def adapt_git(reponame):
+    filenames = []
+
+    filename = reponame + os.sep + 'README.rst'
+    if overwrite(filename):
+        with open(filename, 'w') as filehandler:
+            filehandler.write(README.render(name = reponame))
+        filenames.append(os.path.relpath(filename, reponame))
+
+    filename = reponame + os.sep + '.travis.yml'
+    if overwrite(filename):
+        with open(filename, 'w') as filehandler:
+            filehandler.write(yaml.dump(dict(after_success = 'coveralls'),
+                default_flow_style=False))
+        filenames.append(os.path.relpath(filename, reponame))
+
+    filename = reponame + os.sep + '.gitignore'
+    if overwrite(filename):
+        with open(filename, 'w') as filehandler:
+            filehandler.write(GITIGNORE)
+        filenames.append(os.path.relpath(filename, reponame))
+    return filenames
+
+def create_doc(reponame):
     filenames = []
     dirname = reponame + os.sep + 'doc'
     if not os.path.exists(dirname):
@@ -154,49 +173,36 @@ def create(reponame, languages):
     dirname = reponame + os.sep + 'src'
     if not os.path.exists(dirname):
         os.mkdir(dirname)
+    return filenames
 
-    filename = reponame + os.sep + 'README.rst'
-    if overwrite(filename):
-        with open(filename, 'w') as filehandler:
-            filehandler.write(README.render(name = reponame))
-        filenames.append(os.path.relpath(filename, reponame))
-
-    filename = reponame + os.sep + '.travis.yml'
-    if overwrite(filename):
-        with open(filename, 'w') as filehandler:
-            filehandler.write(yaml.dump(dict(after_success = 'coveralls'),
-                default_flow_style=False))
-        filenames.append(os.path.relpath(filename, reponame))
-
-    filename = reponame + os.sep + '.gitignore'
-    if overwrite(filename):
-        with open(filename, 'w') as filehandler:
-            filehandler.write(GITIGNORE)
-        filenames.append(os.path.relpath(filename, reponame))
-
+def create_py(reponame):
+    filenames = []
     filename = reponame + os.sep + 'setup.py'
     if overwrite(filename) and 'py' in languages:
         with open(filename, 'w') as filehandler:
             filehandler.write(SETUP)
         filenames.append(os.path.relpath(filename, reponame))
-    if 'py' in languages:
-        srcname = reponame + os.sep + 'src' + os.sep + 'py'
-        dirname = srcname + os.sep + reponame.lower().replace('_', '.').replace('-', '.').replace('.', os.sep)
-        if not os.path.exists(dirname):
-            os.makedirs(dirname)
+    srcname = reponame + os.sep + 'src' + os.sep + 'py'
+    dirname = srcname + os.sep + reponame.lower().replace('_', '.').replace('-', '.').replace('.', os.sep)
+    if not os.path.exists(dirname):
+        os.makedirs(dirname)
+    filename = dirname + os.sep + '__init__.py'
+    if overwrite(filename):
+        with open(filename, 'w'):
+            pass
+    filenames.append(os.path.relpath(filename, reponame))
+    dirname = os.path.split(dirname)[0]
+    while not dirname == srcname:
         filename = dirname + os.sep + '__init__.py'
         if overwrite(filename):
-            with open(filename, 'w'):
-                pass
-        filenames.append(os.path.relpath(filename, reponame))
+            with open(filename, 'w') as filehandler:
+                filehandler.write(INIT)
+            filenames.append(os.path.relpath(filename, reponame))
         dirname = os.path.split(dirname)[0]
-        while not dirname == srcname:
-            filename = dirname + os.sep + '__init__.py'
-            if overwrite(filename):
-                with open(filename, 'w') as filehandler:
-                    filehandler.write(INIT)
-                filenames.append(os.path.relpath(filename, reponame))
-            dirname = os.path.split(dirname)[0]
+    return filenames
+
+def create_cpp(reponame):
+    filenames = []
     filename = reponame + os.sep + 'SConstruct'
     if overwrite(filename) and 'cpp' in languages:
         with open(filename, 'w') as filehandler:
@@ -206,13 +212,41 @@ def create(reponame, languages):
     if not os.path.exists(dirname):
         os.mkdir(dirname)
     filename = dirname + os.sep + 'SConscript'
-    if not os.path.exists(filename) and 'cpp' in languages or os.path.exists(filename) and list_input("Overwrite '" + filename + "' file", ['y', 'n'], 'n') == 'y':
+    ifoverwrite(filename) and 'cpp' in languages:
         with open(filename, 'w') as filehandler:
             filehandler.write(SCONSCRIPT['cpp'])
         filenames.append(os.path.relpath(filename, reponame))
+    return filenames
+
+def create_cpp_py(reponame):
+    filenames = []
     filename = reponame + os.sep + 'src' + os.sep + 'py' + os.sep + 'SConscript'
     if overwrite(filename) and 'cpp' in languages and 'py' in languages:
         with open(filename, 'w') as filehandler:
             filehandler.write(SCONSCRIPT['py'])
         filenames.append(os.path.relpath(filename, reponame))
+    return filenames
+
+def create(reponame, languages):
+
+    if 'py' not in languages and os.path.exists(os.path.join(reponame, 'src', 'py')):
+        languages.append('py')
+    if 'cpp' not in languages and os.path.exists(os.path.join(reponame, 'src', 'cpp')):
+        languages.append('cpp')
+
+    filenames = []
+
+    filenames.extend(adapt_git(reponame))
+
+    filenames.extend(create_doc(reponame))
+
+    if 'py' in languages:
+        filenames.extend(create_py(reponame))
+
+    if 'cpp' in languages:
+        filenames.extend(create_cpp(reponame))
+
+    if 'cpp' in languages and 'py' in languages:
+        filenames.extend(create_cpp_py(reponame))
+
     return filenames
