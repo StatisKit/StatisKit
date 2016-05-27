@@ -124,9 +124,9 @@ def overwrite(filename):
         return True
 
 def create(reponame, languages):
-    if not 'py' in languages and os.path.exists(os.path.join(reponame, 'src', 'py')):
+    if 'py' not in languages and os.path.exists(os.path.join(reponame, 'src', 'py')):
         languages.append('py')
-    if not 'cpp' in languages and os.path.exists(os.path.join(reponame, 'src', 'cpp')):
+    if 'cpp' not in languages and os.path.exists(os.path.join(reponame, 'src', 'cpp')):
         languages.append('cpp')
     filenames = []
     dirname = reponame + os.sep + 'doc'
@@ -198,7 +198,7 @@ def create(reponame, languages):
                 filenames.append(os.path.relpath(filename, reponame))
             dirname = os.path.split(dirname)[0]
     filename = reponame + os.sep + 'SConstruct'
-    if not os.path.exists(filename) and 'cpp' in languages or os.path.exists(filename) and list_input("Overwrite '" + filename + "' file", ['y', 'n'], 'n') == 'y':
+    if overwrite(filename) and 'cpp' in languages:
         with open(filename, 'w') as filehandler:
             filehandler.write(SCONSTRUCT)
         filenames.append(os.path.relpath(filename, reponame))
