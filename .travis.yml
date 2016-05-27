@@ -7,9 +7,3 @@ install:
     - "pip install -r REQUIREMENTS.txt"
     - "python setup.py install"
     - "pip install coveralls"
-
-script:
-    - "nosetests -v --with-coverage --cover-package=statiskit"
-
-after_success:
-    coveralls
