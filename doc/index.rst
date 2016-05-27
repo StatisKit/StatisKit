@@ -9,7 +9,7 @@
 ..  received a copy of the legalcode along with this work. If not, see              ..
 ..  <http://www.cecill.info/licences/Licence_CeCILL-C_V1-en.html>.                  ..
 ..                                                                                  ..
-..  File authors: Pierre Fernique <pfernique@gmail.com> (6)                         ..
+..  File authors: Pierre Fernique <pfernique@gmail.com> (9)                         ..
 ..                                                                                  ..
 .. ................................................................................ ..
 
@@ -19,15 +19,9 @@
 .. sidebar:: Summary
 
     :Version: |VERSION|
-    :Status: |BUILD| |COVERAGE| |HEALTH|
+    :Status: |TRAVIS| |COVERALLS| |LANDSCAPE|
     :Author: see `Authors`_ section
     :License: |LICENSENAME| (see `License`_ section)
-
-.. |BUILD| image:: https://travis-ci.org/StatisKit/StatisKit.svg?branch=master
-
-.. |COVERAGE| image:: https://coveralls.io/repos/github/StatisKit/StatisKit/badge.svg?branch=master
-
-.. |HEALTH| image:: https://landscape.io/github/StatisKit/StatisKit/master/landscape.svg?style=flat
 
 Documentation
 =============
@@ -66,7 +60,9 @@ Indices
 
 .. |BRIEF| replace:: meta-repository providing general documentation and tools for the **StatisKit** Organization
 
-.. |VERSION| replace:: v0.1.0
+.. |DETAILS| unicode:: U+0020
+
+.. |VERSION| replace:: 0.1.0
 
 .. |AUTHORSFILE| replace:: AUTHORS.rst
 
@@ -77,5 +73,20 @@ Indices
 .. |LICENSEFILE| replace:: LICENSE.rst
 
 .. _LICENSEFILE : LICENSE.rst
+
+.. |TRAVIS| image:: https://travis-ci.org/StatisKit/StatisKit.svg?branch=master
+            :alt: Travis
+
+.. |COVERALLS| image:: https://coveralls.io/repos/github/StatisKit/StatisKit/badge.svg?branch=master
+               :target: https://coveralls.io/repos/github/StatisKit/StatisKit
+               :alt: Coveralls
+
+.. |LANDSCAPE| image:: https://landscape.io/github/StatisKit/StatisKit/master/landscape.svg?style=flat
+                :target: https://landscape.io/github/StatisKit/StatisKit/master
+                :alt: Landscape
+
+.. |READTHEDOCS| image:: https://.readthedocs.io/badge/?version=latest
+                :target: http://.readthedocs.io/en/latest
+                :alt: Read the Docs
 
 .. MngIt
