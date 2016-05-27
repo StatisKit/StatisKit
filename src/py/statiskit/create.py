@@ -124,9 +124,9 @@ def overwrite(filename):
         return True
 
 def create(reponame, languages):
-    if not 'py' in languages and os.path.exists(ios.path.join(reponame, 'src', 'py')):
+    if not 'py' in languages and os.path.exists(os.path.join(reponame, 'src', 'py')):
         languages.append('py')
-    if not 'cpp' in languages and os.path.exists(ios.path.join(reponame, 'src', 'cpp')):
+    if not 'cpp' in languages and os.path.exists(os.path.join(reponame, 'src', 'cpp')):
         languages.append('cpp')
     filenames = []
     dirname = reponame + os.sep + 'doc'
