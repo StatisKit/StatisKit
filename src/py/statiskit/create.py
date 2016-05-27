@@ -117,13 +117,23 @@ except ImportError:
     __path__ = pkgutil.extend_path(__path__, __name__)
 """
 
+def overwrite(filename):
+    if os.path.exists(filename):
+        return list_input("Overwrite the '" + filename + "' file", ['y', 'n'], 'n') == 'y'
+    else:
+        return True
+
 def create(reponame, languages):
+    if not 'py' in languages and os.path.exists(ios.path.join(reponame, 'src', 'py')):
+        languages.append('py')
+    if not 'cpp' in languages and os.path.exists(ios.path.join(reponame, 'src', 'cpp')):
+        languages.append('cpp')
     filenames = []
     dirname = reponame + os.sep + 'doc'
     if not os.path.exists(dirname):
         os.mkdir(dirname)
     filename = dirname + os.sep + 'index.rst'
-    if not os.path.exists(filename) or list_input("Overwrite the '" + filename + "' file", ['y', 'n'], 'n') == 'y':
+    if overwrite(filename):
         with open(filename, 'w') as filehandler:
             filehandler.write(INDEX.render(name = reponame))
         filenames.append(os.path.relpath(filename, reponame))
@@ -132,12 +142,12 @@ def create(reponame, languages):
         if not os.path.exists(subname):
             os.mkdir(subname)
         filename = subname + os.sep + 'index.rst'
-        if not os.path.exists(filename) or list_input("Overwrite the '" + filename + "' file", ['y', 'n'], 'n') == 'y':
+        if overwrite(filename):
             with open(filename, 'w') as filehandler:
                 filehandler.write(subname.capitalize() + ' guide\n' + '#' * (len(subname) + 6) + '\n\n')
             filenames.append(os.path.relpath(filename, reponame))
     filename = dirname + os.sep + 'license.rst'
-    if not os.path.exists(filename) or list_input("Overwrite '" + filename + "' file", ['y', 'n'], 'n') == 'y':
+    if overwrite(filename):
         with open(filename, 'w') as filehandler:
             filehandler.write('.. include:: ../LICENSE.rst\n\n')
         filenames.append(os.path.relpath(filename, reponame))
@@ -146,26 +156,26 @@ def create(reponame, languages):
         os.mkdir(dirname)
 
     filename = reponame + os.sep + 'README.rst'
-    if not os.path.exists(filename) or list_input("Overwrite the '" + filename + "' file", ['y', 'n'], 'n') == 'y':
+    if overwrite(filename):
         with open(filename, 'w') as filehandler:
             filehandler.write(README.render(name = reponame))
         filenames.append(os.path.relpath(filename, reponame))
 
     filename = reponame + os.sep + '.travis.yml'
-    if not os.path.exists(filename) or list_input("Overwrite the '" + filename + "' file", ['y', 'n'], 'n') == 'y':
+    if overwrite(filename):
         with open(filename, 'w') as filehandler:
             filehandler.write(yaml.dump(dict(after_success = 'coveralls'),
                 default_flow_style=False))
         filenames.append(os.path.relpath(filename, reponame))
 
     filename = reponame + os.sep + '.gitignore'
-    if not os.path.exists(filename) or list_input("Overwrite the '" + filename + "' file", ['y', 'n'], 'n') == 'y':
+    if overwrite(filename):
         with open(filename, 'w') as filehandler:
             filehandler.write(GITIGNORE)
         filenames.append(os.path.relpath(filename, reponame))
 
     filename = reponame + os.sep + 'setup.py'
-    if not os.path.exists(filename) and 'py' in languages or os.path.exists(filename) and list_input("Overwrite '" + filename + "' file", ['y', 'n'], 'n') == 'y':
+    if overwrite(filename) and 'py' in languages:
         with open(filename, 'w') as filehandler:
             filehandler.write(SETUP)
         filenames.append(os.path.relpath(filename, reponame))
@@ -175,14 +185,14 @@ def create(reponame, languages):
         if not os.path.exists(dirname):
             os.makedirs(dirname)
         filename = dirname + os.sep + '__init__.py'
-        if not os.path.exists(filename) or list_input("Overwrite the '" + filename + "' file", ['y', 'n'], 'n') == 'y':
+        if overwrite(filename):
             with open(filename, 'w'):
                 pass
         filenames.append(os.path.relpath(filename, reponame))
         dirname = os.path.split(dirname)[0]
         while not dirname == srcname:
             filename = dirname + os.sep + '__init__.py'
-            if not os.path.exists(filename) or list_input("Overwrite the '" + filename + "' file", ['y', 'n'], 'n') == 'y':
+            if overwrite(filename):
                 with open(filename, 'w') as filehandler:
                     filehandler.write(INIT)
                 filenames.append(os.path.relpath(filename, reponame))
@@ -201,7 +211,7 @@ def create(reponame, languages):
             filehandler.write(SCONSCRIPT['cpp'])
         filenames.append(os.path.relpath(filename, reponame))
     filename = reponame + os.sep + 'src' + os.sep + 'py' + os.sep + 'SConscript'
-    if not os.path.exists(filename) and 'cpp' in languages and 'py' in languages or os.path.exists(filename) and list_input("Overwrite '" + filename + "' file", ['y', 'n'], 'n') == 'y':
+    if overwrite(filename) and 'cpp' in languages and 'py' in languages:
         with open(filename, 'w') as filehandler:
             filehandler.write(SCONSCRIPT['py'])
         filenames.append(os.path.relpath(filename, reponame))
