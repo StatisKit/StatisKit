@@ -23,7 +23,7 @@ license:
   plugin: CeCILL-C
   width: 78
 readthedocs:
-  project: ''
+  project: StatisKit
 rst:
   plugin: default
   target:
