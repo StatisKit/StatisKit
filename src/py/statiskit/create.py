@@ -178,7 +178,7 @@ def create_doc(reponame):
 def create_py(reponame):
     filenames = []
     filename = reponame + os.sep + 'setup.py'
-    if overwrite(filename) and 'py' in languages:
+    if overwrite(filename):
         with open(filename, 'w') as filehandler:
             filehandler.write(SETUP)
         filenames.append(os.path.relpath(filename, reponame))
@@ -204,7 +204,7 @@ def create_py(reponame):
 def create_cpp(reponame):
     filenames = []
     filename = reponame + os.sep + 'SConstruct'
-    if overwrite(filename) and 'cpp' in languages:
+    if overwrite(filename):
         with open(filename, 'w') as filehandler:
             filehandler.write(SCONSTRUCT)
         filenames.append(os.path.relpath(filename, reponame))
@@ -212,7 +212,7 @@ def create_cpp(reponame):
     if not os.path.exists(dirname):
         os.mkdir(dirname)
     filename = dirname + os.sep + 'SConscript'
-    if overwrite(filename) and 'cpp' in languages:
+    if overwrite(filename):
         with open(filename, 'w') as filehandler:
             filehandler.write(SCONSCRIPT['cpp'])
         filenames.append(os.path.relpath(filename, reponame))
@@ -221,7 +221,7 @@ def create_cpp(reponame):
 def create_cpp_py(reponame):
     filenames = []
     filename = reponame + os.sep + 'src' + os.sep + 'py' + os.sep + 'SConscript'
-    if overwrite(filename) and 'cpp' in languages and 'py' in languages:
+    if overwrite(filename):
         with open(filename, 'w') as filehandler:
             filehandler.write(SCONSCRIPT['py'])
         filenames.append(os.path.relpath(filename, reponame))
