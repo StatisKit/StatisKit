@@ -281,6 +281,70 @@ def create_script(args):
 
     shutil.rmtree(name)
 
+def clone_script(args):
+    import os
+    from argparse import ArgumentParser, RawTextHelpFormatter
+    import shutil
+    from github import Github
+    from getpass import getpass
+    from git import Repo
+    import os
+    from mako.template import Template
+    from mngit.scripts import mngit
+    import subprocess
+    import yaml
+
+    username = raw_input("Username for 'https://github.com': ")
+    password = getpass("Password for 'https://" + username + "@github.com': ")
+    account = Github(username,
+                     password)
+    organization = account.get_organization('StatisKit')
+    name = raw_input("Enter a repository name: ")
+    upstream = organization.get_repo(name)
+
+    user = account.get_user()
+    origin = None
+    for remote in user.get_repos():
+        if remote.parent == upstream:
+            origin = remote
+            break
+    if origin is None:
+        origin = user.create_fork(upstream)
+
+    if os.path.exists(name):
+        raise ValueError()
+
+    if args.url == 'ssh':
+        local = Repo.clone_from(origin.ssh_url, name)
+        local.create_remote('upstream', upstream.ssh_url)
+    elif args.url == 'html':
+        local = Repo.clone_from(origin.html_url, name)
+        local.create_remote('upstream', upstream.html_url)
+
+
+    authors = ', '.join(member.name for member in organization.get_members() if member.name)
+    mngit(['init', '--root', name, '--name', name, '--brief', brief, '--authors', authors, '--email', organization.email])
+    mngit(['authors', '--root', name])
+    mngit(['license', '--root', name, '--plugin', 'CeCILL-C'])
+    mngit(['version', '--root', name])
+    mngit(['rst', '--root', name, '--target', 'README.rst', 'doc/index.rst'])
+    mngit(['travis', '--root', name, '--account', 'StatisKit', '--project', name])
+    mngit(['coveralls', '--root', name, '--account', 'StatisKit', '--project', name])
+    mngit(['landscape', '--root', name, '--account', 'StatisKit', '--project', name])
+    mngit(['readthedocs', '--root', name, '--project', name])
+
+    local.index.add(['.mngit.yml'])
+
+    message = raw_input("Enter a brief commit message: ")
+    local.index.commit(message)
+
+    mngit(['update', '--root', name])
+    local.index.add([entry[0] for entry in local.index.entries] + ['AUTHORS.rst', 'LICENSE.rst'])
+    local.git.commit(['--amend', '--no-edit'])
+
+    subprocess.call(['git', 'push', 'https://' + username + ':' + password + '@' + remote.html_url.lstrip('https://')], cwd=name)
+
+    shutil.rmtree(name)
 
 def statiskit(args=None):
     parser = ArgumentParser(description='Repository manager for StatisKit organization',
@@ -294,6 +358,13 @@ def statiskit(args=None):
             choices = ['cpp', 'py'],
             help="Source code languages")
     subparser.set_defaults(func = create_script)
+
+    subparser = subparsers.add_parser('clone', help=clone_script.__doc__)
+    subparser.add_argument('--url', type=str,
+            default = 'ssh',
+            choices = ['ssh', 'html'],
+            help="URL to use for clone")
+    subparser.set_defaults(func = clone_script)
 
     if args:
         args = parser.parse_args(args)
