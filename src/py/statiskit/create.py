@@ -212,7 +212,7 @@ def create_cpp(reponame):
     if not os.path.exists(dirname):
         os.mkdir(dirname)
     filename = dirname + os.sep + 'SConscript'
-    ifoverwrite(filename) and 'cpp' in languages:
+    if overwrite(filename) and 'cpp' in languages:
         with open(filename, 'w') as filehandler:
             filehandler.write(SCONSCRIPT['cpp'])
         filenames.append(os.path.relpath(filename, reponame))
