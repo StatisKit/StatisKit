@@ -11,7 +11,7 @@ class TestScripts(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.reponame = 'temp'
+        cls.reponame = 'StatisKit-Test'
         os.mkdir(cls.reponame)
 
     def test_adapt_git(self):
@@ -52,6 +52,9 @@ class TestScripts(unittest.TestCase):
     def test_create(self):
         """Test `create` function of the module `statiskit.create`"""
         filenames = set(create(self.reponame, languages = ['py', 'cpp']))
+        for filename in path(self.reponame).walkfiles():
+            self.assertIn(str(filename.relpath(self.reponame)), filenames)
+        filenames = set(create(self.reponame, []))
         for filename in path(self.reponame).walkfiles():
             self.assertIn(str(filename.relpath(self.reponame)), filenames)
 

@@ -65,12 +65,16 @@ ${"###############"}
 """)
 
 GITIGNORE = r"""\
+doc/_*
 *.egg-info
 *~
 *.back
-build-scons
+build
 *.pyc
 *.so
+*.so
+*.o
+.coverage
 """
 
 SETUP = r"""\

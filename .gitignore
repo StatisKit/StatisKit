@@ -3,3 +3,4 @@ doc/_static
 *~
 *.pyc
 *.egg-info
+.coverage
