@@ -1,0 +1,29 @@
+about:
+  brief: Python plugin system
+  name: PluginTools
+authors:
+  basename: AUTHORS.rst
+  format: '* {name} <{email}> ({score})'
+  plugin: commit
+coveralls:
+  account: ''
+  host: github
+  project: ''
+landscape:
+  account: ''
+  host: github
+  project: ''
+license:
+  basename: LICENSE.rst
+  plugin: CeCILL-C
+  width: 78
+readthedocs:
+  project: ''
+rst:
+  plugin: default
+  target:
+  - README.rst
+  - doc/index.rst
+travis:
+  account: ''
+  project: ''
