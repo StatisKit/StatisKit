@@ -9,7 +9,7 @@
 ..  received a copy of the legalcode along with this work. If not, see              ..
 ..  <http://www.cecill.info/licences/Licence_CeCILL-C_V1-en.html>.                  ..
 ..                                                                                  ..
-..  File authors: Pierre Fernique <pfernique@gmail.com> (11)                        ..
+..  File authors: Pierre Fernique <pfernique@gmail.com> (13)                        ..
 ..                                                                                  ..
 .. ................................................................................ ..
 
@@ -75,10 +75,11 @@ Indices
 .. _LICENSEFILE : LICENSE.rst
 
 .. |TRAVIS| image:: https://travis-ci.org/StatisKit/StatisKit.svg?branch=master
-            :alt: Travis
+           :target: https://travis-ci.org/StatisKit/StatisKit
+           :alt: Travis
 
 .. |COVERALLS| image:: https://coveralls.io/repos/github/StatisKit/StatisKit/badge.svg?branch=master
-               :target: https://coveralls.io/repos/github/StatisKit/StatisKit
+               :target: https://coveralls.io/github/StatisKit/StatisKit?branch=master
                :alt: Coveralls
 
 .. |LANDSCAPE| image:: https://landscape.io/github/StatisKit/StatisKit/master/landscape.svg?style=flat
