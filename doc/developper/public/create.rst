@@ -73,24 +73,26 @@ Your `gitHub` credentials (:code:`<username>` and :code:`<password>`) are theref
     Username for 'https://github.com': <username>
     Password for 'https://pfernique@github.com': <password>
     
-Then, the :code:`statiskit create` will ask you most of informations that will be required if you had click on the |NEWBUTTON| of the the **StatisKit** `organization page <https://github.com/StatisKit>`_
+    
+Then, the :code:`statiskit create` will ask you 2 informations that are required to create the package
 
 .. code-block:: console
 
     Enter a repository name: <reponame>
     Enter a brief description: <repodesc>
     
-This stage is equivalent to the filling of the following two fields:
+Normally, on `GitHub`, to create a new repository for the **StatisKit** `organization <https://github.com/StatisKit>`, you need to click on the |NEWBUTTON|.
+This stage is equivalent to the filling the following two fields on the page:
 
-* |REPOSITORYNAME| with a short, memorable and explicit name.
+* |REPOSITORYNAME|, identified by :code`<reponame>`, with a short, memorable and explicit name.
   For repositories that are concerning statistical methods, the name must begin with :code:`StatisKit-`.
   For instance :code:`StatisKit-Core` denote a repository that contains basic statistical classes and methods (dataframes, classical univariate and multivariate distributions or regressions) that will be used in repositories containing more complex statistical methodology (e.g. :code:`StatisKit-Tree`).
-* |REPOSITORYDESC| with a short and explicit description of the repository purposes.
+* |REPOSITORYDESC|, identified by :code`<repodesc>`, with a short and explicit description of the repository purposes.
 Once these both steps done, click on |CREATEBUTTON|.
 
 .. warning::
 
-    At this point:
+    At this point, if you use directly the `GitHub` interface (not recommended):
     
     * Do not add a README (|READMEBOX|).
     * Do not select a :code:`.gitignore` file (|GITIGNOREMENU|). 
