@@ -26,7 +26,7 @@ Your gitHub credentials (<username> and <password>) are therefore required .
     Username for 'https://github.com': <username>
     Password for 'https://pfernique@github.com': <password>
     
-Let us consider a repository identified by :code:`<reponame>` that exists in the **StatisKit** organization.
+Let us consider a repository identified by :code:`<reponame>`
 
 .. code-block:: console
 
