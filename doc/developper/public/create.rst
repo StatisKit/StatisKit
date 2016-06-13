@@ -22,7 +22,7 @@ Create a new repository
     
 To create a new repository use the :code:`statiskit create` command.
 This command launches the following workflow in order to create a new repository on the StatisKit organization.
-To perform this, :code:`statiskit create` uses the **PyGithub** package
+To perform this, :code:`statiskit create` uses the **PyGithub** package to access `GitHub` interface in `Python`.
     
 .. blockdiag::
     :align: center
@@ -63,22 +63,23 @@ First of all, you need to specify which coding languages will be considered in t
 
     $ statiskit create --languages <proglang-0> <proglang-1>
     
-For instance you can replace :code:`<proglang-0>` by :code:`cpp` and :code:`<proglang-1>` by :code:`py` to produce a repository that will host both `C++` and `Python` sources.
+For instance, you can replace :code:`<proglang-0>` by :code:`cpp` and :code:`<proglang-1>` by :code:`py` to produce a repository that will host both `C++` and `Python` sources.
 
 The initialization of a repository is made on GitHub (see this `page <https://help.github.com/articles/create-a-repo/>`_ for more details).
-Your credentials are therefore required
+Your `gitHub` credentials (:code:`<username>` and :code:` <password>`) are therefore required:
 
 .. code-block:: console
+
     Username for 'https://github.com': <username>
     Password for 'https://pfernique@github.com': <password>
     
+Then, the :code:`statiskit create` will ask you most of informations that will be required if you had click on the |NEWBUTTON| of the the **StatisKit** `organization page <https://github.com/StatisKit>`_
 
 .. code-block:: console
+
     Enter a repository name: <reponame>
     Enter a brief description: <repodesc>
     
-First go to the **StatisKit** `organization page <https://github.com/StatisKit>`_ and click on the |NEWBUTTON|.
-
 This will lead you to a page where you must fill the following two fields:
 
 * |REPOSITORYNAME| with a short, memorable and explicit name.
