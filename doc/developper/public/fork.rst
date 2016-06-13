@@ -66,6 +66,29 @@ This command:
    
         By default, the :code:`origin` remote refers to the repository on your account.
     
+    
+.. figure:: clone.png
+    :alt: Repository status after fork and clone steps.
+
+    Repository status after fork and clone steps.
+
+    The left hand cloud represents the repository on the **StatisKit** organization `GitHub` account. 
+    The right hand clound represents the forked repository on your `GitHub` account.
+    The computer represents the cloned repository on your computer.
+    Considering that you are on the:code:`master` branch on your computer you can compare your local branch to remote branches using:
+    
+    *  for the remote branch on the **StatisKit** `GitHub` account,
+    
+    .. code-block: console
+    
+        git diff upstream/master 
+        
+    * for the remote branch on your `GitHub` account,
+    
+    .. code-block: console
+    
+        git diff origin/master
+
 .. MngIt
 
 .. |NAME| replace:: StatisKit
