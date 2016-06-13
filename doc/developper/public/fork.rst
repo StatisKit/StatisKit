@@ -13,16 +13,58 @@
 ..                                                                                  ..
 .. ................................................................................ ..
 
-Fork and clone a repository
-###########################
+Fork and/or clone a repository
+##############################
 
+To fork and/or clone a repository of the **StatisKit** organization, we recommend to use the :code:`statiskit clone` command.
+To perform these steps, :code:`statiskit clone` uses the PyGithub package to access `GitHub` interface in `Python`.
+Your gitHub credentials (<username> and <password>) are therefore required .
 
-In the following we assume that you previously forked the official repository to your personal account.
-If not, go to the GitHub help page concerning `repository forking <https://help.github.com/articles/fork-a-repo>`_.
+.. code-block:: console
 
-.. note::
+    $ statiskit clone
+    Username for 'https://github.com': <username>
+    Password for 'https://pfernique@github.com': <password>
+    
+Let us consider a repository identified by :code:`<reponame>`
 
-    According to this documentation, the :code:`upstream master` remote branch refers to the master repository on the *StatisKit* organization account and :code:`origin master` remote branch to the repository fork on your personal account.
+.. code-block:: console
+
+    Enter a repository name: <reponame>
+    
+This command:
+
+1. Fork the :code:`<reponame>` into your account.
+
+   .. warning::
+   
+        The :code:`<reponame>` must exists in the **StatisKit** organization.
+
+   .. note::
+        
+        If you already forked the :code:`<reponame>` it will not be forked one more time.
+
+2. Clone it on your disk at your current location within the :code:`<reponame>` directory.
+
+   .. warning::
+
+        If your fork of the :code:`<reponame>` repository is not named :code:`<reponame>`, Its name will be used in place of :code:`<reponame>` for the directory that contains the clone.
+        
+    
+   .. note::
+    
+        By default, the clone is performed using SSH remote url. 
+        If you prefer to use the HTTPS remote url, use the :code:`url` argument of the :code:`statiskit clone` command:
+        
+        .. code-block:: console
+        
+            $ statiskit clone --url=https
+        
+3. Add the :code:`upstream` remote that refers to the repository on the **StatisKit** organization.
+   
+   .. note::
+   
+        By default, the :code:`origin` remote refers to the repository on your account.
     
 .. MngIt
 

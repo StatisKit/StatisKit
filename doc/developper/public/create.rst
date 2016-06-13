@@ -31,20 +31,17 @@ To perform this, :code:`statiskit create` uses the **PyGithub** package to acces
     blockdiag {
 
         A [label = "Initialize", shape="roundedbox",
-           description="See `Initialize the repository`_ section. In order |br|
-                        to enable code review from mainteners, the |br|
-                        development must be short (i.e. one branch for one |br|
-                        task such as new feature, bug fix...)."];
+           description="See `Initialize the repository`_ section. The repository |br|
+                        initialization create an empty repository in the **StatisKit** |br|
+                        organization."];
         B [label = "Complete", shape="roundedbox",
-           description="See `Complete the repository`_ section. In order |br|
-                        to benefit from tools developped by mainteners and |br|
-                        ensure code quality, the development must respect |br|
-                        some guidelines."];
+           description="See `Complete the repository`_ section. In order to complete |br|
+                        the empty repository, you must respect some guidelines |br|
+                        concering repository structures and mandatory files."];
         C [label = "Activate", shape="roundedbox",
-           description="See `Activate repository services`_ section. Commits |br|
-                        are snapshots of the repository. There are useful |br|
-                        in particular for versionning software or create |br|
-                        backups."];
+           description="See `Activate repository services`_ section. In order to enable |br|
+                        code review from mainteners, some web-services must be |br|
+                        activated."];
         
         A -> B -> C;
     }
@@ -81,7 +78,7 @@ Then, the :code:`statiskit create` will ask you 2 informations that are required
     Enter a repository name: <reponame>
     Enter a brief description: <repodesc>
     
-Normally, on `GitHub`, to create a new repository for the **StatisKit** `organization <https://github.com/StatisKit>`, you need to click on the |NEWBUTTON|.
+Normally, on `GitHub`, to create a new repository for the **StatisKit** `organization <https://github.com/StatisKit>`_, you need to click on the |NEWBUTTON|.
 This stage is equivalent to the filling the following two fields on the page:
 
 * |REPOSITORYNAME|, identified by :code:`<reponame>`, with a short, memorable and explicit name.
