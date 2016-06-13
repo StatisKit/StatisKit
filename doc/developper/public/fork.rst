@@ -46,12 +46,12 @@ This command:
 
 2. Clone it on your disk at your current location within the :code:`<reponame>` directory.
 
-    .. warning::
-        
+   .. warning::
+
         If your fork of the :code:`<reponame>` repository is not named :code:`<reponame>`, Its name will be used in place of :code:`<reponame>` for the directory that contains the clone.
         
     
-    .. note::
+   .. note::
     
         By default, the clone is performed using SSH remote url. 
         If you prefer to use the HTTPS remote url, use the :code:`url` argument of the :code:`statiskit clone` command:
