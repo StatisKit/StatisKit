@@ -77,21 +77,21 @@ This command:
     The computer represents the cloned repository on your computer.
     Considering that you are on the:code:`master` branch on your computer you can compare your local branch to remote branches using:
     
-    *  for the remote branch on the **StatisKit** `GitHub` account,
+    * for the remote branch on the **StatisKit** `GitHub` account,
     
-    .. code-block:: console
+      .. code-block:: console
     
         $ git diff upstream/master 
         
     * for the remote branch on your `GitHub` account,
     
-    .. code-block:: console
+      .. code-block:: console
     
         $ git diff origin/master
         
       Or, since :code:`origin` is chosen by default,
       
-    .. code-block:: console
+      .. code-block:: console
     
         $ git diff master
         
