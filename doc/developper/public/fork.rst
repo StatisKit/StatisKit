@@ -79,13 +79,13 @@ This command:
     
     *  for the remote branch on the **StatisKit** `GitHub` account,
     
-    .. code-block: console
+    .. code-block:: console
     
         git diff upstream/master 
         
     * for the remote branch on your `GitHub` account,
     
-    .. code-block: console
+    .. code-block:: console
     
         git diff origin/master
 
