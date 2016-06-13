@@ -81,7 +81,7 @@ Then, the :code:`statiskit create` will ask you 2 informations that are required
     Enter a repository name: <reponame>
     Enter a brief description: <repodesc>
     
-Normally, on `GitHub`, to create a new repository for the **StatisKit** `organization <https://github.com/StatisKit>`, you need to click on the |NEWBUTTON|.
+Normally, on `GitHub`, to create a new repository for the **StatisKit** `organization <https://github.com/StatisKit>`_, you need to click on the |NEWBUTTON|.
 This stage is equivalent to the filling the following two fields on the page:
 
 * |REPOSITORYNAME|, identified by :code:`<reponame>`, with a short, memorable and explicit name.
