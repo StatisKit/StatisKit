@@ -20,6 +20,14 @@ Create a new repository
     
     Only owners of the **StatisKit** organization can create new repositories.
 
+To create a new repository use the flowwing command
+
+.. code-block:: console
+
+    statiskit create
+    
+This command will lauch the following workflow in order to create a new repository on the StatisKit organization.
+
 .. blockdiag::
     :align: center
     :desctable:
@@ -27,17 +35,17 @@ Create a new repository
     blockdiag {
 
         A [label = "Initialize", shape="roundedbox",
-           description="See `Create a development branch`_ section. In order |br|
+           description="See `Initialize the repository`_ section. In order |br|
                         to enable code review from mainteners, the |br|
                         development must be short (i.e. one branch for one |br|
                         task such as new feature, bug fix...)."];
         B [label = "Complete", shape="roundedbox",
-           description="See `Work on your modifications`_ section. In order |br|
+           description="See `Complete the repository`_ section. In order |br|
                         to benefit from tools developped by mainteners and |br|
                         ensure code quality, the development must respect |br|
                         some guidelines."];
         C [label = "Activate", shape="roundedbox",
-           description="See `Commit your modifications`_ section. Commits |br|
+           description="See `Activate repository services`_ section. Commits |br|
                         are snapshots of the repository. There are useful |br|
                         in particular for versionning software or create |br|
                         backups."];
