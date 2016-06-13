@@ -20,13 +20,17 @@ Create a new repository
     
     Only owners of the **StatisKit** organization can create new repositories.
 
-To create a new repository use the flowwing command
+To create a new repository use the :code:`statiskit create` command.
+This command will lauch the following workflow in order to create a new repository on the StatisKit organization.
 
 .. code-block:: console
 
-    statiskit create
-    
-This command will lauch the following workflow in order to create a new repository on the StatisKit organization.
+    $ statiskit create --languages cpp py
+    Username for 'https://github.com': <username>
+    Password for 'https://pfernique@github.com': <password>
+    Enter a repository name: <reponame>
+    Enter a brief description: <repodesc>
+
 
 .. blockdiag::
     :align: center
@@ -56,6 +60,7 @@ This command will lauch the following workflow in order to create a new reposito
 .. |br| raw:: html
 
    <br />
+   
    
 Initialize the repository
 =========================
