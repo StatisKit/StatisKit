@@ -32,13 +32,12 @@ To perform this, :code:`statiskit create` uses the **PyGithub** package to acces
 
         A [label = "Initialize", shape="roundedbox",
            description="See `Initialize the repository`_ section. The repository |br|
-                        initialization create an empty repository in the |br|
-                        **StatisKit** organization."];
+                        initialization create an empty repository in the **StatisKit** |br|
+                        organization."];
         B [label = "Complete", shape="roundedbox",
-           description="See `Complete the repository`_ section. In order to |br|
-                        complete the empty repository, you must respect some |br|
-                        guidelines concering repository structures and mandatory |br|
-                        files."];
+           description="See `Complete the repository`_ section. In order to complete |br|
+                        the empty repository, you must respect some guidelines |br|
+                        concering repository structures and mandatory files."];
         C [label = "Activate", shape="roundedbox",
            description="See `Activate repository services`_ section. In order to enable |br|
                         code review from mainteners, some web-services must be |br|
