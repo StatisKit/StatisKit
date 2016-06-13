@@ -88,7 +88,14 @@ This command:
     .. code-block:: console
     
         $ git diff origin/master
-
+        
+      Or, since :code:`origin` is chosen by default,
+      
+    .. code-block:: console
+    
+        $ git diff master
+        
+        
 .. MngIt
 
 .. |NAME| replace:: StatisKit
