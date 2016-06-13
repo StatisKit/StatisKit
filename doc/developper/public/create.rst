@@ -31,18 +31,18 @@ To perform this, :code:`statiskit create` uses the **PyGithub** package to acces
     blockdiag {
 
         A [label = "Initialize", shape="roundedbox",
-           description="See `Initialize the repository`_ section. The |br|
-                        repository initialization create an empty |br|
-                        repository in the **StatisKit** organization."];
+           description="See `Initialize the repository`_ section. The repository |br|
+                        initialization create an empty repository in the |br|
+                        **StatisKit** organization."];
         B [label = "Complete", shape="roundedbox",
-           description="See `Complete the repository`_ section. In order |br|
-                        to complete the empty repository, you must respect |br|
-                        some guidelines concering repository structures and |br|
-                        mendatory files."];
+           description="See `Complete the repository`_ section. In order to |br|
+                        complete the empty repository, you must respect some |br|
+                        guidelines concering repository structures and mandatory |br|
+                        files."];
         C [label = "Activate", shape="roundedbox",
-           description="See `Activate repository services`_ section. In order |br|
-                        to enable code review from mainteners, some web-services |br|
-                        must be activated."];
+           description="See `Activate repository services`_ section. In order to enable |br|
+                        code review from mainteners, some web-services must be |br|
+                        activated."];
         
         A -> B -> C;
     }
