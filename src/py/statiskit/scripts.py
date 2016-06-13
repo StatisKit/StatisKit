@@ -47,7 +47,7 @@ def create_script(args):
         remote.edit(name, description = brief)
 
     if os.path.exists(name):
-        raise ValueError()
+        raise ValueError("A directory named '" + name + "' already exists on the disk")
 
     local = Repo.clone_from(remote.html_url, name)
 
@@ -100,10 +100,10 @@ def clone_script(args):
         raise ValueError()
 
     if args.url == 'ssh':
-        local = Repo.clone_from(origin.ssh_url, name)
+        local = Repo.clone_from(origin.ssh_url, origin.name)
         local.create_remote('upstream', upstream.ssh_url)
-    elif args.url == 'html':
-        local = Repo.clone_from(origin.html_url, name)
+    elif args.url == 'https':
+        local = Repo.clone_from(origin.html_url, origin.name)
         local.create_remote('upstream', upstream.html_url)
 
     mngit(['update', '--root', name])
@@ -124,7 +124,7 @@ def statiskit(args=None):
     subparser = subparsers.add_parser('clone', help=clone_script.__doc__)
     subparser.add_argument('--url', type=str,
             default = 'ssh',
-            choices = ['ssh', 'html'],
+            choices = ['ssh', 'https'],
             help="URL to use for clone")
     subparser.set_defaults(func = clone_script)
 
