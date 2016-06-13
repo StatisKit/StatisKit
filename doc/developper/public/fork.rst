@@ -28,7 +28,7 @@ Your gitHub credentials (<username> and <password>) are therefore required .
     
 Let us consider a repository identified by :code:`<reponame>` that exists in the **StatisKit** organization.
 
-.. code-block::
+.. code-block:: console
 
     Enter a repository name: <reponame>
     
