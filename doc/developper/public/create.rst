@@ -16,18 +16,13 @@
 Create a new repository
 #######################
 
-To create a new repository use the :code:`statiskit create` command.
-This command will lauch the following workflow in order to create a new repository on the StatisKit organization.
-
-.. code-block:: console
-
-    $ statiskit create --languages cpp py
-    Username for 'https://github.com': <username>
-    Password for 'https://pfernique@github.com': <password>
-
 .. warning::
     
     Only owners of the **StatisKit** organization can create new repositories.
+    
+To create a new repository use the :code:`statiskit create` command.
+This command launches the following workflow in order to create a new repository on the StatisKit organization.
+To perform this, :code:`statiskit create` uses the **PyGithub** package
     
 .. blockdiag::
     :align: center
@@ -62,7 +57,21 @@ This command will lauch the following workflow in order to create a new reposito
 Initialize the repository
 =========================
 
-The initialization of a repository is first made on GitHub (see this `page <https://help.github.com/articles/create-a-repo/>`_ for more details).
+First of all, you need to specify which coding languages will be considered in this repository
+
+.. code-block:: console
+
+    $ statiskit create --languages <proglang-0> <proglang-1>
+    
+For instance you can replace :code:`<proglang-0>` by :code:`cpp` and :code:`<proglang-1>` by :code:`py` to produce a repository that will host both `C++` and `Python` sources.
+
+The initialization of a repository is made on GitHub (see this `page <https://help.github.com/articles/create-a-repo/>`_ for more details).
+Your credentials are therefore required
+
+.. code-block:: console
+    Username for 'https://github.com': <username>
+    Password for 'https://pfernique@github.com': <password>
+    
 
 .. code-block:: console
     Enter a repository name: <reponame>
