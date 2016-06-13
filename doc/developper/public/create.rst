@@ -66,7 +66,7 @@ First of all, you need to specify which coding languages will be considered in t
 For instance, you can replace :code:`<proglang-0>` by :code:`cpp` and :code:`<proglang-1>` by :code:`py` to produce a repository that will host both `C++` and `Python` sources.
 
 The initialization of a repository is made on GitHub (see this `page <https://help.github.com/articles/create-a-repo/>`_ for more details).
-Your `gitHub` credentials (:code:`<username>` and :code:` <password>`) are therefore required:
+Your `gitHub` credentials (:code:`<username>` and :code:`<password>`) are therefore required:
 
 .. code-block:: console
 
@@ -80,7 +80,7 @@ Then, the :code:`statiskit create` will ask you most of informations that will b
     Enter a repository name: <reponame>
     Enter a brief description: <repodesc>
     
-This will lead you to a page where you must fill the following two fields:
+This stage is equivalent to the filling of the following two fields:
 
 * |REPOSITORYNAME| with a short, memorable and explicit name.
   For repositories that are concerning statistical methods, the name must begin with :code:`StatisKit-`.
@@ -97,6 +97,7 @@ Once these both steps done, click on |CREATEBUTTON|.
     * Do not select a license (|LICENSEMENU|).
 
 .. |NEWBUTTON| image:: plus_new_repository_button.png
+               :target: https://github.com/organizations/StatisKit/repositories/new
                :scale: 100%
                :alt: the new repository button
 
