@@ -16,10 +16,6 @@
 Create a new repository
 #######################
 
-.. warning::
-    
-    Only owners of the **StatisKit** organization can create new repositories.
-
 To create a new repository use the :code:`statiskit create` command.
 This command will lauch the following workflow in order to create a new repository on the StatisKit organization.
 
@@ -28,10 +24,11 @@ This command will lauch the following workflow in order to create a new reposito
     $ statiskit create --languages cpp py
     Username for 'https://github.com': <username>
     Password for 'https://pfernique@github.com': <password>
-    Enter a repository name: <reponame>
-    Enter a brief description: <repodesc>
 
-
+.. warning::
+    
+    Only owners of the **StatisKit** organization can create new repositories.
+    
 .. blockdiag::
     :align: center
     :desctable:
@@ -66,6 +63,11 @@ Initialize the repository
 =========================
 
 The initialization of a repository is first made on GitHub (see this `page <https://help.github.com/articles/create-a-repo/>`_ for more details).
+
+.. code-block:: console
+    Enter a repository name: <reponame>
+    Enter a brief description: <repodesc>
+    
 First go to the **StatisKit** `organization page <https://github.com/StatisKit>`_ and click on the |NEWBUTTON|.
 
 This will lead you to a page where you must fill the following two fields:
