@@ -84,10 +84,10 @@ Then, the :code:`statiskit create` will ask you 2 informations that are required
 Normally, on `GitHub`, to create a new repository for the **StatisKit** `organization <https://github.com/StatisKit>`, you need to click on the |NEWBUTTON|.
 This stage is equivalent to the filling the following two fields on the page:
 
-* |REPOSITORYNAME|, identified by :code`<reponame>`, with a short, memorable and explicit name.
+* |REPOSITORYNAME|, identified by :code:`<reponame>`, with a short, memorable and explicit name.
   For repositories that are concerning statistical methods, the name must begin with :code:`StatisKit-`.
   For instance :code:`StatisKit-Core` denote a repository that contains basic statistical classes and methods (dataframes, classical univariate and multivariate distributions or regressions) that will be used in repositories containing more complex statistical methodology (e.g. :code:`StatisKit-Tree`).
-* |REPOSITORYDESC|, identified by :code`<repodesc>`, with a short and explicit description of the repository purposes.
+* |REPOSITORYDESC|, identified by :code:`<repodesc>`, with a short and explicit description of the repository purposes.
 Once these both steps done, click on |CREATEBUTTON|.
 
 .. warning::
