@@ -20,7 +20,35 @@ Create a new repository
     
     Only owners of the **StatisKit** organization can create new repositories.
 
+.. blockdiag::
+    :align: center
+    :desctable:
+    
+    blockdiag {
 
+        A [label = "Initialize", shape="roundedbox",
+           description="See `Create a development branch`_ section. In order |br|
+                        to enable code review from mainteners, the |br|
+                        development must be short (i.e. one branch for one |br|
+                        task such as new feature, bug fix...)."];
+        B [label = "Complete", shape="roundedbox",
+           description="See `Work on your modifications`_ section. In order |br|
+                        to benefit from tools developped by mainteners and |br|
+                        ensure code quality, the development must respect |br|
+                        some guidelines."];
+        C [label = "Activate", shape="roundedbox",
+           description="See `Commit your modifications`_ section. Commits |br|
+                        are snapshots of the repository. There are useful |br|
+                        in particular for versionning software or create |br|
+                        backups."];
+        
+        A -> B -> C;
+    }
+
+.. |br| raw:: html
+
+   <br />
+   
 Initialize the repository
 =========================
 
