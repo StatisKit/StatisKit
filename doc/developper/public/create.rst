@@ -88,7 +88,6 @@ This stage is equivalent to the filling the following two fields on the page:
   For repositories that are concerning statistical methods, the name must begin with :code:`StatisKit-`.
   For instance :code:`StatisKit-Core` denote a repository that contains basic statistical classes and methods (dataframes, classical univariate and multivariate distributions or regressions) that will be used in repositories containing more complex statistical methodology (e.g. :code:`StatisKit-Tree`).
 * |REPOSITORYDESC|, identified by :code:`<repodesc>`, with a short and explicit description of the repository purposes.
-Once these both steps done, click on |CREATEBUTTON|.
 
 .. warning::
 
@@ -106,10 +105,6 @@ Once these both steps done, click on |CREATEBUTTON|.
 .. |REPOSITORYNAME| image:: repository_name.png
                     :scale: 100%
                     :alt: the repository name field
-
-.. |CREATEBUTTON| image:: create_repository_button.png
-                  :scale: 100%
-                  :alt: the create repository button
 
 .. |READMEBOX| image:: add_readme_box.png
                :scale: 100%
@@ -130,41 +125,20 @@ Once these both steps done, click on |CREATEBUTTON|.
 Complete the repository
 =======================
 
-For now your repository is empty and you will need to complete it in order to respect **StatisKit** standards.
-For instance, let consider that you initialized a repository denoted by :code:`<repository>`, then you must open a terminal and
+For now your repository is created but empty.
+You need to complete it in order to respect **StatisKit** standards.
+If you used the :code:`statiskit create` command this will be done automatically.
+To commit changes and push them into the remote repository you must enter a short commit message :code:`<msg>`.
 
-1. Clone the **GitHub** repository
-   
-   .. code-block:: console
-   
-        git clone git@github.com:StatisKit/<repository>.git
+.. code-block:: console
 
-2. Enter in local repository directory
+    Enter a brief commit message: <msg>
+    
+For instance, this commit message can be :code:`Initialize and complete the repository`.
 
-   .. code-block:: console
+.. todo::
 
-        cd <repository>
-
-3. Run the following shell :download:`script <repository.sh>`
-
-   .. code-block:: console
-
-        wget statiskit.readthedocs.io/en/latest/developper/public/repository.sh
-        bash repository.sh
-
-   This script requires the **MngIt** package and execute the following commands
-   
-   .. literalinclude:: repository.sh
-      :language: bash
-      :linenos:
-
-4. Remove the local repository
-   
-   .. code-block:: console
-
-        cd ..
-        rm -rf <repository>
-
+    Add more informations about repository structure
 
 Activate repository services
 ============================
