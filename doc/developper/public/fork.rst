@@ -39,17 +39,18 @@ This command:
    .. warning::
    
         The :code:`<reponame>` must exists in the **StatisKit** organization.
-        
+
    .. note::
         
         If you already forked the :code:`<reponame>` it will not be forked one more time.
 
 2. Clone it on your disk at your current location within the :code:`<reponame>` directory.
 
-   .. warning::
+    .. warning::
         
         If your fork of the :code:`<reponame>` repository is not named :code:`<reponame>`, Its name will be used in place of :code:`<reponame>` for the directory that contains the clone.
         
+    
     .. note::
     
         By default, the clone is performed using SSH remote url. 
