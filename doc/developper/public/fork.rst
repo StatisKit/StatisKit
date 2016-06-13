@@ -81,13 +81,13 @@ This command:
     
     .. code-block:: console
     
-        git diff upstream/master 
+        $ git diff upstream/master 
         
     * for the remote branch on your `GitHub` account,
     
     .. code-block:: console
     
-        git diff origin/master
+        $ git diff origin/master
 
 .. MngIt
 
