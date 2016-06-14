@@ -66,6 +66,42 @@ This command:
    
         By default, the :code:`origin` remote refers to the repository on your account.
     
+    
+.. figure:: clone.png
+    :alt: Repository status after fork and clone steps.
+
+    Repository status after fork and clone of a repository. 
+    The repository is named :code:`<reponame>`.
+    The left hand cloud represents the repository on the **StatisKit** organization `GitHub` account. 
+    The right hand clound represents the forked repository on your :code:`<username>` `GitHub` account.
+    The computer represents the cloned repository on your computer.
+    
+    .. note::
+    
+        Cloning a repository using **Git** only adds the :code:`origin` remote.
+        The principale value added of the :code:`statiskit clone` command is to add the :code:`upstream` remote.
+        For example, this enable you to compare your local branch to both remote branches using:
+    
+        * for the remote branch on the **StatisKit** `GitHub` account,
+    
+          .. code-block:: console
+    
+                $ git diff upstream/master 
+        
+        * for the remote branch on your :code:`<username>` `GitHub` account,
+    
+          .. code-block:: console
+    
+                $ git diff origin/master
+        
+          Or, since :code:`origin` is chosen by default,
+      
+          .. code-block:: console
+    
+                $ git diff master
+        
+
+    
 .. MngIt
 
 .. |NAME| replace:: StatisKit

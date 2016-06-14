@@ -24,6 +24,8 @@ When using **Git** you should constently keep in mind the following warning:
 
 In order to contribute to an official repository of **StatisKit** we therefore recommand to follow the following workflow.
 
+.. _contribute-workflow:
+
 .. blockdiag::
     :align: center
     :desctable:
@@ -118,8 +120,16 @@ and push it to your personal repository
     Please choose an explicit name for your branch.
 
 
+.. warning::
+
+    Once this step is done, refers to the :ref:`workflow <contribute-workflow>` to continue.
+
 Work on your modifications
 ==========================
+
+.. warning::
+
+    Once this step is done, refers to the :ref:`workflow <contribute-workflow>` to continue.
 
 Commit your modifications
 =========================
@@ -220,6 +230,10 @@ Developement commits
 
     that will also add new files.
 
+.. warning::
+
+    Once this step is done, refers to the :ref:`workflow <contribute-workflow>` to continue.
+
 Submit your modifications
 =========================
 
@@ -291,6 +305,10 @@ If all steps described in the workflow are respected, your branch is clean and m
       .. code-block:: console
       
             git push origin --delete <branchname>
+
+.. warning::
+
+    Once this step is done, refers to the :ref:`workflow <contribute-workflow>` to continue.
 
 .. MngIt
 

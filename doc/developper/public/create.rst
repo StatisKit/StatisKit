@@ -131,7 +131,7 @@ To commit changes and push them into the remote repository you must enter a shor
 
     Enter a brief commit message: <msg>
     
-For instance, this commit message can be :code:`Initialize and complete the repository`.
+If no commit message is given, the default commit message :code:`Initialize and complete the repository` is used.
 
 .. todo::
 
