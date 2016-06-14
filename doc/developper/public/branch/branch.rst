@@ -1,3 +1,5 @@
+.. _contribute-branch:
+
 Create a development branch
 ===========================
 
