@@ -48,15 +48,11 @@ In order to contribute to an official repository of **StatisKit** we therefore r
                         in particular for versionning software or create |br|
                         backups."];
         D [label = "Upload ?", shape="diamond",
-           description="If you want to upload your modifications to your |br|
-                        personal repository, you shoud use the :code:`git push` |br|
-                        command. Otherwise, you can continue to add |br|
-                        commits."];
-        E [label = "Finished ?", shape="diamond",
-           description="If your work on the branch is done, you should |br|
-                        submit your modifications to the official repository. |br|
-                        Otherwise, you can continue to add commits."];
-        F [label = "Submit", shape="roundedbox",
+           description="See `Upload your modifications`_ section. In order |br|
+                        save your modifications into your personal repository, |br|
+                        you should upload them. Otherwise, you can continue |br|
+                        to add commits."];
+        E [label = "Submit ?", shape="diamond",
            description="See `Submit your modifications`_ section. In order |br|
                         to integrate your modifications to the official |br|
                         repository, you must submit your modifications |br|
@@ -73,7 +69,6 @@ In order to contribute to an official repository of **StatisKit** we therefore r
             color = "#FFFFFF";
             
             D -> E;
-            E -> F;
         }
     }
 
@@ -84,23 +79,3 @@ In order to contribute to an official repository of **StatisKit** we therefore r
 .. note::
 
     In the following we assume that you forked the official repository in your personal account and cloned it according to previous recommendations (see :doc:`fork`).
-
-.. MngIt
-
-.. |NAME| replace:: StatisKit
-
-.. |BRIEF| replace:: meta-repository providing general documentation and tools for the **StatisKit** Organization
-
-.. |VERSION| replace:: v0.1.0
-
-.. |AUTHORSFILE| replace:: AUTHORS.rst
-
-.. _AUTHORSFILE : AUTHORS.rst
-
-.. |LICENSENAME| replace:: CeCILL-C
-
-.. |LICENSEFILE| replace:: LICENSE.rst
-
-.. _LICENSEFILE : LICENSE.rst
-
-.. MngIt
