@@ -33,27 +33,27 @@ In order to contribute to an official repository of **StatisKit** we therefore r
     blockdiag {
 
         A [label = "Branch", shape="roundedbox",
-           description="See `Create a development branch`_ section. In order |br|
+           description="See :ref:`contribute_branch` section. In order |br|
                         to enable code review from mainteners, the |br|
                         development must be short (i.e. one branch for one |br|
                         task such as new feature, bug fix...)."];
         B [label = "Work", shape="roundedbox",
-           description="See `Work on your modifications`_ section. In order |br|
+           description="See :ref:`contribute_work` section. In order |br|
                         to benefit from tools developped by mainteners and |br|
                         ensure code quality, the development must respect |br|
                         some guidelines."];
         C [label = "Commit", shape="roundedbox",
-           description="See `Commit your modifications`_ section. Commits |br|
+           description="See :ref:`contribute_commit` section. Commits |br|
                         are snapshots of the repository. There are useful |br|
                         in particular for versionning software or create |br|
                         backups."];
         D [label = "Upload ?", shape="diamond",
-           description="See `Upload your modifications`_ section. In order |br|
+           description="See :ref:`contribute_upload` section. In order |br|
                         save your modifications into your personal repository, |br|
                         you should upload them. Otherwise, you can continue |br|
                         to add commits."];
         E [label = "Submit ?", shape="diamond",
-           description="See `Submit your modifications`_ section. In order |br|
+           description="See :ref:`contribute_submit` section. In order |br|
                         to integrate your modifications to the official |br|
                         repository, you must submit your modifications |br|
                         that will be integrated by **StatisKit** mainteners."];
