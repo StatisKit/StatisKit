@@ -96,6 +96,7 @@ Create a development branch
     Repositories of the same color are synchronized.
     Before the creation of your development branch, all three repositories are not synchronized.
     In:
+    
     1. Your local :code:`master` branch is synchronized with the :code:`upstream master` branch.
     
        .. code-block:: console
@@ -109,6 +110,26 @@ Create a development branch
        
            git push
 
+.. figure:: branch.gif
+   :scale: 50 %
+   :alt: map to buried treasure
+
+   This is the caption of the figure (a simple paragraph).
+
+   The legend consists of all elements after the caption.  In this
+   case, the legend consists of this paragraph and the following
+   table:
+
+   +-----------------------+-----------------------+
+   | Symbol                | Meaning               |
+   +=======================+=======================+
+   | .. image:: tent.png   | Campground            |
+   +-----------------------+-----------------------+
+   | .. image:: waves.png  | Lake                  |
+   +-----------------------+-----------------------+
+   | .. image:: peak.png   | Mountain              |
+   +-----------------------+-----------------------+
+   
 Since all your master branches are up to date, you can create your local branch
 
 .. code-block:: console
