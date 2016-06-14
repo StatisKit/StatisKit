@@ -87,13 +87,13 @@ You must create a branch for each new feature, bug fix, and so on.
 The development cycle must be shortest possible (ie. one branch for one task).
 The more the development cycle is long, the more you will risk to resolve conflicts.
     
-The process of development branch creation is detailed in :numref:`branch-creation` but you can use the equivalent command to create a branch :code:`<branchname>`
+The process of development branch creation is detailed in :numref:`branch-creation` but you can use the equivalent command to create a branch :code:`<branchname>` according to **StatisKit** standards.
 
 .. code-block:: console
 
-    $ statiskit create_branch <branchname>
+    $ statiskit branch <branchname>
     
- .. note::
+.. note::
  
     Please choose an explicit name :code:`<branchname>` for your branch.
 
@@ -124,6 +124,13 @@ The process of development branch creation is detailed in :numref:`branch-creati
 
     3. Since all your master branches are synchronized, the local :code:`<branchname>` branch is created
     
+       .. code-block:: console
+       
+            git branch <branchname>
+            git checkout <branchname>
+
+       Or equivalently
+       
        .. code-block:: console
        
             git checkout -b <branchname>
