@@ -1,3 +1,5 @@
+.. _create_activate:
+
 Activate repository services
 ============================
 
