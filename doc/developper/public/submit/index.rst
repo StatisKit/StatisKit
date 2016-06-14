@@ -7,6 +7,16 @@ Submit your modifications
 Prepare your pull-request
 -------------------------
 
+.. _workflow-pull-prepare-state:
+
+.. figure:: prepare.gif
+    :alt: Create a development branch
+    
+    Steps of the development branch creation.
+    
+    Repositories of the same color are synchronized.
+
+    
 Before submitting your modifications, you must recover changes from :code:`upstream master` remote branch in your local :code:`master` branch
 
 .. code-block:: console
@@ -46,6 +56,15 @@ If anything has gone wrong, you can abort reabase
 Create your pull-request
 ------------------------
 
+.. _workflow-pull-propose-state:
+
+.. figure:: propose.gif
+    :alt: Create a development branch
+    
+    Steps of the development branch creation.
+    
+    Repositories of the same color are synchronized
+    
 On github interface, select your branch :code:`<branchname>` and click on pull-request (see this `post <https://help.github.com/articles/using-pull-requests/>`_ for more details).
 
 .. warning::
@@ -56,6 +75,18 @@ On github interface, select your branch :code:`<branchname>` and click on pull-r
 
 If all steps described in the workflow are respected, your branch is clean and mainteners have absolutely nothing to do to integrate your work (except to review your changes) and so it will certainly be integrated.
 
+Integrate your pull-request
+---------------------------
+
+.. _workflow-pull-integrate-state:
+
+.. figure:: integrate.gif
+    :alt: Create a development branch
+    
+    Steps of the development branch creation.
+    
+    Repositories of the same color are synchronized
+    
 .. note::
 
     Once your branch is integrated in the :code:`upstream master`, it is recommanded to to delete your branch:
