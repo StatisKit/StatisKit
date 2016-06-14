@@ -48,15 +48,11 @@ In order to contribute to an official repository of **StatisKit** we therefore r
                         in particular for versionning software or create |br|
                         backups."];
         D [label = "Upload ?", shape="diamond",
-           description="See `Upload your modifications`_ section. If you want to |br|
+           description="See `Upload your modifications`_ section. In order |br|
                         save your modifications into your personal repository, |br|
-                        you should upload them. Otherwise, you can continue to |br|
-                        add commits."];
-        E [label = "Finished ?", shape="diamond",
-           description="If your work on the branch is done, you should |br|
-                        submit your modifications to the official repository. |br|
-                        Otherwise, you can continue to add commits."];
-        F [label = "Submit", shape="roundedbox",
+                        you should upload them. Otherwise, you can continue |br|
+                        to add commits."];
+        E [label = "Submit ?", shape="diamond",
            description="See `Submit your modifications`_ section. In order |br|
                         to integrate your modifications to the official |br|
                         repository, you must submit your modifications |br|
@@ -73,7 +69,6 @@ In order to contribute to an official repository of **StatisKit** we therefore r
             color = "#FFFFFF";
             
             D -> E;
-            E -> F;
         }
     }
 
