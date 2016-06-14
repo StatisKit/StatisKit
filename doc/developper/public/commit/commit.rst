@@ -3,28 +3,27 @@
 Commit your modifications
 =========================
 
-.. warning::
 
-    The commit of modifications with **Git** is quite different from **Subversion**.
-    In particular, **Git** will not consider that your local :code:`<branchname>` branch differs from :code:`origin <branchname>` branch until you committed your modifications (see :numref:`workflow-state-commit`).
+The commit of modifications with **Git** is quite different from **Subversion**.
+In particular, **Git** will not consider that your local :code:`<branchname>` branch differs from :code:`origin <branchname>` branch until you committed your modifications (see :numref:`workflow-state-commit`).
     
-    .. _workflow-state-commit:
+.. _workflow-state-commit:
     
-    .. figure:: commit.gif
+.. figure:: commit.gif
         
-        Effect of **Git** commits
+    Effect of **Git** commits
+    
+    Until you committed your modifications (1.), **Git** will not consider that your local :code:`<branchname>` branch differs from :code:`origin <branchname>` remote branch.
+    
+    .. note::
+    
+        While :code:`master` and :code:`origin master` are still synchronized, it is assumed that some work from other developpers has been integrated into the :code:`upstream master`.
+        There are therefore two different versions of :code:`master` branches at the end of this step.
         
-        Until you committed your modifications (1.), **Git** will not consider that your local :code:`<branchname>` branch differs from :code:`origin <branchname>` remote branch.
-        
-        .. note::
-        
-            While :code:`master` and :code:`origin master` are still synchronized, it is assumed that some work from other developpers has been integrated into the :code:`upstream master`.
-            There are therefore two different versions of :code:`master` branches at the end of this step.
-            
-        .. note::
-        
-            The commit of modifications do not implies the upload of these modifications.
-            The branches :code:`<branchname>` and :code:`origin <branchname>` are therefore no more synchronized.
+    .. warning::
+    
+        The commit of modifications do not implies the upload of these modifications.
+        The branches :code:`<branchname>` and :code:`origin <branchname>` are therefore no more synchronized.
 
 The *repository index*
 ----------------------
