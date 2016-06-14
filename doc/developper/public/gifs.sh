@@ -1,3 +1,4 @@
-SIZE=`identify -ping -format '%wx%h' branch-4.png`
-convert -dispose previous -delay 100 branch-4.png branch-3.png branch-2.png branch-1.png branch-0.png branch.gif
-convert -reverse branch.gif branch.gif
+convert -dispose previous -delay 100 branch/branch-4.png branch/branch-3.png branch/branch-2.png branch/branch-1.png branch/branch-0.png branch/branch.gif
+convert -reverse branch/branch.gif branch/branch.gif
+convert -dispose previous -delay 100 commit/commit-1.png commit/commit-0.png commit/commit.gif
+convert -reverse commit/commit.gif commit/commit.gif
