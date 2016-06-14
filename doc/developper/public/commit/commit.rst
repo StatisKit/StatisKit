@@ -12,7 +12,7 @@ Commit your modifications
     
     .. figure:: ../branch/branch.gif
         
-        Effect of **Git commits**
+        Effect of **Git** commits
         
         Until you committed your modifications (1.), **Git** will not consider that your local :code:`<branchname>` branch differs from :code:`origin <branchname>` remote branch.
         
