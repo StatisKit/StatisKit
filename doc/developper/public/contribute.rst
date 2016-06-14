@@ -88,42 +88,49 @@ In order to contribute to an official repository of **StatisKit** we therefore r
 Create a development branch
 ===========================
 
-In order to create a development branch, you must first synchronize your :code:`master` local branch with the :code:`upstream master` remote branch.
-This step ensure that you have all previously accepted modifications in the official repository.
-
-.. code-block:: console
-
-    git checkout master
-    git pull upstream master
-
-Then, you must push modifications to your :code:`origin master` remote branch
-
-.. code-block:: console
-
-    git push
-
-Since all your master branches are up to date, you can create your local branch
-
-.. code-block:: console
-
-    git checkout -b <branchname>
-
-and push it to your personal repository
-
-.. code-block:: console
-
-    git push --set-upstream origin <branchname>
-
-
 .. note::
 
     Please choose an explicit name for your branch.
+    
+    
+.. figure:: branch.gif
+    :alt: Create a development branch
+    
+    Steps of the development branch creation.
+    
+    Repositories of the same color are synchronized.
+    Before the creation of your development branch, all three repositories are not synchronized.
+    In:
+    
+    1. Your local :code:`master` branch is synchronized with the :code:`upstream master` branch.
+    
+       .. code-block:: console
+       
+            git checkout master
+            git pull upstream master
+    
+    2. Your remote :code:`origin master` branch is synchronized with your local :code:`master` branch.
+ 
+       .. code-block:: console
+       
+           git push
 
+    3. Since all your master branches are synchronized, the local :code:`<branchname>` branch is created
+    
+       .. code-block:: console
+       
+            git checkout -b <branchname>
+
+    4. Then, the remote  :code:`origin <branchname>` branch is created in order to enable the uploading of future modifications into your :code:`<username>` `GitHub` account.
+
+       .. code-block:: console
+
+            git push --set-upstream origin <branchname>
 
 .. warning::
 
     Once this step is done, refers to the :ref:`workflow <contribute-workflow>` to continue.
-
+    
 Work on your modifications
 ==========================
 
