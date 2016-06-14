@@ -1,6 +1,34 @@
-convert -dispose previous -delay 100 branch/branch-4.png branch/branch-3.png branch/branch-2.png branch/branch-1.png branch/branch-0.png branch/branch.gif
-convert -reverse branch/branch.gif branch/branch.gif
-convert -dispose previous -delay 100 commit/commit-1.png commit/commit-0.png commit/commit.gif
-convert -reverse commit/commit.gif commit/commit.gif
-convert -dispose previous -delay 100 upload/upload-1.png upload/upload-0.png upload/upload.gif
-convert -reverse upload/upload.gif upload/upload.gif
+for i in $(ls -R -d ./*/*-[0-9]*.svg); do
+    j=${i/svg/png}
+    inkscape ${i} --export-png=${j} --export-area-drawing
+done
+
+sources=`ls -r -R -d ./branch/branch-[0-9]*.png`
+target=./branch/branch.gif
+convert -dispose previous -delay 100 ${sources} ${target}
+convert -reverse ${target} ${target}
+
+sources=`ls -r -R -d ./commit/commit-[0-9]*.png`
+target=./commit/commit.gif
+convert -dispose previous -delay 100 ${sources} ${target}
+convert -reverse ${target} ${target}
+
+sources=`ls -r -R -d ./upload/upload-[0-9]*.png`
+target=./upload/upload.gif
+convert -dispose previous -delay 100 ${sources} ${target}
+convert -reverse ${target} ${target}
+
+sources=`ls -r -R -d ./submit/prepare-[0-9]*.png`
+target=./submit/prepare.gif
+convert -dispose previous -delay 100 ${sources} ${target}
+convert -reverse ${target} ${target}
+
+sources=`ls -r -R -d ./submit/propose-[0-9]*.png`
+target=./submit/propose.gif
+convert -dispose previous -delay 100 ${sources} ${target}
+convert -reverse ${target} ${target}
+
+sources=`ls -r -R -d ./submit/integrate-[0-9]*.png`
+target=./submit/integrate.gif
+convert -dispose previous -delay 100 ${sources} ${target}
+convert -reverse ${target} ${target}

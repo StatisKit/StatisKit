@@ -9,7 +9,7 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   sodipodi:docname="branch-2.svg"
+   sodipodi:docname="prepare-0.svg"
    width="210mm"
    height="297mm"
    viewBox="0 0 744.09448819 1052.3622047"
@@ -23,9 +23,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.49497475"
-     inkscape:cx="-21.398671"
-     inkscape:cy="286.3768"
+     inkscape:zoom="0.7"
+     inkscape:cx="554.45337"
+     inkscape:cy="347.79976"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -53,21 +53,6 @@
          style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
          d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
          id="path5865" />
-    </marker>
-    <marker
-       inkscape:stockid="Arrow1Lend"
-       orient="auto"
-       refY="0.0"
-       refX="0.0"
-       id="marker5771"
-       style="overflow:visible;"
-       inkscape:isstock="true"
-       inkscape:collect="always">
-      <path
-         id="path5773"
-         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
-         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
-         transform="scale(0.8) rotate(180) translate(12.5,0)" />
     </marker>
     <marker
        inkscape:stockid="Arrow2Send"
@@ -559,6 +544,21 @@
          in2="offset"
          in="SourceGraphic" />
     </filter>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker5863-0"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend">
+      <path
+         inkscape:connector-curvature="0"
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 Z"
+         id="path5865-0" />
+    </marker>
   </defs>
   <metadata
      id="metadata7">
@@ -568,7 +568,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -1331,7 +1331,12 @@
            x="513.39459"
            id="tspan8705"
            sodipodi:role="line"
-           style="fill:#00ff00;fill-opacity:1">master</tspan></text>
+           style="fill:#0000ff;fill-opacity:1">master</tspan><tspan
+           y="1171.8895"
+           x="513.39459"
+           sodipodi:role="line"
+           style="fill:#ff0000;fill-opacity:1"
+           id="tspan4456">&lt;branchname&gt;</tspan></text>
     </g>
     <text
        xml:space="preserve"
@@ -1346,7 +1351,12 @@
          id="tspan8705-0"
          x="867.49011"
          y="444.85898"
-         style="fill:#00ff00;fill-opacity:1;stroke:none;stroke-opacity:1">origin master</tspan></text>
+         style="fill:#00ff00;fill-opacity:1;stroke:none;stroke-opacity:1">origin master</tspan><tspan
+         sodipodi:role="line"
+         x="867.49011"
+         y="494.85898"
+         style="fill:#ff0000;fill-opacity:1;stroke:none;stroke-opacity:1"
+         id="tspan5970">origin &lt;branchname&gt;</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -1360,59 +1370,39 @@
          id="tspan8705-5"
          x="46.96104"
          y="462.78018"
-         style="fill:#00ff00;fill-opacity:1">upstream master</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="149.44057"
-       y="749.79938"
-       id="text4739"
-       sodipodi:linespacing="125%"
-       inkscape:export-xdpi="90"
-       inkscape:export-ydpi="90"><tspan
-         sodipodi:role="line"
-         id="tspan4741"
-         x="149.44057"
-         y="749.79938">1.</tspan></text>
-    <circle
-       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:5;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       id="path4743"
-       cx="168.57143"
-       cy="735.2193"
-       r="30"
-       inkscape:export-xdpi="90"
-       inkscape:export-ydpi="90" />
+         style="fill:#0000ff;fill-opacity:1">upstream master</tspan></text>
     <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none;marker-end:url(#marker5771)"
-       d="m 680,1092.3622 c 360,0 340,-180 340,-180 l 0,-440"
-       id="path5769"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 840,1152.3622 0,0"
+       id="path4443"
+       inkscape:connector-type="polyline"
        inkscape:connector-curvature="0"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90" />
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="1055.8873"
-       y="768.63452"
-       id="text4739-5"
+       x="131.06497"
+       y="754.65216"
+       id="text4739"
        sodipodi:linespacing="125%"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90"><tspan
          sodipodi:role="line"
-         id="tspan4741-9"
-         x="1055.8873"
-         y="768.63452">2.</tspan></text>
+         id="tspan4741"
+         x="131.06497"
+         y="754.65216">1.</tspan></text>
     <circle
        style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:5;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       id="path4743-7"
-       cx="1074.2858"
-       cy="753.79077"
+       id="path4743"
+       cx="150.19583"
+       cy="740.07208"
        r="30"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90" />
     <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#marker5863);stroke-miterlimit:4;stroke-dasharray:none"
-       d="m 220,492.3622 0,460 c 0,0 -20,140 280,140"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker5863)"
+       d="m 201.62441,497.21501 0,460 c 0,0 -20,139.99999 280,139.99999"
        id="path5855"
        inkscape:connector-curvature="0"
        inkscape:export-xdpi="90"
