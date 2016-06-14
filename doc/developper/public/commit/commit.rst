@@ -6,6 +6,16 @@ Commit your modifications
 .. warning::
 
     The commit of modifications with **Git** is quite different from **Subversion**.
+    In particular, **Git** will not consider that your local :code:`<branchname>` branch differs from :code:`origin <branchname>` branch until you committed your modifications (see :numref:`workflow-state-commit`).
+    
+    .. _workflow-state-commit:
+    
+    .. figure:: ../branch/branch.gif
+        
+        Effect of **Git commits**
+        
+        Until you committed your modifications (1.), **Git** will not consider that your local :code:`<branchname>` branch differs from :code:`origin <branchname>` remote branch.
+        
 
 The *repository index*
 ----------------------
@@ -99,6 +109,6 @@ Developement commits
 
     that will also add new files.
 
-.. warning::
+.. note::
 
     Once this step is done, refers to the :ref:`workflow <contribute-workflow>` to continue.
