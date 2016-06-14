@@ -1,3 +1,5 @@
+.. _create_complete:
+
 Complete the repository
 =======================
 
