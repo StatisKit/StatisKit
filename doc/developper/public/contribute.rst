@@ -88,11 +88,16 @@ In order to contribute to an official repository of **StatisKit** we therefore r
 Create a development branch
 ===========================
 
+.. note::
 
+    Please choose an explicit name for your branch.
+    
+    
 .. figure:: branch.gif
     :alt: Create a development branch
     
     Steps of the development branch creation.
+    
     Repositories of the same color are synchronized.
     Before the creation of your development branch, all three repositories are not synchronized.
     In:
@@ -110,48 +115,22 @@ Create a development branch
        
            git push
 
-.. figure:: branch.gif
-   :scale: 50 %
-   :alt: map to buried treasure
+    3. Since all your master branches are synchronized, the local :code:`<branchname>` branch is created
+    
+       .. code-block:: console
+       
+            git checkout -b <branchname>
 
-   This is the caption of the figure (a simple paragraph).
+    4. Then, the remote  :code:`origin <branchname>` branch is created in order to enable the uploading of future modifications into your :code:`<username>` `GitHub` account.
 
-   The legend consists of all elements after the caption.  In this
-   case, the legend consists of this paragraph and the following
-   table:
+       .. code-block:: console
 
-   +-----------------------+-----------------------+
-   | Symbol                | Meaning               |
-   +=======================+=======================+
-   | .. image:: tent.png   | Campground            |
-   +-----------------------+-----------------------+
-   | .. image:: waves.png  | Lake                  |
-   +-----------------------+-----------------------+
-   | .. image:: peak.png   | Mountain              |
-   +-----------------------+-----------------------+
-   
-Since all your master branches are up to date, you can create your local branch
-
-.. code-block:: console
-
-    git checkout -b <branchname>
-
-and push it to your personal repository
-
-.. code-block:: console
-
-    git push --set-upstream origin <branchname>
-
-
-.. note::
-
-    Please choose an explicit name for your branch.
-
+            git push --set-upstream origin <branchname>
 
 .. warning::
 
     Once this step is done, refers to the :ref:`workflow <contribute-workflow>` to continue.
-
+    
 Work on your modifications
 ==========================
 
