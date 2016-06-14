@@ -120,12 +120,16 @@ and push it to your personal repository
     Please choose an explicit name for your branch.
 
 
-Once this step is done, refers to the :ref:`workflow <contribute-workflow>` to continue
+.. warning::
+
+    Once this step is done, refers to the :ref:`workflow <contribute-workflow>` to continue.
 
 Work on your modifications
 ==========================
 
-Once this step is done, refers to the :ref:`workflow <contribute-workflow>` to continue.
+.. warning::
+
+    Once this step is done, refers to the :ref:`workflow <contribute-workflow>` to continue.
 
 Commit your modifications
 =========================
@@ -226,7 +230,9 @@ Developement commits
 
     that will also add new files.
 
-Once this step is done, refers to the :ref:`workflow <contribute-workflow>` to continue.
+.. warning::
+
+    Once this step is done, refers to the :ref:`workflow <contribute-workflow>` to continue.
 
 Submit your modifications
 =========================
@@ -300,7 +306,9 @@ If all steps described in the workflow are respected, your branch is clean and m
       
             git push origin --delete <branchname>
 
-Once this step is done, refers to the :ref:`workflow <contribute-workflow>` to continue.
+.. warning::
+
+    Once this step is done, refers to the :ref:`workflow <contribute-workflow>` to continue.
 
 .. MngIt
 
