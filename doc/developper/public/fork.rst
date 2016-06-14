@@ -67,7 +67,7 @@ This command:
         By default, the :code:`origin` remote refers to the repository on your account.
     
     
-.. figure:: clone.png
+.. figure:: clone.svg
     :scale: 50 %
     :alt: Repository status after fork and clone steps.
     :align: center
@@ -99,7 +99,7 @@ This command:
     
         $ git diff master
         
-    Test
+Test
     
 .. MngIt
 
