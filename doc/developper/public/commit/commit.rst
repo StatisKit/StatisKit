@@ -1,3 +1,5 @@
+.. _contribute-commit:
+
 Commit your modifications
 =========================
 
