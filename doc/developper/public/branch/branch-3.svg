@@ -24,7 +24,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.49497475"
-     inkscape:cx="-72.076411"
+     inkscape:cx="-330.42872"
      inkscape:cy="341.11366"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
@@ -567,7 +567,9 @@
        y="832.36218"
        x="416.42856"
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       xml:space="preserve"><tspan
+       xml:space="preserve"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
          y="832.36218"
          x="416.42856"
          id="tspan4276"
@@ -1336,7 +1338,7 @@
          id="tspan8705-0"
          x="867.49011"
          y="444.85898"
-         style="fill:#00ff00;fill-opacity:1;stroke:#00ff00;stroke-opacity:1">origin master</tspan></text>
+         style="fill:#00ff00;fill-opacity:1;stroke:none;stroke-opacity:1">origin master</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"

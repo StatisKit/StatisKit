@@ -24,7 +24,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.49497475"
-     inkscape:cx="-206.7339"
+     inkscape:cx="-151.83497"
      inkscape:cy="384.00986"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
@@ -1336,11 +1336,11 @@
          id="tspan8705-0"
          x="867.49011"
          y="444.85898"
-         style="fill:#00ff00;fill-opacity:1;stroke:#00ff00;stroke-opacity:1">origin master</tspan><tspan
+         style="fill:#00ff00;fill-opacity:1;stroke:none;stroke-opacity:1">origin master</tspan><tspan
          sodipodi:role="line"
          x="867.49011"
          y="494.85898"
-         style="fill:#00ff00;fill-opacity:1;stroke:#00ff00;stroke-opacity:1"
+         style="fill:#00ff00;fill-opacity:1;stroke:none;stroke-opacity:1"
          id="tspan5970">origin &lt;branchname&gt;</tspan></text>
     <text
        xml:space="preserve"
