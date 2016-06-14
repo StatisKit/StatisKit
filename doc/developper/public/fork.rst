@@ -67,11 +67,10 @@ This command:
         By default, the :code:`origin` remote refers to the repository on your account.
     
     
-.. figure:: clone.svg
-    :scale: 50 %
+.. figure:: clone.png
+    :scale: 25 %
     :alt: Repository status after fork and clone steps.
     :align: center
-    :figclass: align-center
     
     Repository status after fork and clone of a repository. 
     
