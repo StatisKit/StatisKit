@@ -92,16 +92,10 @@ Create a development branch
 .. figure:: branch.gif
     :alt: Create a development branch
     
-    Steps of the development branch creation
-    
-    Repository status after fork and clone of a repository. The repository is named <reponame>.
-    The left hand cloud represents the repository on the StatisKit organization GitHub account.
-    The right hand clound represents the forked repository on your <username> GitHub account.
-    The computer represents the cloned repository on your computer.
+    Steps of the development branch creation.
     Repositories of the same color are synchronized.
     Before the creation of your development branch, all three repositories are not synchronized.
     In:
-    
     1. Your local :code:`master` branch is synchronized with the :code:`upstream master` branch.
     
        .. code-block:: console
