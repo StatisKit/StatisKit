@@ -1,3 +1,5 @@
+.. _create_initialize:
+
 Initialize the repository
 =========================
 
