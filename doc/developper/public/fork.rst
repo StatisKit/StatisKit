@@ -70,8 +70,8 @@ This command:
 .. figure:: clone.png
     :scale: 25 %
     :alt: Repository status after fork and clone steps.
-    :align: center
-    
+    :figclass: align-center
+
     Repository status after fork and clone of a repository. 
     
     The repository is named :code:`<reponame>`.
