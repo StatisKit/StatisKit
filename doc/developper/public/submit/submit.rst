@@ -1,3 +1,6 @@
+.. _contribute-submit:
+
+
 Submit your modifications
 =========================
 
