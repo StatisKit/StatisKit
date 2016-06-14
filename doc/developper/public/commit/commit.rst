@@ -16,6 +16,15 @@ Commit your modifications
         
         Until you committed your modifications (1.), **Git** will not consider that your local :code:`<branchname>` branch differs from :code:`origin <branchname>` remote branch.
         
+        .. note::
+        
+            While :code:`master` and :code:`origin master` are still synchronized, it is assumed that some work from other developpers has been integrated into the :code:`upstream master`.
+            There are therefore two different versions of :code:`master` branches at the end of this step.
+            
+        .. note::
+        
+            The commit of modifications do not implies the upload of these modifications.
+            The branches :code:`<branchname>` and :code:`origin <branchname>` are therefore no more synchronized.
 
 The *repository index*
 ----------------------
