@@ -71,30 +71,32 @@ This command:
     :alt: Repository status after fork and clone steps.
 
     Repository status after fork and clone of a repository. 
-    
     The repository is named :code:`<reponame>`.
     The left hand cloud represents the repository on the **StatisKit** organization `GitHub` account. 
     The right hand clound represents the forked repository on your :code:`<username>` `GitHub` account.
     The computer represents the cloned repository on your computer.
-    Considering that you are on the :code:`master` branch on your computer you can compare your local branch to remote branches using:
     
-    * for the remote branch on the **StatisKit** `GitHub` account,
+    .. note::
     
-      .. code-block:: console
+        Considering that you are on the :code:`master` branch on your computer you can compare your local branch to remote branches using:
     
-        $ git diff upstream/master 
+        * for the remote branch on the **StatisKit** `GitHub` account,
+    
+          .. code-block:: console
+    
+                $ git diff upstream/master 
         
-    * for the remote branch on your :code:`<username>` `GitHub` account,
+        * for the remote branch on your :code:`<username>` `GitHub` account,
     
-      .. code-block:: console
+          .. code-block:: console
     
-        $ git diff origin/master
+                $ git diff origin/master
         
-      Or, since :code:`origin` is chosen by default,
+          Or, since :code:`origin` is chosen by default,
       
-      .. code-block:: console
+          .. code-block:: console
     
-        $ git diff master
+                $ git diff master
         
 
     
