@@ -88,6 +88,14 @@ In order to contribute to an official repository of **StatisKit** we therefore r
 Create a development branch
 ===========================
 
+
+.. figure:: branch.gif
+    :alt: Create a development branch
+    
+    Steps of the development branch creation
+    
+    At the beginning...
+    
 In order to create a development branch, you must first synchronize your :code:`master` local branch with the :code:`upstream master` remote branch.
 This step ensure that you have all previously accepted modifications in the official repository.
 
