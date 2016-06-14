@@ -3,7 +3,9 @@
 Upload your modifications
 =========================
 
-Once you have committed your modifications, you can upload them in your :code:`<username>` `GitHub` account using the :code:`git push` command.
+Once you have committed your modifications, you can upload them in your :code:`<username>` `GitHub` account using the :code:`git push` command (see :numfig:`workflow-upload-state`).
+
+.. _workflow-upload-state:
 
 .. figure:: upload.gif
     :alt: Create a development branch
