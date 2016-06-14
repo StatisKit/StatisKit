@@ -16,24 +16,6 @@ The process of development branch creation is detailed in :numref:`branch-creati
 .. note::
  
     Please choose an explicit name :code:`<branchname>` for your branch.
-
-.. warning::
-
-    After the execution of the :code:`statiskit branch` command, your local repository has switched on the :code:`<branchname>` branch.
-    
-    .. code-block:: console
-    
-        $ git branch 
-        master
-        * <branchname>
-        
-    But there are, at this point, no differences between the :code:`master` and :code:`<branchname>` branches.
-    
-    .. code-block:: console
-    
-        $ git status
-        On branch <branchname>
-        nothing to commit, working directory clean
         
 .. _branch-creation:
 
@@ -79,5 +61,23 @@ The process of development branch creation is detailed in :numref:`branch-creati
             git push --set-upstream origin <branchname>
 
 .. warning::
+
+    After the execution of the :code:`statiskit branch` command, your local repository has switched on the :code:`<branchname>` branch.
+    
+    .. code-block:: console
+    
+        $ git branch 
+        master
+        * <branchname>
+        
+    But there are, at this point, no differences between the :code:`master` and :code:`<branchname>` branches.
+    
+    .. code-block:: console
+    
+        $ git status
+        On branch <branchname>
+        nothing to commit, working directory clean
+        
+.. note::
 
     Once this step is done, refers to the :ref:`workflow <contribute-workflow>` to continue.
