@@ -83,8 +83,8 @@ In order to contribute to an official repository of **StatisKit** we therefore r
 .. toctree::
     :hidden:
     
-    branch/branch
-    work/work
-    commit/commit
-    upload/upload
-    submit/submit
+    branch/index
+    work/index
+    commit/index
+    upload/index
+    submit/index
