@@ -83,9 +83,9 @@ In order to contribute to an official repository of **StatisKit** we therefore r
 Create a development branch
 ===========================
 
-You must create a branch for each new feature, bug fix, and so on.
-The development cycle must be shortest possible (ie. one branch for one task).
-The more the development cycle is long, the more you will risk to resolve conflicts.
+In order to enable code review from mainteners, the development must be short (i.e. one branch for one 
+task such as new feature, bug fix...).
+Moreover, the more the development cycle is long, the more you will risk to  have conflicts.
     
 The process of development branch creation is detailed in :numref:`branch-creation` but you can use the equivalent command to create a branch :code:`<branchname>` according to **StatisKit** standards.
 
@@ -97,7 +97,22 @@ The process of development branch creation is detailed in :numref:`branch-creati
  
     Please choose an explicit name :code:`<branchname>` for your branch.
 
+.. warning::
 
+    After the execution of the :code:`statiskit branch` command, your local repository will 
+    
+    .. code-block:: console
+    
+        $ git branch 
+        master
+        * <branchname>
+    
+    .. code-block:: console
+    
+        $ git status
+        On branch <branchname>
+        nothing to commit, working directory clean
+        
 .. _branch-creation:
 
 .. figure:: branch.gif
