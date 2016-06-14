@@ -68,7 +68,6 @@ This command:
     
     
 .. figure:: clone.png
-    :scale: 25 %
     :alt: Repository status after fork and clone steps.
 
     Repository status after fork and clone of a repository. 
@@ -97,7 +96,7 @@ This command:
     
         $ git diff master
         
-Test
+
     
 .. MngIt
 
