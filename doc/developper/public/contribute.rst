@@ -99,13 +99,15 @@ The process of development branch creation is detailed in :numref:`branch-creati
 
 .. warning::
 
-    After the execution of the :code:`statiskit branch` command, your local repository will 
+    After the execution of the :code:`statiskit branch` command, your local repository has switched on the :code:`<branchname>` branch.
     
     .. code-block:: console
     
         $ git branch 
         master
         * <branchname>
+        
+    But there are, at this point, no differences between the :code:`master` and :code:`<branchname>` branches.
     
     .. code-block:: console
     
