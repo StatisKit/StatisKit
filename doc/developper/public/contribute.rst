@@ -94,21 +94,26 @@ Create a development branch
     
     Steps of the development branch creation
     
-    At the beginning...
+    Repository status after fork and clone of a repository. The repository is named <reponame>.
+    The left hand cloud represents the repository on the StatisKit organization GitHub account.
+    The right hand clound represents the forked repository on your <username> GitHub account.
+    The computer represents the cloned repository on your computer.
+    Repositories of the same color are synchronized.
+    Before the creation of your development branch, all three repositories are not synchronized.
+    In:
     
-In order to create a development branch, you must first synchronize your :code:`master` local branch with the :code:`upstream master` remote branch.
-This step ensure that you have all previously accepted modifications in the official repository.
-
-.. code-block:: console
-
-    git checkout master
-    git pull upstream master
-
-Then, you must push modifications to your :code:`origin master` remote branch
-
-.. code-block:: console
-
-    git push
+    1. Your local :code:`master` branch is synchronized with the :code:`upstream master` branch.
+    
+       .. code-block:: console
+       
+            git checkout master
+            git pull upstream master
+    
+    2. Your remote :code:`origin master` branch is synchronized with your local :code:`master` branch.
+ 
+       .. code-block:: console
+       
+           git push
 
 Since all your master branches are up to date, you can create your local branch
 
