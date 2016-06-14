@@ -10,7 +10,7 @@ Commit your modifications
     
     .. _workflow-state-commit:
     
-    .. figure:: ../branch/branch.gif
+    .. figure:: commit.gif
         
         Effect of **Git** commits
         
