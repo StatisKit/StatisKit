@@ -71,6 +71,7 @@ This command:
     :alt: Repository status after fork and clone steps.
 
     Repository status after fork and clone of a repository. 
+    
     The repository is named :code:`<reponame>`.
     The left hand cloud represents the repository on the **StatisKit** organization `GitHub` account. 
     The right hand clound represents the forked repository on your :code:`<username>` `GitHub` account.
