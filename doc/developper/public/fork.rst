@@ -68,6 +68,7 @@ This command:
     
     
 .. figure:: clone.png
+    :scale: 50 %
     :alt: Repository status after fork and clone steps.
     :align: center
     :figclass: align-center
