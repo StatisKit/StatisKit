@@ -1,3 +1,5 @@
+.. _contribute-work:
+
 Work on your modifications
 ==========================
 
