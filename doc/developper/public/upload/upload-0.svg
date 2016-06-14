@@ -9,7 +9,7 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   sodipodi:docname="commit-1.svg"
+   sodipodi:docname="upload-0.svg"
    width="210mm"
    height="297mm"
    viewBox="0 0 744.09448819 1052.3622047"
@@ -24,8 +24,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.49497475"
-     inkscape:cx="-151.83497"
-     inkscape:cy="384.00986"
+     inkscape:cx="915.54558"
+     inkscape:cy="151.48022"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -1356,6 +1356,14 @@
          x="46.96104"
          y="462.78018"
          style="fill:#0000ff;fill-opacity:1">upstream master</tspan></text>
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 840,1152.3622 0,0"
+       id="path4443"
+       inkscape:connector-type="polyline"
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
   </g>
   <text
      sodipodi:linespacing="125%"
