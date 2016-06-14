@@ -78,7 +78,9 @@ This command:
     
     .. note::
     
-        Considering that you are on the :code:`master` branch on your computer you can compare your local branch to remote branches using:
+        Cloning a repository using **Git** only adds the :code:`origin` remote.
+        The principale value added of the :code:`statiskit clone` command is to add the :code:`upstream` remote.
+        For example, this enable you to compare your local branch to both remote branches using:
     
         * for the remote branch on the **StatisKit** `GitHub` account,
     
