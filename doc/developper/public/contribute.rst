@@ -79,3 +79,12 @@ In order to contribute to an official repository of **StatisKit** we therefore r
 .. note::
 
     In the following we assume that you forked the official repository in your personal account and cloned it according to previous recommendations (see :doc:`fork`).
+
+.. toctree::
+    :hidden:
+    
+    branch/branch
+    work/work
+    commit/commit
+    upload/upload
+    submit/submit
