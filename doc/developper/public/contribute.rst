@@ -48,10 +48,10 @@ In order to contribute to an official repository of **StatisKit** we therefore r
                         in particular for versionning software or create |br|
                         backups."];
         D [label = "Upload ?", shape="diamond",
-           description="If you want to upload your modifications to your |br|
-                        personal repository, you shoud use the :code:`git push` |br|
-                        command. Otherwise, you can continue to add |br|
-                        commits."];
+           description="See `Upload your modifications`_ section. If you want to |br|
+                        save your modifications into your personal repository, |br|
+                        you should upload them. Otherwise, you can continue to |br|
+                        add commits."];
         E [label = "Finished ?", shape="diamond",
            description="If your work on the branch is done, you should |br|
                         submit your modifications to the official repository. |br|
