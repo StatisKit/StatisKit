@@ -1,0 +1,33 @@
+# Adpated from https://github.com/conda/conda-recipes/tree/master/boost
+package:
+  name: libboost
+  version: 1.61.0
+
+source:
+  fn: boost_1_61_0.tar.bz2
+  url: http://sourceforge.net/projects/boost/files/boost/1.61.0/boost_1_61_0.tar.bz2
+
+build:
+  number: 2
+  features:
+    - vc9               [win and py27]
+    - vc10              [win and py34]
+    - vc14              [win and py35]
+
+about:
+  home: http://www.boost.org/
+  license: Boost-1.0
+
+requirements:
+  build:
+    - python
+    - icu               [unix]
+    - bzip2             [unix]
+    - zlib
+
+  run:
+    # python dependency is here due to libboost-python library that depends on
+    # python version
+    - python
+    - icu               [unix]
+    - zlib
