@@ -1,0 +1,18 @@
+package:
+  name: glibc
+  version: 2.23.0
+
+source:
+  git_url: git://sourceware.org/git/glibc.git
+
+
+build:
+  number: 0
+
+test:
+  commands:
+    - ldd --version
+
+about:
+  home: http://www.gnu.org/software/libc/
+  license: GPL
