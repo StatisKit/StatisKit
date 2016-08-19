@@ -1,10 +1,15 @@
 FROM ubuntu:14.04
 
+RUN sed -i 's/# \(.*multiverse$\)/\1/g' /etc/apt/sources.list
+
 # Update the OS
 RUN apt-get update
 
+# Upgrade the OS
+RUN apt-get -y upgrade
+
 # Install useful tools
-RUN apt-get install -y build-essential git wget
+RUN apt-get install -y build-essential git wget firefox
 
 # Add user for future work
 RUN useradd -ms /bin/bash conda-user
@@ -23,3 +28,5 @@ RUN $HOME/miniconda/bin/conda info -a
 
 # Install conda-build
 RUN $HOME/miniconda/bin/conda install conda-build
+
+WORKDIR $HOME
