@@ -21,6 +21,7 @@ USER conda-user
 RUN wget https://repo.continuum.io/miniconda/Miniconda2-latest-Linux-x86_64.sh -O \ 
   $HOME/miniconda.sh
 RUN bash $HOME/miniconda.sh -b -p $HOME/miniconda
+RUN rm $HOME/miniconda.sh
 RUN echo 'export PATH=$PATH:$HOME/miniconda/bin' >> $HOME/.bashrc 
 RUN $HOME/miniconda/bin/conda config --set always_yes yes --set changeps1 no
 RUN $HOME/miniconda/bin/conda update -q conda
@@ -29,4 +30,10 @@ RUN $HOME/miniconda/bin/conda info -a
 # Install conda-build
 RUN $HOME/miniconda/bin/conda install conda-build
 
-WORKDIR $HOME
+# Install IPython
+RUN $HOME/miniconda/bin/conda install ipython
+
+# Install Jupyter
+RUN $HOME/miniconda/bin/conda install jupyter
+
+WORKDIR /home/conda-user
