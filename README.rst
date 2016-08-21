@@ -15,7 +15,7 @@ PkgTk: Tool kit for Python packages
       
 .. MngIt
 
-.. |VERSION| replace:: 0.1.0
+.. |VERSION| replace:: 1.0.0
 
 .. |AUTHORSFILE| replace:: AUTHORS.rst
 
