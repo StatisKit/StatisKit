@@ -1,5 +1,5 @@
 *.pyc
 *.egg-info
 .coverage
-_*
+build
 setup.cfg

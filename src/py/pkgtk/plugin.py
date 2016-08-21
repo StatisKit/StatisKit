@@ -91,6 +91,9 @@ class ProxyManager(object):
         else:
             self._proxy = proxy
 
+    @proxy.deleter
+    def proxy(self):
+        self._proxy = None
 
 class PluginManagerDescriptor(object):
     """A plugin plugin manager descriptor that returns and sets plugin_manager implementations
@@ -178,3 +181,7 @@ class PluginManager(object):
             raise ValueError('\'plugin\' parameter should be one of ' + ', '.join('\'' + plugin + '\'' for plugin in self))
         else:
             self._plugin = plugin
+
+    @plugin.deleter
+    def plugin(self):
+        self._plugin = None

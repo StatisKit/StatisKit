@@ -1,13 +1,36 @@
-language: python
+sudo: required
+dist: trusty
+language: cpp
 
-python: "2.7"
+os: linux
+
+before_install:
+    - if [[ "$TRAVIS_OS_NAME" = "linux" ]]; then
+        wget https://repo.continuum.io/miniconda/Miniconda2-latest-Linux-x86_64.sh -O miniconda.sh;
+      elif [[ "$TRAVIS_OS_NAME" = "osx" ]]; then
+        curl https://repo.continuum.io/miniconda/Miniconda2-latest-MacOSX-x86_64.sh -o miniconda.sh;
+      fi
+    - bash miniconda.sh -b -p $HOME/miniconda
+    - export PATH=$HOME/miniconda/bin:$PATH
+    - export LD_LIBRARY_PATH=$HOME/miniconda/lib:$LD_LIBRARY_PATH
+    - conda config --set always_yes yes --set changeps1 no
+    - conda update -q conda
+    - conda info -a
+    - conda install conda-build
 
 install:
-    - "python setup.py install"
-    - "pip install coveralls"
+    - pip install coverage
+    - pip install coveralls
+    - pip install nose
+
+before_script:
+    - conda build conda/python-pkgtk --no-test
+    - conda install python-pkgtk --use-local
+    - conda remove python-pkgtk
 
 script:
-    - "nosetests -v --with-coverage --cover-package=pkgtk"
+    - python setup.py develop --user
+    - nosetests test -v --with-coverage
 
 after_success:
     coveralls
