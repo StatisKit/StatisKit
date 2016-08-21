@@ -72,8 +72,8 @@ class TestPlugin(unittest.TestCase):
     def test_proxy_alias(self):
         self.proxy_manager['us'] = 'en'
         self.assertIn('us', self.proxy_manager)
-        self.proxy_manager.plugin = 'us'
-        self.assertEqual('hello', self.proxy_manager())
+        self.proxy_manager.proxy = 'us'
+        self.assertEqual(Hello, self.proxy_manager())
 
     def test_proxy_doc(self):
         self.assertMultiLineEqual("""This is a brief description

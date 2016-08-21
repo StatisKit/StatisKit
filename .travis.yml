@@ -1,10 +1,8 @@
 sudo: required
 dist: trusty
-language: python
+language: cpp
 
 os: linux
-
-python: "2.7"
 
 before_install:
     - if [[ "$TRAVIS_OS_NAME" = "linux" ]]; then
@@ -14,20 +12,25 @@ before_install:
       fi
     - bash miniconda.sh -b -p $HOME/miniconda
     - export PATH=$HOME/miniconda/bin:$PATH
+    - export LD_LIBRARY_PATH=$HOME/miniconda/lib:$LD_LIBRARY_PATH
     - conda config --set always_yes yes --set changeps1 no
     - conda update -q conda
     - conda info -a
     - conda install conda-build
-    - pip install python-coveralls
+
+install:
+    - pip install coverage
+    - pip install coveralls
+    - pip install nose
 
 before_script:
-    - conda build conda/python-pkgtk
+    - conda build conda/python-pkgtk --no-test
     - conda install python-pkgtk --use-local
     - conda remove python-pkgtk
 
 script:
     - python setup.py develop --user
-    - nosetests -v --with-coverage
+    - nosetests test -v --with-coverage
 
 after_success:
     coveralls
