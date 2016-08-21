@@ -14,7 +14,85 @@
 
 import pkg_resources
 
-class PluginFunctorDescriptor(object):
+class ProxyManager(object):
+
+    def __call__ (self):
+        proxy = self.proxy
+        if proxy:
+            return self[proxy]
+        else:
+            raise NotImplementedError("A proxy must be selected using \'proxy\' field")
+
+    def __init__(self, group, brief="", details=""):
+        """Create a proxy manager"""
+        self._group = group
+        self._brief = brief
+        self._details = details
+        self._cache = dict()
+
+    def __iter__(self):
+        def listing():
+            for key in self._cache.keys():
+                yield key
+            for proxy in pkg_resources.iter_entry_points(self._group):
+                yield proxy.name
+        return sorted(listing()).__iter__()
+
+    def __contains__(self, proxy):
+        """
+        """
+        return proxy in self._cache or len(list(pkg_resources.iter_entry_points(self._group, proxy))) > 0
+
+    def __getitem__(self, proxy):
+        """
+        """
+        while proxy in self._cache:
+            proxy = self._cache[proxy]
+        if callable(proxy):
+            return proxy
+        else:
+            return pkg_resources.iter_entry_points(self._group, proxy).next().load()
+
+    def __setitem__(self, proxy, implementation):
+        if not isinstance(proxy, basestring):
+            raise TypeError('\'proxy\' parameter must be a basestring instance')
+        if callable(implementation):
+            self._cache[proxy] = implementation
+        elif isinstance(implementation, basestring):
+            if implementation not in self:
+                raise ValueError('\'implementation\' parameter must be one of ' + ', '.join('\'' + proxy + '\'' for proxy in self))
+            if proxy == implementation:
+                raise ValueError('\'proxy\' and \'implementation\' parameters cannot have the same value')
+            self._cache[proxy] = implementation
+        else:
+            raise TypeError('must be callable or a basestring instance')
+
+    @property
+    def __doc__(self):
+        doc = []
+        if self._brief:
+            doc.append(self._brief)
+            doc.append('')
+        if self._details:
+            doc.append(self._details)
+            doc.append('')
+        doc.append(":Available Implementations:")
+        doc.extend(" - '" + proxy + "'" for proxy in self)
+        return '\n'.join(doc)
+
+    @property
+    def proxy(self):
+        return getattr(self, '_proxy', None)
+
+    @proxy.setter
+    def proxy(self, proxy):
+        if proxy not in self:
+            raise ValueError('\'proxy\' parameter should be one of ' + ', '.join('\'' + proxy + '\'' for proxy in self))
+        else:
+            self._proxy = proxy
+
+
+class PluginManagerDescriptor(object):
     """A plugin plugin manager descriptor that returns and sets plugin_manager implementations
     """
 
@@ -28,9 +106,10 @@ class PluginFunctorDescriptor(object):
                 raise NotImplementedError("A plugin must be selected using \'plugin\' field")
             return __call__
 
-class PluginFunctor(object):
 
-    __call__ = PluginFunctorDescriptor()
+class PluginManager(object):
+
+    __call__ = PluginManagerDescriptor()
 
     def __init__(self, group, brief="", details=""):
         """Create a plugin manager"""

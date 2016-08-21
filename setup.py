@@ -14,12 +14,12 @@
 
 from setuptools import setup, find_packages
 
-packages = find_packages("src")
-package_dir = {package : "src" for package in packages}
+packages = {"" : "src" + os.sep + "py"}
+for package in find_packages("src" + os.sep + "py"):
+    packages[package] = "src" + os.sep + "py"
 
-setup(name = "PluginTools",
+setup(packages = packages.keys(),
+      package_dir = {"" : "src" + os.sep + "py"},
+      name = "PkgTk",
       version = "0.1.0",
-      packages = packages,
-      package_dir = {"" : "src"},
-      author = 'Pierre Fernique',
-      entry_points = {'plugintools.hello_world' : 'en = plugintools.hello_world_en:hello_world'})
+      author = 'Pierre Fernique')

@@ -7,7 +7,7 @@ install:
     - "pip install coveralls"
 
 script:
-    - "nosetests -v --with-coverage --cover-package=plugintools"
+    - "nosetests -v --with-coverage --cover-package=pkgtk"
 
 after_success:
     coveralls
