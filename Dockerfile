@@ -9,13 +9,17 @@ RUN apt-get update
 RUN apt-get -y upgrade
 
 # Install useful tools
-RUN apt-get install -y build-essential git wget firefox
+RUN apt-get install -y build-essential git wget firefox x11vnc xvfb
 
 # Add user for future work
 RUN useradd -ms /bin/bash conda-user
 
 # select created user
 USER conda-user
+
+# Configure VNC
+RUN mkdir $HOME/.vnc
+RUN x11vnc -storepasswd 1234 $HOME/.vnc/passwd
 
 # Install miniconda
 RUN wget https://repo.continuum.io/miniconda/Miniconda2-latest-Linux-x86_64.sh -O \ 
@@ -28,7 +32,7 @@ RUN $HOME/miniconda/bin/conda update -q conda
 RUN $HOME/miniconda/bin/conda info -a
 
 # Install conda-build
-RUN $HOME/miniconda/bin/conda install conda-build
+RUN $HOME/miniconda/bin/conda install conda-build==1.21.7
 
 # Install IPython
 RUN $HOME/miniconda/bin/conda install ipython
