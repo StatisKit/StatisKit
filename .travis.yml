@@ -3,7 +3,7 @@ language: python
 python: "2.7"
 
 install:
-    - "python setup.py develop"
+    - "python setup.py develop --user"
     - "pip install coveralls"
 
 script:
