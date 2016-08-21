@@ -36,7 +36,7 @@ class TestPlugin(unittest.TestCase):
         cls.proxy_manager = ProxyManager('pkgtk.proxytest',
                                          brief = "This is a brief description",
                                          details = "This is a more detailed description")
-        cls.plugin_manager['en'] = Hello
+        cls.proxy_manager['en'] = Hello
 
         cls.plugin_manager = PluginManager('pkgtk.plugintest',
                                            brief = "This is a brief description",
@@ -44,24 +44,24 @@ class TestPlugin(unittest.TestCase):
         cls.plugin_manager['en'] = Hello.hello
 
     def test_proxy_non_selection(self):
-        del self.proxy_manager.plugin
+        del self.proxy_manager.proxy
         with self.assertRaises(NotImplementedError):
             self.proxy_manager()
 
-    def test_proxy_get_and_call(self):
+    def test_proxy_get_call(self):
         self.assertIn('en', self.proxy_manager)
-        self.proxy_manager.plugin = 'en'
+        self.proxy_manager.proxy = 'en'
         self.assertEqual(Hello, self.proxy_manager())
 
     def test_proxy_set(self):
         with self.assertRaises(ValueError):
-            self.proxy_manager.plugin = 'fr'
+            self.proxy_manager.proxy = 'fr'
         self.proxy_manager['fr'] = Salut
         self.assertIn('fr', self.proxy_manager)
-        self.proxy_manager.plugin = 'fr'
+        self.proxy_manager.proxy = 'fr'
         self.assertEqual(Salut, self.proxy_manager())
         with self.assertRaises(TypeError):
-            self.proxy_manager[0] = fr
+            self.proxy_manager[0] = Salut
         with self.assertRaises(ValueError):
             self.proxy_manager['us'] = 'us'
         with self.assertRaises(ValueError):
@@ -69,13 +69,13 @@ class TestPlugin(unittest.TestCase):
         with self.assertRaises(TypeError):
             self.proxy_manager['fr'] = 0
 
-    def test_plugin_alias(self):
+    def test_proxy_alias(self):
         self.proxy_manager['us'] = 'en'
         self.assertIn('us', self.proxy_manager)
         self.proxy_manager.plugin = 'us'
         self.assertEqual('hello', self.proxy_manager())
 
-    def test_plugin_doc(self):
+    def test_proxy_doc(self):
         self.assertMultiLineEqual("""This is a brief description
 
 This is a more detailed description
@@ -89,22 +89,20 @@ This is a more detailed description
         with self.assertRaises(NotImplementedError):
             self.plugin_manager()
 
-    def test_plugin_get_and_call(self):
+    def test_plugin_get_call(self):
         self.assertIn('en', self.plugin_manager)
         self.plugin_manager.plugin = 'en'
         self.assertEqual('hello', self.plugin_manager())
 
     def test_plugin_set(self):
-        def fr():
-            return 'salut'
         with self.assertRaises(ValueError):
             self.plugin_manager.plugin = 'fr'
-        self.plugin_manager['fr'] = fr
+        self.plugin_manager['fr'] = Salut.salut
         self.assertIn('fr', self.plugin_manager)
         self.plugin_manager.plugin = 'fr'
         self.assertEqual('salut', self.plugin_manager())
         with self.assertRaises(TypeError):
-            self.plugin_manager[0] = fr
+            self.plugin_manager[0] = Salut.salut
         with self.assertRaises(ValueError):
             self.plugin_manager['us'] = 'us'
         with self.assertRaises(ValueError):
