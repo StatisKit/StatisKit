@@ -40,4 +40,21 @@ RUN $HOME/miniconda/bin/conda install ipython
 # Install Jupyter
 RUN $HOME/miniconda/bin/conda install jupyter
 
+# Install libraries and packages from Misc
+## Clone the repository
+RUN git clone https://github.com/Statiskit/Misc.git $HOME/Misc
+RUN git -C $HOME/Misc pull
+
+## Create a file for anaconda upload
+RUN touch $HOME/upload.sh
+
+## Boost libraries
+RUN $HOME/miniconda/bin/conda build $HOME/Misc/libboost -c statiskit
+RUN echo "$HOME/miniconda/bin/anaconda upload \`conda build $HOME/Misc/libboost --output\` --user statiskit --force" >> $HOME/upload.sh
+
+## Finalize file for anaconda upload
+RUN echo "rm -rf $HOME/Misc" >> $HOME/upload.sh
+RUN echo "$HOME/miniconda/bin/conda clean --all" >> $HOME/upload.sh
+RUN echo "rm $HOME/upload.sh" >> $HOME/upload.sh
+
 WORKDIR /home/conda-user
