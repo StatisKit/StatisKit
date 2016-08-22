@@ -1,5 +1,5 @@
 package:
-  name: scons
+  name: python-scons
   version: "2.5.0"
 
 source:
