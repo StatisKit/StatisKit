@@ -47,14 +47,25 @@ RUN git -C $HOME/Misc pull
 
 ## Create a file for anaconda upload
 RUN touch $HOME/upload.sh
+RUN echo "set -e" >> $HOME/upload.sh
+RUN echo "conda install anaconda-client" >> $HOME/upload.sh
 
-## Boost libraries
+## libboost recipe
 RUN $HOME/miniconda/bin/conda build $HOME/Misc/libboost -c statiskit
-RUN echo "$HOME/miniconda/bin/anaconda upload \`conda build $HOME/Misc/libboost --output\` --user statiskit --force" >> $HOME/upload.sh
+RUN echo "anaconda upload \`conda build $HOME/Misc/libboost --output\` --user statiskit --force" >> $HOME/upload.sh
+
+## python-scons recipe
+RUN $HOME/miniconda/bin/conda build $HOME/Misc/python-scons -c statiskit
+RUN echo "anaconda upload \`conda build $HOME/Misc/python-scons --output\` --user statiskit --force" >> $HOME/upload.sh
+
+## python-parse recipe
+RUN $HOME/miniconda/bin/conda build $HOME/Misc/python-parse -c statiskit
+RUN echo "anaconda upload \`conda build $HOME/Misc/python-parse --output\` --user statiskit --force" >> $HOME/upload.sh
 
 ## Finalize file for anaconda upload
 RUN echo "rm -rf $HOME/Misc" >> $HOME/upload.sh
-RUN echo "$HOME/miniconda/bin/conda clean --all" >> $HOME/upload.sh
+RUN echo "conda remove anaconda-client" >> $HOME/upload.sh
+RUN echo "conda clean --all" >> $HOME/upload.sh
 RUN echo "rm $HOME/upload.sh" >> $HOME/upload.sh
 
 WORKDIR /home/conda-user
