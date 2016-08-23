@@ -51,17 +51,14 @@ RUN [ $BUILD = "true" ] && echo "$HOME/miniconda/bin/conda install anaconda-clie
 ## Build libboost recipe
 RUN [ $BUILD = "true" ] && $HOME/miniconda/bin/conda build $HOME/Misc/libboost -c statiskit || echo "pass"
 RUN [ $BUILD = "true" ] && echo "anaconda upload \`conda build $HOME/Misc/libboost --output\` --user statiskit --force" >> $HOME/upload.sh || echo "pass"
-RUN $HOME/miniconda/bin/conda install libboost -c statiskit --use-local
 
 ## Build python-scons recipe
 RUN [ $BUILD = "true" ] && $HOME/miniconda/bin/conda build $HOME/Misc/python-scons -c statiskit || echo "pass"
 RUN [ $BUILD = "true" ] && echo "anaconda upload \`conda build $HOME/Misc/python-scons --output\` --user statiskit --force" >> $HOME/upload.sh || echo "pass"
-RUN $HOME/miniconda/bin/conda install python-scons -c statiskit --use-local
 
 ## Build python-parse recipe
 RUN [ $BUILD = "true" ] && $HOME/miniconda/bin/conda build $HOME/Misc/python-parse -c statiskit || echo "pass"
 RUN [ $BUILD = "true" ] && echo "anaconda upload \`conda build $HOME/Misc/python-parse --output\` --user statiskit --force" >> $HOME/upload.sh || echo "pass"
-RUN $HOME/miniconda/bin/conda install python-parse -c statiskit --use-local
 
 ## Finalize file for anaconda upload
 RUN [ $BUILD = "true" ] && echo "rm -rf $HOME/Misc" >> $HOME/upload.sh || echo "pass"
