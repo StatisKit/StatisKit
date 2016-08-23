@@ -28,14 +28,14 @@ script:
 
 after_success:
     - coveralls
-  - if [[ "$TRAVIS_BRANCH" = "master" ]] && [[ "$TRAVIS_PULL_REQUEST" = "false" ]]; then
-      conda install anaconda-client;
-      anaconda login --username "$ANACONDA_USERNAME" --password "$ANACONDA_PASSWORD";
-      for CONDA_RECIPE in libboost python-scons python-parse; do
-        CONDA_FILE=`conda build conda/$CONDA_RECIPE --output`; 
-        anaconda upload --user statiskit ${CONDA_FILE%%} --force;
-      done
-      docker build --build-arg BUILD="false" -t statiskit/ubuntu:trusty .;
-      docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
-      docker push statiskit/ubuntu:trusty;
+    - if [[ "$TRAVIS_BRANCH" = "master" ]] && [[ "$TRAVIS_PULL_REQUEST" = "false" ]]; then
+        conda install anaconda-client;
+        anaconda login --username "$ANACONDA_USERNAME" --password "$ANACONDA_PASSWORD";
+        for CONDA_RECIPE in libboost python-scons python-parse; do
+          CONDA_FILE=`conda build conda/$CONDA_RECIPE --output`; 
+          anaconda upload --user statiskit ${CONDA_FILE%%} --force;
+        done
+        docker build --build-arg BUILD="false" -t statiskit/ubuntu:trusty .;
+        docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+        docker push statiskit/ubuntu:trusty;
     fi
