@@ -46,7 +46,7 @@ RUN [ $BUILD = "true" ] && git -C $HOME/Misc pull || echo "pass"
 ## Create a file for anaconda upload
 RUN touch $HOME/upload.sh
 RUN echo "set -e" >> $HOME/upload.sh
-RUN [ $BUILD = "true" ] && echo "conda install anaconda-client" >> $HOME/upload.sh || echo "pass"
+RUN [ $BUILD = "true" ] && echo "$HOME/miniconda/bin/conda install anaconda-client" >> $HOME/upload.sh || echo "pass"
 
 ## Build libboost recipe
 RUN [ $BUILD = "true" ] && $HOME/miniconda/bin/conda build $HOME/Misc/libboost -c statiskit || echo "pass"
@@ -65,10 +65,10 @@ RUN $HOME/miniconda/bin/conda install python-parse -c statiskit --use-local
 
 ## Finalize file for anaconda upload
 RUN [ $BUILD = "true" ] && echo "rm -rf $HOME/Misc" >> $HOME/upload.sh || echo "pass"
-RUN [ $BUILD = "true" ] && echo "conda remove anaconda-client" >> $HOME/upload.sh || echo "pass"
-RUN [ $BUILD = "true" ] && echo "conda env remove -n _build " >> $HOME/upload.sh || echo "pass"
-RUN [ $BUILD = "true" ] && echo "conda env remove -n _test " >> $HOME/upload.sh || echo "pass"
-RUN echo "conda clean --all" >> $HOME/upload.sh
+RUN [ $BUILD = "true" ] && echo "$HOME/miniconda/bin/conda remove anaconda-client" >> $HOME/upload.sh || echo "pass"
+RUN [ $BUILD = "true" ] && echo "$HOME/miniconda/bin/conda env remove -n _build " >> $HOME/upload.sh || echo "pass"
+RUN [ $BUILD = "true" ] && echo "$HOME/miniconda/bin/conda env remove -n _test " >> $HOME/upload.sh || echo "pass"
+RUN echo "$HOME/miniconda/bin/conda clean --all" >> $HOME/upload.sh
 RUN echo "rm -rf $HOME/miniconda/pkgs" >> $HOME/upload.sh
 RUN echo "rm $HOME/upload.sh" >> $HOME/upload.sh
 RUN [ $BUILD = "false" ] && /bin/bash $HOME/upload.sh || echo "pass"
