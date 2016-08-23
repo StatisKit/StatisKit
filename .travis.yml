@@ -38,4 +38,4 @@ after_success:
         docker build --build-arg BUILD="false" -t statiskit/ubuntu:trusty .;
         docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
         docker push statiskit/ubuntu:trusty;
-    fi
+      fi
