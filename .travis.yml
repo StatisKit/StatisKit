@@ -34,7 +34,7 @@ after_success:
         for CONDA_RECIPE in libboost python-scons python-parse; do
           CONDA_FILE=`conda build $CONDA_RECIPE --output`; 
           anaconda upload --user statiskit ${CONDA_FILE%%} --force;
-        done
+        done;
         docker build --build-arg BUILD="false" -t statiskit/ubuntu:trusty . ;
         docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
         docker push statiskit/ubuntu:trusty;
