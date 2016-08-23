@@ -40,34 +40,34 @@ RUN $HOME/miniconda/bin/conda install ipython jupyter pip
 
 # Install libraries and packages from Misc
 ## Clone the repository
-RUN [ $BUILD = "true" ] && git clone https://github.com/Statiskit/Misc.git $HOME/Misc || echo "pass"
-RUN [ $BUILD = "true" ] && git -C $HOME/Misc pull || echo "pass"
+RUN [ $BUILD = "true" ] && git clone https://github.com/Statiskit/Misc.git $HOME/Misc || [ $BUILD = "false" ]
+RUN [ $BUILD = "true" ] && git -C $HOME/Misc pull || [ $BUILD = "false" ]
 
 ## Create a file for anaconda upload
 RUN touch $HOME/upload.sh
 RUN echo "set -e" >> $HOME/upload.sh
-RUN [ $BUILD = "true" ] && echo "$HOME/miniconda/bin/conda install anaconda-client" >> $HOME/upload.sh || echo "pass"
+RUN [ $BUILD = "true" ] && echo "$HOME/miniconda/bin/conda install anaconda-client" >> $HOME/upload.sh || [ $BUILD = "false" ]
 
 ## Build libboost recipe
-RUN [ $BUILD = "true" ] && $HOME/miniconda/bin/conda build $HOME/Misc/libboost -c statiskit || echo "pass"
-RUN [ $BUILD = "true" ] && echo "anaconda upload \`conda build $HOME/Misc/libboost --output\` --user statiskit --force" >> $HOME/upload.sh || echo "pass"
+RUN [ $BUILD = "true" ] && $HOME/miniconda/bin/conda build $HOME/Misc/libboost -c statiskit || [ $BUILD = "false" ]
+RUN [ $BUILD = "true" ] && echo "anaconda upload \`conda build $HOME/Misc/libboost --output\` --user statiskit --force" >> $HOME/upload.sh || [ $BUILD = "false" ]
 
 ## Build python-scons recipe
-RUN [ $BUILD = "true" ] && $HOME/miniconda/bin/conda build $HOME/Misc/python-scons -c statiskit || echo "pass"
-RUN [ $BUILD = "true" ] && echo "anaconda upload \`conda build $HOME/Misc/python-scons --output\` --user statiskit --force" >> $HOME/upload.sh || echo "pass"
+RUN [ $BUILD = "true" ] && $HOME/miniconda/bin/conda build $HOME/Misc/python-scons -c statiskit || [ $BUILD = "false" ]
+RUN [ $BUILD = "true" ] && echo "anaconda upload \`conda build $HOME/Misc/python-scons --output\` --user statiskit --force" >> $HOME/upload.sh || [ $BUILD = "false" ]
 
 ## Build python-parse recipe
-RUN [ $BUILD = "true" ] && $HOME/miniconda/bin/conda build $HOME/Misc/python-parse -c statiskit || echo "pass"
-RUN [ $BUILD = "true" ] && echo "anaconda upload \`conda build $HOME/Misc/python-parse --output\` --user statiskit --force" >> $HOME/upload.sh || echo "pass"
+RUN [ $BUILD = "true" ] && $HOME/miniconda/bin/conda build $HOME/Misc/python-parse -c statiskit || [ $BUILD = "false" ]
+RUN [ $BUILD = "true" ] && echo "anaconda upload \`conda build $HOME/Misc/python-parse --output\` --user statiskit --force" >> $HOME/upload.sh || [ $BUILD = "false" ]
 
 ## Finalize file for anaconda upload
-RUN [ $BUILD = "true" ] && echo "rm -rf $HOME/Misc" >> $HOME/upload.sh || echo "pass"
-RUN [ $BUILD = "true" ] && echo "$HOME/miniconda/bin/conda remove anaconda-client" >> $HOME/upload.sh || echo "pass"
-RUN [ $BUILD = "true" ] && echo "$HOME/miniconda/bin/conda env remove -n _build " >> $HOME/upload.sh || echo "pass"
-RUN [ $BUILD = "true" ] && echo "$HOME/miniconda/bin/conda env remove -n _test " >> $HOME/upload.sh || echo "pass"
+RUN [ $BUILD = "true" ] && echo "rm -rf $HOME/Misc" >> $HOME/upload.sh || [ $BUILD = "false" ]
+RUN [ $BUILD = "true" ] && echo "$HOME/miniconda/bin/conda remove anaconda-client" >> $HOME/upload.sh || [ $BUILD = "false" ]
+RUN [ $BUILD = "true" ] && echo "$HOME/miniconda/bin/conda env remove -n _build " >> $HOME/upload.sh || [ $BUILD = "false" ]
+RUN [ $BUILD = "true" ] && echo "$HOME/miniconda/bin/conda env remove -n _test " >> $HOME/upload.sh || [ $BUILD = "false" ]
 RUN echo "$HOME/miniconda/bin/conda clean --all" >> $HOME/upload.sh
 RUN echo "rm -rf $HOME/miniconda/pkgs" >> $HOME/upload.sh
 RUN echo "rm $HOME/upload.sh" >> $HOME/upload.sh
-RUN [ $BUILD = "false" ] && /bin/bash $HOME/upload.sh || echo "pass"
+RUN [ $BUILD = "false" ] && /bin/bash $HOME/upload.sh ||[ $BUILD = "true" ]
 
 WORKDIR /home/conda-user
