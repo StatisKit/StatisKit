@@ -1,10 +1,9 @@
 sudo: required
+dist: trusty
+language: cpp
 
-os:
-    - linux
-    - osx
-
-python: "2.7"
+services:
+  - docker
 
 before_install:
     - if [[ "$TRAVIS_OS_NAME" = "linux" ]]; then
@@ -12,17 +11,31 @@ before_install:
       elif [[ "$TRAVIS_OS_NAME" = "osx" ]]; then
         curl https://repo.continuum.io/miniconda/Miniconda2-latest-MacOSX-x86_64.sh -o miniconda.sh;
       fi
-    - "bash miniconda.sh -b -p $HOME/miniconda"
-    - "export PATH=$HOME/miniconda/bin:$PATH"
-    - "conda config --set always_yes yes --set changeps1 no"
-    - "conda update -q conda"
-    - "conda info -a"
-    - "conda install conda-build"
+    - bash miniconda.sh -b -p $HOME/miniconda
+    - export PATH=$HOME/miniconda/bin:$PATH
+    - conda config --set always_yes yes --set changeps1 no
+    - conda update -q conda
+    - conda info -a
+    - conda install conda-build
 
 install:
-  - for i in $(ls -d */); do
-        conda build ${i%%/};
-    done
+    - pip install python-coveralls
+
+script:
+    - conda build conda/libboost -c statiskit
+    - conda build conda/python-scons -c statiskit
+    - conda build conda/python-parse -c statiskit
 
 after_success:
     - coveralls
+  - if [[ "$TRAVIS_BRANCH" = "master" ]] && [[ "$TRAVIS_PULL_REQUEST" = "false" ]]; then
+      conda install anaconda-client;
+      anaconda login --username "$ANACONDA_USERNAME" --password "$ANACONDA_PASSWORD";
+      for CONDA_RECIPE in libboost python-scons python-parse; do
+        CONDA_FILE=`conda build conda/$CONDA_RECIPE --output`; 
+        anaconda upload --user statiskit ${CONDA_FILE%%} --force;
+      done
+      docker build --build-arg BUILD="false" -t statiskit/ubuntu:trusty .;
+      docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+      docker push statiskit/ubuntu:trusty;
+    fi
