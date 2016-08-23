@@ -40,8 +40,8 @@ RUN $HOME/miniconda/bin/conda install ipython jupyter pip
 
 # Install libraries and packages from Misc
 ## Clone the repository
-RUN [ $BUILD = "true" ] && git clone https://github.com/Statiskit/Misc.git $HOME/Misc
-RUN [ $BUILD = "true" ] && git -C $HOME/Misc pull
+RUN [ $BUILD = "true" ] && git clone https://github.com/Statiskit/Misc.git $HOME/Misc || echo "pass"
+RUN [ $BUILD = "true" ] && git -C $HOME/Misc pull || echo "pass"
 
 ## Create a file for anaconda upload
 RUN touch $HOME/upload.sh
