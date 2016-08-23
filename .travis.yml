@@ -22,9 +22,9 @@ install:
     - pip install python-coveralls
 
 script:
-    - conda build conda/libboost -c statiskit
-    - conda build conda/python-scons -c statiskit
-    - conda build conda/python-parse -c statiskit
+    - conda build libboost -c statiskit
+    - conda build python-scons -c statiskit
+    - conda build python-parse -c statiskit
 
 after_success:
     - coveralls
@@ -32,7 +32,7 @@ after_success:
         conda install anaconda-client;
         anaconda login --username "$ANACONDA_USERNAME" --password "$ANACONDA_PASSWORD";
         for CONDA_RECIPE in libboost python-scons python-parse; do
-          CONDA_FILE=`conda build conda/$CONDA_RECIPE --output`; 
+          CONDA_FILE=`conda build $CONDA_RECIPE --output`; 
           anaconda upload --user statiskit ${CONDA_FILE%%} --force;
         done
         docker build --build-arg BUILD="false" -t statiskit/ubuntu:trusty .;
