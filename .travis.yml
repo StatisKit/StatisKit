@@ -33,4 +33,10 @@ script:
     - nosetests test -v --with-coverage
 
 after_success:
-    coveralls
+    - coveralls
+    - if [[ "$TRAVIS_BRANCH" = "master" ]] && [[ "$TRAVIS_PULL_REQUEST" = "false" ]]; then
+        conda install anaconda-client;
+        anaconda login --username "$ANACONDA_USERNAME" --password "$ANACONDA_PASSWORD";
+        CONDA_FILE=`conda build conda/python-pkgtk --output`; 
+        anaconda upload --user statiskit ${CONDA_FILE%%} --force;
+      fi
