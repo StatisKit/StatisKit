@@ -38,5 +38,5 @@ after_success:
         conda install anaconda-client;
         anaconda login --username "$ANACONDA_USERNAME" --password "$ANACONDA_PASSWORD";
         CONDA_FILE=`conda build conda/python-pkgtk --output`; 
-        anaconda upload --user statiskit ${CONDA_FILE%%} --force;
+        anaconda upload --user statiskit "$CONDA_FILE" --force;
       fi
