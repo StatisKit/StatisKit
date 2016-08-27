@@ -44,9 +44,9 @@ RUN conda install ipython jupyter pip
 RUN [ $BUILD = "true" ] && git clone https://github.com/Statiskit/Misc.git $HOME/Misc || [ $BUILD = "false" ]
 
 ## Create a file for anaconda upload
-RUN touch $HOME/upload.sh
-RUN echo "set -e" >> $HOME/upload.sh
-RUN [ $BUILD = "true" ] && echo "$HOME/miniconda/bin/conda install anaconda-client" >> $HOME/upload.sh || [ $BUILD = "false" ]
+RUN touch $HOME/post-link.sh
+RUN echo "set -e" >> $HOME/post-link.sh
+RUN [ $BUILD = "true" ] && echo "$HOME/miniconda/bin/conda install anaconda-client" >> $HOME/post-link.sh || [ $BUILD = "false" ]
 
 ## Build libboost recipe
 RUN [ $BUILD = "true" ] && $HOME/miniconda/bin/conda build $HOME/Misc/libboost -c statiskit || [ $BUILD = "false" ]
