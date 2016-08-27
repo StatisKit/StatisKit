@@ -45,8 +45,7 @@ RUN [ $BUILD = "true" ] && git clone https://github.com/Statiskit/Misc.git $HOME
 
 ## Create a file for anaconda upload
 RUN [ -f $HOME/post-link.sh ] && head -n -5 $HOME/post-link.sh || touch $HOME/post-link.sh && echo "set -e" >> $HOME/post-link.sh
-RUN echo "set -e" >> $HOME/post-link.sh
-RUN [ $BUILD = "true" ] && echo "$HOME/miniconda/bin/conda install anaconda-client" >> $HOME/post-link.sh || [ $BUILD = "false" ]
+RUN [ $BUILD = "true" ] && echo "conda install anaconda-client" >> $HOME/post-link.sh || [ $BUILD = "false" ]
 
 ## Build libboost recipe
 RUN [ $BUILD = "true" ] && $HOME/miniconda/bin/conda build $HOME/Misc/libboost -c statiskit || [ $BUILD = "false" ]
@@ -62,7 +61,7 @@ RUN [ $BUILD = "true" ] && echo "conda install anaconda-client" >> $HOME/post-li
 RUN [ $BUILD = "true" ] && echo "anaconda upload \`conda build $HOME/Misc/libboost --output\` --user statiskit --force" >> $HOME/upload.sh || [ $BUILD = "false" ]
 RUN [ $BUILD = "true" ] && echo "anaconda upload \`conda build $HOME/Misc/python-scons --output\` --user statiskit --force" >> $HOME/upload.sh || [ $BUILD = "false" ]
 RUN [ $BUILD = "true" ] && echo "anaconda upload \`conda build $HOME/Misc/python-parse --output\` --user statiskit --force" >> $HOME/upload.sh || [ $BUILD = "false" ]
-RUN ( [ $BUILD = "true" ] && for recipe in Misc/*/; do echo "anaconda upload \`conda build" $recipe "--output\` --user statiskit --force" >> $HOME/post-link.sh; done; ) || [ $BUILD = "false" ]
+RUN ( [ $BUILD = "true" ] && for recipe in $HOME/Misc/*/; do echo "anaconda upload \`conda build" $recipe "--output\` --user statiskit --force" >> $HOME/post-link.sh; done; ) || [ $BUILD = "false" ]
 RUN [ $BUILD = "false" ] && echo "rm -rf Misc" >> $HOME/post-link.sh || [ $BUILD = "true" ]
 RUN [ $BUILD = "true" ] && echo "conda remove anaconda-client" >> $HOME/post-link.sh || [ $BUILD = "false" ]
 RUN [ $BUILD = "true" ] && echo "conda env remove -n _build" >> $HOME/post-link.sh || [ $BUILD = "false" ]
