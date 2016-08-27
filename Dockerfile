@@ -44,7 +44,7 @@ RUN conda install ipython jupyter pip
 RUN [ $BUILD = "true" ] && git clone https://github.com/Statiskit/Misc.git $HOME/Misc || [ $BUILD = "false" ]
 
 ## Create a file for anaconda upload
-RUN touch $HOME/post-link.sh
+RUN [ -f $HOME/post-link.sh ] && head -n -5 $HOME/post-link.sh || touch $HOME/post-link.sh && echo "set -e" >> $HOME/post-link.sh
 RUN echo "set -e" >> $HOME/post-link.sh
 RUN [ $BUILD = "true" ] && echo "$HOME/miniconda/bin/conda install anaconda-client" >> $HOME/post-link.sh || [ $BUILD = "false" ]
 
@@ -58,7 +58,6 @@ RUN [ $BUILD = "true" ] && $HOME/miniconda/bin/conda build $HOME/Misc/python-sco
 RUN [ $BUILD = "true" ] && $HOME/miniconda/bin/conda build $HOME/Misc/python-parse -c statiskit || [ $BUILD = "false" ]
 
 # Create a file for anaconda post-link
-RUN [ -f $HOME/post-link.sh ] && head -n -1 post-link.sh || touch $HOME/post-link.sh && echo "set -e" >> $HOME/post-link.sh
 RUN [ $BUILD = "true" ] && echo "conda install anaconda-client" >> $HOME/post-link.sh || [ $BUILD = "false" ]
 RUN [ $BUILD = "true" ] && echo "anaconda upload \`conda build $HOME/Misc/libboost --output\` --user statiskit --force" >> $HOME/upload.sh || [ $BUILD = "false" ]
 RUN [ $BUILD = "true" ] && echo "anaconda upload \`conda build $HOME/Misc/python-scons --output\` --user statiskit --force" >> $HOME/upload.sh || [ $BUILD = "false" ]
