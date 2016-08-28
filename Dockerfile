@@ -43,9 +43,8 @@ RUN conda install ipython jupyter pip
 ## Clone the repository
 RUN [ $BUILD = "true" ] && git clone https://github.com/Statiskit/Misc.git $HOME/Misc || [ $BUILD = "false" ]
 
-## Create a file for anaconda upload
-RUN [ -f $HOME/post-link.sh ] && head -n -5 $HOME/post-link.sh || touch $HOME/post-link.sh && echo "set -e" >> $HOME/post-link.sh
-RUN [ $BUILD = "true" ] && echo "conda install anaconda-client" >> $HOME/post-link.sh || [ $BUILD = "false" ]
+## Create the post-link file
+RUN ([ -f $HOME/post-link.sh ] && head -n -5 $HOME/post-link.sh > $HOME/post-link.tmp && mv $HOME/post-link.tmp $HOME/post-link.sh) || (touch $HOME/post-link.sh && echo "set -e" >> $HOME/post-link.sh && echo "conda install anaconda-client" >> $HOME/post-link.sh)
 
 ## Build libboost recipe
 RUN [ $BUILD = "true" ] && $HOME/miniconda/bin/conda build $HOME/Misc/libboost -c statiskit || [ $BUILD = "false" ]
@@ -57,11 +56,10 @@ RUN [ $BUILD = "true" ] && $HOME/miniconda/bin/conda build $HOME/Misc/python-sco
 RUN [ $BUILD = "true" ] && $HOME/miniconda/bin/conda build $HOME/Misc/python-parse -c statiskit || [ $BUILD = "false" ]
 
 # Create a file for anaconda post-link
-RUN [ $BUILD = "true" ] && echo "conda install anaconda-client" >> $HOME/post-link.sh || [ $BUILD = "false" ]
-RUN [ $BUILD = "true" ] && echo "anaconda upload \`conda build $HOME/Misc/libboost --output\` --user statiskit --force" >> $HOME/upload.sh || [ $BUILD = "false" ]
-RUN [ $BUILD = "true" ] && echo "anaconda upload \`conda build $HOME/Misc/python-scons --output\` --user statiskit --force" >> $HOME/upload.sh || [ $BUILD = "false" ]
-RUN [ $BUILD = "true" ] && echo "anaconda upload \`conda build $HOME/Misc/python-parse --output\` --user statiskit --force" >> $HOME/upload.sh || [ $BUILD = "false" ]
-RUN ( [ $BUILD = "true" ] && for recipe in $HOME/Misc/*/; do echo "anaconda upload \`conda build" $recipe "--output\` --user statiskit --force" >> $HOME/post-link.sh; done; ) || [ $BUILD = "false" ]
+RUN [ $BUILD = "true" ] && echo "anaconda upload \`conda build $HOME/Misc/libboost --output\` --user statiskit --force" >> $HOME/post-link.sh || [ $BUILD = "false" ]
+RUN [ $BUILD = "true" ] && echo "anaconda upload \`conda build $HOME/Misc/python-scons --output\` --user statiskit --force" >> $HOME/post-link.sh || [ $BUILD = "false" ]
+RUN [ $BUILD = "true" ] && echo "anaconda upload \`conda build $HOME/Misc/python-parse --output\` --user statiskit --force" >> $HOME/post-link.sh || [ $BUILD = "false" ]
+#RUN ( [ $BUILD = "true" ] && for recipe in $HOME/Misc/*/; do echo "anaconda upload \`conda build" $recipe "--output\` --user statiskit --force" >> $HOME/post-link.sh; done; ) || [ $BUILD = "false" ]
 RUN [ $BUILD = "false" ] && echo "rm -rf Misc" >> $HOME/post-link.sh || [ $BUILD = "true" ]
 RUN [ $BUILD = "true" ] && echo "conda remove anaconda-client" >> $HOME/post-link.sh || [ $BUILD = "false" ]
 RUN [ $BUILD = "true" ] && echo "conda env remove -n _build" >> $HOME/post-link.sh || [ $BUILD = "false" ]
