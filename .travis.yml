@@ -25,6 +25,12 @@ install:
     - pip install nose
 
 script:
+    - conda build conda/python-pkgtk --no-test -c conda-forge
+    - conda install python-pkgtk --use-local -c conda-forge
+    - pkgtk authors
+    - conda remove python-pkgtk
+    - conda env remove -n _build
+    - conda clean --all
     - bash conda/build.sh
 
 after_success:
