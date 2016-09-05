@@ -1,3 +1,4 @@
 authors:
+  basename: 'CONTRIBUTORS.rst'
   format: '* {name} <{email}> ({score})'
   plugin: commit
