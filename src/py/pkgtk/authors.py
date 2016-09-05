@@ -113,7 +113,9 @@ class Authors(object):
 
     @property
     def sorted(self):
-        return reversed(sorted([self.Author(name, self._oldests[name], self._latests[name], self._emails[name], self._scores[name]) for name in self._emails], key=lambda author: author.score))
+        return reversed(sorted([self.Author(name, self._oldests[name], self._latests[name], self._emails[name], self._scores[name])
+                                for name in self._emails],
+                               key=lambda author: author.score))
 
 load_authors = PluginManager('pkgtk.load_authors',
         brief = "A plugin manager for loading authors from software repositories",

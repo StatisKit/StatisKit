@@ -12,7 +12,6 @@
 #                                                                                #
 ##################################################################################
 
-import os
 from argparse import ArgumentParser, RawTextHelpFormatter
 
 from pkgtk.config import init_config
