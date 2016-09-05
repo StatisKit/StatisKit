@@ -1,6 +1,6 @@
 ##################################################################################
 #                                                                                #
-# PluginTools: Python plugin system                                              #
+# MngIt: Manage redundant information in software                                #
 #                                                                                #
 # Copyright (c) 2016 Pierre Fernique                                             #
 #                                                                                #
@@ -8,21 +8,14 @@
 # received a copy of the legalcode along with this work. If not, see             #
 # <http://www.cecill.info/licences/Licence_CeCILL-C_V1-en.html>.                 #
 #                                                                                #
-# File authors: Pierre Fernique <pfernique@gmail.com> (3)                        #
+# File authors: Pierre Fernique <pfernique@gmail.com> (27)                       #
 #                                                                                #
 ##################################################################################
 
 import os
-from setuptools import setup, find_packages
 
-packages = {"" : "src" + os.sep + "py"}
-for package in find_packages("src" + os.sep + "py"):
-    packages[package] = "src" + os.sep + "py"
-
-setup(packages = packages.keys(),
-      package_dir = {"" : "src" + os.sep + "py"},
-      name = "PkgTk",
-      version = "0.1.0",
-      author = 'Pierre Fernique',
-      entry_points = {'pkgtk.load_authors': ['commit = pkgtk.load_authors_commit:load_authors'],
-                      'console_scripts': ['pkgtk = pkgtk.scripts:pkgtk']})
+def get_vcs(repository):
+    if os.path.exists(repository + os.sep + '.git'):
+        return 'git'
+    else:
+        raise ValueError("Version control system has not been determined")

@@ -1,6 +1,6 @@
 package:
   name: python-pkgtk
-  version: "1.0.0"
+  version: "0.1.0"
 
 source:
   path: ../..
@@ -16,13 +16,20 @@ about:
 requirements:
   build:
     - python
+    - pyyaml
   run:
     - python
+    - pyyaml
+    - gitpython
 
 test:
    requires:
      - nose
      - coverage
    commands:
-     - cd {{ SRC_DIR }} 
-     - nosetests -v --pdb --with-coverage --cover-package=pkgtk
+     - cd {{ SRC_DIR }}
+     - nosetests test --pdb -x -s -v --with-coverage --cover-tests --cover-package=pkgtk --cover-package=test
+     - REPOSITORY_DIR=`readlink -e $RECIPE_DIR/../..`
+     - sed -i -e 's#'"$PREFIX"'/lib/python2.7/site-packages#'"$REPOSITORY_DIR"'/src/py#g' .coverage
+     - sed -i -e 's#'"$SRC_DIR"'#'"$REPOSITORY_DIR"'#g' .coverage
+     - mv .coverage $REPOSITORY_DIR
