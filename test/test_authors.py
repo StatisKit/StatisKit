@@ -32,10 +32,11 @@ class TestAuthors(unittest.TestCase):
         self.assertIn('commit', load_authors)
         load_authors.plugin = 'commit'
         authors = load_authors(self.repository)
-        with open(self.repository + os.sep + self.config['authors']['basename'] + '.back', 'r') as filehandler:
-            previous = filehandler.read()
-        current = authors.format(self.config['authors']['format'])
-        #self.assertMultiLineEqual(current, previous[-len(current):])
+        if 'basename' in self.config['authors']:
+            with open(self.repository + os.sep + self.config['authors']['basename'] + '.back', 'r') as filehandler:
+                previous = filehandler.read()
+            current = authors.format(self.config['authors']['format'])
+            #self.assertMultiLineEqual(current, previous[-len(current):])
 
     @classmethod
     def tearDownClass(cls):
