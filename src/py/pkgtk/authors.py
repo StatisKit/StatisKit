@@ -24,9 +24,8 @@ def init_authors(repository, **kwargs):
     authors = config.pop('authors', dict())
     if 'basename' not in authors or 'basename' in kwargs:
         basename = kwargs.pop('basename', '')
-        if not basename:
-            basename = 'AUTHORS.rst'
-        authors['basename'] = basename
+        if basename:
+            authors['basename'] = basename
     if 'format' not in authors or 'format' in kwargs:
         format_string = kwargs.pop('format', '')
         if not format_string:
@@ -130,5 +129,6 @@ load_authors = PluginManager('pkgtk.load_authors',
 def dump_authors(repository, config):
     authors = config['authors']
     load_authors.plugin = authors['plugin']
-    with open(repository + os.sep + authors['basename'], 'w') as filehandler:
-        filehandler.write(load_authors(repository).format(authors['format']))
+    if 'basename' in authors:
+        with open(repository + os.sep + authors['basename'], 'w') as filehandler:
+            filehandler.write(load_authors(repository).format(authors['format']))
