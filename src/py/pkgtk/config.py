@@ -1,6 +1,6 @@
 ##################################################################################
 #                                                                                #
-# PluginTools: Python plugin system                                              #
+# MngIt: Manage redundant information in software                                #
 #                                                                                #
 # Copyright (c) 2016 Pierre Fernique                                             #
 #                                                                                #
@@ -8,22 +8,34 @@
 # received a copy of the legalcode along with this work. If not, see             #
 # <http://www.cecill.info/licences/Licence_CeCILL-C_V1-en.html>.                 #
 #                                                                                #
-# File authors: Pierre Fernique <pfernique@gmail.com> (3)                        #
+# File authors: Pierre Fernique <pfernique@gmail.com> (29)                       #
 #                                                                                #
 ##################################################################################
 
+import yaml
 import os
-from setuptools import setup, find_packages
 
-packages = {"" : "src" + os.sep + "py"}
-for package in find_packages("src" + os.sep + "py"):
-    packages[package] = "src" + os.sep + "py"
+def init_config(repository, **kwargs):
+    """Create a MngIt configuration file
 
-setup(packages = packages.keys(),
-      package_dir = {"" : "src" + os.sep + "py"},
-      name = "PkgTk",
-      version = "0.1.0",
-      author = 'Pierre Fernique',
-      entry_points = {'pkgtk.load_authors': ['commit = pkgtk.load_authors_commit:load_authors'],
-                      'console_scripts': ['pkgtk = pkgtk.scripts:pkgtk']},
-      zip_safe = False)
+    :Parameters:
+     - `name` (str) - Name of the software
+     - `brief` (str) - A brief description of the software
+    """
+    config = load_config(repository)
+    dump_config(repository, config)
+    return config
+
+def load_config(repository):
+    config = repository + os.sep + '.pkgtk.yml'
+    if not os.path.exists(config):
+        config = dict()
+    else:
+        with open(config, 'r') as filehandler:
+            config = yaml.load(filehandler.read())
+    return config
+
+def dump_config(repository, config):
+    with open(repository + os.sep + '.pkgtk.yml', 'w') as filehandler:
+        filehandler.write(yaml.dump(config, default_flow_style=False))
+

@@ -1,31 +1,22 @@
-PkgTk: Tool kit for Python packages
-===================================
+PkgTk: A tool kit for package development
+=========================================
 
-.. list-table::
-    :stub-columns: 1
+.. sidebar:: Summary
 
-    * - Version
-      - |VERSION|
-    * - Status
-      - |TRAVIS| |COVERALLS| |LANDSCAPE| |READTHEDOCS|
-    * - Authors
-      - see |AUTHORSFILE|_ file
-    * - License
-      - |LICENSENAME| (see |LICENSEFILE|_ file)
-      
-.. MngIt
+    :Status:  |TRAVIS| |COVERALLS| |LANDSCAPE| |READTHEDOCS|
+    :License: |LICENSE|
+    :Authors: |AUTHORS|
 
-.. |VERSION| replace:: 1.0.0
 
-.. |AUTHORSFILE| replace:: AUTHORS.rst
+.. |LICENSE| replace:: see |LICENSEFILE|_ file
 
-.. _AUTHORSFILE : AUTHORS.rst
-
-.. |LICENSENAME| replace:: CeCILL-C
+.. |AUTHORS| replace:: see |AUTHORSFILE|_ file
 
 .. |LICENSEFILE| replace:: LICENSE.rst
 
 .. _LICENSEFILE : LICENSE.rst
+
+.. |AUTHORSFILE| replace:: AUTHORS.rst
 
 .. |TRAVIS| image:: https://travis-ci.org/StatisKit/PkgTk.svg?branch=master
            :target: https://travis-ci.org/StatisKit/PkgTk
@@ -42,5 +33,3 @@ PkgTk: Tool kit for Python packages
 .. |READTHEDOCS| image:: https://readthedocs.org/projects/PkgTk/badge/?version=latest
                 :target: http://PkgTk.readthedocs.io/en/latest
                 :alt: Read the Docs
-
-.. MngIt

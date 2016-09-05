@@ -19,18 +19,19 @@ before_install:
     - conda install conda-build
 
 install:
+    - conda install curl
     - pip install coverage
     - pip install coveralls
     - pip install nose
 
-before_script:
-    - conda build conda/python-pkgtk --no-test
-    - conda install python-pkgtk --use-local
-    - conda remove python-pkgtk
-
 script:
-    - python setup.py develop --user
-    - nosetests test -v --with-coverage
+    - conda build conda/python-pkgtk --no-test -c conda-forge
+    - conda install python-pkgtk --use-local -c conda-forge
+    - pkgtk authors
+    - conda remove python-pkgtk
+    - conda env remove -n _build
+    - conda clean --all
+    - bash conda/build.sh
 
 after_success:
     - coveralls
@@ -39,4 +40,6 @@ after_success:
         anaconda login --username "$ANACONDA_USERNAME" --password "$ANACONDA_PASSWORD";
         CONDA_FILE=`conda build conda/python-pkgtk --output`; 
         anaconda upload --user statiskit "$CONDA_FILE" --force;
-      fi
+        curl --request POST http://readthedocs.org/build/pkgtk;
+      fi      
+
