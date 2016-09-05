@@ -26,10 +26,9 @@ class TestScripts(unittest.TestCase):
     def setUpClass(cls):
         cls.repository = '.'
         cls.config = load_config(cls.repository)
-        os.rename(cls.repository + os.sep + '.pkgtk.back', cls.repository + os.sep + '.pkgtk.yml')
+        os.rename(cls.repository + os.sep + '.pkgtk.yml', cls.repository + os.sep + '.pkgtk.back')
         if 'basename' in cls.config['authors']:
             os.rename(cls.repository + os.sep + cls.config['authors']['basename'], cls.repository + os.sep + cls.config['authors']['basename'] + '.back')
-
 
     def test_authors(self):
         """Test `pkgtk authors` script of module `pkgtk.console_scripts`"""
