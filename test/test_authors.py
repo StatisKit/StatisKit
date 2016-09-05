@@ -13,7 +13,8 @@ class TestAuthors(unittest.TestCase):
         init_authors(cls.repository)
         cls.config = init_config(cls.repository)
         os.rename(cls.repository + os.sep + '.pkgtk.yml', cls.repository + os.sep + '.pkgtk.back')
-        os.rename(cls.repository + os.sep + cls.config['authors']['basename'], cls.repository + os.sep + cls.config['authors']['basename'] + '.back')
+        if 'basename' in cls.config['authors']:
+            os.rename(cls.repository + os.sep + cls.config['authors']['basename'], cls.repository + os.sep + cls.config['authors']['basename'] + '.back')
 
     def test_init(self):
         """Test `init_authors` function of module `pkgtk.authors`"""
@@ -39,4 +40,5 @@ class TestAuthors(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         os.rename(cls.repository + os.sep + '.pkgtk.back', cls.repository + os.sep + '.pkgtk.yml')
-        os.rename(cls.repository + os.sep + cls.config['authors']['basename'] + '.back', cls.repository + os.sep + cls.config['authors']['basename'])
+        if 'basename' in cls.config['authors']:
+            os.rename(cls.repository + os.sep + cls.config['authors']['basename'] + '.back', cls.repository + os.sep + cls.config['authors']['basename'])
