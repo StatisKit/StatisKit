@@ -13,6 +13,7 @@
 ##################################################################################
 
 import os
+import git
 import unittest
 import tempfile
 
@@ -48,12 +49,17 @@ class TestLicence(unittest.TestCase):
     def test_dump_cecillc_c(self, plugin='CeCILL-C', suffixes=['.c', '.h']):
         """Test `dump_license` function of module `pkgtk.license` for C files"""
         load_license.plugin = plugin
+        repo = git.Repo('.')
         for suffix in suffixes:
             with tempfile.NamedTemporaryFile(suffix=suffix, mode='r', dir=self.repository) as filehandler:
+                repo.index.add([filehandler.name])
+                repo.index.commit('Add ' + filehandler.name)
                 dump_license(self.repository, filehandler.name, self.config)
                 content = filehandler.read()
                 dump_license(self.repository, filehandler.name, self.config)
                 filehandler.seek(0)
+                repo.head.reference = repo.commit('HEAD~1')
+                repo.index.reset()
                 self.assertMultiLineEqual(content, filehandler.read())
 
     def test_dump_cecillc_cpp(self):
