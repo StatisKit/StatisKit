@@ -22,24 +22,35 @@ from .config import load_config, dump_config
 def init_about(repository, **kwargs):
     config = load_config(repository)
     about = config.pop('about', dict())
-    if 'name' not in about or 'name' in kwargs:
-        name = kwargs.pop('name', '')
+    if 'name' in kwargs:
+        name = kwargs.pop('name')
         if name:
             about['name'] = name
-    if 'brief' not in about or 'brief' in kwargs:
-        brief = kwargs.pop('brief', '')
+        else:
+            about.pop('name', '')
+    if 'brief' in kwargs:
+        brief = kwargs.pop('brief')
         if brief:
             about['brief'] = brief
-    if 'homepage' not in about or 'homepage' in kwargs:
-        homepage = kwargs.pop('homepage', '')
+        else:
+            about.pop('brief', '')
+    if 'homepage' in kwargs:
+        homepage = kwargs.pop('homepage')
         if homepage:
             about['homepage'] = homepage
+        else:
+            about.pop('homepage', '')
     if 'plugin' not in about or 'plugin' in kwargs:
         plugin = kwargs.pop('plugin', '')
         if plugin:
             if plugin not in load_about:
                 raise ValueError('\'load_about\' has no \'' + plugin + '\' plugin')
             about['plugin'] = plugin
+    for name, value in kwargs.iteritems():
+        if value:
+            about[name] = value
+        else:
+            about.pop(name, "")
     config['about'] = about
     dump_config(repository, config)
     return config
@@ -76,8 +87,17 @@ def dump_about(repository, config):
     if 'plugin' in about:
         load_about.plugin = about['plugin']
         result = load_about(repository, config)
-        about['name'] = result.name
-        about['brief'] = result.brief
-        about['homepage'] = result.homepage
+        if result.name:
+            about['name'] = result.name
+        else:
+            about.pop('name', '')
+        if result.brief:
+            about['brief'] = result.brief
+        else:
+            about.pop('brief', '')
+        if result.homepage:
+            about['homepage'] = result.homepage
+        else:
+            about.pop('homepage', '')
         config['about'] = about
         dump_config(repository, config)

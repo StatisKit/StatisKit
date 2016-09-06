@@ -42,12 +42,16 @@ def about_script(args):
         root = args.root
     else:
         root = '.'
+    if args.name:
+        kwargs['name'] = args.name
     if args.brief:
         kwargs['brief'] = args.brief
     if args.homepage:
         kwargs['homepage'] = args.homepage
     if args.plugin:
         kwargs['plugin'] = args.plugin
+    if args.remote:
+        kwargs['remote'] = args.plugin
     init_about(root, **kwargs)
     config = init_config(root)
     dump_about(root, config)
@@ -73,15 +77,17 @@ def pkgtk(args=None):
     subparser = subparsers.add_parser('about', help="Handle file about")
     subparser.add_argument('--root', type=str, default='',
             help="Root directory of the repository")
-    subparser.add_argument('--name', type=str, default='',
+    subparser.add_argument('--name', type=str,
             help="Name to use")
-    subparser.add_argument('--brief', type=str, default='',
+    subparser.add_argument('--brief', type=str,
             help="Brief description to use")
-    subparser.add_argument('--homepage', type=str, default='',
+    subparser.add_argument('--homepage', type=str,
             help="Homepage to use")
-    subparser.add_argument('--plugin', type=str, default='',
+    subparser.add_argument('--plugin', type=str,
             help="Plugin to use",
             choices=list(load_about))
+    subparser.add_argument('--remote', type=str,
+            help="Remote to use")
     subparser.set_defaults(func = about_script)
 
     if args:
