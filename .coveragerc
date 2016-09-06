@@ -2,7 +2,6 @@
 exclude_lines =
     pragma: no cover
     def __repr__
-    def _repr_*_
-    raise *Error
     raise ValueError
+    raise .*Error
     if __name__ == .__main__.:
