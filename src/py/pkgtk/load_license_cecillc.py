@@ -642,6 +642,10 @@ ${name}\
 ${brief}
 
 % endif
+% if homepage:
+Homepage: ${homepage}
+
+% endif
 % if len(copyrights) > 0:
     % for copyright in copyrights:
 Copyright (c) ${copyright.latest}\
