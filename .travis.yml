@@ -34,7 +34,7 @@ script:
     - bash conda/build.sh
 
 after_success:
-    - coveralls
+    - coveralls -c .coveragerc
     - if [[ "$TRAVIS_BRANCH" = "master" ]] && [[ "$TRAVIS_PULL_REQUEST" = "false" ]]; then
         conda install anaconda-client;
         anaconda login --username "$ANACONDA_USERNAME" --password "$ANACONDA_PASSWORD";
