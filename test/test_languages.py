@@ -8,25 +8,34 @@
 # received a copy of the legalcode along with this work. If not, see             #
 # <http://www.cecill.info/licences/Licence_CeCILL-C_V1-en.html>.                 #
 #                                                                                #
-# File authors: Pierre Fernique <pfernique@gmail.com> (2)                        #
+# File authors: Pierre Fernique <pfernique@gmail.com> (23)                       #
 #                                                                                #
 ##################################################################################
 
-import git
-import os
+import unittest
 
-from .vcs import get_vcs
-from .authors import Authors
+from pkgtk.languages import get_language
 
-def load_authors(repository, filepath=''):
-    authors = Authors()
-    vcs = get_vcs(repository)
-    if vcs == 'git':
-        repository = git.Repo(repository)
-        if filepath:
-            filepath = os.path.relpath(os.path.abspath(filepath), repository.working_dir)
-        for commit in repository.iter_commits(paths=filepath):
-            author = commit.author
-            authors.add_commit(author.name, author.email, commit.committed_date)
-    authors.finalize()
-    return authors
+class TestLanguages(unittest.TestCase):
+    """Test functions related to languages"""
+
+    def test_c(self, language='C', *exts):
+        """Test `get_language` function for C files"""
+        for ext in exts:
+            self.assertEqual(language, get_language('file.' + ext))
+
+    def test_cpp(self):
+        """Test `get_language` function for C++ files"""
+        self.test_c('C++', 'cpp', 'cxx', 'c++', 'hpp', 'hxx', 'h++')
+
+    def test_python(self):
+        """Test `get_language` function for Python files"""
+        self.test_c('Python', 'py')
+
+    def test_rst(self):
+        """Test `get_language` function for reStructuredText files"""
+        self.test_c('reStructuredText', 'rst')
+
+    def test_md(self):
+        """Test `get_language` function for Markdown files"""
+        self.test_c('Markdown', 'md')

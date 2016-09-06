@@ -1,4 +1,9 @@
+about:
+  brief: 'Toolkit for packaging'
+  homepage: ''
+  name: 'PkgTk'
+  plugin: github
 authors:
-  basename: 'CONTRIBUTORS.rst'
+  basename: CONTRIBUTORS.rst
   format: '* {name} <{email}> ({score})'
   plugin: commit
