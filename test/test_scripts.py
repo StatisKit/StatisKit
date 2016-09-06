@@ -35,7 +35,7 @@ class TestScripts(unittest.TestCase):
         pkgtk(['authors'])
         pkgtk(['authors']+['--' + key + '=' + str(value) for key, value in self.config['authors'].iteritems()])
 
-    def test_authors(self):
+    def test_about(self):
         """Test `pkgtk about` script of module `pkgtk.scripts`"""
         pkgtk(['about'])
         pkgtk(['about']+['--' + key + '=' + str(value) for key, value in self.config['about'].iteritems()])
