@@ -25,5 +25,7 @@ setup(packages = packages.keys(),
       version = "0.1.0",
       author = 'Pierre Fernique',
       entry_points = {'pkgtk.load_authors': ['commit = pkgtk.load_authors_commit:load_authors'],
-                      'console_scripts': ['pkgtk = pkgtk.scripts:pkgtk']},
+                      'console_scripts': ['pkgtk = pkgtk.scripts:pkgtk'],
+                      'pkgtk.load_about': ['github = pkgtk.load_about_github:load_about'],
+                      'pkgtk.load_license': ['CeCILL-C = pkgtk.load_license_cecillc:load_license']},
       zip_safe = False)

@@ -31,9 +31,14 @@ class TestScripts(unittest.TestCase):
             os.rename(cls.repository + os.sep + cls.config['authors']['basename'], cls.repository + os.sep + cls.config['authors']['basename'] + '.back')
 
     def test_authors(self):
-        """Test `pkgtk authors` script of module `pkgtk.console_scripts`"""
+        """Test `pkgtk authors` script of module `pkgtk.scripts`"""
         pkgtk(['authors'])
         pkgtk(['authors']+['--' + key + '=' + str(value) for key, value in self.config['authors'].iteritems()])
+
+    def test_authors(self):
+        """Test `pkgtk about` script of module `pkgtk.scripts`"""
+        pkgtk(['about'])
+        pkgtk(['about']+['--' + key + '=' + str(value) for key, value in self.config['about'].iteritems()])
 
     @classmethod
     def tearDownClass(cls):

@@ -15,8 +15,8 @@
 import git
 import os
 
-from pkgtk.vcs import get_vcs
-from pkgtk.authors import Authors
+from .vcs import get_vcs
+from .authors import Authors
 
 def load_authors(repository, filepath=''):
     authors = Authors()

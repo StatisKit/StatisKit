@@ -21,7 +21,10 @@ requirements:
     - python
     - pyyaml
     - gitpython
-
+    - github3.py
+    - python-parse
+    - mako
+    
 test:
    requires:
      - nose
