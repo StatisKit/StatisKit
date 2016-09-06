@@ -24,19 +24,19 @@ def init_about(repository, **kwargs):
     about = config.pop('about', dict())
     if 'name' in kwargs:
         name = kwargs.pop('name')
-        if name:
+        if name and not name == '""':
             about['name'] = name
         else:
             about.pop('name', '')
     if 'brief' in kwargs:
         brief = kwargs.pop('brief')
-        if brief:
+        if brief and not brief == '""':
             about['brief'] = brief
         else:
             about.pop('brief', '')
     if 'homepage' in kwargs:
         homepage = kwargs.pop('homepage')
-        if homepage:
+        if homepage and not homepage == '""':
             about['homepage'] = homepage
         else:
             about.pop('homepage', '')
