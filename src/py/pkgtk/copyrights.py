@@ -34,7 +34,7 @@ class Copyrights(object):
     def sorted(self):
         copyrights = []
         years = sorted(self._years)
-        while len(years) > 0:
+        while len(years) > 1:
             year = years.pop()
             copyrights.append(self.Copyright(year, self._years[year]))
             while len(years) > 0 and self._years[years[-1]] == copyrights[-1].holders:
