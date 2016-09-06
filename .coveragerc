@@ -4,4 +4,5 @@ exclude_lines =
     def __repr__
     def _repr_*_
     raise *Error
+    raise ValueError
     if __name__ == .__main__.:
