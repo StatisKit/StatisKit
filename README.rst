@@ -10,13 +10,15 @@ PkgTk: A tool kit for package development
 
 .. |LICENSE| replace:: see |LICENSEFILE|_ file
 
-.. |AUTHORSFILE| replace:: see |AUTHORSFILE|_ file
+.. |AUTHORS| replace:: see |AUTHORSFILE|_ file
 
 .. |LICENSEFILE| replace:: LICENSE.rst
 
 .. _LICENSEFILE : LICENSE.rst
 
 .. |AUTHORSFILE| replace:: AUTHORS.rst
+
+.. _AUTHORSFILE : AUTHORS.rst
 
 .. |TRAVIS| image:: https://travis-ci.org/StatisKit/PkgTk.svg?branch=master
            :target: https://travis-ci.org/StatisKit/PkgTk
