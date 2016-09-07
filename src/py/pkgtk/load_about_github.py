@@ -12,17 +12,23 @@
 #                                                                                #
 ##################################################################################
 
+import os
 import git
 import github3
 import parse
 import re
 
+from getpass import getpass
 from distutils.version import LooseVersion
 
 from .vcs import get_vcs
 from .about import About
 
+GITHUB_USERNAME = None
+GITHUB_PASSWORD = None
+
 def load_about(repository, config):
+    global GITHUB_USERNAME, GITHUB_PASSWORD
     vcs = get_vcs(repository)
     if vcs == 'git':
         about = config.get('about', dict())
@@ -46,9 +52,15 @@ def load_about(repository, config):
         about = config.get('about', dict())
         if any(field not in about for field in ['name', 'brief', 'homepage', 'version', 'authors', 'email']):
             session = github3.GitHub()
-            owner = github3.organization(result['owner'])
-            if owner.is_null():
-                owner = github3.user(result['owner'])
+            if session.ratelimit_remaining == 0:
+                if not GITHUB_USERNAME:
+                    GITHUB_USERNAME = os.environ.get('GITHUB_USERNAME', raw_input('Username: '))
+                if not GITHUB_PASSWORD:
+                    GITHUB_PASSWORD = os.environ.get('GITHUB_PASSWORD', getpass('Password for {0}: '.format(GITHUB_USERNAME)))
+                session = github3.GitHub(GITHUB_USERNAME, GITHUB_PASSWORD)
+            owner = session.organization(result['owner'])
+            if isinstance(owner, github3.null.NullObject):
+                owner = session.user(result['owner'])
                 owner.authors = [owner]
             else:
                 owner.authors = list(owner.members())
