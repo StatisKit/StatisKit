@@ -15,6 +15,9 @@
 import itertools
 import textwrap
 import os
+import fnmatch
+
+from path import path
 
 from .plugin import PluginManager
 from .config import load_config, dump_config
@@ -87,44 +90,43 @@ def remove_license(filepath, delimiters):
         content = content[index:]
     return content
 
-def dump_license(repository, filepath, config):
+def dump_license(repository, config):
     load_license.plugin = config['license']['plugin']
-    if filepath is None:
-        with open(repository + os.sep + config['license']['basename'], 'w') as filehandler:
-            filehandler.write(load_license(repository, filepath, config=config))
-    else:
+    with open(repository + os.sep + config['license']['basename'], 'w') as filehandler:
+        filehandler.write(load_license(repository, None, config=config))
+    exclude = config['license'].get('exclude', [])
+    for filepath in path(repository).walkfiles():
         language = get_language(filepath)
-        if not language:
-            raise ValueError()
-        if 'delimiters' not in config['license'] or language not in config['license']['delimiters']:
-            if language in ['C', 'C++']:
-                delimiters = ['/*', '*', '*/']
-            elif language == 'Python':
-                delimiters = ['#'] * 3
-            elif language == 'reStructuredText':
-                delimiters = ['.. ', '.', ' ..']
+        if language and not any(fnmatch.fnmatch(filepath, pattern) for pattern in exclude):
+            if 'delimiters' not in config['license'] or language not in config['license']['delimiters']:
+                if language in ['C', 'C++']:
+                    delimiters = ['/*', '*', '*/']
+                elif language == 'Python':
+                    delimiters = ['#'] * 3
+                elif language == 'reStructuredText':
+                    delimiters = ['.. ', '.', ' ..']
+                else:
+                    raise ValueError()
             else:
+                delimiters = config['license']['delimiters'][language]
+            if not len(delimiters) == 3:
                 raise ValueError()
-        else:
-            delimiters = config['license']['delimiters'][language]
-        if not len(delimiters) == 3:
-            raise ValueError()
-        if any(len(delimiter) == 0 for delimiter in delimiters):
-            raise ValueError()
-        if not len(delimiters[1]) == 1 or delimiters[1].isspace():
-            raise ValueError()
-        content = remove_license(filepath, delimiters)
-        width = config['license']['width']
-        header = []
-        for line in load_license(repository, filepath, config=config).splitlines(True):
-            if not line.isspace():
-                for subline in itertools.chain(*[textwrap.wrap(line, width) if not line.isspace() else [" "]]):
-                    header.append(delimiters[0] + " " + ("{:" + str(width) + "}").format(subline) + " " + delimiters[-1])
-            else:
-                header.append(delimiters[0] + " " +  ("{:" + str(width) + "}").format(" ") + " " + delimiters[-1])
-        header = [delimiters[0] + delimiters[1] * (width + 2) + delimiters[-1],
-                delimiters[0] + ' ' * (width + 2) + delimiters[-1]] + header
-        header.append(delimiters[0] + ' ' * (width + 2) + delimiters[-1])
-        header.append(delimiters[0] + delimiters[1] * (width + 2) + delimiters[-1])
-        with open(filepath, 'w') as filehandler:
-            filehandler.write('\n'.join(header) + '\n\n' + content)
+            if any(len(delimiter) == 0 for delimiter in delimiters):
+                raise ValueError()
+            if not len(delimiters[1]) == 1 or delimiters[1].isspace():
+                raise ValueError()
+            content = remove_license(filepath, delimiters)
+            width = config['license']['width']
+            header = []
+            for line in load_license(repository, filepath, config=config).splitlines(True):
+                if not line.isspace():
+                    for subline in itertools.chain(*[textwrap.wrap(line, width) if not line.isspace() else [" "]]):
+                        header.append(delimiters[0] + " " + ("{:" + str(width) + "}").format(subline) + " " + delimiters[-1])
+                else:
+                    header.append(delimiters[0] + " " +  ("{:" + str(width) + "}").format(" ") + " " + delimiters[-1])
+            header = [delimiters[0] + delimiters[1] * (width + 2) + delimiters[-1],
+                      delimiters[0] + ' ' * (width + 2) + delimiters[-1]] + header
+            header.append(delimiters[0] + ' ' * (width + 2) + delimiters[-1])
+            header.append(delimiters[0] + delimiters[1] * (width + 2) + delimiters[-1])
+            with open(filepath, 'w') as filehandler:
+                filehandler.write('\n'.join(header) + '\n\n' + content)
