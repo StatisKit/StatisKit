@@ -15,9 +15,11 @@
 import os
 import git
 import unittest
-import tempfile
+import hashlib
 import __builtin__
+import path
 
+from tempfile import NamedTemporaryFile
 from pkgtk.config import init_config
 from pkgtk.license import init_license, load_license, dump_license
 
@@ -52,6 +54,7 @@ class TestLicence(unittest.TestCase):
         cls.repository = '.'
         init_license(cls.repository, plugin='CeCILL-C')
         cls.config = init_config(cls.repository)
+        cls.config['license']['exclude'] += path.path(cls.repository).walkfiles()
         os.rename(cls.repository + os.sep + '.pkgtk.yml', cls.repository + os.sep + '.pkgtk.back')
         os.rename(cls.repository + os.sep + cls.config['license']['basename'], cls.repository + os.sep + cls.config['license']['basename'] + '.back')
 
@@ -60,49 +63,42 @@ class TestLicence(unittest.TestCase):
         init_license(self.repository, plugin='CeCILL-C')
         init_license(self.repository)
 
-    def test_load_cecillc(self, plugin='CeCILL-C'):
-        """Test `load_license` function of module `pkgtk.load_license_cecillc`"""
+    def test_load_dump_cecillc(self, plugin='CeCILL-C'):
+        """Test `dump_license` function of module `pkgtk.license`"""
         load_license.plugin = plugin
-        dump_license(self.repository, None, self.config)
+        repo = git.Repo('.')
+        commit = repo.commit('HEAD')
+        author = git.Actor('John Doe', 'jdoe@host')
+        tempfiles = []
+        for suffix in ['.c', '.h', '.cpp', '.cxx', '.c++', '.hpp', '.hxx', '.h++', '.py', '.rst']:
+            with NamedTemporaryFile(suffix=suffix, mode='w', dir=self.repository, delete=False) as filehandler:
+                tempfiles.append(filehandler.name)
+        repo.index.add(tempfiles)
+        repo.index.commit('Add ' + ', '.join(tempfile for tempfile in tempfiles), author=author)
+        dump_license(self.repository, self.config)
+        repo.index.add(tempfiles)
+        author.name = ' '.join(reversed(author.name.split()))
+        repo.index.commit('Add ' + ', '.join(tempfile for tempfile in tempfiles), author=author)
+        dump_license(self.repository, self.config)
+        md5sum = hashlib.md5()
+        for tempfile in tempfiles:
+            with open(tempfile, 'r') as filehandler:
+                md5sum.update(filehandler.read())
+        dump_license(self.repository, self.config)
+        _md5sum = hashlib.md5()
+        for tempfile in tempfiles:
+            with open(tempfile, 'r') as filehandler:
+                _md5sum.update(filehandler.read())
+        repo.head.reference = commit
+        repo.index.reset()
+        for tempfile in tempfiles:
+            os.unlink(tempfile)
+        self.assertEqual(md5sum.digest(), _md5sum.digest())
         with open(self.repository + os.sep + self.config['license']['basename'], 'r') as filehandler:
             curr = filehandler.read()
         with open(self.repository + os.sep + self.config['license']['basename'] + '.back', 'r') as filehandler:
             prev = filehandler.read()
         self.assertMultiLineEqual(curr, prev)
-
-    def test_dump_cecillc_c(self, plugin='CeCILL-C', suffixes=['.c', '.h']):
-        """Test `dump_license` function of module `pkgtk.license` for C files"""
-        load_license.plugin = plugin
-        repo = git.Repo('.')
-        author = git.Actor('John Doe', 'jdoe@host')
-        for suffix in suffixes:
-            with tempfile.NamedTemporaryFile(suffix=suffix, mode='r', dir=self.repository) as filehandler:
-                repo.index.add([filehandler.name])
-                repo.index.commit('Add ' + filehandler.name, author=author)
-                author.name = ' '.join(reversed(author.name.split()))
-                dump_license(self.repository, filehandler.name, self.config)
-                repo.index.add([filehandler.name])
-                repo.index.commit('Add ' + filehandler.name, author=author)
-                author.name = ' '.join(reversed(author.name.split()))
-                dump_license(self.repository, filehandler.name, self.config)
-                content = filehandler.read()
-                dump_license(self.repository, filehandler.name, self.config)
-                filehandler.seek(0)
-                repo.head.reference = repo.commit('HEAD~2')
-                repo.index.reset()
-                self.assertMultiLineEqual(content, filehandler.read())
-
-    def test_dump_cecillc_cpp(self):
-        """Test `dump_license` function of module `pkgtk.license` for C++ files"""
-        self.test_dump_cecillc_c(suffixes=['.cpp', '.cxx', '.c++', '.hpp', '.hxx', '.h++'])
-
-    def test_dump_cecillc_py(self):
-        """Test `dump_license` function of module `pkgtk.license` for Python files"""
-        self.test_dump_cecillc_c(suffixes=['.py'])
-
-    def test_dump_cecillc_rst(self):
-        """Test `dump_license` function of module `pkgtk.license` for reStructuredText files"""
-        self.test_dump_cecillc_c(suffixes=['.rst'])
 
     @classmethod
     def tearDownClass(cls):

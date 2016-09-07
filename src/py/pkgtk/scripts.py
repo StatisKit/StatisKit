@@ -17,6 +17,7 @@ from argparse import ArgumentParser, RawTextHelpFormatter
 from pkgtk.config import init_config
 from pkgtk.authors import init_authors, load_authors, dump_authors
 from pkgtk.about import init_about, load_about, dump_about
+from pkgtk.license import init_license, load_license, dump_license
 
 def authors_script(args):
     """Add the authors option in the configuration file"""
@@ -51,10 +52,26 @@ def about_script(args):
     if args.plugin:
         kwargs['plugin'] = args.plugin
     if args.remote:
-        kwargs['remote'] = args.plugin
+        kwargs['remote'] = args.remote
     init_about(root, **kwargs)
     config = init_config(root)
     dump_about(root, config)
+
+def license_script(args):
+    kwargs = dict()
+    if args.root:
+        root = args.root
+    else:
+        root = '.'
+    if args.basename:
+        kwargs['basename'] = args.basename
+    if args.plugin:
+        kwargs['plugin'] = args.plugin
+    if args.width:
+        kwargs['width'] = args.width
+    init_license(root, **kwargs)
+    config = init_config(root)
+    dump_license(root, config)
 
 def pkgtk(args=None):
     parser = ArgumentParser(description='Software manager',
@@ -89,6 +106,18 @@ def pkgtk(args=None):
     subparser.add_argument('--remote', type=str,
             help="Remote to use")
     subparser.set_defaults(func = about_script)
+
+    subparser = subparsers.add_parser('license', help="Handle file license")
+    subparser.add_argument('--root', type=str, default='',
+            help="Root directory of the repository")
+    subparser.add_argument('--basename', type=str, default='',
+            help="Basename to use")
+    subparser.add_argument('--width', type=int,
+            help="Basename to use")
+    subparser.add_argument('--plugin', type=str,
+            help="Plugin to use",
+            choices=list(load_license))
+    subparser.set_defaults(func = license_script)
 
     if args:
         args = parser.parse_args(args)

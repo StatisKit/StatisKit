@@ -7,3 +7,8 @@ authors:
   basename: CONTRIBUTORS.rst
   format: '* {name} <{email}> ({score})'
   plugin: commit
+license:
+  plugin: CeCILL-C
+  exclude:
+    - "./.git/*"
+    - "./build/*"

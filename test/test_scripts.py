@@ -35,13 +35,16 @@ class TestScripts(unittest.TestCase):
         pkgtk(['authors'])
         pkgtk(['authors']+['--' + key + '=' + str(value) for key, value in self.config['authors'].iteritems()])
 
+    def test_license(self):
+        """Test `pkgtk license` script of module `pkgtk.scripts`"""
+        pkgtk(['license']+['--' + key + '=' + str(value) for key, value in self.config['license'].iteritems() if not key == 'exclude'])
+
     def test_about(self):
         """Test `pkgtk about` script of module `pkgtk.scripts`"""
-        pkgtk(['about'])
         pkgtk(['about']+['--' + key + '=' + '""' for key, value in self.config['about'].iteritems() if not key == 'plugin'])
         pkgtk(['about']+['--' + key + '=' + str(value) for key, value in self.config['about'].iteritems()])
-        pkgtk(['about', '--remote="https://github.com/StatisKit/PkgTk.git"'])
-        pkgtk(['about', '--remote=""'])
+        pkgtk(['about', '--remote=https://github.com/StatisKit/PkgTk.git'])
+        pkgtk(['about', '--remote='])
 
     @classmethod
     def tearDownClass(cls):
