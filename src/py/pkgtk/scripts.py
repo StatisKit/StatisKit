@@ -1,8 +1,8 @@
 ##################################################################################
 #                                                                                #
-# MngIt: Manage redundant information in software                                #
+# PkgTk: Toolkit for packaging                                                   #
 #                                                                                #
-# Copyright (c) 2016 Pierre Fernique                                             #
+# Homepage: pkgtk.readthedocs.io                                                 #
 #                                                                                #
 # This software is distributed under the CeCILL-C license. You should have       #
 # received a copy of the legalcode along with this work. If not, see             #
