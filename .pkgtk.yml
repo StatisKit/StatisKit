@@ -1,11 +1,8 @@
 about:
-  brief: Toolkit for packaging
-  homepage: pkgtk.readthedocs.io
-  name: PkgTk
   plugin: github
 authors:
   basename: CONTRIBUTORS.rst
-  format: '* {name} <{email}> ({score})'
+  format: '* `{name} <{email}>`_ ({score})'
   plugin: commit
 license:
   basename: LICENSE.rst

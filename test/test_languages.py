@@ -32,10 +32,14 @@ class TestLanguages(unittest.TestCase):
         """Test `get_language` function for Python files"""
         self.test_c('Python', 'py')
 
+    def test_yaml(self):
+        """Test `get_language` function for Python files"""
+        self.test_c('YAML', 'yml', 'yaml')
+
     def test_rst(self):
         """Test `get_language` function for reStructuredText files"""
         self.test_c('reStructuredText', 'rst')
 
     def test_md(self):
         """Test `get_language` function for Markdown files"""
-        self.test_c('Markdown', 'md')
+        self.test_c('Markdown', 'md', 'markdown')

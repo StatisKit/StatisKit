@@ -70,7 +70,7 @@ class TestLicence(unittest.TestCase):
         commit = repo.commit('HEAD')
         author = git.Actor('John Doe', 'jdoe@host')
         tempfiles = []
-        for suffix in ['.c', '.h', '.cpp', '.cxx', '.c++', '.hpp', '.hxx', '.h++', '.py', '.rst']:
+        for suffix in ['.c', '.h', '.cpp', '.cxx', '.c++', '.hpp', '.hxx', '.h++', '.py', '.rst', '.yml', '.yaml']:
             with NamedTemporaryFile(suffix=suffix, mode='w', dir=self.repository, delete=False) as filehandler:
                 tempfiles.append(filehandler.name)
         repo.index.add(tempfiles)

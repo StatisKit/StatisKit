@@ -15,6 +15,9 @@
 import git
 import github3
 import parse
+import re
+
+from distutils.version import LooseVersion
 
 from .vcs import get_vcs
 from .about import About
@@ -41,16 +44,33 @@ def load_about(repository, config):
         if not result or not result['host'] == 'github.com':
             raise Exception("")
         about = config.get('about', dict())
-        if any(field not in about for field in ['name', 'brief', 'homepage']):
+        if any(field not in about for field in ['name', 'brief', 'homepage', 'version', 'authors', 'email']):
             session = github3.GitHub()
+            owner = github3.organization(result['owner'])
+            if owner.is_null():
+                owner = github3.user(result['owner'])
+                owner.authors = [owner]
+            else:
+                owner.authors = list(owner.members())
+            version = [tag.name for tag in git.Repo(repository).tags if  re.match('[A-Za-z]*(|-|_)[0-9]*\.[0-9]*(|\..*)', tag.name)]
+            if version:
+                version = max(version, key = lambda version: LooseVersion(version))
+            else:
+                version = None
             repository = session.repository(result['owner'], result['repository'])
             about = About(name = about.get('name', repository.name),
                           brief = about.get('brief', repository.description),
-                          homepage = about.get('homepage', repository.homepage))
+                          homepage = about.get('homepage', repository.homepage),
+                          version = about.get('version', version),
+                          authors = about.get('authors', [author.name for author in owner.authors]),
+                          email = about.get('email', owner.email))
         else:
             about = About(name = about['name'],
                           brief = about['brief'],
-                          homepage = about['homepage'])
+                          homepage = about['homepage'],
+                          version = about['version'],
+                          authors = about['authors'],
+                          email = about['email'])
         return about
     else:
         raise Exception()

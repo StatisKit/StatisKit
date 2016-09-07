@@ -23,9 +23,11 @@ def get_language(basename):
             return 'C++'
         elif ext in ['.py']:
             return 'Python'
+        elif ext in ['.yaml', '.yml']:
+            return 'YAML'
         elif ext in ['.rst']:
             return 'reStructuredText'
-        elif ext in ['.md']:
+        elif ext in ['.md', '.markdown']:
             return 'Markdown'
     else:
         if basename in ['SConscript', 'SConstruct']:

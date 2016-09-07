@@ -101,7 +101,7 @@ def dump_license(repository, config):
             if 'delimiters' not in config['license'] or language not in config['license']['delimiters']:
                 if language in ['C', 'C++']:
                     delimiters = ['/*', '*', '*/']
-                elif language == 'Python':
+                elif language in ['Python', 'YAML']:
                     delimiters = ['#'] * 3
                 elif language == 'reStructuredText':
                     delimiters = ['.. ', '.', ' ..']

@@ -19,11 +19,30 @@ packages = {"" : "src" + os.sep + "py"}
 for package in find_packages("src" + os.sep + "py"):
     packages[package] = "src" + os.sep + "py"
 
+try:
+  from pkgtk.metadata import load_metadata
+  metadata = load_metadata('.')
+except:
+  class MetaData(object):
+    name = 'PkgTk'
+    version = None
+    authors = ''
+    email = ''
+    description = ''
+    long_description = ''
+    license = None
+  metadata = MetaData()
+
+
 setup(packages = packages.keys(),
       package_dir = {"" : "src" + os.sep + "py"},
-      name = "PkgTk",
-      version = "0.1.0",
-      author = 'Pierre Fernique',
+      name = metadata.name,
+      version = metadata.version,
+      author = metadata.authors,
+      author_email = metadata.email,
+      description = metadata.description,
+      long_description = metadata.long_description,
+      license = metadata.license,
       entry_points = {'pkgtk.load_authors': ['commit = pkgtk.load_authors_commit:load_authors'],
                       'console_scripts': ['pkgtk = pkgtk.scripts:pkgtk'],
                       'pkgtk.load_about': ['github = pkgtk.load_about_github:load_about'],
