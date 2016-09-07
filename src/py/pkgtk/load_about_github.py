@@ -17,6 +17,7 @@ import git
 import github3
 import parse
 import re
+import time
 
 from getpass import getpass
 from distutils.version import LooseVersion
@@ -53,11 +54,15 @@ def load_about(repository, config):
         if any(field not in about for field in ['name', 'brief', 'homepage', 'version', 'authors', 'email']):
             session = github3.GitHub()
             if session.ratelimit_remaining == 0:
-                if not GITHUB_USERNAME:
-                    GITHUB_USERNAME = raw_input("Username for 'https://github.com': ")
-                if not GITHUB_PASSWORD:
-                    GITHUB_PASSWORD = getpass("Password for 'https://" + GITHUB_USERNAME + "@github.com': ")
-                session = github3.GitHub(GITHUB_USERNAME, GITHUB_PASSWORD)
+                delay = int(session.rate_limit()['rate']['reset'] - time.time()) + 1
+                print 'Waiting for ' + str(delay) + 's'
+                time.sleep(delay)
+                session = github3.GitHub()
+                # if not GITHUB_USERNAME:
+                #     GITHUB_USERNAME = raw_input("Username for 'https://github.com': ")
+                # if not GITHUB_PASSWORD:
+                #     GITHUB_PASSWORD = getpass("Password for 'https://" + GITHUB_USERNAME + "@github.com': ")
+                # session = github3.GitHub(GITHUB_USERNAME, GITHUB_PASSWORD)
             owner = session.organization(result['owner'])
             if isinstance(owner, github3.null.NullObject):
                 owner = session.user(result['owner'])
