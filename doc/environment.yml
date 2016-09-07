@@ -1,0 +1,7 @@
+name: pkgtk_doc
+channels:
+ - defaults
+ - statiskit
+ - conda-forge
+dependencies:
+ - python-pkgtk
