@@ -12,10 +12,6 @@
 #                                                                                #
 ##################################################################################
 
-import time
-import string
-import os
-
 from .plugin import PluginManager
 from .config import load_config, dump_config
 
