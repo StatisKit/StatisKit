@@ -54,9 +54,9 @@ def load_about(repository, config):
             session = github3.GitHub()
             if session.ratelimit_remaining == 0:
                 if not GITHUB_USERNAME:
-                    GITHUB_USERNAME = os.environ.get('GITHUB_USERNAME', raw_input('Username: '))
+                    GITHUB_USERNAME = raw_input("Username for 'https://github.com': ")
                 if not GITHUB_PASSWORD:
-                    GITHUB_PASSWORD = os.environ.get('GITHUB_PASSWORD', getpass('Password for {0}: '.format(GITHUB_USERNAME)))
+                    GITHUB_PASSWORD = getpass("Password for 'https://" + GITHUB_USERNAME + "@github.com': ")
                 session = github3.GitHub(GITHUB_USERNAME, GITHUB_PASSWORD)
             owner = session.organization(result['owner'])
             if isinstance(owner, github3.null.NullObject):
