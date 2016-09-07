@@ -1,0 +1,32 @@
+.. include:: ../README.rst
+
+Installation
+============
+
+.. toctree::
+    :maxdepth: 2
+
+    install/anaconda
+    install/source
+
+License
+=======
+
+**PkgTk** is distributed under the |LICENSENAME|_.
+
+.. note:: 
+
+    |LICENSENAME| is LGPL compatible.
+    
+Authors
+=======
+
+.. include:: ../AUTHORS.rst
+
+.. |LICENSENAME| replace:: CeCILL-C license
+
+.. _LICENSENAME : license.html
+
+.. |LICENSE| replace:: see `License`_ section
+
+.. |AUTHORS| replace:: see `Authors`_ section
