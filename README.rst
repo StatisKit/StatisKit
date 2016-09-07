@@ -18,6 +18,8 @@ PkgTk: A tool kit for package development
 
 .. |AUTHORSFILE| replace:: AUTHORS.rst
 
+.. _AUTHORSFILE : AUTHORS.rst
+
 .. |TRAVIS| image:: https://travis-ci.org/StatisKit/PkgTk.svg?branch=master
            :target: https://travis-ci.org/StatisKit/PkgTk
            :alt: Travis
