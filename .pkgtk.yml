@@ -1,5 +1,11 @@
 about:
+  authors:
+  - !!python/unicode 'Pierre Fernique'
+  brief: !!python/unicode 'Tool kit for Python packages'
+  email: !!python/unicode 'pfernique@gmail.com'
+  name: !!python/unicode 'PkgTk'
   plugin: github
+  version: v0.1.0
 authors:
   basename: CONTRIBUTORS.rst
   format: '* `{name} <{email}>`_ ({score})'
