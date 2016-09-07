@@ -14,7 +14,6 @@
 
 import os
 import unittest
-import subprocess
 
 from pkgtk.config import load_config
 from pkgtk.scripts import pkgtk
