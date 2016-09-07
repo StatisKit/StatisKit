@@ -10,7 +10,7 @@ PkgTk: A tool kit for package development
 
 .. |LICENSE| replace:: see |LICENSEFILE|_ file
 
-.. |AUTHORS| replace:: see |AUTHORSFILE|_ file
+.. |AUTHORSFILE| replace:: see |AUTHORSFILE|_ file
 
 .. |LICENSEFILE| replace:: LICENSE.rst
 
