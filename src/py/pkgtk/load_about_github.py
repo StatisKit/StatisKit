@@ -26,13 +26,15 @@ from distutils.version import LooseVersion
 from .vcs import get_vcs
 from .about import About
 
-def get_session(requests):
+def get_session(requests, period=300):
     session = github3.GitHub()
     if session.ratelimit_remaining < requests:
         delay = int(session.rate_limit()['rate']['reset'] - time.time()) + 1
-        sys.stdout.write('Waiting for ' + str(delay) + 's... ')
-        sys.stdout.flush()
-        time.sleep(delay)
+        while delay >= 0:
+            sys.stdout.write('Waiting for ' + str(delay) + 's... ')
+            sys.stdout.flush()
+            time.sleep(min(period, delay))
+            delay -= period
         session = github3.GitHub()  
     return session
 
