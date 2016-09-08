@@ -33,6 +33,7 @@ def load_about(repository, config):
         if 'remote' not in about:
             repo = git.Repo(repository)
             result = None
+            swap = None
             for remote in repo.remotes:
                 for url in remote.urls:
                     result = parse.parse('{protocol}://{host}/{owner}/{repository}.git', url)
@@ -41,7 +42,12 @@ def load_about(repository, config):
                     else:
                         result = None
                 if result:
-                    break
+                    if remote.name == 'upstream':
+                        break
+                    else:
+                        swap = result
+            if swap and not result:
+                result = swap
         else:
             remote = about['remote']
             result = parse.parse('{protocol}://{host}/{owner}/{repository}.git', remote)
@@ -60,8 +66,8 @@ def load_about(repository, config):
                 owner = session.user(result['owner'])
                 owner.authors = [owner]
             else:
-                owner.authors = list(owner.members())
-            version = [tag.name for tag in git.Repo(repository).tags if  re.match('[A-Za-z]*(|-|_)[0-9]*\.[0-9]*(|\..*)', tag.name)]
+                owner.authors = [member.refresh() for member in owner.members()]
+            version = [tag.name for tag in git.Repo(repository).tags if re.match('[A-Za-z]*(|-|_)[0-9]*\.[0-9]*(|\..*)', tag.name)]
             if version:
                 version = max(version, key = lambda version: LooseVersion(version))
             else:
