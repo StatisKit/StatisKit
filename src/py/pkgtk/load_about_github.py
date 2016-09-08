@@ -25,6 +25,15 @@ from distutils.version import LooseVersion
 from .vcs import get_vcs
 from .about import About
 
+def get_session(requests):
+    session = github3.GitHub()
+    if session.ratelimit_remaining < requests:
+        delay = int(session.rate_limit()['rate']['reset'] - time.time()) + 1
+        print 'Waiting for ' + str(delay) + 's'
+        time.sleep(delay)
+        session = github3.GitHub()  
+    return session
+
 def load_about(repository, config):
     global GITHUB_USERNAME, GITHUB_PASSWORD
     vcs = get_vcs(repository)
@@ -55,18 +64,14 @@ def load_about(repository, config):
             raise Exception("")
         about = config.get('about', dict())
         if any(field not in about for field in ['name', 'brief', 'homepage', 'version', 'authors', 'email']):
-            session = github3.GitHub()
-            if session.ratelimit_remaining == 0:
-                delay = int(session.rate_limit()['rate']['reset'] - time.time()) + 1
-                print 'Waiting for ' + str(delay) + 's'
-                time.sleep(delay)
-                session = github3.GitHub()
+            session = get_session(2)
             owner = session.organization(result['owner'])
             if isinstance(owner, github3.null.NullObject):
                 owner = session.user(result['owner'])
                 owner.authors = [owner]
             else:
                 owner.authors = [member.refresh() for member in owner.members()]
+            session = get_session(len(owner.authors) * int('authors' not in about) + 1)
             version = [tag.name for tag in git.Repo(repository).tags if re.match('[A-Za-z]*(|-|_)[0-9]*\.[0-9]*(|\..*)', tag.name)]
             if version:
                 version = max(version, key = lambda version: LooseVersion(version))
