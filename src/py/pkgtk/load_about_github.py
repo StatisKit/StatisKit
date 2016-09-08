@@ -18,6 +18,7 @@ import github3
 import parse
 import re
 import time
+import sys
 
 from getpass import getpass
 from distutils.version import LooseVersion
@@ -29,7 +30,8 @@ def get_session(requests):
     session = github3.GitHub()
     if session.ratelimit_remaining < requests:
         delay = int(session.rate_limit()['rate']['reset'] - time.time()) + 1
-        print 'Waiting for ' + str(delay) + 's'
+        sys.stdout.write('Waiting for ' + str(delay) + 's... ')
+        sys.stdout.flush()
         time.sleep(delay)
         session = github3.GitHub()  
     return session
