@@ -1,12 +1,26 @@
+##################################################################################
+#                                                                                #
+# PkgTk: Tool kit for Python packages                                            #
+#                                                                                #
+# Homepage: http://pkgtk.readthedocs.io                                          #
+#                                                                                #
+# This software is distributed under the CeCILL-C license. You should have       #
+# received a copy of the legalcode along with this work. If not, see             #
+# <http://www.cecill.info/licences/Licence_CeCILL-C_V1-en.html>.                 #
+#                                                                                #
+# File authors: Pierre Fernique <pfernique@gmail.com> (10)                       #
+#                                                                                #
+##################################################################################
+
 about:
   authors:
   - !!python/unicode 'Pierre Fernique'
   brief: !!python/unicode 'Tool kit for Python packages'
   email: !!python/unicode 'pfernique@gmail.com'
+  homepage: http://pkgtk.readthedocs.io
   name: !!python/unicode 'PkgTk'
   plugin: github
   version: v0.1.0
-  homepage: http://pkgtk.readthedocs.io
 authors:
   basename: CONTRIBUTORS.rst
   format: '* `{name} <{email}>`_ ({score})'
