@@ -5,6 +5,7 @@ about:
   email: !!python/unicode 'statiskit@googlegroups.com'
   name: !!python/unicode 'PkgTk'
   plugin: github
+  homepage: 'pkgtk.readthedocs.io'
 authors:
   basename: CONTRIBUTORS.rst
   format: '* `{name} <{email}>`_ ({score})'
