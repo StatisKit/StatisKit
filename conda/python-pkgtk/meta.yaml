@@ -36,5 +36,6 @@ test:
      - nosetests test --pdb -x -s -v --with-coverage --cover-tests --cover-package=pkgtk --cover-package=test
      - REPOSITORY_DIR=`readlink -e $RECIPE_DIR/../..`
      - sed -i -e 's#'"$PREFIX"'/lib/python2.7/site-packages#'"$REPOSITORY_DIR"'/src/py#g' .coverage
+     - sed -i -e 's#/src/py/[^/]*.egg/#/src/py/#g' .coverage
      - sed -i -e 's#'"$SRC_DIR"'#'"$REPOSITORY_DIR"'#g' .coverage
      - mv .coverage $REPOSITORY_DIR
