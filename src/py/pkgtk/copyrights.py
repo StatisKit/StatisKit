@@ -1,14 +1,14 @@
 ##################################################################################
 #                                                                                #
-# MngIt: Manage redundant information in software                                #
+# PkgTk: Tool kit for Python packages                                            #
 #                                                                                #
-# Copyright (c) 2016 Pierre Fernique                                             #
+# Homepage: http://pkgtk.readthedocs.io                                          #
 #                                                                                #
 # This software is distributed under the CeCILL-C license. You should have       #
 # received a copy of the legalcode along with this work. If not, see             #
 # <http://www.cecill.info/licences/Licence_CeCILL-C_V1-en.html>.                 #
 #                                                                                #
-# File authors: Pierre Fernique <pfernique@gmail.com> (22)                       #
+# File authors: Pierre Fernique <pfernique@gmail.com> (4)                        #
 #                                                                                #
 ##################################################################################
 
@@ -34,7 +34,7 @@ class Copyrights(object):
     def sorted(self):
         copyrights = []
         years = sorted(self._years)
-        while len(years) > 1:
+        while len(years) > 0:
             year = years.pop()
             copyrights.append(self.Copyright(year, self._years[year]))
             while len(years) > 0 and self._years[years[-1]] == copyrights[-1].holders:

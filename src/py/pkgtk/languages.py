@@ -1,14 +1,14 @@
 ##################################################################################
 #                                                                                #
-# MngIt: Manage redundant information in software                                #
+# PkgTk: Tool kit for Python packages                                            #
 #                                                                                #
-# Copyright (c) 2016 Pierre Fernique                                             #
+# Homepage: http://pkgtk.readthedocs.io                                          #
 #                                                                                #
 # This software is distributed under the CeCILL-C license. You should have       #
 # received a copy of the legalcode along with this work. If not, see             #
 # <http://www.cecill.info/licences/Licence_CeCILL-C_V1-en.html>.                 #
 #                                                                                #
-# File authors: Pierre Fernique <pfernique@gmail.com> (23)                       #
+# File authors: Pierre Fernique <pfernique@gmail.com> (4)                        #
 #                                                                                #
 ##################################################################################
 
@@ -23,9 +23,11 @@ def get_language(basename):
             return 'C++'
         elif ext in ['.py']:
             return 'Python'
+        elif ext in ['.yaml', '.yml']:
+            return 'YAML'
         elif ext in ['.rst']:
             return 'reStructuredText'
-        elif ext in ['.md']:
+        elif ext in ['.md', '.markdown']:
             return 'Markdown'
     else:
         if basename in ['SConscript', 'SConstruct']:

@@ -1,14 +1,14 @@
 ##################################################################################
 #                                                                                #
-# MngIt: Manage redundant information in software                                #
+# PkgTk: Tool kit for Python packages                                            #
 #                                                                                #
-# Copyright (c) 2016 Pierre Fernique                                             #
+# Homepage: http://pkgtk.readthedocs.io                                          #
 #                                                                                #
 # This software is distributed under the CeCILL-C license. You should have       #
 # received a copy of the legalcode along with this work. If not, see             #
 # <http://www.cecill.info/licences/Licence_CeCILL-C_V1-en.html>.                 #
 #                                                                                #
-# File authors: Pierre Fernique <pfernique@gmail.com> (32)                       #
+# File authors: Pierre Fernique <pfernique@gmail.com> (7)                        #
 #                                                                                #
 ##################################################################################
 
@@ -64,7 +64,7 @@ load_about = PluginManager('pkgtk.load_about',
 
 class About(object):
 
-    def __init__(self, name, brief, homepage):
+    def __init__(self, name, brief, homepage, version, authors, email):
         if name:
             self.name = name
         else:
@@ -77,6 +77,9 @@ class About(object):
             self.homepage = homepage
         else:
             self.homepage = ''
+        self.version = version
+        self.authors = authors
+        self.email = email
 
 def dump_about(repository, config):
     about = config['about']
@@ -95,5 +98,17 @@ def dump_about(repository, config):
             about['homepage'] = result.homepage
         else:
             about.pop('homepage', '')
+        if result.version:
+            about['version'] = result.version
+        else:
+            about.pop('version', '')
+        if result.authors:
+            about['authors'] = result.authors
+        else:
+            about.pop('authors', '')
+        if result.email:
+            about['email'] = result.email
+        else:
+            about.pop('email', '')
         config['about'] = about
         dump_config(repository, config)

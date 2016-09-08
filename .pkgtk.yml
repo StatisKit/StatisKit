@@ -1,14 +1,20 @@
 about:
-  brief: 'Toolkit for packaging'
-  homepage: ''
-  name: 'PkgTk'
+  authors:
+  - !!python/unicode 'Pierre Fernique'
+  brief: !!python/unicode 'Tool kit for Python packages'
+  email: !!python/unicode 'statiskit@googlegroups.com'
+  name: !!python/unicode 'PkgTk'
   plugin: github
+  homepage: 'pkgtk.readthedocs.io'
+  version: 'v0.1.0'
 authors:
   basename: CONTRIBUTORS.rst
-  format: '* {name} <{email}> ({score})'
+  format: '* `{name} <{email}>`_ ({score})'
   plugin: commit
 license:
-  plugin: CeCILL-C
+  basename: LICENSE.rst
   exclude:
-    - "./.git/*"
-    - "./build/*"
+  - ./.git/*
+  - ./build/*
+  plugin: CeCILL-C
+  width: 78

@@ -1,14 +1,14 @@
 ##################################################################################
 #                                                                                #
-# MngIt: Manage redundant information in software                                #
+# PkgTk: Tool kit for Python packages                                            #
 #                                                                                #
-# Copyright (c) 2016 Pierre Fernique                                             #
+# Homepage: http://pkgtk.readthedocs.io                                          #
 #                                                                                #
 # This software is distributed under the CeCILL-C license. You should have       #
 # received a copy of the legalcode along with this work. If not, see             #
 # <http://www.cecill.info/licences/Licence_CeCILL-C_V1-en.html>.                 #
 #                                                                                #
-# File authors: Pierre Fernique <pfernique@gmail.com> (26)                       #
+# File authors: Pierre Fernique <pfernique@gmail.com> (5)                        #
 #                                                                                #
 ##################################################################################
 
@@ -101,7 +101,7 @@ def dump_license(repository, config):
             if 'delimiters' not in config['license'] or language not in config['license']['delimiters']:
                 if language in ['C', 'C++']:
                     delimiters = ['/*', '*', '*/']
-                elif language == 'Python':
+                elif language in ['Python', 'YAML']:
                     delimiters = ['#'] * 3
                 elif language == 'reStructuredText':
                     delimiters = ['.. ', '.', ' ..']
