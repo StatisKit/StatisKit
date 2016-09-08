@@ -25,9 +25,6 @@ from distutils.version import LooseVersion
 from .vcs import get_vcs
 from .about import About
 
-GITHUB_USERNAME = None
-GITHUB_PASSWORD = None
-
 def load_about(repository, config):
     global GITHUB_USERNAME, GITHUB_PASSWORD
     vcs = get_vcs(repository)
@@ -60,11 +57,6 @@ def load_about(repository, config):
                 print 'Waiting for ' + str(delay) + 's'
                 time.sleep(delay)
                 session = github3.GitHub()
-                # if not GITHUB_USERNAME:
-                #     GITHUB_USERNAME = raw_input("Username for 'https://github.com': ")
-                # if not GITHUB_PASSWORD:
-                #     GITHUB_PASSWORD = getpass("Password for 'https://" + GITHUB_USERNAME + "@github.com': ")
-                # session = github3.GitHub(GITHUB_USERNAME, GITHUB_PASSWORD)
             owner = session.organization(result['owner'])
             if isinstance(owner, github3.null.NullObject):
                 owner = session.user(result['owner'])
