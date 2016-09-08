@@ -30,6 +30,6 @@ In order to install **PkgTk** from source code we recommand to:
  
   .. literalinclude:: ../../conda/build.sh
 
-  .. note::
+  .. warning::
  
       Following this procedure do not install *Python* packages in develop mode.
