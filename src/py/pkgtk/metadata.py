@@ -13,6 +13,8 @@
 ##################################################################################
 
 import copy
+import path
+import os
 
 from .config import load_config, dump_config
 from .about import dump_about
