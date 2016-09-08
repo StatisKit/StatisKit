@@ -32,4 +32,3 @@ class TestMetaData(unittest.TestCase):
 
     def test_setup(self):
         execfile('setup.py', globals())
-        #sandbox.run_setup('setup.py', ['develop', '-n'])

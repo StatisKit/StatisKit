@@ -48,3 +48,5 @@ setup(packages = packages.keys(),
                       'pkgtk.load_about': ['github = pkgtk.load_about_github:load_about'],
                       'pkgtk.load_license': ['CeCILL-C = pkgtk.load_license_cecillc:load_license']},
       zip_safe = False)
+
+del metadata
