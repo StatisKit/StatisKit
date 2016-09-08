@@ -29,13 +29,7 @@ from .about import About
 def get_session(requests, period=300):
     session = github3.GitHub()
     if session.ratelimit_remaining < requests:
-        delay = int(session.rate_limit()['rate']['reset'] - time.time()) + 1
-        while delay >= 0:
-            sys.stdout.write('Waiting for ' + str(delay) + 's... ')
-            sys.stdout.flush()
-            time.sleep(min(period, delay))
-            delay -= period
-        session = github3.GitHub()  
+        raise Exception('Rate limit remaining is unsufficient, retry in ' + str(int(session.rate_limit()['rate']['reset'] - time.time()) + 1) + ' seconds')
     return session
 
 def load_about(repository, config):
