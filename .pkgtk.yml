@@ -6,6 +6,7 @@ about:
   name: !!python/unicode 'PkgTk'
   plugin: github
   homepage: 'pkgtk.readthedocs.io'
+  version: 'v0.1.0'
 authors:
   basename: CONTRIBUTORS.rst
   format: '* `{name} <{email}>`_ ({score})'
