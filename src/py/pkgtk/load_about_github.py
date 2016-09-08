@@ -52,6 +52,8 @@ def load_about(repository, config):
             raise Exception("")
         about = config.get('about', dict())
         if any(field not in about for field in ['name', 'brief', 'homepage', 'version', 'authors', 'email']):
+            import pdb
+            pdb.set_trace()
             session = github3.GitHub()
             if session.ratelimit_remaining == 0:
                 delay = int(session.rate_limit()['rate']['reset'] - time.time()) + 1

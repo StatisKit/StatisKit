@@ -53,6 +53,12 @@ def about_script(args):
         kwargs['plugin'] = args.plugin
     if args.remote:
         kwargs['remote'] = args.remote
+    if args.version:
+        kwargs['version'] = args.version
+    if args.authors:
+        kwargs['authors'] = args.authors
+    if args.email:
+        kwargs['email'] = args.email
     init_about(root, **kwargs)
     config = init_config(root)
     dump_about(root, config)
@@ -104,6 +110,14 @@ def pkgtk(args=None):
             help="Plugin to use",
             choices=list(load_about))
     subparser.add_argument('--remote', type=str,
+            help="Remote to use")
+    subparser.add_argument('--version', type=str,
+            help="Remote to use")
+    subparser.add_argument('--authors', type=str,
+            nargs='+',
+            help="Remote to use",
+            default=[])
+    subparser.add_argument('--email', type=str,
             help="Remote to use")
     subparser.set_defaults(func = about_script)
 
