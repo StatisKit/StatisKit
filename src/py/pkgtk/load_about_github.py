@@ -2,38 +2,36 @@
 #                                                                                #
 # PkgTk: Tool kit for Python packages                                            #
 #                                                                                #
-# Homepage: http://pkgtk.readthedocs.io                                          #
+# Homepage: pkgtk.readthedocs.io                                                 #
+#                                                                                #
+# Copyright (c) 2016 Pierre Fernique                                             #
 #                                                                                #
 # This software is distributed under the CeCILL-C license. You should have       #
 # received a copy of the legalcode along with this work. If not, see             #
 # <http://www.cecill.info/licences/Licence_CeCILL-C_V1-en.html>.                 #
 #                                                                                #
-# File authors: Pierre Fernique <pfernique@gmail.com> (10)                       #
+# File authors: Pierre Fernique <pfernique@gmail.com> (16)                       #
 #                                                                                #
 ##################################################################################
 
-import os
 import git
 import github3
 import parse
 import re
 import time
-import sys
 
-from getpass import getpass
 from distutils.version import LooseVersion
 
 from .vcs import get_vcs
 from .about import About
 
-def get_session(requests, period=300):
+def get_session(requests):
     session = github3.GitHub()
     if session.ratelimit_remaining < requests:
         raise Exception('Rate limit remaining is unsufficient, retry in ' + str(int(session.rate_limit()['rate']['reset'] - time.time()) + 1) + ' seconds')
     return session
 
 def load_about(repository, config):
-    global GITHUB_USERNAME, GITHUB_PASSWORD
     vcs = get_vcs(repository)
     if vcs == 'git':
         about = config.get('about', dict())
@@ -72,7 +70,7 @@ def load_about(repository, config):
             session = get_session(len(owner.authors) * int('authors' not in about) + 1)
             version = [tag.name for tag in git.Repo(repository).tags if re.match('[A-Za-z]*(|-|_)[0-9]*\.[0-9]*(|\..*)', tag.name)]
             if version:
-                version = max(version, key = lambda version: LooseVersion(version))
+                version = max(version, key = LooseVersion)
             else:
                 version = None
             repository = session.repository(result['owner'], result['repository'])
