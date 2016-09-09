@@ -2,13 +2,15 @@
 #                                                                                #
 # PkgTk: Tool kit for Python packages                                            #
 #                                                                                #
-# Homepage: http://pkgtk.readthedocs.io                                          #
+# Homepage: pkgtk.readthedocs.io                                                 #
+#                                                                                #
+# Copyright (c) 2016 Pierre Fernique                                             #
 #                                                                                #
 # This software is distributed under the CeCILL-C license. You should have       #
 # received a copy of the legalcode along with this work. If not, see             #
 # <http://www.cecill.info/licences/Licence_CeCILL-C_V1-en.html>.                 #
 #                                                                                #
-# File authors: Pierre Fernique <pfernique@gmail.com> (5)                        #
+# File authors: Pierre Fernique <pfernique@gmail.com> (6)                        #
 #                                                                                #
 ##################################################################################
 
@@ -50,7 +52,7 @@ class TestAuthors(unittest.TestCase):
             with open(self.repository + os.sep + self.config['authors']['basename'] + '.back', 'r') as filehandler:
                 previous = filehandler.read()
             current = authors.format(self.config['authors']['format'])
-            #self.assertMultiLineEqual(current, previous[-len(current):])
+            self.assertIn(current, previous)
 
     @classmethod
     def tearDownClass(cls):
