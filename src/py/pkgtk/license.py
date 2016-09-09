@@ -10,7 +10,7 @@
 # received a copy of the legalcode along with this work. If not, see             #
 # <http://www.cecill.info/licences/Licence_CeCILL-C_V1-en.html>.                 #
 #                                                                                #
-# File authors: Pierre Fernique <pfernique@gmail.com> (7)                        #
+# File authors: Pierre Fernique <pfernique@gmail.com> (8)                        #
 #                                                                                #
 ##################################################################################
 
@@ -97,13 +97,13 @@ def supplementary_exclude(repository, config):
         if key == 'basename':
             yield path(value).relpath(repository)
         if isinstance(value, dict):
-            supplementary_exclude(value)
+            supplementary_exclude(repository, value)
 
 def dump_license(repository, config):
     load_license.plugin = config['license']['plugin']
     with open(repository + os.sep + config['license']['basename'], 'w') as filehandler:
         filehandler.write(load_license(repository, None, config=config))
-    exclude = config['license'].get('exclude', []) + list(supplementary_exclude(config)) + ['./.pkgtk.yml']
+    exclude = config['license'].get('exclude', []) + list(supplementary_exclude(repository, config)) + ['./.pkgtk.yml']
     for filepath in path(repository).walkfiles():
         language = get_language(filepath)
         if language and not any(fnmatch.fnmatch(filepath, pattern) for pattern in exclude):
