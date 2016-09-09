@@ -57,5 +57,4 @@ after_success:
             anaconda upload --user statiskit "$CONDA_FILE" --force;
             curl --request POST http://readthedocs.org/build/pkgtk;
         fi
-      fi      
-
+      fi
