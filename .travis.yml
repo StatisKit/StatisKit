@@ -37,13 +37,15 @@ script:
 after_success:
     - coveralls
     - if [[ "$TRAVIS_BRANCH" = "master" ]] && [[ "$TRAVIS_PULL_REQUEST" = "false" ]]; then
-        conda install anaconda-client;
-        anaconda login --username "$ANACONDA_USERNAME" --password "$ANACONDA_PASSWORD";
-        for CONDA_RECIPE in toolchain libboost-python python-scons python-parse; do
-          CONDA_FILE=`conda build $CONDA_RECIPE --output`; 
-          anaconda upload --user statiskit ${CONDA_FILE%%} --force;
-        done;
-        if [[ "$TRAVIS_OS_NAME" = "linux" ]]; then
+        if [[ ! -z $ANACONDA_USERNAME ]] && [[ ! -z $ANACONDA_PASSWORD ]]; then
+          conda install anaconda-client;
+          anaconda login --username "$ANACONDA_USERNAME" --password "$ANACONDA_PASSWORD";
+          for CONDA_RECIPE in toolchain libboost-python python-scons python-parse; do
+            CONDA_FILE=`conda build $CONDA_RECIPE --output`; 
+            anaconda upload --user statiskit ${CONDA_FILE%%} --force;
+          done;
+        fi
+        if [[ ! -z DOCKER_USERNAME ]] && [[ ! -z $DOCKER_PASSWORD ]] && [[ "$TRAVIS_OS_NAME" = "linux" ]]; then
             docker build --build-arg BUILD="false" -t statiskit/ubuntu . ;
             docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
             docker push statiskit/ubuntu;
