@@ -25,7 +25,8 @@ if errorlevel 1 exit 1
     link=shared ^
     -j%CPU_COUNT% ^
     -s ZLIB_INCLUDE="%LIBRARY_INC%" ^
-    -s ZLIB_LIBPATH="%LIBRARY_LIB%"
+    -s ZLIB_LIBPATH="%LIBRARY_LIB%" ^
+    --with-python
 if errorlevel 1 exit 1
 
 :: Install fix-up for a non version-specific boost include

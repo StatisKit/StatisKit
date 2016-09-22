@@ -11,4 +11,4 @@ install:
   - conda update -q conda
   - conda info -a
   - conda install conda-build
-  - for /D %%i in (*) do conda build "%%i"
+#  - for /D %%i in (*) do conda build "%%i"
