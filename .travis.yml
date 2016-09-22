@@ -26,7 +26,8 @@ before_install:
 install:
     - pip install python-coveralls
     - conda build toolchain
-    - conda install toolchain --use-local
+    - conda create -n _travis toolchain --use-local
+    - source activate _travis
 
 script:
     - conda build libboost-python -c statiskit
