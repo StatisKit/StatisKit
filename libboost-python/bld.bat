@@ -7,10 +7,10 @@ dir .
 CALL .\bootstrap.bat mingw
 IF errorlevel 1 exit 1
 dir .
-CALL .\b2.exe install toolset=gcc --prefix=..\..\b2_for_mingw
+CALL .\b2.exe install toolset=gcc --prefix=%LIBRARY_PREFIX%
 cd ..\..
 dir .
-set PATH=%PATH%;.\b2_for_mingw\bin
+set PATH=%PATH%;%LIBRARY_BIN%
 
 :: Build step
 CALL b2 install ^
