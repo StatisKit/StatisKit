@@ -39,6 +39,7 @@ before_install:
       fi
     - if [[ "$TRAVIS_DOCKER" = "false" ]]; then
         conda info -a;
+      fi
     - if [[ "$TRAVIS_DOCKER" = "false" ]]; then
         conda install conda-build;
       fi
