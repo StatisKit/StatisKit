@@ -1,8 +1,8 @@
 :: Start with bootstrap
 cd .\tools\build
 dir .
-:: CALL .\bootstrap.bat
-:: IF errorlevel 1 exit 1
+CALL .\bootstrap.bat
+IF errorlevel 1 exit 1
 :: dir .
 CALL .\bootstrap.bat mingw
 IF errorlevel 1 exit 1
