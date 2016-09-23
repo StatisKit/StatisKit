@@ -1,22 +1,18 @@
 :: Start with bootstrap
 cd .\tools\build
-dir .
 ECHO .\bootstrap.bat
 CALL .\bootstrap.bat
 IF errorlevel 1 exit 1
-dir .
 ECHO .\bootstrap.bat mingw
 CALL .\bootstrap.bat mingw
 IF errorlevel 1 exit 1
-ECHO dir .
-dir .
 
 :: cd ..\..
 :: dir .
 :: CALL .\tools\build\b2.exe install toolset=gcc --prefix=%LIBRARY_PREFIX%
 :: dir .
 :: set PATH=%PATH%;%LIBRARY_BIN%
-
+:: 
 :: Build step
 :: CALL b2 install ^
 ::     --build-dir=buildboost ^
@@ -31,11 +27,11 @@ dir .
 ::     -s ZLIB_LIBPATH="%LIBRARY_LIB%" ^
 ::     --with-python
 :: IF errorlevel 1 exit 1
-
+:: 
 :: :: Install fix-up for a non version-specific boost include
 :: move %LIBRARY_INC%\boost-1_61\boost %LIBRARY_INC%
 :: IF errorlevel 1 exit 1
-
+:: 
 :: Move dll's to LIBRARY_BIN
 :: move %LIBRARY_LIB%\*vc%LIB_VER%-mt-1_61.dll "%LIBRARY_BIN%"
 :: IF errorlevel 1 exit 1
