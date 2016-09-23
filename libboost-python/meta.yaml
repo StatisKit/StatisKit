@@ -11,11 +11,11 @@ source:
 build:
   number: 0
   script_env:
-    - TOOLCHAIN
+    - TOOLCHAIN # [not win]
   features:
-    - {{ TOOLCHAIN }}
+    - {{ TOOLCHAIN }} # [not win]
   track_features:
-    - {{ TOOLCHAIN }}
+    - {{ TOOLCHAIN }} # [not win]
 
 about:
   home: http://www.boost.org/

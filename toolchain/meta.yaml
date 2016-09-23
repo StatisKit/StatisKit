@@ -22,4 +22,3 @@ requirements:
 test:
   commands:
     - echo $TOOLCHAIN # [unix]
-    - echo %TOOLCHAIN% # [win]
