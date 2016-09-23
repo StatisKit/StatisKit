@@ -23,6 +23,7 @@ CALL anaconda login --username "%ANACONDA_USERNAME%" --password "%ANACONDA_PASSW
 if %errorlevel% neq 0 exit /b %errorlevel%
 
 FOR %%CONDA_RECIPE IN (toolchain, python-scons, python-parse) DO (
+  ECHO %CONDA_RECIPE%
   FOR /f %%i in ('conda build %CONDA_RECIPE% --output') DO (set CONDA_FILE=%%i)
   CALL anaconda upload --user statiskit %CONDA_FILE% --force;
   if %errorlevel% neq 0 exit /b %errorlevel%
