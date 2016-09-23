@@ -7,7 +7,7 @@ IF %errorlevel% neq 0 exit /b %errorlevel%
 CALL activate _appveyor
 IF %errorlevel% neq 0 exit /b %errorlevel%
 CALL conda build libboost-python -c statiskit
-:: if %errorlevel% neq 0 exit /b %errorlevel%
+if %errorlevel% neq 0 exit /b %errorlevel%
 CALL conda build python-scons -c statiskit
 IF %errorlevel% neq 0 exit /b %errorlevel%
 CALL conda build python-parse -c statiskit
