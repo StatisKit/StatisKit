@@ -27,15 +27,15 @@ IF %errorlevel% neq 0 exit /b %errorlevel%
 ::  ECHO %%CONDA_RECIPE
   
 FOR /f %%i in ('conda build toolchain --output') DO (set CONDA_FILE=%%i)
-CALL anaconda upload --user statiskit %CONDA_FILE% --force;
+CALL anaconda upload --user statiskit %CONDA_FILE% --force
 IF %errorlevel% neq 0 exit /b %errorlevel%
 
 FOR /f %%i in ('conda build python-scons --output') DO (set CONDA_FILE=%%i)
-CALL anaconda upload --user statiskit %CONDA_FILE% --force;
+CALL anaconda upload --user statiskit %CONDA_FILE% --force
 IF %errorlevel% neq 0 exit /b %errorlevel%
 
 FOR /f %%i in ('conda build python-parse --output') DO (set CONDA_FILE=%%i)
-CALL anaconda upload --user statiskit %CONDA_FILE% --force;
+CALL anaconda upload --user statiskit %CONDA_FILE% --force
 IF %errorlevel% neq 0 exit /b %errorlevel%
 
 CALL anaconda logout
