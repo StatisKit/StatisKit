@@ -36,7 +36,7 @@ script:
 
 after_success:
     - coveralls
-    - if if [[ "$TRAVIS_BRANCH" = "master" ]] && [[ "$TRAVIS_PULL_REQUEST" = "false" ]] && [[ ! -z $ANACONDA_USERNAME ]] && [[ ! -z $ANACONDA_PASSWORD ]]; then
+    - if [[ "$TRAVIS_BRANCH" = "master" ]] && [[ "$TRAVIS_PULL_REQUEST" = "false" ]] && [[ ! -z $ANACONDA_USERNAME ]] && [[ ! -z $ANACONDA_PASSWORD ]]; then
         conda install anaconda-client;
         anaconda login --username "$ANACONDA_USERNAME" --password "$ANACONDA_PASSWORD";
         for CONDA_RECIPE in toolchain libboost-python python-scons python-parse; do

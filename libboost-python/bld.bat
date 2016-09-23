@@ -1,15 +1,3 @@
-: Set the right msvc version according to Python version
-if "%PY_VER%"=="2.7" (
-    set MSVC_VER=9.0
-    set LIB_VER=90
-) else if "%PY_VER%"=="3.4" (
-    set MSVC_VER=10.0
-    set LIB_VER=100
-) else (
-    set MSVC_VER=14.0
-    set LIB_VER=140
-)
-
 :: Start with bootstrap
 call bootstrap.bat
 if errorlevel 1 exit 1
@@ -18,7 +6,7 @@ if errorlevel 1 exit 1
 .\b2 install ^
     --build-dir=buildboost ^
     --prefix=%LIBRARY_PREFIX% ^
-    toolset=msvc-%MSVC_VER% ^
+    toolset=gcc ^
     address-model=%ARCH% ^
     variant=release ^
     threading=multi ^
