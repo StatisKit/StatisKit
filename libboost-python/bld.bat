@@ -3,9 +3,11 @@ cd .\tools\build
 dir .
 CALL .\bootstrap.bat
 IF errorlevel 1 exit 1
-:: dir .
+dir .
 CALL .\bootstrap.bat mingw
 IF errorlevel 1 exit 1
+dir .
+
 :: cd ..\..
 :: dir .
 :: CALL .\tools\build\b2.exe install toolset=gcc --prefix=%LIBRARY_PREFIX%
