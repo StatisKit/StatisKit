@@ -17,10 +17,10 @@ IF NOT "%APPVEYOR_REPO_BRANCH%"=="master" GOTO DONE
 IF "%ANACONDA_USERNAME%"=="" GOTO DONE
 IF "%ANACONDA_PASSWORD%"=="" GOTO DONE
 
-ECHO y | conda install -n root anaconda-client
+CALL conda install -n root anaconda-client
 if %errorlevel% neq 0 exit /b %errorlevel%
 
-CALL anaconda login --username "%ANACONDA_USERNAME%" --password "%ANACONDA_PASSWORD%" /y
+ECHO y | anaconda login --username "%ANACONDA_USERNAME%" --password "%ANACONDA_PASSWORD%"
 IF %errorlevel% neq 0 exit /b %errorlevel%
 
 FOR %%CONDA_RECIPE IN (toolchain, python-scons, python-parse) DO (
