@@ -11,7 +11,6 @@ install:
   - conda update -q conda
   - conda info -a
   - conda install conda-build
-  - conda install mingw
-  - g++ --version
-  - g++ -dumpversion
-#  - for /D %%i in (*) do conda build "%%i"
+  - conda build toolchain
+  - conda create -n _appveyor toolchain --use-local
+  - source activate _appveyor
