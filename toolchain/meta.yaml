@@ -14,10 +14,8 @@ about:
 requirements:
   build:
     - python
-    - mingw 5.2 # [win]
   run:
     - python
-    - mingw 5.2 # [win]
 
 test:
   commands:
