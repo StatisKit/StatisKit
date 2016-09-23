@@ -1,11 +1,11 @@
 :: Start with bootstrap
 cd tools\build
-CALL bootstrap.bat
-CALL .\b2 install --prefix=%LIBRARY_BIN%
+CALL bootstrap.bat mingw
+:: CALL .\b2 install --prefix=%LIBRARY_BIN%
 cd ..\..
 
 :: Build step
-CALL .\b2 install ^
+CALL .\tools\build\b2 install ^
     --build-dir=buildboost ^
     --prefix=%LIBRARY_PREFIX% ^
     toolset=gcc ^
