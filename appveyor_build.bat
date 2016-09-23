@@ -1,12 +1,12 @@
 SETLOCAL
 
-conda build toolchain -c statiskit
+CALL conda build toolchain -c statiskit
 if %errorlevel% neq 0 exit /b %errorlevel%
-conda create -n _appveyor toolchain --use-local
+CALL conda create -n _appveyor toolchain --use-local
 if %errorlevel% neq 0 exit /b %errorlevel%
-activate _appveyor
+CALL activate _appveyor
 if %errorlevel% neq 0 exit /b %errorlevel%
-conda build libboost-python -c statiskit
+CALL conda build libboost-python -c statiskit
 if %errorlevel% neq 0 exit /b %errorlevel%
 conda build python-scons -c statiskit
 if %errorlevel% neq 0 exit /b %errorlevel%
