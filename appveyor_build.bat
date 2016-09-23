@@ -6,8 +6,8 @@ CALL conda create -n _appveyor toolchain --use-local
 if %errorlevel% neq 0 exit /b %errorlevel%
 CALL activate _appveyor
 if %errorlevel% neq 0 exit /b %errorlevel%
-CALL conda build libboost-python -c statiskit
-if %errorlevel% neq 0 exit /b %errorlevel%
+:: CALL conda build libboost-python -c statiskit
+:: if %errorlevel% neq 0 exit /b %errorlevel%
 conda build python-scons -c statiskit
 if %errorlevel% neq 0 exit /b %errorlevel%
 conda build python-parse -c statiskit
