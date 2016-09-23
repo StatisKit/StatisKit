@@ -75,11 +75,12 @@ after_success:
       fi
     - if [[ "$TRAVIS_BRANCH" = "master" ]] && [[ "$TRAVIS_PULL_REQUEST" = "false" ]] && [[ "$TRAVIS_DOCKER" = "false" ]] && [[ ! -z $ANACONDA_USERNAME ]] && [[ ! -z $ANACONDA_PASSWORD ]]; then
         conda install -n root anaconda-client;
-        anaconda login --username "$ANACONDA_USERNAME" --password "$ANACONDA_PASSWORD";
+        yes | anaconda login --username "$ANACONDA_USERNAME" --password "$ANACONDA_PASSWORD";
         for CONDA_RECIPE in toolchain libboost-python python-scons python-parse; do
           CONDA_FILE=`conda build $CONDA_RECIPE --output`; 
           anaconda upload --user statiskit ${CONDA_FILE%%} --force;
         done;
+        anaconda logout;
       fi
     - if [[ "$TRAVIS_BRANCH" = "master" ]] && [[ "$TRAVIS_PULL_REQUEST" = "false" ]] && [[ "$TRAVIS_OS_NAME" = "linux" ]] && [[ "$TRAVIS_DOCKER" = "true" ]] && [[ ! -z $DOCKER_USERNAME ]] && [[ ! -z $DOCKER_PASSWORD ]]; then
         docker build --build-arg BUILD="false" -t statiskit/ubuntu . ;
