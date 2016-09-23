@@ -5,15 +5,15 @@ matrix:
     - os: linux
       dist: trusty
       sudo: required
-      env:
-        - TRAVIS_DOCKER="false"
-    - os: linux
-      dist: trusty
-      sudo: required
       services:
         - docker
       env:
         - TRAVIS_DOCKER="true"
+    - os: linux
+      dist: trusty
+      sudo: required
+      env:
+        - TRAVIS_DOCKER="false"
     - os: osx
       osx_image: xcode7.2
       env:
@@ -26,51 +26,51 @@ before_install:
         curl https://repo.continuum.io/miniconda/Miniconda2-latest-MacOSX-x86_64.sh -o miniconda.sh;
       fi
     - if [[ "$TRAVIS_DOCKER" = "false" ]]; then
-        bash miniconda.sh -b -p $HOME/miniconda
+        bash miniconda.sh -b -p $HOME/miniconda;
       fi
     - if [[ "$TRAVIS_DOCKER" = "false" ]]; then
-        export PATH=$HOME/miniconda/bin:$PATH
+        export PATH=$HOME/miniconda/bin:$PATH;
       fi
     - if [[ "$TRAVIS_DOCKER" = "false" ]]; then
-        conda config --set always_yes yes --set changeps1 no
+        conda config --set always_yes yes --set changeps1 no;
       fi
     - if [[ "$TRAVIS_DOCKER" = "false" ]]; then
-        conda update -q conda
+        conda update -q conda;
       fi
     - if [[ "$TRAVIS_DOCKER" = "false" ]]; then
-        conda info -a
+        conda info -a;
     - if [[ "$TRAVIS_DOCKER" = "false" ]]; then
-        conda install conda-build
+        conda install conda-build;
       fi
 
 install:
     - if [[ "$TRAVIS_DOCKER" = "false" ]]; then
-        pip install python-coveralls
+        pip install python-coveralls;
       fi
     - if [[ "$TRAVIS_DOCKER" = "false" ]]; then
-        conda build toolchain
+        conda build toolchain;
       fi
     - if [[ "$TRAVIS_DOCKER" = "false" ]]; then
-        conda create -n _travis toolchain --use-local
+        conda create -n _travis toolchain --use-local;
       fi
     - if [[ "$TRAVIS_DOCKER" = "false" ]]; then
-        source activate _travis
+        source activate _travis;
       fi
 
 script:
     - if [[ "$TRAVIS_DOCKER" = "false" ]]; then
-        conda build libboost-python -c statiskit
+        conda build libboost-python -c statiskit;
       fi
     - if [[ "$TRAVIS_DOCKER" = "false" ]]; then
-        conda build python-scons -c statiskit
+        conda build python-scons -c statiskit;
       fi
     - if [[ "$TRAVIS_DOCKER" = "false" ]]; then
-        conda build python-parse -c statiskit
+        conda build python-parse -c statiskit;
       fi
 
 after_success:
     - if [[ "$TRAVIS_DOCKER" = "false" ]]; then
-        coveralls
+        coveralls;
       fi
     - if [[ "$TRAVIS_BRANCH" = "master" ]] && [[ "$TRAVIS_PULL_REQUEST" = "false" ]] && [[ "$TRAVIS_DOCKER" = "false" ]] && [[ ! -z $ANACONDA_USERNAME ]] && [[ ! -z $ANACONDA_PASSWORD ]]; then
         conda install anaconda-client;
