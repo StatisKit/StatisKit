@@ -11,6 +11,9 @@ install:
   - conda update -q conda
   - conda info -a
   - conda install conda-build
-  - conda build toolchain
+  - conda build toolchain -c statiskit
   - conda create -n _appveyor toolchain --use-local
   - activate _appveyor
+  - conda build libboost-python -c statiskit
+  - conda build python-scons -c statiskit
+  - conda build python-parse -c statiskit
