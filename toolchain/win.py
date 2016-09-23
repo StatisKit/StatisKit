@@ -15,8 +15,10 @@ elif BITS == 64:
 mingw_dir = r'C:\MinGW\mingw%d' % BITS
 
 dst_dir = join(PREFIX, 'MinGW', 'bin')
-os.makedirs(dst_dir)
-os.makedirs(SCRIPTS)
+if not os.path.exists(dst_dir):
+    os.makedirs(dst_dir)
+if not os.path.exists(SCRIPTS):
+    os.makedirs(SCRIPTS)
 for fn in os.listdir(join(mingw_dir, 'bin')):
     if fn.endswith(('elfedit.exe', 'readelf.exe')):
         continue
