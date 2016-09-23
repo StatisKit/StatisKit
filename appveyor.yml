@@ -13,4 +13,4 @@ install:
   - conda install conda-build
   - conda build toolchain
   - conda create -n _appveyor toolchain --use-local
-  - source activate _appveyor
+  - activate _appveyor
