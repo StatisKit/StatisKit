@@ -22,3 +22,5 @@ requirements:
 test:
   commands:
     - echo $TOOLCHAIN # [unix]
+    - gcc -dumpversion # [win]
+    - g++ -dumpversion # [win]
