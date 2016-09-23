@@ -36,6 +36,9 @@ script:
 
 after_success:
     - coveralls
+    - echo $TRAVIS_BRANCH $TRAVIS_PULL_REQUEST
+    - echo $ANACONDA_USERNAME $ANACONDA_PASSWORD
+    - echo $DOCKER_USERNAME $DOCKER_PASSWORD
     - if [[ "$TRAVIS_BRANCH" = "master" ]] && [[ "$TRAVIS_PULL_REQUEST" = "false" ]]; then
         if [[ ! -z $ANACONDA_USERNAME ]] && [[ ! -z $ANACONDA_PASSWORD ]]; then
           conda install anaconda-client;
