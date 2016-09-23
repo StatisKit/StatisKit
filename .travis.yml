@@ -5,8 +5,15 @@ matrix:
     - os: linux
       dist: trusty
       sudo: required
+      env:
+        - TRAVIS_DOCKER="false"
+    - os: linux
+      dist: trusty
+      sudo: required
       services:
         - docker
+      env:
+        - TRAVIS_DOCKER="true"
     - os: osx
       osx_image: xcode7.2
 
@@ -44,7 +51,7 @@ after_success:
           anaconda upload --user statiskit ${CONDA_FILE%%} --force;
         done;
       fi
-    - if [[ "$TRAVIS_BRANCH" = "master" ]] && [[ "$TRAVIS_PULL_REQUEST" = "false" ]] && [[ "$TRAVIS_OS_NAME" = "linux" ]] && [[ ! -z $DOCKER_USERNAME ]] && [[ ! -z $DOCKER_PASSWORD ]]; then
+    - if [[ "$TRAVIS_BRANCH" = "master" ]] && [[ "$TRAVIS_PULL_REQUEST" = "false" ]] && [[ "$TRAVIS_OS_NAME" = "linux" ]] && [[ "$TRAVIS_DOCKER" = "true" ]] && [[ ! -z $DOCKER_USERNAME ]] && [[ ! -z $DOCKER_PASSWORD ]]; then
         docker build --quiet --build-arg BUILD="false" -t statiskit/ubuntu . ;
         docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
         docker push statiskit/ubuntu;
