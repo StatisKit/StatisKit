@@ -1,5 +1,5 @@
 :: Start with bootstrap
-call bootstrap.bat
+call bootstrap.bat mingw
 if errorlevel 1 exit 1
 
 :: Build step
