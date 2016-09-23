@@ -1,3 +1,5 @@
+SETLOCAL
+
 conda build toolchain -c statiskit
 conda create -n _appveyor toolchain --use-local
 activate _appveyor
