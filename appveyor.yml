@@ -13,4 +13,4 @@ install:
   - conda install conda-build
   
 build_script:
-  - CALL appveyor-build.bat
+  - CALL appveyor_build.bat
