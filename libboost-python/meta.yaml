@@ -5,8 +5,10 @@ package:
   version: 1.61.0
 
 source:
-  fn: boost_1_61_0.tar.bz2
-  url: http://sourceforge.net/projects/boost/files/boost/1.61.0/boost_1_61_0.tar.bz2
+  fn: boost_1_61_0.tar.bz2 # [not win]
+  url: http://sourceforge.net/projects/boost/files/boost/1.61.0/boost_1_61_0.tar.bz2 # [not win]
+  fn: boost_1_61_0.zip # [win]
+  url: https://sourceforge.net/projects/boost/files/boost/1.61.0/boost_1_61_0.zip # [win]
 
 build:
   number: 0
