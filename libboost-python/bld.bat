@@ -6,9 +6,9 @@ IF errorlevel 1 exit 1
 dir .
 CALL .\bootstrap.bat mingw
 IF errorlevel 1 exit 1
-dir .
-CALL .\b2.exe install toolset=gcc --prefix=%LIBRARY_PREFIX%
 cd ..\..
+dir .
+CALL .\tools\build\b2.exe install toolset=gcc --prefix=%LIBRARY_PREFIX%
 dir .
 set PATH=%PATH%;%LIBRARY_BIN%
 
