@@ -1,6 +1,6 @@
 SETLOCAL
 
-CALL conda build toolchain -c statiskit -c defusco
+CALL conda build toolchain -c statiskit
 IF %errorlevel% neq 0 exit /b %errorlevel%
 CALL conda build libboost-python -c statiskit
 if %errorlevel% neq 0 exit /b %errorlevel%
