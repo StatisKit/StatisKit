@@ -14,8 +14,10 @@ about:
 requirements:
   build:
     - python
+    - mingwpy # [win]
   run:
     - python
+    - mingwpy # [win]
 
 test:
   commands:
