@@ -1,4 +1,5 @@
 :: Start with bootstrap
+CALL .\b2.exe install toolset=gcc --prefix=%SRC_DIR%\b2_for_mingw
 cd .\tools\build
 ECHO .\bootstrap.bat
 CALL .\bootstrap.bat
