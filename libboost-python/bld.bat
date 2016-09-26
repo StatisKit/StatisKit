@@ -2,10 +2,10 @@
 cd .\tools\build
 ECHO .\bootstrap.bat
 CALL .\bootstrap.bat
-IF errorlevel 1 exit 1
+:: IF errorlevel 1 exit 1
 ECHO .\bootstrap.bat mingw
 CALL .\bootstrap.bat mingw
-IF errorlevel 1 exit 1
+:: IF errorlevel 1 exit 1
 :: ECHO .\b2.exe install toolset=gcc --prefix=%SRC_DIR%\b2_for_mingw
 :: CALL .\b2.exe install toolset=gcc --prefix=%SRC_DIR%\b2_for_mingw
 :: ECHO cd %SRCDIR%
