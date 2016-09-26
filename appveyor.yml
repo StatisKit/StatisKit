@@ -9,7 +9,7 @@ install:
   - conda config --set always_yes yes --set changeps1 no
   - conda update -q conda
   - conda info -a
-  - conda install conda-build=2.0.0
+  - conda install conda-build=1.21
   
 build_script:
   - CALL appveyor_build.bat
