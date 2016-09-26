@@ -2,7 +2,7 @@ SETLOCAL
 
 CALL conda build toolchain -c statiskit -c conda-forge
 IF %errorlevel% neq 0 exit /b %errorlevel%
-CALL conda build libboost-python -c statiskit
+CALL conda build libboost-python -c statiskit -c conda-forge
 if %errorlevel% neq 0 exit /b %errorlevel%
 CALL conda build python-scons -c statiskit
 IF %errorlevel% neq 0 exit /b %errorlevel%
