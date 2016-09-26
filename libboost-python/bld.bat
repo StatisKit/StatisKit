@@ -1,5 +1,4 @@
 :: Start with bootstrap
-type bld.bat
 cd .\tools\build
 ECHO .\bootstrap.bat
 CALL .\bootstrap.bat
@@ -7,34 +6,33 @@ IF errorlevel 1 exit 1
 ECHO .\bootstrap.bat mingw
 CALL .\bootstrap.bat mingw
 IF errorlevel 1 exit 1
-type bld.bat
-ECHO .\b2.exe install toolset=gcc --prefix=%SRC_DIR%\b2_for_mingw
-CALL .\b2.exe install toolset=gcc --prefix=%SRC_DIR%\b2_for_mingw
-ECHO cd %SRCDIR%
-cd %SRCDIR%
-set PATH=%PATH%;%SRCDIR%\b2_for_mingw\bin
-ECHO b2 toolset=gcc --build-type=complete stage ^
-     --build-dir=buildboost ^
-     --prefix=%LIBRARY_PREFIX% ^
-     address-model=%ARCH% ^
-     variant=release ^
-     threading=multi ^
-     link=shared ^
-     -j%CPU_COUNT% ^
-     -s ZLIB_INCLUDE="%LIBRARY_INC%" ^
-     -s ZLIB_LIBPATH="%LIBRARY_LIB%" ^
-     --with-python
-CALL b2 toolset=gcc --build-type=complete stage ^
-     --build-dir=buildboost ^
-     --prefix=%LIBRARY_PREFIX% ^
-     address-model=%ARCH% ^
-     variant=release ^
-     threading=multi ^
-     link=shared ^
-     -j%CPU_COUNT% ^
-     -s ZLIB_INCLUDE="%LIBRARY_INC%" ^
-     -s ZLIB_LIBPATH="%LIBRARY_LIB%" ^
-     --with-python
+:: ECHO .\b2.exe install toolset=gcc --prefix=%SRC_DIR%\b2_for_mingw
+:: CALL .\b2.exe install toolset=gcc --prefix=%SRC_DIR%\b2_for_mingw
+:: ECHO cd %SRCDIR%
+:: cd %SRCDIR%
+:: set PATH=%PATH%;%SRCDIR%\b2_for_mingw\bin
+:: ECHO b2 toolset=gcc --build-type=complete stage ^
+::      --build-dir=buildboost ^
+::      --prefix=%LIBRARY_PREFIX% ^
+::      address-model=%ARCH% ^
+::      variant=release ^
+::      threading=multi ^
+::      link=shared ^
+::      -j%CPU_COUNT% ^
+::      -s ZLIB_INCLUDE="%LIBRARY_INC%" ^
+::      -s ZLIB_LIBPATH="%LIBRARY_LIB%" ^
+::      --with-python
+:: CALL b2 toolset=gcc --build-type=complete stage ^
+::      --build-dir=buildboost ^
+::      --prefix=%LIBRARY_PREFIX% ^
+::      address-model=%ARCH% ^
+::      variant=release ^
+::      threading=multi ^
+::      link=shared ^
+::      -j%CPU_COUNT% ^
+::      -s ZLIB_INCLUDE="%LIBRARY_INC%" ^
+::      -s ZLIB_LIBPATH="%LIBRARY_LIB%" ^
+::      --with-python
      
 :: cd ..\..
 :: dir .
