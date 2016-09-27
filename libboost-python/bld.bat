@@ -41,6 +41,8 @@ ECHO dir  %LIBRARY_INC%
 CALL dir  %LIBRARY_INC%
 ECHO dir  %LIBRARY_PREFIX%
 CALL dir  %LIBRARY_PREFIX%
+ECHO dir  %LIBRARY_PREFIX%\include
+CALL dir  %LIBRARY_PREFIX%\include
 move %LIBRARY_INC%\boost-1_61\boost %LIBRARY_INC%
 IF errorlevel 1 exit 1
 
