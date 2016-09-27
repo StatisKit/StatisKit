@@ -33,7 +33,7 @@ CALL b2 toolset=gcc ^
         -j%CPU_COUNT% ^
         -s ZLIB_INCLUDE="%LIBRARY_INC%" ^
         -s ZLIB_LIBPATH="%LIBRARY_LIB%" ^
-        --with-python
+        --with-python ^
         --build-dir=buildboost ^
         --prefix=%LIBRARY_PREFIX%
 IF errorlevel 1 exit 1
