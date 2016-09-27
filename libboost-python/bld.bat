@@ -46,5 +46,5 @@ CALL dir  %LIBRARY_INC%
 
 ECHO dir %LIBRARY_LIB%
 CALL dir %LIBRARY_LIB%
-move %LIBRARY_LIB%\*mingw49-mt-1_61.dll "%LIBRARY_BIN%"
+move %LIBRARY_LIB%\libboost_python-mingw49-mt-1_61.dll "%LIBRARY_BIN%"
 IF errorlevel 1 exit 1
