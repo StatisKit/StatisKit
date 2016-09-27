@@ -6,15 +6,15 @@ IF errorlevel 1 exit 1
 ECHO .\bootstrap.bat gcc
 CALL .\bootstrap.bat gcc
 IF errorlevel 1 exit 1
-::ECHO .\b2.exe install toolset=gcc --prefix=%SRC_DIR%\b2_for_mingw
-:: CALL .\b2.exe install toolset=gcc --prefix=%SRC_DIR%\b2_for_mingw
-:: IF errorlevel 1 exit 1
-:: ECHO cd %SRCDIR%
-:: cd %SRCDIR%
-:: IF errorlevel 1 exit 1
-:: set PATH=%PATH%;%SRCDIR%\b2_for_mingw\bin
-:: IF errorlevel 1 exit 1
-ECHO .\b2 toolset=gcc --build-type=complete stage ^
+ECHO .\b2.exe install toolset=gcc --prefix=%SRC_DIR%\b2_for_mingw
+CALL .\b2.exe install toolset=gcc --prefix=%SRC_DIR%\b2_for_mingw
+IF errorlevel 1 exit 1
+ECHO cd ..\..
+cd ..\..
+IF errorlevel 1 exit 1
+set PATH=%PATH%;%SRCDIR%\b2_for_mingw\bin
+IF errorlevel 1 exit 1
+ECHO b2 toolset=gcc --build-type=complete stage ^
         --build-dir=buildboost ^
         --prefix=%LIBRARY_PREFIX% ^
         address-model=%ARCH% ^
@@ -25,7 +25,7 @@ ECHO .\b2 toolset=gcc --build-type=complete stage ^
         -s ZLIB_INCLUDE="%LIBRARY_INC%" ^
         -s ZLIB_LIBPATH="%LIBRARY_LIB%" ^
         --with-python
-CALL .\b2 toolset=gcc ^
+CALL b2 toolset=gcc ^
         address-model=%ARCH% ^
         variant=release ^
         threading=multi ^
