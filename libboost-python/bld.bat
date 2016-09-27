@@ -1,5 +1,5 @@
 :: Start with bootstrap
-:: cd .\tools\build
+cd .\tools\build
 ECHO .\bootstrap.bat
 CALL .\bootstrap.bat
 IF errorlevel 1 exit 1
