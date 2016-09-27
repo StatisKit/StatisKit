@@ -1,7 +1,7 @@
 
 # Adpated from https://github.com/conda/conda-recipes/tree/master/boost
 package:
-  name: boost-build
+  name: libboost_python
   version: 1.61.0
 
 source:
@@ -11,6 +11,12 @@ source:
 
 build:
   number: 0
+  script_env:
+    - TOOLCHAIN # [not win]
+  features:
+    - {{ TOOLCHAIN }} # [not win]
+  track_features:
+    - {{ TOOLCHAIN }} # [not win]
 
 about:
   home: http://www.boost.org/
@@ -19,3 +25,7 @@ about:
 requirements:
   build:
     - toolchain
+    - python
+    - boost-build # [win]
+  run:
+    - python
