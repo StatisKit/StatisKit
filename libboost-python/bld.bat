@@ -37,6 +37,8 @@ CALL b2 toolset=gcc ^
         --build-dir=buildboost ^
         --prefix=%LIBRARY_PREFIX%
 IF errorlevel 1 exit 1
+ECHO dir  %LIBRARY_INC%
+CALL dir  %LIBRARY_INC%
 move %LIBRARY_INC%\boost-1_61\boost %LIBRARY_INC%
 IF errorlevel 1 exit 1
 
