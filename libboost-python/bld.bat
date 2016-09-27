@@ -39,6 +39,8 @@ CALL b2 toolset=gcc ^
 IF errorlevel 1 exit 1
 ECHO dir  %LIBRARY_INC%
 CALL dir  %LIBRARY_INC%
+ECHO dir  %LIBRARY_PREFIX%
+CALL dir  %LIBRARY_PREFIX%
 move %LIBRARY_INC%\boost-1_61\boost %LIBRARY_INC%
 IF errorlevel 1 exit 1
 
