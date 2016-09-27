@@ -9,10 +9,10 @@ IF errorlevel 1 exit 1
 ECHO .\b2.exe install toolset=gcc --prefix=%SRC_DIR%\b2_for_mingw
 CALL .\b2.exe install toolset=gcc --prefix=%SRC_DIR%\b2_for_mingw
 IF errorlevel 1 exit 1
-ECHO cd ..\..
-cd ..\..
+ECHO cd %SRC_DIR%
+cd %SRC_DIR%
 IF errorlevel 1 exit 1
-set PATH=%PATH%;%SRCDIR%\b2_for_mingw\bin
+set PATH=%PATH%;%SRC_DIR%\b2_for_mingw\bin
 IF errorlevel 1 exit 1
 ECHO b2 toolset=gcc --build-type=complete stage ^
         --build-dir=buildboost ^
