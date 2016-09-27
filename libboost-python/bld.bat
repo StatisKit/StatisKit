@@ -5,12 +5,11 @@ CALL .\bootstrap.bat
 IF errorlevel 1 exit 1
 ECHO .\bootstrap.bat gcc
 CALL .\bootstrap.bat gcc
-ECHO type bootstrap.log
-CALL type bootstrap.log
-CALL .\bootstrap.bat gcc
 IF errorlevel 1 exit 1
-:: ECHO .\b2.exe install toolset=gcc --prefix=%SRC_DIR%\b2_for_mingw
-:: CALL .\b2.exe install toolset=gcc --prefix=%SRC_DIR%\b2_for_mingw
+ECHO .\b2.exe install toolset=gcc --prefix=%SRC_DIR%\b2_for_mingw
+CALL .\b2.exe install toolset=gcc --prefix=%SRC_DIR%\b2_for_mingw
+IF errorlevel 1 exit 1
+:: 
 :: ECHO cd %SRCDIR%
 :: cd %SRCDIR%
 :: set PATH=%PATH%;%SRCDIR%\b2_for_mingw\bin
