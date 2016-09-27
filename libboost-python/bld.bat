@@ -39,12 +39,12 @@ CALL b2 install toolset=gcc ^
 IF errorlevel 1 exit 1
 ECHO dir  %LIBRARY_INC%
 CALL dir  %LIBRARY_INC%
-ECHO dir  %LIBRARY_PREFIX%
-CALL dir  %LIBRARY_PREFIX%
-ECHO dir  %LIBRARY_PREFIX%\include
-CALL dir  %LIBRARY_PREFIX%\include
 move %LIBRARY_INC%\boost-1_61\boost %LIBRARY_INC%
 IF errorlevel 1 exit 1
+ECHO dir  %LIBRARY_INC%
+CALL dir  %LIBRARY_INC%
 
+ECHO dir %LIBRARY_LIB%
+CALL dir %LIBRARY_LIB%
 move %LIBRARY_LIB%\*vc%LIB_VER%-mt-1_61.dll "%LIBRARY_BIN%"
 IF errorlevel 1 exit 1
