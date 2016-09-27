@@ -60,7 +60,7 @@ install:
 
 script:
     - if [[ "$TRAVIS_DOCKER" = "false" ]]; then
-        conda build libboost-python -c statiskit;
+        conda build libboost_python -c statiskit;
       fi
     - if [[ "$TRAVIS_DOCKER" = "false" ]]; then
         conda build python-scons -c statiskit;
@@ -76,7 +76,7 @@ after_success:
     - if [[ "$TRAVIS_BRANCH" = "master" ]] && [[ "$TRAVIS_PULL_REQUEST" = "false" ]] && [[ "$TRAVIS_DOCKER" = "false" ]] && [[ ! -z $ANACONDA_USERNAME ]] && [[ ! -z $ANACONDA_PASSWORD ]]; then
         conda install -n root anaconda-client;
         yes | anaconda login --username "$ANACONDA_USERNAME" --password "$ANACONDA_PASSWORD";
-        for CONDA_RECIPE in toolchain libboost-python python-scons python-parse; do
+        for CONDA_RECIPE in toolchain libboost_python python-scons python-parse; do
           CONDA_FILE=`conda build $CONDA_RECIPE --output`; 
           anaconda upload --user statiskit ${CONDA_FILE%%} --force;
         done;
