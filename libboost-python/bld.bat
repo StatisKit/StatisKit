@@ -25,9 +25,7 @@ ECHO b2 toolset=gcc --build-type=complete stage ^
         -s ZLIB_INCLUDE="%LIBRARY_INC%" ^
         -s ZLIB_LIBPATH="%LIBRARY_LIB%" ^
         --with-python
-CALL b2 toolset=gcc --build-type=complete stage ^
-        --build-dir=buildboost ^
-        --prefix=%LIBRARY_PREFIX% ^
+CALL b2 toolset=gcc ^
         address-model=%ARCH% ^
         variant=release ^
         threading=multi ^
@@ -36,6 +34,9 @@ CALL b2 toolset=gcc --build-type=complete stage ^
         -s ZLIB_INCLUDE="%LIBRARY_INC%" ^
         -s ZLIB_LIBPATH="%LIBRARY_LIB%" ^
         --with-python
+        --build-type=complete stage ^
+        --build-dir=buildboost ^
+        --prefix=%LIBRARY_PREFIX%
 IF errorlevel 1 exit 1
 move %LIBRARY_INC%\boost-1_61\boost %LIBRARY_INC%
 IF errorlevel 1 exit 1
