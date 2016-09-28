@@ -78,7 +78,7 @@ after_success:
         yes | anaconda login --username "$ANACONDA_USERNAME" --password "$ANACONDA_PASSWORD";
         for CONDA_RECIPE in toolchain libboost_python python-scons python-parse; do
           CONDA_FILE=`conda build $CONDA_RECIPE --output`; 
-          anaconda upload --user statiskit ${CONDA_FILE%%} --force;
+          anaconda upload --user statiskit ${CONDA_FILE%%};
         done;
         anaconda logout;
       fi
