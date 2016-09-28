@@ -14,4 +14,4 @@ install:
   - %CMD_IN_ENV% conda install conda-build=1.21
   
 build_script:
-  - CALL appveyor_build.bat
+  - CALL .\appveyor_build.bat
