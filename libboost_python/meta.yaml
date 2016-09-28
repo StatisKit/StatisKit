@@ -26,6 +26,6 @@ requirements:
   build:
     - toolchain
     - python
-    - boost-build # [win]
+    - boost_build # [win]
   run:
     - python
