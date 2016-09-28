@@ -46,7 +46,7 @@ after_success:
         anaconda logout;
       fi
     - if [[ "$TRAVIS_BRANCH" = "master" ]] && [[ "$TRAVIS_PULL_REQUEST" = "false" ]] && [[ "$TRAVIS_OS_NAME" = "linux" ]] && [[ ! -z $DOCKER_USERNAME ]] && [[ ! -z $DOCKER_PASSWORD ]]; then
-        docker build --build-arg BUILD="false" -t statiskit/ubuntu . ;
+        docker build -q --build-arg BUILD="false" -t statiskit/ubuntu . ;
         docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
         docker push statiskit/ubuntu;
       fi
