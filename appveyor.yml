@@ -8,10 +8,10 @@ environment:
 install:
   - powershell .\appveyor_install.ps1
   - "SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%"
-  - %CMD_IN_ENV% conda config --set always_yes yes --set changeps1 no
-  - %CMD_IN_ENV% conda update -q conda
-  - %CMD_IN_ENV% conda info -a
-  - %CMD_IN_ENV% conda install conda-build=1.21
+  - "%CMD_IN_ENV% conda config --set always_yes yes --set changeps1 no"
+  - "%CMD_IN_ENV% conda update -q conda"
+  - "%CMD_IN_ENV% conda info -a"
+  - "%CMD_IN_ENV% conda install conda-build=1.21"
   
 build_script:
   - CALL .\appveyor_build.bat
