@@ -1,7 +1,3 @@
-
-platform:
-  - x64
-
 environment:
   PYTHON: "C:\\Python27_64"
   PYTHON_VERSION: "2.7"
