@@ -1,10 +1,12 @@
 
-environment:
-  matrix:
-    - platform: x64 
-      PYTHON_VERSION: "2.7"
-      MINICONDA: C:\Miniconda
+platform:
+  - x64
 
+environment:
+  PYTHON_VERSION: "2.7"
+  MINICONDA: C:\Miniconda
+  BUILD_PLATFORM: 'x64'
+  
 install:
   - "set PATH=%MINICONDA%;%MINICONDA%\\Scripts;%PATH%"
   - conda config --set always_yes yes --set changeps1 no
