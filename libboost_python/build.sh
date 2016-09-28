@@ -67,3 +67,5 @@ if [ "$(uname)" == "Linux" ]; then
         --with-python \
         install | tee b2.log 2>&1
 fi
+
+./b2 --help
