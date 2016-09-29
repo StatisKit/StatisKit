@@ -17,7 +17,7 @@ RUN apt-get install -y vim build-essential git wget
 RUN apt-get autoremove
 
 # Add user for future work
-RUN useradd -ms /bin/bash main
+RUN useradd -m main --shell /bin/bash && echo "main:main" | chpasswd && adduser main sudo
 
 # select created user
 USER main
