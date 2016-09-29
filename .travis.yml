@@ -12,27 +12,27 @@ matrix:
         
 before_install:
     - if [[ "$TRAVIS_OS_NAME" = "linux" ]]; then
-        wget https://repo.continuum.io/miniconda/Miniconda2-latest-Linux-x86_64.sh -O miniconda.sh;
+        wget https://repo.continuum.io/miniconda/Miniconda2-latest-Linux-x86_64.sh -O miniconda.sh &> /dev/null;
       elif [[ "$TRAVIS_OS_NAME" = "osx" ]]; then
-        curl https://repo.continuum.io/miniconda/Miniconda2-latest-MacOSX-x86_64.sh -o miniconda.sh;
+        curl https://repo.continuum.io/miniconda/Miniconda2-latest-MacOSX-x86_64.sh -o miniconda.sh &> /dev/null;
       fi
-    - bash miniconda.sh -b -p $HOME/miniconda
+    - bash miniconda.sh -b -p $HOME/miniconda &> /dev/null
     - export PATH=$HOME/miniconda/bin:$PATH
     - conda config --set always_yes yes --set changeps1 no
-    - conda update -q conda
-    - conda info -a
-    - conda install conda-build
+    - conda update -q conda &> /dev/null;
+    - conda info -a &> /dev/null;
+    - conda install conda-build &> /dev/null;
 
 install:
-    - pip install python-coveralls
+    - pip install python-coveralls &> /dev/null;
     - conda build toolchain
     - conda create -n _travis toolchain --use-local
     - source activate _travis;
 
 script:
-    - conda build libboost_python -q -c statiskit &> /dev/null
-    - conda build python-scons -q -c statiskit &> /dev/null
-    - conda build python-parse -q -c statiskit &> /dev/null
+    - conda build libboost_python -q -c statiskit
+    - conda build python-scons -q -c statiskit
+    - conda build python-parse -q -c statiskit
 
 after_success:
     - coveralls;
@@ -48,5 +48,5 @@ after_success:
     - if [[ "$TRAVIS_BRANCH" = "master" ]] && [[ "$TRAVIS_PULL_REQUEST" = "false" ]] && [[ "$TRAVIS_OS_NAME" = "linux" ]] && [[ ! -z $DOCKER_USERNAME ]] && [[ ! -z $DOCKER_PASSWORD ]]; then
         docker build -q --build-arg BUILD="false" -t statiskit/ubuntu . ;
         docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
-        docker push statiskit/ubuntu;
+        docker push statiskit/ubuntu  &> /dev/null;
       fi
