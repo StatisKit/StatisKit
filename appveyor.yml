@@ -1,5 +1,11 @@
+environment:
+  matrix:
+    - BLD: x86_64
+    - BLD: x86 
+    
 install:
-  - 'set PATH=C:\Miniconda-x64;C:\Miniconda-x64\Scripts;%PATH%'
+  - 'IF "%BLD%" == "x86" set PATH=C:\Miniconda;C:\Miniconda\Scripts;%PATH%'
+  - 'IF "%BLD%" == "x86_64" set PATH=C:\Miniconda-x64;C:\Miniconda-x64\Scripts;%PATH%'
   - "conda config --set always_yes yes --set changeps1 no"
   - "conda update -q conda"
   - "conda info -a"
