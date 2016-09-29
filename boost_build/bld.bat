@@ -1,4 +1,8 @@
 :: Start with bootstrap
+ECHO gcc --version
+CALL gcc --version
+ECHO g++ --version
+CALL g++ --version
 cd .\tools\build
 ECHO .\bootstrap.bat
 CALL .\bootstrap.bat
