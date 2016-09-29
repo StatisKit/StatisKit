@@ -6,7 +6,7 @@ CALL conda build boost_build -c statiskit -c conda-forge
 IF %errorlevel% neq 0 exit /b %errorlevel%
 CALL conda build libboost_python -c statiskit -c conda-forge
 if %errorlevel% neq 0 exit /b %errorlevel%
-CALLconda build python-scons -c statiskit
+CALL conda build python-scons -c statiskit
 IF %errorlevel% neq 0 exit /b %errorlevel%
 CALL conda build python-parse -c statiskit
 IF %errorlevel% neq 0 exit /b %errorlevel%
