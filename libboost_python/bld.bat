@@ -1,3 +1,7 @@
+ECHO gcc --version
+CALL gcc --version
+ECHO g++ --version
+CALL g++ --version
 ECHO b2 install toolset=gcc ^
         address-model=%ARCH% ^
         variant=release ^
