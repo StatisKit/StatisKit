@@ -30,9 +30,9 @@ install:
     - source activate _travis;
 
 script:
-    - conda build libboost_python -q -c statiskit
-    - conda build python-scons -q -c statiskit
-    - conda build python-parse -q -c statiskit
+    - conda build libboost_python -q -c statiskit &> /dev/null
+    - conda build python-scons -q -c statiskit &> /dev/null
+    - conda build python-parse -q -c statiskit &> /dev/null
 
 after_success:
     - coveralls;
