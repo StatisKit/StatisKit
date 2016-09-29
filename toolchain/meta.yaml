@@ -14,12 +14,10 @@ about:
 requirements:
   build:
     - python
-    - mingwpy # [win and x86_64]
-    - mingw # [win and x86]
+    - mingwpy # [win]
   run:
     - python
-    - mingwpy # [win and x86_64]
-    - mingw # [win and x86]
+    - mingwpy # [win]
 
 test:
   commands:
