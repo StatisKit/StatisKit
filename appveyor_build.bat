@@ -1,50 +1,50 @@
 SETLOCAL
 
-CALL %CMD_IN_ENV% conda build toolchain -c statiskit -c conda-forge
+CALL conda build toolchain -c statiskit -c conda-forge
 IF %errorlevel% neq 0 exit /b %errorlevel%
-CALL %CMD_IN_ENV% conda build boost_build -c statiskit -c conda-forge
+CALL conda build boost_build -c statiskit -c conda-forge
 IF %errorlevel% neq 0 exit /b %errorlevel%
-CALL %CMD_IN_ENV% conda build libboost_python -c statiskit -c conda-forge
+CALL conda build libboost_python -c statiskit -c conda-forge
 if %errorlevel% neq 0 exit /b %errorlevel%
-CALL %CMD_IN_ENV% conda build python-scons -c statiskit
+CALLconda build python-scons -c statiskit
 IF %errorlevel% neq 0 exit /b %errorlevel%
-CALL %CMD_IN_ENV% conda build python-parse -c statiskit
+CALL conda build python-parse -c statiskit
 IF %errorlevel% neq 0 exit /b %errorlevel%
 
 IF NOT "%APPVEYOR_REPO_BRANCH%"=="master" GOTO DONE
 IF "%ANACONDA_USERNAME%"=="" GOTO DONE
 IF "%ANACONDA_PASSWORD%"=="" GOTO DONE
 
-CALL %CMD_IN_ENV% conda install -n root anaconda-client
+CALL conda install -n root anaconda-client
 if %errorlevel% neq 0 exit /b %errorlevel%
 
-CALL %CMD_IN_ENV% anaconda login --username "%ANACONDA_USERNAME%" --password "%ANACONDA_PASSWORD%" --hostname "AppVeyor%APPVEYOR_BUILD_NUMBER%" 
+CALL anaconda login --username "%ANACONDA_USERNAME%" --password "%ANACONDA_PASSWORD%" --hostname "AppVeyor%APPVEYOR_BUILD_NUMBER%" 
 IF %errorlevel% neq 0 exit /b %errorlevel%
 
 ::FOR %%CONDA_RECIPE IN (toolchain, python-scons, python-parse) DO (
 ::  ECHO %%CONDA_RECIPE
   
 FOR /f %%i in ('conda build toolchain --output') DO (set CONDA_FILE=%%i)
-CALL %CMD_IN_ENV% anaconda upload --user statiskit %CONDA_FILE% --force
+CALL anaconda upload --user statiskit %CONDA_FILE% --force
 IF %errorlevel% neq 0 exit /b %errorlevel%
 
 FOR /f %%i in ('conda build boost_build --output') DO (set CONDA_FILE=%%i)
-CALL %CMD_IN_ENV% anaconda upload --user statiskit %CONDA_FILE% --force
+CALLanaconda upload --user statiskit %CONDA_FILE% --force
 IF %errorlevel% neq 0 exit /b %errorlevel%
 
 FOR /f %%i in ('conda build libboost_python --output') DO (set CONDA_FILE=%%i)
-CALL %CMD_IN_ENV% anaconda upload --user statiskit %CONDA_FILE% --force
+CALL anaconda upload --user statiskit %CONDA_FILE% --force
 IF %errorlevel% neq 0 exit /b %errorlevel%
 
 FOR /f %%i in ('conda build python-scons --output') DO (set CONDA_FILE=%%i)
-CALL %CMD_IN_ENV% anaconda upload --user statiskit %CONDA_FILE% --force
+CALL anaconda upload --user statiskit %CONDA_FILE% --force
 IF %errorlevel% neq 0 exit /b %errorlevel%
 
 FOR /f %%i in ('conda build python-parse --output') DO (set CONDA_FILE=%%i)
-CALL %CMD_IN_ENV% anaconda upload --user statiskit %CONDA_FILE% --force
+CALL anaconda upload --user statiskit %CONDA_FILE% --force
 IF %errorlevel% neq 0 exit /b %errorlevel%
 
-CALL %CMD_IN_ENV% anaconda logout
+CALL anaconda logout
 GOTO DONE
 
 :DONE
