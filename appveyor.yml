@@ -1,12 +1,5 @@
-environment:
-  PYTHON: "C:\\Python27_64"
-  PYTHON_VERSION: "2.7"
-  PYTHON_ARCH: "64"
-  CONDA_PY: "27"
-  
 install:
-  - powershell .\appveyor_install.ps1
-  - "SET PATH=%PYTHON%;%PYTHON%\\Scripts;%PATH%"
+  - "set PATH=C:\Miniconda-x64;C:\Miniconda-x64\Scripts;%PATH%"
   - "conda config --set always_yes yes --set changeps1 no"
   - "conda update -q conda"
   - "conda info -a"
