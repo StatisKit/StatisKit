@@ -25,9 +25,9 @@ build_script:
   - "IF %errorlevel% neq 0 exit /b %errorlevel%"
 
 on_success:
-  - 'IF NOT "%APPVEYOR_REPO_BRANCH%"=="master" GOTO DONE'
-  - 'IF "%ANACONDA_USERNAME%"=="" GOTO DONE'
-  - 'IF "%ANACONDA_PASSWORD%"=="" GOTO DONE'
+  - 'IF NOT "%APPVEYOR_REPO_BRANCH%"=="master" exit /b 0'
+  - 'IF "%ANACONDA_USERNAME%"=="" exit /b 0'
+  - 'IF "%ANACONDA_PASSWORD%"=="" exit /b 0'
   - "CALL conda install -n root anaconda-client"
   - "IF %errorlevel% neq 0 exit /b %errorlevel%"
   - 'CALL anaconda login --username "%ANACONDA_USERNAME%" --password "%ANACONDA_PASSWORD%" --hostname "AppVeyor%APPVEYOR_BUILD_NUMBER%"'
@@ -48,6 +48,3 @@ on_success:
   - "CALL anaconda upload --user statiskit %CONDA_FILE% --force"
   - "IF %errorlevel% neq 0 exit /b %errorlevel%"
   - "CALL anaconda logout"
-  - "GOTO DONE"
-  - ":DONE"
-  - "ECHO ~~~~~~~~~~~~~~~~~~~~~~ DONE %~f0 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
