@@ -14,6 +14,8 @@ install:
 build_script:
   - "CALL conda build toolchain -c statiskit -c conda-forge"
   - "IF %errorlevel% neq 0 exit /b %errorlevel%"
+  - "CALL conda install toolchain --use-local -c statiskit -c conda-forge"
+  - "IF %errorlevel% neq 0 exit /b %errorlevel%"
   - "CALL conda build boost_build -c statiskit -c conda-forge"
   - "IF %errorlevel% neq 0 exit /b %errorlevel%"
   - "CALL conda build libboost_python -c statiskit -c conda-forge"
