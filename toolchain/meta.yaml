@@ -14,7 +14,8 @@ about:
 requirements:
   build:
     - python
-    - mingwpy # [win]
+    - mingwpy # [win and x86_64]
+    - mingw # [win and x86]
   run:
     - python
     - mingwpy # [win and x86_64]
