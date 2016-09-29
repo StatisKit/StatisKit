@@ -33,7 +33,7 @@ on_success:
   - 'CALL anaconda login --username "%ANACONDA_USERNAME%" --password "%ANACONDA_PASSWORD%" --hostname "AppVeyor%APPVEYOR_BUILD_NUMBER%"'
   - "IF %errorlevel% neq 0 exit /b %errorlevel%"
   - "FOR /f %%i in ('conda build toolchain --output') DO (set CONDA_FILE=%%i)"
-  - 'CALL anaconda upload --user statiskit %CONDA_FILE% || echo "upload failed"'
+  - 'CALL anaconda upload --user statiskit %CONDA_FILE% || echo "upload failed" && set errorlevel=0'
   - "FOR /f %%i in ('conda build boost_build --output') DO (set CONDA_FILE=%%i)"
   - "CALL anaconda upload --user statiskit %CONDA_FILE%"
   - "FOR /f %%i in ('conda build libboost_python --output') DO (set CONDA_FILE=%%i)"
