@@ -29,7 +29,7 @@ CALL anaconda upload --user statiskit %CONDA_FILE% --force
 IF %errorlevel% neq 0 exit /b %errorlevel%
 
 FOR /f %%i in ('conda build boost_build --output') DO (set CONDA_FILE=%%i)
-CALLanaconda upload --user statiskit %CONDA_FILE% --force
+CALL anaconda upload --user statiskit %CONDA_FILE% --force
 IF %errorlevel% neq 0 exit /b %errorlevel%
 
 FOR /f %%i in ('conda build libboost_python --output') DO (set CONDA_FILE=%%i)
