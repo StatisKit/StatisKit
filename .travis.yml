@@ -30,7 +30,7 @@ script:
   - more build.sh
   - sed -i'' -e 's/build/build -q/g' build.sh 
   - more build.sh
-  - sed -i '3,4d' build.sh
+  - sed -i'' -e '3,4d' build.sh
   - more build.sh
   - bash build.sh
 
