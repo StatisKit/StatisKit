@@ -11,28 +11,25 @@ matrix:
       osx_image: xcode8
         
 before_install:
-    - if [[ "$TRAVIS_OS_NAME" = "linux" ]]; then
-        wget https://repo.continuum.io/miniconda/Miniconda2-latest-Linux-x86_64.sh -O miniconda.sh &> /dev/null;
-      elif [[ "$TRAVIS_OS_NAME" = "osx" ]]; then
-        curl https://repo.continuum.io/miniconda/Miniconda2-latest-MacOSX-x86_64.sh -o miniconda.sh &> /dev/null;
-      fi
-    - bash miniconda.sh -b -p $HOME/miniconda &> /dev/null
-    - export PATH=$HOME/miniconda/bin:$PATH
-    - conda config --set always_yes yes --set changeps1 no
-    - conda update -q conda &> /dev/null;
-    - conda info -a &> /dev/null;
-    - conda install conda-build &> /dev/null;
+  - if [[ "$TRAVIS_OS_NAME" = "linux" ]]; then
+      wget https://repo.continuum.io/miniconda/Miniconda2-latest-Linux-x86_64.sh -O miniconda.sh &> /dev/null;
+    elif [[ "$TRAVIS_OS_NAME" = "osx" ]]; then
+      curl https://repo.continuum.io/miniconda/Miniconda2-latest-MacOSX-x86_64.sh -o miniconda.sh &> /dev/null;
+    fi
+  - bash miniconda.sh -b -p $HOME/miniconda &> /dev/null
+  - export PATH=$HOME/miniconda/bin:$PATH
+  - conda config --set always_yes yes --set changeps1 no
+  - conda update -q conda &> /dev/null;
+  - conda info -a &> /dev/null;
+  - conda install conda-build &> /dev/null;
 
 install:
-    - pip install python-coveralls &> /dev/null;
-    - conda build toolchain
-    - conda create -n _travis toolchain --use-local
-    - source activate _travis;
+  - pip install python-coveralls &> /dev/null;
 
 script:
-    - conda build libboost_python -q -c statiskit
-    - conda build python-scons -q -c statiskit
-    - conda build python-parse -q -c statiskit
+  - sed -i 's/build/build -q/g' build.sh 
+  - sed -i '1,2d' build.sh
+  - bash build.sh
 
 after_success:
     - coveralls;
