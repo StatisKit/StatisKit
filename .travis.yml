@@ -27,8 +27,11 @@ install:
   - pip install python-coveralls &> /dev/null;
 
 script:
+  - more build.sh
   - sed -i 's/build/build -q/g' build.sh 
+  - more build.sh
   - sed -i '1,2d' build.sh
+  - more build.sh
   - bash build.sh
 
 after_success:
