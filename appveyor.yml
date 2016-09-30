@@ -12,19 +12,8 @@ install:
   - "conda install conda-build=1.21"
   
 build_script:
-  - "CALL conda build toolchain -c statiskit -c conda-forge"
-  - "IF %errorlevel% neq 0 exit /b %errorlevel%"
-  - "CALL conda install toolchain --use-local -c statiskit -c conda-forge"
-  - "IF %errorlevel% neq 0 exit /b %errorlevel%"
-  - "CALL conda build boost_build -c statiskit -c conda-forge"
-  - "IF %errorlevel% neq 0 exit /b %errorlevel%"
-  - "CALL conda build libboost_python -c statiskit -c conda-forge"
-  - "IF %errorlevel% neq 0 exit /b %errorlevel%"
-  - "CALL conda build python-scons -c statiskit"
-  - "IF %errorlevel% neq 0 exit /b %errorlevel%"
-  - "CALL conda build python-parse -c statiskit"
-  - "IF %errorlevel% neq 0 exit /b %errorlevel%"
-
+  - call build.bat
+  
 on_success:
   - 'IF NOT "%APPVEYOR_REPO_BRANCH%"=="master" exit /b 0'
   - 'IF "%ANACONDA_USERNAME%"=="" exit /b 0'
