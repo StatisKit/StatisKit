@@ -1,3 +1,5 @@
+set -xe
+
 conda install ipython jupyter
 
 conda build toolchain -c statiskit
