@@ -16,6 +16,10 @@ build:
   track_features:
     - {{ TOOLCHAIN }} # [not win]
 
+requirements:
+  build:
+    - toolchain
+
 about:
   home: http://zlib.net/
   license: zlib (http://zlib.net/zlib_license.html)
