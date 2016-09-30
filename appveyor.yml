@@ -12,7 +12,7 @@ install:
   - "conda install conda-build=1.21"
   
 build_script:
-  - call build.bat
+  - call bld.bat
   
 on_success:
   - 'IF NOT "%APPVEYOR_REPO_BRANCH%"=="master" exit /b 0'
