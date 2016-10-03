@@ -16,6 +16,7 @@ build_script:
   
 on_success:
   - 'IF NOT "%APPVEYOR_REPO_BRANCH%"=="master" exit /b 0'
+  - 'echo %ANACONDA_USERNAME%'
   - 'IF "%ANACONDA_USERNAME%"=="" exit /b 0'
   - 'IF "%ANACONDA_PASSWORD%"=="" exit /b 0'
   - "CALL conda install -n root anaconda-client"
