@@ -1,5 +1,8 @@
 SETLOCAL
 
+CALL cl.exe /v
+exit /b 0
+
 CALL conda build toolchain -c statiskit -c conda-forge
 IF %errorlevel% neq 0 exit /b %errorlevel%
 CALL conda build boost_build -c statiskit -c conda-forge
