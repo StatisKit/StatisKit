@@ -1,6 +1,6 @@
 SETLOCAL
 
-dir C:\Program Files (x86)
+dir "C:\Program Files (x86)"
 CALL cl /v
 exit /b 0
 
