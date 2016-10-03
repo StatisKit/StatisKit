@@ -1,7 +1,6 @@
 SETLOCAL
 
-dir "C:\Program Files (x86)\Microsoft Visual Studio 9.0\VC\bin"
-CALL cl /v
+CALL "C:\Program Files (x86)\Microsoft Visual Studio 9.0\VC\bin\cl.exe" /v
 exit /b 0
 
 CALL conda build toolchain -c statiskit -c conda-forge
