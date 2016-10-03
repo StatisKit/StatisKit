@@ -10,7 +10,8 @@ if "%PY_VER%"=="2.7" (
     set LIB_VER=140
 )
 
-call bootstrap.bat
+call bootstrap.bat ^
+    --with-libraries=python
 if errorlevel 1 exit 1
 
 CALL b2 install toolset=msvc-%MSVC_VER% ^
