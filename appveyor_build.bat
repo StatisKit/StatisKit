@@ -1,6 +1,6 @@
 SETLOCAL
 
-CALL cl.exe /v
+CALL cl /v
 exit /b 0
 
 CALL conda build toolchain -c statiskit -c conda-forge
