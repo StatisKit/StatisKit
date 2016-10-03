@@ -1,7 +1,6 @@
 SETLOCAL
 
-CALL "C:\Program Files (x86)\Microsoft Visual Studio 9.0\VC\bin\cl.exe" /v
-exit /b 0
+CALL "C:\Program Files (x86)\Microsoft Visual Studio 9.0\VC\bin\cl.exe /v"
 
 CALL conda build toolchain -c statiskit -c conda-forge
 IF %errorlevel% neq 0 exit /b %errorlevel%
