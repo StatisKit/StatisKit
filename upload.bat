@@ -10,10 +10,10 @@ set errorlevel_backup=%errorlevel%
 set errorlevel=0
 CALL anaconda upload --user statiskit %CONDA_FILE% || echo "upload failed"
 set errorlevel=%errorlevel_backup%
-FOR /f %%i in ('conda build boost_build --output') DO (set CONDA_FILE=%%i)
-set errorlevel=0
-CALL anaconda upload --user statiskit %CONDA_FILE% || echo "upload failed"
-set errorlevel=%errorlevel_backup%
+:: FOR /f %%i in ('conda build boost_build --output') DO (set CONDA_FILE=%%i)
+:: set errorlevel=0
+:: CALL anaconda upload --user statiskit %CONDA_FILE% || echo "upload failed"
+:: set errorlevel=%errorlevel_backup%
 FOR /f %%i in ('conda build libboost_python --output') DO (set CONDA_FILE=%%i)
 set errorlevel=0
 CALL anaconda upload --user statiskit %CONDA_FILE% || echo "upload failed"
