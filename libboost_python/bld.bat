@@ -30,6 +30,6 @@ move %LIBRARY_INC%\boost-1_61\boost %LIBRARY_INC%
 IF errorlevel 1 exit 1
 
 dir  %LIBRARY_LIB%
-ECHO %LIBRARY_LIB%\libboost_python-mgw49-mt-1_61.dll "%LIBRARY_BIN%"
-move %LIBRARY_LIB%\libboost_python-mgw49-mt-1_61.dll "%LIBRARY_BIN%"
+ECHO %LIBRARY_LIB%\boost_python-vc90-mt-1_61.dll "%LIBRARY_BIN%"
+move %LIBRARY_LIB%\boost_python-vc90-mt-1_61.dll "%LIBRARY_BIN%"
 IF errorlevel 1 exit 1
