@@ -7,10 +7,10 @@ if %errorlevel% neq 0 exit /b %errorlevel%
 activate %CONDA_DEFAULT_ENV%
 if %errorlevel% neq 0 exit /b %errorlevel%
 
-conda build boost_build -c statiskit -c conda-forge
-if %errorlevel% neq 0 exit /b %errorlevel%
-conda install boost_build --use-local -c statiskit -c conda-forge
-if %errorlevel% neq 0 exit /b %errorlevel%
+:: conda build boost_build -c statiskit -c conda-forge
+:: if %errorlevel% neq 0 exit /b %errorlevel%
+:: conda install boost_build --use-local -c statiskit -c conda-forge
+:: if %errorlevel% neq 0 exit /b %errorlevel%
 
 conda build libboost_python -c statiskit -c conda-forge
 if %errorlevel% neq 0 exit /b %errorlevel%
