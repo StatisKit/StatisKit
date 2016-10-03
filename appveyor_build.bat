@@ -1,5 +1,6 @@
 SETLOCAL
 
+conda install vs2008_runtime
 CALL cl /v
 exit /b 0
 
