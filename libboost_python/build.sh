@@ -25,6 +25,7 @@ if [ "$(uname)" == "Darwin" ]; then
         --with-python="${PYTHON}" \
         --with-python-root="${PREFIX} : ${PREFIX}/include/python${PY_VER}m ${PREFIX}/include/python${PY_VER}" \
         --with-icu="${PREFIX}" \
+        --with-libraries=python \
         | tee bootstrap.log 2>&1
 
     ./b2 -q \
@@ -48,6 +49,7 @@ if [ "$(uname)" == "Linux" ]; then
         --prefix="${PREFIX}" \
         --with-python="${PYTHON}" \
         --with-python-root="${PREFIX} : ${PREFIX}/include/python${PY_VER}m ${PREFIX}/include/python${PY_VER}" \
+        --with-libraries=python \
         | tee bootstrap.log 2>&1
 
     ./b2 -q \
