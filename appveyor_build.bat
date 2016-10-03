@@ -1,6 +1,6 @@
 SETLOCAL
 
-conda install vs2008_runtime
+dir C:\Program Files (x86)
 CALL cl /v
 exit /b 0
 
