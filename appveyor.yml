@@ -12,7 +12,15 @@ install:
   - "conda install conda-build=1.21"
   
 build_script:
-  - call bld.bat
+  - cd conda
+  - echo "echo ON" >> tmp.bat
+  - more +7 "bld.bat" > tmp.bat
+  - powershell -Command "(gc tmp.bat) -replace 'build', 'build --no-test' | Out-File tmp.bat"
+  - more tmp.bat > tmp.bat
+  - call tmp.bat
+  - cd ..
   
 on_success:
-  - call upload.bat
+  - cd conda
+  - if "%APPVEYOR_REPO_BRANCH%"=="master" if not "%ANACONDA_USERNAME%"=="" if not "%ANACONDA_PASSWORD%"=="" call upload.bat
+  - cd ..
