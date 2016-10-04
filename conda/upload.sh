@@ -1,5 +1,5 @@
-[[ ! "$ANACONDA_USERNAME"=="" ]] || read -p "Username: " ANACONDA_USERNAME
-[[ ! "$ANACONDA_PASSWORD"=="" ]] || read -s -p %ANACONDA_USERNAME"'s password: " ANACONDA_PASSWORD
+[[ ! "$ANACONDA_USERNAME"=="" ]] && echo "Username: "$ANACONDA_USERNAME || read -p "Username: " ANACONDA_USERNAME
+[[ ! "$ANACONDA_PASSWORD"=="" ]] && echo %ANACONDA_USERNAME"'s password: [secure]" || read -s -p %ANACONDA_USERNAME"'s password: " ANACONDA_PASSWORD
 
 set -x
 
