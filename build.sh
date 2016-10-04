@@ -6,11 +6,7 @@ conda build toolchain -c statiskit
 conda install toolchain --use-local -c statiskit
 source activate $CONDA_DEFAULT_ENV
 
-conda build libboost_python -c statiskit
-conda install libboost_python --use-local -c statiskit
-
-conda build python-scons -c statiskit
-conda install python-scons --use-local -c statiskit
-
-conda build python-parse -c statiskit
-conda install python-parse --use-local -c statiskit
+for CONDA_RECIPE in libboost_python python-scons python-parse; do
+  conda build $CONDA_RECIPE -c statiskit
+  conda install $CONDA_RECIPE --use-local -c statiskit
+done
