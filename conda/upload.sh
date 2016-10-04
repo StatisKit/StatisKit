@@ -6,7 +6,7 @@ set -x
 conda install -y -n root anaconda-client;
 yes | anaconda login --username "$ANACONDA_USERNAME" --password "$ANACONDA_PASSWORD"
 
-for CONDA_RECIPE in python-pkgtk; do
+for CONDA_RECIPE in python-parse python-pkgtk; do
   CONDA_FILE=`conda build $CONDA_RECIPE --output`
   anaconda upload --user statiskit ${CONDA_FILE%%} || echo "upload failed"
 done

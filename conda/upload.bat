@@ -6,11 +6,18 @@ echo ON
 call conda install -n root anaconda-client
 if %errorlevel% neq 0 exit /b %errorlevel%
 
-CALL anaconda login --username "%ANACONDA_USERNAME%" --password "%ANACONDA_PASSWORD%" --hostname "AppVeyor%APPVEYOR_BUILD_NUMBER%"
-IF %errorlevel% neq 0 exit /b %errorlevel%
+call anaconda login --username "%ANACONDA_USERNAME%" --password "%ANACONDA_PASSWORD%" --hostname "AppVeyor%APPVEYOR_BUILD_NUMBER%"
+if %errorlevel% neq 0 exit /b %errorlevel%
 
-FOR /f %%i in ('conda build python-pkgtk --output') DO (set CONDA_FILE=%%i)
+for /f %%i in ('conda build python-parse --output') DO (set CONDA_FILE=%%i)
 set errorlevel_backup=%errorlevel%
 set errorlevel=0
-CALL anaconda upload --user statiskit %CONDA_FILE% || echo "upload failed"
+call anaconda upload --user statiskit %CONDA_FILE% || echo "upload failed"
 set errorlevel=%errorlevel_backup%
+
+for /f %%i in ('conda build python-pkgtk --output') DO (set CONDA_FILE=%%i)
+set errorlevel=0
+call anaconda upload --user statiskit %CONDA_FILE% || echo "upload failed"
+set errorlevel=%errorlevel_backup%
+
+call anaconda logout
