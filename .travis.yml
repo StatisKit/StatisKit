@@ -41,22 +41,20 @@ install:
     - pip install nose
 
 script:
-    - conda build conda/python-pkgtk --no-test -c statiskit -c conda-forge
-    - conda install python-pkgtk --use-local -c statiskit -c conda-forge
-    - pkgtk authors
-    - conda remove python-pkgtk
-    - conda env remove -n _build
-    - conda clean --all
+    - cd conda
+    - sed -i'' -e 's/build/build --no-test/g' build.sh
+    - sed -i'' -e '3,5d' build.sh
     - bash build.sh
+    - bash install.sh
+    - cd ..
 
 after_success:
-    - coveralls --rcfile=.coveragerc
-    - if [[ "$TRAVIS_BRANCH" = "master" ]] && [[ "$TRAVIS_PULL_REQUEST" = "false" ]]; then
-        if [[ ! -z $ANACONDA_USERNAME ]] && [[ ! -z $ANACONDA_PASSWORD ]]; then
-            conda install anaconda-client;
-            anaconda login --username "$ANACONDA_USERNAME" --password "$ANACONDA_PASSWORD";
-            CONDA_FILE=`conda build conda/python-pkgtk --output`; 
-            anaconda upload --user statiskit "$CONDA_FILE" --force;
-            curl --request POST http://readthedocs.org/build/pkgtk;
-        fi
+  - pkgtk authors
+  - coveralls --rcfile=.coveragerc
+  - if [[ "$TRAVIS_BRANCH" = "master" ]] && [[ "$TRAVIS_PULL_REQUEST" = "false" ]]; then
+      if [[ ! -z $ANACONDA_USERNAME ]] && [[ ! -z $ANACONDA_PASSWORD ]]; then
+        cd conda;
+        bash upload.sh;
+        cd ..;
       fi
+    fi

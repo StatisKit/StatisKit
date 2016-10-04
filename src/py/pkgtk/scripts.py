@@ -14,6 +14,9 @@
 #                                                                                #
 ##################################################################################
 
+import sys
+import subprocess
+
 from argparse import ArgumentParser, RawTextHelpFormatter
 
 from pkgtk.config import init_config
@@ -81,19 +84,19 @@ def license_script(args):
     config = init_config(root)
     dump_license(root, config)
 
-def toolchain(args):
+def toolchain_script(args):
     
     platform = sys.platform
     
     if platform.startswith('freebsd') or platform.startswith('linux'):
         process = subprocess.Popen(['gcc', '-dumpversion'], stdout=subprocess.PIPE)
         out, err = process.communicate()
-        toolchain = 'gnu' + ''.join(out.split('.')[:2])
+        toolchain = 'gcc' + ''.join(out.split('.')[:2])
     elif platform == 'darwin':
-        process = subprocess.Popen(['xcodebuild', '-dumpversion'], stdout=subprocess.PIPE)
+        process = subprocess.Popen(['xcodebuild', '-version'], stdout=subprocess.PIPE)
         out, err = process.communicate()
         print out
-        toolchain = 'xcode'
+        toolchain = 'clang'
     elif platform == 'win32':
         toolchain = 'vc'
         version = sys.version_info
@@ -106,7 +109,7 @@ def toolchain(args):
     else:
         raise NotImplementedError('OS `' + platform + '` is not supported')
         
-    return toolchain
+    print(toolchain)
 
 def pkgtk(args=None):
     parser = ArgumentParser(description='Software manager',
@@ -163,7 +166,7 @@ def pkgtk(args=None):
     subparser.set_defaults(func = license_script)
 
     subparser = subparsers.add_parser('toolchain', help="Get the toolchain to use")
-    subparser.set_defaults(func =toolchain_script)
+    subparser.set_defaults(func = toolchain_script)
     
     if args:
         args = parser.parse_args(args)

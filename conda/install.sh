@@ -1,1 +1,3 @@
-conda install python-pkgtk -c statiskit -c conda-forge
+set -xe
+
+conda install python-pkgtk --use-local -c statiskit -c conda-forge
