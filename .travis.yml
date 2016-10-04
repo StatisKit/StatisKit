@@ -14,11 +14,14 @@
 #                                                                                #
 ##################################################################################
 
-sudo: required
-dist: trusty
-language: cpp
 
-os: linux
+matrix:
+  include:
+    - os: linux
+      dist: trusty
+      sudo: required
+    - os: osx
+      osx_image: xcode7.2
 
 before_install:
     - if [[ "$TRAVIS_OS_NAME" = "linux" ]]; then
@@ -51,10 +54,8 @@ script:
 after_success:
   - pkgtk authors
   - coveralls --rcfile=.coveragerc
-  - if [[ "$TRAVIS_BRANCH" = "master" ]] && [[ "$TRAVIS_PULL_REQUEST" = "false" ]]; then
-      if [[ ! -z $ANACONDA_USERNAME ]] && [[ ! -z $ANACONDA_PASSWORD ]]; then
-        cd conda;
-        bash upload.sh;
-        cd ..;
-      fi
+  - if [[ "$TRAVIS_BRANCH" = "master" ]] && [[ "$TRAVIS_PULL_REQUEST" = "false" ]] && [[ ! -z $ANACONDA_USERNAME ]] && [[ ! -z $ANACONDA_PASSWORD ]]; then
+      cd conda;
+      bash upload.sh;
+      cd ..;
     fi
