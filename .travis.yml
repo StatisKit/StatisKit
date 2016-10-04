@@ -13,7 +13,7 @@
 # File authors: Pierre Fernique <pfernique@gmail.com> (18)                       #
 #                                                                                #
 ##################################################################################
-
+langague: python
 
 matrix:
   include:
