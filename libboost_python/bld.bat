@@ -14,6 +14,8 @@ call bootstrap.bat ^
     --with-libraries=python
 if errorlevel 1 exit 1
 
+echo %ARCH%
+
 CALL b2 install toolset=msvc-%MSVC_VER% ^
         address-model=%ARCH% ^
         variant=release ^
