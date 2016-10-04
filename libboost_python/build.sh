@@ -16,9 +16,9 @@ LIBRARY_PATH="${PREFIX}/lib"
 if [ "$(uname)" == "Darwin" ]; then
     MACOSX_VERSION_MIN=10.6
     CXXFLAGS="-mmacosx-version-min=${MACOSX_VERSION_MIN}"
-    CXXFLAGS="${CXXFLAGS}"
+    CXXFLAGS="${CXXFLAGS} -stdlib=libc++ -std=c++11"
     LINKFLAGS="-mmacosx-version-min=${MACOSX_VERSION_MIN}"
-    LINKFLAGS="${LINKFLAGS} -L${LIBRARY_PATH}"
+    LINKFLAGS="${LINKFLAGS} -stdlib=libc++ -std=c++11 -L${LIBRARY_PATH}"
 
     ./bootstrap.sh \
         --prefix="${PREFIX}" \
