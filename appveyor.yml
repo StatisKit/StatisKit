@@ -19,6 +19,7 @@ build_script:
   - powershell -Command "(gc tmp.bat) -replace 'build', 'build --no-test' | Out-File tmp.bat"
   - more tmp.bat
   - more tmp.bat > tmp.bat
+  - more tmp.bat
   - call tmp.bat
   - cd ..
   
