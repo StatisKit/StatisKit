@@ -81,6 +81,33 @@ def license_script(args):
     config = init_config(root)
     dump_license(root, config)
 
+def toolchain(args):
+    
+    platform = sys.platform
+    
+    if platform.startswith('freebsd') or if platform.startswith('linux'):
+        process = subprocess.Popen(['gcc', '-dumpversion'], stdout=subprocess.PIPE)
+        out, err = process.communicate()
+        toolchain = 'gnu' + '.join(out.split('.')[:2])
+    elif platform == 'darwin':
+        process = subprocess.Popen(['xcodebuild', '-dumpversion'], stdout=subprocess.PIPE)
+        out, err = process.communicate()
+        print out
+        toolchain = 'xcode'
+    elif platform == 'win32':
+        toolchain = 'vc'
+        version = sys.version_info
+        if version < (3, 4):
+            toolchain += '9'
+        elif version < (3, 5):
+            toolchain += '10'
+        else:
+            toolchain += '14'
+    else:
+        raise NotImplementedError('OS `' + platform + '` is not supported')
+        
+    return toolchain
+
 def pkgtk(args=None):
     parser = ArgumentParser(description='Software manager',
             formatter_class=RawTextHelpFormatter)
@@ -135,6 +162,9 @@ def pkgtk(args=None):
             choices=list(load_license))
     subparser.set_defaults(func = license_script)
 
+    subparser = subparsers.add_parser('toolchain', help="Get the toolchain to use")
+    subparser.set_defaults(func =toolchain_script)
+    
     if args:
         args = parser.parse_args(args)
     else:
