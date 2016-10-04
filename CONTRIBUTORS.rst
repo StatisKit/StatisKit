@@ -1,1 +1,1 @@
-* `Pierre Fernique <pfernique@gmail.com>`_ (102)
+* `Pierre Fernique <pfernique@gmail.com>`_ (106)

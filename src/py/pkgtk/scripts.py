@@ -85,10 +85,10 @@ def toolchain(args):
     
     platform = sys.platform
     
-    if platform.startswith('freebsd') or if platform.startswith('linux'):
+    if platform.startswith('freebsd') or platform.startswith('linux'):
         process = subprocess.Popen(['gcc', '-dumpversion'], stdout=subprocess.PIPE)
         out, err = process.communicate()
-        toolchain = 'gnu' + '.join(out.split('.')[:2])
+        toolchain = 'gnu' + ''.join(out.split('.')[:2])
     elif platform == 'darwin':
         process = subprocess.Popen(['xcodebuild', '-dumpversion'], stdout=subprocess.PIPE)
         out, err = process.communicate()

@@ -47,7 +47,7 @@ script:
     - conda remove python-pkgtk
     - conda env remove -n _build
     - conda clean --all
-    - bash conda/build.sh
+    - bash build.sh
 
 after_success:
     - coveralls --rcfile=.coveragerc
