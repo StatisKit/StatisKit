@@ -13,7 +13,9 @@ install:
   
 build_script:
   - cd conda
-  - call bld.bat
+  - echo "echo ON" >> tmp.bat
+  - more +7 "bld.bat" > tmp.bat
+  - call tmp.bat
   - cd ..
   
 on_success:
