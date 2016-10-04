@@ -1,0 +1,22 @@
+environment:
+  matrix:
+    - BLD: x86 
+    - BLD: x86_64
+    
+install:
+  - 'IF "%BLD%" == "x86" set PATH=C:\Miniconda;C:\Miniconda\Scripts;%PATH%'
+  - 'IF "%BLD%" == "x86_64" set PATH=C:\Miniconda-x64;C:\Miniconda-x64\Scripts;%PATH%'
+  - "conda config --set always_yes yes --set changeps1 no"
+  - "conda update -q conda"
+  - "conda info -a"
+  - "conda install conda-build=1.21"
+  
+build_script:
+  - cd conda
+  - call bld.bat
+  - cd ..
+  
+on_success:
+  - cd conda
+  - if "%APPVEYOR_REPO_BRANCH%"=="master" if not "%ANACONDA_USERNAME%"=="" if not "%ANACONDA_PASSWORD%"=="" call upload.bat
+  - cd ..
