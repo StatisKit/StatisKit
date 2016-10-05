@@ -53,7 +53,7 @@ script:
     - cd ..
 
 after_success:
-  -if [[ "$TRAVIS_OS_NAME" = "linux" ]]; then
+  - if [[ "$TRAVIS_OS_NAME" = "linux" ]]; then
      pkgtk authors;
      cd conda;
      sed -i'' -e 's/build --no-test/build/g' build.sh;
