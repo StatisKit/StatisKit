@@ -16,7 +16,7 @@ install:
   - "cd condaci"
   - "python condaci.py setup"
   - "cd .."
-  - "rmdir condaci /s"
+  #- "rmdir condaci /s"
 
 build_script:
   - cd conda
