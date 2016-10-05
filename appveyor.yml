@@ -10,8 +10,12 @@ install:
   - "conda update -q conda"
   - "conda info -a"
   - "conda install conda-build=1.21"
-  - "conda install vs2008_runtime"
-  
+  - "git clone https://github.com/menpo/condaci.git"
+  - "cd condaci"
+  - "python condaci.py setup"
+  - "cd .."
+  - "rmdir condaci /s"
+
 build_script:
   - cd conda
   - echo echo ON >> tmp.bat
