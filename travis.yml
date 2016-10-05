@@ -28,7 +28,7 @@ install:
 
 script:
   - cd conda
-  - sed -i'' -e 's/build/build -q/g' build.sh
+  - sed -i'' -e 's#conda build $CONDA_RECIPE -c statiskit#conda build $CONDA_RECIPE -c statiskit &> /dev/null#g' build.sh
   - sed -i'' -e '3,5d' build.sh
   - bash build.sh
   - cd ..
