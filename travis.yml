@@ -28,7 +28,6 @@ install:
 
 script:
   - cd conda
-  #- sed -i'' -e 's/build/build -q/g' build.sh
   - sed -i'' -e '3,5d' build.sh
   - bash build.sh
   - cd ..
@@ -39,8 +38,8 @@ after_success:
       bash upload.sh;
       cd ..;
     fi
-  # - if [[ "$TRAVIS_BRANCH" = "master" ]] && [[ "$TRAVIS_PULL_REQUEST" = "false" ]] && [[ "$TRAVIS_OS_NAME" = "linux" ]] && [[ ! -z $DOCKER_USERNAME ]] && [[ ! -z $DOCKER_PASSWORD ]]; then
-  #     docker build -q -t statiskit/misc Dockerfile;
-  #     docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
-  #     docker push statiskit/ubuntu  &> /dev/null;
-  #   fi
+  - if [[ "$TRAVIS_BRANCH" = "master" ]] && [[ "$TRAVIS_PULL_REQUEST" = "false" ]] && [[ "$TRAVIS_OS_NAME" = "linux" ]] && [[ ! -z $DOCKER_USERNAME ]] && [[ ! -z $DOCKER_PASSWORD ]]; then
+      docker build -q -t statiskit/ubuntu Dockerfile;
+      docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+      docker push statiskit/ubuntu;
+    fi
