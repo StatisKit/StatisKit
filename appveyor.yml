@@ -2,12 +2,12 @@ environment:
   matrix:
     - PLATFORM: x86
       PYTHON_VERSION: "2.7"
-    - PLATFORM: 64
+    - PLATFORM: x64
       PYTHON_VERSION: "2.7"
     
 install:
   - 'IF "%PLATFORM%" == "x86" set PATH=C:\Miniconda;C:\Miniconda\Scripts;%PATH%'
-  - 'IF "%PLATFORM%" == "64" set PATH=C:\Miniconda-x64;C:\Miniconda-x64\Scripts;%PATH%'
+  - 'IF "%PLATFORM%" == "x64" set PATH=C:\Miniconda-x64;C:\Miniconda-x64\Scripts;%PATH%'
   - "conda config --set always_yes yes --set changeps1 no"
   - "conda update -q conda"
   - "conda info -a"
