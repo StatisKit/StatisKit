@@ -11,8 +11,6 @@ install:
   - "conda config --set always_yes yes --set changeps1 no"
   - "conda update -q conda"
   - "conda info -a"
-  - "git clone https://github.com/ogrisel/python-appveyor-demo.git"
-  - set CMD_IN_ENV="cmd /E:ON /V:ON /C .\\python-appveyor-demo\\appveyor\\run_with_env.cmd"
   - "conda install conda-build=1.21"
 
 build_script:
@@ -21,7 +19,7 @@ build_script:
   - more +7 "bld.bat" >> tmp.bat
   - del bld.bat
   - more tmp.bat >> bld.bat
-  - "%CMD_IN_ENV% call bld.bat"
+  - call bld.bat
   - cd ..
   
 on_success:
