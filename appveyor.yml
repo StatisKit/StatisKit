@@ -10,6 +10,7 @@ install:
   - "conda update -q conda"
   - "conda info -a"
   - "conda install conda-build=1.21"
+  - "conda install vs2008_runtime"
   
 build_script:
   - cd conda
