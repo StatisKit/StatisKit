@@ -1,8 +1,8 @@
 environment:
   matrix:
-    - PLATFORM: x86
-      PYTHON_VERSION: "2.7"
     - PLATFORM: x64
+      PYTHON_VERSION: "2.7"
+    - PLATFORM: x86
       PYTHON_VERSION: "2.7"
       
 install:
@@ -10,6 +10,8 @@ install:
   - 'if "%PLATFORM%" == "x64" set PATH=C:\Miniconda-x64;C:\Miniconda-x64\Scripts;%PATH%'
   - 'set WIN_SDK_ROOT="C:\Program Files\Microsoft SDKs\Windows"'
   - 'set WINDOWS_SDK_VERSION="v7.0"'
+  - 'echo %WIN_SDK_ROOT%\%WINDOWS_SDK_VERSION%'
+  - 'dir %WIN_SDK_ROOT%\%WINDOWS_SDK_VERSION%' 
   - 'if "%PLATFORM%" == "x64" %WIN_SDK_ROOT%\%WINDOWS_SDK_VERSION%\Setup\WindowsSdkVer.exe -q -version:%WINDOWS_SDK_VERSION%'
   - 'if "%PLATFORM%" == "x64" %WIN_SDK_ROOT%\%WINDOWS_SDK_VERSION%\Bin\SetEnv.cmd" /x64 /release'
   - "conda config --set always_yes yes --set changeps1 no"
