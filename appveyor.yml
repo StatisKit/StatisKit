@@ -14,13 +14,10 @@ install:
 build_script:
   - cd conda
   - echo echo ON >> tmp.bat
-  - more +7 "bld.bat"
   - more +7 "bld.bat" >> tmp.bat
   - powershell -Command "(gc tmp.bat) -replace 'build', 'build --no-test' | Out-File tmp.bat"
-  - more tmp.bat
   - del bld.bat
   - more tmp.bat >> bld.bat
-  - more bld.bat
   - call bld.bat
   - cd ..
   
