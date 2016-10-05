@@ -4,18 +4,15 @@ environment:
       PYTHON_VERSION: "2.7"
     - PLATFORM: x64
       PYTHON_VERSION: "2.7"
-    
+      
 install:
   - 'IF "%PLATFORM%" == "x86" set PATH=C:\Miniconda;C:\Miniconda\Scripts;%PATH%'
   - 'IF "%PLATFORM%" == "x64" set PATH=C:\Miniconda-x64;C:\Miniconda-x64\Scripts;%PATH%'
   - "conda config --set always_yes yes --set changeps1 no"
   - "conda update -q conda"
   - "conda info -a"
-  - "git clone https://github.com/menpo/condaci.git"
-  - "cd condaci"
-  - "python condaci.py setup"
-  - "cd .."
-  #- "rmdir condaci /s"
+  - "git clone https://github.com/ogrisel/python-appveyor-demo.git"
+  - set CMD_IN_ENV="cmd /E:ON /V:ON /C .\\python-appveyor-demo\\appveyor\\run_with_env.cmd"
   - "conda install conda-build=1.21"
 
 build_script:
@@ -24,7 +21,7 @@ build_script:
   - more +7 "bld.bat" >> tmp.bat
   - del bld.bat
   - more tmp.bat >> bld.bat
-  - call bld.bat
+  - %CMD_IN_ENV% call bld.bat
   - cd ..
   
 on_success:
