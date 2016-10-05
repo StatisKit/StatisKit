@@ -8,6 +8,8 @@ environment:
 install:
   - 'if "%PLATFORM%" == "x86" set PATH=C:\Miniconda;C:\Miniconda\Scripts;%PATH%'
   - 'if "%PLATFORM%" == "x64" set PATH=C:\Miniconda-x64;C:\Miniconda-x64\Scripts;%PATH%'
+  - 'set DISTUTILS_USE_SDK=1'
+  - 'set MSSdk=1'
   - 'set WIN_SDK_ROOT="C:\Program Files\Microsoft SDKs\Windows"'
   - 'set WINDOWS_SDK_VERSION="v7.0"'
   - 'echo %WIN_SDK_ROOT%\%WINDOWS_SDK_VERSION%'
