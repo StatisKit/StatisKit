@@ -11,12 +11,12 @@ install:
   - "conda config --set always_yes yes --set changeps1 no"
   - "conda update -q conda"
   - "conda info -a"
-  - "conda install conda-build=1.21"
   - "git clone https://github.com/menpo/condaci.git"
   - "cd condaci"
   - "python condaci.py setup"
   - "cd .."
   #- "rmdir condaci /s"
+  - "conda install conda-build=1.21"
 
 build_script:
   - cd conda
