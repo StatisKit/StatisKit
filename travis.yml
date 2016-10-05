@@ -53,8 +53,14 @@ script:
     - cd ..
 
 after_success:
-  - pkgtk authors
-  - coveralls --rcfile=.coveragerc
+  -if [[ "$TRAVIS_OS_NAME" = "linux" ]]; then
+     pkgtk authors;
+     cd conda;
+     sed -i'' -e 's/build --no-test/build/g' build.sh;
+     bash build.sh;
+     cd ..;
+     coveralls --rcfile=.coveragerc;
+    fi
   - if [[ "$TRAVIS_BRANCH" = "master" ]] && [[ "$TRAVIS_PULL_REQUEST" = "false" ]] && [[ ! -z $ANACONDA_USERNAME ]] && [[ ! -z $ANACONDA_PASSWORD ]]; then
       cd conda;
       bash upload.sh;
