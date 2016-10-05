@@ -10,8 +10,7 @@ if "%PY_VER%"=="2.7" (
     set LIB_VER=140
 )
 
-call bootstrap.bat ^
-    --with-libraries=python
+call bootstrap.bat
 if errorlevel 1 exit 1
 
 CALL b2 install toolset=msvc-%MSVC_VER% ^
@@ -20,7 +19,6 @@ CALL b2 install toolset=msvc-%MSVC_VER% ^
         threading=multi ^
         link=shared ^
         -j%CPU_COUNT% ^
-        --with-python ^
         --build-dir=buildboost ^
         --prefix=%LIBRARY_PREFIX%
 IF errorlevel 1 exit 1
@@ -30,6 +28,6 @@ move %LIBRARY_INC%\boost-1_61\boost %LIBRARY_INC%
 IF errorlevel 1 exit 1
 
 dir  %LIBRARY_LIB%
-ECHO %LIBRARY_LIB%\boost_python-vc90-mt-1_61.dll "%LIBRARY_BIN%"
-move %LIBRARY_LIB%\boost_python-vc90-mt-1_61.dll "%LIBRARY_BIN%"
+ECHO %LIBRARY_LIB%\boost_*-vc90-mt-1_61.dll "%LIBRARY_BIN%"
+move %LIBRARY_LIB%\boost_*-vc90-mt-1_61.dll "%LIBRARY_BIN%"
 IF errorlevel 1 exit 1
