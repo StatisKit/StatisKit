@@ -11,6 +11,6 @@ for CONDA_RECIPE in libboost python-scons; do
   pid=$! # Get PID of background command
   while kill -0 $pid; do
     echo -n "."
-    sleep 0.5
+    sleep 60
   done
 done
