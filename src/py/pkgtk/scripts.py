@@ -16,6 +16,7 @@
 
 import sys
 import subprocess
+import parse
 
 from argparse import ArgumentParser, RawTextHelpFormatter
 
@@ -95,8 +96,8 @@ def toolchain_script(args):
     elif platform == 'darwin':
         process = subprocess.Popen(['xcodebuild', '-version'], stdout=subprocess.PIPE)
         out, err = process.communicate()
-        print out
-        toolchain = 'clang'
+        result = parse.parse('Xcode {major}.{minor}{content}', out)
+        toolchain = 'xcode' + result['major'] + result['minor']
     elif platform == 'win32':
         toolchain = 'vc'
         version = sys.version_info

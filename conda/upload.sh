@@ -3,7 +3,7 @@
 
 set -x
 
-conda install -y -n root anaconda-client;
+conda install -n root anaconda-client;
 yes | anaconda login --username "$ANACONDA_USERNAME" --password "$ANACONDA_PASSWORD"
 
 for CONDA_RECIPE in python-parse python-pkgtk; do
