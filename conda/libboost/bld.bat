@@ -15,7 +15,7 @@ call bootstrap.bat ^
 if errorlevel 1 exit 1
 
 CALL b2 install toolset=msvc-%MSVC_VER% ^
-        address-model=%ARCH% ^
+        address-model=32 ^
         variant=release ^
         threading=multi ^
         link=shared ^
