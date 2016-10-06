@@ -1,3 +1,5 @@
+echo ON
+
 :: Set the right msvc version according to Python version
 if "%PY_VER%"=="2.7" (
     set MSVC_VER=9.0
@@ -12,6 +14,8 @@ if "%PY_VER%"=="2.7" (
 
 call bootstrap.bat
 if errorlevel 1 exit 1
+
+echo %ARCH%
 
 CALL b2 install toolset=msvc-%MSVC_VER% ^
         address-model=%ARCH% ^
