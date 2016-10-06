@@ -1,10 +1,5 @@
 FROM ubuntu:14.04
 
-# Build or install
-ARG BUILD="true"
-
-# RUN sed -i 's/# \(.*multiverse$\)/\1/g' /etc/apt/sources.list
-
 # Update the OS
 RUN apt-get update
 
@@ -19,61 +14,20 @@ RUN apt-get autoremove
 # Add user for future work
 RUN useradd -m main --shell /bin/bash && echo "main:main" | chpasswd && adduser main sudo
 
-# gpg --keyserver hkp://keys.gnupg.net --recv-keys \  409B6B1796C275462A1703113804BB82D39DC0E3
-# curl -sSL https://get.rvm.io | bash -s stable --ruby
-# source /home/main/.rvm/scripts/rvm
-# rvm install 2.2.3
-# rvm use 2.2.3
-# rvm rubygems latest
-# ruby --version
-
 # select created user
 USER main
 
 # Install miniconda
-RUN wget https://repo.continuum.io/miniconda/Miniconda2-latest-Linux-x86_64.sh -O \ 
-  $HOME/miniconda.sh
+RUN wget https://repo.continuum.io/miniconda/Miniconda2-latest-Linux-x86_64.sh \
+         -O $HOME/miniconda.sh
 RUN bash $HOME/miniconda.sh -b -p $HOME/miniconda
 RUN rm $HOME/miniconda.sh
 ENV PATH /home/main/miniconda/bin:$PATH
-RUN echo 'export PATH=$PATH:$HOME/miniconda/bin' >> $HOME/.bashrc 
 RUN conda config --set always_yes yes --set changeps1 no
 RUN conda update -q conda
 RUN conda info -a
 
 # Install conda-build
-RUN conda install conda-build==1.21.7
-
-# Install IPython, Jupyter and Pip
-RUN conda install ipython jupyter pip
-
-# Install libraries and packages from Misc
-## Clone the repository
-RUN [ $BUILD = "true" ] && git clone https://github.com/Statiskit/Misc.git $HOME/Misc || [ $BUILD = "false" ]
-
-## Create the post-link file
-RUN ([ -f $HOME/post-link.sh ] && head -n -5 $HOME/post-link.sh > $HOME/post-link.tmp && mv $HOME/post-link.tmp $HOME/post-link.sh) || (touch $HOME/post-link.sh && echo "set -e" >> $HOME/post-link.sh && echo "conda install anaconda-client" >> $HOME/post-link.sh)
-
-## Build libboost recipe
-RUN [ $BUILD = "true" ] && $HOME/miniconda/bin/conda build $HOME/Misc/libboost -c statiskit || [ $BUILD = "false" ]
-
-## Build python-scons recipe
-RUN [ $BUILD = "true" ] && $HOME/miniconda/bin/conda build $HOME/Misc/python-scons -c statiskit || [ $BUILD = "false" ]
-
-## Build python-parse recipe
-RUN [ $BUILD = "true" ] && $HOME/miniconda/bin/conda build $HOME/Misc/python-parse -c statiskit || [ $BUILD = "false" ]
-
-# Create a file for anaconda post-link
-RUN [ $BUILD = "true" ] && echo "anaconda upload \`conda build $HOME/Misc/libboost --output\` --user statiskit --force" >> $HOME/post-link.sh || [ $BUILD = "false" ]
-RUN [ $BUILD = "true" ] && echo "anaconda upload \`conda build $HOME/Misc/python-scons --output\` --user statiskit --force" >> $HOME/post-link.sh || [ $BUILD = "false" ]
-RUN [ $BUILD = "true" ] && echo "anaconda upload \`conda build $HOME/Misc/python-parse --output\` --user statiskit --force" >> $HOME/post-link.sh || [ $BUILD = "false" ]
-#RUN ( [ $BUILD = "true" ] && for recipe in $HOME/Misc/*/; do echo "anaconda upload \`conda build" $recipe "--output\` --user statiskit --force" >> $HOME/post-link.sh; done; ) || [ $BUILD = "false" ]
-RUN [ $BUILD = "false" ] && echo "rm -rf Misc" >> $HOME/post-link.sh || [ $BUILD = "true" ]
-RUN [ $BUILD = "true" ] && echo "conda remove anaconda-client" >> $HOME/post-link.sh || [ $BUILD = "false" ]
-RUN [ $BUILD = "true" ] && echo "conda env remove -n _build" >> $HOME/post-link.sh || [ $BUILD = "false" ]
-RUN [ $BUILD = "true" ] && echo "conda env remove -n _test" >> $HOME/post-link.sh || [ $BUILD = "false" ]
-RUN echo "conda clean --all" >> $HOME/post-link.sh
-RUN echo "rm $HOME/post-link.sh" >> $HOME/post-link.sh
-RUN [ $BUILD = "false" ] && cd $HOME && /bin/bash post-link.sh || [ $BUILD = "true" ]
+RUN conda install conda-build
 
 WORKDIR /home/main

@@ -25,10 +25,10 @@ if [ "$(uname)" == "Darwin" ]; then
         --with-python="${PYTHON}" \
         --with-python-root="${PREFIX} : ${PREFIX}/include/python${PY_VER}m ${PREFIX}/include/python${PY_VER}" \
         --with-icu="${PREFIX}" \
-        --with-libraries=python \
         | tee bootstrap.log 2>&1
 
     ./b2 -q \
+        -d0 \
         variant=release \
         address-model=64 \
         architecture=x86 \
@@ -40,7 +40,6 @@ if [ "$(uname)" == "Darwin" ]; then
         cxxflags="${CXXFLAGS}" \
         linkflags="${LINKFLAGS}" \
         -j"$(sysctl -n hw.ncpu)" \
-        --with-python \
         install | tee b2.log 2>&1
 fi
 
@@ -49,7 +48,6 @@ if [ "$(uname)" == "Linux" ]; then
         --prefix="${PREFIX}" \
         --with-python="${PYTHON}" \
         --with-python-root="${PREFIX} : ${PREFIX}/include/python${PY_VER}m ${PREFIX}/include/python${PY_VER}" \
-        --with-libraries=python \
         | tee bootstrap.log 2>&1
 
     ./b2 -q \
@@ -66,7 +64,6 @@ if [ "$(uname)" == "Linux" ]; then
         linkflags="-L${LIBRARY_PATH}" \
         --layout=system \
         -j"${CPU_COUNT}" \
-        --with-python \
         install | tee b2.log 2>&1
 fi
 
