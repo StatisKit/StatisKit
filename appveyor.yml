@@ -8,8 +8,8 @@ environment:
     #  PYTHON_VERSION: "2.7"
       
 install:
-  - 'if "%PLATFORM%" == "x86" set PATH=C:\Miniconda;C:\Miniconda\Scripts;%PATH%'
-  - 'if "%PLATFORM%" == "x64" set PATH=C:\Miniconda-x64;C:\Miniconda-x64\Scripts;%PATH%'
+  - 'if "%TARGET_ARCH%" == "x86" set PATH=C:\Miniconda;C:\Miniconda\Scripts;%PATH%'
+  - 'if "%TARGET_ARCH%" == "x64" set PATH=C:\Miniconda-x64;C:\Miniconda-x64\Scripts;%PATH%'
   - 'git clone https://github.com/pelson/Obvious-CI.git'
   - 'move /y ".\Obvious-CI\scripts\obvci_appveyor_python_build_env.cmd" ".\conda\obvci_appveyor_python_build_env.cmd"' 
   #- 'set DISTUTILS_USE_SDK=1'
