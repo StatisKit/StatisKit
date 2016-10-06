@@ -8,6 +8,9 @@ yes | anaconda login --username "$ANACONDA_USERNAME" --password "$ANACONDA_PASSW
 
 set -x
 
+conda install python-pkgtk -c statiskit -c conda-forge
+export TOOLCHAIN=`pkgtk toolchain`
+
 for CONDA_RECIPE in libboost python-scons; do
   CONDA_FILE=`conda build $CONDA_RECIPE --output`
   anaconda upload --user statiskit ${CONDA_FILE%%} || echo "upload failed"
