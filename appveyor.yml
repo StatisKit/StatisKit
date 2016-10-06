@@ -10,12 +10,12 @@ environment:
 install:
   - 'if "%PLATFORM%" == "x86" set PATH=C:\Miniconda;C:\Miniconda\Scripts;%PATH%'
   - 'if "%PLATFORM%" == "x64" set PATH=C:\Miniconda-x64;C:\Miniconda-x64\Scripts;%PATH%'
-  - 'set DISTUTILS_USE_SDK=1'
-  - 'set MSSdk=1'
-  - 'set WIN_SDK_ROOT="C:\Program Files\Microsoft SDKs\Windows"'
-  - 'set WINDOWS_SDK_VERSION="v7.0"'
-  - 'echo %WIN_SDK_ROOT%\%WINDOWS_SDK_VERSION%'
-  - 'dir %WIN_SDK_ROOT%\%WINDOWS_SDK_VERSION%' 
+  #- 'set DISTUTILS_USE_SDK=1'
+  #- 'set MSSdk=1'
+  #- 'set WIN_SDK_ROOT="C:\Program Files\Microsoft SDKs\Windows"'
+  #- 'set WINDOWS_SDK_VERSION="v7.0"'
+  #- 'echo %WIN_SDK_ROOT%\%WINDOWS_SDK_VERSION%'
+  #- 'dir %WIN_SDK_ROOT%\%WINDOWS_SDK_VERSION%' 
   #- 'if "%PLATFORM%" == "x64" appveyor DownloadFile "https://raw.githubusercontent.com/pelson/Obvious-CI/master/bootstrap-obvious-ci-and-miniconda.py"'
   #- 'if "%PLATFORM%" == "x64" python bootstrap-obvious-ci-and-miniconda.py =C:\Conda %PLATFORM% %CONDA_PY:~0,1% --without-obvci'
   - "conda config --set always_yes yes --set changeps1 no"
