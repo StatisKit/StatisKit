@@ -1,25 +1,12 @@
 environment:
   CMD_IN_ENV: "cmd /E:ON /V:ON /C obvci_appveyor_python_build_env.cmd"
-  matrix:
-    - TARGET_ARCH: x64
-      PYTHON_VERSION: "2.7"
-      CONDA_PY: 27
-    #- PLATFORM: x86
-    #  PYTHON_VERSION: "2.7"
+  TARGET_ARCH: x64
+  CONDA_PY: 27
       
 install:
-  - 'if "%TARGET_ARCH%" == "x86" set PATH=C:\Miniconda;C:\Miniconda\Scripts;%PATH%'
-  - 'if "%TARGET_ARCH%" == "x64" set PATH=C:\Miniconda-x64;C:\Miniconda-x64\Scripts;%PATH%'
+  - 'set PATH=C:\Miniconda-x64;C:\Miniconda-x64\Scripts;%PATH%'
   - 'git clone https://github.com/pelson/Obvious-CI.git'
   - 'move /y ".\Obvious-CI\scripts\obvci_appveyor_python_build_env.cmd" ".\conda\obvci_appveyor_python_build_env.cmd"' 
-  #- 'set DISTUTILS_USE_SDK=1'
-  #- 'set MSSdk=1'
-  #- 'set WIN_SDK_ROOT="C:\Program Files\Microsoft SDKs\Windows"'
-  #- 'set WINDOWS_SDK_VERSION="v7.0"'
-  #- 'echo %WIN_SDK_ROOT%\%WINDOWS_SDK_VERSION%'
-  #- 'dir %WIN_SDK_ROOT%\%WINDOWS_SDK_VERSION%' 
-  #- 'if "%PLATFORM%" == "x64" appveyor DownloadFile "https://raw.githubusercontent.com/pelson/Obvious-CI/master/bootstrap-obvious-ci-and-miniconda.py"'
-  #- 'if "%PLATFORM%" == "x64" python bootstrap-obvious-ci-and-miniconda.py =C:\Conda %PLATFORM% %CONDA_PY:~0,1% --without-obvci'
   - "conda config --set always_yes yes --set changeps1 no"
   - "conda update -q conda"
   - "conda info -a"
