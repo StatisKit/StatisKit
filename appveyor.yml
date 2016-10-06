@@ -2,8 +2,8 @@ environment:
   matrix:
     - PLATFORM: x64
       PYTHON_VERSION: "2.7"
-    - PLATFORM: x86
-      PYTHON_VERSION: "2.7"
+    #- PLATFORM: x86
+    #  PYTHON_VERSION: "2.7"
       
 install:
   - 'if "%PLATFORM%" == "x86" set PATH=C:\Miniconda;C:\Miniconda\Scripts;%PATH%'
