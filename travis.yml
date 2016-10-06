@@ -21,7 +21,7 @@ before_install:
   - conda config --set always_yes yes --set changeps1 no
   - conda update -q conda &> /dev/null;
   - conda info -a &> /dev/null;
-  - conda install conda-build &> /dev/null;
+  - conda install conda-build=2.0.2 &> /dev/null;
 
 install:
   - pip install python-coveralls &> /dev/null;
