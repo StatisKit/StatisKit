@@ -4,13 +4,13 @@ environment:
   CONDA_PY: 27
       
 install:
-  - 'set PATH=C:\Miniconda-x64;C:\Miniconda-x64\Scripts;%PATH%'
-  - 'git clone https://github.com/pelson/Obvious-CI.git'
-  - 'move /y ".\Obvious-CI\scripts\obvci_appveyor_python_build_env.cmd" ".\conda\obvci_appveyor_python_build_env.cmd"' 
-  - "conda config --set always_yes yes --set changeps1 no"
-  - "conda update -q conda"
-  - "conda info -a"
-  - "conda install conda-build=1.21"
+  - set PATH=C:\Miniconda-x64;C:\Miniconda-x64\Scripts;%PATH%
+  - git clone https://github.com/pelson/Obvious-CI.git
+  - move /y ".\Obvious-CI\scripts\obvci_appveyor_python_build_env.cmd" ".\conda\obvci_appveyor_python_build_env.cmd"
+  - conda config --set always_yes yes --set changeps1 no
+  - conda update -q conda
+  - conda info -a
+  - conda install conda-build=1.21
 
 build_script:
   - cd conda
@@ -19,7 +19,7 @@ build_script:
   - powershell -Command "(gc tmp.bat) -replace 'conda build', '%CMD_IN_ENV% conda build' | Out-File tmp.bat"
   - del bld.bat
   - more tmp.bat >> bld.bat
-  - "call bld.bat"
+  - call bld.bat
   - cd ..
   
 on_success:
