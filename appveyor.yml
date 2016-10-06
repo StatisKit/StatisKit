@@ -17,6 +17,7 @@ build_script:
   - echo echo ON >> tmp.bat
   - more +7 "bld.bat" >> tmp.bat
   - powershell -Command "(gc tmp.bat) -replace 'conda build', '%CMD_IN_ENV% conda build --no-test' | Out-File tmp.bat"
+  - del bld.bat
   - more tmp.bat >> bld.bat
   - call bld.bat
   - cd ..
