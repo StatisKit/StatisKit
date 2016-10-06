@@ -30,4 +30,7 @@ RUN conda info -a
 # Install conda-build
 RUN conda install conda-build
 
+RUN git clone https://gist.github.com/93e0375712c6e62f76bec455e89d0437.git git-config
+RUN cd git-config && bash git-config.sh
+
 WORKDIR /home/main
