@@ -1,7 +1,7 @@
 environment:
   CMD_IN_ENV: "cmd /E:ON /V:ON /C obvci_appveyor_python_build_env.cmd"
   matrix:
-    - PLATFORM: x64
+    - TARGET_ARCH: x64
       PYTHON_VERSION: "2.7"
       CONDA_PY: 27
     #- PLATFORM: x86
@@ -10,6 +10,8 @@ environment:
 install:
   - 'if "%PLATFORM%" == "x86" set PATH=C:\Miniconda;C:\Miniconda\Scripts;%PATH%'
   - 'if "%PLATFORM%" == "x64" set PATH=C:\Miniconda-x64;C:\Miniconda-x64\Scripts;%PATH%'
+  - 'git clone https://github.com/pelson/Obvious-CI.git'
+  - 'move /y ".\Obvious-CI\scripts\obvci_appveyor_python_build_env.cmd" ".\conda\obvci_appveyor_python_build_env.cmd"' 
   #- 'set DISTUTILS_USE_SDK=1'
   #- 'set MSSdk=1'
   #- 'set WIN_SDK_ROOT="C:\Program Files\Microsoft SDKs\Windows"'
@@ -27,9 +29,10 @@ build_script:
   - cd conda
   - echo echo ON >> tmp.bat
   - more +7 "bld.bat" >> tmp.bat
+  - powershell -Command "(gc tmp.bat) -replace 'conda build', '%CMD_IN_ENV% conda build' | Out-File tmp.bat"
   - del bld.bat
   - more tmp.bat >> bld.bat
-  - "%CMD_IN_ENV% call bld.bat"
+  - "call bld.bat"
   - cd ..
   
 on_success:
