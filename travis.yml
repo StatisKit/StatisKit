@@ -29,10 +29,12 @@ install:
   - cd ..
 
 script:
-  - cd conda
-  - sed -i'' -e '8,10d' build.sh
-  - bash build.sh
-  - cd ..
+  - if [[ ! -z $BUILD_TARGETS ]]; then
+      cd conda;
+      sed -i'' -e '8,10d' build.sh;
+      bash build.sh;
+      cd ..;
+    fi
 
 after_success:
   - if [[ "$TRAVIS_BRANCH" = "master" ]] && [[ "$TRAVIS_PULL_REQUEST" = "false" ]] && [[ ! -z $ANACONDA_USERNAME ]] && [[ ! -z $ANACONDA_PASSWORD ]]; then
