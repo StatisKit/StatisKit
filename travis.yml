@@ -42,6 +42,7 @@ after_success:
   - pkgtk authors
   - cd conda
   - bash install.sh
+  - pkgtk authors
   - sed -i'' -e 's/build --no-test/build/g' build.sh
   - export BUILD_TARGETS="python-pkgtk"
   - bash build.sh
