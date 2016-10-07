@@ -40,10 +40,11 @@ script:
   - cd ..
 
 after_success:
-  - pkgtk authors
   - cd conda
   - bash install.sh
+  - cd ..
   - pkgtk authors
+  - cd conda
   - sed -i'' -e 's/build --no-test/build/g' build.sh
   - export BUILD_TARGETS="python-pkgtk"
   - bash build.sh
