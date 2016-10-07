@@ -16,44 +16,35 @@
 
 language: cpp
 
+env:
+  - BUILD_TARGETS="python-parse"
+  - BUILD_TARGETS="python-pkgtk"
+
 matrix:
   include:
     - os: linux
       dist: trusty
       sudo: required
+      services:
+        - docker
     - os: osx
       osx_image: xcode7.2
 
-before_install:
-    - if [[ "$TRAVIS_OS_NAME" = "linux" ]]; then
-        wget https://repo.continuum.io/miniconda/Miniconda2-latest-Linux-x86_64.sh -O miniconda.sh;
-      elif [[ "$TRAVIS_OS_NAME" = "osx" ]]; then
-        curl https://repo.continuum.io/miniconda/Miniconda2-latest-MacOSX-x86_64.sh -o miniconda.sh;
-      fi
-    - bash miniconda.sh -b -p $HOME/miniconda
-    - export PATH=$HOME/miniconda/bin:$PATH
-    - export LD_LIBRARY_PATH=$HOME/miniconda/lib:$LD_LIBRARY_PATH
-    - conda config --set always_yes yes --set changeps1 no
-    - conda update -q conda
-    - conda info -a
-    - conda install conda-build
-
 install:
-    - conda install curl
-    - pip install coverage
-    - pip install coveralls
-    - pip install nose
-
+  - git clone https://gist.github.com/319558c83d145620a6d4decdcadfbfb0.git config-travis
+  - cd config-travis
+  - eval config.sh
+  - cd ..
+  
 script:
     - cd conda
     - sed -i'' -e 's/build/build --no-test/g' build.sh
-    - sed -i'' -e '3,5d' build.sh
+    - sed -i'' -e '8,10d' build.sh
     - bash build.sh
-    - bash install.sh
     - cd ..
 
 after_success:
-  - if [[ "$TRAVIS_OS_NAME" = "linux" ]]; then
+  - if [[ "$TRAVIS_OS_NAME" = "linux" ]] && [[ "$BUILD_TARGETS" = "python-pkgtk" ]]; then
      pkgtk authors;
      cd conda;
      sed -i'' -e 's/build --no-test/build/g' build.sh;
