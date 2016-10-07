@@ -28,7 +28,6 @@ if [ "$(uname)" == "Darwin" ]; then
         | tee bootstrap.log 2>&1
 
     ./b2 -q \
-        -d0 \
         variant=release \
         address-model=64 \
         architecture=x86 \
