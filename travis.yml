@@ -49,9 +49,7 @@ after_success:
   - export BUILD_TARGETS="python-pkgtk"
   - bash build.sh
   - if [[ "$TRAVIS_OS_NAME" = "linux"]]; then
-     cd ..;
-     coveralls --rcfile=.coveragerc;
-     cd conda;
+     cd .. && coveralls --rcfile=.coveragerc; cd conda;
     fi
   - if [[ "$TRAVIS_BRANCH" = "master" ]] && [[ "$TRAVIS_PULL_REQUEST" = "false" ]] && [[ ! -z $ANACONDA_USERNAME ]] && [[ ! -z $ANACONDA_PASSWORD ]]; then
       bash upload.sh;
