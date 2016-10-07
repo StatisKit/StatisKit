@@ -11,7 +11,7 @@ set -x
 
 git clone https://gist.github.com/c491cb08d570beeba2c417826a50a9c3.git toolchain
 cd toolchain
-eval config.sh
+source config.sh
 cd ..
 rm -rf toolchain
 
