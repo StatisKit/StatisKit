@@ -39,16 +39,16 @@ script:
     - cd ..
 
 after_success:
-  - if [[ "$TRAVIS_OS_NAME" = "linux" ]] && [[ "$BUILD_TARGETS" = "python-pkgtk" ]]; then
-     pkgtk authors;
-     cd conda;
-     sed -i'' -e 's/build --no-test/build/g' build.sh;
-     bash build.sh;
+  - pkgtk authors
+  - cd conda
+  - sed -i'' -e 's/build --no-test/build/g' build.sh
+  - bash build.sh
+  - if [[ "$TRAVIS_OS_NAME" = "linux"]]; then
      cd ..;
      coveralls --rcfile=.coveragerc;
+     cd conda;
     fi
   - if [[ "$TRAVIS_BRANCH" = "master" ]] && [[ "$TRAVIS_PULL_REQUEST" = "false" ]] && [[ ! -z $ANACONDA_USERNAME ]] && [[ ! -z $ANACONDA_PASSWORD ]]; then
-      cd conda;
       bash upload.sh;
-      cd ..;
     fi
+  - cd ..
