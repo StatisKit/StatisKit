@@ -3,7 +3,6 @@ platform:
 
 environment:
   matrix:
-    - BUILD_TARGETS: libboost python-scons
     - BUILD_TARGETS: libboost
     - BUILD_TARGETS: python-scons
     
