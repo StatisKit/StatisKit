@@ -18,7 +18,7 @@ call config.bat
 cd ..
 rmdir toolchain /s /q
 
-for %%BUILD_TARGET in (%BUILD_TARGETS%) do (
-    conda build %%BUILD_TARGET -c statiskit
+for %%x in (%BUILD_TARGETS%) do (
+    conda build %%x -c statiskit
     if %errorlevel% neq 0 exit /b %errorlevel%
 )
