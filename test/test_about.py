@@ -43,4 +43,5 @@ class TestLicence(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
+        os.unlink(cls.repository + os.sep + '.pkgtk.yml')
         os.rename(cls.repository + os.sep + '.pkgtk.back', cls.repository + os.sep + '.pkgtk.yml')
