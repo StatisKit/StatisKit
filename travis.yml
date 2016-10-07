@@ -30,7 +30,6 @@ install:
   - cd config-travis
   - source config.sh
   - cd ..
-  - ls
   
 script:
   - cd conda
