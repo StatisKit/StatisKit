@@ -5,22 +5,38 @@ matrix:
     - os: linux
       dist: trusty
       sudo: required
+      env: BUILD_TARGETS="libboost"
+    - os: linux
+      dist: trusty
+      sudo: required
+      env: BUILD_TARGETS="python-scons"
+    - os: linux
+      dist: trusty
+      sudo: required
       services:
         - docker
     - os: osx
       osx_image: xcode7.2
-        
+      env: BUILD_TARGETS="libboost"
+    - os: osx
+      osx_image: xcode7.2   
+      env: BUILD_TARGETS="python-scons"
+
 install:
   - git clone https://gist.github.com/319558c83d145620a6d4decdcadfbfb0.git config-travis
   - cd config-travis
-  - eval config.sh
+  - source config.sh
   - cd ..
 
 script:
-  - cd conda
-  - sed -i'' -e '3,5d' build.sh
-  - bash build.sh
-  - cd ..
+  - if [[ ! -z $BUILD_TARGETS ]]; then
+      cd conda;
+      sed -i'' -e '8,10d' build.sh;
+      bash build.sh;
+      cd ..;
+    else
+      docker build -t statiskit/ubuntu .;
+    fi
 
 after_success:
   - if [[ "$TRAVIS_BRANCH" = "master" ]] && [[ "$TRAVIS_PULL_REQUEST" = "false" ]] && [[ ! -z $ANACONDA_USERNAME ]] && [[ ! -z $ANACONDA_PASSWORD ]]; then
@@ -28,8 +44,7 @@ after_success:
       bash upload.sh;
       cd ..;
     fi
-  - if [[ "$TRAVIS_BRANCH" = "master" ]] && [[ "$TRAVIS_PULL_REQUEST" = "false" ]] && [[ "$TRAVIS_OS_NAME" = "linux" ]] && [[ ! -z $DOCKER_USERNAME ]] && [[ ! -z $DOCKER_PASSWORD ]]; then
-      docker build -t statiskit/ubuntu .;
+  - if [[ -z $BUILD_TARGETS ]] && [[ "$TRAVIS_BRANCH" = "master" ]] && [[ "$TRAVIS_PULL_REQUEST" = "false" ]] && [[ "$TRAVIS_OS_NAME" = "linux" ]] && [[ ! -z $DOCKER_USERNAME ]] && [[ ! -z $DOCKER_PASSWORD ]]; then
       docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
       docker push statiskit/ubuntu;
     fi
