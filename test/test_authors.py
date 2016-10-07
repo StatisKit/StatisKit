@@ -56,6 +56,7 @@ class TestAuthors(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
+        os.unlink(cls.repository + os.sep + '.pkgtk.yml')
         os.rename(cls.repository + os.sep + '.pkgtk.back', cls.repository + os.sep + '.pkgtk.yml')
         if 'basename' in cls.config['authors']:
             os.rename(cls.repository + os.sep + cls.config['authors']['basename'] + '.back', cls.repository + os.sep + cls.config['authors']['basename'])
