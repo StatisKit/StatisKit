@@ -49,8 +49,8 @@ test:
         - coverage
     commands:
         - cd {{ SRC_DIR }}
-        - nosetests test --pdb -x -s -v --with-coverage --cover-tests --cover-package=pkgtk --cover-package=test
-        - REPOSITORY_DIR=`readlink -e $RECIPE_DIR/../..`
-        - sed -i -e 's#'"$PREFIX"'/lib/python2.7/site-packages/PkgTk-0.0.0-py2.7.egg#'"$REPOSITORY_DIR"'/src/py#g' .coverage
-        - sed -i -e 's#'"$SRC_DIR"'#'"$REPOSITORY_DIR"'#g' .coverage
-        - mv .coverage $REPOSITORY_DIR
+        - nosetests test -x -s -v --with-coverage --cover-tests --cover-package=pkgtk --cover-package=test
+        - REPOSITORY_DIR=`readlink -e $RECIPE_DIR/../..` # [not win]
+        - sed -i'' -e 's|'"$PREFIX"'/lib/python2.7/site-packages/PkgTk-0.0.0-py2.7.egg|'"$REPOSITORY_DIR"'/src/py|g' .coverage # [not win]
+        - sed -i'' -e 's|'"$SRC_DIR"'|'"$REPOSITORY_DIR"'|g' .coverage # [not win]
+        - mv .coverage $REPOSITORY_DIR # [not win]

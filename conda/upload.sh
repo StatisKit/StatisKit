@@ -8,6 +8,13 @@ conda install -n root anaconda-client;
 yes | anaconda login --username "$ANACONDA_USERNAME" --password "$ANACONDA_PASSWORD"
 
 set -x
+
+git clone https://gist.github.com/c491cb08d570beeba2c417826a50a9c3.git toolchain
+cd toolchain
+source config.sh
+cd ..
+rm -rf toolchain
+
 set +e
 
 for CONDA_RECIPE in python-parse python-pkgtk; do
