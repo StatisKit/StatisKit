@@ -30,13 +30,14 @@ install:
   - cd config-travis
   - source config.sh
   - cd ..
+  - ls
   
 script:
-    - cd conda
-    - sed -i'' -e 's/build/build --no-test/g' build.sh
-    - sed -i'' -e '8,10d' build.sh
-    - bash build.sh
-    - cd ..
+  - cd conda
+  - sed -i'' -e 's/build/build --no-test/g' build.sh
+  - sed -i'' -e '8,10d' build.sh
+  - bash build.sh
+  - cd ..
 
 after_success:
   - pkgtk authors
