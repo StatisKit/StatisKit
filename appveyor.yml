@@ -19,6 +19,7 @@ build_script:
   
 on_success:
   - cd conda
+  - call install.bat
   - powershell -Command "(gc bld.bat) -replace 'build --no-test', 'build' | Out-File bld.bat"
   - more bld.bat >> tmp.bat
   - del bld.bat
