@@ -15,10 +15,11 @@ cd ..
 rm -rf toolchain
 
 for BUILD_TARGET in $BUILD_TARGETS; do
-  conda build $BUILD_TARGET -c statiskit -c conda-forge &> /dev/null &
-  pid=$! # Get PID of background command
-  while kill -0 $pid; do
-    echo -n "."
-    sleep 60
-  done
+  conda build $BUILD_TARGET -c statiskit -c conda-forge
+  # &> /dev/null &
+  #pid=$! # Get PID of background command
+  #while kill -0 $pid; do
+  #  echo -n "."
+  #  sleep 60
+  #done
 done
