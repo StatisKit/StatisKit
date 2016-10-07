@@ -14,7 +14,7 @@ INCLUDE_PATH="${PREFIX}/include"
 LIBRARY_PATH="${PREFIX}/lib"
 
 if [ "$(uname)" == "Darwin" ]; then
-    MACOSX_VERSION_MIN=10.6
+    MACOSX_VERSION_MIN=10.7
     CXXFLAGS="-mmacosx-version-min=${MACOSX_VERSION_MIN}"
     CXXFLAGS="${CXXFLAGS} -stdlib=libc++ -std=c++11"
     LINKFLAGS="-mmacosx-version-min=${MACOSX_VERSION_MIN}"
