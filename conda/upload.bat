@@ -11,8 +11,11 @@ if %errorlevel% neq 0 exit /b %errorlevel%
 
 echo ON
 
-for /f %%i in ('pkgtk toolchain') DO (set TOOLCHAIN=%%i)
-if %errorlevel% neq 0 exit /b %errorlevel%
+git clone https://gist.github.com/c491cb08d570beeba2c417826a50a9c3.git toolchain
+cd toolchain
+call config.bat
+cd ..
+rmdir toolchain /s /q
 
 for /f %%i in ('conda build libboost --output') DO (set CONDA_FILE=%%i)
 set errorlevel_backup=%errorlevel%
