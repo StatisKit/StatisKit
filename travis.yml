@@ -34,6 +34,8 @@ script:
       sed -i'' -e '8,10d' build.sh;
       bash build.sh;
       cd ..;
+    else
+      docker build -t statiskit/ubuntu .;
     fi
 
 after_success:
@@ -43,7 +45,6 @@ after_success:
       cd ..;
     fi
   - if [[ -z $BUILD_TARGETS ]] && [[ "$TRAVIS_BRANCH" = "master" ]] && [[ "$TRAVIS_PULL_REQUEST" = "false" ]] && [[ "$TRAVIS_OS_NAME" = "linux" ]] && [[ ! -z $DOCKER_USERNAME ]] && [[ ! -z $DOCKER_PASSWORD ]]; then
-      docker build -t statiskit/ubuntu .;
       docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
       docker push statiskit/ubuntu;
     fi
