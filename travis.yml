@@ -13,7 +13,7 @@ matrix:
 install:
   - git clone https://gist.github.com/319558c83d145620a6d4decdcadfbfb0.git config-travis
   - cd config-travis
-  - cat config.sh | eval
+  - source config.sh
   - cd ..
 
 script:
