@@ -29,6 +29,7 @@ RUN conda info -a
 
 # Install conda-build
 RUN conda install conda-build
+RUN conda install anaconda-client
 
 RUN git clone https://gist.github.com/93e0375712c6e62f76bec455e89d0437.git $HOME/git-config
 RUN cd $HOME/git-config && bash git-config.sh
