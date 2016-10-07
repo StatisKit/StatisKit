@@ -8,7 +8,7 @@ if %errorlevel% neq 0 exit /b %errorlevel%
 
 echo OFF
 
-if "%BUILD_TARGETS%" == "" set BUILD_TARGETS="libboost python-scons"
+if "%BUILD_TARGETS%" == "" set BUILD_TARGETS=libboost python-scons
 
 echo ON
 
