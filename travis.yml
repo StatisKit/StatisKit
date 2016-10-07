@@ -50,7 +50,7 @@ after_success:
   - bash build.sh
   - if [[ "$TRAVIS_OS_NAME" = "linux" ]]; then
       cd ..;
-      coveralls --rcfile=.coveragerc;
+      coveralls --config_file=.coveragerc;
       cd conda;
     fi
   - if [[ "$TRAVIS_BRANCH" = "master" ]] && [[ "$TRAVIS_PULL_REQUEST" = "false" ]] && [[ ! -z $ANACONDA_USERNAME ]] && [[ ! -z $ANACONDA_PASSWORD ]]; then
