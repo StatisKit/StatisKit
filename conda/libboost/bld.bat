@@ -20,8 +20,8 @@ CALL b2 install toolset=msvc-%MSVC_VER% ^
         variant=release ^
         threading=multi ^
         link=shared ^
+        define=BOOST_ALL_NO_LIB ^
         -j%CPU_COUNT% ^
-        /DBOOST_ALL_NO_LIB ^
         --layout=system ^
         --build-dir=buildboost ^
         --prefix=%LIBRARY_PREFIX%
