@@ -23,15 +23,16 @@ CALL b2 install toolset=msvc-%MSVC_VER% ^
         threading=multi ^
         link=shared ^
         -j%CPU_COUNT% ^
+        --layout=system ^
         --build-dir=buildboost ^
         --prefix=%LIBRARY_PREFIX%
 IF errorlevel 1 exit 1
 
-ECHO move %LIBRARY_INC%\boost-1_61\boost %LIBRARY_INC%
-move %LIBRARY_INC%\boost-1_61\boost %LIBRARY_INC%
-IF errorlevel 1 exit 1
+:: ECHO move %LIBRARY_INC%\boost-1_61\boost %LIBRARY_INC%
+:: move %LIBRARY_INC%\boost-1_61\boost %LIBRARY_INC%
+:: IF errorlevel 1 exit 1
 
 dir  %LIBRARY_LIB%
-ECHO %LIBRARY_LIB%\boost_*-vc90-mt-1_61.dll "%LIBRARY_BIN%"
-move %LIBRARY_LIB%\boost_*-vc90-mt-1_61.dll "%LIBRARY_BIN%"
+ECHO %LIBRARY_LIB%\boost_*.dll "%LIBRARY_BIN%"
+move %LIBRARY_LIB%\boost_*.dll "%LIBRARY_BIN%"
 IF errorlevel 1 exit 1
