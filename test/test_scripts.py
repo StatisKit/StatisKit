@@ -34,16 +34,16 @@ class TestScripts(unittest.TestCase):
     def test_authors(self):
         """Test `pkgtk authors` script of module `pkgtk.scripts`"""
         pkgtk(['authors'])
-        pkgtk(['authors']+['--' + key + '=' + str(value) for key, value in self.config['authors'].items()])
+        pkgtk(['authors']+['--' + key + '=' + str(value) for key, value in self.config['authors'].iteritems()])
 
     def test_license(self):
         """Test `pkgtk license` script of module `pkgtk.scripts`"""
-        pkgtk(['license']+['--' + key + '=' + str(value) for key, value in self.config['license'].items() if not key == 'exclude'])
+        pkgtk(['license']+['--' + key + '=' + str(value) for key, value in self.config['license'].iteritems() if not key == 'exclude'])
 
     def test_about(self):
         """Test `pkgtk about` script of module `pkgtk.scripts`"""
-        pkgtk(['about']+['--' + key + '=' + '""' for key, value in self.config['about'].items() if not key == 'plugin'])
-        pkgtk(['about']+['--' + key + '=' + str(value) for key, value in self.config['about'].items()])
+        pkgtk(['about']+['--' + key + '=' + '""' for key, value in self.config['about'].iteritems() if not key == 'plugin'])
+        pkgtk(['about']+['--' + key + '=' + str(value) for key, value in self.config['about'].iteritems()])
         pkgtk(['about', '--remote=https://github.com/StatisKit/PkgTk.git'])
         pkgtk(['about', '--remote='])
 
