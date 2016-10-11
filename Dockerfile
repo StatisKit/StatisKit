@@ -27,7 +27,7 @@ RUN rm $HOME/miniconda2.sh
 RUN touch $HOME/miniconda2.sh
 RUN echo 'export PATH=$HOME/miniconda2/bin:$PATHBACK' >> $HOME/miniconda2.sh
 RUN echo 'source $HOME/miniconda2/bin/activate.sh' >> $HOME/miniconda2.sh
-ENV PATH `$HOME`/miniconda2/bin:$PATHBACK
+ENV PATH "$HOME"/miniconda2/bin:$PATHBACK
 RUN conda config --set always_yes yes --set changeps1 no
 RUN conda update -q conda
 RUN conda info -a
