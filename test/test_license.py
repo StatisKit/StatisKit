@@ -37,7 +37,7 @@ class TemplateRender(object):
         code = code.replace("__M_writer = context.writer()", "__M_string = u''")
         code = code.replace("__M_writer(", "__M_string = operator.add(__M_string, ")
         code = "import operator\n" + code
-        exec code in globals()
+        exec(code, globals())
         def __call__(**context):
             for builtin in dir(__builtin__):
                 if not builtin in context:
