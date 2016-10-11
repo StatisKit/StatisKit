@@ -49,17 +49,15 @@ script:
   - cd ..
 
 after_success:
-  - if [[ "$TRAVIS_OS_NAME" = "linux" ]]; then
-      cd conda;
-      bash install.sh;
-      cd ..;
-      pkgtk authors;
-      cd conda;
-      sed -i'' -e 's/build --no-test/build/g' build.sh;
-      export BUILD_TARGETS="python-pkgtk";
-      bash build.sh;
-      cd ..;
-    fi
+  - cd conda;
+  - bash install.sh;
+  - cd ..;
+  - pkgtk authors;
+  - cd conda;
+  - sed -i'' -e 's/build --no-test/build/g' build.sh;
+  - export BUILD_TARGETS="python-pkgtk";
+  - bash build.sh;
+  - cd ..;
   - if [[ "$TRAVIS_OS_NAME" = "linux" ]] && [[ "$MINICONDA" = "2" ]]; then
       coveralls --config_file=.coveragerc;
     fi
