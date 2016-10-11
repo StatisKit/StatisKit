@@ -40,6 +40,10 @@ PkgTk: A tool kit for package development
            :target: https://travis-ci.org/StatisKit/PkgTk
            :alt: Travis
 
+.. |APPVEYOR| image:: https://ci.appveyor.com/api/projects/status/github/StatisKit/PkgTk
+           :target: https://ci.appveyor.com/api/projects/pfernique/pkgtk-o48ux
+           :alt: AppVeyor
+           
 .. |COVERALLS| image:: https://coveralls.io/repos/github/StatisKit/PkgTk/badge.svg?branch=master
                :target: https://coveralls.io/github/StatisKit/PkgTk?branch=master
                :alt: Coveralls
