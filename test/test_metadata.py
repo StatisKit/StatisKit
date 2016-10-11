@@ -31,4 +31,4 @@ class TestMetaData(unittest.TestCase):
     """Test functions related to scripts"""
 
     def test_setup(self):
-        exec(compile(open('setup.py').read(), 'setup.py', 'exec'), globals())
+        execfile('setup.py', globals())
