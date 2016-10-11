@@ -15,20 +15,6 @@
 ##################################################################################
 
 import pkg_resources
-try:
-    unicode = unicode
-except NameError:
-    # 'unicode' is undefined, must be Python 3
-    str = str
-    unicode = str
-    bytes = bytes
-    basestring = (str,bytes)
-else:
-    # 'unicode' exists, must be Python 2
-    str = str
-    unicode = unicode
-    bytes = str
-    basestring = basestring
 
 class ProxyManager(object):
 
@@ -158,7 +144,7 @@ class PluginManager(object):
         if callable(plugin):
             return plugin
         else:
-            return list(pkg_resources.iter_entry_points(self._group, plugin)).pop().load()
+            return pkg_resources.iter_entry_points(self._group, plugin).next().load()
 
     def __setitem__(self, plugin, implementation):
         if not isinstance(plugin, basestring):
