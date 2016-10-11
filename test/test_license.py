@@ -88,21 +88,21 @@ class TestLicence(unittest.TestCase):
         md5sum = hashlib.md5()
         for tempfile in tempfiles:
             with open(tempfile, 'r') as filehandler:
-                md5sum.update(filehandler.read())
+                md5sum.update(filehandler.read().encode('utf-8'))
         dump_license(self.repository, self.config)
         _md5sum = hashlib.md5()
         for tempfile in tempfiles:
             with open(tempfile, 'r') as filehandler:
-                _md5sum.update(filehandler.read())
+                _md5sum.update(filehandler.read().encode('utf-8'))
         repo.head.reference = commit
         repo.index.reset()
         for tempfile in tempfiles:
             os.unlink(tempfile)
         self.assertEqual(md5sum.digest(), _md5sum.digest())
         with open(self.repository + os.sep + self.config['license']['basename'], 'r') as filehandler:
-            curr = filehandler.read()
+            curr = filehandler.read().encode('utf-8')
         with open(self.repository + os.sep + self.config['license']['basename'] + '.back', 'r') as filehandler:
-            prev = filehandler.read()
+            prev = filehandler.read().encode('utf-8')
         self.assertIn(curr, prev)
 
     @classmethod
