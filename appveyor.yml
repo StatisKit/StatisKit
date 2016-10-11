@@ -3,14 +3,14 @@ platform:
 
 environment:
   matrix:
+    - BUILD_TARGETS: python-scons    
+      MINICONDA: "3"
     - BUILD_TARGETS: libboost
       MINICONDA: "2"
     - BUILD_TARGETS: libboost
       MINICONDA: "3"
     - BUILD_TARGETS: python-scons
       MINICONDA: "2"
-    - BUILD_TARGETS: python-scons    
-      MINICONDA: "3"
 
 matrix:
   allow_failures:
