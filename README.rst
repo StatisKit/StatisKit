@@ -19,7 +19,7 @@ PkgTk: A tool kit for package development
 
 .. sidebar:: Summary
 
-    :Status:  |TRAVIS| |COVERALLS| |LANDSCAPE| |READTHEDOCS|
+    :Status:  |TRAVIS| |APPVEYOR| |COVERALLS| |LANDSCAPE| |READTHEDOCS|
     :License: |LICENSE|
     :Authors: |AUTHORS|
 
