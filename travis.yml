@@ -50,8 +50,8 @@ script:
   - cd ..
 
 after_success:
-  - cd conda
   - if [[ "$TRAVIS_OS_NAME" = "linux" ]]; then
+      cd conda;
       bash install.sh;
       cd ..;
       pkgtk authors;
@@ -60,12 +60,12 @@ after_success:
       export BUILD_TARGETS="python-pkgtk";
       bash build.sh;
       cd ..;
-      if [[ "$MINICONDA" = "2" ]]; then
-        coveralls --config_file=.coveragerc;
-      fi
-      cd conda;
+    fi
+  - if [[ "$TRAVIS_OS_NAME" = "linux" ]] && [[ "$MINICONDA" = "2" ]]; then
+      coveralls --config_file=.coveragerc;
     fi
   - if [[ "$TRAVIS_BRANCH" = "master" ]] && [[ "$TRAVIS_PULL_REQUEST" = "false" ]] && [[ ! -z $ANACONDA_USERNAME ]] && [[ ! -z $ANACONDA_PASSWORD ]]; then
+      cd conda;
       bash upload.sh;
+      cd ..;
     fi
-  - cd ..
