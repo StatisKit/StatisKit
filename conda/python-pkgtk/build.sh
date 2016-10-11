@@ -1,3 +1,5 @@
+set -xe
+
 if [[ "$PY3K" = "1" ]]; then
   2to3 --output-dir=src/py3 -W -n src/py
   rm -rf src/py
@@ -6,4 +8,5 @@ if [[ "$PY3K" = "1" ]]; then
   rm -rf test
   mv test3 test
 fi
+
 python setup.py install
