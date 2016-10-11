@@ -44,7 +44,7 @@ def init_about(repository, **kwargs):
             if plugin not in load_about:
                 raise ValueError('\'load_about\' has no \'' + plugin + '\' plugin')
             about['plugin'] = plugin
-    for name, value in kwargs.iteritems():
+    for name, value in kwargs.items():
         if value:
             about[name] = value
         else:
