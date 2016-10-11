@@ -18,7 +18,7 @@ import os
 import git
 import unittest
 import hashlib
-import __builtin__
+import __builtin__ as builtins
 import path
 
 from tempfile import NamedTemporaryFile
@@ -39,7 +39,7 @@ class TemplateRender(object):
         code = "import operator\n" + code
         exec(code, globals())
         def __call__(**context):
-            for builtin in dir(__builtin__):
+            for builtin in dir(builtins):
                 if not builtin in context:
                     context[builtin] = getattr(__builtin__, builtin)
             return globals()["render_body"](**context)
