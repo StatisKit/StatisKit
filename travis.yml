@@ -51,7 +51,7 @@ script:
 
 after_success:
   - cd conda
-  - if [[ "$TRAVIS_OS_NAME" = "linux" ]]; then
+  - if [[ "$TRAVIS_OS_NAME" = "linux" ]] && [[ "$MINICONDA" = "2" ]]; then
       bash install.sh;
       cd ..;
       pkgtk authors;
