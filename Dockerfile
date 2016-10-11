@@ -25,8 +25,10 @@ RUN wget https://repo.continuum.io/miniconda/Miniconda2-latest-Linux-x86_64.sh \
 RUN bash $HOME/miniconda2.sh -b -p $HOME/miniconda2
 RUN rm $HOME/miniconda2.sh
 RUN touch $HOME/miniconda2.sh
-RUN echo 'export PATH=$HOME/miniconda2:$PATHBACK' >> $HOME/miniconda2.sh
+RUN echo 'export PATH=$HOME/miniconda2/bin:$PATHBACK' >> $HOME/miniconda2.sh
+RUN echo 'source $HOME/miniconda2/bin/activate.sh' >> $HOME/miniconda3.sh
 ENV PATH $HOME/miniconda2/bin:$PATHBACK
+RUN source $HOME/miniconda2/bin/activate.sh
 RUN conda config --set always_yes yes --set changeps1 no
 RUN conda update -q conda
 RUN conda info -a
@@ -39,8 +41,10 @@ RUN wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh \
 RUN bash $HOME/miniconda3.sh -b -p $HOME/miniconda3
 RUN rm $HOME/miniconda3.sh
 RUN touch $HOME/miniconda3.sh
-RUN echo 'export PATH=$HOME/miniconda3:$PATHBACK' >> $HOME/miniconda3.sh
+RUN echo 'export PATH=$HOME/miniconda3/bin:$PATHBACK' >> $HOME/miniconda3.sh
+RUN echo 'source $HOME/miniconda3/bin/activate.sh' >> $HOME/miniconda3.sh
 ENV PATH $HOME/miniconda3/bin:$PATHBACK
+RUN source $HOME/miniconda3/bin/activate.sh
 RUN conda config --set always_yes yes --set changeps1 no
 RUN conda update -q conda
 RUN conda info -a
