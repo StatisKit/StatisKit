@@ -144,7 +144,7 @@ class PluginManager(object):
         if callable(plugin):
             return plugin
         else:
-            return pkg_resources.iter_entry_points(self._group, plugin).next().load()
+            return list(pkg_resources.iter_entry_points(self._group, plugin)).pop().load()
 
     def __setitem__(self, plugin, implementation):
         if not isinstance(plugin, basestring):
