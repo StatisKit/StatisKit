@@ -18,10 +18,7 @@ import os
 import git
 import unittest
 import hashlib
-try:
-    import __builtin__
-except:
-    import builtins as __builtin__
+import __builtin__
 import path
 
 from tempfile import NamedTemporaryFile
