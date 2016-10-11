@@ -49,6 +49,9 @@ script:
   - cd ..
 
 after_success:
+  - if [[ "$TRAVIS_OS_NAME" = "osx" ]]; then
+      rm test/test_about.py;
+    fi
   - cd conda;
   - bash install.sh;
   - cd ..;
