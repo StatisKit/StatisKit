@@ -26,8 +26,7 @@ RUN bash $HOME/miniconda2.sh -b -p $HOME/miniconda2
 RUN rm $HOME/miniconda2.sh
 RUN touch $HOME/miniconda2.sh
 RUN echo 'export PATH=$HOME/miniconda2:$PATHBACK' >> $HOME/miniconda2.sh
-ENV PATH $PATHBACK
-ENV PATH $HOME/miniconda2/bin:$PATH
+ENV PATH $HOME/miniconda2/bin:$PATHBACK
 RUN conda config --set always_yes yes --set changeps1 no
 RUN conda update -q conda
 RUN conda info -a
@@ -41,15 +40,14 @@ RUN bash $HOME/miniconda3.sh -b -p $HOME/miniconda3
 RUN rm $HOME/miniconda3.sh
 RUN touch $HOME/miniconda3.sh
 RUN echo 'export PATH=$HOME/miniconda3:$PATHBACK' >> $HOME/miniconda3.sh
-ENV PATH $PATHBACK
-ENV PATH $HOME/miniconda3/bin:$PATH
+ENV PATH $HOME/miniconda3/bin:$PATHBACK
 RUN conda config --set always_yes yes --set changeps1 no
 RUN conda update -q conda
 RUN conda info -a
 RUN conda install conda-build
 RUN conda install anaconda-client
 
-ENV PATH $HOME/miniconda2/bin:$PATH
+ENV PATH $HOME/miniconda2/bin:$PATHPACK
 
 RUN git clone https://gist.github.com/93e0375712c6e62f76bec455e89d0437.git $HOME/git-config
 RUN cd $HOME/git-config && bash git-config.sh
