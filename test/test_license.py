@@ -41,7 +41,7 @@ class TemplateRender(object):
         def __call__(**context):
             for builtin in dir(builtins):
                 if not builtin in context:
-                    context[builtin] = getattr(__builtin__, builtin)
+                    context[builtin] = getattr(builtins, builtin)
             return globals()["render_body"](**context)
         return __call__
 
