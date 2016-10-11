@@ -93,7 +93,7 @@ def remove_license(filepath, delimiters):
     return content
 
 def supplementary_exclude(repository, config):
-    for key, value in config.iteritems():
+    for key, value in config.items():
         if key == 'basename':
             yield path(value).relpath(repository)
         if isinstance(value, dict):
