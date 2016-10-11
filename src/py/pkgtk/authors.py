@@ -111,7 +111,7 @@ class Authors(object):
                 self._emails.pop(author.name)
             else:
                 emails[author.email] = author.name
-        self._emails = {name: email for email, name in emails.iteritems()}
+        self._emails = {name: email for email, name in emails.items()}
 
     @property
     def sorted(self):
