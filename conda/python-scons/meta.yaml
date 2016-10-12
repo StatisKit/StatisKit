@@ -6,7 +6,8 @@ source:
   #fn: scons-2.5.0.tar.gz
   #url: https://pypi.python.org/packages/source/S/SCons/scons-2.5.0.tar.gz
   #md5: bda5530a70a41a7831d83c8b191c021e
-  hg_url: ssh://hg@bitbucket.org/scons/scons
+  hg_url: https://hg@bitbucket.org/scons/scons
+  #hg_url: ssh://hg@bitbucket.org/scons/scons
 
 build:
   number: 0
