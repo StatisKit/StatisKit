@@ -23,5 +23,10 @@ about:
 requirements:
   build:
     - python
+    - icu 54.*          [unix]
+    - bzip2             [unix]
+    - zlib
   run:
     - python
+    - icu 54.*          [unix]
+    - zlib
