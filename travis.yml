@@ -20,12 +20,12 @@ matrix:
       env: 
         - BUILD_TARGETS="python-scons"
         - MINICONDA="2"
-    # - os: linux
-    #   dist: trusty
-    #   sudo: required
-    #   env:
-    #     - BUILD_TARGETS="python-scons"
-    #     - MINICONDA="3"
+     - os: linux
+       dist: trusty
+       sudo: required
+       env:
+         - BUILD_TARGETS="python-scons"
+         - MINICONDA="3"
     - os: linux
       dist: trusty
       sudo: required
