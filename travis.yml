@@ -83,3 +83,4 @@ after_success:
       docker push statiskit/ubuntu:14.04;
       docker push statiskit/ubuntu:16.04;
     fi
+  - echo $TRAVIS_TEST_RESULT
