@@ -3,9 +3,8 @@ package:
   version: "2.5.0"
 
 source:
-  fn: scons-2.5.0.tar.gz
-  url: https://pypi.python.org/packages/source/S/SCons/scons-2.5.0.tar.gz
-  md5: bda5530a70a41a7831d83c8b191c021e
+  path: scons-2.5.0-py27 # [py27]
+  path: scons-2.5.0-py35 # [py35]
 
 build:
   number: 0
