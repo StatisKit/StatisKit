@@ -1,6 +1,10 @@
 echo ON
 
 if "%PY3K%" == "1" (
+  powershell -Command "Get-Content ".\engine\SCons\Util.py" | select -First 38" > \engine\SCons\Util.back
+  more +40 \engine\SCons\Util.py >> \engine\SCons\Util.back
+  del \engine\SCons\Util.py
+  move \engine\SCons\Util.back \engine\SCons\Util.py
   2to3 --output-dir=engine\SCons3 -W -n engine\SCons
   rmdir engine\SCons /s /q
   move engine\SCons3 engine/SCons
