@@ -39,7 +39,7 @@ if "%PY3K%" == "1" (
   if errorlevel 1 exit 1
   move setup.back setup.py
   if errorlevel 1 exit 1
-  powershell -Command "(gc engine\SCons\Errors.py) -replace 'exceptions', 'builtins --no-test' | Out-File engine\SCons\Errors.back"
+  powershell -Command "(gc engine\SCons\Errors.py) -replace 'exceptions', 'builtins' | Out-File engine\SCons\Errors.back"
   if errorlevel 1 exit 1
   del engine\SCons\Errors.py
   if errorlevel 1 exit 1
