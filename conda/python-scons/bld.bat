@@ -1,7 +1,11 @@
 echo ON
 
 if "%PY3K%" == "1" (
-  powershell -Command "(gc engine\SCons\Errors.py) -replace 'exceptions', 'builtins --no-test' | Out-File engine\SCons\Errors.py"
+  powershell -Command "(gc engine\SCons\Errors.py) -replace 'exceptions', 'builtins --no-test' | Out-File engine\SCons\Errors.back"
+  if errorlevel 1 exit 1
+  del engine\SCons\Errors.py
+  if errorlevel 1 exit 1
+  more engine\SCons\Errors.back > engine\SCons\Errors.py
   if errorlevel 1 exit 1
   powershell -Command "Get-Content "engine\SCons\Util.py" | select -First 38" > engine\SCons\Util.back
   if errorlevel 1 exit 1
