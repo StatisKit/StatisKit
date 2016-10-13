@@ -26,13 +26,12 @@ RUN bash $HOME/miniconda2.sh -b -p $HOME/miniconda2
 RUN rm $HOME/miniconda2.sh
 RUN touch $HOME/miniconda2.sh
 RUN echo 'export PATH=$HOME/miniconda2/bin:$PATHBACK' >> $HOME/miniconda2.sh
-RUN echo 'source $HOME/miniconda2/bin/activate.sh' >> $HOME/miniconda2.sh
+RUN echo 'source $HOME/miniconda2/bin/activate' >> $HOME/miniconda2.sh
 ENV PATH /home/main/miniconda2/bin:$PATHBACK
 RUN conda config --set always_yes yes --set changeps1 no
 RUN conda update -q conda
 RUN conda info -a
-RUN conda install conda-build
-RUN conda install anaconda-client
+RUN conda install conda-build anaconda-client ipython jupyter
 
 # Install miniconda3
 RUN wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh \
@@ -41,13 +40,12 @@ RUN bash $HOME/miniconda3.sh -b -p $HOME/miniconda3
 RUN rm $HOME/miniconda3.sh
 RUN touch $HOME/miniconda3.sh
 RUN echo 'export PATH=$HOME/miniconda3/bin:$PATHBACK' >> $HOME/miniconda3.sh
-RUN echo 'source $HOME/miniconda3/bin/activate.sh' >> $HOME/miniconda3.sh
+RUN echo 'source $HOME/miniconda3/bin/activate' >> $HOME/miniconda3.sh
 ENV PATH /home/main/miniconda3/bin:$PATHBACK
 RUN conda config --set always_yes yes --set changeps1 no
 RUN conda update -q conda
 RUN conda info -a
-RUN conda install conda-build
-RUN conda install anaconda-client
+RUN conda install conda-build anaconda-client ipython jupyter
 
 ENV PATH /home/main/miniconda2/bin:$PATHBACK
 
