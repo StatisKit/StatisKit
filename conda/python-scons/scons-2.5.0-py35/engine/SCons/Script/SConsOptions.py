@@ -830,7 +830,7 @@ def Parser(version):
     tree_options = ["all", "derived", "prune", "status"]
 
     def opt_tree(option, opt, value, parser, tree_options=tree_options):
-        from SCons.Tool import Main
+        from . import Main
         tp = Main.TreePrinter()
         for o in value.split(','):
             if o == 'all':
