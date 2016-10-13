@@ -4,6 +4,10 @@ if "%PY3K%" == "1" (
   2to3 --output-dir=engine\SCons3 -W -n engine\SCons
   rmdir engine\SCons /s /q
   move engine\SCons3 engine/SCons
+  powershell -Command "Get-Content ".\script\scons" | select -First 58" > script\scons.back
+  more +64 script\scons >> script\scons.back
+  del script\scons
+  move script\scons.back script\scons
   2to3 -w -n script\scons
   2to3 -w -n script\sconsign
   2to3 -w -n script\scons-time
