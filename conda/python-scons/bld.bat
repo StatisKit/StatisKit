@@ -9,7 +9,6 @@ if "%PY3K%" == "1" (
   2to3 -w -n script/scons-time
   powershell -Command "Get-Content ".\setup.py" | select -First 49" > setup.back
   more +54 setup.py >> setup.back
-  more setup.back
   del setup.py
   move setup.back setup.py
 )
