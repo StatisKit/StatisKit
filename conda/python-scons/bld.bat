@@ -3,7 +3,7 @@ echo ON
 if "%PY3K%" == "1" (
   powershell -Command "Get-Content "engine\SCons\Util.py" | select -First 38" > engine\SCons\Util.back
   if errorlevel 1 exit 1
-  more +40 engine\SCons\Util.py >> engine\SCons\Util.back
+  more +39 engine\SCons\Util.py >> engine\SCons\Util.back
   if errorlevel 1 exit 1
   more engine\SCons\Util.back
   if errorlevel 1 exit 1
