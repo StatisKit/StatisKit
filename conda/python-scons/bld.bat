@@ -1,12 +1,12 @@
 echo ON
 
 if "%PY3K%" == "1" (
-  2to3 --output-dir=engine/SCons3 -W -n engine/SCons
-  rmdir engine/SCons /s /q
-  move engine/SCons3 engine/SCons
-  2to3 -w -n script/scons
-  2to3 -w -n script/sconsign
-  2to3 -w -n script/scons-time
+  2to3 --output-dir=engine\SCons3 -W -n engine\SCons
+  rmdir engine\SCons /s /q
+  move engine\SCons3 engine/SCons
+  2to3 -w -n script\scons
+  2to3 -w -n script\sconsign
+  2to3 -w -n script\scons-time
   powershell -Command "Get-Content ".\setup.py" | select -First 49" > setup.back
   more +54 setup.py >> setup.back
   del setup.py
