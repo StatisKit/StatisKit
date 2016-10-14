@@ -20,7 +20,7 @@ mv engine/SCons3 engine/SCons
 2to3 -w -n script/scons
 2to3 -w -n script/sconsign
 2to3 -w -n script/scons-time
-grep -r -l "pickle\.dumps(obj)" * | xargs sed -i'' -e 's|pickle\.dumps(obj)|pickle\.dumps(obj, 0)\.decode()|g' 
+grep -r -l "pickle\.dumps(obj)" * | xargs sed -i'' -e 's|pickle\.dumps(obj)|pickle\.dumps(obj, 0)\.decode(errors="ignore")|g' 
 grep -r -l "exec(_file_, call_stack\[-1\]\.globals)" * | xargs sed -i -e "s|exec(_file_, call_stack\[-1\]\.globals)|exec(compile(_file_\.read(), _file_\.name, 'exec'), call_stack\[-1\]\.globals)|g"
 grep -r -l "DefaultToolpath=\[\]" * | xargs sed -i'' -e 's|DefaultToolpath=\[\]|DefaultToolpath=__path__|g'
 cd engine/SCons/Tool/MSCommon
@@ -29,11 +29,12 @@ grep -r -l "from \." * | xargs sed -i'' 's|from \.|from SCons\.Tool\.MSCommon|g'
 cd ..
 grep -r -l "from \. import" * | xargs sed -i'' 's|from \. import|from SCons.Tool import|g'
 grep -r -l "from \." * | xargs sed -i'' 's|from \.|from SCons\.Tool\.|g'
-grep -r -l "= pipe\.stdout\.readline()" * | xargs sed -i'' 's|= pipe\.stdout\.readline()|= pipe\.stdout\.readline()\.decode()|g'
+grep -r -l "= pipe\.stdout\.readline()" * | xargs sed -i'' 's|= pipe\.stdout\.readline()|= pipe\.stdout\.readline()\.decode(errors="ignore")|g'
 cd ..
 sed -i'' '104d' Conftest.py
 grep -r -l "m\.update(str(blck))" * | xargs sed -i'' 's|m\.update(str(blck))|m\.update(blck)|g'
 grep -r -l "m\.update(str(s))" * | xargs sed -i'' 's|m\.update(str(s))|m\.update(str(s).encode())|g'
-grep -r -l "pickle\.dumps(self.entries, 1)" * | xargs sed -i'' 's|pickle\.dumps(self.entries, 1)|pickle\.dumps(self.entries, 0).decode()|g'
+grep -r -l "pickle\.dumps(self.entries, 1)" * | xargs sed -i'' 's|pickle\.dumps(self.entries, 1)|pickle\.dumps(self.entries, 0).decode(errors="ignore")|g'
+grep -r -l "re\.findall(node\.get_text_contents()" * | xargs sed -i'' 's|re\.findall(node\.get_text_contents()|re\.findall(node\.get_text_contents()\.decode(errors="ignore")|g'
 cd ../../..
 mv scons-2.5.0 scons-2.5.0-py27
