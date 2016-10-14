@@ -18,7 +18,6 @@ build_script:
   - '%CMD_IN_ENV% call bld.bat'
   - cd ..
   - set ANACONDA_FLAGS=
-
   
 on_success:
   - del test\test_about.py
