@@ -21,6 +21,7 @@ build_script:
 
   
 on_success:
+  - del test\test_about.py
   - cd conda
   - call install.bat
   - cd ..
