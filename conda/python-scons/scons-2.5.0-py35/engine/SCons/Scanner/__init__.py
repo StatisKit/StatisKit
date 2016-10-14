@@ -349,11 +349,7 @@ class Classic(Current):
         return SCons.Node.FS._my_normcase(include)
 
     def find_include_names(self, node):
-        try:
-            return self.cre.findall(node.get_text_contents().decode())
-        except:
-            import ipdb
-            ipdb.set_trace()
+        return self.cre.findall(node.get_text_contents().decode(errors="ignore"))
 
     def scan(self, node, path=()):
 

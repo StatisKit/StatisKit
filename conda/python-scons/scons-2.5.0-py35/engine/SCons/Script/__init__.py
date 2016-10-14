@@ -44,30 +44,6 @@ import os
 import io
 import sys
 
-import re
-from functools import wraps
-
-def wrapper(f):
-    @wraps(f)
-    def g(*args, **kwargs):
-        try:
-            return f(*args, **kwargs)
-        except:
-            import ipdb
-            idpb.set_trace()
-    return g
-
-re.compile = wrapper(re.compile)
-re.findall = wrapper(re.findall)
-re.finditer = wrapper(re.finditer)
-re.match = wrapper(re.match)
-re.purge = wrapper(re.purge)
-re.search = wrapper(re.search)
-re.split = wrapper(re.split)
-re.sub = wrapper(re.sub)
-re.subn = wrapper(re.subn)
-
-
 # Special chicken-and-egg handling of the "--debug=memoizer" flag:
 #
 # SCons.Memoize contains a metaclass implementation that affects how

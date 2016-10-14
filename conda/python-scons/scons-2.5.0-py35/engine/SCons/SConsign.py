@@ -271,7 +271,7 @@ class DB(Base):
         path = normcase(self.dir.get_internal_path())
         for key, entry in list(self.entries.items()):
             entry.convert_to_sconsign()
-        db[path] = pickle.dumps(self.entries, 0).decode()
+        db[path] = pickle.dumps(self.entries, 0).decode(errors="ignore")
 
         if sync:
             try:
