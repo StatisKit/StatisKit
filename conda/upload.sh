@@ -15,10 +15,11 @@ else
 fi
 
 ANACONDA_FLAGS="-c conda-forge "$ANACONDA_FLAGS
-if [[ -z $ANACONDA_CHANNEL ]]; then
-    ANACONDA_CHANNEL="statiskit"
+if [[ -z $ANACONDA_LABEL ]]; then
+    ANACONDA_CHANNEL="statiskit";
 else
-    echo "Using anaconda channel: "$ANACONDA_CHANNEL;
+    echo "Using anaconda label: "$ANACONDA_LABEL;
+    ANACONDA_CHANNEL="statiskit/label/"$ANACONDA_LABEL;
     ANACONDA_FLAGS="-c statiskit "$ANACONDA_FLAGS;
 fi
 
@@ -56,7 +57,7 @@ rm -rf toolchain
 
 for UPLOAD_TARGET in $UPLOAD_TARGETS; do
   UPLOAD_FILE=`conda build $UPLOAD_TARGET -c $ANACONDA_CHANNEL $ANACONDA_FLAGS --output`
-  anaconda upload --user $ANACONDA_CHANNEL ${UPLOAD_FILE%%} 
+  anaconda upload ${UPLOAD_FILE%%} --user $ANACONDA_CHANNEL
   if [ $? -ne 0 ]; then
     echo "upload failed";
   fi

@@ -64,8 +64,10 @@ after_success:
       coveralls --config_file=.coveragerc;
     fi
   - if [[ ! "$TRAVIS_PULL_REQUEST" = "false" ]]; then
-      export ANACONDA_CHANNEL="statiskit/label/PR"$TRAVIS_PULL_REQUEST;
+      export ANACONDA_LABEL="PR"$TRAVIS_PULL_REQUEST;
     fi
+  - echo $TRAVIS_BRANCH
+  - echo $TRAVIS_PULL_REQUEST
   - if [[ "$TRAVIS_BRANCH" = "master" ]] && [[ ! -z $ANACONDA_USERNAME ]] && [[ ! -z $ANACONDA_PASSWORD ]]; then
       cd conda;
       bash upload.sh;

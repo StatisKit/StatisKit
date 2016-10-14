@@ -4,10 +4,11 @@ REPOSITORY="PkgTk"
 DEFAULT_BUILD_TARGETS="python-parse python-pkgtk"
 
 ANACONDA_FLAGS="-c conda-forge "$ANACONDA_FLAGS
-if [[ -z $ANACONDA_CHANNEL ]]; then
+if [[ -z $ANACONDA_LABEL ]]; then
     ANACONDA_CHANNEL="statiskit"
 else
-    echo "Using anaconda channel: "$ANACONDA_CHANNEL;
+    echo "Using anaconda label: "$ANACONDA_LABEL;
+    ANACONDA_CHANNEL="statiskit/label/"$ANACONDA_LABEL;
     ANACONDA_FLAGS="-c statiskit "$ANACONDA_FLAGS;
 fi
 
