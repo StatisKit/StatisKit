@@ -58,12 +58,14 @@ def wrapper(f):
     return g
 
 re.compile = wrapper(re.compile)
-re.find = wrapper(re.find)
+re.findall = wrapper(re.findall)
+re.finditer = wrapper(re.finditer)
 re.match = wrapper(re.match)
 re.purge = wrapper(re.purge)
 re.search = wrapper(re.search)
 re.split = wrapper(re.split)
 re.sub = wrapper(re.sub)
+re.subn = wrapper(re.subn)
 
 
 # Special chicken-and-egg handling of the "--debug=memoizer" flag:
