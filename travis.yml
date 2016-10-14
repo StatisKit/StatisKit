@@ -43,10 +43,10 @@ install:
   
 script:
   - cd conda
-  - sed -i'' -e 's/build/build --no-test/g' build.sh
-  - sed -i'' -e '8,10d' build.sh
+  - export ANACONDA_FLAGS="--no-test"
   - bash build.sh
   - cd ..
+  - export ANACONDA_FLAGS=""
 
 after_success:
   - if [[ "$TRAVIS_OS_NAME" = "osx" ]]; then
@@ -57,7 +57,6 @@ after_success:
   - cd ..;
   - pkgtk authors;
   - cd conda;
-  - sed -i'' -e 's/build --no-test/build/g' build.sh;
   - export BUILD_TARGETS="python-pkgtk";
   - bash build.sh;
   - cd ..;

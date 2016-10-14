@@ -13,13 +13,12 @@ install:
   - cd ..
   
 build_script:
+  - set ANACONDA_FLAGS="--no-test"
   - cd conda
-  - powershell -Command "(gc bld.bat) -replace 'build', 'build --no-test' | Out-File bld.bat"
-  - more +8 "bld.bat" >> tmp.bat
-  - del bld.bat
-  - more tmp.bat >> bld.bat
   - '%CMD_IN_ENV% call bld.bat'
   - cd ..
+  - set ANACONDA_FLAGS=""
+
   
 on_success:
   - cd conda
@@ -27,10 +26,6 @@ on_success:
   - cd ..
   - call pkgtk authors
   - cd conda
-  - powershell -Command "(gc bld.bat) -replace 'build --no-test', 'build' | Out-File bld.bat"
-  - more bld.bat >> tmp.bat
-  - del bld.bat
-  - more tmp.bat >> bld.bat
   - set BUILD_TARGETS=python-pkgtk
   - '%CMD_IN_ENV% call bld.bat'
   - if "%APPVEYOR_REPO_BRANCH%"=="master" if not "%ANACONDA_USERNAME%"=="" if not "%ANACONDA_PASSWORD%"=="" call upload.bat
