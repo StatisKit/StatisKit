@@ -19,6 +19,6 @@ grep -r -l "DefaultToolpath=\[\]" * | xargs sed -i'' -e 's#DefaultToolpath=\[\]#
 cd engine/SCons/Tool
 grep -r -l "from \. import" * | xargs sed -i'' 's/from \. import/from SCons.Tool import/g'
 cd ..
-sed -i'' '104d' onftest.py
-cd ..
+sed -i'' '104d' Conftest.py
+cd ../../..
 mv scons-2.5.0 scons-2.5.0-py27
