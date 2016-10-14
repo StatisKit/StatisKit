@@ -2676,6 +2676,8 @@ class File(Base):
         """
         Compute and return the MD5 hash for this file.
         """
+        import ipdb
+        ipdb.set_trace()
         if not self.rexists():
             return SCons.Util.MD5signature('')
         fname = self.rfile().get_abspath()
