@@ -29,7 +29,7 @@ grep -r -l "from \." * | xargs sed -i'' 's|from \.|from SCons\.Tool\.MSCommon|g'
 cd ..
 grep -r -l "from \. import" * | xargs sed -i'' 's|from \. import|from SCons.Tool import|g'
 grep -r -l "from \." * | xargs sed -i'' 's|from \.|from SCons\.Tool\.|g'
-grep -r -l "= pipe\.stdout\.readline\(\)" * | xargs sed -i'' 's|= pipe\.stdout\.readline\(\)|= pipe\.stdout\.readline\(\)\.decode()|g'
+grep -r -l "= pipe\.stdout\.readline()" * | xargs sed -i'' 's|= pipe\.stdout\.readline()|= pipe\.stdout\.readline()\.decode()|g'
 cd ..
 sed -i'' '104d' Conftest.py
 cd ../../..
