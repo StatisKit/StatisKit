@@ -51,7 +51,7 @@ cd ..
 rmdir toolchain /s /q
 
 for %%x in (%BUILD_TARGETS%) do (
-    conda build %%x -c %ANACONDA_CHANNEL% -c conda-forge
+    conda build %%x -c %ANACONDA_CHANNEL% %ANACONDA_BUILD_FLAGS%
     if %errorlevel% neq 0 (
         if exist %REPOSITORY% (
             rmdir %REPOSITORY% /s /q
