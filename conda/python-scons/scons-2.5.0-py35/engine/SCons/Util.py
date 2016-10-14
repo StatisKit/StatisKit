@@ -1432,7 +1432,7 @@ else:
         md5 = True
         def MD5signature(s):
             m = hashlib.md5()
-            m.update(str(s))
+            m.update(s)
             return m.hexdigest()
 
         def MD5filesignature(fname, chunksize=65536):
