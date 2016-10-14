@@ -33,6 +33,6 @@ grep -r -l "= pipe\.stdout\.readline()" * | xargs sed -i'' 's|= pipe\.stdout\.re
 cd ..
 sed -i'' '104d' Conftest.py
 grep -r -l "m\.update(str(blck))" * | xargs sed -i'' 's|m\.update(str(blck))|m\.update(blck)|g'
-grep -r -l "m\.update(str(s))" * | xargs sed -i'' 's|m\.update(str(s))|m\.update(s)|g'
+grep -r -l "m\.update(str(s))" * | xargs sed -i'' 's|m\.update(str(s))|m\.update(str(s).encode())|g'
 cd ../../..
 mv scons-2.5.0 scons-2.5.0-py27
