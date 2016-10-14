@@ -68,7 +68,7 @@ after_success:
     fi
   - echo $TRAVIS_BRANCH
   - echo $TRAVIS_PULL_REQUEST
-  - if [[ "$TRAVIS_BRANCH" = "master" ]] && [[ ! -z $ANACONDA_USERNAME ]]; then
+  - if [[ "$TRAVIS_BRANCH" = "master" ]] && [[ ! -z $ANACONDA_USERNAME ]] && [[ ! -z $ANACONDA_PASSWORD ]]; then
       cd conda;
       bash upload.sh;
       cd ..;
