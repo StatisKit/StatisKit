@@ -260,8 +260,6 @@ class BuildTask(SCons.Taskmaster.OutOfDateTask):
                 node = [ node ]
         nodename = ', '.join(map(str, node))
 
-        import ipdb
-        ipdb.set_trace()
         errfmt = "scons: *** [%s] %s\n"
         sys.stderr.write(errfmt % (nodename, buildError))
 
