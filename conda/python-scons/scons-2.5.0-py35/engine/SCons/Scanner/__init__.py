@@ -350,7 +350,7 @@ class Classic(Current):
 
     def find_include_names(self, node):
         try:
-            return self.cre.findall(node.get_text_contents())
+            return self.cre.findall(node.get_text_contents().decode())
         except:
             import ipdb
             ipdb.set_trace()
