@@ -13,11 +13,11 @@ install:
   - cd ..
   
 build_script:
-  - set ANACONDA_FLAGS="--no-test"
+  - set ANACONDA_FLAGS=--no-test
   - cd conda
   - '%CMD_IN_ENV% call bld.bat'
   - cd ..
-  - set ANACONDA_FLAGS=""
+  - set ANACONDA_FLAGS=
 
   
 on_success:
