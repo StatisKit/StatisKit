@@ -201,9 +201,9 @@ class Serial(object):
                     task.execute()
             except:
                 import ipdb
-                ipdb.run('task.prepare()')
+                ipdb.run('task.prepare()', globals=globals(), locals=locals())
                 if task.needs_execute():
-                    ipdb.run('task.execute()')
+                    ipdb.run('task.execute()', globals=globals(), locals=locals())
                 if self.interrupted():
                     try:
                         raise SCons.Errors.BuildError(
