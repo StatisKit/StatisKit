@@ -80,7 +80,7 @@ def detect_version(env, cc):
     #line = pipe.stdout.read().strip()
     #if line:
     #    version = line
-    line = pipe.stdout.readline()
+    line = pipe.stdout.readline().decode()
     match = re.search(r'[0-9]+(\.[0-9]+)+', line)
     if match:
         version = match.group(0)
