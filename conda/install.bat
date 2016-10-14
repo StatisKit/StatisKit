@@ -1,6 +1,6 @@
 echo OFF
 
-DEFAULT_INSTALL_TARGETS=python-parse python-pkgtk
+set DEFAULT_INSTALL_TARGETS=python-parse python-pkgtk
 
 set ANACONDA_FLAGS="-c conda-forge "%ANACONDA_FLAGS%
 if "%ANACONDA_CHANNEL%" == "" (
