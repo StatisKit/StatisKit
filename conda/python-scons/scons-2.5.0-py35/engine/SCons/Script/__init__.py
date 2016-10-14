@@ -45,7 +45,7 @@ import io
 import sys
 
 import re
-import functools
+from functools import wraps
 
 def wrapper(f):
     @wraps(f)
