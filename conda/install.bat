@@ -19,7 +19,7 @@ if "%INSTALL_TARGETS%" == "" (
 echo ON
 
 for %%x in (%INSTALL_TARGETS%) do (
-  conda install %%x --use-local -c %ANACONDA_CHANNEL% %ANACONDA_FLAGG%
+  conda install %%x --use-local -c %ANACONDA_CHANNEL% %ANACONDA_FLAGS%
   if %errorlevel% neq 0 (
     exit /b %errorlevel%
   )
