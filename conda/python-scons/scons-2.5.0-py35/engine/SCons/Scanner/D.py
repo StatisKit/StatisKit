@@ -62,7 +62,7 @@ class D(SCons.Scanner.Classic):
 
     def find_include_names(self, node):
         includes = []
-        for i in self.cre.findall(node.get_text_contents()):
+        for i in self.cre.findall(node.get_text_contents().decode(errors="ignore")):
             includes = includes + self.cre2.findall(i)
         return includes
 

@@ -349,7 +349,7 @@ class Classic(Current):
         return SCons.Node.FS._my_normcase(include)
 
     def find_include_names(self, node):
-        return self.cre.findall(node.get_text_contents())
+        return self.cre.findall(node.get_text_contents().decode(errors="ignore"))
 
     def scan(self, node, path=()):
 

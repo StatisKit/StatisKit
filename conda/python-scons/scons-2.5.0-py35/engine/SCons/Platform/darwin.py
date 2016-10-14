@@ -32,7 +32,7 @@ selection method.
 
 __revision__ = "src/engine/SCons/Platform/darwin.py rel_2.5.0:3543:937e55cd78f7 2016/04/09 11:29:54 bdbaddog"
 
-from SCons.Tool import posix
+from . import posix
 import os
 
 def generate(env):

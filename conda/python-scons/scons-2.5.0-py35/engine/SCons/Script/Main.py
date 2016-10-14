@@ -1336,7 +1336,7 @@ def main():
     parts.append("Copyright (c) 2001 - 2016 The SCons Foundation")
     version = ''.join(parts)
 
-    from SCons.Tool import SConsOptions
+    from . import SConsOptions
     parser = SConsOptions.Parser(version)
     values = SConsOptions.SConsValues(parser.get_default_values())
 

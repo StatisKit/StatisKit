@@ -1,7 +1,7 @@
 """SCons.Tool.latex
 
 Tool-specific initialization for LaTeX.
-Generates .dvi files from .latex or .ltx files
+Generates .dvi files from SCons.Tool.latex or .ltx files
 
 There normally shouldn't be any need to import this module directly.
 It will usually be imported through the generic SCons.Tool.Tool()

@@ -29,7 +29,7 @@ import os
 import re
 import SCons.Util
 
-from .common import read_reg, debug
+from SCons.Tool.MSCommoncommon import read_reg, debug
 
 # Original value recorded by dcournapeau
 _FRAMEWORKDIR_HKEY_ROOT = r'Software\Microsoft\.NETFramework\InstallRoot'

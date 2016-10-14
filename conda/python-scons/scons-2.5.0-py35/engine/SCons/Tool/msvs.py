@@ -51,7 +51,7 @@ import SCons.PathList
 import SCons.Util
 import SCons.Warnings
 
-from .MSCommon import msvc_exists, msvc_setup_env_once
+from SCons.Tool.MSCommon import msvc_exists, msvc_setup_env_once
 from SCons.Defaults import processDefines
 
 ##############################################################################

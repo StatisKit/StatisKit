@@ -209,7 +209,7 @@ def _object_contents(obj):
                 except AttributeError:
                     # Should be a pickable Python object.
                     try:
-                        return pickle.dumps(obj, 0).decode()
+                        return pickle.dumps(obj, 0).decode(errors="ignore")
                     except (pickle.PicklingError, TypeError):
                         # This is weird, but it seems that nested classes
                         # are unpickable. The Python docs say it should
