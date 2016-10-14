@@ -3,13 +3,13 @@ set +x
 REPOSITORY="PkgTk"
 DEFAULT_BUILD_TARGETS="python-parse python-pkgtk"
 
-ANACONDA_FLAGS="-c conda-forge "$ANACONDA_FLAGS
+ANACONDA_BUILD_FLAGS="-c conda-forge "$ANACONDA_BUILD_FLAGS
 if [[ -z $ANACONDA_LABEL ]]; then
     ANACONDA_CHANNEL="statiskit"
 else
     echo "Using anaconda label: "$ANACONDA_LABEL;
     ANACONDA_CHANNEL="statiskit/label/"$ANACONDA_LABEL;
-    ANACONDA_FLAGS="-c statiskit "$ANACONDA_FLAGS;
+    ANACONDA_BUILD_FLAGS="-c statiskit "$ANACONDA_BUILD_FLAGS;
 fi
 
 if [[ -z $BUILD_TARGETS ]]; then
@@ -52,7 +52,7 @@ cd ..
 rm -rf toolchain
 
 for BUILD_TARGET in $BUILD_TARGETS; do
-  conda build $BUILD_TARGET -c $ANACONDA_CHANNEL $ANACONDA_FLAGS
+  conda build $BUILD_TARGET -c $ANACONDA_CHANNEL $ANACONDA_BUILD_FLAGS
   if [ $? -ne 0 ]; then
     if [[ -d "$REPOSITORY" ]]; then
         rm -rf $REPOSITORY;

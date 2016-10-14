@@ -14,12 +14,12 @@ if "%ANACONDA_PASSWORD%" == "" (
   echo %ANACONDA_USERNAME%"'s password: [secure]";
 )
 
-set ANACONDA_FLAGS="-c conda-forge "%ANACONDA_FLAGS%
+set ANACONDA_UPLOAD_FLAGS="-c conda-forge "%ANACONDA_UPLOAD_FLAGS%
 if "%ANACONDA_CHANNEL%" == "" (
     set ANACONDA_CHANNEL="statiskit"
 ) else (
     echo "Using anaconda channel: "%ANACONDA_CHANNEL%
-    set ANACONDA_FLAGS="-c statiskit "%ANACONDA_FLAGS%
+    set ANACONDA_UPLOAD_FLAGS="-c statiskit "%ANACONDA_UPLOAD_FLAGS%
 )
 
 echo ON
@@ -55,7 +55,7 @@ cd ..
 rmdir toolchain /s /q
 
 for %%x in (%UPLOAD_TARGETS%) do (
-    for /f %%i in ('conda build %%x -c %ANACONDA_CHANNEL% %ANACONDA_FLAGS% --output') do (set UPLOAD_FILE=%%i)
+    for /f %%i in ('conda build %%x -c %ANACONDA_CHANNEL% %ANACONDA_UPLOAD_FLAGS% --output') do (set UPLOAD_FILE=%%i)
     anaconda upload --user $ANACONDA_CHANNEL %UPLOAD_FILE
     if %errorlevel% neq 0 (
       echo "upload failed"

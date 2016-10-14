@@ -3,12 +3,12 @@ echo OFF
 set REPOSITORY="PkgTk"
 set DEFAULT_BUILD_TARGETS=python-parse python-pkgtk
 
-set ANACONDA_FLAGS=-c conda-forge %ANACONDA_FLAGS%
+set ANACONDA_BUILD_FLAGS=-c conda-forge %ANACONDA_BUILD_FLAGS%
 if "%ANACONDA_CHANNEL%" == "" (
     set ANACONDA_CHANNEL=statiskit
 ) else (
     echo "Using anaconda channel: "%ANACONDA_CHANNEL%
-    set ANACONDA_FLAGS=-c statiskit %ANACONDA_FLAGS%
+    set ANACONDA_BUILD_FLAGS=-c statiskit %ANACONDA_BUILD_FLAGS%
 )
 
 if "%BUILD_TARGETS%" == "" (

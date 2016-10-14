@@ -13,11 +13,10 @@ install:
   - cd ..
   
 build_script:
-  - set ANACONDA_FLAGS=--no-test
+  - set ANACONDA_BUILD_FLAGS=--no-test
   - cd conda
   - '%CMD_IN_ENV% call bld.bat'
   - cd ..
-  - set ANACONDA_FLAGS=
   
 on_success:
   - del test\test_about.py
@@ -27,6 +26,7 @@ on_success:
   - call pkgtk authors
   - cd conda
   - set BUILD_TARGETS=python-pkgtk
+  - set ANACONDA_BUILD_FLAGS=--test
   - '%CMD_IN_ENV% call bld.bat'
   - if "%APPVEYOR_REPO_BRANCH%"=="master" if not "%ANACONDA_USERNAME%"=="" if not "%ANACONDA_PASSWORD%"=="" call upload.bat
   - cd ..

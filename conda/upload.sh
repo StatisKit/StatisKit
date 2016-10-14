@@ -14,13 +14,13 @@ else
   echo $ANACONDA_USERNAME"'s password: [secure]";
 fi
 
-ANACONDA_FLAGS="-c conda-forge "$ANACONDA_FLAGS
+ANACONDA_UPLOAD_FLAGS="-c conda-forge "$ANACONDA_UPLOAD_FLAGS
 if [[ -z $ANACONDA_LABEL ]]; then
     ANACONDA_CHANNEL="statiskit";
 else
     echo "Using anaconda label: "$ANACONDA_LABEL;
     ANACONDA_CHANNEL="statiskit/label/"$ANACONDA_LABEL;
-    ANACONDA_FLAGS="-c statiskit "$ANACONDA_FLAGS;
+    ANACONDA_UPLOAD_FLAGS="-c statiskit "$ANACONDA_UPLOAD_FLAGS;
 fi
 
 set -x
@@ -56,7 +56,7 @@ cd ..
 rm -rf toolchain
 
 for UPLOAD_TARGET in $UPLOAD_TARGETS; do
-  UPLOAD_FILE=`conda build $UPLOAD_TARGET -c $ANACONDA_CHANNEL $ANACONDA_FLAGS --output`
+  UPLOAD_FILE=`conda build $UPLOAD_TARGET -c $ANACONDA_CHANNEL $ANACONDA_UPLOAD_FLAGS --output`
   anaconda upload ${UPLOAD_FILE%%} --user $ANACONDA_CHANNEL
   if [ $? -ne 0 ]; then
     echo "upload failed";
