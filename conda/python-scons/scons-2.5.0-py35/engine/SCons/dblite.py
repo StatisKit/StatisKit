@@ -149,8 +149,12 @@ class dblite(object):
   def __setitem__(self, key, value):
     self._check_writable()
     if (not is_string(key)):
+      import ipdb
+      ipdb.set_trace()
       raise TypeError("key `%s' must be a string but is %s" % (key, type(key)))
     if (not is_string(value)):
+      import ipdb
+      ipdb.set_trace()
       raise TypeError("value `%s' must be a string but is %s" % (value, type(value)))
     self._dict[key] = value
     self._needs_sync = 0o001
