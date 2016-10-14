@@ -8,7 +8,7 @@ else
   echo "Username: "$ANACONDA_USERNAME;
 fi
 
-if [[ -z $ANACONDA_PASSWORD ]];
+if [[ -z $ANACONDA_PASSWORD ]]; then
   read -s -p %ANACONDA_USERNAME"'s password: " ANACONDA_PASSWORD;
 else
   echo $ANACONDA_USERNAME"'s password: [secure]";
