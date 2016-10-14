@@ -34,5 +34,6 @@ cd ..
 sed -i'' '104d' Conftest.py
 grep -r -l "m\.update(str(blck))" * | xargs sed -i'' 's|m\.update(str(blck))|m\.update(blck)|g'
 grep -r -l "m\.update(str(s))" * | xargs sed -i'' 's|m\.update(str(s))|m\.update(str(s).encode())|g'
+grep -r -l "pickle\.dumps(self.entries, 1)" * | xargs sed -i'' 's|pickle\.dumps(self.entries, 1)|pickle\.dumps(self.entries, 0).decode()|g'
 cd ../../..
 mv scons-2.5.0 scons-2.5.0-py27
