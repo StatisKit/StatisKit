@@ -1442,7 +1442,7 @@ else:
                 blck = f.read(chunksize)
                 if not blck:
                     break
-                m.update(str(blck))
+                m.update(blck)
             f.close()
             return m.hexdigest()
             
