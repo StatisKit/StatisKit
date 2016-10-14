@@ -32,5 +32,6 @@ grep -r -l "from \." * | xargs sed -i'' 's|from \.|from SCons\.Tool\.|g'
 grep -r -l "= pipe\.stdout\.readline()" * | xargs sed -i'' 's|= pipe\.stdout\.readline()|= pipe\.stdout\.readline()\.decode()|g'
 cd ..
 sed -i'' '104d' Conftest.py
+grep -r -l "m\.update(str(blck))" * | xargs sed -i'' 's|m\.update(str(blck))|m\.update(blck)|g'
 cd ../../..
 mv scons-2.5.0 scons-2.5.0-py27
