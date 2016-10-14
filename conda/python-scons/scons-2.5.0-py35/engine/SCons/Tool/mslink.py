@@ -44,7 +44,7 @@ import SCons.Tool.msvc
 import SCons.Tool.msvs
 import SCons.Util
 
-from .MSCommon import msvc_setup_env_once, msvc_exists
+from SCons.Tool.MSCommon import msvc_setup_env_once, msvc_exists
 
 def pdbGenerator(env, target, source, for_signature):
     try:

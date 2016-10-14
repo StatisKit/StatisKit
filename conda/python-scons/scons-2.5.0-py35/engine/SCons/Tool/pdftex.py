@@ -1,7 +1,7 @@
 """SCons.Tool.pdftex
 
 Tool-specific initialization for pdftex.
-Generates .pdf files from .tex files
+Generates .pdf files from SCons.Tool.tex files
 
 There normally shouldn't be any need to import this module directly.
 It will usually be imported through the generic SCons.Tool.Tool()

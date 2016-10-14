@@ -35,7 +35,7 @@ __revision__ = "src/engine/SCons/Tool/sunf95.py rel_2.5.0:3543:937e55cd78f7 2016
 
 import SCons.Util
 
-from .FortranCommon import add_all_to_env
+from SCons.Tool.FortranCommon import add_all_to_env
 
 compilers = ['sunf95', 'f95']
 

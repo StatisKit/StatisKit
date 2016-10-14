@@ -31,7 +31,7 @@ import os
 import SCons.Errors
 import SCons.Util
 
-from .common import debug, \
+from SCons.Tool.MSCommoncommon import debug, \
                    get_output, \
                    is_win64, \
                    normalize_env, \

@@ -1,7 +1,7 @@
 """SCons.Tool.tex
 
 Tool-specific initialization for TeX.
-Generates .dvi files from .tex files
+Generates .dvi files from SCons.Tool.tex files
 
 There normally shouldn't be any need to import this module directly.
 It will usually be imported through the generic SCons.Tool.Tool()

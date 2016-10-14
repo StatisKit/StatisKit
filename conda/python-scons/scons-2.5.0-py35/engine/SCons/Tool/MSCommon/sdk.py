@@ -33,7 +33,7 @@ import os
 import SCons.Errors
 import SCons.Util
 
-from SCons.Tool import common
+from SCons.Tool.MSCommon import common
 
 debug = common.debug
 
@@ -347,7 +347,7 @@ def mssdk_setup_env(env):
             debug('sdk.py:mssdk_setup_env thinks msvs_version is None')
             return
         msvs_version = env.subst(msvs_version)
-        from SCons.Tool import vs
+        from SCons.Tool.MSCommon import vs
         msvs = vs.get_vs_by_version(msvs_version)
         debug('sdk.py:mssdk_setup_env:msvs is :%s'%msvs)
         if not msvs:

@@ -43,11 +43,11 @@ from string import digits as string_digits
 
 import SCons.Warnings
 
-from SCons.Tool import common
+from SCons.Tool.MSCommon import common
 
 debug = common.debug
 
-from SCons.Tool import sdk
+from SCons.Tool.MSCommon import sdk
 
 get_installed_sdks = sdk.get_installed_sdks
 
