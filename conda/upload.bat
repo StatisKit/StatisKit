@@ -56,6 +56,7 @@ rmdir toolchain /s /q
 
 for %%x in (%UPLOAD_TARGETS%) do (
   set UPLOAD_TARGET=%%x
+  for /f %%i in ('conda build %UPLOAD_TARGET% -c %ANACONDA_CHANNEL% %ANACONDA_UPLOAD_FLAGS% --output') do (set UPLOAD_FILE=%%i)
 )
 
 anaconda logout
