@@ -31,7 +31,7 @@ fi
 
 set +x
 
-anaconda login --username "$ANACONDA_USERNAME" --password "$ANACONDA_PASSWORD"
+yes | anaconda login --username "$ANACONDA_USERNAME" --password "$ANACONDA_PASSWORD"
 if [ $? -ne 0 ]; then
   exit 1;
 fi
