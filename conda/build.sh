@@ -1,4 +1,4 @@
-set +x
+set +xe
 
 REPOSITORY="PkgTk"
 DEFAULT_BUILD_TARGETS="python-parse python-pkgtk"
