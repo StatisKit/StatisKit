@@ -55,7 +55,7 @@ cd ..
 rmdir toolchain /s /q
 
 for %%x in (%UPLOAD_TARGETS%) do (
-  <nul set /p="for /f %%%%i in ('conda build " >> _upload.bat
+  <nul set /p="for /f \"delims=\" %%%%i in ('conda build " >> _upload.bat
   <nul set /p=%%x >> _upload.bat
   <nul set /p=" -c " >> _upload.bat
   <nul set /p=%ANACONDA_CHANNEL% >> _upload.bat
