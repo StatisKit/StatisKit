@@ -31,7 +31,7 @@ if %errorlevel% neq 0 (
 
 echo OFF
 
-anaconda login --username "$ANACONDA_USERNAME" --password "$ANACONDA_PASSWORD"
+anaconda login --username %ANACONDA_USERNAME% --password %ANACONDA_PASSWORD%
 if %errorlevel% neq 0 (
   exit /b %errorlevel%
 )
