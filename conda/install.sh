@@ -24,3 +24,5 @@ for INSTALL_TARGET in $INSTALL_TARGETS; do
     exit 1;
   fi
 done
+
+set +x
