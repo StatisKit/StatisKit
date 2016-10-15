@@ -70,7 +70,7 @@ for %%x in (%UPLOAD_TARGETS%) do (
   more _upload.bat
   echo anaconda upload --user %ANACONDA_CHANNEL% %UPLOAD_FILE% >> _upload.bat
   more _upload.bat
-  echo if \%errorlevel\% neq 0 echo upload failed
+  echo if \%errorlevel\% neq 0 echo upload failed >> _upload.bat
   more _upload.bat
   del _upload.bat
 )
