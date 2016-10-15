@@ -19,7 +19,7 @@ if "%ANACONDA_CHANNEL%" == "" (
     set ANACONDA_CHANNEL=statiskit
 ) else (
     echo Using anaconda channel: %ANACONDA_CHANNEL%
-    set ANACONDA_UPLOAD_FLAGS=-c statiskit "%ANACONDA_UPLOAD_FLAGS%
+    set ANACONDA_UPLOAD_FLAGS=-c statiskit %ANACONDA_UPLOAD_FLAGS%
 )
 
 echo ON
