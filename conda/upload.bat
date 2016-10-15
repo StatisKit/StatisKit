@@ -55,8 +55,24 @@ cd ..
 rmdir toolchain /s /q
 
 for %%x in (%UPLOAD_TARGETS%) do (
-  set UPLOAD_TARGET=%%x
-  for /f %%i in ('conda build '%UPLOAD_TARGET%' -c '%ANACONDA_CHANNEL%' '%ANACONDA_UPLOAD_FLAGS%' --output') do (set UPLOAD_FILE=%%i)
+  <nul set /p "for /f %%i in ('conda build " > _upload.bat
+  more _upload.bat
+  <nul set /p %%x >> _upload.bat
+  more _upload.bat
+  <nul set /p " -c " >> _upload.bat
+  more _upload.bat
+  <nul set /p %ANACONDA_CHANNEL% >> _upload.bat
+  more _upload.bat
+  <nul set /p " " >> _upload.bat
+  more _upload.bat
+  <nul set /p %ANACONDA_FLAGS% >> _upload.bat
+  echo --output >> _upload.bat
+  more _upload.bat
+  echo anaconda upload --user %ANACONDA_CHANNEL% %UPLOAD_FILE% >> _upload.bat
+  more _upload.bat
+  echo "if %errorlevel% neq 0 echo \"upload failed\""
+  more _upload.bat
+  del _upload.bat
 )
 
 anaconda logout
