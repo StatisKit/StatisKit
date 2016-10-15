@@ -66,9 +66,15 @@ for %%x in (%UPLOAD_TARGETS%) do (
   echo.|set /P=" " >> _upload.bat
   more _upload.bat
   echo.|set /P=%ANACONDA_FLAGS% >> _upload.bat
-  echo --output >> _upload.bat
+  echo.|set /P=" --output') ( set UPLOAD_FILE=%%i )" >> _upload.bat
   more _upload.bat
-  echo anaconda upload --user %ANACONDA_CHANNEL% %UPLOAD_FILE% >> _upload.bat
+  echo >> _upload.bat
+  more _upload.bat
+  echo.|set /P="anaconda upload --user " >> _upload.bat
+  more _upload.bat
+  echo.|set /P=%ANACONDA_CHANNEL%
+  more _upload.bat
+  echo.|set /P=" %UPLOAD_FILE%" >> _upload.bat
   more _upload.bat
   echo if \%errorlevel\% neq 0 echo upload failed >> _upload.bat
   more _upload.bat
