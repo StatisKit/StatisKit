@@ -1,6 +1,6 @@
 echo OFF
 
-set REPOSITORY="PkgTk"
+set REPOSITORY=PkgTk
 set DEFAULT_BUILD_TARGETS=python-parse python-pkgtk
 
 set ANACONDA_BUILD_FLAGS=-c conda-forge %ANACONDA_BUILD_FLAGS%
