@@ -64,11 +64,12 @@ for %%x in (%UPLOAD_TARGETS%) do (
   <nul set /p=" --output') ( set UPLOAD_FILE=%%i )" >> _upload.bat
   echo. >> _upload.bat
   <nul set /p="anaconda upload --user " >> _upload.bat
-  <nul set /p=%ANACONDA_CHANNEL%
+  <nul set /p=%ANACONDA_CHANNEL% >> _upload.bat
   <nul set /p=" %UPLOAD_FILE%" >> _upload.bat
+  echo. >> _upload.bat
   <nul set /p="if \%errorlevel\% neq 0 " >> _upload.bat
   echo upload failed >> _upload.bat
-  more _upload.bat
+  call _upload.bat
   del _upload.bat
 )
 
