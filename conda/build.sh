@@ -63,3 +63,5 @@ done
 if [[ -d "$REPOSITORY" ]]; then
     rm -rf $REPOSITORY;
 fi
+
+set +x
