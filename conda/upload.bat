@@ -56,7 +56,7 @@ rmdir toolchain /s /q
 
 for %%x in (%UPLOAD_TARGETS%) do (
     for /f %%i in ('conda build %%x -c %ANACONDA_CHANNEL% %ANACONDA_UPLOAD_FLAGS% --output') do (set UPLOAD_FILE=%%i)
-    anaconda upload --user $ANACONDA_CHANNEL %UPLOAD_FILE
+    anaconda upload --user %ANACONDA_CHANNEL% %UPLOAD_FILE%
     if %errorlevel% neq 0 (
       echo "upload failed"
     )
