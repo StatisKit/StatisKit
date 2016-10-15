@@ -55,7 +55,7 @@ cd ..
 rmdir toolchain /s /q
 
 for %%x in (%UPLOAD_TARGETS%) do (
-  echo | set /p "for /f %%i in ('conda build " > _upload.bat
+  echo | set /p "for /f %%i in ('conda build " >> _upload.bat
   more _upload.bat
   <nul set /p %%x >> _upload.bat
   more _upload.bat
