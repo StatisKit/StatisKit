@@ -69,7 +69,7 @@ for %%x in (%UPLOAD_TARGETS%) do (
   echo. >> _upload.bat
   <nul set /p="if \%errorlevel\% neq 0 " >> _upload.bat
   echo upload failed >> _upload.bat
-  call _upload.bat
+  more _upload.bat
   del _upload.bat
 )
 
