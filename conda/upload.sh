@@ -28,7 +28,10 @@ conda install -n root anaconda-client
 if [ $? -ne 0 ]; then
   exit 1;
 fi
-
+source activate root
+if [ $? -ne 0 ]; then
+  exit 1;
+fi
 set +x
 
 yes | anaconda login --username "$ANACONDA_USERNAME" --password "$ANACONDA_PASSWORD"
