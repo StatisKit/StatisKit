@@ -46,10 +46,10 @@ if %errorlevel% neq 0 (
 cd toolchain
 call config.bat
 if %errorlevel% neq 0 (
-    cd ..
-    anaconda logout
-    rmdir toolchain /s /q
-    exit /b %errorlevel%
+  cd ..
+  anaconda logout
+  rmdir toolchain /s /q
+  exit /b %errorlevel%
 )
 cd ..
 rmdir toolchain /s /q
