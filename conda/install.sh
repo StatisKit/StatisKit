@@ -1,4 +1,4 @@
-set +x
+set +xe
 
 DEFAULT_INSTALL_TARGETS="python-parse python-pkgtk"
 
