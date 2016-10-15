@@ -55,17 +55,17 @@ cd ..
 rmdir toolchain /s /q
 
 for %%x in (%UPLOAD_TARGETS%) do (
-  echo | set /p "for /f %%i in ('conda build " >> _upload.bat
+  echo.|set /P="for /f %%i in ('conda build " >> _upload.bat
   more _upload.bat
-  <nul set /p %%x >> _upload.bat
+  echo.|set /P=%%x >> _upload.bat
   more _upload.bat
-  <nul set /p " -c " >> _upload.bat
+  echo.|set /P=" -c " >> _upload.bat
   more _upload.bat
-  <nul set /p %ANACONDA_CHANNEL% >> _upload.bat
+  echo.|set /P=%ANACONDA_CHANNEL% >> _upload.bat
   more _upload.bat
-  <nul set /p " " >> _upload.bat
+  echo.|set /P=" " >> _upload.bat
   more _upload.bat
-  <nul set /p %ANACONDA_FLAGS% >> _upload.bat
+  echo.|set /P=%ANACONDA_FLAGS% >> _upload.bat
   echo --output >> _upload.bat
   more _upload.bat
   echo anaconda upload --user %ANACONDA_CHANNEL% %UPLOAD_FILE% >> _upload.bat
