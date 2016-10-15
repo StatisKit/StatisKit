@@ -15,11 +15,10 @@ else
 fi
 
 ANACONDA_UPLOAD_FLAGS="-c conda-forge "$ANACONDA_UPLOAD_FLAGS
-if [[ -z $ANACONDA_LABEL ]]; then
+if [[ -z $ANACONDA_CHANNEL ]]; then
     ANACONDA_CHANNEL="statiskit";
 else
-    echo "Using anaconda label: "$ANACONDA_LABEL;
-    ANACONDA_CHANNEL="statiskit/label/"$ANACONDA_LABEL;
+    echo "Using anaconda label: "$ANACONDA_CHANNEL;
     ANACONDA_UPLOAD_FLAGS="-c statiskit "$ANACONDA_UPLOAD_FLAGS;
 fi
 
