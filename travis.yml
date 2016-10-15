@@ -43,8 +43,7 @@ install:
   
 script:
   - cd conda
-  - sed -i'' -e 's/build/build --no-test/g' build.sh
-  - sed -i'' -e '8,10d' build.sh
+  - export ANACONDA_BUILD_FLAGS="--no-test"
   - bash build.sh
   - cd ..
 
@@ -52,19 +51,19 @@ after_success:
   - if [[ "$TRAVIS_OS_NAME" = "osx" ]]; then
       rm test/test_about.py;
     fi
-  - cd conda;
-  - bash install.sh;
-  - cd ..;
-  - pkgtk authors;
-  - cd conda;
-  - sed -i'' -e 's/build --no-test/build/g' build.sh;
-  - export BUILD_TARGETS="python-pkgtk";
-  - bash build.sh;
+  - cd conda
+  - bash install.sh
+  - cd ..
+  - pkgtk authors
+  - cd conda
+  - unset ANACONDA_BUILD_FLAGS
+  - export BUILD_TARGETS="python-pkgtk"
+  - bash build.sh
   - cd ..;
   - if [[ "$TRAVIS_OS_NAME" = "linux" ]] && [[ "$MINICONDA" = "2" ]]; then
       coveralls --config_file=.coveragerc;
     fi
-  - if [[ "$TRAVIS_BRANCH" = "master" ]] && [[ "$TRAVIS_PULL_REQUEST" = "false" ]] && [[ ! -z $ANACONDA_USERNAME ]] && [[ ! -z $ANACONDA_PASSWORD ]]; then
+  - if [[ "$TRAVIS_BRANCH" = "master" ]] && [[ ! -z $ANACONDA_USERNAME ]] && [[ ! -z $ANACONDA_PASSWORD ]]; then
       cd conda;
       bash upload.sh;
       cd ..;
