@@ -1,4 +1,4 @@
-set +x
+set +xe
 
 UPLOAD_TARGETS="python-parse python-pkgtk"
 
