@@ -55,18 +55,18 @@ cd ..
 rmdir toolchain /s /q
 
 for %%x in (%UPLOAD_TARGETS%) do (
-  echo.|set /P="for /f %%i in ('conda build " >> _upload.bat
-  echo.|set /P=%%x >> _upload.bat
-  echo.|set /P=" -c " >> _upload.bat
-  echo.|set /P=%ANACONDA_CHANNEL% >> _upload.bat
-  echo.|set /P=" " >> _upload.bat
-  echo.|set /P=%ANACONDA_FLAGS% >> _upload.bat
-  echo.|set /P=" --output') ( set UPLOAD_FILE=%%i " >> _upload.bat
-  echo ) >> _upload.bat
-  echo.|set /P="anaconda upload --user " >> _upload.bat
-  echo.|set /P=%ANACONDA_CHANNEL%
-  echo.|set /P=" %UPLOAD_FILE%" >> _upload.bat
-  echo.|set /P="if \%errorlevel\% neq 0 " >> _upload.bat
+  <nul set /p="for /f %%i in ('conda build " >> _upload.bat
+  <nul set /p=%%x >> _upload.bat
+  <nul set /p=" -c " >> _upload.bat
+  <nul set /p=%ANACONDA_CHANNEL% >> _upload.bat
+  <nul set /p=" " >> _upload.bat
+  <nul set /p=%ANACONDA_FLAGS% >> _upload.bat
+  <nul set /p=" --output') ( set UPLOAD_FILE=%%i )" >> _upload.bat
+  echo. >> _upload.bat
+  <nul set /p="anaconda upload --user " >> _upload.bat
+  <nul set /p=%ANACONDA_CHANNEL%
+  <nul set /p=" %UPLOAD_FILE%" >> _upload.bat
+  <nul set /p="if \%errorlevel\% neq 0 " >> _upload.bat
   echo upload failed >> _upload.bat
   more _upload.bat
   del _upload.bat
