@@ -14,7 +14,6 @@
 #                                                                                #
 ##################################################################################
 
-language: cpp
 
 matrix:
   include:
@@ -22,13 +21,16 @@ matrix:
       dist: trusty
       sudo: required
       env: MINICONDA="2"
+      language: cpp
     - os: linux
       dist: trusty
       sudo: required
       env: MINICONDA="3"
+      language: cpp
     - os: osx
       osx_image: xcode7.2
       env: MINICONDA="2"
+      language: go
     - os: osx
       osx_image: xcode7.2
       env: MINICONDA="3"
