@@ -64,3 +64,5 @@ for UPLOAD_TARGET in $UPLOAD_TARGETS; do
 done
 
 anaconda logout
+
+set +x
