@@ -47,13 +47,9 @@ test:
         - nose
         - coverage
     commands:
-        - cd {{ RECIPE_DIR }}
-        - cd ..
-        - cd ..
-        - ls # [not win]
-        - dir # [win]
+        - cd {{ SRC_DIR }}
         - nosetests test -x -s -v --with-coverage --cover-tests --cover-package=pkgtk
-        - REPOSITORY_DIR=`readlink -e .` # [not win]
+        - REPOSITORY_DIR=`readlink -e $RECIPE_DIR/../..` # [not win]
         - sed -i'' -e 's|'"$PREFIX"'/lib/python2.7/site-packages/PkgTk-0.0.0-py2.7.egg|'"$REPOSITORY_DIR"'/src/py|g' .coverage # [not win]
-        #- sed -i'' -e 's|'"$SRC_DIR"'|'"$REPOSITORY_DIR"'|g' .coverage # [not win]
-        #- mv .coverage $REPOSITORY_DIR # [not win]
+        - sed -i'' -e 's|'"$SRC_DIR"'|'"$REPOSITORY_DIR"'|g' .coverage # [not win]
+        - mv .coverage $REPOSITORY_DIR # [not win]

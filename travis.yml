@@ -43,7 +43,6 @@ install:
   
 script:
   - cd conda
-  - export ANACONDA_BUILD_FLAGS="--no-test"
   - bash build.sh
   - cd ..
 
@@ -51,14 +50,14 @@ after_success:
   - if [[ "$TRAVIS_OS_NAME" = "osx" ]]; then
       rm test/test_about.py;
     fi
-  - cd conda;
-  - bash install.sh;
-  - cd ..;
-  - pkgtk authors;
-  - cd conda;
-  - export ANACONDA_BUILD_FLAGS="--test"
-  - export BUILD_TARGETS="python-pkgtk";
-  - bash build.sh;
+  - cd conda
+  - bash install.sh
+  - cd ..
+  - pkgtk authors
+  - cd conda
+  - unset ANACONDA_BUILD_FLAGS
+  - export BUILD_TARGETS="python-pkgtk"
+  - bash build.sh
   - cd ..;
   - if [[ "$TRAVIS_OS_NAME" = "linux" ]] && [[ "$MINICONDA" = "2" ]]; then
       coveralls --config_file=.coveragerc;
