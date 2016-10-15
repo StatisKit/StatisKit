@@ -48,6 +48,7 @@ script:
   - cd ..
 
 after_success:
+  - echo $TRAVIS_TEST_RESULT
   - if [[ "$TRAVIS_OS_NAME" = "osx" ]]; then
       rm test/test_about.py;
     fi
@@ -66,10 +67,10 @@ after_success:
   - if [[ ! "$TRAVIS_PULL_REQUEST" = "false" ]]; then
       export ANACONDA_LABEL="PR"$TRAVIS_PULL_REQUEST;
     fi
-  - echo $TRAVIS_BRANCH
-  - echo $TRAVIS_PULL_REQUEST
+  - echo $TRAVIS_TEST_RESULT
   - if [[ "$TRAVIS_BRANCH" = "master" ]] && [[ ! -z $ANACONDA_USERNAME ]] && [[ ! -z $ANACONDA_PASSWORD ]]; then
       cd conda;
       bash upload.sh;
       cd ..;
     fi
+  - echo $TRAVIS_TEST_RESULT
