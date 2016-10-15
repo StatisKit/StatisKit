@@ -63,7 +63,7 @@ after_success:
   - if [[ "$TRAVIS_OS_NAME" = "linux" ]] && [[ "$MINICONDA" = "2" ]]; then
       coveralls --config_file=.coveragerc;
     fi
-  - if [[ "$TRAVIS_BRANCH" = "master" ]] && [[ ! -z $ANACONDA_USERNAME ]] && [[ ! -z $ANACONDA_PASSWORD ]]; then
+  - if [[ "$TRAVIS_BRANCH" = "master" ]] && [[ ! -z $ANACONDA_USERNAME ]]; then
       cd conda;
       bash upload.sh;
       cd ..;
