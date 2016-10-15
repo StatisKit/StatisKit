@@ -43,6 +43,7 @@ install:
   
 script:
   - cd conda
+  - export ANACONDA_BUILD_FLAGS="--no-test"
   - bash build.sh
   - cd ..
 
