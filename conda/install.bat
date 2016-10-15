@@ -6,7 +6,7 @@ set ANACONDA_INSTALL_FLAGS=-c conda-forge %ANACONDA_INSTALL_FLAGS%
 if "%ANACONDA_CHANNEL%" == "" (
   set ANACONDA_CHANNEL=statiskit
 ) else (
-  echo "Using anaconda channel: "%ANACONDA_CHANNEL%
+  echo Using anaconda channel: %ANACONDA_CHANNEL%
 set ANACONDA_INSTALL_FLAGS=-c statiskit %ANACONDA_INSTALL_FLAGS%
 )
 
