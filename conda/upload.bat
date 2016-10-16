@@ -45,7 +45,7 @@ if %errorlevel% neq 0 (
 )
 cd toolchain
 call config.bat
-if%errorlevel% neq 0 (
+if %errorlevel% neq 0 (
   cd ..
   anaconda logout
   rmdir toolchain /s /q
