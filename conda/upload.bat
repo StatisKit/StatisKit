@@ -67,8 +67,6 @@ for %%x in (%UPLOAD_TARGETS%) do (
   <nul set /p=%ANACONDA_CHANNEL% >> _upload.bat
   <nul set /p=" %%UPLOAD_FILE%%" >> _upload.bat
   echo. >> _upload.bat
-  <nul set /p="if %%errorlevel%% neq 0 " >> _upload.bat
-  echo echo upload failed >> _upload
   call _upload.bat
   del _upload.bat
 )
