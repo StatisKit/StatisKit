@@ -55,20 +55,22 @@ cd ..
 rmdir toolchain /s /q
 
 for %%x in (%UPLOAD_TARGETS%) do (
-  <nul set /p="for /f %%%%i in ('conda build " >> _upload.bat
-  <nul set /p=%%x >> _upload.bat
-  <nul set /p=" -c " >> _upload.bat
-  <nul set /p=%ANACONDA_CHANNEL% >> _upload.bat
-  <nul set /p=" " >> _upload.bat
-  <nul set /p=%ANACONDA_UPLOAD_FLAGS% >> _upload.bat
-  <nul set /p=" --output') do set UPLOAD_FILE=%%%%i" >> _upload.bat
-  echo. >> _upload.bat
-  <nul set /p="anaconda upload --user " >> _upload.bat
-  <nul set /p=%ANACONDA_CHANNEL% >> _upload.bat
-  <nul set /p=" %%UPLOAD_FILE%%" >> _upload.bat
-  echo. >> _upload.bat
-  call _upload.bat
-  del _upload.bat
+  for /f %%i in ('conda build %%x -c %ANACONDA_CHANNEL% %ANACONDA_FLAGS% --output') do set UPLOAD_FILE=%%i 
+  anaconda upload --user %ANACONDA_CHANNEL% %UPLOAD_FILE%
+  :: <nul set /p="for /f %%%%i in ('conda build " >> _upload.bat
+  :: <nul set /p=%%x >> _upload.bat
+  :: <nul set /p=" -c " >> _upload.bat
+  :: <nul set /p=%ANACONDA_CHANNEL% >> _upload.bat
+  :: <nul set /p=" " >> _upload.bat
+  :: <nul set /p=%ANACONDA_UPLOAD_FLAGS% >> _upload.bat
+  :: <nul set /p=" --output') do set UPLOAD_FILE=%%%%i" >> _upload.bat
+  :: echo. >> _upload.bat
+  :: <nul set /p="anaconda upload --user " >> _upload.bat
+  :: <nul set /p=%ANACONDA_CHANNEL% >> _upload.bat
+  :: <nul set /p=" %%UPLOAD_FILE%%" >> _upload.bat
+  :: echo. >> _upload.bat
+  :: call _upload.bat
+  :: del _upload.bat
 )
 
 anaconda logout
