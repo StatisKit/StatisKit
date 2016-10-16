@@ -58,9 +58,6 @@ rm -rf toolchain
 for UPLOAD_TARGET in $UPLOAD_TARGETS; do
   UPLOAD_FILE=`conda build $UPLOAD_TARGET -c $ANACONDA_CHANNEL $ANACONDA_UPLOAD_FLAGS --output`
   anaconda upload ${UPLOAD_FILE%%} --user $ANACONDA_CHANNEL
-  if [ $? -ne 0 ]; then
-    echo "upload failed";
-  fi
 done
 
 anaconda logout
