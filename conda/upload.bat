@@ -55,8 +55,10 @@ cd ..
 rmdir toolchain /s /q
 
 for %%x in (%UPLOAD_TARGETS%) do (
-  for /f %%i in ('conda build %%x -c %ANACONDA_CHANNEL% %ANACONDA_FLAGS% --output') do set UPLOAD_FILE=%%i 
-  anaconda upload --user %ANACONDA_CHANNEL% %UPLOAD_FILE%
+  for /f %%i in ('conda build %%x -c %ANACONDA_CHANNEL% %ANACONDA_FLAGS% --output') do (
+   set UPLOAD_FILE=%%i 
+   anaconda upload --user %ANACONDA_CHANNEL% %UPLOAD_FILE%
+  )
   :: <nul set /p="for /f %%%%i in ('conda build " >> _upload.bat
   :: <nul set /p=%%x >> _upload.bat
   :: <nul set /p=" -c " >> _upload.bat
