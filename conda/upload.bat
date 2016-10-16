@@ -61,7 +61,7 @@ for %%x in (%UPLOAD_TARGETS%) do (
   <nul set /p=%ANACONDA_CHANNEL% >> _upload.bat
   <nul set /p=" " >> _upload.bat
   <nul set /p=%ANACONDA_UPLOAD_FLAGS% >> _upload.bat
-  <nul set /p=" --output') set UPLOAD_FILE=%%%%i" >> _upload.bat
+  <nul set /p=" --output') do set UPLOAD_FILE=%%%%i" >> _upload.bat
   echo. >> _upload.bat
   <nul set /p="anaconda upload --user " >> _upload.bat
   <nul set /p=%ANACONDA_CHANNEL% >> _upload.bat
