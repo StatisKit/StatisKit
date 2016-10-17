@@ -63,7 +63,6 @@ install:
 script:
   - if [[ ! -z $BUILD_TARGETS ]]; then
       cd conda;
-      sed -i'' -e '8,10d' build.sh;
       bash build.sh;
       cd ..;
     else
@@ -73,12 +72,12 @@ script:
     fi
 
 after_success:
-  - if [[ "$TRAVIS_BRANCH" = "master" ]] && [[ "$TRAVIS_PULL_REQUEST" = "false" ]] && [[ ! -z $ANACONDA_USERNAME ]] && [[ ! -z $ANACONDA_PASSWORD ]]; then
+  - if [[ "$TRAVIS_BRANCH" = "master" ]] && [[ "$TRAVIS_PULL_REQUEST" = "false" ]] && [[ ! -z $ANACONDA_USERNAME ]]; then
       cd conda;
       bash upload.sh;
       cd ..;
     fi
-  - if [[ "$BUILD_TARGETS" = "" ]] && [[ "$TRAVIS_BRANCH" = "master" ]] && [[ "$TRAVIS_PULL_REQUEST" = "false" ]] && [[ "$TRAVIS_OS_NAME" = "linux" ]] && [[ ! -z $DOCKER_USERNAME ]] && [[ ! -z $DOCKER_PASSWORD ]]; then
+  - if [[ "$BUILD_TARGETS" = "" ]] && [[ "$TRAVIS_BRANCH" = "master" ]] && [[ "$TRAVIS_PULL_REQUEST" = "false" ]] && [[ "$TRAVIS_OS_NAME" = "linux" ]] && [[ ! -z $DOCKER_USERNAME ]]; then
       docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
       docker push statiskit/ubuntu:14.04;
       docker push statiskit/ubuntu:16.04;
