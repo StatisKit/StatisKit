@@ -28,5 +28,5 @@ on_success:
   - set BUILD_TARGETS=python-pkgtk
   - set "ANACONDA_BUILD_FLAGS="
   - '%CMD_IN_ENV% call bld.bat'
-  - if "%APPVEYOR_REPO_BRANCH%"=="master" if "%APPVEYOR_PULL_REQUEST_NUMBER"="" if not "%ANACONDA_USERNAME%"=="" call upload.bat
+  - if "%APPVEYOR_REPO_BRANCH%"=="master" if "%APPVEYOR_PULL_REQUEST_NUMBER%"=="" if not "%ANACONDA_USERNAME%"=="" call upload.bat
   - cd ..
