@@ -25,5 +25,6 @@ build_script:
   
 on_success:
   - cd conda
-  - if "%APPVEYOR_REPO_BRANCH%"=="master" if "%APPVEYOR_PULL_REQUEST_NUMBER"="" if not "%ANACONDA_USERNAME%"=="" call upload.bat
+  - echo %APPVEYOR_PULL_REQUEST_NUMBER%
+  - if "%APPVEYOR_REPO_BRANCH%"=="master" if "%APPVEYOR_PULL_REQUEST_NUMBER%"="" if not "%ANACONDA_USERNAME%"=="" call upload.bat
   - cd ..
