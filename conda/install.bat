@@ -1,10 +1,26 @@
+echo OFF
+
+set DEFAULT_INSTALL_TARGETS=libboost python-scons
+
+set ANACONDA_INSTALL_FLAGS=-c conda-forge %ANACONDA_INSTALL_FLAGS%
+if "%ANACONDA_CHANNEL%" == "" (
+  set ANACONDA_CHANNEL=statiskit
+) else (
+  echo Using anaconda channel: %ANACONDA_CHANNEL%
+set ANACONDA_INSTALL_FLAGS=-c statiskit %ANACONDA_INSTALL_FLAGS%
+)
+
+if "%INSTALL_TARGETS%" == "" (
+  set INSTALL_TARGETS=%DEFAULT_INSTALL_TARGETS%
+) else (  
+  echo "Targets to install: "%INSTALL_TARGETS%
+)
+
 echo ON
 
-conda install ipython jupyter
-if %errorlevel% neq 0 exit /b %errorlevel%
-
-conda install libboost --use-local -c statiskit -c conda-forge
-if %errorlevel% neq 0 exit /b %errorlevel%
-
-conda install python-scons --use-local -c statiskit -c conda-forge
-if %errorlevel% neq 0 exit /b %errorlevel%
+for %%x in (%INSTALL_TARGETS%) do (
+  conda install %%x --use-local -c %ANACONDA_CHANNEL% %ANACONDA_INSTALL_FLAGS%
+  if %errorlevel% neq 0 (
+    exit /b %errorlevel%
+  )
+)
