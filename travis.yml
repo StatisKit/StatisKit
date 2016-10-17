@@ -51,8 +51,6 @@ matrix:
       env: 
         - BUILD_TARGETS="python-scons"
         - MINICONDA="3"
-  allow_failures:
-    - os: osx
     
 install:
   - git clone https://gist.github.com/319558c83d145620a6d4decdcadfbfb0.git config-travis
