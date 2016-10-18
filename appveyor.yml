@@ -7,9 +7,6 @@ environment:
     - MINICONDA: "3"
     - MINICONDA: "2"
 
-cache:
-  - '%CONDA_CACHE_DIR%'
-
 artifacts:
   - path: cache
     name: Cache
