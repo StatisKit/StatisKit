@@ -2,16 +2,16 @@ platform:
   - x64
 
 environment:
-  CONDA_CACHE_DIR: '%APPVEYOR_BUILD_FOLDER%\cache'
+  CONDA_CACHE_DIR: '%APPVEYOR_BUILD_FOLDER%\..\cache'
   matrix:
     - MINICONDA: "3"
     - MINICONDA: "2"
 
 cache:
-  - cache
+  - ..\cache
 
 artifacts:
-  - path: cache
+  - path: ..\cache
     name: Cache
     
 install:
