@@ -2,10 +2,18 @@ platform:
   - x64
 
 environment:
+  CONDA_CACHE_DIR: '%APPVEYOR_BUILD_FOLDER%\cache'
   matrix:
     - MINICONDA: "3"
     - MINICONDA: "2"
 
+cache:
+  - cache
+
+artifacts:
+  - path: cache
+    name: Cache
+    
 install:
   - git clone https://gist.github.com/a08b6eb1c97fad864de50601d70008c8.git config-appveyor
   - cd config-appveyor
