@@ -25,7 +25,7 @@ grep -r -l "exec(_file_, call_stack\[-1\]\.globals)" * | xargs sed -i -e "s|exec
 grep -r -l "DefaultToolpath=\[\]" * | xargs sed -i'' -e 's|DefaultToolpath=\[\]|DefaultToolpath=__path__|g'
 cd engine/SCons/Tool/MSCommon
 grep -r -l "from \. import" * | xargs sed -i'' 's|from \. import|from SCons.Tool.MSCommon import|g'
-grep -r -l "from \." * | xargs sed -i'' 's|from \.|from SCons\.Tool\.MSCommon|g'
+grep -r -l "from \." * | xargs sed -i'' 's|from \.|from SCons\.Tool\.MSCommon\.|g'
 cd ..
 grep -r -l "from \. import" * | xargs sed -i'' 's|from \. import|from SCons.Tool import|g'
 grep -r -l "from \." * | xargs sed -i'' 's|from \.|from SCons\.Tool\.|g'
