@@ -27,6 +27,7 @@ build_script:
   - '%CMD_IN_ENV% call bld.bat'
   - cd ..
   - dir %CONDA_CACHE_DIR%
+  - mkdir %APPVEYOR_BUILD_FOLDER%\cache
   - xcopy %CONDA_CACHE_DIR% %APPVEYOR_BUILD_FOLDER%\cache /s/h/e/k/f/c
 
 on_success:
