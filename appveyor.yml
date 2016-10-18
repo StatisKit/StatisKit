@@ -11,7 +11,7 @@ cache:
   - '%CONDA_CACHE_DIR%'
 
 artifacts:
-  - path: ..\cache
+  - path: '%CONDA_CACHE_DIR%'
     name: Cache
     
 install:
