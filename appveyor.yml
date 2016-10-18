@@ -11,7 +11,7 @@ cache:
   - '%CONDA_CACHE_DIR%'
 
 artifacts:
-  - path: '%CONDA_CACHE_DIR%'
+  - path: cache
     name: Cache
     
 install:
@@ -27,6 +27,7 @@ build_script:
   - '%CMD_IN_ENV% call bld.bat'
   - cd ..
   - dir %CONDA_CACHE_DIR%
+  - xcopy %CONDA_CACHE_DIR% %APPVEYOR_BUILD_FOLDER%\cache /s /e /h
 
 on_success:
   - del test\test_about.py
