@@ -21,11 +21,13 @@ install:
   - cd ..
   
 build_script:
+  - dir %CONDA_CACHE_DIR%
   - set ANACONDA_BUILD_FLAGS=--no-test
   - cd conda
   - '%CMD_IN_ENV% call bld.bat'
   - cd ..
-  
+   - dir %CONDA_CACHE_DIR%
+
 on_success:
   - del test\test_about.py
   - cd conda
