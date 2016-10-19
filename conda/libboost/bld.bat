@@ -15,6 +15,8 @@ if "%PY_VER%"=="2.7" (
 call bootstrap.bat
 if errorlevel 1 exit 1
 
+echo Architecture: %ARCH%
+
 CALL b2 install toolset=msvc-%MSVC_VER% ^
         address-model=%ARCH% ^
         variant=release ^
