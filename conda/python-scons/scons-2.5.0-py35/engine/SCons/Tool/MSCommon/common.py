@@ -215,7 +215,7 @@ def parse_output(output, keep = ("INCLUDE", "LIB", "LIBPATH", "PATH")):
                 # XXX: For some reason, VC98 .bat file adds "" around the PATH
                 # values, and it screws up the environment later, so we strip
                 # it.
-                p = p.encode().strip('"')
+                p = p.decode().strip('"')
                 dkeep[key].append(p)
 
     for line in output.splitlines():
