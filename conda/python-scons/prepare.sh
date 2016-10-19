@@ -36,5 +36,7 @@ grep -r -l "m\.update(str(blck))" * | xargs sed -i'' 's|m\.update(str(blck))|m\.
 grep -r -l "m\.update(str(s))" * | xargs sed -i'' 's|m\.update(str(s))|m\.update(str(s).encode())|g'
 grep -r -l "pickle\.dumps(self.entries, 1)" * | xargs sed -i'' 's|pickle\.dumps(self.entries, 1)|pickle\.dumps(self.entries, 0).decode(errors="ignore")|g'
 grep -r -l "re\.findall(node\.get_text_contents()" * | xargs sed -i'' 's|re\.findall(node\.get_text_contents()|re\.findall(node\.get_text_contents()\.decode(errors="ignore")|g'
+grep -r -l "MethodType(function, obj, obj\.__class__)" * | xargs sed -i'' 's|MethodType(function, obj, obj\.__class__)|MethodType(function, obj)|g'
+grep -r -l "MethodType(function, None, obj)" * | xargs sed -i'' 's|MethodType(function, None, obj)|MethodType(function, obj)|g'
 cd ../../..
 mv scons-2.5.0 scons-2.5.0-py27

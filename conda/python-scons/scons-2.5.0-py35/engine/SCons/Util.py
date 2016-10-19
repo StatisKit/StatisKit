@@ -1397,10 +1397,10 @@ def AddMethod(obj, function, name=None):
 
     if hasattr(obj, '__class__') and obj.__class__ is not type:
         # "obj" is an instance, so it gets a bound method.
-        setattr(obj, name, MethodType(function, obj, obj.__class__))
+        setattr(obj, name, MethodType(function, obj))
     else:
         # "obj" is a class, so it gets an unbound method.
-        setattr(obj, name, MethodType(function, None, obj))
+        setattr(obj, name, MethodType(function, obj))
 
 def RenameFunction(function, name):
     """
