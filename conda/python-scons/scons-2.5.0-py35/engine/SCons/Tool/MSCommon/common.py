@@ -125,8 +125,8 @@ def normalize_env(env, keys, force=False):
     # bat scripts use.
     sys32_dir = os.path.join(os.environ.get("SystemRoot", os.environ.get("windir",r"C:\Windows\system32")),"System32")
 
-    if sys32_dir not in normenv['PATH']:
-        normenv['PATH'] = normenv['PATH'] + os.pathsep + sys32_dir
+    if sys32_dir.decode() not in normenv['PATH']:
+        normenv['PATH'] = normenv['PATH'] + os.pathsep + sys32_dir.decode()
 
     debug("PATH: %s"%normenv['PATH'])
 

@@ -38,5 +38,7 @@ grep -r -l "pickle\.dumps(self.entries, 1)" * | xargs sed -i'' 's|pickle\.dumps(
 grep -r -l "re\.findall(node\.get_text_contents()" * | xargs sed -i'' 's|re\.findall(node\.get_text_contents()|re\.findall(node\.get_text_contents()\.decode(errors="ignore")|g'
 grep -r -l "MethodType(function, obj, obj\.__class__)" * | xargs sed -i'' 's|MethodType(function, obj, obj\.__class__)|MethodType(function, obj)|g'
 grep -r -l "MethodType(function, None, obj)" * | xargs sed -i'' 's|MethodType(function, None, obj)|MethodType(function, obj)|g'
+grep -r -l "sys32_dir not" * | xargs sed -i'' 's|sys32_dir not|sys32_dir.decode() not|g'
+grep -r -l "\+ sys32_dir" * | xargs sed -i'' 's|+ sys32_dir|+ sys32_dir.decode()|g'
 cd ../../..
 mv scons-2.5.0 scons-2.5.0-py27
