@@ -41,7 +41,7 @@ grep -r -l "MethodType(function, None, obj)" * | xargs sed -i'' 's|MethodType(fu
 grep -r -l "sys32_dir not" * | xargs sed -i'' 's|sys32_dir not|sys32_dir.encode() not|g'
 grep -r -l "\+ sys32_dir" * | xargs sed -i'' 's|+ sys32_dir|+ sys32_dir.encode()|g'
 cd ../..
-grep -r -l "p\.strip('\"')" * | xargs sed -i'' "s|p\.strip('\"')|p\.encode()\.strip('\"')|g"
+grep -r -l "p\.strip('\"')" * | xargs sed -i'' "s|p\.strip('\"')|p\.decode()\.strip('\"')|g"
 
 cd ..
 mv scons-2.5.0 scons-2.5.0-py27
