@@ -5,13 +5,13 @@ set UPLOAD_TARGETS=libboost python-scons
 if "%ANACONDA_USERNAME%" == "" (
   set /p ANACONDA_USERNAME="Username: "
 ) else (
-  echo Username: %ANACONDA_USERNAME%;
+  echo Username: %ANACONDA_USERNAME%
 )
 
 if "%ANACONDA_PASSWORD%" == "" (
   set /p ANACONDA_USERNAME=%ANACONDA_USERNAME%%"'s password: "
 ) else (
-  echo %ANACONDA_USERNAME%'s password: [secure];
+  echo %ANACONDA_USERNAME%'s password: [secure]
 )
 
 set ANACONDA_UPLOAD_FLAGS=-c conda-forge %ANACONDA_UPLOAD_FLAGS%
