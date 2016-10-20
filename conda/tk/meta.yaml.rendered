@@ -1,0 +1,51 @@
+# This file created by conda-build 1.21.14+0.g4dfebe9.dirty
+# meta.yaml template originally from:
+# /Users/travis/build/conda-forge/tk-feedstock/recipe, last modified Thu Sep 22 16:46:21 2016
+# ------------------------------------------------
+
+package:
+    name: tk
+    version: 8.6.6
+build:
+    detect_binary_files_with_prefix: 'true'
+    features: ''
+    number: '3'
+requirements:
+    build: ''
+    run: ''
+test:
+    commands:
+        - test -f "${PREFIX}/bin/tclsh"
+        - test -f "${PREFIX}/bin/wish"
+        - test -f "${PREFIX}/bin/tclsh8.6"
+        - test -f "${PREFIX}/bin/wish8.6"
+        - test -f "${PREFIX}/include/tcl.h"
+        - test -f "${PREFIX}/include/tclDecls.h"
+        - test -f "${PREFIX}/include/tclPlatDecls.h"
+        - test -f "${PREFIX}/include/tclPlatDecls.h"
+        - test -f "${PREFIX}/include/tclTomMathDecls.h"
+        - test -f "${PREFIX}/include/tclTomMath.h"
+        - test -f "${PREFIX}/include/tk.h"
+        - test -f "${PREFIX}/include/tkDecls.h"
+        - test -f "${PREFIX}/include/tkPlatDecls.h"
+        - test -f "${PREFIX}/lib/libtcl8.6.dylib"
+        - test -f "${PREFIX}/lib/libtclstub8.6.a"
+        - test -f "${PREFIX}/lib/libtk8.6.dylib"
+        - test -f "${PREFIX}/lib/libtkstub8.6.a"
+        - tclsh hello.tcl
+        - tclsh8.6 hello.tcl
+        - wish hello.tcl
+        - wish8.6 hello.tcl
+    files:
+        - hello.tcl
+about:
+    home: http://www.tcl.tk/
+    license: Tcl/Tk
+    license_family: BSD
+    summary: A dynamic programming language with GUI support.  Bundles Tcl and Tk.
+extra:
+    recipe-maintainers:
+        - jakirkham
+        - jjhelmus
+        - msarahan
+        - pelson
