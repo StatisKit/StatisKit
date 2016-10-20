@@ -3,7 +3,8 @@ package:
   version: "2.0.9"
 
 source:
-  path: https://pypi.python.org/packages/4b/f7/4ddb9678961c2284261bdfc94b02a04c7d1bc45a593414c2489e83e7b80e/GitPython-2.0.9.tar.gz
+  fn: gitPython-2.0.9.tar.gz
+  url: https://github.com/gitpython-developers/GitPython/archive/2.0.9.tar.gz
 
 build:
   script: python setup.py install
