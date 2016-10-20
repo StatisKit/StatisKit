@@ -32,6 +32,7 @@ RUN conda config --set always_yes yes --set changeps1 no
 RUN conda update -q conda
 RUN conda info -a
 RUN conda install conda-build anaconda-client ipython jupyter
+RUN mkdir $HOME/miniconda2/conda-bld
 RUN mkdir $HOME/miniconda2/conda-bld/linux-64
 
 # Install miniconda3
@@ -47,6 +48,7 @@ RUN conda config --set always_yes yes --set changeps1 no
 RUN conda update -q conda
 RUN conda info -a
 RUN conda install conda-build anaconda-client ipython jupyter
+RUN mkdir $HOME/miniconda3/conda-bld
 RUN mkdir $HOME/miniconda3/conda-bld/linux-64
 
 ENV PATH /home/main/miniconda2/bin:$PATHBACK
