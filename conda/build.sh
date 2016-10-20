@@ -1,7 +1,7 @@
 set +xe
 
 REPOSITORY="Misc"
-DEFAULT_BUILD_TARGETS="libboost python-scons python-gitpython"
+DEFAULT_BUILD_TARGETS="ncurses libboost python-scons python-gitpython"
 
 ANACONDA_BUILD_FLAGS="-c conda-forge "$ANACONDA_BUILD_FLAGS
 if [[ -z $ANACONDA_CHANNEL ]]; then
