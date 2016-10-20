@@ -39,7 +39,3 @@ rm -rf man share
 # Link binaries to non-versioned names to make them easier to find and use.
 ln -s "${PREFIX}/bin/tclsh${VER_ARR[0]}.${VER_ARR[1]}" "${PREFIX}/bin/tclsh"
 ln -s "${PREFIX}/bin/wish${VER_ARR[0]}.${VER_ARR[1]}" "${PREFIX}/bin/wish"
-
-# copy headers
-cp $SRC_DIR/tk${VER}/generic/*.h ${PREFIX}/include/
-cp $SRC_DIR/tk${VER}/unix/*.h ${PREFIX}/include/
