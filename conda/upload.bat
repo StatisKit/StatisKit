@@ -1,6 +1,6 @@
 echo OFF
 
-set UPLOAD_TARGETS=libboost python-scons
+set UPLOAD_TARGETS=libboost python-scons python-gitpython
 
 if "%ANACONDA_USERNAME%" == "" (
   set /p ANACONDA_USERNAME="Username: "

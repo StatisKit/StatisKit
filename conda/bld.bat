@@ -1,7 +1,7 @@
 echo OFF
 
 set REPOSITORY=Misc
-set DEFAULT_BUILD_TARGETS=libboost python-scons
+set DEFAULT_BUILD_TARGETS=libboost python-scons python-gitpython
 
 set ANACONDA_BUILD_FLAGS=-c conda-forge %ANACONDA_BUILD_FLAGS%
 if "%ANACONDA_CHANNEL%" == "" (

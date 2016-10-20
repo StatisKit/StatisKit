@@ -1,6 +1,6 @@
 echo OFF
 
-set DEFAULT_INSTALL_TARGETS=libboost python-scons
+set DEFAULT_INSTALL_TARGETS=libboost python-scons python-gitpython
 
 set ANACONDA_INSTALL_FLAGS=-c conda-forge %ANACONDA_INSTALL_FLAGS%
 if "%ANACONDA_CHANNEL%" == "" (
