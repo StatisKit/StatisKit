@@ -1,6 +1,6 @@
 set +xe
 
-DEFAULT_INSTALL_TARGETS="libboost python-scons"
+DEFAULT_INSTALL_TARGETS="libboost python-scons python-gitpython"
 
 ANACONDA_INSTALL_FLAGS="-c conda-forge "$ANACONDA_INSTALL_FLAGS
 if [[ -z $ANACONDA_CHANNEL ]]; then
