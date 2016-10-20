@@ -9,6 +9,8 @@ environment:
       MINICONDA: "3"
     - BUILD_TARGETS: python-gitpython
       MINICONDA: "2"
+    - BUILD_TARGETS: python-gitpython
+      MINICONDA: "3"
     - BUILD_TARGETS: libboost
       MINICONDA: "2"
     - BUILD_TARGETS: libboost
