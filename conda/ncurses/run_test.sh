@@ -2,5 +2,5 @@ export TERM=xterm-256color
 clear
 
 if [ `uname` == Linux ]; then
-    ls $PREFIX/lib/libtinfo.so
+    ls $PREFIX/lib/libtinfow.so
 fi
