@@ -16,6 +16,7 @@ requirements:
 
   run:
     - python
+    - gitdb
 
 about:
   home: https://github.com/gitpython-developers/GitPython
