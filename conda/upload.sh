@@ -1,6 +1,6 @@
 set +xe
 
-UPLOAD_TARGETS="pkg-config ncurses tk libboost python-scons python-gitpython"
+UPLOAD_TARGETS="tk ncurses pkg-config libboost python-scons python-gitpython"
 
 if [[ -z $ANACONDA_USERNAME ]]; then
   read -p "Username: " ANACONDA_USERNAME;
