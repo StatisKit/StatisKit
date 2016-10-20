@@ -1,6 +1,6 @@
 set +xe
 
-UPLOAD_TARGETS="libboost python-scons"
+UPLOAD_TARGETS="libboost python-scons python-gitpython"
 
 if [[ -z $ANACONDA_USERNAME ]]; then
   read -p "Username: " ANACONDA_USERNAME;
