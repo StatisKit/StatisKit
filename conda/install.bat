@@ -27,8 +27,8 @@ if "%ANACONDA_INSTALL_FLAGS%" == "" (
 
 echo ON
 
-for %%ANACONDA_INSTALL_RECIPE in (%ANACONDA_INSTALL_RECIPES%) do (
-  conda install %%ANACONDA_INSTALL_RECIPE --use-local -c %ANACONDA_CHANNEL% %ANACONDA_INSTALL_FLAGS%
+for %%i in (%ANACONDA_INSTALL_RECIPES%) do (
+  conda install %%i --use-local %ANACONDA_CHANNEL_FLAGS% %ANACONDA_INSTALL_FLAGS%
   if %errorlevel% neq 0 (
     exit /b %errorlevel%
   )

@@ -1,8 +1,8 @@
 echo OFF
 
-DEFAULT_ANACONDA_BUILD_RECIPES=libboost python-scons python-gitpython
-DEFAULT_ANACONDA_CHANNELS=statiskit conda-forge
-DEFAULT_ANACONDA_CHANNEL=statiskit
+set DEFAULT_ANACONDA_BUILD_RECIPES=libboost python-scons python-gitpython
+set DEFAULT_ANACONDA_CHANNELS=statiskit conda-forge
+set DEFAULT_ANACONDA_CHANNEL=statiskit
 
 if "%ANACONDA_CHANNELS%" == "" (
     set ANACONDA_CHANNELS=%DEFAULT_ANACONDA_CHANNELS%
