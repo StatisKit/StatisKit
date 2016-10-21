@@ -1,11 +1,11 @@
 set +xe
 
-DEFAULT_DOCKER_UPLOAD_TAGS="14.04 16.04"
+DEFAULT_DOCKER_TAGS="14.04 16.04"
 
-if [[ -z $DOCKER_UPLOAD_TAGS ]]; then
-    DOCKER_UPLOAD_TAGS=$DEFAULT_DOCKER_UPLOAD_TAGS;
+if [[ -z $DOCKER_TAGS ]]; then
+    DOCKER_TAGS=$DEFAULT_DOCKER_TAGS;
 else
-    echo "Tags to upload: "$DOCKER_UPLOAD_TAGS;
+    echo "Tags to upload: "$DOCKER_TAGS;
 fi
 
 if [[ -z $DOCKER_USERNAME ]]; then
@@ -35,8 +35,8 @@ fi
 
 set -x
 
-for DOCKER_UPLOAD_TAG in $DOCKER_UPLOAD_TAGS; do
-    docker push $DOCKER_UPLOAD_CHANNEL/ubuntu:$DOCKER_UPLOAD_TAG
+for DOCKER_TAG in $DOCKER_TAGS; do
+    docker push $DOCKER_CHANNEL/ubuntu:$DOCKER_TAG
 done
 
 docker logout
