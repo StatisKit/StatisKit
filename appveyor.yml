@@ -28,7 +28,7 @@ build_script:
     -   cd ..
     
 on_success:
-    -   set ANACONDA_UPLOAD_FLAGS=--force
+    #-   set ANACONDA_UPLOAD_FLAGS=--force
     -   cd conda
     -   if "%APPVEYOR_REPO_BRANCH%"=="master" if "%APPVEYOR_PULL_REQUEST_NUMBER%"=="" if not "%ANACONDA_USERNAME%"=="" call upload.bat
     -   cd ..
