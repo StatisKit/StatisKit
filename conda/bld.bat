@@ -1,8 +1,9 @@
+Setlocal EnableDelayedExpansion
 echo OFF
 
 set GITHUB_USERNAME=StatisKit
 set GITHUB_REPOSITORY=Misc
-set DEFAULT_ANACONDA_BUILD_RECIPES=libboost python-scons python-gitpython
+set DEFAULT_ANACONDA_BUILD_RECIPES=libboost python-gitpython python-scons
 set DEFAULT_ANACONDA_CHANNELS=statiskit conda-forge
 
 if "%ANACONDA_CHANNELS%" == "" (
