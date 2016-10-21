@@ -16,6 +16,6 @@ fi
 
 for DOCKER_TAG in DOCKER_TAGS; do
     docker pull ubuntu:$DOCKER_TAG
-    docker tag ubuntu:DOCKER_TAG ubuntu
-    docker build -t DOCKER_CHANNEL/ubuntu:DOCKER_TAG .
+    docker tag ubuntu:$DOCKER_TAG ubuntu
+    docker build -t $DOCKER_CHANNEL/ubuntu:$DOCKER_TAG .
 done
