@@ -6,7 +6,7 @@ DEFAULT_ANACONDA_BUILD_RECIPES="libboost python-scons python-gitpython"
 DEFAULT_ANACONDA_CHANNELS="statiskit conda-forge"
 
 if [[ -z $ANACONDA_CHANNELS ]]; then
-    ANACONDA_CHANNELS=DEFAULT_ANACONDA_CHANNELS
+    ANACONDA_CHANNELS=$DEFAULT_ANACONDA_CHANNELS
 else
     echo "Channels used: "$ANACONDA_CHANNELS
 fi
