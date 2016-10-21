@@ -1,6 +1,6 @@
 set +xe
 
-DEFAULT_ANACONDA_BUILD_RECIPES="libboost python-scons python-gitpython"
+DEFAULT_ANACONDA_BUILD_RECIPES="libboost python-gitpython python-scons"
 DEFAULT_ANACONDA_CHANNELS="statiskit conda-forge"
 DEFAULT_ANACONDA_CHANNEL="statiskit"
 
