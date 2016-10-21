@@ -1,34 +1,34 @@
 platform:
-    - x64
+    -   x64
 
 environment:
     matrix:
-        - BUILD_TARGETS: python-scons
+        -   ANACONDA_BUILD_RECIPES: python-scons
             MINICONDA: "2"
-        - BUILD_TARGETS: python-scons    
+        -   ANACONDA_BUILD_RECIPES: python-scons    
             MINICONDA: "3"
-        - BUILD_TARGETS: python-gitpython
+        -   ANACONDA_BUILD_RECIPES: python-gitpython
             MINICONDA: "2"
-        - BUILD_TARGETS: python-gitpython
+        -   ANACONDA_BUILD_RECIPES: python-gitpython
             MINICONDA: "3"
-        - BUILD_TARGETS: libboost
+        -   ANACONDA_BUILD_RECIPES: libboost
             MINICONDA: "2"
-        - BUILD_TARGETS: libboost
+        -   ANACONDA_BUILD_RECIPES: libboost
             MINICONDA: "3"
         
 install:
-    - git clone https://gist.github.com/a08b6eb1c97fad864de50601d70008c8.git config-appveyor
-    - cd config-appveyor
-    - call config.bat
-    - cd ..
+    -   git clone https://gist.github.com/a08b6eb1c97fad864de50601d70008c8.git config-appveyor
+    -   cd config-appveyor
+    -   call config.bat
+    -   cd ..
     
 build_script:
-    - cd conda
-    - '%CMD_IN_ENV% call bld.bat'
-    - cd ..
+    -   cd conda
+    -   '%CMD_IN_ENV% call bld.bat'
+    -   cd ..
     
 on_success:
-    - set ANACONDA_UPLOAD_OPTIONS=--force
-    - cd conda
-    - if "%APPVEYOR_REPO_BRANCH%"=="master" if "%APPVEYOR_PULL_REQUEST_NUMBER%"=="" if not "%ANACONDA_USERNAME%"=="" call upload.bat
-    - cd ..
+    -   set ANACONDA_UPLOAD_OPTIONS=--force
+    -   cd conda
+    -   if "%APPVEYOR_REPO_BRANCH%"=="master" if "%APPVEYOR_PULL_REQUEST_NUMBER%"=="" if not "%ANACONDA_USERNAME%"=="" call upload.bat
+    -   cd ..
