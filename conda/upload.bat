@@ -42,45 +42,41 @@ if "%ANACONDA_PASSWORD%" == "" (
 echo ON
 
 conda install -n root anaconda-client
-echo !errorlevel!
-rem if !errorlevel! neq 0 (
-rem    exit /b !errorlevel!
-rem )
+if errorlevel 1 (
+    exit /b 1
+)
 
 echo OFF
 
 echo y|anaconda login --username %ANACONDA_USERNAME% --password %ANACONDA_PASSWORD%
-echo !errorlevel!
-rem if !errorlevel! neq 0 (
-rem     exit /b !errorlevel!
-rem )
+if errorlevel 1 (
+    exit /b 1
+)
 
 echo ON
 
 if "%TOOLCHAIN%" == "" (
     git clone https://gist.github.com/c491cb08d570beeba2c417826a50a9c3.git toolchain
-    echo !errorlevel!
-    rem if !errorlevel! neq 0 (
-    rem     anaconda logout
-    rem     exit /b !errorlevel!
-    rem )
+    if errorlevel 1 (
+        anaconda logout
+        exit /b 1
+    )
+
     cd toolchain
     call config.bat
-    echo !errorlevel!
-    rem if !errorlevel! neq 0 (
-    rem     cd ..
-    rem     anaconda logout
-    rem     rmdir toolchain /s /q
-    rem     exit /b !errorlevel!
-    rem )
+    if errorlevel 1 (
+        cd ..
+        anaconda logout
+        rmdir toolchain /s /q
+        exit /b 1
+    )
     cd ..
     rmdir toolchain /s /q
-    echo !errorlevel!
 )
 
 set ANACONDA_BUILD_FLAGS=%ANACONDA_CHANNEL_FLAGS% %ANACONDA_BUILD_FLAGS%
 for %%i in (%ANACONDA_BUILD_RECIPES%) do (
-    for /f %%j in ('conda build %%i %ANACONDA_BUILD_FLAGS% --output') do anaconda upload %%i --user %ANACONDA_CHANNEL% %ANACONDA_UPLOAD_FLAGS%
+    for /f %%j in ('conda build %%i %ANACONDA_BUILD_FLAGS% --output') do anaconda upload %%j --user %ANACONDA_CHANNEL% %ANACONDA_UPLOAD_FLAGS%
 )
 
 anaconda logout
