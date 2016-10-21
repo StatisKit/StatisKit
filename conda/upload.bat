@@ -42,33 +42,33 @@ if "%ANACONDA_PASSWORD%" == "" (
 echo ON
 
 conda install -n root anaconda-client
-:: if !errorlevel! neq 0 (
-::    exit /b !errorlevel!
-:: )
+rem if !errorlevel! neq 0 (
+rem    exit /b !errorlevel!
+rem )
 
 echo OFF
 
 echo y|anaconda login --username %ANACONDA_USERNAME% --password %ANACONDA_PASSWORD%
-:: if !errorlevel! neq 0 (
-::     exit /b !errorlevel!
-:: )
+rem if !errorlevel! neq 0 (
+rem     exit /b !errorlevel!
+rem )
 
 echo ON
 
 if "%TOOLCHAIN%" == "" (
     git clone https://gist.github.com/c491cb08d570beeba2c417826a50a9c3.git toolchain
-    if !errorlevel! neq 0 (
-        anaconda logout
-        exit /b !errorlevel!
-    )
+    rem if !errorlevel! neq 0 (
+    rem     anaconda logout
+    rem     exit /b !errorlevel!
+    rem )
     cd toolchain
     call config.bat
-    if !errorlevel! neq 0 (
-        cd ..
-        anaconda logout
-        rmdir toolchain /s /q
-        exit /b !errorlevel!
-    )
+    rem if !errorlevel! neq 0 (
+    rem     cd ..
+    rem     anaconda logout
+    rem     rmdir toolchain /s /q
+    rem     exit /b !errorlevel!
+    rem )
     cd ..
     rmdir toolchain /s /q
 )
