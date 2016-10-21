@@ -73,8 +73,8 @@ if "%TOOLCHAIN%" == "" (
     rmdir toolchain /s /q
 )
 
-for %%ANACONDA_BUILD_TARGET in (%ANACONDA_BUILD_TARGETS%) do (
-    for /f %%i in ('conda build %%ANACONDA_BUILD_TARGET -c %ANACONDA_CHANNEL_FLAGS% %ANACONDA_BUILD_FLAGS% --output') do set ANACONDA_UPLOAD_RECIPE=%%i
+for %%i in (%ANACONDA_BUILD_TARGETS%) do (
+    for /f %%j in ('conda build %%i -c %ANACONDA_CHANNEL_FLAGS% %ANACONDA_BUILD_FLAGS% --output') do set ANACONDA_UPLOAD_RECIPE=%%j
     anaconda upload %ANACONDA_UPLOAD_RECIPE% --user %ANACONDA_CHANNEL% %ANACONDA_UPLOAD_FLAGS%
 )
 
