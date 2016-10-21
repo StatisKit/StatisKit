@@ -42,9 +42,9 @@ if "%ANACONDA_PASSWORD%" == "" (
 echo ON
 
 conda install -n root anaconda-client
-if !errorlevel! neq 0 (
-    exit /b !errorlevel!
-)
+:: if !errorlevel! neq 0 (
+::    exit /b !errorlevel!
+:: )
 
 echo OFF
 
