@@ -1,17 +1,17 @@
 echo OFF
 
-set UPLOAD_TARGETS=libboost python-scons python-gitpython
+set UPLOAD_TARGETS=libboost python-gitpython python-scons
 
 if "%ANACONDA_USERNAME%" == "" (
   set /p ANACONDA_USERNAME="Username: "
 ) else (
-  echo Username: %ANACONDA_USERNAME%
+  echo Username: %ANACONDA_USERNAME%;
 )
 
 if "%ANACONDA_PASSWORD%" == "" (
   set /p ANACONDA_USERNAME=%ANACONDA_USERNAME%%"'s password: "
 ) else (
-  echo %ANACONDA_USERNAME%'s password: [secure]
+  echo %ANACONDA_USERNAME%'s password: [secure];
 )
 
 set ANACONDA_UPLOAD_FLAGS=-c conda-forge %ANACONDA_UPLOAD_FLAGS%
@@ -55,7 +55,7 @@ cd ..
 rmdir toolchain /s /q
 
 for %%x in (%UPLOAD_TARGETS%) do (
-  for /f %%i in ('conda build %%x -c %ANACONDA_CHANNEL% %ANACONDA_FLAGS% --output') do anaconda upload --user %ANACONDA_CHANNEL% %%i
+  for /f %%i in ('conda build %%x -c %ANACONDA_CHANNEL% %ANACONDA_FLAGS% --output') do anaconda upload --user %ANACONDA_CHANNEL% %%i %ANACONDA_UPLOAD_OPTIONS%
 )
 
 anaconda logout
