@@ -1,6 +1,6 @@
 set +xe
 
-UPLOAD_TARGETS="libboost python-scons python-gitpython"
+UPLOAD_TARGETS="libboost python-gitpython python-scons"
 
 if [[ -z $ANACONDA_USERNAME ]]; then
   read -p "Username: " ANACONDA_USERNAME;
@@ -57,7 +57,7 @@ rm -rf toolchain
 
 for UPLOAD_TARGET in $UPLOAD_TARGETS; do
   UPLOAD_FILE=`conda build $UPLOAD_TARGET -c $ANACONDA_CHANNEL $ANACONDA_UPLOAD_FLAGS --output`
-  anaconda upload ${UPLOAD_FILE%%} --user $ANACONDA_CHANNEL
+  anaconda upload ${UPLOAD_FILE%%} --user $ANACONDA_CHANNEL $ANACONDA_UPLOAD_OPTIONS
 done
 
 anaconda logout
