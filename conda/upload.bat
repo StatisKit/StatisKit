@@ -7,13 +7,13 @@ set DEFAULT_ANACONDA_CHANNEL=statiskit
 if "%ANACONDA_CHANNELS%" == "" (
     set ANACONDA_CHANNELS=%DEFAULT_ANACONDA_CHANNELS%
 ) else (
-    echo "Channels used: "%ANACONDA_CHANNELS%
+    echo Channels used: %ANACONDA_CHANNELS%
 )
 
 if "%ANACONDA_CHANNEL%" == "" (
     set ANACONDA_CHANNEL=%DEFAULT_ANACONDA_CHANNEL%
 ) else (
-    echo "Channel used: "%ANACONDA_CHANNEL%
+    echo Channel used: %ANACONDA_CHANNEL%
 )
 
 set ANACONDA_CHANNEL_FLAGS=
@@ -24,7 +24,7 @@ for %%i in (%ANACONDA_CHANNELS%) do (
 if "%ANACONDA_BUILD_RECIPES%" == "" (
     set ANACONDA_BUILD_RECIPES=%DEFAULT_ANACONDA_BUILD_RECIPES%
 ) else (
-    echo "Recipes to build: "%ANACONDA_BUILD_RECIPES%
+    echo Recipes to build: %ANACONDA_BUILD_RECIPES%
 )
 
 if "%ANACONDA_USERNAME%" == "" (
@@ -49,9 +49,9 @@ if !errorlevel! neq 0 (
 echo OFF
 
 echo y|anaconda login --username %ANACONDA_USERNAME% --password %ANACONDA_PASSWORD%
-if !errorlevel! neq 0 (
-    exit /b !errorlevel!
-)
+:: if !errorlevel! neq 0 (
+::     exit /b !errorlevel!
+:: )
 
 echo ON
 
