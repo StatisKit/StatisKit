@@ -32,7 +32,7 @@ if [ $? -ne 0 ]; then
     exit 1;
 fi
 
-set -x
+set -xe
 
 for DOCKER_TAG in $DOCKER_TAGS; do
     docker push $DOCKER_CHANNEL/ubuntu:$DOCKER_TAG
