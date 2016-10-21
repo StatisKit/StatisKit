@@ -42,6 +42,7 @@ if "%ANACONDA_PASSWORD%" == "" (
 echo ON
 
 conda install -n root anaconda-client
+echo !errorlevel!
 rem if !errorlevel! neq 0 (
 rem    exit /b !errorlevel!
 rem )
@@ -49,6 +50,7 @@ rem )
 echo OFF
 
 echo y|anaconda login --username %ANACONDA_USERNAME% --password %ANACONDA_PASSWORD%
+echo !errorlevel!
 rem if !errorlevel! neq 0 (
 rem     exit /b !errorlevel!
 rem )
@@ -57,12 +59,14 @@ echo ON
 
 if "%TOOLCHAIN%" == "" (
     git clone https://gist.github.com/c491cb08d570beeba2c417826a50a9c3.git toolchain
+    echo !errorlevel!
     rem if !errorlevel! neq 0 (
     rem     anaconda logout
     rem     exit /b !errorlevel!
     rem )
     cd toolchain
     call config.bat
+    echo !errorlevel!
     rem if !errorlevel! neq 0 (
     rem     cd ..
     rem     anaconda logout
@@ -71,6 +75,7 @@ if "%TOOLCHAIN%" == "" (
     rem )
     cd ..
     rmdir toolchain /s /q
+    echo !errorlevel!
 )
 
 set ANACONDA_BUILD_FLAGS=%ANACONDA_CHANNEL_FLAGS% %ANACONDA_BUILD_FLAGS%
