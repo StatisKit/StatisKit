@@ -1,39 +1,44 @@
 echo OFF
 
-set REPOSITORY=Misc
-set DEFAULT_BUILD_TARGETS=libboost python-scons python-gitpython
+set GITHUB_USERNAME=StatisKit
+set GITHUB_REPOSITORY=Misc
+set DEFAULT_ANACONDA_BUILD_RECIPES=libboost python-scons python-gitpython
+set DEFAULT_ANACONDA_CHANNELS=statiskit conda-forge
 
-set ANACONDA_BUILD_FLAGS=-c conda-forge %ANACONDA_BUILD_FLAGS%
-if "%ANACONDA_CHANNEL%" == "" (
-    set ANACONDA_CHANNEL=statiskit
+if "%ANACONDA_CHANNELS%" == "" (
+    set ANACONDA_CHANNELS=%DEFAULT_ANACONDA_CHANNELS%
 ) else (
-    echo "Using anaconda channel: "%ANACONDA_CHANNEL%
-    set ANACONDA_BUILD_FLAGS=-c statiskit %ANACONDA_BUILD_FLAGS%
+    echo "Channels used: "%ANACONDA_CHANNELS%
 )
 
-if "%BUILD_TARGETS%" == "" (
-    set BUILD_TARGETS=%DEFAULT_BUILD_TARGETS%
+set ANACONDA_CHANNEL_FLAGS=
+for %%ANACONDA_CHANNEL_FLAG in (%ANACONDA_CHANNELS%) do (
+    set ANACONDA_CHANNEL_FLAGS=%ANACONDA_CHANNEL_FLAGS% -c %%ANACONDA_CHANNEL_FLAG
+)
+
+if "%ANACONDA_BUILD_RECIPES%" == "" (
+    set ANACONDA_BUILD_RECIPES=%DEFAULT_ANACONDA_BUILD_RECIPES%
 ) else (
-    echo "Targets to build: "%BUILD_TARGETS%
+    echo "Recipes to build: "%ANACONDA_BUILD_RECIPES%
 )
 
 echo ON
 
-if not exist bld.bat (
-    if exist %REPOSITORY% (
-        rmdir %REPOSITORY% /s /q
+if not exist ..\..\%GITHUB_REPOSITORY% (
+    if exist %GITHUB_REPOSITORY% (
+        rmdir %GITHUB_REPOSITORY% /s /q
     )
-    git clone https://github.com/%ANACONDA_CHANNEL%/%REPOSITORY%.git
+    git clone https://github.com/%GITHUB_USERNAME%/%GITHUB_REPOSITORY%.git
     if %errorlevel% neq 0 (
         exit /b %errorlevel%
     )
-    cd %REPOSITORY%/conda
+    cd %GITHUB_REPOSITORY%/conda
 )
 
 git clone https://gist.github.com/c491cb08d570beeba2c417826a50a9c3.git toolchain
 if %errorlevel% neq 0 (
-    if exist %REPOSITORY% (
-        rmdir %REPOSITORY% /s /q
+    if exist %GITHUB_REPOSITORY% (
+        rmdir %GITHUB_REPOSITORY% /s /q
     )
     exit /b %errorlevel%
 )
@@ -41,8 +46,8 @@ cd toolchain
 call config.bat
 if %errorlevel% neq 0 (
     cd ..
-    if exist %REPOSITORY% (
-        rmdir %REPOSITORY% /s /q
+    if exist %GITHUB_REPOSITORY% (
+        rmdir %GITHUB_REPOSITORY% /s /q
     )
     rmdir toolchain /s /q
     exit /b %errorlevel%
@@ -50,16 +55,18 @@ if %errorlevel% neq 0 (
 cd ..
 rmdir toolchain /s /q
 
-for %%x in (%BUILD_TARGETS%) do (
-    conda build %%x -c %ANACONDA_CHANNEL% %ANACONDA_BUILD_FLAGS%
+for %%ANACONDA_BUILD_RECIPE in (%ANACONDA_BUILD_RECIPES%) do (
+    conda build %%ANACONDA_BUILD_RECIPE %ANACONDA_CHANNEL_FLAGS% %ANACONDA_BUILD_FLAGS%
     if %errorlevel% neq 0 (
-        if exist %REPOSITORY% (
-            rmdir %REPOSITORY% /s /q
+        if exist %GITHUB_REPOSITORY% (
+            rmdir %GITHUB_REPOSITORY% /s /q
         )
         exit /b %errorlevel%
     )
 )
 
-if exist %REPOSITORY% (
-    rmdir %REPOSITORY% /s /q
+if exist %GITHUB_REPOSITORY% (
+    rmdir %GITHUB_REPOSITORY% /s /q
 )
+
+ECHO OFF

@@ -1,4 +1,4 @@
-FROM ubuntu:14.04
+FROM statiskit/ubuntu
 
 # Update the OS
 RUN apt-get update
@@ -57,4 +57,6 @@ RUN git clone https://gist.github.com/93e0375712c6e62f76bec455e89d0437.git $HOME
 RUN cd $HOME/git-config && bash git-config.sh
 RUN rm -rf $HOME/git-config
 
+#jupyter notebook --ip='*' --port=8888 --no-browser
+#You can then view the Jupyter Notebook by opening http://localhost:8888 in your browser, or http://<DOCKER-MACHINE-IP>:8888 if you are using a Docker Machine VM.
 WORKDIR /home/main
