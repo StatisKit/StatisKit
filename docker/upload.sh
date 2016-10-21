@@ -1,4 +1,5 @@
-set +xe
+set +x
+set -e
 
 DEFAULT_DOCKER_TAGS="14.04 16.04"
 
@@ -26,8 +27,6 @@ else
     echo "Using docker channel: "$DOCKER_CHANNEL;
 fi
 
-set +x
-
 docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
 if [ $? -ne 0 ]; then
     exit 1;
@@ -41,4 +40,4 @@ done
 
 docker logout
 
-set +x
+set +xe
