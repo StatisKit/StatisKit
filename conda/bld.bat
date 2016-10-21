@@ -29,39 +29,39 @@ if not exist ..\..\%GITHUB_REPOSITORY% (
         rmdir %GITHUB_REPOSITORY% /s /q
     )
     git clone https://github.com/%GITHUB_USERNAME%/%GITHUB_REPOSITORY%.git
-    if %errorlevel% neq 0 (
-        exit /b %errorlevel%
+    if errorlevel neq 0 (
+        exit /b errorlevel
     )
     cd %GITHUB_REPOSITORY%/conda
 )
 
 git clone https://gist.github.com/c491cb08d570beeba2c417826a50a9c3.git toolchain
-if %errorlevel% neq 0 (
+if errorlevel neq 0 (
     if exist %GITHUB_REPOSITORY% (
         rmdir %GITHUB_REPOSITORY% /s /q
     )
-    exit /b %errorlevel%
+    exit /b errorlevel
 )
 cd toolchain
 call config.bat
-if %errorlevel% neq 0 (
+if errorlevel neq 0 (
     cd ..
     if exist %GITHUB_REPOSITORY% (
         rmdir %GITHUB_REPOSITORY% /s /q
     )
     rmdir toolchain /s /q
-    exit /b %errorlevel%
+    exit /b errorlevel
 )
 cd ..
 rmdir toolchain /s /q
 
 for %%i in (%ANACONDA_BUILD_RECIPES%) do (
     conda build %%i %ANACONDA_CHANNEL_FLAGS% %ANACONDA_BUILD_FLAGS%
-    if %errorlevel% neq 0 (
+    if errorlevel neq 0 (
         if exist %GITHUB_REPOSITORY% (
             rmdir %GITHUB_REPOSITORY% /s /q
         )
-        exit /b %errorlevel%
+        exit /b errorlevel
     )
 )
 
