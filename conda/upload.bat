@@ -74,7 +74,7 @@ if "%TOOLCHAIN%" == "" (
 )
 
 for %%i in (%ANACONDA_BUILD_RECIPES%) do (
-    for /f %%j in ('conda build %%i -c %ANACONDA_CHANNEL_FLAGS% %ANACONDA_BUILD_FLAGS% --output') do set ANACONDA_UPLOAD_RECIPE=%%j
+    for /f %%j in ('conda build %%i %ANACONDA_CHANNEL_FLAGS% %ANACONDA_BUILD_FLAGS% --output') do set ANACONDA_UPLOAD_RECIPE=%%j
     anaconda upload %ANACONDA_UPLOAD_RECIPE% --user %ANACONDA_CHANNEL% %ANACONDA_UPLOAD_FLAGS%
 )
 
