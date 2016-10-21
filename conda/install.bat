@@ -12,7 +12,7 @@ if "%ANACONDA_CHANNELS%" == "" (
 
 set ANACONDA_CHANNEL_FLAGS=
 for %%i in (%ANACONDA_CHANNELS%) do (
-    set "ANACONDA_CHANNEL_FLAGS=!ANACONDA_CHANNEL_FLAGS! -c %%i"
+    set "ANACONDA_CHANNEL_FLAGS=%%ANACONDA_CHANNEL_FLAGS%% -c %%i"
 )
 
 if "%ANACONDA_INSTALL_RECIPES%" == "" (
@@ -28,7 +28,7 @@ if "%ANACONDA_INSTALL_FLAGS%" == "" (
 echo ON
 
 for %%i in (%ANACONDA_INSTALL_RECIPES%) do (
-    conda install %%i --use-local %ANACONDA_CHANNEL_FLAGS% %ANACONDA_INSTALL_FLAGS%
+    conda install %%i --use-local %%ANACONDA_CHANNEL_FLAGS%% %ANACONDA_INSTALL_FLAGS%
     if errorlevel 1 (
         exit /b 1
     )
