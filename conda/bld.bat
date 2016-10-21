@@ -55,8 +55,8 @@ if %errorlevel% neq 0 (
 cd ..
 rmdir toolchain /s /q
 
-for %%ANACONDA_BUILD_RECIPE in (%ANACONDA_BUILD_RECIPES%) do (
-    conda build %%ANACONDA_BUILD_RECIPE %ANACONDA_CHANNEL_FLAGS% %ANACONDA_BUILD_FLAGS%
+for %%i in (%ANACONDA_BUILD_RECIPES%) do (
+    conda build %%i %ANACONDA_CHANNEL_FLAGS% %ANACONDA_BUILD_FLAGS%
     if %errorlevel% neq 0 (
         if exist %GITHUB_REPOSITORY% (
             rmdir %GITHUB_REPOSITORY% /s /q
