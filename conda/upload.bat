@@ -1,3 +1,4 @@
+Setlocal EnableDelayedExpansion
 echo OFF
 
 set DEFAULT_ANACONDA_BUILD_RECIPES=python-parse python-pkgtk
@@ -18,7 +19,7 @@ if "%ANACONDA_CHANNEL%" == "" (
 
 set ANACONDA_CHANNEL_FLAGS=
 for %%i in (%ANACONDA_CHANNELS%) do (
-    set "ANACONDA_CHANNEL_FLAGS=!ANACONDA_CHANNEL_FLAGS! -c %%i"
+    set "ANACONDA_CHANNEL_FLAGS=%ANACONDA_CHANNEL_FLAGS% -c %%i"
 )
 
 if "%ANACONDA_BUILD_RECIPES%" == "" (
@@ -74,9 +75,8 @@ if "%TOOLCHAIN%" == "" (
     rmdir toolchain /s /q
 )
 
-set ANACONDA_BUILD_FLAGS=%ANACONDA_CHANNEL_FLAGS% %ANACONDA_BUILD_FLAGS%
 for %%i in (%ANACONDA_BUILD_RECIPES%) do (
-    for /f %%j in ('conda build %%i %ANACONDA_BUILD_FLAGS% --output') do anaconda upload %%j --user %ANACONDA_CHANNEL% %ANACONDA_UPLOAD_FLAGS%
+    for /f %%j in ('conda build %%i %ANACONDA_CHANNEL_FLAGS% %ANACONDA_BUILD_FLAGS% --output') do anaconda upload %%j --user %ANACONDA_CHANNEL% %ANACONDA_UPLOAD_FLAGS%
 )
 
 anaconda logout
