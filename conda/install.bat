@@ -7,7 +7,7 @@ set DEFAULT_ANACONDA_INSTALL_FLAGS=--use-local
 if "%ANACONDA_CHANNELS%" == "" (
     set ANACONDA_CHANNELS=%DEFAULT_ANACONDA_CHANNELS%
 ) else (
-    echo "Channels used: "%ANACONDA_CHANNELS%
+    echo Channels used: %ANACONDA_CHANNELS%
 )
 
 set ANACONDA_CHANNEL_FLAGS=
@@ -18,7 +18,7 @@ for %%ANACONDA_CHANNEL_FLAG in (%ANACONDA_CHANNELS%) do (
 if "%ANACONDA_INSTALL_RECIPES%" == "" (
     set ANACONDA_INSTALL_RECIPES=%DEFAULT_ANACONDA_INSTALL_RECIPES%
 ) else (
-    echo "Recipes to build: "%ANACONDA_INSTALL_RECIPES%
+    echo Recipes to build: %ANACONDA_INSTALL_RECIPES%
 )
 
 if "%ANACONDA_INSTALL_FLAGS%" == "" (

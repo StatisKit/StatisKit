@@ -19,7 +19,7 @@ for %%i in (%ANACONDA_CHANNELS%) do (
 if "%ANACONDA_BUILD_RECIPES%" == "" (
     set ANACONDA_BUILD_RECIPES=%DEFAULT_ANACONDA_BUILD_RECIPES%
 ) else (
-    echo "Recipes to build: "%ANACONDA_BUILD_RECIPES%
+    echo Recipes to build: %ANACONDA_BUILD_RECIPES%
 )
 
 echo ON
