@@ -12,8 +12,8 @@ if "%ANACONDA_CHANNELS%" == "" (
 )
 
 set ANACONDA_CHANNEL_FLAGS=
-for %%AnacondaChannelFlag in (%ANACONDA_CHANNELS%) do (
-    set ANACONDA_CHANNEL_FLAGS=%ANACONDA_CHANNEL_FLAGS% -c %%AnacondaChannelFlag
+for %%i in (%ANACONDA_CHANNELS%) do (
+    set ANACONDA_CHANNEL_FLAGS=%ANACONDA_CHANNEL_FLAGS% -c %%i
 )
 
 if "%ANACONDA_BUILD_RECIPES%" == "" (
