@@ -1,4 +1,4 @@
-echo OFF
+echo ON
 
 set GITHUB_USERNAME=StatisKit
 set GITHUB_REPOSITORY=Misc

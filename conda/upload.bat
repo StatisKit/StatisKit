@@ -1,4 +1,4 @@
-echo OFF
+echo ON
 
 set DEFAULT_ANACONDA_BUILD_RECIPES=libboost python-scons python-gitpython
 set DEFAULT_ANACONDA_CHANNELS=statiskit conda-forge
