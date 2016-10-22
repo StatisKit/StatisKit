@@ -93,7 +93,7 @@ script:
 
 after_success:
     # -   export ANACONDA_UPLOAD_FLAGS="--force"
-    -   if [[ "$TRAVIS_BRANCH" = "master" ]] && [[ "$TRAVIS_PULL_REQUEST" = "false" ]] && [[ ! -z $ANACONDA_USERNAME ]]; then
+    -   if [[ ! "$ANACONDA_BUILD_RECIPES" = "" ]] && [[ "$TRAVIS_BRANCH" = "master" ]] && [[ "$TRAVIS_PULL_REQUEST" = "false" ]] && [[ ! -z $ANACONDA_USERNAME ]]; then
             cd conda;
             bash upload.sh;
             cd ..;
