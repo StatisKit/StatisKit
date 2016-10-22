@@ -34,6 +34,8 @@ fi
 
 set -xe
 
+echo $DOCKER_PASSWORD
+
 for DOCKER_TAG in $DOCKER_TAGS; do
     docker push $DOCKER_CHANNEL/ubuntu:$DOCKER_TAG
 done
