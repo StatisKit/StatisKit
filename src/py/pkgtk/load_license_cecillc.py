@@ -171,7 +171,10 @@ protection granted by the rights over said Software.
 Article 3 - ACCEPTANCE
 ----------------------
 
-3.1 The Licensee shall be deemed as having accepted the terms and
+3.1
+~~~
+
+The Licensee shall be deemed as having accepted the terms and
 conditions of this Agreement upon the occurrence of the first of the
 following events:
 
@@ -181,7 +184,10 @@ i. loading the Software by any or all means, notably, by
 ii. the first time the Licensee exercises any of the rights
     granted hereunder.
 
-3.2 One copy of the Agreement, containing a notice relating to the
+3.2
+~~~
+
+One copy of the Agreement, containing a notice relating to the
 characteristics of the Software, to the limited warranty, and to the
 fact that its use is restricted to experienced users has been provided
 to the Licensee prior to its acceptance as set forth in Article 3.1
