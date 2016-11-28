@@ -16,7 +16,12 @@
 Developper guide
 ################
 
-Development of a **StatisKit** repository is done using **Git** :abbr:`VCS (Version Control System)` (see :doc:`configuration`).
+Development of a software in the **StatisKit** organization requires to use (see :doc:`configuration`):
+
+* **Git** :abbr:`VCS (Version Control System)`, for version control of software files.
+* **Conda** :abbr:`PMS (Package Management System)` (see :doc:`configuration`), for deployment of software.
+* **Docker** for the reproducibility of examples.
+
 This development can be done in two ways:
 
 .. toctree::
