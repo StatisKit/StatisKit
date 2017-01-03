@@ -2,7 +2,7 @@ set +xe
 
 GITHUB_USERNAME="StatisKit"
 GITHUB_REPOSITORY="Misc"
-DEFAULT_ANACONDA_BUILD_RECIPES="libboost python-gitpython python-scons"
+DEFAULT_ANACONDA_BUILD_RECIPES="libboost python-gitpython python-scons doxygen"
 DEFAULT_ANACONDA_CHANNELS="statiskit conda-forge"
 
 if [[ -z $ANACONDA_CHANNELS ]]; then

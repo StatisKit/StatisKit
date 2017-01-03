@@ -1,7 +1,7 @@
 Setlocal EnableDelayedExpansion
 echo OFF
 
-set DEFAULT_ANACONDA_BUILD_RECIPES=libboost python-gitpython python-scons
+set DEFAULT_ANACONDA_BUILD_RECIPES=libboost python-gitpython python-scons doxygen
 set DEFAULT_ANACONDA_CHANNELS=statiskit conda-forge
 set DEFAULT_ANACONDA_CHANNEL=statiskit
 
