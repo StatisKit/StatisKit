@@ -13,18 +13,24 @@
 ..                                                                                  ..
 .. ................................................................................ ..
 
-|NAME| : |BRIEF|
-################
-
-.. sidebar:: Summary
-
-    :Version: |VERSION|
-    :Status: |TRAVIS| |COVERALLS| |LANDSCAPE|
-    :Author: see `Authors`_ section
-    :License: |LICENSENAME| (see `License`_ section)
+.. include:: ../README.rst
 
 Documentation
 =============
+
+This documentation is dedicated to people using the **StatisKit** software suite.
+In this documentation, the following expressions shall have the following meaning:
+
+User
+    means any individual using binary files originating from the compilation of the source code.
+
+Developer
+    means any individual modifying the source code for producing new binary files.
+
+Maintener
+    means any individual publishing new binary files from modified source code.
+
+Please, with regard to previous expressions, refers to the subsequent guides.
 
 .. toctree::
     :maxdepth: 2
@@ -32,21 +38,15 @@ Documentation
     User guide <user/index.rst>
     Developper guide <developper/index.rst>
     Maintener guide <maintener/index.rst>
-    Reference guide <reference/index.rst>
-    
-Authors
-=======
-
-.. include:: ../AUTHORS.rst
 
 License
 =======
 
-|NAME| is distributed under the |LICENSELINK|_.
+StatisKit is distributed under the |LICENSENAME|_.
 
-.. |LICENSELINK| replace:: |LICENSENAME| license
+.. note:: 
 
-.. _LICENSELINK : license.html
+    |LICENSENAME| is GPL compatible.
 
 Indices
 =======
@@ -54,40 +54,15 @@ Indices
 * :ref:`genindex`
 * :ref:`modindex`
 
-.. MngIt
+Authors
+=======
 
-.. |NAME| replace:: StatisKit
+.. include:: ../AUTHORS.rst
 
-.. |BRIEF| replace:: meta-repository providing general documentation and tools for the **StatisKit** Organization
+.. |LICENSENAME| replace:: CeCILL license
 
-.. |DETAILS| unicode:: U+0020
+.. _LICENSENAME : license.html
 
-.. |VERSION| replace:: 0.1.0
+.. |LICENSE| replace:: see `License`_ section
 
-.. |AUTHORSFILE| replace:: AUTHORS.rst
-
-.. _AUTHORSFILE : AUTHORS.rst
-
-.. |LICENSENAME| replace:: CeCILL-C
-
-.. |LICENSEFILE| replace:: LICENSE.rst
-
-.. _LICENSEFILE : LICENSE.rst
-
-.. |TRAVIS| image:: https://travis-ci.org/StatisKit/StatisKit.svg?branch=master
-           :target: https://travis-ci.org/StatisKit/StatisKit
-           :alt: Travis
-
-.. |COVERALLS| image:: https://coveralls.io/repos/github/StatisKit/StatisKit/badge.svg?branch=master
-               :target: https://coveralls.io/github/StatisKit/StatisKit?branch=master
-               :alt: Coveralls
-
-.. |LANDSCAPE| image:: https://landscape.io/github/StatisKit/StatisKit/master/landscape.svg?style=flat
-                :target: https://landscape.io/github/StatisKit/StatisKit/master
-                :alt: Landscape
-
-.. |READTHEDOCS| image:: https://readthedocs.org/projects/StatisKit/badge/?version=latest
-                :target: http://StatisKit.readthedocs.io/en/latest
-                :alt: Read the Docs
-
-.. MngIt
+.. |AUTHORS| replace:: see `Authors`_ section

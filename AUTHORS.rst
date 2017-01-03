@@ -1,1 +1,2 @@
-* Pierre Fernique <pfernique@gmail.com> (106)
+* `P. Fernique <pfernique@gmail.com>`_
+* `J. Peyhardi <jpeyhardi@gmail.com>`_
