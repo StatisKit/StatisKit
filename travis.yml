@@ -41,6 +41,18 @@ matrix:
         -   os: linux
             dist: trusty
             sudo: required
+            env:
+                - ANACONDA_BUILD_RECIPES="doxygen"
+                - MINICONDA="2"
+        -   os: linux
+            dist: trusty
+            sudo: required
+            env:
+                - ANACONDA_BUILD_RECIPES="doxygen"
+                - MINICONDA="3"
+        -   os: linux
+            dist: trusty
+            sudo: required
             services:
                 - docker
         -   os: osx
