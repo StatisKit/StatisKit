@@ -1,0 +1,35 @@
+package:
+  name: gcc
+  version: "5.4.0"
+
+source:
+  fn: gcc-5.4.0.tar.bz2
+  url: http://mirrors.kernel.org/gnu/gcc/gcc-5.4.0/gcc-5.4.0.tar.bz2
+  md5: 4c626ac2a83ef30dfb9260e6f59c2b30
+  patches:
+    - 0001-Libiberty-normalize-split-directories.patch
+
+build:
+  number: 2
+  detect_binary_files_with_prefix: false
+
+requirements:
+  build:
+    - gmp >=6.1
+    - mpfr >=2.4.2
+    - mpc >=0.8.1
+    - isl >=0.17,<=0.17.1
+  run:
+    - gmp >=6.1
+    - mpfr >=2.4.2
+    - mpc >=0.8.1
+    - isl >=0.17,<=0.17.1
+
+test:
+  commands:
+    - gcc --version
+
+about:
+  home: http://gcc.gnu.org/
+  summary: The GNU Compiler Collection
+  license: GPL

@@ -11,10 +11,6 @@ source:
 
 build:
   number: 0
-  features:
-    - {{ TOOLCHAIN }}
-  track_features:
-    - {{ TOOLCHAIN }}
 
 about:
   home: http://www.boost.org/
@@ -22,6 +18,7 @@ about:
 
 requirements:
   build:
+    - gcc               [unix]
     - python
     - icu 54.*          [unix]
     - bzip2             [unix]
