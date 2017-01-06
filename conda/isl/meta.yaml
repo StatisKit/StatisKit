@@ -1,0 +1,31 @@
+package:
+  name: isl
+  version: "0.17.1"
+
+source:
+  fn: isl-0.17.1.tar.bz2
+  url: http://isl.gforge.inria.fr/isl-0.17.1.tar.bz2
+  md5: 5184f543a013165e8057be59728664b1
+
+build:
+  number: 0
+  skip: True  # [not unix]
+
+requirements:
+  build:
+    - gmp
+  run:
+    - gmp
+
+test:
+  commands:
+    - test -f "$PREFIX/lib/libisl.a"
+    - test -f "$PREFIX/lib/libisl.la"
+    - test -f "$PREFIX/lib/libisl.so"  # [linux]
+    - test -f "$PREFIX/lib/libisl.dylib"  # [osx]
+    - test -d "$PREFIX/include/isl"
+
+about:
+  home: http://isl.gforge.inria.fr/
+  license: MIT
+  summary: a thread-safe C library for manipulating sets and relations of integer points bounded by affine constraints.
