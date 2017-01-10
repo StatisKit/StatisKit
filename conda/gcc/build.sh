@@ -20,6 +20,55 @@
 #  /usr/include as a block of 3 final system includes, and all of that comes after GCCs own headers and those
 #  from libstdc++. I will revist this later.
 
+# ./contrib/download_prerequisites
+
+# #ln -sf binutils-2.27 binutils || exit 1
+# wget https://ftp.gnu.org/gnu/binutils/binutils-2.26.1.tar.bz2 || exit 1
+# tar xjf binutils-2.26.1.tar.bz2 || exit 1
+# set +e
+# for file in ./binutils-2.26.1/*; do
+#     echo $file
+#     if [[ ! ( -f "../$file" || -d "../$file" ) ]]; then
+#         ln -s "$file"
+#     fi
+# done
+# set -e
+# cd ..
+# mkdir build && cd build
+#exit 1
+# rsync -av binutils-2.27/bfd bfd || exit 1
+# rsync -av binutils-2.27/binutils binutils || exit 1
+# rsync -av binutils-2.27/config c++config || exit 1
+# rsync -av binutils-2.27/elfcpp elfcpp || exit 1
+# rsync -av binutils-2.27/etc etc || exit 1
+# rsync -av binutils-2.27/gas gas || exit 1
+# rsync -av binutils-2.27/gold gold || exit 1
+# rsync -av binutils-2.27/gprof gprof || exit 1
+# rsync -av binutils-2.27/include include || exit 1
+# rsync -av binutils-2.27/intl intl || exit 1
+# rsync -av binutils-2.27/ld ld || exit 1
+# rsync -av binutils-2.27/libiberty libiberty || exit 1
+# rsync -av binutils-2.27/opcodes opcodes || exit 1
+# rsync -av binutils-2.27/zlib zlib || exit 1
+
+# wget http://ftp.gnu.org/pub/gnu/libiconv/libiconv-1.13.tar.gz  || exit 1
+# tar -xvzf libiconv-1.13.tar.gz || exit 1
+# ln -sf libiconv-1.13 libiconv || exit 1
+
+# wget https://ftp.gnu.org/gnu/bison/bison-2.5.tar.bz2
+# tar xjf bison-2.5.tar.bz2 || exit 1
+# ln -sf bison-2.5 bison || exit 1
+
+# wget https://github.com/westes/flex/releases/download/v2.6.3/flex-2.6.3.tar.gz
+# tar -xvzf flex-2.6.3.tar.gz || exit 1
+# ln -sf flex-2.6.3 flex || exit 1
+
+# ls
+# ls flex
+# ls bison
+
+# # exit 1
+
 GCC_PREFIX="$PREFIX/gcc"
 mkdir "$GCC_PREFIX"
 
@@ -52,6 +101,17 @@ else
     mkdir -p "${PREFIX}/share"
     cat /etc/*-release > "$PREFIX/share/conda-gcc-build-machine-os-details"
 
+    # ./configure \
+    #     --prefix="$GCC_PREFIX" \
+    #     --enable-clocale=gnu \
+    #     --enable-shared --enable-threads=posix --enable-__cxa_atexit \
+    #     --disable-nls --disable-multilib \
+    #     --with-gxx-include-dir="$GCC_PREFIX/include/c++" \
+    #     --bindir="$GCC_PREFIX/../bin" \
+    #     --datarootdir="$GCC_PREFIX/../share" \
+    #     --libdir="$GCC_PREFIX/../lib" \
+    #     --enable-checking=release \
+    #     --with-tune=generic \
     ./configure \
         --prefix="$GCC_PREFIX" \
         --with-gxx-include-dir="$GCC_PREFIX/include/c++" \
@@ -68,13 +128,13 @@ else
         --disable-multilib
 fi
 
-# Split compilation into stages so OS X is satisfied
-make all-gcc
-make all-target-libgcc
+# # Split compilation into stages so OS X is satisfied
+make all-gcc -j$CPU_COUNT
+make all-target-libgcc -j$CPU_COUNT
 make install-gcc install-target-libgcc
-make all-target-libstdc++-v3
+make all-target-libstdc++-v3 -j$CPU_COUNT
 make install-target-libstdc++-v3
-make
+make -j$CPU_COUNT
 make install-strip
 
 rm "$PREFIX/lib64"

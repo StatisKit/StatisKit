@@ -15,21 +15,42 @@ build:
 
 requirements:
   build:
-    - gmp >=6.1
-    - mpfr >=2.4.2
-    - mpc >=0.8.1
-    - isl >=0.17,<=0.17.1
+    - gmp # >=6.1
+    - mpfr # >=2.4.2
+    - mpc # >=0.8.1
+    - isl # >=0.17,<=0.17.1
+    - binutils
   run:
-    - gmp >=6.1
-    - mpfr >=2.4.2
-    - mpc >=0.8.1
-    - isl >=0.17,<=0.17.1
+    - gmp # >=6.1
+    - mpfr # >=2.4.2
+    - mpc # >=0.8.1
+    - isl # >=0.17,<=0.17.1
+    - binutils
 
 test:
   commands:
+    - which gcc
     - gcc --version
+    - which g++
+    - g++ --version
+    - which as
+    - as --version
+    - which ld
+    - ld --version
 
 about:
   home: http://gcc.gnu.org/
   summary: The GNU Compiler Collection
   license: GPL
+
+# requirements:
+#   build:
+#     - gmp >=6.1
+#     - mpfr >=2.4.2
+#     - mpc >=0.8.1
+#     - isl >=0.17,<=0.17.1
+#   run:
+#     - gmp >=6.1
+#     - mpfr >=2.4.2
+#     - mpc >=0.8.1
+#     - isl >=0.17,<=0.17.1

@@ -18,12 +18,14 @@ about:
 
 requirements:
   build:
-    - gcc               [unix]
+    - cpp-build
+    - py-build
     - python
     - icu 54.*          [unix]
     - bzip2             [unix]
     - zlib
   run:
-    - python
+    - cpp-run
+    - py-run
     - icu 54.*          [unix]
     - zlib
