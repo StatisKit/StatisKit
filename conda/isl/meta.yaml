@@ -1,11 +1,10 @@
 package:
   name: isl
-  version: "0.17.1"
+  version: "0.14"
 
 source:
-  fn: isl-0.17.1.tar.bz2
-  url: http://isl.gforge.inria.fr/isl-0.17.1.tar.bz2
-  md5: 5184f543a013165e8057be59728664b1
+  fn: isl-0.14.tar.bz2
+  url: ftp://gcc.gnu.org/pub/gcc/infrastructure/isl-0.14.tar.bz2
 
 build:
   number: 0

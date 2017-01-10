@@ -28,8 +28,8 @@ set +e
 # Compile.
 (
     set -e
-    "${PREFIX}/bin/gcc" -o hello_c.out hello.c
-    "${PREFIX}/bin/g++" -o hello_cpp.out hello.cpp
+    "${PREFIX}/bin/gcc" -o hello_c.out hello.c -v
+    "${PREFIX}/bin/g++" -o hello_cpp.out hello.cpp -v
 )
 SUCCESS=$?
 if [ $SUCCESS -ne 0 ]; then

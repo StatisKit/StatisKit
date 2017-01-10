@@ -15,47 +15,18 @@
 ##################################################################################
 
 package:
-  name: clang
-  version: "3.8.1"
-
-source:
-  fn: llvm-3.8.1.src.tar.xz
-  url: http://llvm.org/releases/3.8.1/llvm-3.8.1.src.tar.xz
-  patches:
-    # https://llvm.org/bugs/show_bug.cgi?id=15356
-    - {{ RECIPE_DIR }}/llvm-elf-relocation.patch
-    # https://llvm.org/bugs/show_bug.cgi?id=25788
-    - {{ RECIPE_DIR }}/llvm-parse-fp-constants.patch
-    # https://llvm.org/bugs/show_bug.cgi?id=25565
-    - {{ RECIPE_DIR }}/llvm-build-race-condition.patch
-    # http://lists.llvm.org/pipermail/llvm-dev/2016-January/094520.html
-    - {{ RECIPE_DIR }}/llvm-lto-static.patch                      [win]
+  name: cpp-run
+  version: "1.0.0"
     
 build:
   number: 0
 
 about:
-  home: http://www.llvm.org/
-  license: The University of Illinois/NCSA Open Source License
+  home: http://statiskit.readthedocs.io/
+  license: CeCILL-C
 
 requirements:
   build:
-    - gcc               [unix]
-    - libgcc            [unix]
-    - binutils          [unix]
-    - cmake
-    - zlib
-    - python-pkgtk
-    - m2w64-xz          [py27 and win]
-    - 7za               [win]
+    - libgcc            [linux]
   run:
-    - gcc               [unix]
-    - libgcc            [unix]
-    - binutils          [unix]
-    
-test:
-  commands:
-  - clang++ -x c++ -v -E /dev/null  [not win]
-  - clang -x c -v -E /dev/null      [not win]
-  - clang++ -x c++ -v -E nul        [win]
-  - clang -x c -v -E nul            [win]
+    - libgcc            [linux]
