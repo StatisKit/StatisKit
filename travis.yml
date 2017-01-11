@@ -9,7 +9,7 @@ env:
     # - RECIPE=glibc 
     # - RECIPE=gcc 
     # - RECIPE=libgcc 
-    - RECIPE=clang 
+    # - RECIPE=clang 
     # - RECIPE=cpp-build 
     # - RECIPE=cpp-run
     # - RECIPE=python-scons
@@ -36,8 +36,10 @@ install:
     -   cd ..
 
 script:
-    - cd conda
-    - conda build $RECIPE -c statiskit -c conda-forge
+  - conda install gcc -c statiskit -c conda-forge
+  - gcc --version
+    #- cd conda
+    #- conda build $RECIPE -c statiskit -c conda-forge
 
 after_success:
     # -   export ANACONDA_UPLOAD_FLAGS="--force"
