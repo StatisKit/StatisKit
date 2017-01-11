@@ -17,9 +17,9 @@ env:
     - RECIPE=py-run
     - RECIPE=libboost
 
-os:
-    - linux
-    - osx
+# os:
+#     - linux
+#     - osx
 
 matrix:
     include:
