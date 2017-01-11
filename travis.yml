@@ -9,17 +9,13 @@ env:
     # - RECIPE=glibc 
     # - RECIPE=gcc 
     # - RECIPE=libgcc 
-    # - RECIPE=clang 
+    - RECIPE=clang 
     # - RECIPE=cpp-build 
     # - RECIPE=cpp-run
     # - RECIPE=python-scons
     # - RECIPE=py-build
     # - RECIPE=py-run
     # - RECIPE=libboost
-
-os:
-    - linux
-    - osx
 
 matrix:
     include:
@@ -36,10 +32,8 @@ install:
     -   cd ..
 
 script:
-  - conda install gcc -c statiskit -c conda-forge
-  - gcc --version
-    #- cd conda
-    #- conda build $RECIPE -c statiskit -c conda-forge
+    - cd conda
+    - conda build $RECIPE -c statiskit -c conda-forge
 
 after_success:
     # -   export ANACONDA_UPLOAD_FLAGS="--force"
