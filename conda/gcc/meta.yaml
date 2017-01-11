@@ -20,7 +20,7 @@ requirements:
     - mpc # >=0.8.1
     - isl # >=0.17,<=0.17.1
     - binutils
-    -glibc
+    - glibc
   run:
     - gmp # >=6.1
     - mpfr # >=2.4.2
