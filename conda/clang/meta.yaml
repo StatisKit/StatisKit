@@ -43,6 +43,7 @@ requirements:
     - gcc               [unix]
     - libgcc            [unix]
     - binutils          [unix]
+    - glibc             [unix]
     - cmake
     - zlib
     - python-pkgtk
@@ -51,6 +52,7 @@ requirements:
   run:
     - gcc               [unix]
     - libgcc            [unix]
+    - glibc             [unix]
     - binutils          [unix]
     
 test:
