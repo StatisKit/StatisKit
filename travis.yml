@@ -1,21 +1,21 @@
 language: cpp
 
 env:
-    - RECIPE=gmp
-    - RECIPE=mpfr
-    - RECIPE=mpc
-    - RECIPE=isl 
-    - RECIPE=binutils 
-    - RECIPE=glibc 
-    - RECIPE=gcc 
-    - RECIPE=libgcc 
+    # - RECIPE=gmp
+    # - RECIPE=mpfr
+    # - RECIPE=mpc
+    # - RECIPE=isl 
+    # - RECIPE=binutils 
+    # - RECIPE=glibc 
+    # - RECIPE=gcc 
+    # - RECIPE=libgcc 
     - RECIPE=clang 
-    - RECIPE=cpp-build 
-    - RECIPE=cpp-run
-    - RECIPE=python-scons
-    - RECIPE=py-build
-    - RECIPE=py-run
-    - RECIPE=libboost
+    # - RECIPE=cpp-build 
+    # - RECIPE=cpp-run
+    # - RECIPE=python-scons
+    # - RECIPE=py-build
+    # - RECIPE=py-run
+    # - RECIPE=libboost
 
 os:
     - linux
