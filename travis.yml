@@ -17,9 +17,9 @@ env:
     - RECIPE=py-run
     - RECIPE=libboost
 
-# os:
-#     - linux
-#     - osx
+os:
+    - linux
+    - osx
 
 matrix:
     include:
@@ -28,7 +28,9 @@ matrix:
             sudo: required
         -   os: osx
             osx_image: xcode7.3
-
+    exclude:
+        - os: linux
+        - os: osx
 install:
     -   git clone https://gist.github.com/319558c83d145620a6d4decdcadfbfb0.git config-travis
     -   cd config-travis
