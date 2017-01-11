@@ -1,5 +1,22 @@
 language: cpp
 
+env:
+    - RECIPE=gmp
+    - RECIPE=mpfr
+    - RECIPE=mpc
+    - RECIPE=isl 
+    - RECIPE=binutils 
+    - RECIPE=glibc 
+    - RECIPE=gcc 
+    - RECIPE=libgcc 
+    - RECIPE=clang 
+    - RECIPE=cpp-build 
+    - RECIPE=cpp-run
+    - RECIPE=python-scons
+    - RECIPE=py-build
+    - RECIPE=py-run
+    - RECIPE=libboost
+
 matrix:
     include:
         -   os: linux
@@ -12,10 +29,6 @@ matrix:
                 - docker
         -   os: osx
             osx_image: xcode7.3
-  
- - gmp
- - mpfr # no test
- - mpc
 
 install:
     -   git clone https://gist.github.com/319558c83d145620a6d4decdcadfbfb0.git config-travis
@@ -24,15 +37,8 @@ install:
     -   cd ..
 
 script:
-    -   if [[ ! -z $ANACONDA_BUILD_RECIPES ]]; then
-            cd conda;
-            bash build.sh;
-            cd ..;
-        else
-            cd docker;
-            bash build.sh;
-            cd ..;
-        fi
+    - cd conda
+    - conda build $RECIPE -c statiskit -c conda-forge
 
 after_success:
     # -   export ANACONDA_UPLOAD_FLAGS="--force"

@@ -19,13 +19,14 @@ about:
 requirements:
   build:
     - cpp-build
-    - py-build
     - python
+    - py-build
     - icu 54.*          [unix]
     - bzip2             [unix]
     - zlib
   run:
     - cpp-run
+    - python
     - py-run
     - icu 54.*          [unix]
     - zlib
