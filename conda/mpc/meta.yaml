@@ -6,6 +6,10 @@ source:
   fn: mpc-0.8.1.tar.gz
   url: ftp://gcc.gnu.org/pub/gcc/infrastructure/mpc-0.8.1.tar.gz
 
+build:
+  number: 1
+  detect_binary_files_with_prefix: True
+  
 requirements:
   build:
     - gmp

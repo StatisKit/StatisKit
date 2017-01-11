@@ -5,6 +5,10 @@ package:
 source:
   fn: mpfr-2.4.2.tar.bz2
   url: ftp://gcc.gnu.org/pub/gcc/infrastructure/mpfr-2.4.2.tar.bz2
+  
+build:
+  number: 1
+  detect_binary_files_with_prefix: True
 
 requirements:
   build:

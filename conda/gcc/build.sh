@@ -125,7 +125,8 @@ else
         --with-cloog="$PREFIX" \
         --enable-checking=release \
         --with-tune=generic \
-        --disable-multilib
+        --disable-multilib \
+        #--target=x86_64-unknown-linux-gnu
 fi
 
 # # Split compilation into stages so OS X is satisfied

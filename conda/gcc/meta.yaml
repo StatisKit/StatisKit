@@ -15,19 +15,18 @@ build:
 
 requirements:
   build:
-    - gmp # >=6.1
-    - mpfr # >=2.4.2
-    - mpc # >=0.8.1
-    - isl # >=0.17,<=0.17.1
+    - gmp
+    - mpfr
+    - mpc
+    - isl
     - binutils
-    - glibc
   run:
-    - gmp # >=6.1
-    - mpfr # >=2.4.2
-    - mpc # >=0.8.1
-    - isl # >=0.17,<=0.17.1
-    - binutils
-    - glibc
+    - gmp
+    - mpfr
+    - mpc
+    - isl
+    - glibc           [linux]
+    - linux-headers   [linux]
 
 test:
   commands:
@@ -35,10 +34,6 @@ test:
     - gcc --version
     - which g++
     - g++ --version
-    - which as
-    - as --version
-    - which ld
-    - ld --version
 
 about:
   home: http://gcc.gnu.org/
