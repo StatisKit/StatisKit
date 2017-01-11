@@ -9,6 +9,7 @@ source:
 build:
   number: 0
   skip: True  # [not unix]
+  detect_binary_files_with_prefix: True
 
 requirements:
   build:
