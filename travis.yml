@@ -13,6 +13,7 @@ env:
     # - RECIPE=glibc 
     # - RECIPE=gcc 
     # - RECIPE=libgcc 
+    - RECIPE=llvm 
     - RECIPE=clang 
     - RECIPE=cpp-build 
     - RECIPE=cpp-run
@@ -21,36 +22,11 @@ env:
     - RECIPE=py-run
     - RECIPE=libboost
 
-# matrix:
-#     include:
-#         -   os: linux
-#             dist: trusty
-#             sudo: required
-#             compiler: gcc
-#             addons:
-#                 apt:
-#                     sources:
-#                         - ubuntu-toolchain-r-test
-#                     packages:
-#                         - g++-5
-#             env:
-#                 - COMPILER=g++-5
-#         -   os: osx
-#             osx_image: xcode7.3
-
 install:
     - git clone https://gist.github.com/319558c83d145620a6d4decdcadfbfb0.git config-travis
     - cd config-travis
     - source config.sh
     - cd ..
-    - if [ "$TRAVIS_OS_NAME" == "linux" ]; then
-       sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test;
-       sudo apt-get update;
-       sudo apt-get install -qq gcc-5 g++-5;
-       sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-5 60 --slave /usr/bin/g++ g++ /usr/bin/g++-5;
-       gcc --version;
-       g++ --version;
-      fi
 
 script:
     - cd conda

@@ -1,9 +1,9 @@
-cd tools
+# cd tools
 
-wget http://llvm.org/releases/3.8.1/cfe-3.8.1.src.tar.xz
-tar -xJf cfe-3.8.1.src.tar.xz
-mv cfe-3.8.1.src clang
-cd ..
+# wget http://llvm.org/releases/3.8.1/cfe-3.8.1.src.tar.xz
+# tar -xJf cfe-3.8.1.src.tar.xz
+# mv cfe-3.8.1.src clang
+# cd ..
 
 mkdir build_clang
 cd build_clang
@@ -19,6 +19,7 @@ cmake -G "Unix Makefiles" -DBUILD_SHARED_LIBS=ON \
                           -DLLVM_INCLUDE_EXAMPLES=OFF \
                           -DLLVM_ENABLE_TERMINFO=OFF \
                           -DLLVM_ENABLE_RTTI=ON \
+                          -DCMAKE_INSTALL_PREFIX=${PREFIX} \
                           -DCMAKE_BUILD_TYPE=Release \
                           -DLLVM_TARGETS_TO_BUILD=host \
                           $SRC_DIR;
