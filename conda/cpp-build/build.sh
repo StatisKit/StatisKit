@@ -29,7 +29,7 @@ fi
 cat > version.py <<EOF
 from distutils.version import StrictVersion
 import os
-print(StrictVersion(\"5.1\") <= StrictVersion(os.environ[\"__GNUC__\"]))
+print(StrictVersion("5.1") <= StrictVersion(os.environ["__GNUC__"]))
 EOF
 
 __GNUC__=`python version.py`
