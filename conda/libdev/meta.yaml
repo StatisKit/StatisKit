@@ -15,7 +15,7 @@
 ##################################################################################
 
 package:
-  name: cpp-build
+  name: libdev
   version: "1.0.0"
     
 build:
@@ -25,6 +25,11 @@ about:
   home: http://statiskit.readthedocs.io/
   license: CeCILL-C
   
+requirements:
+  run:
+    - python
+    - python-scons
+    - python-pkgtk
 # requirements:
 #   build:
 #     - gcc               [linux]

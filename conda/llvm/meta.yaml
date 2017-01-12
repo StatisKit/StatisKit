@@ -40,7 +40,8 @@ about:
 
 requirements:
   build:
-    - gcc               [unix]
+    - libdev
+    # - gcc               [unix]
     - cmake
     - zlib
     - python-pkgtk

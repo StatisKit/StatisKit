@@ -15,7 +15,7 @@
 ##################################################################################
 
 package:
-  name: py-run
+  name: python-dev
   version: "1.0.0"
     
 build:
@@ -28,5 +28,7 @@ about:
 requirements:
   build:
     - python
+    - setuptools
   run:
     - python
+    - setuptools
