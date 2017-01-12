@@ -44,11 +44,12 @@ before_deploy:
   - cd ..
 
 deploy:
-  - cd conda;
-  - if [[ "$ANACONDA_DEPLOY" = "true" ]]; then
-      anaconda upload `conda build $RECIPE -c statiskit -c conda-forge --output` -u statiskit --force;
-    fi
-  - cd ..;
+  script:
+    - cd conda;
+    - if [[ "$ANACONDA_DEPLOY" = "true" ]]; then
+        anaconda upload `conda build $RECIPE -c statiskit -c conda-forge --output` -u statiskit --force;
+      fi
+    - cd ..
 
 
 after_deploy:
