@@ -10,18 +10,27 @@ env:
     # - RECIPE=gcc 
     # - RECIPE=libgcc 
     - RECIPE=clang 
-    # - RECIPE=cpp-build 
-    # - RECIPE=cpp-run
-    # - RECIPE=python-scons
-    # - RECIPE=py-build
-    # - RECIPE=py-run
-    # - RECIPE=libboost
+    - RECIPE=cpp-build 
+    - RECIPE=cpp-run
+    - RECIPE=python-scons
+    - RECIPE=py-build
+    - RECIPE=py-run
+    - RECIPE=libboost
 
 matrix:
     include:
         -   os: linux
             dist: trusty
             sudo: required
+            compiler: gcc
+            addons:
+                apt:
+                    sources:
+                        - ubuntu-toolchain-r-test
+                    packages:
+                        - g++-5
+            env:
+                - COMPILER=g++-5
         -   os: osx
             osx_image: xcode7.3
 
