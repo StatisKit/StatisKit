@@ -9,7 +9,7 @@ int main() {
 EOF
 
 gcc -o gcc_version.out version.c
-__GNUC__=`./version.out`
+__GNUC__=`./gcc_version.out`
 
 cat > version.cpp <<EOF
 #include <stdio.h>
@@ -22,7 +22,7 @@ int main() {
 EOF
 
 g++ -o g++_version.out version.c
-if [[ $__GNUC__ -ne `.version.out` ]]; then
+if [[ $__GNUC__ -ne `./g++_version.out` ]]; then
     echo "gcc and g++ versions are not the same."
     exit 1;
 fi
