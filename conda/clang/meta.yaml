@@ -48,6 +48,7 @@ requirements:
     #- libgcc            [unix]
     #- binutils          [unix]
     #- glibc             [unix]
+    - libdev
     - llvm
     - cmake
     - zlib

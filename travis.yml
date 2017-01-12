@@ -12,14 +12,14 @@ env:
     # - RECIPE=binutils 
     # - RECIPE=glibc 
     # - RECIPE=gcc 
-    # - RECIPE=libgcc 
-    - RECIPE=llvm 
-    - RECIPE=clang 
-    - RECIPE=cpp-build 
-    - RECIPE=cpp-run
+    # - RECIPE=libgcc
     - RECIPE=python-scons
-    - RECIPE=py-build
-    - RECIPE=py-run
+    - RECIPE=libdev
+    - RECIPE=python-dev
+    - RECIPE=python-dbg
+    - RECIPE=llvm
+    - RECIPE=clang
+    - RECIPE=python-clang
     - RECIPE=libboost
 
 install:
