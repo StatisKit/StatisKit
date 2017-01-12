@@ -1,5 +1,9 @@
 language: cpp
 
+os:
+  - linux
+  - osx
+
 env:
     # - RECIPE=gmp
     # - RECIPE=mpfr
@@ -17,28 +21,29 @@ env:
     - RECIPE=py-run
     - RECIPE=libboost
 
-matrix:
-    include:
-        -   os: linux
-            dist: trusty
-            sudo: required
-            compiler: gcc
-            addons:
-                apt:
-                    sources:
-                        - ubuntu-toolchain-r-test
-                    packages:
-                        - g++-5
-            env:
-                - COMPILER=g++-5
-        -   os: osx
-            osx_image: xcode7.3
+# matrix:
+#     include:
+#         -   os: linux
+#             dist: trusty
+#             sudo: required
+#             compiler: gcc
+#             addons:
+#                 apt:
+#                     sources:
+#                         - ubuntu-toolchain-r-test
+#                     packages:
+#                         - g++-5
+#             env:
+#                 - COMPILER=g++-5
+#         -   os: osx
+#             osx_image: xcode7.3
 
 install:
-    -   git clone https://gist.github.com/319558c83d145620a6d4decdcadfbfb0.git config-travis
-    -   cd config-travis
-    -   source config.sh
-    -   cd ..
+    - git clone https://gist.github.com/319558c83d145620a6d4decdcadfbfb0.git config-travis
+    - cd config-travis
+    - source config.sh
+    - cd ..
+    - if [ "$CXX" == "g++" ]; then sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test; fi
 
 script:
     - cd conda
