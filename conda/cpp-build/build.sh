@@ -9,7 +9,7 @@ int main() {
 EOF
 
 gcc -o gcc_version.out version.c
-__GNUC__=`./gcc_version.out`
+export __GNUC__=`./gcc_version.out`
 
 cat > version.cpp <<EOF
 #include <stdio.h>
