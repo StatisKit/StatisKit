@@ -14,6 +14,8 @@ make -j$CPU_COUNT csu/subdir_lib
 
 install csu/crt1.o csu/crti.o csu/crtn.o ${PREFIX}/lib
 
+# gcc -nostdlib -nostartfiles -shared -x c /dev/null -o ${PREFIX}/lib/libc.so
+
 touch ${PREFIX}/include/bits/stdio_lim.h
 touch ${PREFIX}/include/gnu/stubs.h
 
