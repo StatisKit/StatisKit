@@ -24,24 +24,24 @@ build:
 about:
   home: http://statiskit.readthedocs.io/
   license: CeCILL-C
+  
+# requirements:
+#   build:
+#     - gcc               [linux]
+#     - libgcc            [linux]
+#     - glibc             [linux]
+#     - binutils          [linux]
+#     - clang             [unix]
+#   run:
+#     - gcc               [linux]
+#     - libgcc            [linux]
+#     - glibc             [linux]
+#     - binutils          [linux]
+#     - clang             [unix]
 
-requirements:
-  build:
-    - gcc               [linux]
-    - libgcc            [linux]
-    - glibc             [linux]
-    - binutils          [linux]
-    - clang             [unix]
-  run:
-    - gcc               [linux]
-    - libgcc            [linux]
-    - glibc             [linux]
-    - binutils          [linux]
-    - clang             [unix]
-
-test:
-  commands:
-  - gcc -x c -v -E /dev/null        [linux]
-  - gcc -x c++ -v -E /dev/null      [linux]
-  - clang -x c -v -E /dev/null      [unix]
-  - clang++ -x c++ -v -E /dev/null  [unix]
+# test:
+#   commands:
+#   - gcc -x c -v -E /dev/null        [linux]
+#   - gcc -x c++ -v -E /dev/null      [linux]
+#   - clang -x c -v -E /dev/null      [unix]
+#   - clang++ -x c++ -v -E /dev/null  [unix]
