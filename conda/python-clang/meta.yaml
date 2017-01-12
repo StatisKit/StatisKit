@@ -39,5 +39,5 @@ requirements:
     - m2w64-xz         # [py27 and win]
     - clang
   run:
-    - pypython
+    - python
     - clang
