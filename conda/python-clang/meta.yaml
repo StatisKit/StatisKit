@@ -36,8 +36,7 @@ requirements:
     - python-dev
     - zlib
     - xz # [unix]
-    - m2w64-xz         # [py27 and win]
-    - clang
+    - m2w64-xz         # [py27 and win] 
   run:
     - python
     - clang
