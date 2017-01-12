@@ -5,42 +5,48 @@ os:
   - osx
 
 env:
-    # - RECIPE=gmp
-    # - RECIPE=mpfr
-    # - RECIPE=mpc
-    # - RECIPE=isl 
-    # - RECIPE=binutils 
-    # - RECIPE=glibc 
-    # - RECIPE=gcc 
-    # - RECIPE=libgcc
-    - RECIPE=python-scons
-    - RECIPE=libdev
-    - RECIPE=python-dev
-    - RECIPE=python-dbg
-    - RECIPE=llvm
-    - RECIPE=clang
-    - RECIPE=python-clang
-    - RECIPE=libboost
+  # - RECIPE=gmp
+  # - RECIPE=mpfr
+  # - RECIPE=mpc
+  # - RECIPE=isl 
+  # - RECIPE=binutils 
+  # - RECIPE=glibc 
+  # - RECIPE=gcc 
+  # - RECIPE=libgcc
+  - RECIPE=python-scons
+  - RECIPE=libdev
+  - RECIPE=python-dev
+  - RECIPE=python-dbg
+  - RECIPE=llvm
+  - RECIPE=clang
+  - RECIPE=python-clang
+  - RECIPE=libboost
 
 install:
-    - git clone https://gist.github.com/319558c83d145620a6d4decdcadfbfb0.git config-travis
-    - cd config-travis
-    - source config.sh
-    - cd ..
+  - git clone https://gist.github.com/319558c83d145620a6d4decdcadfbfb0.git travis-ci
+  - cd travis-ci
+  - source install-script.sh
+  - cd ..
 
 script:
-    - cd conda
-    - conda build $RECIPE -c statiskit -c conda-forge
+  - cd conda
+  - conda build $RECIPE -c statiskit -c conda-forge
+  - cd ..
 
 after_success:
-    # -   export ANACONDA_UPLOAD_FLAGS="--force"
-    -   if [[ ! "$ANACONDA_BUILD_RECIPES" = "" ]] && [[ "$TRAVIS_BRANCH" = "master" ]] && [[ "$TRAVIS_PULL_REQUEST" = "false" ]] && [[ ! -z $ANACONDA_USERNAME ]]; then
-            cd conda;
-            bash upload.sh;
-            cd ..;
-        fi
-    -   if [[ "$ANACONDA_BUILD_RECIPES" = "" ]] && [[ "$TRAVIS_BRANCH" = "master" ]] && [[ "$TRAVIS_PULL_REQUEST" = "false" ]] && [[ "$TRAVIS_OS_NAME" = "linux" ]] && [[ ! -z $DOCKER_USERNAME ]]; then
-            cd docker;
-            bash upload.sh;
-            cd ..;
-        fi
+
+
+before_deploy:
+  - cd travis-ci
+  - source before_deploy-script.sh
+  - cd ..
+
+deploy:
+  - [[ ANACONDA_DEPLOY = "false" ]] || cd conda
+  - [[ ANACONDA_DEPLOY = "false" ]] || anaconda upload `conda build $RECIPE -c statiskit -c conda-forge --output` -u statiskit --force
+  - [[ ANACONDA_DEPLOY = "false" ]] || cd ..
+
+after_deploy:
+  - cd travis-ci
+  - source after_deploy-script.sh
+  - cd ..
