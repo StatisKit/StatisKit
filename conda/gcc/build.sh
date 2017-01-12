@@ -113,6 +113,14 @@ else
     #     --enable-checking=release \
     #     --with-tune=generic \
     ./configure \
+        --disable-shared \
+        --disable-bootstrap \
+        --disable-libstdcxx-pch \
+        --enable-libgomp \
+        --enable-lto \
+        --enable-threads=posix \
+        --enable-tls \
+        --with-fpmath=sse \
         --prefix="$GCC_PREFIX" \
         --with-gxx-include-dir="$GCC_PREFIX/include/c++" \
         --bindir="$GCC_PREFIX/../bin" \
@@ -126,17 +134,20 @@ else
         --enable-checking=release \
         --with-tune=generic \
         --disable-multilib \
+        --enable-languages=c,c++ \
         #--target=x86_64-unknown-linux-gnu
 fi
 
 # # Split compilation into stages so OS X is satisfied
-make all-gcc -j$CPU_COUNT
-make all-target-libgcc -j$CPU_COUNT
-make install-gcc install-target-libgcc
-make all-target-libstdc++-v3 -j$CPU_COUNT
-make install-target-libstdc++-v3
+# make all-gcc -j$CPU_COUNT
+# make all-target-libgcc -j$CPU_COUNT
+# make install-gcc install-target-libgcc
+# make all-target-libstdc++-v3 -j$CPU_COUNT
+# make install-target-libstdc++-v3
+# make -j$CPU_COUNT
+# make install-strip
 make -j$CPU_COUNT
-make install-strip
+make install
 
 rm "$PREFIX/lib64"
 

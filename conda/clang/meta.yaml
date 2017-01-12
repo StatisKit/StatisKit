@@ -40,20 +40,20 @@ about:
 
 requirements:
   build:
-    - gcc               [unix]
-    - libgcc            [unix]
-    - binutils          [unix]
-    - glibc             [unix]
+    #- gcc               [unix]
+    #- libgcc            [unix]
+    #- binutils          [unix]
+    #- glibc             [unix]
     - cmake
     - zlib
     - python-pkgtk
     - m2w64-xz          [py27 and win]
     - 7za               [win]
-  run:
-    - gcc               [unix]
-    - libgcc            [unix]
-    - glibc             [unix]
-    - binutils          [unix]
+  # run:
+  #   - gcc               [unix]
+  #   - libgcc            [unix]
+  #   - glibc             [unix]
+  #   - binutils          [unix]
     
 test:
   commands:
