@@ -8,9 +8,9 @@ env:
   # - RECIPE=gmp
   # - RECIPE=mpfr
   # - RECIPE=mpc
-  # - RECIPE=isl 
-  # - RECIPE=binutils 
-  # - RECIPE=glibc 
+  # - RECIPE=isl
+  # - RECIPE=binutils
+  # - RECIPE=glibc
   # - RECIPE=gcc 
   # - RECIPE=libgcc
   - RECIPE=python-scons
@@ -36,20 +36,20 @@ script:
 after_success:
   - echo "Success"
 
-before_deploy:
-  - cd travis-ci
-  - source before_deploy-script.sh
-  - cd ..
+# before_deploy:
+#   - cd travis-ci
+#   - source before_deploy-script.sh
+#   - cd ..
 
-deploy:
-  - cd conda;
-  - if [[ "$ANACONDA_DEPLOY" = "true" ]]; then
-      anaconda upload `conda build $RECIPE -c statiskit -c conda-forge --output` -u statiskit --force;
-    fi
-  - cd ..;
+# deploy:
+#   - cd conda;
+#   - if [[ "$ANACONDA_DEPLOY" = "true" ]]; then
+#       anaconda upload `conda build $RECIPE -c statiskit -c conda-forge --output` -u statiskit --force;
+#     fi
+#   - cd ..;
 
 
-after_deploy:
-  - cd travis-ci
-  - source after_deploy-script.sh
-  - cd ..
+# after_deploy:
+#   - cd travis-ci
+#   - source after_deploy-script.sh
+#   - cd ..
