@@ -34,7 +34,7 @@ script:
   - cd ..
 
 after_success:
-
+  - echo "Success"
 
 before_deploy:
   - cd travis-ci
