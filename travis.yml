@@ -1,105 +1,58 @@
 language: cpp
 
-matrix:
-    include:
-        -   os: linux
-            dist: trusty
-            sudo: required
-            env:
-                - ANACONDA_BUILD_RECIPES="libboost"
-                - MINICONDA="2"
-        -   os: linux
-            dist: trusty
-            sudo: required
-            env:
-                - ANACONDA_BUILD_RECIPES="libboost"
-                - MINICONDA="3"
-        -   os: linux
-            dist: trusty
-            sudo: required
-            env: 
-                - ANACONDA_BUILD_RECIPES="python-scons"
-                - MINICONDA="2"
-        -   os: linux
-            dist: trusty
-            sudo: required
-            env:
-                - ANACONDA_BUILD_RECIPES="python-scons"
-                - MINICONDA="3"
-        -   os: linux
-            dist: trusty
-            sudo: required
-            env: 
-                - ANACONDA_BUILD_RECIPES="python-gitpython"
-                - MINICONDA="2"
-        -   os: linux
-            dist: trusty
-            sudo: required
-            env: 
-                - ANACONDA_BUILD_RECIPES="python-gitpython"
-                - MINICONDA="3"
-        -   os: linux
-            dist: trusty
-            sudo: required
-            services:
-                - docker
-        -   os: osx
-            osx_image: xcode7.2
-            env: 
-                - ANACONDA_BUILD_RECIPES="libboost"
-                - MINICONDA="2"
-        -   os: osx
-            osx_image: xcode7.2
-            env: 
-                - ANACONDA_BUILD_RECIPES="libboost"
-                - MINICONDA="3"
-        -   os: osx
-            osx_image: xcode7.2   
-            env: 
-                - ANACONDA_BUILD_RECIPES="python-scons"
-                - MINICONDA="2"
-        -   os: osx
-            osx_image: xcode7.2   
-            env: 
-                - ANACONDA_BUILD_RECIPES="python-scons"
-                - MINICONDA="3"
-        -   os: osx
-            osx_image: xcode7.2   
-            env: 
-                - ANACONDA_BUILD_RECIPES="python-gitpython"
-                - MINICONDA="2"    
-        -   os: osx
-            osx_image: xcode7.2   
-            env: 
-                - ANACONDA_BUILD_RECIPES="python-gitpython"
-                - MINICONDA="3"    
-  
+os:
+  - linux
+  - osx
+
+sudo: required
+
+env:
+  # - RECIPE=gmp
+  # - RECIPE=mpfr
+  # - RECIPE=mpc
+  # - RECIPE=isl
+  # - RECIPE=binutils
+  # - RECIPE=glibc
+  # - RECIPE=gcc 
+  # - RECIPE=libgcc
+  - RECIPE=python-scons
+  - RECIPE=libdev
+  - RECIPE=python-dev
+  - RECIPE=python-dbg
+  - RECIPE=llvm
+  - RECIPE=clang
+  - RECIPE=python-clang
+  - RECIPE=libboost
+
 install:
-    -   git clone https://gist.github.com/319558c83d145620a6d4decdcadfbfb0.git config-travis
-    -   cd config-travis
-    -   source config.sh
-    -   cd ..
+  - git clone https://gist.github.com/319558c83d145620a6d4decdcadfbfb0.git travis-ci
+  - cd travis-ci
+  - source install-script.sh
+  - cd ..
 
 script:
-    -   if [[ ! -z $ANACONDA_BUILD_RECIPES ]]; then
-            cd conda;
-            bash build.sh;
-            cd ..;
-        else
-            cd docker;
-            bash build.sh;
-            cd ..;
-        fi
+  - cd conda
+  - conda build $RECIPE -c statiskit -c conda-forge
+  - cd ..
 
 after_success:
-    # -   export ANACONDA_UPLOAD_FLAGS="--force"
-    -   if [[ ! "$ANACONDA_BUILD_RECIPES" = "" ]] && [[ "$TRAVIS_BRANCH" = "master" ]] && [[ "$TRAVIS_PULL_REQUEST" = "false" ]] && [[ ! -z $ANACONDA_USERNAME ]]; then
-            cd conda;
-            bash upload.sh;
-            cd ..;
-        fi
-    -   if [[ "$ANACONDA_BUILD_RECIPES" = "" ]] && [[ "$TRAVIS_BRANCH" = "master" ]] && [[ "$TRAVIS_PULL_REQUEST" = "false" ]] && [[ "$TRAVIS_OS_NAME" = "linux" ]] && [[ ! -z $DOCKER_USERNAME ]]; then
-            cd docker;
-            bash upload.sh;
-            cd ..;
-        fi
+  - echo "Success"
+
+before_deploy:
+  - cd travis-ci
+  - source before_deploy-script.sh
+  - cd ..
+
+deploy:
+  script:
+    - cd conda;
+    - if [[ "$ANACONDA_DEPLOY" = "true" ]]; then
+        anaconda upload `conda build $RECIPE -c statiskit -c conda-forge --output` -u statiskit --force;
+      fi
+    - cd ..
+
+
+after_deploy:
+  - cd travis-ci
+  - source after_deploy-script.sh
+  - cd ..

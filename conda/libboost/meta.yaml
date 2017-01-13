@@ -11,10 +11,6 @@ source:
 
 build:
   number: 0
-  features:
-    - {{ TOOLCHAIN }}
-  track_features:
-    - {{ TOOLCHAIN }}
 
 about:
   home: http://www.boost.org/
@@ -22,11 +18,13 @@ about:
 
 requirements:
   build:
+    - libdev
     - python
     - icu 54.*          [unix]
     - bzip2             [unix]
     - zlib
   run:
+    - libdev
     - python
     - icu 54.*          [unix]
     - zlib

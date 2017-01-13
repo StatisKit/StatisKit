@@ -1,8 +1,8 @@
 set +xe
 
 GITHUB_USERNAME="StatisKit"
-GITHUB_REPOSITORY="Misc"
-DEFAULT_ANACONDA_BUILD_RECIPES="libboost python-gitpython python-scons"
+GITHUB_REPOSITORY="PyClangLite"
+DEFAULT_ANACONDA_BUILD_RECIPES="libllvm libclang libclanglite python-clanglite"
 DEFAULT_ANACONDA_CHANNELS="statiskit conda-forge"
 
 if [[ -z $ANACONDA_CHANNELS ]]; then

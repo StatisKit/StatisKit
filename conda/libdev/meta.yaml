@@ -1,0 +1,52 @@
+##################################################################################
+#                                                                                #
+# PyClangLite: Python bindings for Clang                                         #
+#                                                                                #
+# Homepage: http://pyclanglite.readthedocs.io/                                   #
+#                                                                                #
+# Copyright (c) 2016 Pierre Fernique                                             #
+#                                                                                #
+# This software is distributed under the CeCILL-C license. You should have       #
+# received a copy of the legalcode along with this work. If not, see             #
+# <http://www.cecill.info/licences/Licence_CeCILL-C_V1-en.html>.                 #
+#                                                                                #
+# File authors: Pierre Fernique <pfernique@gmail.com> (26)                       #
+#                                                                                #
+##################################################################################
+
+package:
+  name: libdev
+  version: "1.0.0"
+    
+build:
+  number: 0
+
+about:
+  home: http://statiskit.readthedocs.io/
+  license: CeCILL-C
+  
+requirements:
+  run:
+    - python
+    - python-scons
+    - python-pkgtk
+# requirements:
+#   build:
+#     - gcc               [linux]
+#     - libgcc            [linux]
+#     - glibc             [linux]
+#     - binutils          [linux]
+#     - clang             [unix]
+#   run:
+#     - gcc               [linux]
+#     - libgcc            [linux]
+#     - glibc             [linux]
+#     - binutils          [linux]
+#     - clang             [unix]
+
+# test:
+#   commands:
+#   - gcc -x c -v -E /dev/null        [linux]
+#   - gcc -x c++ -v -E /dev/null      [linux]
+#   - clang -x c -v -E /dev/null      [unix]
+#   - clang++ -x c++ -v -E /dev/null  [unix]
