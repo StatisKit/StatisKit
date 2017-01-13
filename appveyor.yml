@@ -3,6 +3,7 @@ platform:
 
 environment:
   matrix:
+    - RECIPE: vcs
     - RECIPE: python-scons
     - RECIPE: python-parse
     - RECIPE: libdev
