@@ -1,0 +1,21 @@
+package:
+  name: python-scons
+  version: "2.5.0"
+
+source:
+  path: scons-2.5.0-py27 # [py27]
+  path: scons-2.5.0-py35 # [py35]
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - python
+  run:
+    - python
+
+about:
+  home: http://www.scons.org/
+  license: MIT
+  summary: 'Open Source next-generation build tool.'
