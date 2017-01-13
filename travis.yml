@@ -6,6 +6,9 @@ os:
 
 sudo: required
 
+services:
+  - docker
+  
 env:
   # - RECIPE=gmp
   # - RECIPE=mpfr
