@@ -1,39 +1,50 @@
 platform:
-    -   x64
+  -   x64
 
 environment:
-    matrix:
-      - RECIPE=python-scons
-      - RECIPE=libdev
-      - RECIPE=python-dev
-      - RECIPE=python-dbg
-      - RECIPE=llvm
-      - RECIPE=clang
-      - RECIPE=python-clang
-      - RECIPE=libboost
+  matrix:
+    - RECIPE=python-scons
+    - RECIPE=libdev
+    - RECIPE=python-dev
+    - RECIPE=python-dbg
+    - RECIPE=llvm
+    - RECIPE=clang
+    - RECIPE=python-clang
+    - RECIPE=libboost
 
 install:
-    -   git clone https://gist.github.com/a08b6eb1c97fad864de50601d70008c8.git appveyor-ci
-    -   cd appveyor-ci
-    -   call install-script.bat
-    -   cd ..
+  - git clone https://gist.github.com/a08b6eb1c97fad864de50601d70008c8.git appveyor-ci
+  - cd appveyor-ci
+  - call install.bat
     
+before_build:
+  - call before_build.bat
+
 build_script:
-    - cd conda
-    - '%CMD_IN_ENV% conda build %RECIPE% -c statiskit -c conda-forge'
-    - cd ..
-    
-on_success:
-    - echo "Success"
-   
-before_deploy:
-    - cd appveyor-ci
-    - call anaconda upload `conda build $RECIPE -c statiskit -c conda-forge --output` -u statiskit --force;
-    -   if "%APPVEYOR_REPO_BRANCH%"=="master" if "%APPVEYOR_PULL_REQUEST_NUMBER%"=="" if not "%ANACONDA_USERNAME%"=="" call upload.bat
-    -   cd ..
-    
+  - call build_script.bat
+  
+after_build:
+  - call after_build.bat
+
 deploy:
     on:
-      branch: release_*
+      branch: master
  
+before_deploy:
+  - call before_deploy.bat
+
 deploy_script:
+  - call deploy_script.bat
+
+after_deploy:
+  - call after_deploy.bat
+
+on_success:
+  - call on_success.bat
+
+on_failure:
+  - call on_failure.bat
+
+on_finish:
+  - call on_finish.bat
+    
