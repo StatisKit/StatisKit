@@ -1,58 +1,31 @@
-.. ................................................................................ ..
-..                                                                                  ..
-..  StatisKit: meta-repository providing general documentation and tools for the    ..
-..  **StatisKit** Organization                                                      ..
-..                                                                                  ..
-..  Copyright (c) 2016 Pierre Fernique                                              ..
-..                                                                                  ..
-..  This software is distributed under the CeCILL-C license. You should have        ..
-..  received a copy of the legalcode along with this work. If not, see              ..
-..  <http://www.cecill.info/licences/Licence_CeCILL-C_V1-en.html>.                  ..
-..                                                                                  ..
-..  File authors: Pierre Fernique <pfernique@gmail.com> (9)                         ..
-..                                                                                  ..
-.. ................................................................................ ..
+StatisKit: A Software Suite for Statistical Analyses
+####################################################
 
-|NAME|: |BRIEF|
-###############
+.. sidebar:: Summary
 
-.. list-table::
-    :stub-columns: 1
+    :Status: |READTHEDOCS|
+    :License: |LICENSE|
+    :Authors: |AUTHORS|
 
-    * - Version
-      - |VERSION|
-    * - Status
-      - |TRAVIS| |COVERALLS| |LANDSCAPE| |READTHEDOCS|
-    * - Authors
-      - see |AUTHORSFILE|_ file
-    * - License
-      - |LICENSENAME| (see |LICENSEFILE|_ file)
+**StatisKit** is a collection of open source software designed to provide an environement for performing statistical analyses in *Python*.
+    
+.. |LICENSE| replace:: see |LICENSEFILE|_ file
 
-.. MngIt
-
-.. |NAME| replace:: StatisKit
-
-.. |BRIEF| replace:: meta-repository providing general documentation and tools for the **StatisKit** Organization
-
-.. |DETAILS| unicode:: U+0020
-
-.. |VERSION| replace:: 0.1.0
-
-.. |AUTHORSFILE| replace:: AUTHORS.rst
-
-.. _AUTHORSFILE : AUTHORS.rst
-
-.. |LICENSENAME| replace:: CeCILL-C
+.. |AUTHORS| replace:: see |AUTHORSFILE|_ file
 
 .. |LICENSEFILE| replace:: LICENSE.rst
 
 .. _LICENSEFILE : LICENSE.rst
 
+.. |AUTHORSFILE| replace:: AUTHORS.rst
+
+.. _AUTHORSFILE : AUTHORS.rst
+
 .. |TRAVIS| image:: https://travis-ci.org/StatisKit/StatisKit.svg?branch=master
            :target: https://travis-ci.org/StatisKit/StatisKit
            :alt: Travis
 
-.. |COVERALLS| image:: https://coveralls.io/repos/github/StatisKit/StatisKit/badge.svg?branch=master
+.. |COVERALLS| image:: https://coveralls.io/repos/github/StatisKit/StatisKit/badge.svg
                :target: https://coveralls.io/github/StatisKit/StatisKit?branch=master
                :alt: Coveralls
 
@@ -60,8 +33,6 @@
                 :target: https://landscape.io/github/StatisKit/StatisKit/master
                 :alt: Landscape
 
-.. |READTHEDOCS| image:: https://readthedocs.org/projects/StatisKit/badge/?version=latest
-                :target: http://StatisKit.readthedocs.io/en/latest
+.. |READTHEDOCS| image:: https://readthedocs.org/projects/StatisKit/badge/?version=v1.0.0
+                :target: http://statiskit.readthedocs.io
                 :alt: Read the Docs
-
-.. MngIt

@@ -1,0 +1,9 @@
+name: python-statiskit
+channels:
+  - statiskit
+  - conda-forge
+dependencies:
+  - ipython
+  - jupyter
+  - python-statiskit_core
+  - python-statiskit_glm

@@ -1,0 +1,73 @@
+language: cpp
+
+os:
+  - linux
+  - osx
+
+sudo: required
+
+services:
+  - docker
+  
+env:
+  # - RECIPE=gmp
+  # - RECIPE=mpfr
+  # - RECIPE=mpc
+  # - RECIPE=isl
+  # - RECIPE=binutils
+  # - RECIPE=glibc
+  # - RECIPE=gcc 
+  # - RECIPE=libgcc
+  - RECIPE=vcs
+  - RECIPE=python-scons
+  - RECIPE=python-parse
+  - RECIPE=libdev
+  - RECIPE=python-dev
+  - RECIPE=python-dbg
+  - RECIPE=python-doc
+  - RECIPE=llvm
+  - RECIPE=clang
+  - RECIPE=python-clang
+  - RECIPE=libboost
+  - UBUNTU=14.04
+  - UBUNTU=16.04
+
+matrix:
+  exclude:
+  - os: osx
+    env: UBUNTU=14.04
+  - os: osx
+    env: UBUNTU=16.04
+
+install:
+  - git clone https://gist.github.com/319558c83d145620a6d4decdcadfbfb0.git travis-ci
+  - cd travis-ci
+  - source install.sh
+
+before_script:
+  - source before_script.sh
+
+script:
+  - source script.sh
+
+after_success:
+  - source after_success.sh
+
+after_failure:
+  - source after_failure.sh
+
+before_deploy:
+  - source before_deploy.sh
+
+deploy:
+  skip_cleanup: true
+  provider: script
+  on:
+      branch: master
+  script: bash deploy_script.sh
+
+after_deploy:
+  - source after_deploy.sh
+
+after_script:
+  - source after_script.sh

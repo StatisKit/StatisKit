@@ -1,0 +1,30 @@
+
+# Adpated from https://github.com/conda/conda-recipes/tree/master/boost
+package:
+  name: libboost
+  version: 1.61.0
+
+source:
+  fn:  boost_1_61_0.tar.bz2
+  url: http://sourceforge.net/projects/boost/files/boost/1.61.0/boost_1_61_0.tar.bz2
+  md5: 6095876341956f65f9d35939ccea1a9f
+
+build:
+  number: 0
+
+about:
+  home: http://www.boost.org/
+  license: Boost-1.0
+
+requirements:
+  build:
+    - libdev
+    - python
+    - icu 54.*          [unix]
+    - bzip2             [unix]
+    - zlib
+  run:
+    - libdev
+    - python
+    - icu 54.*          [unix]
+    - zlib
