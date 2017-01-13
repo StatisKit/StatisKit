@@ -49,8 +49,7 @@ deploy:
   provider: script
   on:
       branch: master
-  script:
-    - travis-ci/deploy_script.sh
+  script: travis-ci/deploy_script.sh
 
 after_deploy:
   - source after_deploy.sh
