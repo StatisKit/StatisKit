@@ -18,6 +18,7 @@ env:
   # - RECIPE=glibc
   # - RECIPE=gcc 
   # - RECIPE=libgcc
+  - RECIPE=vcs
   - RECIPE=python-scons
   - RECIPE=python-parse
   - RECIPE=libdev
