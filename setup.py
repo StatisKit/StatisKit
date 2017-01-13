@@ -2,7 +2,7 @@
 #                                                                                #
 # PkgTk: Tool kit for Python packages                                            #
 #                                                                                #
-# Homepage: pkgtk.readthedocs.io                                                 #
+# Homepage: pkg.readthedocs.io                                                 #
 #                                                                                #
 # Copyright (c) 2016 Pierre Fernique                                             #
 #                                                                                #
@@ -22,7 +22,7 @@ for package in find_packages("src" + os.sep + "py"):
     packages[package] = "src" + os.sep + "py"
 
 try:
-  from pkgtk.metadata import load_metadata
+  from pkg.metadata import load_metadata
   metadata = load_metadata('.')
 except:
   class MetaData(object):
@@ -45,11 +45,11 @@ setup(packages = packages.keys(),
       description = metadata.description,
       long_description = metadata.long_description,
       license = metadata.license,
-      entry_points = {'pkgtk.load_authors': ['commit = pkgtk.load_authors_commit:load_authors'],
-                      'console_scripts': ['pkgtk = pkgtk.scripts:pkgtk'],
-                      'pkgtk.load_about': ['github = pkgtk.load_about_github:load_about'],
-                      'pkgtk.load_license': ['CeCILL-C = pkgtk.load_license_cecillc:load_license',
-                                             'CeCILL = pkgtk.load_license_cecill:load_license']},
+      entry_points = {'pkg.load_authors': ['commit = pkg.load_authors_commit:load_authors'],
+                      'console_scripts': ['pkg = pkg.scripts:pkg'],
+                      'pkg.load_about': ['github = pkg.load_about_github:load_about'],
+                      'pkg.load_license': ['CeCILL-C = pkg.load_license_cecillc:load_license',
+                                             'CeCILL = pkg.load_license_cecill:load_license']},
       zip_safe = False)
 
 del metadata

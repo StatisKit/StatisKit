@@ -2,7 +2,7 @@
 #                                                                                #
 # PkgTk: Tool kit for Python packages                                            #
 #                                                                                #
-# Homepage: pkgtk.readthedocs.io                                                 #
+# Homepage: pkg.readthedocs.io                                                 #
 #                                                                                #
 # Copyright (c) 2016 Pierre Fernique                                             #
 #                                                                                #

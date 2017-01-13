@@ -2,7 +2,7 @@
 #                                                                                #
 # PkgTk: Tool kit for Python packages                                            #
 #                                                                                #
-# Homepage: pkgtk.readthedocs.io                                                 #
+# Homepage: pkg.readthedocs.io                                                 #
 #                                                                                #
 # Copyright (c) 2016 Pierre Fernique                                             #
 #                                                                                #
@@ -17,8 +17,8 @@
 import os
 import unittest
 
-from pkgtk.config import init_config
-from pkgtk.authors import init_authors, load_authors
+from pkg.config import init_config
+from pkg.authors import init_authors, load_authors
 
 class TestAuthors(unittest.TestCase):
     """Test functions related to authoring"""
@@ -28,12 +28,12 @@ class TestAuthors(unittest.TestCase):
         cls.repository = '.'
         init_authors(cls.repository)
         cls.config = init_config(cls.repository)
-        os.rename(cls.repository + os.sep + '.pkgtk.yml', cls.repository + os.sep + '.pkgtk.back')
+        os.rename(cls.repository + os.sep + '.pkg.yml', cls.repository + os.sep + '.pkg.back')
         if 'basename' in cls.config['authors']:
             os.rename(cls.repository + os.sep + cls.config['authors']['basename'], cls.repository + os.sep + cls.config['authors']['basename'] + '.back')
 
     def test_init(self):
-        """Test `init_authors` function of module `pkgtk.authors`"""
+        """Test `init_authors` function of module `pkg.authors`"""
         init_authors(self.repository)
         with self.assertRaises(AttributeError):
             init_authors(self.repository, format='{phone}')
@@ -44,7 +44,7 @@ class TestAuthors(unittest.TestCase):
         self.assertDictContainsSubset(config, self.config)
 
     def test_commit(self):
-        """Test `load_authors` function of module `pkgtk.load_authors_commit`"""
+        """Test `load_authors` function of module `pkg.load_authors_commit`"""
         self.assertIn('commit', load_authors)
         load_authors.plugin = 'commit'
         authors = load_authors(self.repository)
@@ -56,7 +56,7 @@ class TestAuthors(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        os.unlink(cls.repository + os.sep + '.pkgtk.yml')
-        os.rename(cls.repository + os.sep + '.pkgtk.back', cls.repository + os.sep + '.pkgtk.yml')
+        os.unlink(cls.repository + os.sep + '.pkg.yml')
+        os.rename(cls.repository + os.sep + '.pkg.back', cls.repository + os.sep + '.pkg.yml')
         if 'basename' in cls.config['authors']:
             os.rename(cls.repository + os.sep + cls.config['authors']['basename'] + '.back', cls.repository + os.sep + cls.config['authors']['basename'])

@@ -2,7 +2,7 @@
 #                                                                                #
 # PkgTk: Tool kit for Python packages                                            #
 #                                                                                #
-# Homepage: pkgtk.readthedocs.io                                                 #
+# Homepage: pkg.readthedocs.io                                                 #
 #                                                                                #
 # Copyright (c) 2016 Pierre Fernique                                             #
 #                                                                                #
@@ -53,7 +53,7 @@ def init_about(repository, **kwargs):
     dump_config(repository, config)
     return config
 
-load_about = PluginManager('pkgtk.load_about',
+load_about = PluginManager('pkg.load_about',
         brief = "A plugin manager for loading about from software repositories",
         details = """Authors are used to produce a `AUTHORS.*` file and in source\
                    code file license headers.

@@ -2,7 +2,7 @@
 #                                                                                #
 # PkgTk: Tool kit for Python packages                                            #
 #                                                                                #
-# Homepage: pkgtk.readthedocs.io                                                 #
+# Homepage: pkg.readthedocs.io                                                 #
 #                                                                                #
 # Copyright (c) 2016 Pierre Fernique                                             #
 #                                                                                #
@@ -45,7 +45,7 @@ def init_license(repository, **kwargs):
     config['license'] = license
     dump_config(repository, config)
 
-load_license = PluginManager('pkgtk.load_license',
+load_license = PluginManager('pkg.load_license',
         brief = "A plugin manager for loading license from software repositories",
         details = """License is used to produce a `LICENSE.*` file and in source\
                    code file license headers.
@@ -103,7 +103,7 @@ def dump_license(repository, config):
     load_license.plugin = config['license']['plugin']
     with open(repository + os.sep + config['license']['basename'], 'w') as filehandler:
         filehandler.write(load_license(repository, None, config=config))
-    exclude = config['license'].get('exclude', []) + list(supplementary_exclude(repository, config)) + ['./.pkgtk.yml']
+    exclude = config['license'].get('exclude', []) + list(supplementary_exclude(repository, config)) + ['./.pkg.yml']
     for filepath in path(repository).walkfiles():
         language = get_language(filepath)
         if language and not any(fnmatch.fnmatch(filepath, pattern) for pattern in exclude):

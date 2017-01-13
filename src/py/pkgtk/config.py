@@ -2,7 +2,7 @@
 #                                                                                #
 # PkgTk: Tool kit for Python packages                                            #
 #                                                                                #
-# Homepage: pkgtk.readthedocs.io                                                 #
+# Homepage: pkg.readthedocs.io                                                 #
 #                                                                                #
 # Copyright (c) 2016 Pierre Fernique                                             #
 #                                                                                #
@@ -29,7 +29,7 @@ def init_config(repository, **kwargs):
     return config
 
 def load_config(repository):
-    config = repository + os.sep + '.pkgtk.yml'
+    config = repository + os.sep + '.pkg.yml'
     if not os.path.exists(config):
         config = dict()
     else:
@@ -38,6 +38,6 @@ def load_config(repository):
     return config
 
 def dump_config(repository, config):
-    with open(repository + os.sep + '.pkgtk.yml', 'w') as filehandler:
+    with open(repository + os.sep + '.pkg.yml', 'w') as filehandler:
         filehandler.write(yaml.dump(config, default_flow_style=False))
 

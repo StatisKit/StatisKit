@@ -2,7 +2,7 @@
 #                                                                                #
 # PkgTk: Tool kit for Python packages                                            #
 #                                                                                #
-# Homepage: pkgtk.readthedocs.io                                                 #
+# Homepage: pkg.readthedocs.io                                                 #
 #                                                                                #
 # Copyright (c) 2016 Pierre Fernique                                             #
 #                                                                                #
@@ -18,10 +18,10 @@ import parse
 
 from argparse import ArgumentParser, RawTextHelpFormatter
 
-from pkgtk.config import init_config
-from pkgtk.authors import init_authors, load_authors, dump_authors
-from pkgtk.about import init_about, load_about, dump_about
-from pkgtk.license import init_license, load_license, dump_license
+from pkg.config import init_config
+from pkg.authors import init_authors, load_authors, dump_authors
+from pkg.about import init_about, load_about, dump_about
+from pkg.license import init_license, load_license, dump_license
 
 def authors_script(args):
     """Add the authors option in the configuration file"""
@@ -83,7 +83,7 @@ def license_script(args):
     config = init_config(root)
     dump_license(root, config)
 
-def pkgtk(args=None):
+def pkg(args=None):
     parser = ArgumentParser(description='Software manager',
             formatter_class=RawTextHelpFormatter)
 

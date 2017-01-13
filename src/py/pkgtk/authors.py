@@ -2,7 +2,7 @@
 #                                                                                #
 # PkgTk: Tool kit for Python packages                                            #
 #                                                                                #
-# Homepage: pkgtk.readthedocs.io                                                 #
+# Homepage: pkg.readthedocs.io                                                 #
 #                                                                                #
 # Copyright (c) 2016 Pierre Fernique                                             #
 #                                                                                #
@@ -119,7 +119,7 @@ class Authors(object):
                                 for name in self._emails],
                                key=lambda author: author.score))
 
-load_authors = PluginManager('pkgtk.load_authors',
+load_authors = PluginManager('pkg.load_authors',
         brief = "A plugin manager for loading authors from software repositories",
         details = """Authors are used to produce a `AUTHORS.*` file and in source\
                    code file license headers.

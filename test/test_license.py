@@ -2,7 +2,7 @@
 #                                                                                #
 # PkgTk: Tool kit for Python packages                                            #
 #                                                                                #
-# Homepage: pkgtk.readthedocs.io                                                 #
+# Homepage: pkg.readthedocs.io                                                 #
 #                                                                                #
 # Copyright (c) 2016 Pierre Fernique                                             #
 #                                                                                #
@@ -22,8 +22,8 @@ import __builtin__ as builtins
 import path
 
 from tempfile import NamedTemporaryFile
-from pkgtk.config import init_config
-from pkgtk.license import init_license, load_license, dump_license
+from pkg.config import init_config
+from pkg.license import init_license, load_license, dump_license
 
 class TemplateRender(object):
 
@@ -57,16 +57,16 @@ class TestLicence(unittest.TestCase):
         init_license(cls.repository, plugin='CeCILL-C')
         cls.config = init_config(cls.repository)
         cls.config['license']['exclude'] += path.path(cls.repository).walkfiles()
-        os.rename(cls.repository + os.sep + '.pkgtk.yml', cls.repository + os.sep + '.pkgtk.back')
+        os.rename(cls.repository + os.sep + '.pkg.yml', cls.repository + os.sep + '.pkg.back')
         os.rename(cls.repository + os.sep + cls.config['license']['basename'], cls.repository + os.sep + cls.config['license']['basename'] + '.back')
 
     def test_init(self):
-        """Test `init_license` function of module `pkgtk.license`"""
+        """Test `init_license` function of module `pkg.license`"""
         init_license(self.repository, plugin='CeCILL-C')
         init_license(self.repository)
 
     def test_load_dump_cecillc(self, plugin='CeCILL-C'):
-        """Test `dump_license` function of module `pkgtk.license`"""
+        """Test `dump_license` function of module `pkg.license`"""
         load_license.plugin = plugin
         repo = git.Repo('.')
         commit = repo.commit('HEAD')
@@ -104,7 +104,7 @@ class TestLicence(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        os.unlink(cls.repository + os.sep + '.pkgtk.yml')
-        os.rename(cls.repository + os.sep + '.pkgtk.back', cls.repository + os.sep + '.pkgtk.yml')
+        os.unlink(cls.repository + os.sep + '.pkg.yml')
+        os.rename(cls.repository + os.sep + '.pkg.back', cls.repository + os.sep + '.pkg.yml')
         os.unlink(cls.repository + os.sep + cls.config['license']['basename'])
         os.rename(cls.repository + os.sep + cls.config['license']['basename'] + '.back', cls.repository + os.sep + cls.config['license']['basename'])

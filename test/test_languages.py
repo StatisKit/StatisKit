@@ -2,7 +2,7 @@
 #                                                                                #
 # PkgTk: Tool kit for Python packages                                            #
 #                                                                                #
-# Homepage: pkgtk.readthedocs.io                                                 #
+# Homepage: pkg.readthedocs.io                                                 #
 #                                                                                #
 # Copyright (c) 2016 Pierre Fernique                                             #
 #                                                                                #
@@ -16,7 +16,7 @@
 
 import unittest
 
-from pkgtk.languages import get_language
+from pkg.languages import get_language
 
 class TestLanguages(unittest.TestCase):
     """Test functions related to languages"""

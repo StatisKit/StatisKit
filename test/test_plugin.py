@@ -2,7 +2,7 @@
 #                                                                                #
 # PkgTk: Tool kit for Python packages                                            #
 #                                                                                #
-# Homepage: pkgtk.readthedocs.io                                                 #
+# Homepage: pkg.readthedocs.io                                                 #
 #                                                                                #
 # Copyright (c) 2016 Pierre Fernique                                             #
 #                                                                                #
@@ -16,7 +16,7 @@
 
 import unittest
 
-from pkgtk.plugin import PluginManager, ProxyManager
+from pkg.plugin import PluginManager, ProxyManager
 
 class Hello(object):
 
@@ -31,16 +31,16 @@ class Salut(object):
         return "salut"
 
 class TestPlugin(unittest.TestCase):
-    """Test functions related to :mod:`pkgtk.plugin`"""
+    """Test functions related to :mod:`pkg.plugin`"""
 
     @classmethod
     def setUpClass(cls):
-        cls.proxy_manager = ProxyManager('pkgtk.proxytest',
+        cls.proxy_manager = ProxyManager('pkg.proxytest',
                                          brief = "This is a brief description",
                                          details = "This is a more detailed description")
         cls.proxy_manager['en'] = Hello
 
-        cls.plugin_manager = PluginManager('pkgtk.plugintest',
+        cls.plugin_manager = PluginManager('pkg.plugintest',
                                            brief = "This is a brief description",
                                            details = "This is a more detailed description")
         cls.plugin_manager['en'] = Hello.hello

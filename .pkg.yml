@@ -1,10 +1,10 @@
 about:
   authors:
   - !!python/unicode 'Pierre Fernique'
-  brief: !!python/unicode 'Tool kit for Python packages'
+  brief: !!python/unicode 'Tool kit for packaging'
   email: !!python/unicode 'statiskit@googlegroups.com'
-  homepage: pkgtk.readthedocs.io
-  name: !!python/unicode 'PkgTk'
+  homepage: autowig.readthedocs.io
+  name: !!python/unicode 'Pkg'
   plugin: github
   version: v0.1.0
 authors:
@@ -16,7 +16,7 @@ license:
   exclude:
   - ./.git/*
   - ./build/*
-  - ./.pkgtk.yml
+  - ./.pkg.yml
   - ./CONTRIBUTORS.rst
   - ./LICENSE.rst
   plugin: CeCILL-C

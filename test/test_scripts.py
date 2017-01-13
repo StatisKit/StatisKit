@@ -2,7 +2,7 @@
 #                                                                                #
 # PkgTk: Tool kit for Python packages                                            #
 #                                                                                #
-# Homepage: pkgtk.readthedocs.io                                                 #
+# Homepage: pkg.readthedocs.io                                                 #
 #                                                                                #
 # Copyright (c) 2016 Pierre Fernique                                             #
 #                                                                                #
@@ -17,8 +17,8 @@
 import os
 import unittest
 
-from pkgtk.config import load_config
-from pkgtk.scripts import pkgtk
+from pkg.config import load_config
+from pkg.scripts import pkg
 
 class TestScripts(unittest.TestCase):
     """Test functions related to scripts"""
@@ -27,30 +27,30 @@ class TestScripts(unittest.TestCase):
     def setUpClass(cls):
         cls.repository = '.'
         cls.config = load_config(cls.repository)
-        os.rename(cls.repository + os.sep + '.pkgtk.yml', cls.repository + os.sep + '.pkgtk.back')
+        os.rename(cls.repository + os.sep + '.pkg.yml', cls.repository + os.sep + '.pkg.back')
         if 'basename' in cls.config['authors']:
             os.rename(cls.repository + os.sep + cls.config['authors']['basename'], cls.repository + os.sep + cls.config['authors']['basename'] + '.back')
 
     def test_authors(self):
-        """Test `pkgtk authors` script of module `pkgtk.scripts`"""
-        pkgtk(['authors'])
-        pkgtk(['authors']+['--' + key + '=' + str(value) for key, value in self.config['authors'].iteritems()])
+        """Test `pkg authors` script of module `pkg.scripts`"""
+        pkg(['authors'])
+        pkg(['authors']+['--' + key + '=' + str(value) for key, value in self.config['authors'].iteritems()])
 
     def test_license(self):
-        """Test `pkgtk license` script of module `pkgtk.scripts`"""
-        pkgtk(['license']+['--' + key + '=' + str(value) for key, value in self.config['license'].iteritems() if not key == 'exclude'])
+        """Test `pkg license` script of module `pkg.scripts`"""
+        pkg(['license']+['--' + key + '=' + str(value) for key, value in self.config['license'].iteritems() if not key == 'exclude'])
 
     def test_about(self):
-        """Test `pkgtk about` script of module `pkgtk.scripts`"""
-        pkgtk(['about']+['--' + key + '=' + '""' for key, value in self.config['about'].iteritems() if not key == 'plugin'])
-        pkgtk(['about']+['--' + key + '=' + str(value) for key, value in self.config['about'].iteritems()])
-        pkgtk(['about', '--remote=https://github.com/StatisKit/PkgTk.git'])
-        pkgtk(['about', '--remote='])
+        """Test `pkg about` script of module `pkg.scripts`"""
+        pkg(['about']+['--' + key + '=' + '""' for key, value in self.config['about'].iteritems() if not key == 'plugin'])
+        pkg(['about']+['--' + key + '=' + str(value) for key, value in self.config['about'].iteritems()])
+        pkg(['about', '--remote=https://github.com/StatisKit/PkgTk.git'])
+        pkg(['about', '--remote='])
 
     @classmethod
     def tearDownClass(cls):
-        os.unlink(cls.repository + os.sep + '.pkgtk.yml')
-        os.rename(cls.repository + os.sep + '.pkgtk.back', cls.repository + os.sep + '.pkgtk.yml')
+        os.unlink(cls.repository + os.sep + '.pkg.yml')
+        os.rename(cls.repository + os.sep + '.pkg.back', cls.repository + os.sep + '.pkg.yml')
         if 'basename' in cls.config['authors']:
             os.unlink(cls.repository + os.sep + cls.config['authors']['basename'])
             os.rename(cls.repository + os.sep + cls.config['authors']['basename'] + '.back', cls.repository + os.sep + cls.config['authors']['basename'])
