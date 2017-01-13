@@ -50,7 +50,7 @@ deploy:
   on:
       branch: master
   script:
-    - deploy_script.sh
+    - travis-ci/deploy_script.sh
 
 after_deploy:
   - source after_deploy.sh
