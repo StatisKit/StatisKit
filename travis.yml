@@ -27,32 +27,31 @@ env:
 install:
   - git clone https://gist.github.com/319558c83d145620a6d4decdcadfbfb0.git travis-ci
   - cd travis-ci
-  - source install-script.sh
-  - cd ..
+  - source install.sh
+
+before_script:
+  - source before_script.sh
 
 script:
-  - cd conda
-  - conda build $RECIPE -c statiskit -c conda-forge
-  - cd ..
+  - source script.sh
 
 after_success:
-  - echo "Success"
+  - source after_success.sh
+
+after_failure:
+  - source after_failure.sh
 
 before_deploy:
-  - cd travis-ci
-  - source before_deploy-script.sh
-  - cd ..
+  - source before_deploy.sh
 
 deploy:
+  on:
+      branch: master
   script:
-    - cd conda;
-    - if [[ "$ANACONDA_DEPLOY" = "true" ]]; then
-        anaconda upload `conda build $RECIPE -c statiskit -c conda-forge --output` -u statiskit --force;
-      fi
-    - cd ..
-
+    - source deploy_script.sh
 
 after_deploy:
-  - cd travis-ci
-  - source after_deploy-script.sh
-  - cd ..
+  - source after_deploy.sh
+
+after_script:
+  - source after_script.sh
