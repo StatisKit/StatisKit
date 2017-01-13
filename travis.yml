@@ -50,7 +50,7 @@ deploy:
   on:
       branch: master
   script:
-    - source deploy_script.sh
+    - deploy_script.sh
 
 after_deploy:
   - source after_deploy.sh
