@@ -1,0 +1,54 @@
+platform:
+  -   x64
+
+environment:
+  matrix:
+    - RECIPE: vcs
+    - RECIPE: python-scons
+    - RECIPE: python-parse
+    - RECIPE: libdev
+    - RECIPE: python-dev
+    - RECIPE: python-dbg
+    - RECIPE: python-doc
+    - RECIPE: llvm
+    - RECIPE: clang
+    - RECIPE: python-clang
+    - RECIPE: libboost
+
+install:
+  - git clone https://gist.github.com/a08b6eb1c97fad864de50601d70008c8.git appveyor-ci
+  - cd appveyor-ci
+  - call install.bat
+    
+before_build:
+  - call before_build.bat
+
+build_script:
+  - call build_script.bat
+  
+after_build:
+  - call after_build.bat
+
+deploy:
+  provider: Script
+  on:
+    branch: master
+ 
+before_deploy:
+  - call before_deploy.bat
+
+deploy_script:
+  - call deploy_script.bat
+
+after_deploy:
+  - call after_deploy.bat
+
+on_success:
+  - call on_success.bat
+
+on_failure:
+  - call on_failure.bat
+
+on_finish:
+  - call on_finish.bat
+    

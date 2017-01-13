@@ -1,0 +1,23 @@
+package:
+  name: gmp
+  version: "4.3.2"
+
+source:
+  fn: gmp-4.3.2.tar.bz2
+  url: ftp://gcc.gnu.org/pub/gcc/infrastructure/gmp-4.3.2.tar.bz2
+
+build:
+  number: 1
+  detect_binary_files_with_prefix: True
+
+requirements:
+  build:
+    - m4
+
+test:
+  files:
+    - test.c
+
+about:
+  home: http://gmplib.org/
+  license: GPL 3
