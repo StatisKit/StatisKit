@@ -29,6 +29,8 @@ env:
   - RECIPE=clang
   - RECIPE=python-clang
   - RECIPE=libboost
+  - UBUNTU=14.04
+  - UBUNTU=16.04
 
 install:
   - git clone https://gist.github.com/319558c83d145620a6d4decdcadfbfb0.git travis-ci
