@@ -4,9 +4,11 @@ platform:
 environment:
   matrix:
     - RECIPE: python-scons
+    - RECIPE: python-parse
     - RECIPE: libdev
     - RECIPE: python-dev
     - RECIPE: python-dbg
+    - RECIPE: python-doc
     - RECIPE: llvm
     - RECIPE: clang
     - RECIPE: python-clang
