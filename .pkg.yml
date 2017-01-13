@@ -1,0 +1,23 @@
+about:
+  authors:
+  - !!python/unicode 'Pierre Fernique'
+  brief: !!python/unicode 'Tool kit for packaging'
+  email: !!python/unicode 'statiskit@googlegroups.com'
+  homepage: autowig.readthedocs.io
+  name: !!python/unicode 'Pkg'
+  plugin: github
+  version: v0.1.0
+authors:
+  basename: CONTRIBUTORS.rst
+  format: '* `{name} <{email}>`_ ({score})'
+  plugin: commit
+license:
+  basename: LICENSE.rst
+  exclude:
+  - ./.git/*
+  - ./build/*
+  - ./.pkg.yml
+  - ./CONTRIBUTORS.rst
+  - ./LICENSE.rst
+  plugin: CeCILL-C
+  width: 78
