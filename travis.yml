@@ -49,7 +49,7 @@ deploy:
   provider: script
   on:
       branch: master
-  script: ls #deploy_script.sh
+  script: "./deploy_script.sh"
 
 after_deploy:
   - source after_deploy.sh
