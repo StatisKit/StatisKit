@@ -45,6 +45,7 @@ before_deploy:
   - source before_deploy.sh
 
 deploy:
+  provider: script
   on:
       branch: master
   script:
