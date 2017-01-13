@@ -19,7 +19,7 @@ package:
   version: "1.0.0"
     
 build:
-  number: 0
+  number: 1
   script:
     - git config --system alias.co checkout
     - git config --system alias.br branch
@@ -27,6 +27,7 @@ build:
     - git config --system alias.st status
     - git config --system alias.unstage 'reset HEAD --'
     - git config --system alias.last 'log -1 HEAD'
+    - git config --system credential.helper 'cache --timeout=3600'
   always_include_files:
     - etc/gitconfig
 
