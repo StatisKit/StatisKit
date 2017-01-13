@@ -1,10 +1,10 @@
 about:
   authors:
   - !!python/unicode 'Pierre Fernique'
-  brief: !!python/unicode 'Tool kit for packaging'
+  brief: !!python/unicode 'A Software Suite for Statistical Analyses'
   email: !!python/unicode 'statiskit@googlegroups.com'
   homepage: autowig.readthedocs.io
-  name: !!python/unicode 'Pkg'
+  name: !!python/unicode 'StatisKit'
   plugin: github
   version: v0.1.0
 authors:
