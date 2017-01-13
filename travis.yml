@@ -32,6 +32,13 @@ env:
   - UBUNTU=14.04
   - UBUNTU=16.04
 
+matrix:
+  exclude:
+  - os: osx
+    env: UBUNTU=14.04
+  - os: osx
+    env: UBUNTU=16.04
+
 install:
   - git clone https://gist.github.com/319558c83d145620a6d4decdcadfbfb0.git travis-ci
   - cd travis-ci
