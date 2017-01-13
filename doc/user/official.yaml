@@ -1,0 +1,6 @@
+name: statiskit
+channels:
+  - statiskit
+  - conda-forge
+dependencies:
+  - python

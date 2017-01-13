@@ -35,9 +35,9 @@ Please, with regard to previous expressions, refers to the subsequent guides.
 .. toctree::
     :maxdepth: 2
 
-    User guide <user/index.rst>
-    Developper guide <developper/index.rst>
-    Maintener guide <maintener/index.rst>
+    user/index
+    developper/index.rst
+    maintener/index.rst
 
 License
 =======
