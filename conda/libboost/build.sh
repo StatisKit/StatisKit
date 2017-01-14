@@ -38,7 +38,8 @@ if [ "$(uname)" == "Darwin" ]; then
         include="${INCLUDE_PATH}" \
         cxxflags="${CXXFLAGS}" \
         linkflags="${LINKFLAGS}" \
-        -j"$(sysctl -n hw.ncpu)" \
+        -j$CPU_COUNT \
+        -d0 \
         install | tee b2.log 2>&1
 fi
 
@@ -62,6 +63,7 @@ if [ "$(uname)" == "Linux" ]; then
         include="${INCLUDE_PATH}" \
         linkflags="-L${LIBRARY_PATH}" \
         --layout=system \
-        -j"${CPU_COUNT}" \
+        -j$CPU_COUNT \
+        -d0 \
         install | tee b2.log 2>&1
 fi
