@@ -10,6 +10,7 @@ environment:
     - RECIPE: python-dev
     - RECIPE: python-dbg
     - RECIPE: python-doc
+    - RECIPE: python-pkg
     - RECIPE: llvm
     - RECIPE: clang
     - RECIPE: python-clang
