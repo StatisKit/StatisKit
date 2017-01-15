@@ -16,10 +16,13 @@ requirements:
     - python
 
 test:
+  files:
+    - SConstruct
   commands:
    - echo %SCONSFLAGS%      [win]
    - echo $SCONSFLAGS       [not win]
-   
+   - scons
+
 about:
   home: http://www.scons.org/
   license: MIT
