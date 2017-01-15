@@ -1,4 +1,5 @@
 env = Environment(tools = ['default',
                            'prefix'])
                            
-print(env['PREFIX'])
+if 'PREFIX' not in env:
+    raise Exception('Installation of the \'prefix\' tool failed !')
