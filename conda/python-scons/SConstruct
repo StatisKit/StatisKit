@@ -1,0 +1,4 @@
+env = Environment(tools = ['default',
+                           'prefix'])
+                           
+print(env['PREFIX'])
