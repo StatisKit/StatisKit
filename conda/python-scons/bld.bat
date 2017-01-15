@@ -23,4 +23,7 @@ if errorlevel 1 exit 1
 if not exist %PREFIX%\share\site_scons\site_tools mkdir %PREFIX%\share\site_scons\site_tools
 if errorlevel 1 exit 1
 
+copy %RECIPE_DIR%\prefix.py %PREFIX%\share\site_scons\site_tools\prefix.py
+if errorlevel 1 exit 1
+
 echo OFF
