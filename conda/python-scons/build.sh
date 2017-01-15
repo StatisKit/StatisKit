@@ -8,7 +8,7 @@ touch $PREFIX/etc/conda/deactivate.d/scons_vars.sh
 cat > $PREFIX/etc/conda/activate.d/scons_vars.sh <<EOL
 #!/bin/sh
 
-export SCONSFLAGS="--sitedir=$CONDA_PREFIX/share/site_scons"
+export SCONSFLAGS="--site-dir=$CONDA_PREFIX/share/site_scons"
 EOL
 
 cat > $PREFIX/etc/conda/deactivate.d/scons_vars.sh <<EOL
