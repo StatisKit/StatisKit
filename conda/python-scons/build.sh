@@ -20,3 +20,4 @@ EOL
 mkdir -p $PREFIX/share/site_scons
 touch $PREFIX/share/site_scons/site_init.py
 mkdir -p $PREFIX/share/site_scons/site_tools
+cp $RECIPE_DIR/prefix.py $PREFIX/share/site_scons/site_tools/prefix.py
