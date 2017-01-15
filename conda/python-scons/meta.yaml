@@ -19,8 +19,6 @@ test:
   files:
     - SConstruct
   commands:
-   - echo %SCONSFLAGS%      [win]
-   - echo $SCONSFLAGS       [not win]
    - scons
 
 about:
