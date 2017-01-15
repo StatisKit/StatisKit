@@ -3,8 +3,8 @@ package:
   version: "2.5.0"
 
 source:
-  path: scons-2.5.0-py27 # [py27]
-  path: scons-2.5.0-py35 # [py35]
+  path: scons-2.5.0-py27    [py27]
+  path: scons-2.5.0-py35    [py35]
 
 build:
   number: 0
@@ -15,6 +15,11 @@ requirements:
   run:
     - python
 
+test:
+  commands:
+   - echo %SCONSFLAGS%      [windows]
+   - echo $SCONSFLAGS       [linux]
+   
 about:
   home: http://www.scons.org/
   license: MIT
