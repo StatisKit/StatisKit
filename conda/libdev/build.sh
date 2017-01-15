@@ -37,3 +37,5 @@ if [[ $__GNUC__ -ne  True ]]; then
     echo "gcc and g++ versions should be superior to 5.1."
     exit 1;
 fi
+
+mv toolchains.py $PREFIX/share/site_scons/site_tools/toolchains.py
