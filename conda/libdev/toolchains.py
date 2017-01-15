@@ -24,6 +24,6 @@ def generate(env):
     else:
          env.Prepend(CPPPATH='$PREFIX/include',
                      LIBPATH='$PREFIX/lib')
-                     
+
 def exists(env):
     return 1
