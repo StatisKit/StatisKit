@@ -17,8 +17,8 @@ requirements:
 
 test:
   commands:
-   - echo %SCONSFLAGS%      [windows]
-   - echo $SCONSFLAGS       [linux]
+   - echo %SCONSFLAGS%      [win]
+   - echo $SCONSFLAGS       [not win]
    
 about:
   home: http://www.scons.org/
