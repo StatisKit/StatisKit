@@ -19,11 +19,14 @@ if errorlevel 1 exit 1
 
 if not exist %PREFIX%\share\site_scons mkdir %PREFIX%\share\site_scons
 if errorlevel 1 exit 1
+if not exist %PREFIX%\share\site_scons\__init__.py type NUL > %PREFIX%\share\site_scons\__init__.py
+if errorlevel 1 exit 1
 if not exist %PREFIX%\share\site_scons\site_init.py type NUL > %PREFIX%\share\site_scons\site_init.py
 if errorlevel 1 exit 1
 if not exist %PREFIX%\share\site_scons\site_tools mkdir %PREFIX%\share\site_scons\site_tools
 if errorlevel 1 exit 1
-
+if not exist %PREFIX%\share\site_scons\site_tools\__init__.py type NUL > %PREFIX%\share\site_scons\site_tools\__init__.py
+if errorlevel 1 exit 1
 copy %RECIPE_DIR%\prefix.py %PREFIX%\share\site_scons\site_tools\prefix.py
 if errorlevel 1 exit 1
 
