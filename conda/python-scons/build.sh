@@ -18,6 +18,8 @@ unset SCONSFLAGS
 EOL
 
 mkdir -p $PREFIX/share/site_scons
+touch $PREFIX/share/site_scons/__init__.py
 touch $PREFIX/share/site_scons/site_init.py
 mkdir -p $PREFIX/share/site_scons/site_tools
+touch $PREFIX/share/site_scons/site_tools/__init__.py
 cp $RECIPE_DIR/prefix.py $PREFIX/share/site_scons/site_tools/prefix.py
