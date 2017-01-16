@@ -1,1 +1,1 @@
-set SCONSFLAGS="--site-dir=%CONDA_PREFIX:/=\%\share\site_scons"
+set SCONSFLAGS=--site-dir=%CONDA_PREFIX:/=\%\share\site_scons
