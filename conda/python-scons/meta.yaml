@@ -7,7 +7,7 @@ source:
   path: scons-2.5.0-py35    [py35]
 
 build:
-  number: 2
+  number: 0
 
 requirements:
   build:
@@ -19,7 +19,9 @@ test:
   files:
     - SConstruct
   commands:
-   - scons
+    - echo %SCONSFLAGS% [win]
+    - echo $SCONSFLAGS  [not win]
+    - scons
 
 about:
   home: http://www.scons.org/
