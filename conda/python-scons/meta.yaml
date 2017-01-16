@@ -19,6 +19,8 @@ test:
   files:
     - SConstruct
   commands:
+    - echo %BLABLA% [win]
+    - echo %CONDA_PREFIX% [win]
     - echo %TEMP_PREFIX% [win]
     - echo %SCONSFLAGS% [win]
     - echo $SCONSFLAGS  [not win]
