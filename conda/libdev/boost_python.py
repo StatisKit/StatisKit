@@ -18,8 +18,8 @@ def _boost_python_module_action(target, source, env):
 
     env.Append(LINKFLAGS = '@' + source.abspath)
 
-    kwargs = dict('SHLIBSUFFIX' = '.so',
-                  'SHLIBPREFIX' = '')
+    kwargs = dict(SHLIBSUFFIX = '.so',
+                  SHLIBPREFIX = '')
 
     if system is 'darwin':
         bpm = env.LoadableModule(target, [], LDMODULESUFFIX='.so',
