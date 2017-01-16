@@ -11,8 +11,8 @@ if errorlevel 1 exit 1
 type NUL > %PREFIX%\etc\conda\deactivate.d\scons_vars.bat
 if errorlevel 1 exit 1
 
-echo set "CONDA_PREFIX=%CONDA_PREFIX:/=\%" > %PREFIX%\etc\conda\activate.d\scons_vars.bat
-echo set SCONSFLAGS="--site-dir=%CONDA_PREFIX%\share\site_scons" > %PREFIX%\etc\conda\activate.d\scons_vars.bat
+echo set "REAL_CONDA_PREFIX=%CONDA_PREFIX:/=\%" > %PREFIX%\etc\conda\activate.d\scons_vars.bat
+echo set SCONSFLAGS="--site-dir=%REAL_CONDA_PREFIX%\share\site_scons" > %PREFIX%\etc\conda\activate.d\scons_vars.bat
 if errorlevel 1 exit 1
 echo set SCONSFLAGS= > %PREFIX%\etc\conda\deactivate.d\scons_vars.bat
 if errorlevel 1 exit 1
