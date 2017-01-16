@@ -5,7 +5,7 @@ if errorlevel 1 exit 1
 
 if not exist %PREFIX%\etc\conda\activate.d mkdir %PREFIX%\etc\conda\activate.d
 if errorlevel 1 exit 1
-if not exist %PREFIX%\etc\conda\deactivate.d mkdir -p $PREFIX\etc\conda\dedeactivate.d
+if not exist %PREFIX%\etc\conda\deactivate.d mkdir -p $PREFIX\etc\conda\deactivate.d
 type NUL > %PREFIX%\etc\conda\activate.d\scons_vars.bat
 if errorlevel 1 exit 1
 type NUL > %PREFIX%\etc\conda\deactivate.d\scons_vars.bat
