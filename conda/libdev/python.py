@@ -10,6 +10,8 @@ AddOption('--python-version',
           help    = 'python version',
           default = sysconfig.get_python_version())
     
+_setuptools_install_builder = SCons.Builder.Builder(action = 'python $SOURCES install')
+
 def generate(env, **kwargs):
     env['PYTHON_VERSION'] = GetOption('python-version')
     PYTHON_VERSION = env['PYTHON_VERSION']
@@ -22,6 +24,7 @@ def generate(env, **kwargs):
                        LIBS = 'python' + PYTHON_VERSION)
     else:
         raise NotImplementedError('Python ' + PYTHON_VERSION)
+    env['BUILDERS']['SetupToolsInstallEgg'] = _setuptools_install_builder
 
 def exists(env):
     return 1
