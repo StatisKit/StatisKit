@@ -29,6 +29,8 @@ requirements:
   build:
     - python
     - setuptools
+    - python-scons
   run:
     - python
     - setuptools
+    - python-scons
