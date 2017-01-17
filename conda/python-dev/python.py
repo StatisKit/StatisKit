@@ -20,10 +20,10 @@ def generate(env, **kwargs):
       SYSTEM = env['SYSTEM']
       if PYTHON_VERSION == '2.7':
           if SYSTEM == 'win':
-              env.Append(LIBS = 'python' + PYTHON_VERSION.replace('.', ''))
+              env.AppendUnique(LIBS = ['python' + PYTHON_VERSION.replace('.', '')])
           else:
-              env.Append(CPPPATH = '$PREFIX/include/python' + PYTHON_VERSION,
-                         LIBS = 'python' + PYTHON_VERSION)
+              env.AppendUnique(CPPPATH = ['$PREFIX/include/python' + PYTHON_VERSION],
+                               LIBS = ['python' + PYTHON_VERSION])
       else:
           raise NotImplementedError('Python ' + PYTHON_VERSION)
       env['BUILDERS']['SetuptoolsInstallEgg'] = Builder(action = 'python $SOURCES install')

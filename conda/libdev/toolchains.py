@@ -21,12 +21,12 @@ def generate(env):
                                   '/GA'],
                          CPPDEFINES=['WIN32',
                                      'UNICODE'])
-        env.Prepend(CPPPATH='$PREFIX\include')
+        env.PrependUnique(CPPPATH=['$PREFIX\include'])
         env.PrependUnique(LIBPATH=['$PREFIX\lib',
                                    '$PREFIX\..\libs'])
       else:
-        env.Prepend(CPPPATH='$PREFIX/include',
-                    LIBPATH='$PREFIX/lib')
+        env.PrependUnique(CPPPATH=['$PREFIX/include'],
+                          LIBPATH=['$PREFIX/lib'])
 
 def exists(env):
     return 1

@@ -8,7 +8,7 @@ def generate(env):
     """Add Builders and construction variables to the Environment."""
     if not 'boost_python' in env['TOOLS'][:-1]:
         env.Tool('system')
-        env.Append(LIBS = 'boost_python')
+        env.AppendUnique(LIBS = ['boost_python'])
         env.AppendUnique(CPPDEFINES = ['BOOST_PYTHON_DYNAMIC_LIB',
                                        'BOOST_ALL_NO_LIB'])
 
