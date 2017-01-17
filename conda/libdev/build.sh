@@ -38,5 +38,5 @@ if [[ "$__GNUC__" -ne  "True" ]]; then
     exit 1;
 fi
 
-mv $RECIPE_DIR/toolchains.py $PREFIX/share/site_scons/site_tools/toolchains.py
-mv $RECIPE_DIR/boost_python.py $PREFIX/share/site_scons/site_tools/boost_python.py
+mv $RECIPE_DIR/toolchains.py $SP_DIR/SCons/site_scons/site_tools/toolchains.py
+mv $RECIPE_DIR/boost_python.py $SP_DIR/SCons/site_scons/site_tools/boost_python.py
