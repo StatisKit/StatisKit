@@ -1,6 +1,7 @@
 import sysconfig
 import platform
 from SCons.Script import AddOption, GetOption
+from SCons.Builder import Builder
 
 AddOption('--python-version',
           dest    = 'python-version',
@@ -10,7 +11,7 @@ AddOption('--python-version',
           help    = 'python version',
           default = sysconfig.get_python_version())
     
-_setuptools_install_builder = SCons.Builder.Builder(action = 'python $SOURCES install')
+_setuptools_install_builder = Builder(action = 'python $SOURCES install')
 
 def generate(env, **kwargs):
     env['PYTHON_VERSION'] = GetOption('python-version')
