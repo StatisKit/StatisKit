@@ -16,9 +16,9 @@ _setuptools_install_builder = Builder(action = 'python $SOURCES install')
 def generate(env, **kwargs):
     env['PYTHON_VERSION'] = GetOption('python-version')
     PYTHON_VERSION = env['PYTHON_VERSION']
-    system = platform.system().lower()
+    SYSTEM = env['SYSTEM']
     if PYTHON_VERSION == '2.7':
-        if system == 'windows':
+        if SYSTEM == 'windows':
             env.Append(LIBS = 'python' + PYTHON_VERSION.replace('.', ''))
         else:
             env.Append(CPPPATH = '$PREFIX/include/python' + PYTHON_VERSION,

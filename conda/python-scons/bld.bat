@@ -29,5 +29,7 @@ if not exist %PREFIX%\share\site_scons\site_tools\__init__.py type NUL > %PREFIX
 if errorlevel 1 exit 1
 copy %RECIPE_DIR%\prefix.py %PREFIX%\share\site_scons\site_tools\prefix.py
 if errorlevel 1 exit 1
+copy %RECIPE_DIR%\system.py %PREFIX%\share\site_scons\site_tools\system.py
+if errorlevel 1 exit 1
 
 echo OFF
