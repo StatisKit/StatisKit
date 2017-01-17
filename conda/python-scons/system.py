@@ -6,7 +6,7 @@ SYSTEMS = dict(Linux   = "linux",
 	           Windows = "windows")
 
 
-system = platform.system()
+system = str(platform.system())
 if not system in SYSTEMS:
 	system = "unknown"
 
