@@ -3,14 +3,10 @@ from distutils.version import StrictVersion
 from SCons.Builder import Builder
 from SCons.Tool import Tool
 
-added = False
 
 def generate(env):
     """Add Builders and construction variables to the Environment."""
-    global added
-    print 'Boost.Python: ' + str(added)
-    if not added:
-        added = True
+    if not 'boost_python' in env['TOOLS']:
         env.Tool('system')
         env.Append(LIBS = 'boost_python')
         env.AppendUnique(CPPDEFINES = ['BOOST_PYTHON_DYNAMIC_LIB',
@@ -46,8 +42,6 @@ def generate(env):
 
         env['BUILDERS']['BoostPythonModule'] = Builder(action = _boost_python_module_action)
         env.Tool('python')
-
-    print 'Boost.Python: ' + str(added)
 
 def exists(env):
     return 1

@@ -1,12 +1,8 @@
 import sys
 from SCons.Script import AddOption, GetOption
     
-added = False
-
 def generate(env, **kwargs):
-  global added
-  if not added:
-    added = True
+  if not 'prefix' in env['TOOLS']:
     AddOption('--prefix',
                   dest    = 'prefix',
                   type    = 'string',
