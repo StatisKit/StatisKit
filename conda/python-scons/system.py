@@ -3,7 +3,7 @@ from SCons.Script import AddOption, GetOption
 
 SYSTEMS = dict(Linux   = "linux",
 	           Darwin  = "osx",
-	           Windows = "windows")
+	           Windows = "win")
 
 
 system = str(platform.system())
