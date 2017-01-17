@@ -8,6 +8,7 @@ added = False
 
 def generate(env, **kwargs):
     global added
+    print 'Python: ' + str(added)
     if not added:
       added = True
       Tool('system')
@@ -30,6 +31,7 @@ def generate(env, **kwargs):
       else:
           raise NotImplementedError('Python ' + PYTHON_VERSION)
       env['BUILDERS']['SetuptoolsInstallEgg'] = Builder(action = 'python $SOURCES install')
+    print 'Python: ' + str(added)
 
 def exists(env):
     return 1

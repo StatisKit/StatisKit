@@ -8,6 +8,7 @@ added = False
 def generate(env):
     """Add Builders and construction variables to the Environment."""
     global added
+    print 'Boost.Python: ' + str(added)
     if not added:
         added = True
         Tool('system')
@@ -45,6 +46,7 @@ def generate(env):
 
         env['BUILDERS']['BoostPythonModule'] = Builder(action = _boost_python_module_action)
         Tool('python')
+    print 'Boost.Python: ' + str(added)
 
 def exists(env):
     return 1
