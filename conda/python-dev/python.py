@@ -17,8 +17,8 @@ def generate(env, **kwargs):
     env['PYTHON_VERSION'] = GetOption('python-version')
     PYTHON_VERSION = env['PYTHON_VERSION']
     system = platform.system().lower()
-    if PYTHON_VERSION is '2.7':
-        if system is 'windows':
+    if PYTHON_VERSION == '2.7':
+        if system == 'windows':
             env.Append(LIBS = 'python' + PYTHON_VERSION.replace('.', ''))
         else:
             env.Append(CPPPATH = '$PREFIX/include/python' + PYTHON_VERSION,
