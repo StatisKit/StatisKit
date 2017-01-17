@@ -1,5 +1,6 @@
 import platform
 from distutils.version import StrictVersion
+from SCons.Builder import Builder
 
 def _boost_python_module_action(target, source, env):
     # Code to build "target" from "source"
@@ -7,7 +8,7 @@ def _boost_python_module_action(target, source, env):
     sources = [source for source in source if source.suffix in ['.cpp', '.cxx', '.c++']]
     targets = list(itertools.chain(*[env.SharedObject(None, source) for source in sources]))
 
-    if system is 'linux' and len(headers) == 1:
+    if system == 'linux' and len(headers) == 1:
         if len(header) == 1:
             cmd = env.Command(header[0].target_from_source('', '.h.gch'), header, '$CXX -o $TARGET -x c++-header -c -fPIC $SHCXXFLAGS $_CCCOMCOM $SOURCE')
             env.Depends(targets, cmd)
@@ -21,7 +22,7 @@ def _boost_python_module_action(target, source, env):
     kwargs = dict(SHLIBSUFFIX = '.so',
                   SHLIBPREFIX = '')
 
-    if system is 'darwin':
+    if system == 'darwin':
         bpm = env.LoadableModule(target, [], LDMODULESUFFIX='.so',
             FRAMEWORKSFLAGS = '-flat_namespace -undefined suppress', **kwargs)
     else:
@@ -29,7 +30,7 @@ def _boost_python_module_action(target, source, env):
 
     return bpm
 
-_boost_python_module_builder = SCons.Builder.Builder(action = _boost_python_module_action)
+_boost_python_module_builder = .uilder(action = _boost_python_module_action)
 
 def generate(env):
     """Add Builders and construction variables to the Environment."""
