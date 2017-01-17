@@ -2,7 +2,7 @@ import sys
 from SCons.Script import AddOption, GetOption
     
 def generate(env, **kwargs):
-  if not 'prefix' in env['TOOLS']:
+  if not 'prefix' in env['TOOLS'][:-1]:
     AddOption('--prefix',
                   dest    = 'prefix',
                   type    = 'string',
