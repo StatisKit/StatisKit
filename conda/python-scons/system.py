@@ -12,7 +12,7 @@ if not system in SYSTEMS:
 
 AddOption('--system',
           dest    = 'system',
-          type    = 'string',
+          type    = 'choice',
           nargs   = 1,
           action  = 'store',
           help    = 'system',
