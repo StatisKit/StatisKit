@@ -5,11 +5,12 @@ added = False
     
 def generate(env, **kwargs):
   global added
+  print 'System: ' + str(added)
   if not added:
     added = True
     SYSTEMS = dict(Linux   = "linux",
-             Darwin  = "osx",
-             Windows = "win")
+                   Darwin  = "osx",
+                   Windows = "win")
     system = str(platform.system())
     if not system in SYSTEMS:
       system = "unknown"
@@ -24,6 +25,7 @@ def generate(env, **kwargs):
     env['SYSTEM'] = GetOption('system')
     if env['SYSTEM'] == 'unknown':
     	raise ValueError('Unknown system')
+  print 'System: ' + str(added)
 
 def exists(env):
     return 1
