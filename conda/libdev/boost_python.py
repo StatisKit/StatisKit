@@ -3,7 +3,7 @@ from distutils.version import StrictVersion
 
 def _boost_python_module_action(target, source, env):
     # Code to build "target" from "source"
-    headers = [header for header in source if header.suffix is '.h']
+    headers = [header for header in source if header.suffix == '.h']
     sources = [source for source in source if source.suffix in ['.cpp', '.cxx', '.c++']]
     targets = list(itertools.chain(*[env.SharedObject(None, source) for source in sources]))
 
