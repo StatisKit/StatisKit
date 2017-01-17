@@ -11,8 +11,7 @@ def generate(env):
     print 'Boost.Python: ' + str(added)
     if not added:
         added = True
-        from SCons.site_scons.site_tools import system
-        system.generate(env)
+        env.Tool('system')
         env.Append(LIBS = 'boost_python')
         env.AppendUnique(CPPDEFINES = ['BOOST_PYTHON_DYNAMIC_LIB',
                                        'BOOST_ALL_NO_LIB'])
@@ -46,8 +45,8 @@ def generate(env):
             return bpm
 
         env['BUILDERS']['BoostPythonModule'] = Builder(action = _boost_python_module_action)
-        from SCons.site_scons.site_tools import python
-        python.generate(env)
+        env.Tool('python')
+
     print 'Boost.Python: ' + str(added)
 
 def exists(env):
