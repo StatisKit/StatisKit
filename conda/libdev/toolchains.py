@@ -4,7 +4,7 @@ from distutils.version import StrictVersion
 def generate(env):
     """Add Builders and construction variables to the Environment."""
     SYSTEM = env['SYSTEM']
-    if SYSTEM == 'windows':
+    if SYSTEM == 'win':
         if StrictVersion('8.0') <= StrictVersion(env['MSVC_VERSION']) < StrictVersion('10.0'):
             env['LINKCOM'].append('mt.exe -nologo -manifest ${TARGET}.manifest -outputresource:$TARGET;1')
             env['SHLINKCOM'].append('mt.exe -nologo -manifest ${TARGET}.manifest -outputresource:$TARGET;2')

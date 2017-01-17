@@ -18,7 +18,7 @@ def generate(env, **kwargs):
     PYTHON_VERSION = env['PYTHON_VERSION']
     SYSTEM = env['SYSTEM']
     if PYTHON_VERSION == '2.7':
-        if SYSTEM == 'windows':
+        if SYSTEM == 'win':
             env.Append(LIBS = 'python' + PYTHON_VERSION.replace('.', ''))
         else:
             env.Append(CPPPATH = '$PREFIX/include/python' + PYTHON_VERSION,
