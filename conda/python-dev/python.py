@@ -25,7 +25,7 @@ def generate(env, **kwargs):
                        LIBS = 'python' + PYTHON_VERSION)
     else:
         raise NotImplementedError('Python ' + PYTHON_VERSION)
-    env['BUILDERS']['SetupToolsInstallEgg'] = _setuptools_install_builder
+    env['BUILDERS']['SetuptoolsInstallEgg'] = _setuptools_install_builder
 
 def exists(env):
     return 1
