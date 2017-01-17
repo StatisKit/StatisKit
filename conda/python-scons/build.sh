@@ -23,3 +23,4 @@ touch $PREFIX/share/site_scons/site_init.py
 mkdir -p $PREFIX/share/site_scons/site_tools
 touch $PREFIX/share/site_scons/site_tools/__init__.py
 cp $RECIPE_DIR/prefix.py $PREFIX/share/site_scons/site_tools/prefix.py
+cp $RECIPE_DIR/system.py $PREFIX/share/site_scons/site_tools/system.py
