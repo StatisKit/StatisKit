@@ -15,7 +15,7 @@ def generate(env, **kwargs):
                   metavar = 'DIR',
                   help    = 'installation prefix',
                   default = sys.prefix)
-         env['PREFIX'] = GetOption('prefix')
+        env['PREFIX'] = GetOption('prefix')
 
 def exists(env):
     return 1

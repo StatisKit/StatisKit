@@ -44,6 +44,7 @@ def generate(env):
 		    return bpm
 
         env['BUILDERS']['BoostPythonModule'] = Builder(action = _boost_python_module_action)
+    	Tool('python')
 
 def exists(env):
     return 1
