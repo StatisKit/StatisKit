@@ -4,6 +4,8 @@ from SCons.Script import AddOption, GetOption
 from SCons.Builder import Builder
 from SCons.Tool import Tool
 
+added = False
+
 def generate(env, **kwargs):
     global added
     if not added:
