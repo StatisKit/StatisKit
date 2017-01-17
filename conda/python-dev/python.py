@@ -5,7 +5,7 @@ from SCons.Builder import Builder
 from SCons.Tool import Tool
 
 def generate(env, **kwargs):
-    if not 'python' in env['TOOLS']:
+    if not 'python' in env['TOOLS'][:-1]:
       added = True
       env.Tool('system')
       AddOption('--python-version',

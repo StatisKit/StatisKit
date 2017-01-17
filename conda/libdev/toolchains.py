@@ -4,7 +4,7 @@ from SCons.Tool import Tool
 
 def generate(env):
     """Add Builders and construction variables to the Environment."""
-    if not 'toolchains' in env['TOOLS']:
+    if not 'toolchains' in env['TOOLS'][:-1]:
       env.Tool('system')
       SYSTEM = env['SYSTEM']
       if SYSTEM == 'win':

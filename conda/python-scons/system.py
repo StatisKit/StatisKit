@@ -3,7 +3,7 @@ from SCons.Script import AddOption, GetOption
 
     
 def generate(env, **kwargs):
-  if not 'system' in env['TOOLS']:
+  if not 'system' in env['TOOLS'][:-1]:
     SYSTEMS = dict(Linux   = "linux",
                    Darwin  = "osx",
                    Windows = "win")
