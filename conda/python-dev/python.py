@@ -4,12 +4,8 @@ from SCons.Script import AddOption, GetOption
 from SCons.Builder import Builder
 from SCons.Tool import Tool
 
-added = False
-
 def generate(env, **kwargs):
-    global added
-    print 'Python: ' + str(added)
-    if not added:
+    if not 'python' in env['TOOLS']:
       added = True
       env.Tool('system')
       AddOption('--python-version',
@@ -31,7 +27,6 @@ def generate(env, **kwargs):
       else:
           raise NotImplementedError('Python ' + PYTHON_VERSION)
       env['BUILDERS']['SetuptoolsInstallEgg'] = Builder(action = 'python $SOURCES install')
-    print 'Python: ' + str(added)
 
 def exists(env):
     return 1

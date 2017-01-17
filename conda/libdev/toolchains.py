@@ -2,14 +2,9 @@ import platform
 from distutils.version import StrictVersion
 from SCons.Tool import Tool
 
-added = False
-
 def generate(env):
     """Add Builders and construction variables to the Environment."""
-    global added
-    print 'Toolchain: ' + str(added)
-    if not added:
-      added = True
+    if not 'toolchains' in env['TOOLS']:
       env.Tool('system')
       SYSTEM = env['SYSTEM']
       if SYSTEM == 'win':
@@ -32,7 +27,6 @@ def generate(env):
       else:
         env.Prepend(CPPPATH='$PREFIX/include',
                     LIBPATH='$PREFIX/lib')
-    print 'Toolchain: ' + str(added)
 
 def exists(env):
     return 1
