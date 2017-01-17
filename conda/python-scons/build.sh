@@ -8,7 +8,7 @@ touch $PREFIX/etc/conda/deactivate.d/scons_vars.sh
 cat > $PREFIX/etc/conda/activate.d/scons_vars.sh <<EOL
 #!/bin/sh
 
-export SCONSFLAGS="--site-dir=$CONDA_PREFIX/share/site_scons"
+export SCONSFLAGS="--site-dir=`python -c "import SCons; print(SCons.__path__[0])"`/site_scons"
 EOL
 
 cat > $PREFIX/etc/conda/deactivate.d/scons_vars.sh <<EOL
@@ -17,10 +17,10 @@ cat > $PREFIX/etc/conda/deactivate.d/scons_vars.sh <<EOL
 unset SCONSFLAGS
 EOL
 
-mkdir -p $PREFIX/share/site_scons
-touch $PREFIX/share/site_scons/__init__.py
-touch $PREFIX/share/site_scons/site_init.py
-mkdir -p $PREFIX/share/site_scons/site_tools
-touch $PREFIX/share/site_scons/site_tools/__init__.py
-cp $RECIPE_DIR/prefix.py $PREFIX/share/site_scons/site_tools/prefix.py
-cp $RECIPE_DIR/system.py $PREFIX/share/site_scons/site_tools/system.py
+mkdir -p $SP_DIR/SCons/site_scons
+touch $SP_DIR/SCons/site_scons/__init__.py
+touch $SP_DIR/SCons/site_scons/site_init.py
+mkdir -p $SP_DIR/SCons/site_scons/site_tools
+touch $SP_DIR/SCons/site_scons/site_tools/__init__.py
+cp $RECIPE_DIR/prefix.py $SP_DIR/SCons/site_scons/site_tools/prefix.py
+cp $RECIPE_DIR/system.py $SP_DIR/SCons/site_scons/site_tools/system.py
