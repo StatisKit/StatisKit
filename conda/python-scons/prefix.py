@@ -4,10 +4,10 @@ from SCons.Script import AddOption, GetOption
 added = False
 
 def generate(env, **kwargs):
-	global added
-	if not added:
-		added = True
-		AddOption('--prefix',
+  global added
+  if not added:
+    added = True
+    AddOption('--prefix',
                   dest    = 'prefix',
                   type    = 'string',
                   nargs   = 1,
