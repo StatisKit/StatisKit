@@ -11,8 +11,7 @@ def generate(env, **kwargs):
     print 'Python: ' + str(added)
     if not added:
       added = True
-      from SCons.site_scons.site_tools import system
-      system.generate(env)
+      env.Tool('system')
       AddOption('--python-version',
                 dest    = 'python-version',
                 type    = 'string',

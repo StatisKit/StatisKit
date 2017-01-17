@@ -9,8 +9,7 @@ def generate(env):
     global added
     if not added:
       added = True
-      from SCons.site_scons.site_tools import system
-      system.generate(env)
+      env.Tool('system')
       SYSTEM = env['SYSTEM']
       if SYSTEM == 'win':
         if StrictVersion('8.0') <= StrictVersion(env['MSVC_VERSION']) < StrictVersion('10.0'):
