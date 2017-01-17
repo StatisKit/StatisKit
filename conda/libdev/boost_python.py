@@ -8,7 +8,6 @@ def _boost_python_module_action(target, source, env):
     sources = [source for source in source if source.suffix in ['.cpp', '.cxx', '.c++']]
     targets = list(itertools.chain(*[env.SharedObject(None, source) for source in sources]))
     SYSTEM = env['SYSTEM']
-    if 
     if SYSTEM == 'linux' and len(headers) == 1:
         if len(header) == 1:
             cmd = env.Command(header[0].target_from_source('', '.h.gch'), header, '$CXX -o $TARGET -x c++-header -c -fPIC $SHCXXFLAGS $_CCCOMCOM $SOURCE')
