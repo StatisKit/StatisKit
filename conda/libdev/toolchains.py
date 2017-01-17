@@ -1,10 +1,17 @@
 import platform
 from distutils.version import StrictVersion
+from SCons.Tool import Tool
+
+added = False
 
 def generate(env):
     """Add Builders and construction variables to the Environment."""
-    SYSTEM = env['SYSTEM']
-    if SYSTEM == 'win':
+    global added
+    if not added:
+      added = True
+      Tool('system')
+      SYSTEM = env['SYSTEM']
+      if SYSTEM == 'win':
         if StrictVersion('8.0') <= StrictVersion(env['MSVC_VERSION']) < StrictVersion('10.0'):
             env['LINKCOM'].append('mt.exe -nologo -manifest ${TARGET}.manifest -outputresource:$TARGET;1')
             env['SHLINKCOM'].append('mt.exe -nologo -manifest ${TARGET}.manifest -outputresource:$TARGET;2')
@@ -21,7 +28,7 @@ def generate(env):
         env.Prepend(CPPPATH='$PREFIX\include')
         env.PrependUnique(LIBPATH=['$PREFIX\lib',
                                    '$PREFIX\..\libs'])
-    else:
+      else:
         env.Prepend(CPPPATH='$PREFIX/include',
                     LIBPATH='$PREFIX/lib')
 
