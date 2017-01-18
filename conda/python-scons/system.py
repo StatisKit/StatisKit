@@ -10,6 +10,8 @@ def generate(env, **kwargs):
     system = str(platform.system())
     if not system in SYSTEMS:
       system = "unknown"
+    else:
+      system = SYSTEMS[system]
     AddOption('--system',
               dest    = 'system',
               type    = 'choice',
