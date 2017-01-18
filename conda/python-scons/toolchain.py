@@ -5,6 +5,7 @@ def generate(env):
     if not 'toolchains' in env['TOOLS'][:-1]:
       env.Tool('default')
       env.Tool('system')
+      env.Tool('prefix')
       SYSTEM = env['SYSTEM']
       if SYSTEM == 'win':
         if StrictVersion('8.0') <= StrictVersion(env['MSVC_VERSION']) < StrictVersion('10.0'):
