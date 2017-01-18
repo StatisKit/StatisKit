@@ -1,4 +1,5 @@
 from types import MethodType
+import itertools
 
 def generate(env):
     """Add Builders and construction variables to the Environment."""
