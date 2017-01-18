@@ -28,10 +28,10 @@ def generate(env, **kwargs):
 
       if SYSTEM == 'win':
         def BuildPython(env, target, sources):
-            env.Install(os.path.join(env['PREFIX'], "Lib", "site-packages"), sources)
+            return env.Install(os.path.join(env['PREFIX'], "Lib", "site-packages"), sources)
       else:
         def BuildPython(env, target, sources):
-            env.Install(os.path.join(env['PREFIX'], "lib", "python" + env["PYTHON_VERSION"], 'site-packages'), sources)
+            return env.Install(os.path.join(env['PREFIX'], "lib", "python" + env["PYTHON_VERSION"], 'site-packages'), sources)
 
       env.BuildPython = MethodType(BuildPython, env)
 

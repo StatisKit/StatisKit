@@ -28,12 +28,10 @@ def generate(env):
             kwargs = dict(SHLIBSUFFIX = '.so',
                           SHLIBPREFIX = '')
             if SYSTEM == 'osx':
-                bpm = env.LoadableModule(target, [], LDMODULESUFFIX='.so',
+                return env.LoadableModule(target, [], LDMODULESUFFIX='.so',
                     FRAMEWORKSFLAGS = '-flat_namespace -undefined suppress', **kwargs)
             else:
-                bpm = env.LoadableModule(target, [], **kwargs)
-
-            return bpm
+                return env.LoadableModule(target, [], **kwargs)
 
         env.BuildBoostPython = MethodType(BuildBoostPython, env)
         env.Tool('python')
