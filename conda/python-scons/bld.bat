@@ -31,5 +31,7 @@ copy %RECIPE_DIR%\prefix.py %SP_DIR%\SCons\site_scons\site_tools\prefix.py
 if errorlevel 1 exit 1
 copy %RECIPE_DIR%\system.py %SP_DIR%\SCons\site_scons\site_tools\system.py
 if errorlevel 1 exit 1
+copy %RECIPE_DIR%\toolchains.py %SP_DIR%\SCons\site_scons\site_tools\toolchains.py
+if errorlevel 1 exit 1
 
 echo OFF

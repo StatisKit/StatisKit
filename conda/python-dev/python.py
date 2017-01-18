@@ -1,12 +1,11 @@
 import sysconfig
-import platform
 from SCons.Script import AddOption, GetOption
-from SCons.Builder import Builder
-from SCons.Tool import Tool
+from types import MethodType
 
 def generate(env, **kwargs):
+    """Add Builders and construction variables to the Environment."""
+
     if not 'python' in env['TOOLS'][:-1]:
-      added = True
       env.Tool('system')
       AddOption('--python-version',
                 dest    = 'python-version',
@@ -26,7 +25,15 @@ def generate(env, **kwargs):
                                LIBS = ['python' + PYTHON_VERSION])
       else:
           raise NotImplementedError('Python ' + PYTHON_VERSION)
-      env['BUILDERS']['SetuptoolsInstallEgg'] = Builder(action = 'python $SOURCES install')
+
+      if SYSTEM == 'win':
+        def BuildPython(env, target, sources):
+            env.Install(os.path.join(env['PREFIX'], "Lib", "site-packages"), sources)
+      else:
+        def BuildPython(env, target, sources):
+            env.Install(os.path.join(env['PREFIX'], "lib", "python" + env["PYTHON_VERSION"], 'site-packages'), sources)
+
+      env.BuildPython = MethodType(BuildPython, env)
 
 def exists(env):
     return 1
