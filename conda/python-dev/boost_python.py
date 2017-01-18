@@ -16,9 +16,11 @@ def generate(env):
             targets = list(itertools.chain(*[env.SharedObject(None, source) for source in sources  if source.suffix in ['.cpp', '.cxx', '.c++']]))
             sources = [source for source in sources if source.suffix == '.h']
             SYSTEM = env['SYSTEM']
-            if SYSTEM == 'linux' and len(sources) == 1:
+            if len(sources) == 1 and not SYSTEM == 'win':
                 cmd = env.Command(sources[0].target_from_source('', '.h.gch'), sources[0], '$CXX -o $TARGET -x c++-header -c -fPIC $SHCXXFLAGS $_CCCOMCOM $SOURCE')
                 env.Depends(targets, cmd)
+                if SYSTEM == 'osx':
+                    env['CXX'] += " -include " + sources[0]
             env.Depends(target, targets)
             source = env.File('response_file.rsp')
             with open(source.abspath, 'w') as filehandler:
