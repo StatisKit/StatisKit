@@ -14,8 +14,11 @@ def generate(env):
             # Code to build "target" from "source"
             target = env.File(target).srcnode()
             targets = list(itertools.chain(*[env.SharedObject(None, source) for source in sources  if source.suffix in ['.cpp', '.cxx', '.c++']]))
+            print sources
             sources = [source for source in sources if source.suffix == '.h']
+            print sources
             SYSTEM = env['SYSTEM']
+            print SYSTEM
             if SYSTEM == 'linux' and len(sources) == 1:
                 cmd = env.Command(sources[0].target_from_source('', '.h.gch'), sources[0], '$CXX -o $TARGET -x c++-header -c -fPIC $SHCXXFLAGS $_CCCOMCOM $SOURCE')
                 env.Depends(targets, cmd)
