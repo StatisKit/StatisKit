@@ -24,7 +24,6 @@ requirements:
     - bzip2             [unix]
     - zlib
   run:
-    - libdev
     - python
     - icu 54.*          [unix]
     - zlib
