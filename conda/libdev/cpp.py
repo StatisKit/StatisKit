@@ -1,3 +1,4 @@
+import os
 from types import MethodType
 
 def generate(env):
