@@ -27,6 +27,7 @@ def generate(env):
       else:
         env.PrependUnique(CPPPATH=['$PREFIX/include'],
                           LIBPATH=['$PREFIX/lib'])
+        env.AppendUnique(CCFLAGS=['-ferror-limit=0'])
 
 def exists(env):
     return 1
