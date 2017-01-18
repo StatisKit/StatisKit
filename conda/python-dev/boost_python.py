@@ -17,7 +17,7 @@ def generate(env):
             sources = [source for source in sources if header.suffix == '.h']
             SYSTEM = env['SYSTEM']
             if SYSTEM == 'linux' and len(sources) == 1:
-                cmd = env.Command(sources[0].target_from_source('', '.h.gch'), header, '$CXX -o $TARGET -x c++-header -c -fPIC $SHCXXFLAGS $_CCCOMCOM $SOURCE')
+                cmd = env.Command(sources[0].target_from_source('', '.h.gch'), sources[0], '$CXX -o $TARGET -x c++-header -c -fPIC $SHCXXFLAGS $_CCCOMCOM $SOURCE')
                 env.Depends(targets, cmd)
 
             source = env.File('response_file.rsp')
