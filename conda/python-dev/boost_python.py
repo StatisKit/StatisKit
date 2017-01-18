@@ -11,6 +11,7 @@ def generate(env):
 
         def BuildBoostPython(env, target, sources):
             # Code to build "target" from "source"
+            target = env.File(target).srcnode()
             targets = list(itertools.chain(*[env.SharedObject(None, source) for source in sources  if source.suffix in ['.cpp', '.cxx', '.c++']]))
             sources = [source for source in sources if header.suffix == '.h']
             SYSTEM = env['SYSTEM']
