@@ -4,7 +4,7 @@ def generate(env):
     """Add Builders and construction variables to the Environment."""
     
     if not 'cpp' in env['TOOLS'][:-1]:
-        env.Tool('system')
+        env.Tool('prefix')
 
         def BuildCpp(env, target, sources):
             # Code to build "target" from "source"
