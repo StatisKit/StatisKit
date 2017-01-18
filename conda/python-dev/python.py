@@ -27,11 +27,11 @@ def generate(env, **kwargs):
           raise NotImplementedError('Python ' + PYTHON_VERSION)
 
       if SYSTEM == 'win':
-        def BuildPython(env, target, sources):
-            return env.Install(os.path.join(env['PREFIX'], "Lib", "site-packages"), sources)
+        def BuildPython(env, target, source):
+            return env.Install(os.path.join(env['PREFIX'], "Lib", "site-packages"), source)
       else:
-        def BuildPython(env, target, sources):
-            return env.Install(os.path.join(env['PREFIX'], "lib", "python" + env["PYTHON_VERSION"], 'site-packages'), sources)
+        def BuildPython(env, target, source):
+            return env.Install(os.path.join(env['PREFIX'], "lib", "python" + env["PYTHON_VERSION"], 'site-packages'), source)
 
       env.BuildPython = MethodType(BuildPython, env)
 

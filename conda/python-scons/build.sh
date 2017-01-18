@@ -24,3 +24,4 @@ mkdir -p $SP_DIR/SCons/site_scons/site_tools
 touch $SP_DIR/SCons/site_scons/site_tools/__init__.py
 cp $RECIPE_DIR/prefix.py $SP_DIR/SCons/site_scons/site_tools/prefix.py
 cp $RECIPE_DIR/system.py $SP_DIR/SCons/site_scons/site_tools/system.py
+cp $RECIPE_DIR/toolchain.py $SP_DIR/SCons/site_scons/site_tools/toolchain.py
