@@ -23,7 +23,7 @@ int main() {
 EOF
 
 g++ -o g++_version.out version.c
-if [[ "$__GNUC__" -ne `./g++_version.out` ]]; then
+if [[ "$__GNUC__" -ne "`./g++_version.out`" ]]; then
     echo "gcc and g++ versions are not the same."
     rm g++_version.out
     rm version.c
