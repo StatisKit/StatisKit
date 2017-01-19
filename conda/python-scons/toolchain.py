@@ -1,6 +1,6 @@
 from distutils.version import StrictVersion
 from distutils.msvccompiler import get_build_version
-from sys.maxsize import bit_length
+from sys import maxsize
 from SCons.Script import AddOption, GetOption
 
 def generate(env):
@@ -10,7 +10,7 @@ def generate(env):
       SYSTEM = env['SYSTEM']
       if SYSTEM == 'windows':
         env['SHLIBSUFFIX'] = '.pyd'
-        env['TARGET_ARCH'] = 'x86_64' if bit_length() == 63 else 'x86'
+        env['TARGET_ARCH'] = 'x86_64' if maxsize.bit_length() == 63 else 'x86'
         AddOption('--msvc-version',
                       dest    = 'msvc-version',
                       type    = 'string',
