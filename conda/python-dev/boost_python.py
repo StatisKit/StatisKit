@@ -1,4 +1,3 @@
-from types import MethodType
 import itertools
 
 def generate(env):
@@ -38,11 +37,13 @@ def generate(env):
             if SYSTEM == 'win':
                 return env.SharedLibrary(target, [])
             elif SYSTEM == 'osx':
-                return env.LoadableModule(target, [])
+                return env.LoadableModule(target, [],
+                                          SHLINKFLAGS='$LINKFLAGS -bundle -flat_namespace -undefined suppress',
+                                          SHLIBSUFFIX='.so')
             else:
                 return env.LoadableModule(target, [])
 
-        env.BuildBoostPython = MethodType(BuildBoostPython, env)
+        env.AddMethod(BuildBoostPython)
         env.Tool('python')
 
 def exists(env):
