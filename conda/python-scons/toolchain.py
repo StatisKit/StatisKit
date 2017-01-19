@@ -5,10 +5,10 @@ from SCons.Script import AddOption, GetOption
 
 def generate(env):
     """Add Builders and construction variables to the Environment."""
-    if not 'toolchains' in env['TOOLS'][:-1]:
+    if not 'toolchain' in env['TOOLS'][:-1]:
       env.Tool('system')
       SYSTEM = env['SYSTEM']
-      env.AppendUnique(CXXFLAGS = ["-std=c++11"])
+      env.AppendUnique(CXXFLAGS=["-std=c++11"])
       if SYSTEM == 'windows':
         env['SHLIBSUFFIX'] = '.pyd'
         env['TARGET_ARCH'] = 'x86_64' if maxsize.bit_length() == 63 else 'x86'
