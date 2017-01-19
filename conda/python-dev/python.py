@@ -1,20 +1,18 @@
 import sysconfig
-from SCons.Script import AddOption, GetOption
-from types import MethodType
 
 def generate(env, **kwargs):
     """Add Builders and construction variables to the Environment."""
 
     if not 'python' in env['TOOLS'][:-1]:
       env.Tool('system')
-      AddOption('--python-version',
-                dest    = 'python-version',
-                type    = 'string',
-                nargs   = 1,
-                action  = 'store',
-                help    = 'python version',
-                default = sysconfig.get_python_version())
-      env['PYTHON_VERSION'] = GetOption('python-version')
+      env.AddOption('--python-version',
+                    dest    = 'python-version',
+                    type    = 'string',
+                    nargs   = 1,
+                    action  = 'store',
+                    help    = 'python version',
+                    default = sysconfig.get_python_version())
+      env['PYTHON_VERSION'] = env.GetOption('python-version')
       PYTHON_VERSION = env['PYTHON_VERSION']
       SYSTEM = env['SYSTEM']
       if PYTHON_VERSION == '2.7':
@@ -33,7 +31,7 @@ def generate(env, **kwargs):
         def BuildPython(env, target, source):
             return env.Install(os.path.join(env['PREFIX'], "lib", "python" + env["PYTHON_VERSION"], 'site-packages'), source)
 
-      env.BuildPython = MethodType(BuildPython, env)
+      env.AddMethod(BuildPython)
 
 def exists(env):
     return 1

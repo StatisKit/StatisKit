@@ -1,6 +1,4 @@
 import platform
-from SCons.Script import AddOption, GetOption
-
     
 def generate(env, **kwargs):
   if not 'system' in env['TOOLS'][:-1]:
@@ -12,15 +10,15 @@ def generate(env, **kwargs):
       system = "unknown"
     else:
       system = SYSTEMS[system]
-    AddOption('--system',
-              dest    = 'system',
-              type    = 'choice',
-              nargs   = 1,
-              action  = 'store',
-              help    = 'system',
-              choices = SYSTEMS.values(),
-              default = system)
-    env['SYSTEM'] = GetOption('system')
+    env.AddOption('--system',
+                  dest    = 'system',
+                  type    = 'choice',
+                  nargs   = 1,
+                  action  = 'store',
+                  help    = 'system',
+                  choices = SYSTEMS.values(),
+                  default = system)
+    env['SYSTEM'] = env.GetOption('system')
     if env['SYSTEM'] == 'unknown':
     	raise ValueError('Unknown system')
 

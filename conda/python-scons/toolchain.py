@@ -1,12 +1,25 @@
 from distutils.version import StrictVersion
+from distutils.msvccompiler import get_build_version
+from sys.maxsize import bit_length
 
 def generate(env):
     """Add Builders and construction variables to the Environment."""
     if not 'toolchains' in env['TOOLS'][:-1]:
-      env.Tool('default')
       env.Tool('system')
-      env.Tool('prefix')
       SYSTEM = env['SYSTEM']
+      if SYSTEM == 'windows':
+        env['SHLIBSUFFIX'] = '.pyd'
+        env['TARGET_ARCH'] = 'x86_64' if bit_length() == 63 else 'x86'
+        env.AddOption('--msvc-version',
+                      dest    = 'msvc-version',
+                      type    = 'string',
+                      nargs   = 1,
+                      action  = 'store',
+                      help    = 'MSVC version',
+                      default = str(get_build_version()))
+        env['MSVC_VERSION'] = env.GetOption('msvc-version')
+      env.Tool('default')
+      env.Tool('prefix')
       if SYSTEM == 'win':
         if StrictVersion('8.0') <= StrictVersion(env['MSVC_VERSION']) < StrictVersion('10.0'):
             env['LINKCOM'].append('mt.exe -nologo -manifest ${TARGET}.manifest -outputresource:$TARGET;1')
@@ -27,7 +40,10 @@ def generate(env):
       else:
         env.PrependUnique(CPPPATH=['$PREFIX/include'],
                           LIBPATH=['$PREFIX/lib'])
-        env.AppendUnique(CCFLAGS=['-ferror-limit=0'])
+        if SYSTEM == 'osx':
+          env.AppendUnique(CCFLAGS=['-ferror-limit=0'])
+        else:
+          env.AppendUnique(CCFLAGS=['-fmax-errors=0'])
 
 def exists(env):
     return 1
