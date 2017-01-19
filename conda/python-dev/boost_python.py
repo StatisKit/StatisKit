@@ -5,10 +5,10 @@ def generate(env):
     
     if not 'boost_python' in env['TOOLS'][:-1]:
         env.Tool('system')
+        env.Tool('textfile')
         env.AppendUnique(LIBS = ['boost_python'])
         env.AppendUnique(CPPDEFINES = ['BOOST_PYTHON_DYNAMIC_LIB',
                                        'BOOST_ALL_NO_LIB'])
-
         def BuildBoostPython(env, target, sources):
             # Code to build "target" from "source"
 
@@ -29,17 +29,16 @@ def generate(env):
                 if SYSTEM == 'osx':
                     env['CXX'] += " -include " + sources[0]
             env.Depends(target, targets)
-            source = env.File('response_file.rsp')
-            with open(source.abspath, 'w') as filehandler:
-                filehandler.write(' '.join(target.abspath.replace('\\','/') + ' ' for target in targets))
-            env.Append(LINKFLAGS = '@' + source.abspath)
-
+            response = env.Textfile('response_file.rsp',
+                         [tgt.abspath.replace('\\','/') for tgt in targets],
+                         LINESEPARATOR=" ")
+            env.Depends(target, response)
+            env.Append(LINKFLAGS = '@' + response[0].abspath)
             if SYSTEM == 'win':
                 return env.SharedLibrary(target, [])
             elif SYSTEM == 'osx':
                 return env.LoadableModule(target, [],
-                                          SHLINKFLAGS='$LINKFLAGS -bundle -flat_namespace -undefined suppress',
-                                          SHLIBSUFFIX='.so')
+                                          SHLINKFLAGS='$LINKFLAGS -bundle -flat_namespace -undefined suppress')
             else:
                 return env.LoadableModule(target, [])
 
