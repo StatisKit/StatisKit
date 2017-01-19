@@ -1,6 +1,7 @@
 from distutils.version import StrictVersion
 from distutils.msvccompiler import get_build_version
 from sys.maxsize import bit_length
+from SCons.Script import AddOption, GetOption
 
 def generate(env):
     """Add Builders and construction variables to the Environment."""
@@ -10,14 +11,14 @@ def generate(env):
       if SYSTEM == 'windows':
         env['SHLIBSUFFIX'] = '.pyd'
         env['TARGET_ARCH'] = 'x86_64' if bit_length() == 63 else 'x86'
-        env.AddOption('--msvc-version',
+        AddOption('--msvc-version',
                       dest    = 'msvc-version',
                       type    = 'string',
                       nargs   = 1,
                       action  = 'store',
                       help    = 'MSVC version',
                       default = str(get_build_version()))
-        env['MSVC_VERSION'] = env.GetOption('msvc-version')
+        env['MSVC_VERSION'] = GetOption('msvc-version')
       env.Tool('default')
       env.Tool('prefix')
       if SYSTEM == 'win':
