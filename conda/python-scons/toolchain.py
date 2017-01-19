@@ -8,7 +8,6 @@ def generate(env):
     if not 'toolchain' in env['TOOLS'][:-1]:
       env.Tool('system')
       SYSTEM = env['SYSTEM']
-      env.AppendUnique(CXXFLAGS=["-std=c++11"])
       if SYSTEM == 'windows':
         env['SHLIBSUFFIX'] = '.pyd'
         env['TARGET_ARCH'] = 'x86_64' if maxsize.bit_length() == 63 else 'x86'
@@ -21,6 +20,7 @@ def generate(env):
                       default = str(get_build_version()))
         env['MSVC_VERSION'] = GetOption('msvc-version')
       env.Tool('default')
+      env.AppendUnique(CXXFLAGS=["-std=c++11"])
       env.Tool('prefix')
       if SYSTEM == 'win':
         if StrictVersion('8.0') <= StrictVersion(env['MSVC_VERSION']) < StrictVersion('10.0'):
