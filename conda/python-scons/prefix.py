@@ -1,8 +1,9 @@
 import sys
+from SCons.Script import AddOption, GetOption
     
 def generate(env, **kwargs):
   if not 'prefix' in env['TOOLS'][:-1]:
-    env.AddOption('--prefix',
+    AddOption('--prefix',
                   dest    = 'prefix',
                   type    = 'string',
                   nargs   = 1,
@@ -10,7 +11,7 @@ def generate(env, **kwargs):
                   metavar = 'DIR',
                   help    = 'installation prefix',
                   default = sys.prefix)
-    env['PREFIX'] = env.GetOption('prefix')
+    env['PREFIX'] = GetOption('prefix')
 
 def exists(env):
     return 1
