@@ -47,7 +47,8 @@ To install **Conda** on:
    |                   | | (must be :code:`"false"` or :code:`"true"`, default is :code:`"false"`)                                     |
    +-------------------+---------------------------------------------------------------------------------------------------------------+
    | CONDA_CHANGE_PS1  | | When using activate, change the command prompt ($PS1) to include                                            |
-   |                   | | the activated environment (must be :code:`"true"` or :code:`"false"`, default is :code:`"true"`).           |
+   |                   | | the activated environment (must be :code:`"true"` or :code:`"false"`, default is                            |
+   |                   | | :code:`"true"`).                                                                                            |
    +-------------------+---------------------------------------------------------------------------------------------------------------+
 
 .. _section-recommended-installation:
