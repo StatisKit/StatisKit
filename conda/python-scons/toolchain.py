@@ -17,7 +17,7 @@ def generate(env):
       env.Tool('system')
       SYSTEM = env['SYSTEM']
       env['ARCH'] = GetOption('arch')
-    ARCH = env['ARCH']
+      ARCH = env['ARCH']
       if SYSTEM == 'windows':
         env['SHLIBSUFFIX'] = '.pyd'
         env['TARGET_ARCH'] = 'x86_64' if ARCH == '64' else 'x86'
