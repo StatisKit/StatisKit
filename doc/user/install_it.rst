@@ -5,6 +5,11 @@ Prerequisites
 =============
 
 In order to ease the installation of this software suite on multiple operating systems, the **Conda** package and environment management system is used.
+
+.. note::
+
+    For more information concerning **Conda**, please refers to its `documentation <http://conda.pydata.org/docs>`_.
+
 To install **Conda** on:
 
 * Linux and OSX, download the following :download:`script <install.sh>`.
@@ -22,7 +27,7 @@ To install **Conda** on:
 
         call install.bat
 
-.. note::
+.. warning::
 
     For more information concerning **Conda**, please refers to its `documentation <http://conda.pydata.org/docs>`_.
     Reports to the table :ref:`table-env-vars-scripts` to configure the script execution.
