@@ -18,7 +18,7 @@ cat > version.cpp <<EOF
 
 int main() {
 
-  srd::cout << __GNUC__ << "." << __GNUC_MINOR__ << std::endl;
+  std::cout << __GNUC__ << "." << __GNUC_MINOR__ << std::endl;
   return 0;
 }
 EOF
