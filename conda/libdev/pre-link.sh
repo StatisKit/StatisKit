@@ -14,7 +14,7 @@ export __GNUC__=`./gcc_version.out`
 rm gcc_version.out
 
 cat > version.cpp <<EOF
-#include <stdio.h>
+#include <iostream>
 
 int main() {
 

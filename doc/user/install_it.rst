@@ -13,21 +13,21 @@ To install **Conda** on:
 * Linux and OSX, download the following :download:`script <install.sh>`.
   Then, open a terminal in the same directory and type the following command:
 
-	.. code-block:: bash
-	
-		source install.sh
+    .. code-block:: bash
+    
+        source install.sh
 
 
 * Windows, download the following :download:`script <install.bat>`.
   Then, open a terminal in the same directory and type the following command:
 
-	.. code-block:: batch
+    .. code-block:: batch
 
-		call install.bat
+        call install.bat
 
 .. note::
 
-	For more information concerning **Conda**, please refers to its `documentation <http://conda.pydata.org/docs>`_.
+    For more information concerning **Conda**, please refers to its `documentation <http://conda.pydata.org/docs>`_.
 
 .. _recommended-installation:
 
@@ -37,10 +37,10 @@ Recommanded Installation
 To use **StatisKit**, choose an interface:
 
 .. toctree::
-	:maxdepth: 1
+    :maxdepth: 1
 
     interfaces/c++
-	interfaces/python
+    interfaces/python
 
 Custom Installations
 ====================
