@@ -19,7 +19,6 @@ To install **Conda** on:
     
         source install.sh
 
-
 * Windows, download the following :download:`script <install.bat>`.
   Then, open a terminal in the same directory and type the following command:
 
@@ -31,7 +30,23 @@ To install **Conda** on:
 
     For more information concerning **Conda**, please refers to its `documentation <http://conda.pydata.org/docs>`_.
     Reports to the table :ref:`table-env-vars-scripts` to configure the script execution.
+    If you already installed **Conda** you can for example type the following commands in a terminal:
+    
+    * On Linux or OSX,
 
+      .. code-block:: bash
+      
+        export CONDA_DIR="my/path/to/conda"
+        source install.sh
+        
+    * On Windows,
+    
+      .. code-block:: batch
+      
+        set CONDA_DIR=my\path\to\conda
+        call install.bat
+        
+        
 .. _table-env-vars-scripts:
 
 .. table:: Environment variables for installation scripts
