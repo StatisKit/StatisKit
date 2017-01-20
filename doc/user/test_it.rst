@@ -31,7 +31,7 @@ After `installing <https://docs.docker.com/engine/installation/>`_ **Docker**, y
     docker run -i -t -p 8888:8888 statiskit/python:latest
     jupyter notebook index.ipynb --ip='*' --port=8888 --no-browser
    
-You can then view the **Jupyter** notebooks by opening http://localhost:8888/notebooks/index.ipynb in your browser, or http://<DOCKER-MACHINE-IP>:8888/notebooks/index.ipynb if you are using a Docker Machine VM.
+You can then view the **Jupyter** notebooks by opening http://localhost:8888/notebooks/index.ipynb in your browser, or http://<DOCKER-MACHINE-IP>:8888/notebooks/index.ipynb if you are using a Docker Machine VM (see this `documentation <https://docs.docker.com/machine/>`_ for more informations.
 
 .. warning::
 
