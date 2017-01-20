@@ -4,6 +4,4 @@ channels:
   - conda-forge
 dependencies:
   - python
-  - pip:
-    - sphinxcontrib-blockdiag
-    - sphinx_rtd_theme
+  - python-doc
