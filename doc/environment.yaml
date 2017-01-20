@@ -1,7 +1,0 @@
-name: statiskit.readthedocs
-channels:
-  - statiskit
-  - conda-forge
-dependencies:
-  - python
-  - python-doc
