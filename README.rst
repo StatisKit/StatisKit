@@ -3,11 +3,11 @@ StatisKit: A Software Suite for Statistical Analyses
 
 .. sidebar:: Summary
 
-    :Status: |READTHEDOCS|
+    :Status:  |READTHEDOCS|
     :License: |LICENSE|
     :Authors: |AUTHORS|
 
-**StatisKit** is a collection of open source software designed to provide an environement for performing statistical analyses in *Python*.
+**StatisKit** is a collection of open source software designed to provide an environement for performing statistical analyses in *C++* or *Python*.
     
 .. |LICENSE| replace:: see |LICENSEFILE|_ file
 

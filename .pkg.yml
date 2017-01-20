@@ -19,5 +19,5 @@ license:
   - ./.pkg.yml
   - ./CONTRIBUTORS.rst
   - ./LICENSE.rst
-  plugin: CeCILL-C
+  plugin: CeCILL
   width: 78
