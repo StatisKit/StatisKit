@@ -30,8 +30,10 @@ about:
 
 requirements:
   build:
+    - python
     - sphinx
     - cmake
   run:
+    - python
     - sphinx
     - cmake
