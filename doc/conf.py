@@ -76,7 +76,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'StatisKit'
-copyright = u'2016'
+copyright = u'2016 Pierre Fernique, Jean Peyhardi'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
