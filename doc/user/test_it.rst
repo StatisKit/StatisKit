@@ -24,7 +24,7 @@ On your computer with **Docker**
 ================================
 
 Test the latest *Python* interface with this `image <https://hub.docker.com/r/statiskit/python/tags>`_.
-After `installing <https://docs.docker.com/engine/installation/>`_ **Docker**, you can type the following commands on a terminal:
+After `installing <https://docs.docker.com/engine/installation/>`_ **Docker**, you can type the following commands in a shell:
 
 .. code-block:: console
 
