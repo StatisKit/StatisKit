@@ -1,0 +1,11 @@
+{
+    "path": "${CONDA_PATH}/envs/statiskit-dev/bin",
+    "cmd": ["scons"],
+    "file_regex": "^(..^:]*):([0-9]+):?([0-9]+)?:? (.*)$",
+    "working_dir": "${project_path}",
+    "variants":
+        {
+            "name": "Clean",
+            "cmd": ["scons", "-c"]
+        }
+}

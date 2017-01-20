@@ -1,14 +1,14 @@
 set -ev
 
-if [[ "$CONDA_PREFIX" = "" ]]; then
-    CONDA_PREFIX='$HOME/.conda'
+if [[ "$CONDA_DIR" = "" ]]; then
+    CONDA_DIR='$HOME/miniconda'
 fi
 cd $CONDA_PREFIX
 if [[ ! "$CONDA_VERSION" = "" ]]; then
     CONDA_VERSION=2
 fi
 
-if [[ ! -d CONDA_PREFIX ]]; then
+if [[ ! -d CONDA_DIR ]]; then
 
     case "$(uname -s)" in
         Darwin)
@@ -22,11 +22,11 @@ if [[ ! -d CONDA_PREFIX ]]; then
             ;;
     esac
 
-    bash miniconda.sh -b -p $CONDA_PREFIX
+    bash miniconda.sh -b -p $CONDA_DIR
     rm miniconda.sh
 fi
 
-export PATH=$CONDA_PREFIX/bin:$PATH
+export PATH=$CONDA_DIR/bin:$PATH
 
 if [[ "$CONDA_ALWAYS_YES" = "" ]]; then
   CONDA_ALWAYS_YES=no

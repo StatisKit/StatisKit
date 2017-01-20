@@ -9,6 +9,7 @@ int main() {
 EOF
 
 gcc -o gcc_version.out version.c
+rm version.c
 export __GNUC__=`./gcc_version.out`
 rm gcc_version.out
 
@@ -22,15 +23,14 @@ int main() {
 }
 EOF
 
-g++ -o g++_version.out version.c
+g++ -o g++_version.out version.cpp
+rm version.cpp
 if [[ "$__GNUC__" -ne "`./g++_version.out`" ]]; then
     echo "gcc and g++ versions are not the same."
     rm g++_version.out
-    rm version.c
     exit 1;
 fi
 rm g++_version.out
-rm version.c
 
 cat > version.py <<EOF
 from distutils.version import StrictVersion
