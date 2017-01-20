@@ -26,7 +26,7 @@ On your computer with **Docker**
 Test the latest *Python* interface with this `image <https://hub.docker.com/r/statiskit/python/tags>`_.
 After `installing <https://docs.docker.com/engine/installation/>`_ **Docker**, you can type the following commands on a terminal:
 
-.. code-block::
+.. code-block:: console
 
     docker run -i -t -p 8888:8888 statiskit/python:latest
     jupyter notebook index.ipynb --ip='*' --port=8888 --no-browser
