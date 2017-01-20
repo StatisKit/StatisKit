@@ -44,12 +44,14 @@ To install **Conda** on:
    +-------------------+-------------------------------------------------------------+
    | CONDA_ALWAYS_YES  | | Choose the :code:`yes` option whenever asked to proceed,  |
    |                   | | such as when installing (must be :code:`"false"` or       |
-   |                   | :code:`"true"`,                                             |
+   |                   | | :code:`"true"`,                                           |
+   |                   |                                                             |
    |                   | | default is :code:`"false"`)                               |
    +-------------------+-------------------------------------------------------------+
    | CONDA_CHANGE_PS1  | | When using activate, change the command prompt ($PS1) to  |
    |                   | | include the activated environment (must be :code:`"true"` |
-   |                   | or :code:`"false"`,                                         |
+   |                   | | or :code:`"false"`,                                       |
+   |                   |                                                             |
    |                   | | default is :code:`"true"`).                               |
    +-------------------+-------------------------------------------------------------+
 
