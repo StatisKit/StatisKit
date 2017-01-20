@@ -29,8 +29,6 @@ def generate(env):
                       help    = 'MSVC version',
                       default = str(get_build_version()))
         env['MSVC_VERSION'] = GetOption('msvc-version')
-      else:
-        env['TARGET_ARG'] = GetOption('target-arch')
       env.Tool('default')
       env.Tool('prefix')
       if SYSTEM == 'win':
