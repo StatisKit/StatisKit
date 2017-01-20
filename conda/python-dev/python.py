@@ -18,7 +18,8 @@ def generate(env, **kwargs):
       SYSTEM = env['SYSTEM']
       if PYTHON_VERSION == '2.7':
           if SYSTEM == 'win':
-              env.AppendUnique(LIBS = ['python' + PYTHON_VERSION.replace('.', '')])
+              env.AppendUnique(LIBS = ['python' + PYTHON_VERSION.replace('.', '')],
+                               CPPPATH = ['$PREFIX\..\include'])
           else:
               env.AppendUnique(CPPPATH = ['$PREFIX/include/python' + PYTHON_VERSION],
                                LIBS = ['python' + PYTHON_VERSION])
