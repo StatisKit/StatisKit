@@ -63,8 +63,8 @@ To use **StatisKit**, choose an interface:
 .. toctree::
     :maxdepth: 1
 
-    interfaces/c++
-    interfaces/python
+    c++
+    python
 
 Custom Installations
 ====================
