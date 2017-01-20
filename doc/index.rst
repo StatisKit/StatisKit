@@ -48,11 +48,6 @@ StatisKit is distributed under the |LICENSENAME|_.
 
     |LICENSENAME| is GPL compatible.
 
-Indices
-=======
-
-* :ref:`genindex`
-* :ref:`modindex`
 
 Authors
 =======
