@@ -6,11 +6,21 @@ from SCons.Script import AddOption, GetOption
 def generate(env):
     """Add Builders and construction variables to the Environment."""
     if not 'toolchain' in env['TOOLS'][:-1]:
+      AddOption('--arch',
+                dest = 'arch',
+                type = 'choice',
+                nargs = 1,
+                action = 'store',
+                help = 'Target architecture',
+                choices = ['32', '64'],
+                default = '32' if maxsize.bit_length() == 63 else '64')
       env.Tool('system')
       SYSTEM = env['SYSTEM']
+      env['ARCH'] = GetOption('arch')
+    ARCH = env['ARCH']
       if SYSTEM == 'windows':
         env['SHLIBSUFFIX'] = '.pyd'
-        env['TARGET_ARCH'] = 'x86_64' if maxsize.bit_length() == 63 else 'x86'
+        env['TARGET_ARCH'] = 'x86_64' if ARCH == '64' else 'x86'
         AddOption('--msvc-version',
                       dest    = 'msvc-version',
                       type    = 'string',
@@ -19,8 +29,9 @@ def generate(env):
                       help    = 'MSVC version',
                       default = str(get_build_version()))
         env['MSVC_VERSION'] = GetOption('msvc-version')
+      else:
+        env['TARGET_ARG'] = GetOption('target-arch')
       env.Tool('default')
-      env.AppendUnique(CXXFLAGS=["-std=c++11"])
       env.Tool('prefix')
       if SYSTEM == 'win':
         if StrictVersion('8.0') <= StrictVersion(env['MSVC_VERSION']) < StrictVersion('10.0'):
@@ -36,12 +47,16 @@ def generate(env):
                                   '/GA'],
                          CPPDEFINES=['WIN32',
                                      'UNICODE'])
+        #env.AppendUnique(CXXFLAGS=['/std:c++11'])
         env.PrependUnique(CPPPATH=['$PREFIX\include'])
         env.PrependUnique(LIBPATH=['$PREFIX\lib',
                                    '$PREFIX\..\libs'])
       else:
         env.PrependUnique(CPPPATH=['$PREFIX/include'],
-                          LIBPATH=['$PREFIX/lib'])
+                          LIBPATH=['$PREFIX/lib'],
+                          CXXFLAGS=["-std=c++11"])
+        if ARCH == '32':
+          env.AppendUnique(CCFLAGS=['-m32'])
         if SYSTEM == 'osx':
           env.AppendUnique(CCFLAGS=['-ferror-limit=0'])
         else:
