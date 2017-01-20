@@ -5,4 +5,4 @@ User guide
 	:maxdepth: 2
 
     test_it.rst
-	install.rst
+	install_it.rst
