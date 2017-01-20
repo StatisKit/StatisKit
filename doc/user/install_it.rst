@@ -35,12 +35,23 @@ To install **Conda** on:
 .. table:: Environment variables for installation scripts
    :widths: auto
 
-   ===================  ======================================================================================================================================================================
-       CONDA_DIR         The directory within which **Conda** will be installed (default is :code:`$HOME/miniconda`).
-     CONDA_VERSION       The version of **Conda** to install (must be :code:`2` or :code:`3`, default is :code:`2`).
-    CONDA_ALWAYS_YES     Choose the :code:`yes` option whenever asked to proceed, such as when installing (must be :code:`"false"` or :code:`"true"`, default is :code:`"false"`)
-    CONDA_CHANGE_PS1     When using activate, change the command prompt ($PS1) to include the activated environment (must be :code:`"true"` or :code:`"false"`, default is :code:`"true"`).
-   ===================  ======================================================================================================================================================================
+   +-------------------+-------------------------------------------------------------+
+   |    CONDA_DIR      | | The directory within which **Conda** will be installed    |
+   |                   | | (default is :code:`$HOME/miniconda`).                     |
+   +-------------------+-------------------------------------------------------------+
+   |  CONDA_VERSION    | | The version of **Conda** to install (must be :code:`2`    |
+   |                   | | or :code:`3`, default is :code:`2`).                      |                                                       
+   +-------------------+-------------------------------------------------------------+
+   | CONDA_ALWAYS_YES  | | Choose the :code:`yes` option whenever asked to proceed,  |
+   |                   | | such as when installing (must be :code:`"false"` or       |
+   |                   | :code:`"true"`,                                             |
+   |                   | | default is :code:`"false"`)                               |
+   +-------------------+-------------------------------------------------------------+
+   | CONDA_CHANGE_PS1  | | When using activate, change the command prompt ($PS1) to  |
+   |                   | | include the activated environment (must be :code:`"true"` |
+   |                   | or :code:`"false"`,                                         |
+   |                   | | default is :code:`"true"`).                               |
+   +-------------------+-------------------------------------------------------------+
 
 .. _section-recommended-installation:
 
