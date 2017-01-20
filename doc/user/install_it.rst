@@ -45,8 +45,8 @@ To use **StatisKit**, choose an interface:
 Custom Installations
 ====================
 
-For custom installations, please refers individually to each *StatisKit** software suite component documentation.
+For custom installations, please refers individually to each **StatisKit** software suite component documentation.
 
 .. note::
 
-    **Conda** environments proposed in the :ref:`recommended-installation` can be adapted to fit your purposes
+    **Conda** environments proposed in the :ref:`recommended-installation` section can be adapted to fit your purposes.
