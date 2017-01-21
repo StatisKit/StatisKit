@@ -1,46 +1,115 @@
-set -v
+set +v
 
-if [[ "$CONDA_DIR" = "" ]]; then
-    CONDA_DIR=$HOME/.miniconda
+export ERROR=0
+export CLEAN_MINICONDA=1
+
+case "$(uname -s)" in
+
+    Darwin)
+        export OS_NAME=MacOSX
+        ;;
+
+    Linux)
+        export OS_NAME=Linux
+        ;;
+
+    *)
+        export ERROR=1
+        ;;
+
+esac
+
+if [[ "$ERROR" = "1" ]]; then
+    echo "Unknown system"
+else
+    if [[ "$OS_NAME" = "MacOSX" ]]; then
+        PLATFORM=x86_64
+        if [[ -f Miniconda2-latest-$OS_NAME-x86_64.sh ]]; then
+            export CLEAN_MINICONDA=0
+            export CONDA_VERSION=2
+        elif [[ -f Miniconda3-latest-$OS_NAME-x86_64.sh ]]; then
+            export CLEAN_MINICONDA=0
+            export CONDA_VERSION=3
+        else
+            if [[ "$CONDA_VERSION" = "" ]]; then
+                CONDA_VERSION=2
+            fi
+            curl https://repo.continuum.io/miniconda/Miniconda$CONDA_VERSION-latest-$OS_NAME-$PLATFORM.sh -o Miniconda$CONDA_VERSION-latest-$OS_NAME-$PLATFORM.sh
+            if [[ ! "$?" = "0" ]]; then
+                export ERROR=1
+            fi
+        fi
+    else
+        if [[ "$PLATFORM" = "" ]]; then
+            export PLATFORM=`arch`
+            if [[ ! "$?" = "0" ]]; then
+                export PLATFORM="x86"
+            fi
+        fi
+        if [[ -f Miniconda2-latest-$OS_NAME-$PLATFORM.sh ]]; then
+            export CLEAN_MINICONDA=0
+            export CONDA_VERSION=2
+        elif [[ -f Miniconda3-latest-$OS_NAME-$PLATFORM.sh ]]; then
+            export CLEAN_MINICONDA=0
+            export CONDA_VERSION=3
+        else
+            if [[ "$CONDA_VERSION" = "" ]]; then
+                export CONDA_VERSION=2
+            fi
+            wget https://repo.continuum.io/miniconda/Miniconda$CONDA_VERSION-latest-$OS_NAME-$PLATFORM.sh -O Miniconda$CONDA_VERSION-latest-$OS_NAME-$PLATFORM.sh
+            if [[ ! "$?" = "0" ]]; then
+                export ERROR=1
+            fi            
+        fi
+    fi
+    if [[ "$ERROR" = "1" ]]; then
+        echo "Download of the Miniconda"$CONDA_VERSION"-latest-"$OS_NAME"-"$PLATFORM".sh file failed"
+    else
+        if [[ "$CONDA_DIR" = "" ]]; then
+            export CONDA_DIR=$HOME/.miniconda$CONDA_VERSION
+        fi
+        if [[ ! -d "$CONDA_DIR" ]]; then
+            bash Miniconda$CONDA_VERSION-latest-$OS_NAME-$PLATFORM.sh -b -p $CONDA_DIR
+            if [[ ! "$?" = "0" ]]; then
+                echo "Execution of the Miniconda"$CONDA_VERSION"-latest-"$OS_NAME"-"$PLATFORM".sh file failed"
+                export ERROR=1
+            fi
+        else
+            if [[ "$CLEAN_MINICONDA" = "0" ]]; then
+                rm Miniconda$CONDA_VERSION-latest-$OS_NAME-$PLATFORM.sh
+            fi
+        fi
+        if [[ "$ERROR" = "0" ]]; then
+            if [[ "$CLEAN_MINICONDA" = "1" ]]; then
+                rm Miniconda$CONDA_VERSION-latest-$OS_NAME-$PLATFORM.sh
+            fi
+            export PATH=$CONDA_DIR/bin:$PATH
+            if [[ "$CONDA_ALWAYS_YES" = "" ]]; then
+              CONDA_ALWAYS_YES=no
+            fi
+            if [[ "$CONDA_CHANGE_PS1" = "" ]]; then
+              CONDA_CHANGE_PS1=yes
+            fi
+            conda config --set always_yes $CONDA_ALWAYS_YES
+            if [[ ! "$?" = "0" ]]; then
+                echo "Configuration of Conda failed"
+            fi
+            conda config --set changeps1 $CONDA_CHANGE_PS1
+            if [[ ! "$?" = "0" ]]; then
+                echo "Configuration of Conda failed"
+            fi
+            conda update -q conda -y
+            if [[ ! "$?" = "0" ]]; then
+                echo "Update of Conda failed"
+            fi
+            echo "User installation succeded."
+        fi
+    fi
 fi
-if [[ ! "$CONDA_VERSION" = "" ]]; then
-    CONDA_VERSION=2
-fi
 
-if [[ "$PLATFORM" = "" ]]; then
-    export PLATFORM=`arch`
-fi
-
-if [[ ! -d CONDA_DIR ]]; then
-
-    case "$(uname -s)" in
-        Darwin)
-            curl https://repo.continuum.io/miniconda/Miniconda$CONDA_VERSION-latest-MacOSX-$PLATFORM.sh -o miniconda.sh
-            ;;
-        Linux)
-            wget https://repo.continuum.io/miniconda/Miniconda$CONDA_VERSION-latest-Linux-$PLATFORM.sh -O miniconda.sh
-            ;;
-        *)
-            exit 1 
-            ;;
-    esac
-
-    bash miniconda.sh -b -p $CONDA_DIR
-    rm miniconda.sh
-fi
-
-export PATH=$CONDA_DIR/bin:$PATH
-
-if [[ "$CONDA_ALWAYS_YES" = "" ]]; then
-  CONDA_ALWAYS_YES=no
-fi
-if [[ "$CONDA_CHANGE_PS1" = "" ]]; then
-  CONDA_CHANGE_PS1=yes
-fi
-conda config --set always_yes $CONDA_ALWAYS_YES
-conda config --set changeps1 $CONDA_CHANGE_PS1
-conda update -q conda
-
+if [[ "$ERROR" = "1" ]]; then
+    echo "User installation failed."
+fi 
 # if [[ -d $HOME/.config/sublime-text-3/Packages/SublimeREPL ]]; then
 #     mkdir -p $HOME/.config/sublime-text-3/Packages/StatisKit
 # fi
