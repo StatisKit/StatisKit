@@ -13,8 +13,7 @@ def generate(env):
             targets = env.Install(os.path.join(env['PREFIX'], "include", target),
                                   [source for source in sources if source.suffix in ['.h', '.hpp', '.hxx', '.h++']])
             if SYSTEM == 'osx':
-                kwargs = dict(SHLINKFLAGS='$LINKFLAGS -dynamic',
-                              SHLIBSUFFIX='.dylib')
+                kwargs = dict(FRAMEWORKSFLAGS = '-flat_namespace -undefined suppress')
             else:
                 kwargs = dict()
             targets += env.SharedLibrary(os.path.join(env['PREFIX'], "lib", target),
