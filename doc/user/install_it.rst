@@ -93,8 +93,19 @@ To install **StatisKit**, choose an interface and proceed as follows in the same
 Custom Installations
 ====================
 
-For custom installations, please refers individually to each **StatisKit** software suite component documentation.
+For custom installations, **Conda** environments proposed in the :ref:`section-recommended-installation` section can be adapted to fit your purposes.
+For example, if you consider the *Python* interface, the default environment is described as follows:
 
-.. note::
+.. remote-code-block:: yaml
 
-    **Conda** environments proposed in the :ref:`section-recommended-installation` section can be adapted to fit your purposes.
+    https://raw.githubusercontent.com/StatisKit/python-binder/master/environment.yml
+    
+If you want :
+
+* To change the name of the environmentin which this interface is installed, replace the name field the appropriate name.
+* To remove a precise package of the environment (for instance :code:`python-statiskit_glm`), remove it in the listing.
+  If this package is mandatory for the packages you kept, don't worry, **Conda** will ensure that it is nevertheless installed. 
+  
+  .. remote-code-block:: yaml
+  
+    https://raw.githubusercontent.com/StatisKit/python-binder/master/environment.yml
