@@ -36,7 +36,7 @@ Please, with regard to previous expressions, refers to the subsequent guides.
     :maxdepth: 2
 
     user/index
-    developper/index.rst
+    developer/index.rst
     maintener/index.rst
 
 License
