@@ -1,4 +1,4 @@
-set -ev
+set -v
 
 if [[ "$CONDA_DIR" = "" ]]; then
     CONDA_DIR=$HOME/.miniconda
@@ -45,4 +45,4 @@ conda update -q conda
 #     mkdir -p $HOME/.config/sublime-text-3/Packages/StatisKit
 # fi
 
-set +ev
+set +v

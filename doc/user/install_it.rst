@@ -1,6 +1,8 @@
 Install it !
 ############
 
+.. _section-user-install_it-prerequisites:
+
 Prerequisites
 =============
 
@@ -33,7 +35,7 @@ To install **Conda** on:
 
 .. warning::
 
-    Refers to the table :ref:`table-env-vars-scripts` to configure the script execution.
+    Refers to the table :ref:`table-env-vars-users` to configure the script execution.
     If you already installed **Conda** you can, for example, type the following commands in a shell:
     
     * On Linux or OSX,
@@ -51,7 +53,7 @@ To install **Conda** on:
         call install.bat
         
         
-.. _table-env-vars-scripts:
+.. _table-env-vars-users:
 
 .. table:: Environment variables for installation scripts
    :widths: auto
@@ -60,7 +62,8 @@ To install **Conda** on:
    |    **CONDA_DIR**      | | The directory within which **Conda** will be installed (default is                                          |
    |                       | | :code:`$HOME/.miniconda$CONDA_VERSION` for Linux and OSX and                                                |
    |                       | :code:`%USERPROFILE%\Miniconda%CONDA_VERSION%` for Windows).                                                  |
-   |                       | | Note that this directory is marked as hidden in Windows.                                                    |
+   |                       |                                                                                                               |
+   |                       | Note that this directory is marked as hidden in Windows.                                                      |
    +-----------------------+---------------------------------------------------------------------------------------------------------------+
    |  **CONDA_VERSION**    | | The version of **Conda** to install (must be :code:`2` or :code:`3`, default is :code:`2`).                 |                                                       
    +-----------------------+---------------------------------------------------------------------------------------------------------------+

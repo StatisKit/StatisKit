@@ -14,74 +14,48 @@
 .. ................................................................................ ..
 
 Configuration
-*************
+#############
 
-Git
-===
+In order to ease the development of this software suite on multiple operating systems, some tools have to be installed.
 
-Git is a free and open source distributed :abbr:`VCS (Version Control System)`.
-If **Git** is not configured you should configure it for your computer.
+To install this tools on:
 
-.. code-block:: console
+* Linux and OSX, download the following :download:`script <install.sh>`.
+  Then, open a shell in the same directory and type the following command:
 
-    git config --global user.name "Firstname Lastname"
-    git config --global user.email firstname.lastname@domain
-    git config --global push.default simple
+  .. code-block:: bash
+    
+        source install.sh
 
-For more details the reader can refer to the **Git** `getting started page <https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control>`_ or `configuration page <https://git-scm.com/book/en/v2/Customizing-Git-Git-Configuration>`_
+* Windows, download the following :download:`script <install.bat>`.
+  Then, open a shell in the same directory and type the following command:
+
+  .. code-block:: batch
+
+        call install.bat
 
 .. warning::
 
-    The `--global` argument refers to your computer's configuration.
-    This step must be done only once for a computer.
+    Refers to the :ref:`section-user-install_it-prerequisites` and the table :ref:`table-env-vars-developpers` to configure the script execution.
 
-For commits, you can configure the editor used for editing commit messages using the following command line for `Vim <http://www.vim.org/>`_ 
-  
-.. code-block:: console
-  
-    git config --global core.editor vim
+.. _table-env-vars-developpers:
 
-.. note::
-    
-    If you want an editor that is not embedded in the console, it is sometimes required to add some flags.
-    For instance: 
-    
-    * For  `Gedit <https://wiki.gnome.org/Apps/Gedit>`_, you must add the flags :code:`-w -s`.
-      
-      .. code-block:: console
-      
-          git config --global core.editor "gedit -w -s"
+.. table:: Environment variables for installation scripts
+   :widths: auto
 
-    * For `GVim <http://www.vim.org/>`_, you must add the flag :code:`--nofork`.
-
-      .. code-block:: console
-    
-          git config --global core.editor "gvim --nofork"
-
-.. note::
-
-    For more informations on **Git** the reader can refer to these sites:
-
-    * `Git homepage <https://git-scm.com/>`_.
-    * `Getting Git Right <https://www.atlassian.com/git/>`_.
-
-
-.. MngIt
-
-.. |NAME| replace:: StatisKit
-
-.. |BRIEF| replace:: meta-repository providing general documentation and tools for the **StatisKit** Organization
-
-.. |VERSION| replace:: v0.1.0
-
-.. |AUTHORSFILE| replace:: AUTHORS.rst
-
-.. _AUTHORSFILE : AUTHORS.rst
-
-.. |LICENSENAME| replace:: CeCILL-C
-
-.. |LICENSEFILE| replace:: LICENSE.rst
-
-.. _LICENSEFILE : LICENSE.rst
-
-.. MngIt
+   +-----------------------+---------------------------------------------------------------------------------------------------------------+
+   |    **CONDA_DIR**      | | The directory within which **Conda** will be installed (default is                                          |
+   |                       | | :code:`$HOME/.miniconda$CONDA_VERSION` for Linux and OSX and                                                |
+   |                       | :code:`%USERPROFILE%\Miniconda%CONDA_VERSION%` for Windows).                                                  |
+   |                       |                                                                                                               |
+   |                       | Note that this directory is marked as hidden in Windows.                                                      |
+   +-----------------------+---------------------------------------------------------------------------------------------------------------+
+   |  **CONDA_VERSION**    | | The version of **Conda** to install (must be :code:`2` or :code:`3`, default is :code:`2`).                 |                                                       
+   +-----------------------+---------------------------------------------------------------------------------------------------------------+
+   | **CONDA_ALWAYS_YES**  | | Choose the :code:`yes` option whenever asked to proceed, such as when                                       |
+   |                       | | installing (must be :code:`false` or :code:`true`, default is :code:`false`)                                |
+   +-----------------------+---------------------------------------------------------------------------------------------------------------+
+   | **CONDA_CHANGE_PS1**  | | When using activate, change the command prompt ($PS1) to include                                            |
+   |                       | | the activated environment (must be :code:`true` or :code:`false`, default is                                |
+   |                       | | :code:`true`).                                                                                              |
+   +-----------------------+---------------------------------------------------------------------------------------------------------------+
