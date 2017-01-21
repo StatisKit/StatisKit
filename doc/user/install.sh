@@ -3,19 +3,22 @@ set -ev
 if [[ "$CONDA_DIR" = "" ]]; then
     CONDA_DIR='$HOME/.miniconda'
 fi
-cd $CONDA_PREFIX
 if [[ ! "$CONDA_VERSION" = "" ]]; then
     CONDA_VERSION=2
+fi
+
+if [[ "$PLATFORM" = "" ]]; then
+    export PLATFORM=`arch`
 fi
 
 if [[ ! -d CONDA_DIR ]]; then
 
     case "$(uname -s)" in
         Darwin)
-            curl https://repo.continuum.io/miniconda/Miniconda$CONDA_VERSION-latest-MacOSX-x86_64.sh -o miniconda.sh
+            curl https://repo.continuum.io/miniconda/Miniconda$CONDA_VERSION-latest-MacOSX-$PLATFORM.sh -o miniconda.sh
             ;;
         Linux)
-            wget https://repo.continuum.io/miniconda/Miniconda$CONDA_VERSION-latest-Linux-x86_64.sh -O miniconda.sh
+            wget https://repo.continuum.io/miniconda/Miniconda$CONDA_VERSION-latest-Linux-$PLATFORM.sh -O miniconda.sh
             ;;
         *)
             exit 1 
