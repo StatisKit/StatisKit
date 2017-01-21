@@ -45,6 +45,6 @@ To install **Conda** on:
 
 Afterwards, download the following **Conda** :download:`environment <statiskit-dev.yml>` and install it by typing in the same shell:
 
-.. code-block::
+.. code-block:: console
 
     conda env create -f statiskit-dev.yml
