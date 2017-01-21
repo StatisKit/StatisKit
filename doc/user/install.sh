@@ -1,7 +1,7 @@
 set -ev
 
 if [[ "$CONDA_DIR" = "" ]]; then
-    CONDA_DIR='$HOME/.miniconda'
+    CONDA_DIR=$HOME/.miniconda
 fi
 if [[ ! "$CONDA_VERSION" = "" ]]; then
     CONDA_VERSION=2
