@@ -26,7 +26,7 @@ To install **Conda** on:
 
         call install.bat
 
-  ..note::
+  .. note::
 
     You must install the `cURL <https://curl.haxx.se/download.html#Win32>`_ program for this script to work.
     If you are confused by code and have a compatible windows version (superior to 2000/XP), we recommend to use the installers present on this `website <http://www.confusedbycode.com/curl/>`_.
