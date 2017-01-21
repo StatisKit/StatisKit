@@ -54,7 +54,7 @@ To install **Conda** on:
 
    +-----------------------+---------------------------------------------------------------------------------------------------------------+
    |    **CONDA_DIR**      | | The directory within which **Conda** will be installed (default is                                          |
-   |                       | | :code:`$HOME/.miniconda` for Linux and OSX).                                                                |
+   |                       | | :code:`$HOME/.miniconda$CONDA_VERSION` for Linux and OSX and :code:` %USERPROFILE%\Miniconda%CONDA_VERSION%`).                                                                |
    +-----------------------+---------------------------------------------------------------------------------------------------------------+
    |  **CONDA_VERSION**    | | The version of **Conda** to install (must be :code:`2` or :code:`3`, default is :code:`2`).                 |                                                       
    +-----------------------+---------------------------------------------------------------------------------------------------------------+
