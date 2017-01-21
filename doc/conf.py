@@ -53,6 +53,7 @@ extensions = [
     'sphinx.ext.ifconfig',
     'sphinx.ext.viewcode',
     'sphinxcontrib.blockdiag',
+    'chios.remoteinclude',
 ]
 
 numfig = True
