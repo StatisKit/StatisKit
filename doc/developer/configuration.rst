@@ -16,46 +16,35 @@
 Configuration
 #############
 
-In order to ease the development of this software suite on multiple operating systems, some tools have to be installed.
+In order to ease the development of this software suite on multiple operating systems, the **Conda** package and environment management system is used.
 
-To install this tools on:
+.. note::
 
-* Linux and OSX, download the following :download:`script <install.sh>`.
+    If the **Sublime Text** `software <https://www.sublimetext.com/3>`_ is installed on your computer, a :code:`SCons.sublime-build` file will be installed in order to enable the usage of **SCons** directly from within **Sublime Text** projects.
+
+.. warning::
+
+    These scripts use scripts presented in the ref:`section-user-install_it-prerequisites` section, there are therefore no need to run these scripts beforehand.
+    Nevertheless, refers to the :ref:`section-user-install_it-prerequisites` section to configure the following script executions.
+
+To install **Conda** on:
+
+* Linux and OSX, download the following :download:`script <configure.sh>`.
   Then, open a shell in the same directory and type the following command:
 
   .. code-block:: bash
     
-        source install.sh
+        source configure.sh
 
-* Windows, download the following :download:`script <install.bat>`.
+* Windows, download the following :download:`script <configure.bat>`.
   Then, open a shell in the same directory and type the following command:
 
   .. code-block:: batch
 
-        call install.bat
+        call configure.bat
 
-.. warning::
+Afterwards, download the following **Conda** :download:`environment <statiskit-dev.yml>` and install it by typing in the same shell:
 
-    Refers to the :ref:`section-user-install_it-prerequisites` and the table :ref:`table-env-vars-developpers` to configure the script execution.
+.. code-block::
 
-.. _table-env-vars-developpers:
-
-.. table:: Environment variables for installation scripts
-   :widths: auto
-
-   +-----------------------+---------------------------------------------------------------------------------------------------------------+
-   |    **CONDA_DIR**      | | The directory within which **Conda** will be installed (default is                                          |
-   |                       | | :code:`$HOME/.miniconda$CONDA_VERSION` for Linux and OSX and                                                |
-   |                       | :code:`%USERPROFILE%\Miniconda%CONDA_VERSION%` for Windows).                                                  |
-   |                       |                                                                                                               |
-   |                       | Note that this directory is marked as hidden in Windows.                                                      |
-   +-----------------------+---------------------------------------------------------------------------------------------------------------+
-   |  **CONDA_VERSION**    | | The version of **Conda** to install (must be :code:`2` or :code:`3`, default is :code:`2`).                 |                                                       
-   +-----------------------+---------------------------------------------------------------------------------------------------------------+
-   | **CONDA_ALWAYS_YES**  | | Choose the :code:`yes` option whenever asked to proceed, such as when                                       |
-   |                       | | installing (must be :code:`false` or :code:`true`, default is :code:`false`)                                |
-   +-----------------------+---------------------------------------------------------------------------------------------------------------+
-   | **CONDA_CHANGE_PS1**  | | When using activate, change the command prompt ($PS1) to include                                            |
-   |                       | | the activated environment (must be :code:`true` or :code:`false`, default is                                |
-   |                       | | :code:`true`).                                                                                              |
-   +-----------------------+---------------------------------------------------------------------------------------------------------------+
+    conda env create -f statiskit-dev.yml
