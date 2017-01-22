@@ -32,6 +32,7 @@ env:
   - RECIPE=libboost
   - UBUNTU=14.04
   - UBUNTU=16.04
+  - ENVIRONMENT=conda/statiskit-dev.yml
 
 matrix:
   exclude:
@@ -39,9 +40,9 @@ matrix:
     env: UBUNTU=14.04
   - os: osx
     env: UBUNTU=16.04
-
+    
 install:
-  - git clone https://gist.github.com/319558c83d145620a6d4decdcadfbfb0.git travis-ci
+  - git clone https://github.com/StatisKit/travis-ci.git
   - cd travis-ci
   - source install.sh
 
