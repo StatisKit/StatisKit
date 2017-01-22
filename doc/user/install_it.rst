@@ -14,19 +14,19 @@ In order to ease the installation of this software suite on multiple operating s
 
 To install **Conda** on:
 
-* Linux and OS X, download the following :download:`script <install.sh>`.
+* Linux and OS X, download the following :download:`script <user_install.sh>`.
   Then, open a shell in the same directory and type the following command:
 
   .. code-block:: bash
     
-        source install.sh
+        source user_install.sh
 
-* Windows, download the following :download:`script <install.bat>`.
+* Windows, download the following :download:`script <user_install.bat>`.
   Then, open a shell in the same directory and type the following command:
 
   .. code-block:: batch
 
-        call install.bat
+        call user_install.bat
 
   .. note::
 
@@ -43,14 +43,14 @@ To install **Conda** on:
       .. code-block:: bash
       
         export CONDA_DIR=my/path/to/conda
-        source install.sh
+        source user_install.sh
         
     * On Windows,
     
       .. code-block:: batch
       
         set CONDA_DIR=my\path\to\conda
-        call install.bat
+        call user_install.bat
         
         
 .. _table-env-vars-users:
@@ -110,5 +110,5 @@ replace the name field the appropriate name.
 
     conda env update -n python statiskit/python-statiskit
 
-* To remove a precise package of the environment (for instance :code:`python-statiskit_glm`), remove it in the listing.
+* To remove a precise package of the environment, remove it in the listing.
   If this package is mandatory for the packages you kept, don't worry, **Conda** will ensure that it is nevertheless installed. 
