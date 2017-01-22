@@ -95,18 +95,20 @@ Custom Installations
 ====================
 
 For custom installations, **Conda** environments proposed in the :ref:`section-recommended-installation` section can be adapted to fit your purposes.
-For example, if you consider the *Python* interface, the default environment is described as follows:
+For example, if you consider the *Python* interface, the environment is described as follows:
 
 .. remote-code-block:: yaml
 
-    https://raw.githubusercontent.com/StatisKit/python-binder/master/environment.yml
+    https://anaconda.org/StatisKit/python-statiskit
     
 If you want :
 
-* To change the name of the environmentin which this interface is installed, replace the name field the appropriate name.
+* To change the name of the environmentin which this interface is installed (e.g. use :code:`python` in place of :code:`python-statiskit`), 
+replace the name field the appropriate name.
+
+  .. code-block:: console
+
+    conda env update -n python statiskit/python-statiskit
+
 * To remove a precise package of the environment (for instance :code:`python-statiskit_glm`), remove it in the listing.
   If this package is mandatory for the packages you kept, don't worry, **Conda** will ensure that it is nevertheless installed. 
-  
-  .. remote-code-block:: yaml
-  
-    https://raw.githubusercontent.com/StatisKit/python-binder/master/environment.yml
