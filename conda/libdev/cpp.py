@@ -10,7 +10,7 @@ def generate(env):
         def BuildCpp(env, target, sources):
             # Code to build "target" from "source"
             SYSTEM = env['SYSTEM']
-            targets = env.Install(os.path.join(env['PREFIX'], "include", target),
+            targets = env.Install(os.path.join(env['PREFIX'], "include", *target.split('_')),
                                   [source for source in sources if source.suffix in ['.h', '.hpp', '.hxx', '.h++']])
             if SYSTEM == 'osx':
                 kwargs = dict(FRAMEWORKSFLAGS = '-flat_namespace -undefined suppress')
