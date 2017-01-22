@@ -25,6 +25,12 @@ if [[ "$ERROR" = "0" ]]; then
         else
             conda update -n root conda-build -y
         fi
+        python -c "import binstar_client" >/dev/null 2>/dev/null  
+        if [[ ! "$?" = "0" ]]; then
+            conda install -n root anaconda-client -y
+        else
+            conda update -n root anaconda-client -y
+        fi
     fi
 fi
 if [[ "$ERROR" = "1" ]]; then
