@@ -29,7 +29,7 @@ In order to ease the development of this software suite on multiple operating sy
 
 To install **Conda** on:
 
-* Linux and OSX, download the following :download:`script <configure.sh>`.
+* Linux and OS X, download the following :download:`script <configure.sh>`.
   Then, open a shell in the same directory and type the following command:
 
   .. code-block:: bash
