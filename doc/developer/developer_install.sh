@@ -2,8 +2,7 @@ set +v
 
 export CLEAN_INSTALL=1
 if [[ ! -f install.sh ]]; then
-    #wget http://statiskit.readthedocs.io/en/latest/_downloads/install.sh -O install.sh
-    cp ../user/install.sh install.sh
+    wget http://statiskit.readthedocs.io/en/latest/_downloads/user_install.sh -O user_install.sh
     if [[ ! "$?" = "0" ]]; then
         echo "Download of the install.sh file failed"
         export ERROR=1
@@ -14,9 +13,9 @@ else
 fi
 
 if [[ "$ERROR" = "0" ]]; then
-    source install.sh
+    source user_install.sh
     if [[ "$CLEAN_INSTALL" = "1" ]]; then
-        rm install.sh
+        rm user_install.sh
     fi
     if [[ "$ERROR" = "0" ]]; then
         python -c "import conda_build" >/dev/null 2>/dev/null  
@@ -36,6 +35,11 @@ fi
 if [[ "$ERROR" = "1" ]]; then
     echo "Developer configuration failed."
 else
+    if [[ "$ENVIRONMENT" = "" ]]; then
+        conda env update statiskit/statiskit-dev
+    else
+        conda env update statiskit/statiskit-dev -n $ENVIRONMENT
+    fi
     if [[ -d "$HOME/.config/sublime-text-3" ]]; then
         export SUBLIME_TEXT=3
     elif [[ -d "$HOME/.config/sublime-text-2" ]]; then
@@ -66,4 +70,5 @@ fi
 if [[ "$ERROR" = "0" ]]; then
     echo "Developer configuration succeded."
 fi
+
 set +v

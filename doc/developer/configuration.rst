@@ -27,24 +27,32 @@ In order to ease the development of this software suite on multiple operating sy
     These scripts use scripts presented in the ref:`section-user-install_it-prerequisites` section, there are therefore no need to run these scripts beforehand.
     Nevertheless, refers to the :ref:`section-user-install_it-prerequisites` section to configure the following script executions.
 
-To install **Conda** on:
+To install **Conda** and the development environment on:
 
-* Linux and OS X, download the following :download:`script <configure.sh>`.
+* Linux and OS X, download the following :download:`script <developer_install.sh>`.
   Then, open a shell in the same directory and type the following command:
 
   .. code-block:: bash
     
-        source configure.sh
+        source developer_install.sh
 
-* Windows, download the following :download:`script <configure.bat>`.
+* Windows, download the following :download:`script <developer_install.bat>`.
   Then, open a shell in the same directory and type the following command:
 
   .. code-block:: batch
 
-        call configure.bat
+        call developer_install.bat
 
-Afterwards, download the following **Conda** :download:`environment <statiskit-dev.yml>` and install it by typing in the same shell:
+Afterwards, the :download:`statiskit-dev <../conda/../conda/statiskit-dev.yml>` environment is installed and you can activate it by typing in the same shell:
 
-.. code-block:: console
+* On Linux and OS X, 
 
-    conda env create -f statiskit-dev.yml
+  .. code-block:: console
+
+      source activate statiskit-dev
+
+* On windows, 
+
+  .. code-block:: console
+
+      activate statiskit-dev
