@@ -24,7 +24,10 @@ def generate(env):
                 if SYSTEM == 'linux':
                     cmd = env.Command(sources[0].target_from_source('', '.h.gch'), sources[0], '$CXX -o $TARGET -x c++-header -c -fPIC $SHCXXFLAGS $_CCCOMCOM $SOURCE')
                 else:
-                    cmd = env.Command(sources[0].target_from_source('', '.h.pch'), sources[0], '$CXX -o $TARGET -x c++-header -c -fPIC $SHCXXFLAGS $_CCCOMCOM $SOURCE')
+                    cmd = env.Command(sources[0].target_from_source('', '.h.pch'), sources[0], env.subst('$CXX')
+                                                                                               + ' -o $TARGET -x c++-header -c -fPIC '
+                                                                                               + env.subst('$SHCXXFLAGS $_CCCOMCOM')
+                                                                                               + ' $SOURCE')
                 env.Depends(targets, cmd)
                 if SYSTEM == 'osx':
                     env['CXX'] += " -include " + sources[0].name
