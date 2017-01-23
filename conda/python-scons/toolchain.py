@@ -56,7 +56,8 @@ def generate(env):
         if ARCH == '32':
           env.AppendUnique(CCFLAGS=['-m32'])
         if SYSTEM == 'osx':
-          env.AppendUnique(CCFLAGS=['-ferror-limit=0'])
+          env.AppendUnique(CCFLAGS=['-ferror-limit=0'],
+                           CXXFLAGS=['-stdlib=libc++'])
         else:
           env.AppendUnique(CCFLAGS=['-fmax-errors=0'])
 
