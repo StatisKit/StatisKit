@@ -100,7 +100,7 @@ For example, if you consider the *Python* interface, the environment is describe
 
 .. remote-code-block:: yaml
 
-    https://anaconda.org/StatisKit/python-binder/environment.yml
+    https://raw.githubusercontent.com/StatisKit/python-binder/master/environment.yml
     
 If you want :
 
