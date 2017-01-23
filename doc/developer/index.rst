@@ -13,51 +13,10 @@
 ..                                                                                  ..
 .. ................................................................................ ..
 
-Developper guide
-################
-
-Development of a software in the **StatisKit** organization requires to use (see :doc:`configuration`):
-
-* **Git** :abbr:`VCS (Version Control System)`, for version control of software files.
-* **Conda** :abbr:`PMS (Package Management System)` (see :doc:`configuration`), for deployment of software.
-* **Docker** for the reproducibility of examples.
-
-This development can be done in two ways:
+Developer guide
+###############
 
 .. toctree::
-    :maxdepth: 2
 
-    public/index
-    private/index
-
-.. todo::
-  
-    Documentation concerning private development.
-
-This development need also to respect some conventions:
-
-.. toctree::
-    :maxdepth: 2
-
-    repository/index
-    coding/index
-
-.. MngIt
-
-.. |NAME| replace:: StatisKit
-
-.. |BRIEF| replace:: meta-repository providing general documentation and tools for the **StatisKit** Organization
-
-.. |VERSION| replace:: v0.1.0
-
-.. |AUTHORSFILE| replace:: AUTHORS.rst
-
-.. _AUTHORSFILE : AUTHORS.rst
-
-.. |LICENSENAME| replace:: CeCILL-C
-
-.. |LICENSEFILE| replace:: LICENSE.rst
-
-.. _LICENSEFILE : LICENSE.rst
-
-.. MngIt
+    configuration
+    contribute

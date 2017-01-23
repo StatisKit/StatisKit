@@ -13,7 +13,7 @@ def generate(env):
                 action = 'store',
                 help = 'Target architecture',
                 choices = ['32', '64'],
-                default = '32' if maxsize.bit_length() == 63 else '64')
+                default = '64' if maxsize.bit_length() == 63 else '32')
       env.Tool('system')
       SYSTEM = env['SYSTEM']
       env['ARCH'] = GetOption('arch')
