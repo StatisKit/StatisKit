@@ -60,7 +60,8 @@ def generate(env):
                            CXXFLAGS=['-stdlib=libc++'])
         else:
           env.AppendUnique(CCFLAGS=['-fmax-errors=0',
-                                    '-Wl,--no-undefined'])
+                                    '-Wl,--no-undefined',
+                                    '-fvisibility=hidden'])
 
 def exists(env):
     return 1
