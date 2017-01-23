@@ -59,7 +59,8 @@ def generate(env):
           env.AppendUnique(CCFLAGS=['-ferror-limit=0'],
                            CXXFLAGS=['-stdlib=libc++'])
         else:
-          env.AppendUnique(CCFLAGS=['-fmax-errors=0'])
+          env.AppendUnique(CCFLAGS=['-fmax-errors=0',
+                                    '-Wl,--no-undefined'])
 
 def exists(env):
     return 1
