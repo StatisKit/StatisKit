@@ -30,7 +30,7 @@ def generate(env):
                                                                                                + ' $SOURCE')
                 env.Depends(targets, cmd)
                 if SYSTEM == 'osx':
-                    env['CXX'] += " -include " + str(sources[0].target_from_source('', '.h'))
+                    env['CXX'] += " -include build/py/" + str(sources[0].target_from_source('', '.h'))
             env.Depends(target, targets)
             response = env.Textfile('response_file.rsp',
                          [tgt.abspath.replace('\\','/') for tgt in targets],
