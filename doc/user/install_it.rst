@@ -112,3 +112,18 @@ If you want :
 
 * To remove a precise package of the environment, download the environment and remove the package name from the listing.
   If this package is mandatory for the packages you kept, don't worry, **Conda** will ensure that it is nevertheless installed. 
+  
+  .. note::
+  
+    You can download an environment with the :code:`anaconda-client`.
+    If you don't have this package installed, it can be done using the following command line:
+    
+    .. code-block:: console
+    
+        conda install anaconda-client
+        
+    Then, download the :code:`python-statiskit` environment using the following command line:
+    
+    .. code-block:: console
+    
+        anaconda download statiskit/python-statiskit --output python-statiskit.yml
