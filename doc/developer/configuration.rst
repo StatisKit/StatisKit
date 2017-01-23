@@ -43,7 +43,7 @@ To install **Conda** and the development environment on:
 
         call developer_install.bat
 
-Afterwards, the :download:`statiskit-dev <../conda/../conda/statiskit-dev.yml>` environment is installed and you can activate it by typing in the same shell:
+Afterwards, the `statiskit-dev <https://raw.githubusercontent.com/StatisKit/StatisKit/master/conda/statiskit-dev.yml>`_ environment is installed and you can activate it by typing in the same shell:
 
 * On Linux and OS X, 
 
