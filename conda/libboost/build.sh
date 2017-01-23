@@ -13,6 +13,8 @@ set -x
 INCLUDE_PATH="${PREFIX}/include"
 LIBRARY_PATH="${PREFIX}/lib"
 
+CXXFLAGS="${CXXFLAGS} -fPIC"
+
 if [ "$(uname)" == "Darwin" ]; then
     MACOSX_VERSION_MIN=10.7
     CXXFLAGS="-mmacosx-version-min=${MACOSX_VERSION_MIN}"
@@ -44,6 +46,9 @@ if [ "$(uname)" == "Darwin" ]; then
 fi
 
 if [ "$(uname)" == "Linux" ]; then
+    CXXFLAGS="${CXXFLAGS} -std=c++11"
+    LINKFLAGS="${LINKFLAGS} -std=c++11 -L${LIBRARY_PATH}"
+    
     ./bootstrap.sh \
         --prefix="${PREFIX}" \
         --with-python="${PYTHON}" \
@@ -57,11 +62,12 @@ if [ "$(uname)" == "Linux" ]; then
         debug-symbols=off \
         threading=multi \
         runtime-link=shared \
-        link=shared \
+        link=static,shared \
         toolset=gcc \
         python="${PY_VER}" \
         include="${INCLUDE_PATH}" \
-        linkflags="-L${LIBRARY_PATH}" \
+        cxxflags="${CXXFLAGS}"\
+        linkflags="${LINKFLAGS}" \
         --layout=system \
         -j$CPU_COUNT \
         -d0 \
