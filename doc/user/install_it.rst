@@ -128,8 +128,8 @@ If you want :
     
         anaconda download statiskit/python-statiskit
         
-     Edit the :code:`environment.yml` file downloaded and install the resulting environment:
+    Edit the :code:`environment.yml` file downloaded and install the resulting environment:
      
-     .. code-block:: console
+    .. code-block:: console
 
         conda env update
