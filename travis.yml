@@ -33,7 +33,7 @@ env:
   # - RECIPE=llvm
   # - RECIPE=clang
   # - RECIPE=python-clang
-  - RECIPE=libboost
+  # - RECIPE=libboost
   # - UBUNTU=14.04
   # - UBUNTU=16.04
   # - ENVIRONMENT=conda/statiskit-dev.yml
