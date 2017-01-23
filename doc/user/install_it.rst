@@ -126,4 +126,10 @@ If you want :
     
     .. code-block:: console
     
-        anaconda download statiskit/python-statiskit --output python-statiskit.yml
+        anaconda download statiskit/python-statiskit
+        
+     Edit the :code:`environment.yml` file downloaded and install the resulting environment:
+     
+     .. code-block:: console
+
+        conda env update
