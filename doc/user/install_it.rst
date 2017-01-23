@@ -104,7 +104,7 @@ For example, if you consider the *Python* interface, the environment is describe
     
 If you want :
 
-* To change the name of the environmentin which this interface is installed (e.g. :code:`python` in place of :code:`python-statiskit`), replace the name field by the appropriate name sugin the following command in a shell:
+* To change the name of the environment in which this interface is installed (e.g. :code:`python` in place of :code:`python-statiskit`), replace the name field by the appropriate name sugin the following command in a shell:
 
   .. code-block:: console
 
