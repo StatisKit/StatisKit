@@ -104,12 +104,11 @@ For example, if you consider the *Python* interface, the environment is describe
     
 If you want :
 
-* To change the name of the environmentin which this interface is installed (e.g. use :code:`python` in place of :code:`python-statiskit`), 
-replace the name field the appropriate name.
+* To change the name of the environmentin which this interface is installed (e.g. :code:`python` in place of :code:`python-statiskit`), replace the name field by the appropriate name sugin the following command in a shell:
 
   .. code-block:: console
 
     conda env update -n python statiskit/python-statiskit
 
-* To remove a precise package of the environment, remove it in the listing.
+* To remove a precise package of the environment, download the environment and remove the package name from the listing.
   If this package is mandatory for the packages you kept, don't worry, **Conda** will ensure that it is nevertheless installed. 
