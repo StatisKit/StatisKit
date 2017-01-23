@@ -27,7 +27,7 @@ def generate(env):
                     cmd = env.Command(sources[0].target_from_source('', '.h.pch'), sources[0], '$CXX -o $TARGET -x c++-header -c -fPIC $SHCXXFLAGS $_CCCOMCOM $SOURCE')
                 env.Depends(targets, cmd)
                 if SYSTEM == 'osx':
-                    env['CXX'] += " -include " + sources[0].name
+                    env['CXX'] += " -include " + sources.target_from_source('.h', '.h').name
             env.Depends(target, targets)
             response = env.Textfile('response_file.rsp',
                          [tgt.abspath.replace('\\','/') for tgt in targets],
