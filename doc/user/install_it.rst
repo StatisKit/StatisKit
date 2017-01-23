@@ -120,7 +120,7 @@ If you want :
     
     .. code-block:: console
     
-        conda install anaconda-client
+        conda install -n root anaconda-client
         
     Then, download the :code:`python-statiskit` environment using the following command line:
     
