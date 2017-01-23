@@ -94,7 +94,7 @@ To install **StatisKit**, choose an interface and proceed as follows in the same
 
 Custom Installations
 ====================
-
+    
 For custom installations, **Conda** environments proposed in the :ref:`section-recommended-installation` section can be adapted to fit your purposes.
 For example, if you consider the *Python* interface, the environment is described as follows:
 
@@ -104,7 +104,7 @@ For example, if you consider the *Python* interface, the environment is describe
     
 If you want :
 
-* To change the name of the environment in which this interface is installed (e.g. :code:`python` in place of :code:`python-statiskit`), replace the name field by the appropriate name sugin the following command in a shell:
+* To change the name of the environment in which this interface is installed (e.g. :code:`python` in place of :code:`python-statiskit`), replace the name field by the appropriate name using the following command in a shell:
 
   .. code-block:: console
 
@@ -133,3 +133,8 @@ If you want :
     .. code-block:: console
 
         conda env update
+
+.. warning::
+
+    If you are not in the same shell, **Conda** is likely to be inactivated.
+    To reactivate it, follow instructions available in :ref:`section-activate-conda` the section.
