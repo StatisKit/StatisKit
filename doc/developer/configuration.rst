@@ -62,7 +62,7 @@ If you want to configure your favorite editor:
 Download and execute the following scripts for:
 
 * The **Sublime Text** `software <https://www.sublimetext.com/3>`_ :download:`on Linux or OS X <sublime_text.sh>`.
-* The **gedit** `software <https://www.sublimetext.com/3>`_ :download:`on Linux or OS X <gedit.sh>`.
+* The **gedit** `software <https://wiki.gnome.org/Apps/Gedit>`_ :download:`on Linux or OS X <gedit.sh>`.
   
   .. todo::
   
