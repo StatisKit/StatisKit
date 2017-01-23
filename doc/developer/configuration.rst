@@ -20,7 +20,7 @@ In order to ease the development of this software suite on multiple operating sy
 
 .. warning::
 
-    These scripts use scripts presented in the ref:`section-user-install_it-prerequisites` section, there are therefore no need to run these scripts beforehand.
+    These scripts use scripts presented in the :ref:`section-user-install_it-prerequisites` section, there are therefore no need to run these scripts beforehand.
     Nevertheless, refers to the :ref:`section-user-install_it-prerequisites` section to configure the following script executions.
 
 To install **Conda** and the development environment on:
