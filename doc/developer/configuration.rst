@@ -18,10 +18,6 @@ Configuration
 
 In order to ease the development of this software suite on multiple operating systems, the **Conda** package and environment management system is used.
 
-.. note::
-
-    If the **Sublime Text** `software <https://www.sublimetext.com/3>`_ is installed on your computer, a :code:`SCons.sublime-build` file will be installed in order to enable the usage of **SCons** directly from within **Sublime Text** projects.
-
 .. warning::
 
     These scripts use scripts presented in the ref:`section-user-install_it-prerequisites` section, there are therefore no need to run these scripts beforehand.
@@ -56,3 +52,22 @@ Afterwards, the `statiskit-dev <https://raw.githubusercontent.com/StatisKit/Stat
   .. code-block:: console
 
       activate statiskit-dev
+
+
+If you want to configure your favorite editor:
+
+* to be used with **Git**,
+* to be able to use **SCons** from within.
+
+Download and execute the following scripts for:
+
+* The **Sublime Text** `software <https://www.sublimetext.com/3>`_ :download:`on Linux or OS X <sublime_text.sh>`.
+* The **gedit** `software <https://www.sublimetext.com/3>`_ :download:`on Linux or OS X <gedit.sh>`.
+  
+  .. todo::
+  
+    Cannot use **SCons** from within.
+
+.. warning::
+
+    The chosen script must be executed -- in the same way as before -- in the same shell as the one used for the :code:`developer_install.sh` or :code:`developer_install.bat` scripts.
