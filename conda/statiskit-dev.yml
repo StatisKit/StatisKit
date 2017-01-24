@@ -11,5 +11,6 @@ dependencies:
   - python-pkg
   - python-autowig
   - python-clanglite
+  - eigen
   - ipython
   - jupyter
