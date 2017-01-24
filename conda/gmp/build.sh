@@ -5,7 +5,7 @@ chmod +x configure
 if [ `uname` == Darwin ]; then
     ./configure --prefix=$PREFIX --enable-cxx
 else
-    ./configure --prefix=$PREFIX --disable-shared --enable-static
+    ./configure --prefix=$PREFIX
 fi
 
 make
