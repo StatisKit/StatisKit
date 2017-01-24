@@ -41,7 +41,8 @@ def generate(env):
                 return env.SharedLibrary(target, [])
             elif SYSTEM == 'osx':
                 return env.LoadableModule(target, [],
-                                          SHLINKFLAGS='$LINKFLAGS -bundle -flat_namespace -undefined suppress')
+                                          SHLINKFLAGS='$LINKFLAGS -bundle',
+                                          FRAMEWORKSFLAGS='-flat_namespace -undefined suppress')
             else:
                 return env.LoadableModule(target, [])
 
