@@ -25,7 +25,17 @@ source:
 build:
   number: 0
   #- sed -i'' -e '3000,3015d;3024,3027d;3609,3613d' $bindings/python/clang/cindex.py
-
+  script:
+    - cp -rf bindings/python/clang $SP_DIR                                                     [not win]
+    - mkdir %SP_DIR%\clang                                                                     [win]
+    - xcopy bindings\python\clang %SP_DIR%\clang /sy                                           [win]
+    - echo from path import path >> {{ SP_DIR }}/clang/cindex.py
+    - echo library_path = path(__path__) >> {{ SP_DIR }}/clang/cindex.py
+    - echo while not \(library\_path\/'lib'\).exists\(\)\: >> {{ SP_DIR }}/clang/cindex.py     [not win]
+    - echo while not \(library\_path\/'Library'\).exists\(\)\: >> {{ SP_DIR }}/clang/cindex.py [win]
+    - echo     library_path = library_path.parent >> {{ SP_DIR }}/clang/cindex.py
+    - echo library_path = library_path\/'Library' >> {{ SP_DIR }}/clang/cindex.py [win]
+    - echo conf.set_library_path\(library\_path\/\'lib\'\) >> {{ SP_DIR }}/clang/cindex.py
 
 about:
   home: http://www.llvm.org/
@@ -40,3 +50,4 @@ requirements:
   run:
     - python
     - clang
+    - path.py
