@@ -90,8 +90,14 @@ To install **StatisKit**, choose an interface and proceed as follows in the same
 
 .. warning::
 
-    If you are not in the same shell, **Conda** is likely to be inactivated.
-    To reactivate it, follow instructions available in :ref:`section-activate-conda` the section.
+    If you are not in the same shell, depending on the precedent installation, **Conda** is likely to be inactivated.
+    To solve this, on:
+    
+    * Windows, use the *Anaconda Prompt* shell in place of the *CMD* shell or, follow instructions available in :ref:`section-activate-conda` the section.
+    * Linux and OS X, follow instructions available in :ref:`section-activate-conda` the section or, during the execution of :code:`user_install.sh`, answer :code:`yes` to the question 
+    
+      Do you wish the installer to prepend the Miniconda2 install location 
+      to PATH in your ~/.bashrc ? [yes|no]
 
 Custom Installations
 ====================
