@@ -2,6 +2,9 @@ set +v
 
 export ERROR=0
 export CLEAN_MINICONDA=1
+if [[ "$BATCH_MODE" = "" ]]; then
+    export BATCH_MODE=false
+fi
 
 case "$(uname -s)" in
 
@@ -69,7 +72,11 @@ else
             export CONDA_DIR=$HOME/.miniconda$CONDA_VERSION
         fi
         if [[ ! -d "$CONDA_DIR" ]]; then
-            bash Miniconda$CONDA_VERSION-latest-$OS_NAME-$PLATFORM.sh -b -p $CONDA_DIR
+            if [[ "$BATCH_MODE" = "true" ]]; then
+                bash Miniconda$CONDA_VERSION-latest-$OS_NAME-$PLATFORM.sh -p $CONDA_DIR -b
+            else
+                bash Miniconda$CONDA_VERSION-latest-$OS_NAME-$PLATFORM.sh -p $CONDA_DIR
+            fi
             if [[ ! "$?" = "0" ]]; then
                 echo "Execution of the Miniconda"$CONDA_VERSION"-latest-"$OS_NAME"-"$PLATFORM".sh file failed"
                 export ERROR=1
@@ -110,8 +117,5 @@ fi
 if [[ "$ERROR" = "1" ]]; then
     echo "User installation failed."
 fi 
-# if [[ -d $HOME/.config/sublime-text-3/Packages/SublimeREPL ]]; then
-#     mkdir -p $HOME/.config/sublime-text-3/Packages/StatisKit
-# fi
 
 set +v
