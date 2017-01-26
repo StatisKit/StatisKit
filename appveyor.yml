@@ -2,6 +2,8 @@ branches:
   except:
     - documentation
     - unix
+    - linux
+    - osx
     
 platform:
   - x86
