@@ -1,6 +1,7 @@
 branches:
   except:
     - documentation
+    - unix
     
 platform:
   - x86
