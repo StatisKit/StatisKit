@@ -52,7 +52,8 @@ def generate(env):
       else:
         env.PrependUnique(CPPPATH=['$PREFIX/include'],
                           LIBPATH=['$PREFIX/lib'],
-                          CXXFLAGS=["-std=c++11"])
+                          CFLAGS=["-x", "c++", "-std=c11"],
+                          CXXFLAGS=["-x", "c++", "-std=c++11"])
         if ARCH == '32':
           env.AppendUnique(CCFLAGS=['-m32'])
         if SYSTEM == 'osx':
