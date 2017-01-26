@@ -1,6 +1,8 @@
 branches:
   except:
   - documentation
+  - win
+  - windows
   
 language: cpp
 
