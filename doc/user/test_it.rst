@@ -7,9 +7,10 @@ Using **Docker** images and **Binder** servers and **Jupyter** notebooks, we are
 .. note::
 
     For more information refers to :
-
-    * The **Docker** `documentation <https://docs.docker.com/>`_.
+    
+    * The **Jupyter** `documentation <https://jupyter.readthedocs.io/en/latest/index.html>`_.
     * The **Binder** `documentation <http://docs.mybinder.org/>`_.
+    * The **Docker** `documentation <https://docs.docker.com/>`_.
     
 Online with **Binder**
 ======================

@@ -20,7 +20,7 @@ In order to ease the development of this software suite on multiple operating sy
 
 .. warning::
 
-    These scripts use scripts presented in the ref:`section-user-install_it-prerequisites` section, there are therefore no need to run these scripts beforehand.
+    These scripts use scripts presented in the :ref:`section-user-install_it-prerequisites` section, there are therefore no need to run these scripts beforehand.
     Nevertheless, refers to the :ref:`section-user-install_it-prerequisites` section to configure the following script executions.
 
 To install **Conda** and the development environment on:
@@ -61,8 +61,8 @@ If you want to configure your favorite editor:
 
 Download and execute the following scripts for:
 
-* The **Sublime Text** `software <https://www.sublimetext.com/3>`_ :download:`on Linux or OS X <sublime_text.sh>`.
-* The **gedit** `software <https://www.sublimetext.com/3>`_ :download:`on Linux or OS X <gedit.sh>`.
+* The **Sublime Text** `software <https://www.sublimetext.com/3>`_ :download:`on Linux and OS X <sublime_text.sh>`.
+* The **gedit** `software <https://wiki.gnome.org/Apps/Gedit>`_ :download:`on Linux and OS X <gedit.sh>`.
   
   .. todo::
   
