@@ -1,5 +1,6 @@
 import sysconfig
 from SCons.Script import AddOption, GetOption
+from path import path
 
 def generate(env, **kwargs):
     """Add Builders and construction variables to the Environment."""
