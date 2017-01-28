@@ -48,40 +48,6 @@ else
             export ERROR=1
         fi
     fi
-    if [[ "$ERROR" = "0" ]]; then
-        if [[ -d "$HOME/.config/sublime-text-3" ]]; then
-            export SUBLIME_TEXT=3
-        elif [[ -d "$HOME/.config/sublime-text-2" ]]; then
-            export SUBLIME_TEXT=2
-        fi
-        if [[ ! "$SUBLIME_TEXT" = "" ]]; then
-            python -c "import mako" >/dev/null 2>/dev/null
-            if [[ "$?" = "0" ]]; then
-                export REMOVE_MAKO=0
-            else
-                export REMOVE_MAKO=1
-                conda install mako -c conda-forge -y
-            fi        
-            wget https://raw.githubusercontent.com/StatisKit/StatisKit/master/doc/developer/SCons.sublime-build -O SCons.sublime-build
-            if [[ ! "$?" = "0" ]]; then
-                echo "import os" > install.py
-                echo "from mako.template import Template" >> install.py
-                echo "with open(os.environ.get('HOME') + '/.config/sublime-text-'+os.environ.get('SUBLIME_TEXT') + '/Packages/User/SCons.sublime-build', 'w') as filehandler:" >> install.py
-                echo "    filehandler.write(Template(filename='SCons.sublime-build').render(CONDA_DIR=os.environ.get('CONDA_DIR'), project_path='${project_path}'))" >> install.py
-                python install.py
-                if [[ ! "$?" = "0" ]]; then
-                    echo 'Sublime Text '$SUBLIME_TEXT' configuration failed.'
-                fi
-                rm install.py
-                rm SCons.sublime-build
-            else
-                echo 'Download of the SCons.sublime-build file for Sublime Text '$SUBLIME_TEXT' configuration failed.'
-            fi
-            if [[ "$REMOVE_MAKO" = "1" ]]; then
-                conda remove mako -y
-            fi
-        fi
-    fi
 fi
 
 if [[ "$ERROR" = "0" ]]; then
