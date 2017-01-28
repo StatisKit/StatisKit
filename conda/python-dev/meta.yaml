@@ -30,7 +30,10 @@ requirements:
     - python
     - setuptools
     - python-scons
+    - path.py
   run:
     - python
     - setuptools
     - python-scons
+    - path.py
+
