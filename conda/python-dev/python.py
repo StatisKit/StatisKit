@@ -33,7 +33,7 @@ def generate(env, **kwargs):
         env['SP_DIR'] = '$PREFIX/lib/python$PYTHON_VERSION/site-packages'
         
       def BuildPython(env, source, pattern=None):
-        source = path(source)
+        source = path(env.Dir('.').abspath)/source
         sources = source.walkfiles(pattern=pattern)
         targets = []
         for source in sources:
