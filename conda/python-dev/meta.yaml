@@ -31,11 +31,11 @@ requirements:
     - setuptools
     - python-scons
     - path.py
-    - pywin32
+    - pywin32                      [win]
   run:
     - python
     - setuptools
     - python-scons
     - path.py
-    - pywin32
+    - pywin32                      [win]
 
