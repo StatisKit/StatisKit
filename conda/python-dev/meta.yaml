@@ -32,6 +32,7 @@ requirements:
     - python-scons
     - path.py
     - pywin32                      [win]
+    - pyyaml
   run:
     - python
     - setuptools
