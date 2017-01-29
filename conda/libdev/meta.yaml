@@ -29,9 +29,12 @@ requirements:
   build:
     - python
     - python-scons
+    - pywin32
   run:
     - python
     - python-scons
+    - pywin32
+    
 # requirements:
 #   build:
 #     - gcc               [linux]
