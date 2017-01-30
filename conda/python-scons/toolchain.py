@@ -18,8 +18,8 @@ def generate(env):
       SYSTEM = env['SYSTEM']
       env['ARCH'] = GetOption('arch')
       ARCH = env['ARCH']
-      if SYSTEM == 'windows':
-        env['SHLIBSUFFIX'] = '.pyd'
+      if SYSTEM == 'win':
+        #env['SHLIBSUFFIX'] = '.pyd'
         env['TARGET_ARCH'] = 'x86_64' if ARCH == '64' else 'x86'
         AddOption('--msvc-version',
                       dest    = 'msvc-version',
