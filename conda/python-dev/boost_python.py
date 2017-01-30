@@ -16,7 +16,7 @@ def generate(env):
             if not SYSTEM == 'win':
                 target += '.so'
             else:
-                target += '.dll'
+                target += '.pyd'
             target = env.File(target).srcnode()
             targets = list(itertools.chain(*[env.SharedObject(None, source) for source in sources  if source.suffix in ['.cpp', '.cxx', '.c++']]))
             sources = [source for source in sources if source.suffix == '.h']
