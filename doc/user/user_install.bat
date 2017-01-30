@@ -41,7 +41,7 @@ conda config --set always_yes !CONDA_ALWAYS_YES!
 if !ERRORLEVEL! neq 0 exit /b !ERRORLEVEL!
 conda config --set changeps1 !CONDA_CHANGE_PS1!
 if !ERRORLEVEL! neq 0 exit /b !ERRORLEVEL!
-conda update -q conda
+conda update -q conda -y
 if !ERRORLEVEL! neq 0 exit /b !ERRORLEVEL!
 
 echo OFF
