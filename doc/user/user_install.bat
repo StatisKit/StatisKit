@@ -14,7 +14,7 @@ if !ERRORLEVEL! neq 0 (
     exit /b !ERRORLEVEL!
 )
 
-if not exist!CONDA_DIR! (
+if not exist !CONDA_DIR! (
     curl https://repo.continuum.io/miniconda/Miniconda!CONDA_VERSION!-latest-Windows-!PLATFORM!.exe -o miniconda.exe
     if !ERRORLEVEL! neq 0 exit /b !ERRORLEVEL!
     start /wait "" miniconda.exe /InstallationType=JustMe /RegisterPython=0 /S /D=!CONDA_DIR!
