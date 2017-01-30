@@ -15,8 +15,6 @@ def generate(env):
             SYSTEM = env['SYSTEM']
             if not SYSTEM == 'win':
                 target += '.so'
-            else:
-                target += '.pyd'
             target = env.File(target).srcnode()
             targets = list(itertools.chain(*[env.SharedObject(None, source) for source in sources  if source.suffix in ['.cpp', '.cxx', '.c++']]))
             sources = [source for source in sources if source.suffix == '.h']
@@ -36,7 +34,8 @@ def generate(env):
             env.Depends(target, response)
             env.Append(LINKFLAGS = '@' + response[0].abspath)
             if SYSTEM == 'win':
-                return env.SharedLibrary(target, [])
+                return env.SharedLibrary(target, [], SHLIBPREFIX='',
+                                                     SHLIBSUFFIX = '.pyd')
             elif SYSTEM == 'osx':
                 return env.LoadableModule(target, [],
                                           SHLINKFLAGS='$LINKFLAGS -bundle',
