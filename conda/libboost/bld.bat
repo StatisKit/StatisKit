@@ -21,9 +21,10 @@ CALL b2 install toolset=msvc-%MSVC_VER% ^
         address-model=%ARCH% ^
         variant=release ^
         threading=multi ^
-        link=shared ^
+        link=static,shared ^
         define=BOOST_ALL_NO_LIB ^
         -j%CPU_COUNT% ^
+        --with-python ^
         --layout=system ^
         --build-dir=buildboost ^
         --prefix=%LIBRARY_PREFIX%
