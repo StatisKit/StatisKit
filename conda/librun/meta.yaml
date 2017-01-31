@@ -15,15 +15,16 @@
 ##################################################################################
 
 package:
-  name: libdev
+  name: librun
   version: "1.0.0"
     
 build:
   number: 0
+  skipo: true
   track_features:
-    - vc9                  [win and py27]
-    - vc10                 [win and py34]
-    - vc14                 [win and py35]
+    - vc9                 [win and py27]
+    - vc10                [win and py34]
+    - vc14                [win and py35]
 
 about:
   home: http://statiskit.readthedocs.io/
@@ -32,36 +33,11 @@ about:
 requirements:
   build:
     - python
-    - python-scons
-    - pywin32             [win]
     - vs2008_runtime      [win and py27]
     - vs2010_runtime      [win and py34]
     - vs2015_runtime      [win and py35]
   run:
     - python
-    - python-scons
-    - pywin32             [win]
     - vs2008_runtime      [win and py27]
     - vs2010_runtime      [win and py34]
     - vs2015_runtime      [win and py35]
-
-# requirements:
-#   build:
-#     - gcc               [linux]
-#     - libgcc            [linux]
-#     - glibc             [linux]
-#     - binutils          [linux]
-#     - clang             [unix]
-#   run:
-#     - gcc               [linux]
-#     - libgcc            [linux]
-#     - glibc             [linux]
-#     - binutils          [linux]
-#     - clang             [unix]
-
-# test:
-#   commands:
-#   - gcc -x c -v -E /dev/null        [linux]
-#   - gcc -x c++ -v -E /dev/null      [linux]
-#   - clang -x c -v -E /dev/null      [unix]
-#   - clang++ -x c++ -v -E /dev/null  [unix]
