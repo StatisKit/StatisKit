@@ -27,3 +27,4 @@ requirements:
     - python
     - icu 54.*          [unix]
     - zlib
+    - librun

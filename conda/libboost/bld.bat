@@ -3,13 +3,13 @@ echo ON
 :: Set the right msvc version according to Python version
 if "%PY_VER%"=="2.7" (
     set MSVC_VER=9.0
-    set LIB_VER=90
+    :: set LIB_VER=90
 ) else if "%PY_VER%"=="3.4" (
     set MSVC_VER=10.0
-    set LIB_VER=100
+    :: set LIB_VER=100
 ) else (
     set MSVC_VER=14.0
-    set LIB_VER=140
+    :: set LIB_VER=140
 )
 
 call bootstrap.bat
