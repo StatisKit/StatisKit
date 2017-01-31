@@ -38,7 +38,7 @@ def generate(env):
             env['SHLINKCOM'] = [env['SHLINKCOM'], 'mt.exe -nologo -manifest ${TARGET}.manifest -outputresource:$TARGET;2']
         env.AppendUnique(CCFLAGS=['/O2',
                                   '/Ob2',
-                                  '/MD',
+                                  '/MT',
                                   '/GR',
                                   '/EHsc',
                                   '/Gy',
