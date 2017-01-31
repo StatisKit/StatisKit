@@ -16,12 +16,19 @@ def generate(env):
                 kwargs = dict(FRAMEWORKSFLAGS = '-flat_namespace -undefined suppress')
             else:
                 kwargs = dict()
-            targets += env.SharedLibrary(os.path.join(env['PREFIX'], "lib", target),
-                                         [source for source in sources if source.suffix in ['.c', '.cpp', '.cxx', '.c++']],
-                                         **kwargs)
+
             if SYSTEM == 'win':
+                win_targets = env.SharedLibrary(os.path.join(env['PREFIX'], "lib", target),
+                                                [source for source in sources if source.suffix in ['.c', '.cpp', '.cxx', '.c++']],
+                                                **kwargs)
                 targets += env.Install(os.path.join(env['PREFIX'], "bin"),
-                            [target for target in targets if target.suffix == '.dll'])
+                                       [target for target in win_targets if target.suffix == '.dll'])
+                targets += [target for target in win_targets if target.suffix == '.lib']
+                env.Delete([target for target in win_targets if not target.suffix == '.lib'])
+            else:
+                targets += env.SharedLibrary(os.path.join(env['PREFIX'], "lib", target),
+                                             [source for source in sources if source.suffix in ['.c', '.cpp', '.cxx', '.c++']],
+                                             **kwargs)
             return targets
 
         env.AddMethod(BuildCpp)
