@@ -16,14 +16,14 @@ environment:
     # - RECIPE: python-parse
     # - RECIPE: libdev
     # - RECIPE: librun
-    # - RECIPE: python-dev
+    - RECIPE: python-dev
     # - RECIPE: python-dbg
     # - RECIPE: python-doc
     # - RECIPE: python-pkg
     # - RECIPE: llvm
     # - RECIPE: clang
     # - RECIPE: python-clang
-    - RECIPE: libboost
+    # - RECIPE: libboost
 
 install:
   - git clone https://github.com/StatisKit/appveyor-ci.git
