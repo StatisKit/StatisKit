@@ -30,7 +30,12 @@ def generate(env):
                 if SYSTEM == 'osx':
                     env['CXX'] += " -include " + sources[0].target_from_source('', '.h').abspath
             env.Depends(target, targets)
-            response = env.Textfile('response_file.rsp',
+            if SYSTEM == 'win':
+                response = env.Textfile('response_file.rsp',
+                         [tgt.abspath.replace('/','\\') for tgt in targets],
+                         LINESEPARATOR=" ")
+            else:
+                response = env.Textfile('response_file.rsp',
                          [tgt.abspath.replace('\\','/') for tgt in targets],
                          LINESEPARATOR=" ")
             env.Depends(target, response)
