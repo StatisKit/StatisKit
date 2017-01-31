@@ -6,7 +6,7 @@ branches:
     - osx
     
 platform:
-  # - x86
+  - x86
   - x64
 
 environment:
