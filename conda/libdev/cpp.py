@@ -19,6 +19,9 @@ def generate(env):
             targets += env.SharedLibrary(os.path.join(env['PREFIX'], "lib", target),
                                          [source for source in sources if source.suffix in ['.c', '.cpp', '.cxx', '.c++']],
                                          **kwargs)
+            if SYSTEM == 'win':
+                env.Install(os.path.join(env['PREFIX'], "bin"),
+                            [target for target in targets if target.suffix == '.dll'])
             return targets
 
         env.AddMethod(BuildCpp)
