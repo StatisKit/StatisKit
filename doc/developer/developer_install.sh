@@ -30,9 +30,6 @@ if [[ ! -f user_install.sh && "$ERROR" = "0" ]]; then
     else
         wget https://raw.githubusercontent.com/StatisKit/StatisKit/master/doc/user/user_install.sh -O user_install.sh
     fi
-    if [[ "$BATCH_MODE" = "true" ]]; then
-        set -v
-    fi
     if [[ ! "$?" = "0" ]]; then
         echo "Download of the user_install.sh file for Conda installation failed"
         export ERROR=1
@@ -46,6 +43,9 @@ fi
 
 if [[ "$ERROR" = "0" ]]; then
     source user_install.sh
+    if [[ "$BATCH_MODE" = "true" ]]; then
+        set -v
+    fi
     if [[ "$CLEAN_INSTALL" = "1" ]]; then
         rm user_install.sh
     fi
