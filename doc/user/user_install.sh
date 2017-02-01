@@ -119,5 +119,3 @@ fi
 if [[ "$ERROR" = "1" ]]; then
     echo "User installation failed."
 fi 
-
-set +v
