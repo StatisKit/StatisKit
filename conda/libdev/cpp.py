@@ -25,7 +25,7 @@ def generate(env):
                 dll = [target for target in targets if target.suffix == '.dll'].pop()
                 exp = [target for target in targets if target.suffix == '.exp'].pop()
                 lib = [target for target in targets if target.suffix == '.lib'].pop()
-                targets = [target for target in targets in not target.suffix in ['.dll', '.exp', '.lib']]
+                targets = [target for target in targets if not target.suffix in ['.dll', '.exp', '.lib']]
                 targets += env.Install(os.path.join(env['PREFIX'], "bin"), dll)
                 targets += env.Command(lib, [exp, dll], [Delete("$SOURCE")])
             return targets
