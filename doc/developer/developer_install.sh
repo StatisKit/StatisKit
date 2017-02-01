@@ -57,19 +57,24 @@ if [[ "$ERROR" = "0" ]]; then
     fi
 fi
 if [[ "$ERROR" = "0" ]]; then
-    if [[ "$ENVIRONMENT" = "" ]]; then
-        conda env update statiskit/statiskit-dev
-        if [[ ! "$?" = "0" ]]; then
-            export ERROR=1
-        fi
-    else
-        conda env update statiskit/statiskit-dev -n $ENVIRONMENT
-        if [[ ! "$?" = "0" ]]; then
-            export ERROR=1
-        fi
+    if [[ "$%CONFIGURE_ONLY%" = "" ]]; then
+        export CONFIGURE_ONLY="false"
     fi
-    if [[ "$ERROR" = "1" ]]; then
-        echo "Installation of the development environment failed." 
+    if [[ "$%CONFIGURE_ONLY%" = "false" ]]; then
+        if [[ "$%STATISKIT_DEV%" = "" ]]; then
+            conda env update statiskit/statiskit-dev
+            if [[ ! "$?" = "0" ]]; then
+                export ERROR=1
+            fi
+        else
+            conda env update statiskit/statiskit-dev -n $%STATISKIT_DEV%
+            if [[ ! "$?" = "0" ]]; then
+                export ERROR=1
+            fi
+        fi
+        if [[ "$ERROR" = "1" ]]; then
+            echo "Installation of the development environment failed." 
+        fi
     fi
 fi
 
