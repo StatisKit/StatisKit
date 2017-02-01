@@ -20,10 +20,11 @@ package:
     
 build:
   number: 0
+  skip: true
 
 about:
   home: http://statiskit.readthedocs.io/
-  license: CeCILL-C
+  license: CeCILL
 
 requirements:
   build:

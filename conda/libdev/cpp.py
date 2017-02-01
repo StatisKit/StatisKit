@@ -1,5 +1,5 @@
 import os
-from SCons.Defaults import Delete
+from SCons.Defaults import Move
 
 def generate(env):
     """Add Builders and construction variables to the Environment."""
@@ -19,13 +19,10 @@ def generate(env):
                 kwargs = dict()
 
             if SYSTEM == 'win':
-                win_targets = env.SharedLibrary(os.path.join(env['PREFIX'], "lib", target),
+                targets += env.SharedLibrary(os.path.join(env['PREFIX'], "lib", target),
                                                 [source for source in sources if source.suffix in ['.c', '.cpp', '.cxx', '.c++']],
                                                 **kwargs)
-                targets += env.Install(os.path.join(env['PREFIX'], "bin"),
-                                       [target for target in win_targets if target.suffix == '.dll'])
-                targets += [target for target in win_targets if target.suffix == '.lib']
-                Delete([target for target in win_targets if not target.suffix == '.lib'])
+                Move(os.path.join(env['PREFIX'], "bin"), [target for target in targets if target.suffix == '.dll'])
             else:
                 targets += env.SharedLibrary(os.path.join(env['PREFIX'], "lib", target),
                                              [source for source in sources if source.suffix in ['.c', '.cpp', '.cxx', '.c++']],

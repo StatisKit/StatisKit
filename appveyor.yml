@@ -1,9 +1,8 @@
 branches:
   except:
-    - documentation
+    - doc
     - unix
-    - linux
-    - osx
+    - linux32
     
 platform:
   - x86
@@ -11,19 +10,19 @@ platform:
 
 environment:
   matrix:
-    # - RECIPE: vcs
+    - RECIPE: vcs
     - RECIPE: python-scons
-    # - RECIPE: python-parse
-    # - RECIPE: libdev
-    # - RECIPE: librun
-    # - RECIPE: python-dev
-    # - RECIPE: python-dbg
-    # - RECIPE: python-doc
-    # - RECIPE: python-pkg
-    # - RECIPE: llvm
-    # - RECIPE: clang
-    # - RECIPE: python-clang
-    # - RECIPE: libboost
+    - RECIPE: python-parse
+    - RECIPE: libdev
+    - RECIPE: librun
+    - RECIPE: python-dev
+    - RECIPE: python-dbg
+    - RECIPE: python-doc
+    - RECIPE: python-pkg
+    - RECIPE: llvm
+    - RECIPE: clang
+    - RECIPE: python-clang
+    - RECIPE: libboost
 
 install:
   - git clone https://github.com/StatisKit/appveyor-ci.git
