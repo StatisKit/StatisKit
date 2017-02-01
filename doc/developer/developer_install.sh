@@ -5,9 +5,31 @@ else
     set +v
 fi
 
+export ERROR=0
+
+case "$(uname -s)" in
+
+    Darwin)
+        export OS_NAME=MacOSX
+        ;;
+
+    Linux)
+        export OS_NAME=Linux
+        ;;
+
+    *)
+        export ERROR=1
+        ;;
+
+esac
+
 export CLEAN_INSTALL=1
-if [[ ! -f user_install.sh ]]; then
-    wget https://raw.githubusercontent.com/StatisKit/StatisKit/master/doc/user/user_install.sh -O user_install.sh
+if [[ ! -f user_install.sh && "$ERROR" = "0" ]]; then
+    if [[ "$OS_NAME" = "MacOSX" ]]; then
+        curl https://raw.githubusercontent.com/StatisKit/StatisKit/master/doc/user/user_install.sh -o user_install.sh
+    else
+        wget https://raw.githubusercontent.com/StatisKit/StatisKit/master/doc/user/user_install.sh -O user_install.sh
+    fi
     if [[ "$BATCH_MODE" = "true" ]]; then
         set -v
     fi
