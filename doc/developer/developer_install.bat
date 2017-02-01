@@ -46,7 +46,7 @@ if "%CONFIGURE_ONLY%"=="false" (
             echo "Developer configuration failed."
             exit 1
         ) else (
-            echo "Developer configuration succeded."
+            echo "Developer configuration and installation succeded."
         )
     ) else (
         conda env update statiskit/statiskit-dev -n %STATISKIT_DEV%
@@ -55,9 +55,11 @@ if "%CONFIGURE_ONLY%"=="false" (
             echo "Developer configuration failed."
             exit 1
         ) else (
-            echo "Developer configuration succeded."
+            echo "Developer configuration and installation succeded."
         )
     )
+) else (
+    echo "Developer configuration succeded."
 )
 
 echo OFF

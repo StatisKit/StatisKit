@@ -72,14 +72,15 @@ if [[ "$ERROR" = "0" ]]; then
                 export ERROR=1
             fi
         fi
-        if [[ "$ERROR" = "1" ]]; then
-            echo "Installation of the development environment failed." 
-        fi
     fi
 fi
 
 if [[ "$ERROR" = "0" ]]; then
-    echo "Developer configuration succeded."
+    if [[ ! "$CONFIGURE_ONLY" = "false" ]]; then
+        echo "Developer configuration succeded."
+    else
+        echo "Developer configuration and installation succeded."
+    fi
 else
     echo "Developer configuration failed."
 else
