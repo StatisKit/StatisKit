@@ -1,2 +1,8 @@
+engines:
+  shellcheck:
+    enable: true
+  duplication:
+  	enabled: true
+
 exclude_paths:
   - conda/python-scons/scons-*
