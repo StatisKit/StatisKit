@@ -62,7 +62,7 @@ if [[ "$ERROR" = "0" ]]; then
         if [[ ! "$?" = "0" ]]; then
             export ERROR=1
         fi
-    else
+    elif [[ ! "$ENVIRONMENT" = "false" ]]; then
         conda env update statiskit/statiskit-dev -n $ENVIRONMENT
         if [[ ! "$?" = "0" ]]; then
             export ERROR=1
@@ -74,7 +74,11 @@ if [[ "$ERROR" = "0" ]]; then
 fi
 
 if [[ "$ERROR" = "0" ]]; then
-    echo "Developer configuration succeded."
+    if [[ "$ENVIRONMENT" = "false" ]]; then
+        echo "Developer configuration incomplete."
+    else
+        echo "Developer configuration succeded."
+    fi
 else
     echo "Developer configuration failed."
 else
