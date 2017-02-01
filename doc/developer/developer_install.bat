@@ -1,4 +1,4 @@
-set EnableDelayedExpansion
+setlocal EnableDelayedExpansion
 
 echo OFF
 
