@@ -1,9 +1,4 @@
-if [[ "$BATCH_MODE" = "true" ]]; then
-    set -v
-else
-    export BATCH_MODE=false
-    set +v
-fi
+set +v
 
 export ERROR=0
 
@@ -43,9 +38,6 @@ fi
 
 if [[ "$ERROR" = "0" ]]; then
     source user_install.sh
-    if [[ "$BATCH_MODE" = "true" ]]; then
-        set -v
-    fi
     if [[ "$CLEAN_INSTALL" = "1" ]]; then
         rm user_install.sh
     fi
