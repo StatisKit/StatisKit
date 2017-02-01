@@ -18,15 +18,11 @@ def generate(env):
             else:
                 kwargs = dict()
 
+            targets += env.SharedLibrary(os.path.join(env['PREFIX'], "lib", target),
+                                         [source for source in sources if source.suffix in ['.c', '.cpp', '.cxx', '.c++']],
+                                         **kwargs)
             if SYSTEM == 'win':
-                targets += env.SharedLibrary(os.path.join(env['PREFIX'], "lib", target),
-                                                [source for source in sources if source.suffix in ['.c', '.cpp', '.cxx', '.c++']],
-                                                **kwargs)
-                Move(os.path.join(env['PREFIX'], "bin"), [target for target in targets if target.suffix == '.dll'])
-            else:
-                targets += env.SharedLibrary(os.path.join(env['PREFIX'], "lib", target),
-                                             [source for source in sources if source.suffix in ['.c', '.cpp', '.cxx', '.c++']],
-                                             **kwargs)
+                targets = [target for target in targets if target.suffix == '.dll'] + Move(os.path.join(env['PREFIX'], "bin"), [target for target in targets if target.suffix == '.dll'])
             return targets
 
         env.AddMethod(BuildCpp)
