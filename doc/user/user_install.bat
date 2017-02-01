@@ -48,6 +48,7 @@ attrib +h !CONDA_DIR!
 if errorlevel 1 echo "Failed to hide the "!CONDA_DIR!" directory"
 
 set PATH=!CONDA_DIR!;!CONDA_DIR!\Scripts;%PATH%
+echo !PATH!
 activate root
 if errorlevel 1 (
     echo "Activation of Conda failed"
