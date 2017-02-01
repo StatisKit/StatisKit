@@ -49,7 +49,8 @@ if errorlevel 1 echo "Failed to hide the "!CONDA_DIR!" directory"
 
 set PATH=!CONDA_DIR!;!CONDA_DIR!\Scripts;%PATH%
 echo !PATH!
-activate root
+call !CONDA_DIR!\Scripts\activate.bat root
+
 if errorlevel 1 (
     echo "Activation of Conda failed"
     echo "User installation failed."
