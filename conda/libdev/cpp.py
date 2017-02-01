@@ -27,7 +27,8 @@ def generate(env):
                 lib = [target for target in targets if target.suffix == '.lib'].pop()
                 targets = [target for target in targets if not target.suffix in ['.dll', '.exp', '.lib']]
                 targets += env.Install(os.path.join(env['PREFIX'], "bin"), dll)
-                targets += env.Command(lib, [exp, dll], [Delete("$SOURCE")])
+                targets += env.Command([], [exp, dll], [Delete("$SOURCE")])
+                targets.append(lib)
             return targets
 
         env.AddMethod(BuildCpp)
