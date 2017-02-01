@@ -1,6 +1,6 @@
 setlocal EnableDelayedExpansion
 
-echo ON
+echo OFF
 
 if "%CONDA_VERSION%"=="" set CONDA_VERSION=2
 if "%CONDA_DIR%"=="" set CONDA_DIR=%USERPROFILE%\Miniconda!CONDA_VERSION!
@@ -48,7 +48,6 @@ attrib +h !CONDA_DIR!
 if errorlevel 1 echo "Failed to hide the "!CONDA_DIR!" directory"
 
 set PATH=!CONDA_DIR!;!CONDA_DIR!\Scripts;%PATH%
-echo !PATH!
 call !CONDA_DIR!\Scripts\activate.bat root
 if errorlevel 1 (
     echo "Activation of Conda failed"
