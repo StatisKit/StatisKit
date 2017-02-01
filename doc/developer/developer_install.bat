@@ -36,28 +36,30 @@ if errorlevel 1 (
     conda update -n root anaconda-client -y
 )
 
-if "%ENVIRONMENT%"=="" (
-    conda env update statiskit/statiskit-dev
-    if errorlevel 1 (
-        echo "Installation of the development environment failed." 
-        echo "Developer configuration failed."
-        exit 1
+if "%CONFIGURE_ONLY%"=="" set CONFIGURE_ONLY="false"
+
+if "%CONFIGURE_ONLY%"=="false" (
+    if "%STATISKIT_DEV%"== "" (
+        conda env update statiskit/statiskit-dev
+        if errorlevel 1 (
+            echo "Installation of the development environment failed." 
+            echo "Developer configuration failed."
+            exit 1
+        ) else (
+            echo "Developer configuration and installation succeded."
+        )
     ) else (
-        echo "Developer configuration succeded."
+        conda env update statiskit/statiskit-dev -n %STATISKIT_DEV%
+        if errorlevel 1 (
+            echo "Installation of the development environment failed." 
+            echo "Developer configuration failed."
+            exit 1
+        ) else (
+            echo "Developer configuration and installation succeded."
+        )
     )
 ) else (
-   if "%ENVIRONMENT%"=="false" (
-     echo "Devoloper configuration incompleted."
-   ) else (
-   conda env update statiskit/statiskit-dev -n %ENVIRONMENT%
-     if errorlevel 1 (
-         echo "Installation of the development environment failed." 
-         echo "Developer configuration failed."
-         exit 1
-     ) else (
-         echo "Developer configuration succeded."
-     )
-   )
+    echo "Developer configuration succeded."
 )
 
 echo OFF
