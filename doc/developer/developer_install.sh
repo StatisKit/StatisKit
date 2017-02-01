@@ -7,7 +7,7 @@ fi
 
 export CLEAN_INSTALL=1
 if [[ ! -f user_install.sh ]]; then
-    wget http://statiskit.readthedocs.io/en/latest/_downloads/user_install.sh -O user_install.sh
+    wget https://raw.githubusercontent.com/StatisKit/StatisKit/master/doc/user/user_install.sh -O user_install.sh
     if [[ "$BATCH_MODE" = "true" ]]; then
         set -v
     fi
