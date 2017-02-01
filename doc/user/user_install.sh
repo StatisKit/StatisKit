@@ -94,6 +94,7 @@ else
             if [[ "$CONDA_CHANGE_PS1" = "" ]]; then
               CONDA_CHANGE_PS1=yes
             fi
+            source activate root
             conda config --set always_yes $CONDA_ALWAYS_YES
             if [[ ! "$?" = "0" ]]; then
                 echo "Configuration of Conda failed"
