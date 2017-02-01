@@ -26,7 +26,7 @@ if [[ ! -f user_install.sh && "$ERROR" = "0" ]]; then
         wget https://raw.githubusercontent.com/StatisKit/StatisKit/master/doc/user/user_install.sh -O user_install.sh
     fi
     if [[ ! "$?" = "0" ]]; then
-        echo "Download of the user_install.sh file for Conda installation failed"
+        echo "Download of the user_install.sh file for Conda installation failed."
         export ERROR=1
     else
         export ERROR=0
@@ -56,9 +56,7 @@ if [[ "$ERROR" = "0" ]]; then
         fi
     fi
 fi
-if [[ "$ERROR" = "1" ]]; then
-    echo "Developer configuration failed."
-else
+if [[ "$ERROR" = "0" ]]; then
     if [[ "$ENVIRONMENT" = "" ]]; then
         conda env update statiskit/statiskit-dev
         if [[ ! "$?" = "0" ]]; then
@@ -70,10 +68,15 @@ else
             export ERROR=1
         fi
     fi
+    if [[ "$ERROR" = "1" ]]; then
+        echo "Installation of the development environment failed." 
+    fi
 fi
 
 if [[ "$ERROR" = "0" ]]; then
     echo "Developer configuration succeded."
-fi
+else
+    echo "Developer configuration failed."
+else
 
 set +v
