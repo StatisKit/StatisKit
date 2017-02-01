@@ -20,7 +20,6 @@ package:
     
 build:
   number: 0
-  skip: true
 
 about:
   home: http://statiskit.readthedocs.io/
