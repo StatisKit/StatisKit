@@ -1,9 +1,4 @@
-if [[ "$BATCH_MODE"="true" ]]; then
-    set -v
-else
-    export BATCH_MODE=false
-    set +v
-fi
+set +v
 
 export ERROR=0
 export CLEAN_MINICONDA=1
@@ -119,3 +114,5 @@ fi
 if [[ "$ERROR" = "1" ]]; then
     echo "User installation failed."
 fi 
+
+set +v
