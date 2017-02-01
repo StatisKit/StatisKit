@@ -1,3 +1,5 @@
+set EnableDelayedExpansion
+
 echo OFF
 
 where curl
@@ -22,6 +24,8 @@ if errorlevel 1 (
 call user_install.bat
 if errorlevel 1 exit 1
 if "%CLEAN_INSTALL%"=="1" del user_install.bat
+echo ON
+echo !PATH!
 
 python -c "import conda_build" >nul 2>nul
 if errorlevel 1 (
