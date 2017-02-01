@@ -1,5 +1,3 @@
-setlocal EnableDelayedExpansion
-
 echo OFF
 
 where curl
@@ -24,8 +22,6 @@ if errorlevel 1 (
 call user_install.bat
 if errorlevel 1 exit 1
 if "%CLEAN_INSTALL%"=="1" del user_install.bat
-echo ON
-echo !PATH!
 
 python -c "import conda_build" >nul 2>nul
 if errorlevel 1 (
@@ -40,24 +36,24 @@ if errorlevel 1 (
     conda update -n root anaconda-client -y
 )
 
-if "%ENVIRONMENT%"== "" (
-    conda env update statiskit/statiskit-dev
-    if errorlevel 1 (
-        echo "Installation of the development environment failed." 
-        echo "Developer configuration failed."
-        exit 1
-    ) else (
-        echo "Developer configuration succeded."
-    )
-) else (
-    conda env update statiskit/statiskit-dev -n %ENVIRONMENT%
-    if errorlevel 1 (
-        echo "Installation of the development environment failed." 
-        echo "Developer configuration failed."
-        exit 1
-    ) else (
-        echo "Developer configuration succeded."
-    )
-)
+:: if "%ENVIRONMENT%"== "" (
+::     conda env update statiskit/statiskit-dev
+::     if errorlevel 1 (
+::         echo "Installation of the development environment failed." 
+::         echo "Developer configuration failed."
+::         exit 1
+::     ) else (
+::         echo "Developer configuration succeded."
+::     )
+:: ) else (
+::     conda env update statiskit/statiskit-dev -n %ENVIRONMENT%
+::     if errorlevel 1 (
+::         echo "Installation of the development environment failed." 
+::         echo "Developer configuration failed."
+::         exit 1
+::     ) else (
+::         echo "Developer configuration succeded."
+::     )
+:: )
 
 echo OFF
