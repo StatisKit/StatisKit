@@ -1,6 +1,6 @@
 setlocal EnableDelayedExpansion
 
-echo OFF
+echo ON
 
 if "%CONDA_VERSION%"=="" set CONDA_VERSION=2
 if "%CONDA_DIR%"=="" set CONDA_DIR=%USERPROFILE%\Miniconda!CONDA_VERSION!
