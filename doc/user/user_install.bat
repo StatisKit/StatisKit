@@ -14,10 +14,16 @@ if !ERRORLEVEL! neq 0 (
     exit /b !ERRORLEVEL!
 )
 
-if not exist!CONDA_DIR! (
+if "%BATCH_MODE%"=="" set BATCH_MODE=false
+
+if not exist !CONDA_DIR! (
     curl https://repo.continuum.io/miniconda/Miniconda!CONDA_VERSION!-latest-Windows-!PLATFORM!.exe -o miniconda.exe
     if !ERRORLEVEL! neq 0 exit /b !ERRORLEVEL!
-    start /wait "" miniconda.exe /InstallationType=JustMe /RegisterPython=0 /S /D=!CONDA_DIR!
+    if "%BATCH_MODE%"=="true" (
+        start /wait "" miniconda.exe /InstallationType=JustMe /RegisterPython=0 /S /D=!CONDA_DIR!
+    ) else (
+        start /wait "" miniconda.exe /InstallationType=JustMe /RegisterPython=0 /D=!CONDA_DIR!
+    )
     if !ERRORLEVEL! neq 0 exit /b !ERRORLEVEL!
     del miniconda.exe
     if !ERRORLEVEL! neq 0 exit /b !ERRORLEVEL!
@@ -35,7 +41,7 @@ conda config --set always_yes !CONDA_ALWAYS_YES!
 if !ERRORLEVEL! neq 0 exit /b !ERRORLEVEL!
 conda config --set changeps1 !CONDA_CHANGE_PS1!
 if !ERRORLEVEL! neq 0 exit /b !ERRORLEVEL!
-conda update -q conda
+conda update -q conda -y
 if !ERRORLEVEL! neq 0 exit /b !ERRORLEVEL!
 
 echo OFF
