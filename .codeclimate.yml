@@ -1,5 +1,6 @@
-duplication:
-  enabled: true
+engines:
+  duplication:
+    enabled: true
     
 exclude_paths:
   - conda/python-scons/scons-*
