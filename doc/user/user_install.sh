@@ -1,10 +1,12 @@
-set +v
+if [[ "$BATCH_MODE"="true" ]]; then
+    set -v
+else
+    export BATCH_MODE=false
+    set +v
+fi
 
 export ERROR=0
 export CLEAN_MINICONDA=1
-if [[ "$BATCH_MODE" = "" ]]; then
-    export BATCH_MODE=false
-fi
 
 case "$(uname -s)" in
 
