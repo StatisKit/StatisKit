@@ -21,7 +21,7 @@ CALL b2 install toolset=msvc-%MSVC_VER% ^
         address-model=%ARCH% ^
         variant=release ^
         threading=multi ^
-        link=static,shared ^
+        link=shared ^
         define=BOOST_ALL_NO_LIB ^
         -j%CPU_COUNT% ^
         --layout=system ^
@@ -29,8 +29,7 @@ CALL b2 install toolset=msvc-%MSVC_VER% ^
         --prefix=%LIBRARY_PREFIX%
 IF errorlevel 1 exit 1
 
-:: move %LIBRARY_INC%\boost-1_61\boost %LIBRARY_INC%
-:: IF errorlevel 1 exit 1
-
 move %LIBRARY_LIB%\boost_*.dll "%LIBRARY_BIN%"
 IF errorlevel 1 exit 1
+
+echo OFF

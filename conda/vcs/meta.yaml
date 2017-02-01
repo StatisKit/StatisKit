@@ -20,20 +20,12 @@ package:
     
 build:
   number: 0
-  script:
-    - git config --system alias.co checkout
-    - git config --system alias.br branch
-    - git config --system alias.ci commit
-    - git config --system alias.st status
-    - git config --system alias.unstage 'reset HEAD --'
-    - git config --system alias.last 'log -1 HEAD'
-    - git config --system credential.helper 'cache --timeout=3600'
   always_include_files:
     - etc/gitconfig
 
 about:
   home: http://statiskit.readthedocs.io/
-  license: CeCILL-C
+  license: CeCILL
 
 requirements:
   build:

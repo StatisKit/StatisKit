@@ -27,7 +27,7 @@ build:
 
 about:
   home: http://statiskit.readthedocs.io/
-  license: CeCILL-C
+  license: CeCILL
   
 requirements:
   build:
@@ -44,24 +44,3 @@ requirements:
     - vs2008_runtime      [win and py27]
     - vs2010_runtime      [win and py34]
     - vs2015_runtime      [win and py35]
-
-# requirements:
-#   build:
-#     - gcc               [linux]
-#     - libgcc            [linux]
-#     - glibc             [linux]
-#     - binutils          [linux]
-#     - clang             [unix]
-#   run:
-#     - gcc               [linux]
-#     - libgcc            [linux]
-#     - glibc             [linux]
-#     - binutils          [linux]
-#     - clang             [unix]
-
-# test:
-#   commands:
-#   - gcc -x c -v -E /dev/null        [linux]
-#   - gcc -x c++ -v -E /dev/null      [linux]
-#   - clang -x c -v -E /dev/null      [unix]
-#   - clang++ -x c++ -v -E /dev/null  [unix]

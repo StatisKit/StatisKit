@@ -1,4 +1,6 @@
-$PYTHON setup.py install --standard-lib
+set -ve
+
+python setup.py install --standard-lib
 
 mkdir -p $PREFIX/etc/conda/activate.d
 mkdir -p $PREFIX/etc/conda/deactivate.d
@@ -25,3 +27,5 @@ touch $SP_DIR/SCons/site_scons/site_tools/__init__.py
 cp $RECIPE_DIR/prefix.py $SP_DIR/SCons/site_scons/site_tools/prefix.py
 cp $RECIPE_DIR/system.py $SP_DIR/SCons/site_scons/site_tools/system.py
 cp $RECIPE_DIR/toolchain.py $SP_DIR/SCons/site_scons/site_tools/toolchain.py
+
+set +ve

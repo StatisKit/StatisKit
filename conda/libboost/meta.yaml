@@ -1,5 +1,4 @@
 
-# Adpated from https://github.com/conda/conda-recipes/tree/master/boost
 package:
   name: libboost
   version: 1.61.0

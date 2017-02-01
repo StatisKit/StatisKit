@@ -1,3 +1,5 @@
+set -ve
+
 mkdir build_llvm
 cd build_llvm
 if [ -n "$MACOSX_DEPLOYMENT_TARGET" ]; then
@@ -19,7 +21,4 @@ cmake -G "Unix Makefiles" -DBUILD_SHARED_LIBS=ON \
 make -j$CPU_COUNT VERBOSE=1
 make install
 
-                          # -DCMAKE_C_COMPILER=${PREFIX}/bin/gcc \
-                          # -DCMAKE_CXX_COMPILER=${PREFIX}/bin/g++ \
-                          # -DGCC_INSTALL_PREFIX=${PREFIX} \
-                          # -DCMAKE_CXX_LINK_FLAGS="-L${PREFIX}/lib64 -Wl,-rpath,${PREFIX}/lib64" \
+set +ve
