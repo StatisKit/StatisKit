@@ -22,7 +22,7 @@ def generate(env):
                                          [source for source in sources if source.suffix in ['.c', '.cpp', '.cxx', '.c++']],
                                          **kwargs)
             if SYSTEM == 'win':
-                targets = [target for target in targets if target.suffix == '.dll'] + Move(os.path.join(env['PREFIX'], "bin"), [target for target in targets if target.suffix == '.dll'])
+                targets = [target for target in targets if not target.suffix == '.dll'] + Move(os.path.join(env['PREFIX'], "bin"), [target for target in targets if target.suffix == '.dll'])
             return targets
 
         env.AddMethod(BuildCpp)
