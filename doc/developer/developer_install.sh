@@ -1,6 +1,7 @@
 if [[ "$BATCH_MODE" = "true" ]]; then
     set -v
 else
+    export BATCH_MODE=false
     set +v
 fi
 
