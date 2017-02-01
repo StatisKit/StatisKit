@@ -83,6 +83,6 @@ if [[ "$ERROR" = "0" ]]; then
     fi
 else
     echo "Developer configuration failed."
-else
+fi
 
 set +v
