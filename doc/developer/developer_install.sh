@@ -10,8 +10,6 @@ if [[ ! -f user_install.sh ]]; then
     wget http://statiskit.readthedocs.io/en/latest/_downloads/user_install.sh -O user_install.sh
     if [[ "$BATCH_MODE" = "true" ]]; then
         set -v
-    else
-        set +v
     fi
     if [[ ! "$?" = "0" ]]; then
         echo "Download of the user_install.sh file for Conda installation failed"
