@@ -9,7 +9,7 @@ if not "%PLATFORM%"=="x86" set PLATFORM=x86_64
 where curl
 if errorlevel 1 (
     if not exist Miniconda%CONDA_VERSION%-latest-Windows-%PLATFORM%.exe (
-        echo "You must first install the cURL program or download manually the Miniconda!CONDA_VERSION!-latest-Windows-!PLATFORM!.exe file"
+        echo "You must first install the cURL program or download manually the Miniconda%CONDA_VERSION%-latest-Windows-%PLATFORM%.exe file"
         echo "User installation failed."
         exit 1
     )
@@ -21,21 +21,21 @@ if not exist %CONDA_DIR% (
     if exist Miniconda%CONDA_VERSION%-latest-Windows-%PLATFORM%.exe (
         set CLEAN_MINICONDA=0
     ) else (
-        curl https://repo.continuum.io/miniconda/Miniconda!CONDA_VERSION!-latest-Windows-!PLATFORM!.exe -o miniconda.exe
+        curl https://repo.continuum.io/miniconda/Miniconda%CONDA_VERSION%-latest-Windows-%PLATFORM%.exe -o miniconda.exe
         set CLEAN_MINICONDA=1
     )
     if errorlevel 1 (
-        echo "Download of the Miniconda"!CONDA_VERSION!"-latest-Windows-"!PLATFORM!".exe file failed"
+        echo "Download of the Miniconda"%CONDA_VERSION%"-latest-Windows-"%PLATFORM%".exe file failed"
         echo "User installation failed."
         exit 1
     )
     if "%BATCH_MODE%"=="true" (
-        start /wait "" miniconda.exe /InstallationType=JustMe /RegisterPython=0 /S /D=!CONDA_DIR!
+        start /wait "" miniconda.exe /InstallationType=JustMe /RegisterPython=0 /S /D=%CONDA_DIR%
     ) else (
-        start /wait "" miniconda.exe /InstallationType=JustMe /RegisterPython=0 /D=!CONDA_DIR!
+        start /wait "" miniconda.exe /InstallationType=JustMe /RegisterPython=0 /D=%CONDA_DIR%
     )
     if errorlevel 1 (
-        echo "Execution of the Miniconda"!CONDA_VERSION!"-latest-Windows-"!PLATFORM!".exe file failed"
+        echo "Execution of the Miniconda"%CONDA_VERSION%"-latest-Windows-"%PLATFORM%".exe file failed"
         echo "User installation failed."
         exit 1
     )
