@@ -41,16 +41,14 @@ def generate(env):
             env.Depends(target, response)
             env.Append(LINKFLAGS = '@' + response[0].abspath)
             if SYSTEM == 'win':
-                target = env.SharedLibrary(target, [], SHLIBPREFIX='',
+                return env.SharedLibrary(target, [], SHLIBPREFIX='',
                                                      SHLIBSUFFIX = '.pyd')
             elif SYSTEM == 'osx':
-                target = env.LoadableModule(target, [],
+                return env.LoadableModule(target, [],
                                           SHLINKFLAGS='$LINKFLAGS -bundle',
                                           FRAMEWORKSFLAGS='-flat_namespace -undefined suppress')
             else:
-                target = env.LoadableModule(target, [])
-            env.Alias("py", target)
-            env.Alias("install", "py")
+                return env.LoadableModule(target, [])
             
         env.AddMethod(BuildBoostPython)
         env.Tool('python')
