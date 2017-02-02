@@ -29,14 +29,12 @@ def generate(env):
                 env.Alias("cpp", lib)
                 env.Depends("cpp", Delete(exp))
                 env.Depends("cpp", Move(os.path.join(env['PREFIX'], "bin"), dll))
-            env.Alias("install", targets)
-
             else:
                 env.Alias("cpp", env.SharedLibrary(os.path.join(env['PREFIX'], "lib", target),
                                                    [source for source in sources if source.suffix in ['.c', '.cpp', '.cxx', '.c++']],
                                                    **kwargs))
             env.Alias("install", "cpp")
-            
+
         env.AddMethod(BuildCpp)
 
 def exists(env):
