@@ -36,7 +36,7 @@ if [ "$(uname)" == "Darwin" ]; then
 fi
 
 if [ "$(uname)" == "Linux" ]; then
-    CXXFLAGS="${CXXFLAGS} -std=c++11"
+    CXXFLAGS="${CXXFLAGS} -std=c++11 -D_GLIBCXX_USE_CXX11_ABI=1"
     LINKFLAGS="${LINKFLAGS} -std=c++11 -L${LIBRARY_PATH}"
     
     ./bootstrap.sh \
