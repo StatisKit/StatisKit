@@ -23,8 +23,8 @@ def generate(env):
                 dll, lib, exp = env.SharedLibrary(os.path.join(env.Dir(".").abspath, target),
                                                   [source for source in sources if source.suffix in ['.c', '.cpp', '.cxx', '.c++']],
                                                   **kwargs)
-                targets += Install(os.path.join(env['PREFIX'], "bin"), dll)
-                targets += Install(os.path.join(env['PREFIX'], "lib"), lib)
+                targets += env.Install(os.path.join(env['PREFIX'], "bin"), dll)
+                targets += env.Install(os.path.join(env['PREFIX'], "lib"), lib)
                 # targets += env.Install(os.path.join(env['PREFIX'], "bin"), dll)
                 # targets += env.Command("delexp", exp, Delete("$SOURCE"))
                 # targets += env.Command("deldll", dll, Delete("$SOURCE"))
