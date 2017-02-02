@@ -6,14 +6,14 @@ branches:
     
 platform:
   - x86
-  - x64
+  # - x64
 
 environment:
   matrix:
     # - RECIPE: vcs
     # - RECIPE: python-scons
     # - RECIPE: python-parse
-    - RECIPE: libdev
+    # - RECIPE: libdev
     # - RECIPE: librun
     - RECIPE: python-dev
     # - RECIPE: python-dbg

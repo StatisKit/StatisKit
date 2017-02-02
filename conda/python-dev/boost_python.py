@@ -43,10 +43,9 @@ def generate(env):
             env.Append(LINKFLAGS = '@' + response[0].abspath)
             SP_DIR = env['SP_DIR']
             if SYSTEM == 'win':
-                target = env.File(target)
                 pyd, lib, exp = env.SharedLibrary(target, [], SHLIBPREFIX='',
                                                   SHLIBSUFFIX = '.pyd')
-                return env.Install(os.path.join(SP_DIR, path(target.abspath).relpath(env.Dir('.').srcnode().abspath).parent), pyd)
+                return env.Install(os.path.join(SP_DIR, target), pyd)
             else:
                 target = os.path.join(SP_DIR, target)
                 if SYSTEM == 'osx':
