@@ -20,7 +20,7 @@ def generate(env):
 
 
             if SYSTEM == 'win':
-                dll, lib, exp = env.SharedLibrary(os.path.join(env.Dir("."), target),
+                dll, lib, exp = env.SharedLibrary(os.path.join(env.Dir(".").abspath, target),
                                                   [source for source in sources if source.suffix in ['.c', '.cpp', '.cxx', '.c++']],
                                                   **kwargs)
                 targets += Install(os.path.join(env['PREFIX'], "bin"), dll)
