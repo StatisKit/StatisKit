@@ -40,7 +40,8 @@ def generate(env, **kwargs):
         SP_DIR = env['SP_DIR']
         for src in sources:
             targets.append(env.Install(os.path.join(SP_DIR, src.relpath(env.Dir('.').srcnode().abspath).parent), src.abspath()))
-        return targets
+        env.Alias("py", targets)
+        env.Alias("install", "py")
 
       env.AddMethod(BuildPython)
 
