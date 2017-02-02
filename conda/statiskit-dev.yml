@@ -3,14 +3,6 @@ channels:
   - statiskit
   - conda-forge
 dependencies:
-  - vcs
-  - libdev
-  - python-dev
-  - python-dbg
-  - python-doc
-  - python-pkg
-  - python-autowig
-  - python-clanglite
-  - eigen
+  - yaml
   - ipython
   - jupyter

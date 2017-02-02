@@ -1,5 +1,5 @@
 import os
-from SCons.Defaults import Delete
+from SCons.Defaults import Move, Delete
 
 def generate(env):
     """Add Builders and construction variables to the Environment."""
