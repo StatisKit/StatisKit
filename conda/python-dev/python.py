@@ -29,7 +29,7 @@ def generate(env, **kwargs):
           raise NotImplementedError('Python ' + PYTHON_VERSION)
 
       if SYSTEM == 'win':
-        env['SP_DIR'] = '$PREFIX\Lib\site-packages'
+        env['SP_DIR'] = '$PREFIX\..\Lib\site-packages'
       else:
         env['SP_DIR'] = '$PREFIX/lib/python$PYTHON_VERSION/site-packages'
         
