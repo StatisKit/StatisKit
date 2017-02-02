@@ -13,29 +13,27 @@ def generate(env):
             SYSTEM = env['SYSTEM']
             targets = env.Install(os.path.join(env['PREFIX'], "include", *target.split('_')),
                                   [source for source in sources if source.suffix in ['.h', '.hpp', '.hxx', '.h++']])
-            env.Alias("cpp", targets)
             if SYSTEM == 'osx':
                 kwargs = dict(FRAMEWORKSFLAGS = '-flat_namespace -undefined suppress')
             else:
                 kwargs = dict()
 
-            targets += env.SharedLibrary(os.path.join(env['PREFIX'], "lib", target),
-                                         [source for source in sources if source.suffix in ['.c', '.cpp', '.cxx', '.c++']],
-                                         **kwargs)
+
             if SYSTEM == 'win':
                 dll, lib, exp = env.SharedLibrary(os.path.join(env['PREFIX'], "lib", target),
                                                   [source for source in sources if source.suffix in ['.c', '.cpp', '.cxx', '.c++']],
                                                   **kwargs)
-                env.Alias("cpp", lib)
-                env.Alias("cpp", env.Install(os.path.join(env['PREFIX'], "bin"), dll))
-                env.Depends("cpp", env.Command("delexp", exp, Delete("$SOURCE")))
-                env.Depends("cpp", env.Command("deldll", dll, Delete("$SOURCE")))
+                targets.append(lib)
+                targets += env.Install(os.path.join(env['PREFIX'], "bin"), dll)
+                targets += env.Command("delexp", exp, Delete("$SOURCE"))
+                targets += env.Command("deldll", dll, Delete("$SOURCE"))
+                targets += env.Command("deldll", dll.abspath + '.manifest' , Delete("$SOURCE"))
             else:
-                env.Alias("cpp", env.SharedLibrary(os.path.join(env['PREFIX'], "lib", target),
-                                                   [source for source in sources if source.suffix in ['.c', '.cpp', '.cxx', '.c++']],
-                                                   **kwargs))
-            env.Alias("install", "cpp")
-
+                targets += env.SharedLibrary(os.path.join(env['PREFIX'], "lib", target),
+                                             [source for source in sources if source.suffix in ['.c', '.cpp', '.cxx', '.c++']],
+                                              **kwargs)
+            return targets
+            
         env.AddMethod(BuildCpp)
 
 def exists(env):
