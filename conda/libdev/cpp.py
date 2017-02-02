@@ -13,6 +13,7 @@ def generate(env):
             SYSTEM = env['SYSTEM']
             targets = env.Install(os.path.join(env['PREFIX'], "include", *target.split('_')),
                                   [source for source in sources if source.suffix in ['.h', '.hpp', '.hxx', '.h++']])
+            env.Alias("cpp", targets)
             if SYSTEM == 'osx':
                 kwargs = dict(FRAMEWORKSFLAGS = '-flat_namespace -undefined suppress')
             else:
@@ -25,16 +26,17 @@ def generate(env):
                 dll, lib, exp = env.SharedLibrary(os.path.join(env['PREFIX'], "lib", target),
                                                   [source for source in sources if source.suffix in ['.c', '.cpp', '.cxx', '.c++']],
                                                   **kwargs)
-                targets += [Move(os.path.join(env['PREFIX'], "bin"), dll),
-                            Delete(exp),
-                            lib]
+                env.Alias("cpp", lib)
+                env.Depends("cpp", Delete(exp))
+                env.Depends("cpp", Move(os.path.join(env['PREFIX'], "bin"), dll))
+            env.Alias("install", targets)
 
             else:
-                targets += env.SharedLibrary(os.path.join(env['PREFIX'], "lib", target),
-                                             [source for source in sources if source.suffix in ['.c', '.cpp', '.cxx', '.c++']],
-                                             **kwargs)
-            return targets
-
+                env.Alias("cpp", env.SharedLibrary(os.path.join(env['PREFIX'], "lib", target),
+                                                   [source for source in sources if source.suffix in ['.c', '.cpp', '.cxx', '.c++']],
+                                                   **kwargs))
+            env.Alias("install", "cpp")
+            
         env.AddMethod(BuildCpp)
 
 def exists(env):
