@@ -65,11 +65,39 @@ if [[ "$ERROR" = "0" ]]; then
             conda env update statiskit/statiskit-dev
             if [[ ! "$?" = "0" ]]; then
                 export ERROR=1
+            else
+                conda activate statiskit-dev
             fi
         else
             conda env update statiskit/statiskit-dev -n $STATISKIT_DEV
             if [[ ! "$?" = "0" ]]; then
                 export ERROR=1
+            else
+                conda activate $STATISKIT_DEV
+            fi
+        fi
+        if [[ "$ERROR" = "0" ]]; then
+            git clone https://github.com/StatisKit/StatisKit
+            if [[ ! "$?" = "0" ]]; then
+                export ERROR=1
+            else
+                cd StatisKit
+                RECIPES=`python -c "import yaml; f = open('travis.yml', 'r'); yaml.load(f); f.close(); print(' '.join(recipe[7:] for recipe in conf['env'] if recipe.startswith('RECIPE='))"`
+                if [[ "$INSTALL_ONLY" = "" ]]; then
+                    export INSTALL_ONLY="false"
+                fi
+                if [[ "$INSTALL_ONLY" = "false" ]]; then
+                    conda build $RECIPES -c statiskit -c conda-forge
+                    if [[ ! "$?" = "0" ]]; then
+                        export ERROR=1
+                    fi
+                fi
+                conda install $RECIPES --use-local -c statiskit -c conda-forge
+                if [[ ! "$?" = "0" ]]; then
+                    export ERROR=1
+                fi
+                rm -rf StatisKit
+                conda install python-autowig -c --use-local -c statiskit -c conda-forge
             fi
         fi
     fi
