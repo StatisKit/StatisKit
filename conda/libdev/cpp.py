@@ -19,10 +19,13 @@ def generate(env):
                 kwargs = dict()
 
             if SYSTEM == 'win':
-                targets += env.SharedLibrary(os.path.join(env['PREFIX'], "lib", target),
-                                                [source for source in sources if source.suffix in ['.c', '.cpp', '.cxx', '.c++']],
-                                                **kwargs)
-                Move(os.path.join(env['PREFIX'], "bin"), [target for target in targets if target.suffix == '.dll'])
+                dll, lib, exp = env.SharedLibrary(os.path.join(env['PREFIX'], "lib", target),
+                                                  [source for source in sources if source.suffix in ['.c', '.cpp', '.cxx', '.c++']],
+                                                  **kwargs)
+                targets += [Move(os.path.join(env['PREFIX'], "bin"), dll),
+                            Delete(exp),
+                            lib]
+
             else:
                 targets += env.SharedLibrary(os.path.join(env['PREFIX'], "lib", target),
                                              [source for source in sources if source.suffix in ['.c', '.cpp', '.cxx', '.c++']],
