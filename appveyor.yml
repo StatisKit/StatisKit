@@ -11,11 +11,11 @@ platform:
 environment:
   matrix:
     # - RECIPE: vcs
-    - RECIPE: python-scons
+    # - RECIPE: python-scons
     # - RECIPE: python-parse
     - RECIPE: libdev
     # - RECIPE: librun
-    - RECIPE: python-dev
+    # - RECIPE: python-dev
     # - RECIPE: python-dbg
     # - RECIPE: python-doc
     # - RECIPE: python-pkg
