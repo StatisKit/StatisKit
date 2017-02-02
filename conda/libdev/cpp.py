@@ -27,8 +27,8 @@ def generate(env):
                 targets += env.Install(os.path.join(env['PREFIX'], "bin"), dll)
                 targets += env.Command("delexp", exp, Delete("$SOURCE"))
                 targets += env.Command("deldll", dll, Delete("$SOURCE"))
-                targets += env.Command("delmanifest", dll.abspath + '.manifest' , Delete("$SOURCE"))
-                env.Depends(targets[-1], lib)
+                # targets += env.Command("delmanifest", dll.abspath + '.manifest' , Delete("$SOURCE"))
+                # env.Depends(targets[-1], lib)
             else:
                 targets += env.SharedLibrary(os.path.join(env['PREFIX'], "lib", target),
                                              [source for source in sources if source.suffix in ['.c', '.cpp', '.cxx', '.c++']],
