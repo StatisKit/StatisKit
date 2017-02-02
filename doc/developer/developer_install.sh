@@ -57,17 +57,17 @@ if [[ "$ERROR" = "0" ]]; then
     fi
 fi
 if [[ "$ERROR" = "0" ]]; then
-    if [[ "$%CONFIGURE_ONLY%" = "" ]]; then
+    if [[ "$CONFIGURE_ONLY" = "" ]]; then
         export CONFIGURE_ONLY="false"
     fi
-    if [[ "$%CONFIGURE_ONLY%" = "false" ]]; then
-        if [[ "$%STATISKIT_DEV%" = "" ]]; then
+    if [[ "$CONFIGURE_ONLY" = "false" ]]; then
+        if [[ "$STATISKIT_DEV" = "" ]]; then
             conda env update statiskit/statiskit-dev
             if [[ ! "$?" = "0" ]]; then
                 export ERROR=1
             fi
         else
-            conda env update statiskit/statiskit-dev -n $%STATISKIT_DEV%
+            conda env update statiskit/statiskit-dev -n $STATISKIT_DEV
             if [[ ! "$?" = "0" ]]; then
                 export ERROR=1
             fi
@@ -83,6 +83,6 @@ if [[ "$ERROR" = "0" ]]; then
     fi
 else
     echo "Developer configuration failed."
-else
+fi
 
 set +v
