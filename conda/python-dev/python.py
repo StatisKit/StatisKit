@@ -1,6 +1,7 @@
 import sysconfig
 from SCons.Script import AddOption, GetOption
 from path import path
+import os
 
 def generate(env, **kwargs):
     """Add Builders and construction variables to the Environment."""
@@ -33,13 +34,14 @@ def generate(env, **kwargs):
         env['SP_DIR'] = '$PREFIX/lib/python$PYTHON_VERSION/site-packages'
         
       def BuildPython(env, source, pattern=None):
-        source = path(env.Dir(source).abspath)
+        source = path(env.Dir(source).srcnode().abspath)
         sources = source.walkfiles(pattern=pattern)
         targets = []
         SP_DIR = env['SP_DIR']
         for src in sources:
-            targets.append(env.Install(os.path.join(SP_DIR, src.relpath(source).parent), src.abspath()))
-            
+            targets.append(env.Install(os.path.join(SP_DIR, src.relpath(env.Dir('.').srcnode().abspath).parent), src.abspath()))
+        return targets
+
       env.AddMethod(BuildPython)
 
 def exists(env):
