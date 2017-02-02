@@ -1,4 +1,5 @@
 import itertools
+import os
 
 def generate(env):
     """Add Builders and construction variables to the Environment."""
@@ -17,7 +18,6 @@ def generate(env):
                 target += '.so'
             else:
                 target += '.pyd'
-            target = env.File(target)
             targets = list(itertools.chain(*[env.SharedObject(None, source) for source in sources  if source.suffix in ['.cpp', '.cxx', '.c++']]))
             sources = [source for source in sources if source.suffix == '.h']
             if len(sources) == 1 and not SYSTEM == 'win':
@@ -40,15 +40,20 @@ def generate(env):
                          LINESEPARATOR=" ")
             env.Depends(target, response)
             env.Append(LINKFLAGS = '@' + response[0].abspath)
+            SP_DIR = env['SP_DIR']
             if SYSTEM == 'win':
-                return env.SharedLibrary(target, [], SHLIBPREFIX='',
-                                                     SHLIBSUFFIX = '.pyd')
-            elif SYSTEM == 'osx':
-                return env.LoadableModule(target, [],
+                target = env.File(target)
+                pyd, lib, exp = env.SharedLibrary(target, [], SHLIBPREFIX='',
+                                                  SHLIBSUFFIX = '.pyd')
+                return env.Install(os.path.join(SP_DIR, target.relpath(env.Dir('.').srcnode().abspath).parent), pyd)
+            else:
+                target = os.path.join(SP_DIR, target)
+                if SYSTEM == 'osx':
+                    return env.LoadableModule(target, [],
                                           SHLINKFLAGS='$LINKFLAGS -bundle',
                                           FRAMEWORKSFLAGS='-flat_namespace -undefined suppress')
-            else:
-                return env.LoadableModule(target, [])
+                else:
+                    return env.LoadableModule(target, [])
             
         env.AddMethod(BuildBoostPython)
         env.Tool('python')
