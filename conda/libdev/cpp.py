@@ -28,8 +28,8 @@ def generate(env):
                                                   **kwargs)
                 env.Alias("cpp", lib)
                 env.Alias("cpp", env.Install(os.path.join(env['PREFIX'], "bin"), dll))
-                env.Depends("cpp", env.Command([], exp, Delete("$SOURCE")))
-                env.Depends("cpp", env.Command([], dll, Delete("$SOURCE")))
+                env.Depends("cpp", env.Command("delexp", exp, Delete("$SOURCE")))
+                env.Depends("cpp", env.Command("deldll", dll, Delete("$SOURCE")))
             else:
                 env.Alias("cpp", env.SharedLibrary(os.path.join(env['PREFIX'], "lib", target),
                                                    [source for source in sources if source.suffix in ['.c', '.cpp', '.cxx', '.c++']],
