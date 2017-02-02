@@ -27,8 +27,9 @@ def generate(env):
                                                   [source for source in sources if source.suffix in ['.c', '.cpp', '.cxx', '.c++']],
                                                   **kwargs)
                 env.Alias("cpp", lib)
-                env.Depends("cpp", Delete(exp))
-                env.Depends("cpp", Move(os.path.join(env['PREFIX'], "bin"), dll))
+                env.Alias("cpp", env.Install(os.path.join(env['PREFIX'], "bin"), dll))
+                env.Depends("cpp", env.Command([], exp, Delete("$SOURCE")))
+                env.Depends("cpp", env.Command([], dll, Delete("$SOURCE")))
             else:
                 env.Alias("cpp", env.SharedLibrary(os.path.join(env['PREFIX'], "lib", target),
                                                    [source for source in sources if source.suffix in ['.c', '.cpp', '.cxx', '.c++']],
