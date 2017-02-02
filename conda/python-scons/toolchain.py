@@ -32,9 +32,6 @@ def generate(env):
       env.Tool('default')
       env.Tool('prefix')
       if SYSTEM == 'win':
-        # if StrictVersion('8.0') <= StrictVersion(env['MSVC_VERSION']) < StrictVersion('10.0'):
-        #     # env['LINKCOM'] = [env['LINKCOM'], 'mt.exe -nologo -manifest ${TARGET}.manifest -outputresource:$TARGET;1']
-        #     # env['SHLINKCOM'] = [env['SHLINKCOM'], 'mt.exe -nologo -manifest ${TARGET}.manifest -outputresource:$TARGET;2']
         env.AppendUnique(CCFLAGS=['/O2',
                                   '/Ob2',
                                   '/MD',
@@ -45,7 +42,6 @@ def generate(env):
                                   '/GA'],
                          CPPDEFINES=['WIN32',
                                      'UNICODE'])
-        #env.AppendUnique(CXXFLAGS=['/std:c++11'])
         env.PrependUnique(CPPPATH=['$PREFIX\include'])
         env.PrependUnique(LIBPATH=['$PREFIX\lib',
                                    '$PREFIX\..\libs'])
@@ -62,7 +58,8 @@ def generate(env):
         else:
           env.AppendUnique(CCFLAGS=['-fmax-errors=0',
                                     '-Wl,--no-undefined',
-                                    '-fvisibility=hidden'])
+                                    '-fvisibility=hidden'],
+                           CPPDEFINES=['_GLIBCXX_USE_CXX11_ABI=1'])
 
 def exists(env):
     return 1

@@ -20,13 +20,14 @@ def generate(env):
 
 
             if SYSTEM == 'win':
-                dll, lib, exp = env.SharedLibrary(os.path.join(env['PREFIX'], "lib", target),
+                dll, lib, exp = env.SharedLibrary(os.path.join(env.Dir("."), target),
                                                   [source for source in sources if source.suffix in ['.c', '.cpp', '.cxx', '.c++']],
                                                   **kwargs)
-                targets.append(lib)
-                targets += env.Install(os.path.join(env['PREFIX'], "bin"), dll)
-                targets += env.Command("delexp", exp, Delete("$SOURCE"))
-                targets += env.Command("deldll", dll, Delete("$SOURCE"))
+                targets += Install(os.path.join(env['PREFIX'], "bin"), dll)
+                targets += Install(os.path.join(env['PREFIX'], "lib"), lib)
+                # targets += env.Install(os.path.join(env['PREFIX'], "bin"), dll)
+                # targets += env.Command("delexp", exp, Delete("$SOURCE"))
+                # targets += env.Command("deldll", dll, Delete("$SOURCE"))
                 # targets += env.Command("delmanifest", dll.abspath + '.manifest' , Delete("$SOURCE"))
                 # env.Depends(targets[-1], lib)
             else:
