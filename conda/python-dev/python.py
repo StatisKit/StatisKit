@@ -39,7 +39,7 @@ def generate(env, **kwargs):
         targets = []
         SP_DIR = env['SP_DIR']
         for src in sources:
-            if not src.suffix in ['.lib', '.exp']:
+            if not src.ext in ['.lib', '.exp']:
                 targets.append(env.Install(os.path.join(SP_DIR, src.relpath(env.Dir('.').srcnode().abspath).parent), src.abspath()))
         return targets
 
