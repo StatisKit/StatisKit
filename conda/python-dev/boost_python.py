@@ -39,22 +39,23 @@ def generate(env):
                 response = env.Textfile('response_file.rsp',
                          [tgt.abspath.replace('\\','/') for tgt in targets],
                          LINESEPARATOR=" ")
-            env.Depends(target, response)
             env.Append(LINKFLAGS = '@' + response[0].abspath)
             SP_DIR = env['SP_DIR']
             if SYSTEM == 'win':
                 pyd, lib, exp = env.SharedLibrary(target, [], SHLIBPREFIX='',
                                                   SHLIBSUFFIX = '.pyd')
-                return env.Install(os.path.join(SP_DIR, path(target).parent), pyd)
+                targets = env.Install(os.path.join(SP_DIR, path(target).parent), pyd)
             else:
                 target = os.path.join(SP_DIR, target)
                 if SYSTEM == 'osx':
-                    return env.LoadableModule(target, [],
-                                          SHLINKFLAGS='$LINKFLAGS -bundle',
-                                          FRAMEWORKSFLAGS='-flat_namespace -undefined suppress')
+                    targets = env.LoadableModule(target, [],
+                                                 SHLINKFLAGS='$LINKFLAGS -bundle',
+                                                 FRAMEWORKSFLAGS='-flat_namespace -undefined suppress')
                 else:
-                    return env.LoadableModule(target, [])
-            
+                    targets = env.LoadableModule(target, [])
+            env.Depends(targets, response)
+            return targets
+
         env.AddMethod(BuildBoostPython)
         env.Tool('python')
 
