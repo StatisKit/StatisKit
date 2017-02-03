@@ -18,10 +18,9 @@ def generate(env):
             SYSTEM = env['SYSTEM']
             if not SYSTEM == 'win':
                 target += '.so'
-                target = os.path.join(SP_DIR, target)
             else:
                 target += '.pyd'
-            target = env.File(target)
+            target = env.File(target).srcnode()
             targets = list(itertools.chain(*[env.SharedObject(None, source) for source in sources  if source.suffix in ['.cpp', '.cxx', '.c++']]))
             sources = [source for source in sources if source.suffix == '.h']
             if len(sources) == 1 and not SYSTEM == 'win':
@@ -45,16 +44,14 @@ def generate(env):
             env.Append(LINKFLAGS = '@' + response[0].abspath)
             env.Depends(target, response)
             if SYSTEM == 'win':
-                pyd, lib, exp = env.SharedLibrary(target, [], SHLIBPREFIX='',
+                return env.SharedLibrary(target, [], SHLIBPREFIX='',
                                                   SHLIBSUFFIX = '.pyd')
-                return env.Install(os.path.join(SP_DIR, path(target).parent), pyd)
+            elif SYSTEM == 'osx':
+                return env.LoadableModule(target, [], SHLIBPREFIX='',
+                                          SHLINKFLAGS='$LINKFLAGS -bundle',
+                                          FRAMEWORKSFLAGS='-flat_namespace -undefined suppress')
             else:
-                if SYSTEM == 'osx':
-                    return env.LoadableModule(target, [], SHLIBPREFIX='',
-                                                 SHLINKFLAGS='$LINKFLAGS -bundle',
-                                                 FRAMEWORKSFLAGS='-flat_namespace -undefined suppress')
-                else:
-                    return env.LoadableModule(target, [], SHLIBPREFIX='')
+                return env.LoadableModule(target, [], SHLIBPREFIX='')
             return targets
 
         env.AddMethod(BuildBoostPython)

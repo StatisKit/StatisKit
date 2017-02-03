@@ -39,7 +39,8 @@ def generate(env, **kwargs):
         targets = []
         SP_DIR = env['SP_DIR']
         for src in sources:
-            targets.append(env.Install(os.path.join(SP_DIR, src.relpath(env.Dir('.').srcnode().abspath).parent), src.abspath()))
+            if not src.suffix in ['.lib', '.exp']:
+                targets.append(env.Install(os.path.join(SP_DIR, src.relpath(env.Dir('.').srcnode().abspath).parent), src.abspath()))
         return targets
 
       env.AddMethod(BuildPython)
