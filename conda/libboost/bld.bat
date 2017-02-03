@@ -15,21 +15,20 @@ if "%PY_VER%"=="2.7" (
 call bootstrap.bat
 if errorlevel 1 exit 1
 
-echo Architecture: %ARCH%
-
-CALL b2 install toolset=msvc-%MSVC_VER% ^
+call b2 install toolset=msvc-%MSVC_VER% ^
         address-model=%ARCH% ^
         variant=release ^
         threading=multi ^
-        link=shared ^
+        link=static,shared ^
         define=BOOST_ALL_NO_LIB ^
         -j%CPU_COUNT% ^
+        --with-python ^
         --layout=system ^
         --build-dir=buildboost ^
         --prefix=%LIBRARY_PREFIX%
-IF errorlevel 1 exit 1
+if errorlevel 1 exit 1
 
 move %LIBRARY_LIB%\boost_*.dll "%LIBRARY_BIN%"
-IF errorlevel 1 exit 1
+if errorlevel 1 exit 1
 
 echo OFF
