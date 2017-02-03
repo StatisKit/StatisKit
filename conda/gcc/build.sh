@@ -103,40 +103,44 @@ else
     mkdir -p "${PREFIX}/share"
     cat /etc/*-release > "$PREFIX/share/conda-gcc-build-machine-os-details"
 
-    # ./configure \
-    #     --prefix="$GCC_PREFIX" \
-    #     --enable-clocale=gnu \
-    #     --enable-shared --enable-threads=posix --enable-__cxa_atexit \
-    #     --disable-nls --disable-multilib \
-    #     --with-gxx-include-dir="$GCC_PREFIX/include/c++" \
-    #     --bindir="$GCC_PREFIX/../bin" \
-    #     --datarootdir="$GCC_PREFIX/../share" \
-    #     --libdir="$GCC_PREFIX/../lib" \
-    #     --enable-checking=release \
-    #     --with-tune=generic \
     ./configure \
-        --disable-bootstrap \
-        --disable-libstdcxx-pch \
-        --enable-libgomp \
-        --enable-lto \
-        --enable-threads=posix \
-        --enable-tls \
-        --with-fpmath=sse \
         --prefix="$GCC_PREFIX" \
+        --enable-clocale=gnu \
+        --enable-shared --enable-threads=posix --enable-__cxa_atexit \
+        --disable-nls \
         --with-gxx-include-dir="$GCC_PREFIX/include/c++" \
         --bindir="$GCC_PREFIX/../bin" \
         --datarootdir="$GCC_PREFIX/../share" \
         --libdir="$GCC_PREFIX/../lib" \
+        --disable-multilib \
         --with-gmp="$PREFIX" \
         --with-mpfr="$PREFIX" \
         --with-mpc="$PREFIX" \
         --with-isl="$PREFIX" \
-        --with-cloog="$PREFIX" \
         --enable-checking=release \
         --with-tune=generic \
-        --disable-multilib \
-        --enable-languages=c,c++ \
-        #--target=x86_64-unknown-linux-gnu
+        --disable-multilib 
+
+    # ./configure \
+    #     --disable-bootstrap \
+    #     --disable-libstdcxx-pch \
+    #     --enable-libgomp \
+    #     --enable-lto \
+    #     --enable-threads=posix \
+    #     --enable-tls \
+    #     --with-fpmath=sse \
+    #     --prefix="$GCC_PREFIX" \
+    #     --with-gxx-include-dir="$GCC_PREFIX/include/c++" \
+    #     --bindir="$GCC_PREFIX/../bin" \
+    #     --datarootdir="$GCC_PREFIX/../share" \
+    #     --libdir="$GCC_PREFIX/../lib" \
+
+    #     --with-cloog="$PREFIX" \
+    #     --enable-checking=release \
+    #     --with-tune=generic \
+    #     --disable-multilib \
+    #     --enable-languages=c,c++ \
+    #     #--target=x86_64-unknown-linux-gnu
 fi
 
 # # Split compilation into stages so OS X is satisfied
