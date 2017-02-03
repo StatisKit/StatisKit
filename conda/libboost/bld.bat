@@ -24,6 +24,7 @@ CALL b2 install toolset=msvc-%MSVC_VER% ^
         link=shared ^
         define=BOOST_ALL_NO_LIB ^
         -j%CPU_COUNT% ^
+        --with-python ^
         --layout=system ^
         --build-dir=buildboost ^
         --prefix=%LIBRARY_PREFIX%
