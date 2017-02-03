@@ -69,6 +69,8 @@
 
 # # exit 1
 
+unset LIBRARY_PATH CPATH C_INCLUDE_PATH PKG_CONFIG_PATH CPLUS_INCLUDE_PATH INCLUDE LD_LIBRARY_PATH
+
 GCC_PREFIX="$PREFIX/gcc"
 mkdir "$GCC_PREFIX"
 
@@ -113,7 +115,6 @@ else
     #     --enable-checking=release \
     #     --with-tune=generic \
     ./configure \
-        --disable-shared \
         --disable-bootstrap \
         --disable-libstdcxx-pch \
         --enable-libgomp \

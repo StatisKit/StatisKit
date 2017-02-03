@@ -1,7 +1,5 @@
 ./configure --prefix=$PREFIX \
-    --with-gmp=$PREFIX \
-    --disable-shared \
-    --enable-static \
+    --with-gmp=$PREFIX
     	
 make
 make check

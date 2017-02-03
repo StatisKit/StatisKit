@@ -9,6 +9,13 @@ source:
 build:
   number: 1
   detect_binary_files_with_prefix: True
+  skip: true [osx or win]
+
+requirements:
+  build:
+    - glibc
+  run:
+    - glibc
 
 about:
   home: https://www.gnu.org/software/binutils/

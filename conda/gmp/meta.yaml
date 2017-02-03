@@ -13,7 +13,10 @@ build:
 requirements:
   build:
     - m4
-
+    - glibc
+  run:
+    - glibc
+    
 test:
   files:
     - test.c

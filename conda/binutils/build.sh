@@ -1,7 +1,7 @@
 mkdir build-binutils
 cd build-binutils
 
-../configure --prefix=$PREFIX --disable-multilib --disable-shared --enable-static #--target=x86_64-unknown-linux-gnu
+../configure --prefix=$PREFIX --disable-multilib #--target=x86_64-unknown-linux-gnu
 
 make -j$CPU_COUNT
 #mkdir install-binutils

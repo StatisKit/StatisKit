@@ -15,14 +15,14 @@ services:
   - docker
   
 env:
-  # - RECIPE=gmp
-  # - RECIPE=mpfr
-  # - RECIPE=mpc
-  # - RECIPE=isl
-  # - RECIPE=binutils
-  # - RECIPE=glibc
-  # - RECIPE=gcc 
-  # - RECIPE=libgcc
+  - RECIPE=glibc
+  - RECIPE=gmp
+  - RECIPE=mpfr
+  - RECIPE=mpc
+  - RECIPE=isl
+  - RECIPE=binutils
+  - RECIPE=gcc 
+  - RECIPE=libgcc
   - RECIPE=vcs
   - RECIPE=python-scons
   - RECIPE=python-parse
