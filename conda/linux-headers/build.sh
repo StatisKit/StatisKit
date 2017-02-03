@@ -1,1 +1,0 @@
-make ARCH=$ARCH INSTALL_HDR_PATH=$PREFIX headers_install

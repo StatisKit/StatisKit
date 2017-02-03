@@ -30,5 +30,7 @@ copy %RECIPE_DIR%\system.py %SP_DIR%\SCons\site_scons\site_tools\system.py
 if errorlevel 1 exit 1
 copy %RECIPE_DIR%\toolchain.py %SP_DIR%\SCons\site_scons\site_tools\toolchain.py
 if errorlevel 1 exit 1
+copy %RECIPE_DIR%\conda.py %SP_DIR%\SCons\site_scons\site_tools\conda.py
+if errorlevel 1 exit 1
 
 echo OFF

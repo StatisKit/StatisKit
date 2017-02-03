@@ -39,24 +39,39 @@ if errorlevel 1 (
 if "%CONFIGURE_ONLY%"=="" set CONFIGURE_ONLY="false"
 
 if "%CONFIGURE_ONLY%"=="false" (
-    if "%STATISKIT_DEV%"== "" (
-        conda env update statiskit/statiskit-dev
-        if errorlevel 1 (
-            echo "Installation of the development environment failed." 
-            echo "Developer configuration failed."
-            exit 1
-        ) else (
-            echo "Developer configuration and installation succeded."
-        )
+    if "%STATISKIT_DEV%"== "" set STATISKIT_DEV=statiskit-dev
+    git clone https://github.com/StatisKit/StatisKit.git
+    if errorlevel 1 (
+        echo "Clone of the StatisKit repository failed." 
+        echo "Developer configuration failed."
+        exit 1
+    )
+    cd StatisKit
+    conda build conda/python-scons -c statiskit -c conda-forge
+    if errorlevel 1 (
+        echo "Build of the python-scons Conda recipe failed." 
+        echo "Developer configuration failed."
+        exit 1
+    )
+    conda create -n %STATISKIT_DEV% python-scons
+    if errorlevel 1 (
+        echo "Creation of the StatisKit development environment failed." 
+        echo "Developer configuration failed."
+        exit 1
+    )
+    activate %STATISKIT_DEV%
+    if errorlevel 1 (
+        echo "Activation of the StatisKit development environment failed." 
+        echo "Developer configuration failed."
+        exit 1
+    )
+    scons
+    if errorlevel 1 (
+        echo "Installation of the development environment failed." 
+        echo "Developer configuration failed."
+        exit 1
     ) else (
-        conda env update statiskit/statiskit-dev -n %STATISKIT_DEV%
-        if errorlevel 1 (
-            echo "Installation of the development environment failed." 
-            echo "Developer configuration failed."
-            exit 1
-        ) else (
-            echo "Developer configuration and installation succeded."
-        )
+        echo "Developer configuration and installation succeded."
     )
 ) else (
     echo "Developer configuration succeded."

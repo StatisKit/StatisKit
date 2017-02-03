@@ -1,0 +1,18 @@
+# -*-python-*-
+
+Import("env")
+
+condaenv = env.Clone(tools = ['conda'])
+
+exclude = """
+""".split()
+
+targets = condaenv.BuildConda("build", exclude=exclude)
+Alias("build", targets)
+
+targets = condaenv.BuildConda("install", exclude=exclude)
+Alias("install", targets)
+
+# targets = cppenv.BuildConda("install")
+# Alias("conda-install", targets)
+# Alias("conda-all", targets)

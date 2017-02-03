@@ -12,9 +12,12 @@ build:
 requirements:
   build:
     - python
+    - networkx
+    - pyyaml
   run:
     - python
-
+    - networkx
+    - pyyaml
 test:
   files:
     - SConstruct
