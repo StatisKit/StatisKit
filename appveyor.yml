@@ -2,6 +2,7 @@ branches:
   except:
     - doc
     - unix
+    - test_gcc
     
 platform:
   - x86
