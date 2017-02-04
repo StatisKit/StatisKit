@@ -93,16 +93,26 @@ def generate(env):
     def AnacondaUpload(env, sources):
         ANACONDA_CHANNEL = env['ANACONDA_CHANNEL']
         SYSTEM = env['SYSTEM']
+        clean = env.GetOption('clean')
         conda, recipes = list_recipes(env, sources)
         if SYSTEM == 'win':
             anaconda = subprocess.check_output(['where', 'anaconda']).strip()
         else:
             anaconda = subprocess.check_output(['which', 'anaconda']).strip()
-        CONDA_ENVIRONMENT = path(conda).parent.parent
         targets = []
-        for recipe in order_recipes('run', recipes):
-            archive = path(subprocess.check_output([conda, 'build', str(recipe), '--output']).strip())
-            targets.extend(env.Command('', archive, anaconda + " upload " + archive.abspath() + " -u " * ANACONDA_CHANNEL + ANACONDA_CHANNEL))
+        if clean:
+            for recipe in order_recipes('run', recipes):
+                archive = path(subprocess.check_output([conda, 'build', str(recipe), '--output']).strip())
+                with open(recipe/'meta.yaml', 'r') as filehandler:
+                    rendered = ''.join(filehandler.readlines()).replace('{{ ', '$').replace(' }}', '')
+                    package = yaml.load(rendered)['package']
+                if not ANACONDA_CHANNEL:
+                    raise ValueError('ANACONDA_CHANNEL is undefined, please use the --anaconda-channel argument')
+                subprocess.call([str(anaconda), 'remove', '-f', '/'.join([ANACONDA_CHANNEL, package['name'], package['version'], archive.parent.name, archive.name])])
+        else:
+            for recipe in order_recipes('run', recipes):
+                archive = path(subprocess.check_output([conda, 'build', str(recipe), '--output']).strip())
+                targets.extend(env.Command(archive + '.added', archive, anaconda + " upload " + archive.abspath() + " -u " * bool(ANACONDA_CHANNEL) + ANACONDA_CHANNEL))
         return targets
 
     env.AddMethod(AnacondaUpload)
