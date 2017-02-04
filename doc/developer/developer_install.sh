@@ -62,18 +62,36 @@ if [[ "$ERROR" = "0" ]]; then
     fi
     if [[ "$CONFIGURE_ONLY" = "false" ]]; then
         if [[ "$STATISKIT_DEV" = "" ]]; then
-            conda env update statiskit/statiskit-dev
-            if [[ ! "$?" = "0" ]]; then
-                export ERROR=1
-            else
-                conda activate statiskit-dev
-            fi
+            export STATISKIT_DEV=statiskit-dev
+        fi
+        git clone https://github.com/StatisKit/StatisKit.git
+        if [[ ! "$?" = "0" ]]; then
+            echo "Clone of the StatisKit repository failed." 
+            export ERROR=1
         else
-            conda env update statiskit/statiskit-dev -n $STATISKIT_DEV
+            cd StatisKit
+            conda build conda/python-scons -c statiskit -c conda-forge
             if [[ ! "$?" = "0" ]]; then
+                echo "Build of the python-scons Conda recipe failed." 
                 export ERROR=1
             else
-                conda activate $STATISKIT_DEV
+                conda create -n $STATISKIT_DEV python-scons
+                if [[ ! "$?" = "0" ]]; then
+                    echo "Creation of the StatisKit development environment failed."
+                    export ERROR=1
+                else
+                    source activate $STATISKIT_DEV
+                    if [[ ! "$?" = "0" ]]; then
+                        echo "Activation of the StatisKit development environment failed." 
+                        export ERROR=1
+                    else
+                        scons
+                        if [[ ! "$?" = "0" ]]; then
+                            echo "Installation of the development environment failed."
+                            export ERROR=1
+                        fi
+                    fi
+                fi
             fi
         fi
     fi
