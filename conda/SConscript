@@ -5,10 +5,13 @@ Import("env")
 conda_env = env.Clone(tools = ['conda'])
 
 exclude = """
+libboost
+python-scons
 """.split()
 
 targets = conda_env.BuildConda(exclude=exclude)
 Alias("build", targets)
+Alias("install", targets)
 
 targets = conda_env.InstallConda(exclude=exclude)
 Alias("install", targets)
