@@ -2,17 +2,13 @@
 
 Import("env")
 
-condaenv = env.Clone(tools = ['conda'])
+conda_env = env.Clone(tools = ['conda'])
 
 exclude = """
 """.split()
 
-targets = condaenv.BuildConda("build", exclude=exclude)
+targets = conda_env.BuildConda(exclude=exclude)
 Alias("build", targets)
 
-targets = condaenv.BuildConda("install", exclude=exclude)
+targets = conda_env.InstallConda(exclude=exclude)
 Alias("install", targets)
-
-# targets = cppenv.BuildConda("install")
-# Alias("conda-install", targets)
-# Alias("conda-all", targets)
