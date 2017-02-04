@@ -6,3 +6,4 @@ doc/_static
 .coverage
 build
 setup.cfg
+.sconsign.dblite
