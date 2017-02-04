@@ -9,9 +9,9 @@ libboost
 python-scons
 """.split()
 
-targets = conda_env.BuildConda(exclude=exclude)
+targets = conda_env.CondaBuild(exclude=exclude)
 Alias("build", targets)
 Alias("install", targets)
 
-targets = conda_env.InstallConda(exclude=exclude)
+targets = conda_env.CondaInstall(exclude=exclude)
 Alias("install", targets)

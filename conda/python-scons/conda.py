@@ -50,7 +50,7 @@ def generate(env):
                     graph.add_edge(requirement, str(recipe.name))
         return [graph.node[recipe]['path'] for recipe in networkx.topological_sort(graph)]
 
-    def BuildConda(env, sources=[], exclude=[]):
+    def CondaBuild(env, sources=[], exclude=[]):
         ANACONDA_CHANNELS =  env['ANACONDA_CHANNELS']
         conda, recipes = list_recipes(env, sources, exclude)
         targets = []
@@ -62,9 +62,9 @@ def generate(env):
                 pass
         return targets
 
-    env.AddMethod(BuildConda)
+    env.AddMethod(CondaBuild)
 
-    def InstallConda(env, sources=[], exclude=[]):
+    def CondaInstall(env, sources=[], exclude=[]):
         ANACONDA_CHANNELS = env['ANACONDA_CHANNELS']
         conda, recipes = list_recipes(env, sources, exclude)
         CONDA_ENVIRONMENT = path(conda).parent.parent
@@ -84,7 +84,7 @@ def generate(env):
                         env.Clean(target, os.path.join(CONDA_ENVIRONMENT, filename))
         return targets
 
-    env.AddMethod(InstallConda)
+    env.AddMethod(CondaInstall)
 
 def exists(env):
     return 1
