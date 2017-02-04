@@ -33,7 +33,7 @@ def generate(env, **kwargs):
       else:
         env['SP_DIR'] = '$PREFIX/lib/python$PYTHON_VERSION/site-packages'
         
-      def BuildPython(env, source, pattern=None):
+      def PythonPackage(env, source, pattern=None):
         source = path(env.Dir(source).srcnode().abspath)
         sources = source.walkfiles(pattern=pattern)
         targets = []
@@ -43,7 +43,7 @@ def generate(env, **kwargs):
                 targets.append(env.Install(os.path.join(SP_DIR, src.relpath(env.Dir('.').srcnode().abspath).parent), src.abspath()))
         return targets
 
-      env.AddMethod(BuildPython)
+      env.AddMethod(PythonPackage)
 
 def exists(env):
     return 1

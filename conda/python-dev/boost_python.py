@@ -11,9 +11,9 @@ def generate(env):
         env.AppendUnique(LIBS = ['boost_python'])
         env.AppendUnique(CPPDEFINES = ['BOOST_PYTHON_DYNAMIC_LIB',
                                        'BOOST_ALL_NO_LIB'])
-        def BuildBoostPython(env, target, sources):
-            # Code to build "target" from "source"
 
+        def BoostPythonExtension(env, target, sources):
+            # Code to build "target" from "source"
             SP_DIR = env['SP_DIR']
             SYSTEM = env['SYSTEM']
             if not SYSTEM == 'win':
@@ -45,8 +45,8 @@ def generate(env):
             env.Append(LINKFLAGS = '@' + response[0].abspath)
             env.Depends(target, response)
             if SYSTEM == 'win':
-                pyd, lib, exp = lib env.SharedLibrary(target, [], SHLIBPREFIX='',
-                                                      SHLIBSUFFIX = '.pyd')
+                pyd, lib, exp = env.SharedLibrary(target, [], SHLIBPREFIX='',
+                                                  SHLIBSUFFIX = '.pyd')
                 return env.Install(os.path.join(SP_DIR, path(target).parent), pyd)
             elif SYSTEM == 'osx':
                 return env.LoadableModule(target, [], SHLIBPREFIX='',
@@ -54,9 +54,8 @@ def generate(env):
                                           FRAMEWORKSFLAGS='-flat_namespace -undefined suppress')
             else:
                 return env.LoadableModule(target, [], SHLIBPREFIX='')
-            return targets
 
-        env.AddMethod(BuildBoostPython)
+        env.AddMethod(BoostPythonExtension)
         env.Tool('python')
 
 def exists(env):

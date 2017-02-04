@@ -4,14 +4,17 @@ Import("env")
 
 conda_env = env.Clone(tools = ['conda'])
 
+sources = conda_env.Glob('*')
+
 exclude = """
 libboost
 python-scons
 """.split()
 
-targets = conda_env.CondaBuild(exclude=exclude)
-Alias("build", targets)
-Alias("install", targets)
+sources = [source for source in sources if not source.name in exclude]
 
-targets = conda_env.CondaInstall(exclude=exclude)
+targets = conda_env.CondaPackages(sources)
+Alias("build", targets)
+
+targets = conda_env.CondaEnvironment(sources)
 Alias("install", targets)

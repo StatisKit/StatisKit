@@ -8,7 +8,7 @@ def generate(env):
         env.Tool('system')
         env.Tool('prefix')
 
-        def BuildCpp(env, target, sources):
+        def CppLibrary(env, target, sources):
             # Code to build "target" from "source"
             SYSTEM = env['SYSTEM']
             targets = env.Install(os.path.join(env['PREFIX'], "include", *target.split('_')),
@@ -31,7 +31,7 @@ def generate(env):
                                               **kwargs)
             return targets
 
-        env.AddMethod(BuildCpp)
+        env.AddMethod(CppLibrary)
 
 def exists(env):
     return 1

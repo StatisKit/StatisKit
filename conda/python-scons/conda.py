@@ -21,20 +21,16 @@ def generate(env):
                 default = ['statiskit', 'conda-forge'])
       env['ANACONDA_CHANNELS'] = list(itertools.chain(*[['-c', channel] for channel in GetOption('anaconda-channels')]))
 
-    def list_recipes(env, sources, exclude):
+    def list_recipes(env, sources):
         SYSTEM = env['SYSTEM']
-        src_dir = path(env.Dir(".").srcnode().abspath)
-        if len(sources) == 0:
-            sources = [src_dir]
-        else:
-            sources = [path(source).abspath() for source in sources]
+        sources = [path(source.abspath).abspath() for source in sources]
         if SYSTEM == 'win':
             conda = subprocess.check_output(['where', 'conda']).strip()
-            recipes = [recipe for source in sources for recipe in source.dirs() if (recipe/'meta.yaml').exists() and (recipe/'bld.bat').exists()]
+            recipes = [source for source in sources if (source/'meta.yaml').exists() and (source/'bld.bat').exists()]
         else:
             conda = subprocess.check_output(['which', 'conda']).strip()
-            recipes = [recipe for source in sources for recipe in source.dirs() if (recipe/'meta.yaml').exists() and (recipe/'build.sh').exists()]
-        return conda, [recipe for recipe in recipes if recipe.relpath(src_dir) not in exclude]
+            recipes = [source for source in sources if (source/'meta.yaml').exists() and (source/'build.sh').exists()]
+        return conda, recipes
 
     def order_recipes(mode, recipes):
         graph = networkx.DiGraph()
@@ -50,9 +46,9 @@ def generate(env):
                     graph.add_edge(requirement, str(recipe.name))
         return [graph.node[recipe]['path'] for recipe in networkx.topological_sort(graph)]
 
-    def CondaBuild(env, sources=[], exclude=[]):
+    def CondaPackages(env, sources):
         ANACONDA_CHANNELS =  env['ANACONDA_CHANNELS']
-        conda, recipes = list_recipes(env, sources, exclude)
+        conda, recipes = list_recipes(env, sources)
         targets = []
         for recipe in order_recipes('build', recipes):
             cmd = [conda, 'build', str(recipe)] + ANACONDA_CHANNELS
@@ -62,11 +58,11 @@ def generate(env):
                 pass
         return targets
 
-    env.AddMethod(CondaBuild)
+    env.AddMethod(CondaPackages)
 
-    def CondaInstall(env, sources=[], exclude=[]):
+    def CondaEnvironment(env, sources):
         ANACONDA_CHANNELS = env['ANACONDA_CHANNELS']
-        conda, recipes = list_recipes(env, sources, exclude)
+        conda, recipes = list_recipes(env, sources)
         CONDA_ENVIRONMENT = path(conda).parent.parent
         targets = []
         for recipe in order_recipes('run', recipes):
@@ -84,7 +80,7 @@ def generate(env):
                         env.Clean(target, os.path.join(CONDA_ENVIRONMENT, filename))
         return targets
 
-    env.AddMethod(CondaInstall)
+    env.AddMethod(CondaEnvironment)
 
 def exists(env):
     return 1
