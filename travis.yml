@@ -38,7 +38,6 @@ env:
   - RECIPE=libboost
   - UBUNTU=14.04
   - UBUNTU=16.04
-  - ENVIRONMENT=conda/statiskit-dev.yml
 
 matrix:
   exclude:

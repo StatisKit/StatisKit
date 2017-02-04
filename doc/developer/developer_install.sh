@@ -64,7 +64,8 @@ if [[ "$ERROR" = "0" ]]; then
         if [[ "$STATISKIT_DEV" = "" ]]; then
             export STATISKIT_DEV=statiskit-dev
         fi
-        if [[ -d StatisKit ]]; then
+        conda env remove -y -n $STATISKIT_DEV >/dev/null 2>/dev/null 
+        if [[ -d StatisKit ]]; then
             export CLEAN_STATISKIT=false
         else
             export CLEAN_STATISKIT=true
@@ -82,7 +83,7 @@ if [[ "$ERROR" = "0" ]]; then
                 cd ..
                 export ERROR=1
             else
-                conda create -n $STATISKIT_DEV python-scons --use-local -c statiskit -c conda-forge -y
+                conda install -n $STATISKIT_DEV python-scons --use-local -c statiskit -c conda-forge -y -m
                 if [[ ! "$?" = "0" ]]; then
                     echo "Creation of the StatisKit development environment failed."
                     cd ..
@@ -96,12 +97,33 @@ if [[ "$ERROR" = "0" ]]; then
                     else
                         scons
                         if [[ ! "$?" = "0" ]]; then
-                            echo "Installation of the development environment failed."
-                            cd ..
+                            echo "Installation of the StatisKit development environment failed."
                             export ERROR=1
                         fi
+                        cd ..
                     fi
                 fi
+            fi
+        fi
+        if [[ "$ERROR" = "0" ]]; then
+            if [[ -d AutoWIG ]]; then
+                export CLEAN_AUTOWIG=false
+            else
+                export CLEAN_AUTOWIG=true
+                git clone https://github.com/StatisKit/AutoWIG.git
+                if [[ ! "$?" = "0" ]]; then
+                    echo "Clone of the AutoWIG repository failed." 
+                    export ERROR=1
+                fi
+            fi
+            if [[ "$ERROR" = "0" ]]; then
+                cd AutoWIG
+                python setup.py install
+                if [[ ! "$?" = "0" ]]; then
+                    echo "Installation of AutoWIG in the development environment failed."
+                    export ERROR=1
+                fi
+                cd ..
             fi
         fi
     fi
@@ -116,6 +138,9 @@ if [[ "$ERROR" = "0" ]]; then
 else
     if [[ -d StatisKit && "$CLEAN_STATISKIT" = "true" ]]; then
         rm -rf StatisKit
+    fi
+    if [[ -d AutoWIG && "$CLEAN_AUTOWIG" = "true" ]]; then
+        rm -rf AutoWIG
     fi
     echo "Developer configuration failed."
 fi
