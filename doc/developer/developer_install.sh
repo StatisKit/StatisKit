@@ -64,30 +64,40 @@ if [[ "$ERROR" = "0" ]]; then
         if [[ "$STATISKIT_DEV" = "" ]]; then
             export STATISKIT_DEV=statiskit-dev
         fi
-        git clone https://github.com/StatisKit/StatisKit.git
-        if [[ ! "$?" = "0" ]]; then
-            echo "Clone of the StatisKit repository failed." 
-            export ERROR=1
+        if [[ -d StatisKit ]]; then
+            export CLEAN_STATISKIT=false
         else
+            export CLEAN_STATISKIT=true
+            git clone https://github.com/StatisKit/StatisKit.git
+            if [[ ! "$?" = "0" ]]; then
+                echo "Clone of the StatisKit repository failed." 
+                export ERROR=1
+            fi
+        fi
+        if [[ "$ERROR" = "0" ]]; then
             cd StatisKit
             conda build conda/python-scons -c statiskit -c conda-forge
             if [[ ! "$?" = "0" ]]; then
-                echo "Build of the python-scons Conda recipe failed." 
+                echo "Build of the python-scons Conda recipe failed."
+                cd ..
                 export ERROR=1
             else
-                conda create -n $STATISKIT_DEV python-scons
+                conda create -n $STATISKIT_DEV python-scons --use-local -c statiskit -c conda-forge -y
                 if [[ ! "$?" = "0" ]]; then
                     echo "Creation of the StatisKit development environment failed."
+                    cd ..
                     export ERROR=1
                 else
                     source activate $STATISKIT_DEV
                     if [[ ! "$?" = "0" ]]; then
-                        echo "Activation of the StatisKit development environment failed." 
+                        echo "Activation of the StatisKit development environment failed."
+                        cd ..
                         export ERROR=1
                     else
                         scons
                         if [[ ! "$?" = "0" ]]; then
                             echo "Installation of the development environment failed."
+                            cd ..
                             export ERROR=1
                         fi
                     fi
@@ -104,6 +114,9 @@ if [[ "$ERROR" = "0" ]]; then
         echo "Developer configuration and installation succeded."
     fi
 else
+    if [[ -d StatisKit && "$CLEAN_STATISKIT" = "true" ]]; then
+        rm -rf StatisKit
+    fi
     echo "Developer configuration failed."
 fi
 
