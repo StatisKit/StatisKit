@@ -69,14 +69,12 @@ def generate(env):
         conda, recipes = list_recipes(env, sources, exclude)
         CONDA_ENVIRONMENT = path(conda).parent.parent
         targets = []
-        import pdb
-        pdb.set_trace()
         for recipe in order_recipes('run', recipes):
             archive = path(subprocess.check_output([conda, 'build', str(recipe), '--output']).strip())
             target = os.path.join(CONDA_ENVIRONMENT,
                                   'conda-meta',
                                   archive.name.replace('.tar.bz2', '.json', 1))
-            target = env.Command(target, [recipe, archive], conda + " install -n " + CONDA_ENVIRONMENT.name + " " + recipe.name + " -y --use-local " + " ".join(ANACONDA_CHANNELS))
+            target = env.Command(target, recipe, conda + " install -n " + CONDA_ENVIRONMENT.name + " " + recipe.name + " -y --use-local " + " ".join(ANACONDA_CHANNELS))
             env.Depends(target, archive)
             targets.extend(target)
             target = path(targets[-1].abspath)
@@ -84,7 +82,7 @@ def generate(env):
                 with open(target, 'r') as filehandler:
                     for filename in json.loads("".join(filehandler.readlines())).get('files', []):
                         env.Clean(target, os.path.join(CONDA_ENVIRONMENT, filename))
-        return target
+        return targets
 
     env.AddMethod(InstallConda)
 
