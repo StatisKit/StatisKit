@@ -7,7 +7,6 @@ conda_env = env.Clone(tools = ['conda'])
 sources = conda_env.Glob('*')
 
 exclude = """
-libboost
 python-scons
 """.split()
 
