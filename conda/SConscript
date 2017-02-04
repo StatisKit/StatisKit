@@ -6,6 +6,7 @@ conda_env = env.Clone(tools = ['conda'])
 
 sources = conda_env.Glob('*')
 
+# Exclude here all Conda recipes that must not be built
 exclude = """
 python-scons
 """.split()
@@ -14,6 +15,18 @@ sources = [source for source in sources if not source.name in exclude]
 
 targets = conda_env.CondaPackages(sources)
 Alias("build", targets)
+
+targets = conda_env.AnacondaUpload(sources)
+Alias("upload", targets)
+
+# Exclude here all Conda recipes that must not be installed
+# in the current Environment. These recipes that must not be
+# installed corresponds to all recipes for which code source
+# is located in the current repository.
+exclude = """
+""".split()
+
+sources = [source for source in sources if not source.name in exclude]
 
 targets = conda_env.CondaEnvironment(sources)
 Alias("install", targets)
