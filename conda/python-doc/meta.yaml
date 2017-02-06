@@ -30,10 +30,8 @@ requirements:
     - python
     - sphinx
     - cmake
-    - zlib
-    - jpeg
+    - pillow
   run:
     - python
     - sphinx
-    - cmake
-    - jpeg
+    - pillow
