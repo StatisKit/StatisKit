@@ -1,6 +1,6 @@
 echo ON
 
-python setup.py install --standard-lib
+python setup.py install --standard-lib --prefix=%PREFIX%
 if errorlevel 1 exit 1
 
 if not exist %PREFIX%\etc\conda\activate.d mkdir %PREFIX%\etc\conda\activate.d
