@@ -106,7 +106,7 @@ def generate(env):
                                           archive.name.replace('.tar.bz2', '.json', 1))
                     target = env.Command(target, recipe,
                                          conda + " install -n " + CONDA_ENVIRONMENT.name + " " + package + " -y --use-local " + " ".join(CONDA_CHANNELS))
-                    target.Depends(archive)
+                    env.Depends(target, archive)
                     targets.extend(target)
                     for run in metadata.get('requiremenents', {}).get('run', []):
                         if run in packages:
