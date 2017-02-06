@@ -76,7 +76,7 @@ def generate(env):
                     target = env.Command(target, recipe,
                                          conda + " build " + recipe + " " + " ".join(CONDA_CHANNELS))
                     targets.extend(target)
-                    for build in metadata.get('requiremenents', {}).get('build', []):
+                    for build in metadata.get('requirements', {}).get('build', []):
                         if build in packages:
                             archive = path(subprocess.check_output([conda,
                                                                     'build',
@@ -108,7 +108,7 @@ def generate(env):
                                          conda + " install -n " + CONDA_ENVIRONMENT.name + " " + package + " -y --use-local " + " ".join(CONDA_CHANNELS))
                     env.Depends(target, archive)
                     targets.extend(target)
-                    for run in metadata.get('requiremenents', {}).get('run', []):
+                    for run in metadata.get('requirements', {}).get('run', []):
                         if run in packages:
                             archive = path(subprocess.check_output([conda,
                                                                     'build',
