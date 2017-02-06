@@ -30,6 +30,7 @@ requirements:
     - python
     - sphinx
     - cmake
+    - zlib
   run:
     - python
     - sphinx
