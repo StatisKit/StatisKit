@@ -31,7 +31,9 @@ requirements:
     - sphinx
     - cmake
     - zlib
+    - jpeg
   run:
     - python
     - sphinx
     - cmake
+    - jpeg
