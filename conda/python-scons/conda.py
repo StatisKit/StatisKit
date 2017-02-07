@@ -40,25 +40,12 @@ def generate(env):
             recipes = [source.abspath() for source in sources if (source/'meta.yaml').exists() and (source/'build.sh').exists()]
         packages = dict()
         for recipe in recipes:
+            print recipe
             subprocess.check_output([conda, 'render', recipe, '-f', os.path.join(recipe, 'meta.yaml.rendered')]).strip()
             with open(os.path.join(recipe, 'meta.yaml.rendered'), 'r') as filehandler:
                 packages[yaml.load(filehandler)['package']['name']] = recipe
             os.unlink(os.path.join(recipe, 'meta.yaml.rendered'))
         return conda, packages
-
-    # def order_recipes(mode, recipes):
-    #     graph = networkx.DiGraph()
-    #     for recipe in recipes:
-    #         graph.add_node(str(recipe.name), path=recipe.abspath())
-    #     for recipe in recipes:
-    #         with open(recipe/'meta.yaml', 'w') as filehandler:
-    #             rendered = ''.join(filehandler.readlines()).replace('{{ ', '$').replace(' }}', '')
-    #             requirements = yaml.load(rendered).get('requirements', {}).get(mode, {})
-    #         for requirement in requirements:
-    #             requirement = requirement.split()[0]
-    #             if requirement in graph:
-    #                 graph.add_edge(requirement, str(recipe.name))
-    #     return [graph.node[recipe]['path'] for recipe in networkx.topological_sort(graph)]
 
     def CondaPackages(env, sources):
         CONDA_CHANNELS =  env['CONDA_CHANNELS']
