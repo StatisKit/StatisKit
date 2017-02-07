@@ -30,6 +30,7 @@ requirements:
     - python
     - nose
     - coverage
+    - python-scons
   run:
     - python
     - nose

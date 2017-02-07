@@ -39,6 +39,9 @@ def generate(env):
             conda = subprocess.check_output(['which', 'conda']).strip()
             recipes = [source.abspath() for source in sources if (source/'meta.yaml').exists() and (source/'build.sh').exists()]
         packages = dict()
+        print 'OOOOOOOOOOOUUUUUUUUUUUUUUUUUUUUUUTTTTTTTTTTTTTTTTTT'
+        print conda
+        print recipes
         for recipe in recipes:
             print recipe
             subprocess.check_output([conda, 'render', recipe, '-f', os.path.join(recipe, 'meta.yaml.rendered')]).strip()
@@ -58,6 +61,7 @@ def generate(env):
             with open(os.path.join(recipe, 'meta.yaml.rendered'), 'r') as filehandler:
                 metadata = yaml.load(filehandler)
                 if not metadata.get('build', {}).get('skip', False):
+                    skip = False
                     cmd += ['--output']
                     target = path(subprocess.check_output(cmd).strip())
                     target = env.Command(target, recipe,
@@ -70,7 +74,12 @@ def generate(env):
                                                                     packages[build],
                                                                     '--output']).strip())
                             env.Depends(target, archive)
+                else:
+                    skip = True
             os.unlink(os.path.join(recipe, 'meta.yaml.rendered'))
+            if not skip:
+                depends = env.Glob(os.path.join(recipe,'*'))
+                env.Depends(target, depends)
         return targets
 
     env.AddMethod(CondaPackages)
