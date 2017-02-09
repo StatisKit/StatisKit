@@ -2,7 +2,6 @@ from path import path
 import subprocess
 import itertools
 import yaml
-import networkx
 from SCons.Script import AddOption, GetOption
 import json
 import os
@@ -29,11 +28,13 @@ def generate(env):
                 default = '')
       env['ANACONDA_CHANNEL'] = GetOption('anaconda-channel')
 
+    env['ENV'].update(os.environ)
+
     def list_packages(env, sources):
         SYSTEM = env['SYSTEM']
         sources = [path(source.abspath).abspath() for source in sources]
         if SYSTEM == 'win':
-            conda = subprocess.check_output(['where', 'conda.exe']).strip()
+            conda = subprocess.check_output(['where', 'conda.bat']).strip()
             recipes = [source.abspath() for source in sources if (source/'meta.yaml').exists() and (source/'bld.bat').exists()]
         else:
             conda = subprocess.check_output(['which', 'conda']).strip()

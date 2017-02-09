@@ -18,6 +18,8 @@ Configuration
 
 In order to ease the development of this software suite on multiple operating systems, the **Conda** package and environment management system is used.
 
+`Visual Studio Community <https://www.visualstudio.com/downloads/>`_
+
 .. warning::
 
     These scripts use scripts presented in the :ref:`section-user-install_it-prerequisites` section, there are therefore no need to run these scripts beforehand.
