@@ -1,0 +1,3 @@
+echo ON
+
+echo OFF
