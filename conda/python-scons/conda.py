@@ -2,7 +2,6 @@ from path import path
 import subprocess
 import itertools
 import yaml
-import networkx
 from SCons.Script import AddOption, GetOption
 import json
 import os
@@ -29,21 +28,19 @@ def generate(env):
                 default = '')
       env['ANACONDA_CHANNEL'] = GetOption('anaconda-channel')
 
+    env['ENV'].update(os.environ)
+
     def list_packages(env, sources):
         SYSTEM = env['SYSTEM']
         sources = [path(source.abspath).abspath() for source in sources]
         if SYSTEM == 'win':
-            conda = subprocess.check_output(['where', 'conda']).strip()
+            conda = subprocess.check_output(['where', 'conda.bat']).strip()
             recipes = [source.abspath() for source in sources if (source/'meta.yaml').exists() and (source/'bld.bat').exists()]
         else:
             conda = subprocess.check_output(['which', 'conda']).strip()
             recipes = [source.abspath() for source in sources if (source/'meta.yaml').exists() and (source/'build.sh').exists()]
         packages = dict()
-        print 'OOOOOOOOOOOUUUUUUUUUUUUUUUUUUUUUUTTTTTTTTTTTTTTTTTT'
-        print conda
-        print recipes
         for recipe in recipes:
-            print recipe
             subprocess.check_output([conda, 'render', recipe, '-f', os.path.join(recipe, 'meta.yaml.rendered')]).strip()
             with open(os.path.join(recipe, 'meta.yaml.rendered'), 'r') as filehandler:
                 packages[yaml.load(filehandler)['package']['name']] = recipe
@@ -124,7 +121,7 @@ def generate(env):
         # clean = env.GetOption('clean')
         conda, packages = list_packages(env, sources)
         if SYSTEM == 'win':
-            anaconda = subprocess.check_output(['where', 'anaconda']).strip()
+            anaconda = subprocess.check_output(['where', 'anaconda.exe']).strip()
         else:
             anaconda = subprocess.check_output(['which', 'anaconda']).strip()
         targets = []
