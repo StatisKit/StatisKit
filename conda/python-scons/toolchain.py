@@ -27,7 +27,7 @@ def generate(env):
                       nargs   = 1,
                       action  = 'store',
                       help    = 'MSVC version',
-                      default = str(get_build_version()))
+                      default = '14.0') # str(get_build_version()))
         env['MSVC_VERSION'] = GetOption('msvc-version')
       env.Tool('default')
       env.Tool('prefix')
