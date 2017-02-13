@@ -1,6 +1,6 @@
 echo ON
 
-rm bld.bat
+del bld.bat
 dir 
 
 
