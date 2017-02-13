@@ -1,5 +1,6 @@
 echo ON
 
+rm bld.bat
 dir 
 
 
