@@ -15,6 +15,8 @@ if "%PY_VER%"=="2.7" (
 set MSVC_VER=14.0
 set LIB_VER=140
 
+cd tools\build
+
 call bootstrap.bat
 if errorlevel 1 exit 1
 
