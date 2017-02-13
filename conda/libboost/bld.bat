@@ -1,10 +1,5 @@
 echo ON
 
-dir
-del .\bld.bat
-dir 
-
-
 :: Set the right msvc version according to Python version
 if "%PY_VER%"=="2.7" (
     set MSVC_VER=9.0
