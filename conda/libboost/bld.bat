@@ -1,7 +1,7 @@
 echo ON
 
 dir
-del bld.bat
+del .\bld.bat
 dir 
 
 
