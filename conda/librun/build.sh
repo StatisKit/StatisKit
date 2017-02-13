@@ -1,0 +1,3 @@
+set -ve
+
+set +ve
