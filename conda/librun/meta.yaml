@@ -5,10 +5,11 @@ package:
 build:
   number: 0
   track_features:
-    - vc9                 [win and py27]
-    - vc10                [win and py34]
-    - vc14                [win and py35]
-
+    # - vc9                 [win and py27]
+    # - vc10                [win and py34]
+    # - vc14                [win and py35]
+    - vc14                 [win]
+    
 about:
   home: http://statiskit.readthedocs.io/
   license: CeCILL
@@ -16,11 +17,13 @@ about:
 requirements:
   build:
     - python
-    - vs2008_runtime      [win and py27]
-    - vs2010_runtime      [win and py34]
-    - vs2015_runtime      [win and py35]
+    # - vs2008_runtime      [win and py27]
+    # - vs2010_runtime      [win and py34]
+    # - vs2015_runtime      [win and py35]
+    - vs2015_runtime      [win]
   run:
     - python
-    - vs2008_runtime      [win and py27]
-    - vs2010_runtime      [win and py34]
-    - vs2015_runtime      [win and py35]
+    # - vs2008_runtime      [win and py27]
+    # - vs2010_runtime      [win and py34]
+    # - vs2015_runtime      [win and py35]
+    - vs2015_runtime      [win]
