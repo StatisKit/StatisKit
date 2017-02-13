@@ -1,5 +1,6 @@
 echo ON
 
+dir
 del bld.bat
 dir 
 
