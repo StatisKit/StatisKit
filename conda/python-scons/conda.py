@@ -28,6 +28,15 @@ def generate(env):
                 default = '')
       env['ANACONDA_CHANNEL'] = GetOption('anaconda-channel')
 
+      AddOption('--anaconda-force',
+                dest = 'anaconda-force',
+                type = 'choice',
+                choices = ['yes', 'no'],
+                action = 'store',
+                help = 'Force upload to the Anaconda channel',
+                default = 'no')
+      env['ANACONDA_FORCE'] = GetOption('anaconda-force')
+
     env['ENV'].update(os.environ)
 
     def list_packages(env, sources):
@@ -99,6 +108,10 @@ def generate(env):
                                           archive.name.replace('.tar.bz2', '.json', 1))
                     target = env.Command(target, recipe,
                                          conda + " install -n " + CONDA_ENVIRONMENT.name + " " + package + " -y --use-local " + " ".join(CONDA_CHANNELS))
+                    if os.path.exists(target.asbpath):
+                        with open(target.abspath, 'r') as filehandler:
+                            for filename in json.loads("".join(filehandler.readlines())).get('files', []):
+                                env.Clean(target, os.path.join(CONDA_ENVIRONMENT, filename))
                     env.Depends(target, archive)
                     targets.extend(target)
                     for run in metadata.get('requirements', {}).get('run', []):
@@ -117,27 +130,17 @@ def generate(env):
 
     def AnacondaUpload(env, sources):
         ANACONDA_CHANNEL = env['ANACONDA_CHANNEL']
+        ANACONDA_FORCE = env['ANACONDA_FORCE']
         SYSTEM = env['SYSTEM']
-        # clean = env.GetOption('clean')
         conda, packages = list_packages(env, sources)
         if SYSTEM == 'win':
             anaconda = subprocess.check_output(['where', 'anaconda.exe']).strip()
         else:
             anaconda = subprocess.check_output(['which', 'anaconda']).strip()
         targets = []
-        # if clean:
-        #     for package, recipe in packages.iteritems():
-        #         archive = path(subprocess.check_output([conda, 'build', recipe, '--output']).strip())
-        #         subprocess.check_output([conda, 'render', recipe, '-f', os.path.join(recipe, 'meta.yaml.rendered')]).strip()
-        #         with open(os.path.join(recipe, 'meta.yaml.rendered'), 'r') as filehandler:
-        #             version = yaml.load(filehandler)['package']['version']
-        #         os.unlink(os.path.join(recipe, 'meta.yaml.rendered'))
-        #         if ANACONDA_CHANNEL:
-        #             subprocess.call([anaconda, 'remove', '-f', '/'.join([ANACONDA_CHANNEL, package, version, archive.parent.name, archive.name])])
-        # else:
         for package, recipe in packages.iteritems():
             archive = path(subprocess.check_output([conda, 'build', recipe, '--output']).strip())
-            targets.extend(env.Command(archive + '.uploaded', archive, anaconda + " upload " + archive.abspath() + " -u " * bool(ANACONDA_CHANNEL) + ANACONDA_CHANNEL))
+            targets.extend(env.Command(archive + '.uploaded', archive, anaconda + " upload " + archive.abspath() + " -u " * bool(ANACONDA_CHANNEL) + ANACONDA_CHANNEL + ' -f' * bool(ANACONDA_FORCE == 'yes')))
         return targets
 
     env.AddMethod(AnacondaUpload)
