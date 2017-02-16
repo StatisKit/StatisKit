@@ -17,6 +17,7 @@ cat > $PREFIX/etc/conda/deactivate.d/scons_vars.sh <<EOL
 #!/bin/sh
 
 unset SCONSFLAGS
+unset SCONS_CONDAENV
 EOL
 
 mkdir -p $SP_DIR/SCons/site_scons
