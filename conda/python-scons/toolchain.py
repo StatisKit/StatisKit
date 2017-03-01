@@ -58,7 +58,8 @@ def generate(env):
         else:
           env.AppendUnique(CCFLAGS=['-fmax-errors=0',
                                     '-Wl,--no-undefined',
-                                    '-fvisibility=hidden'],
+                                    '-fvisibility=hidden',
+                                    '-fdiagnostics-color=always'],
                            CPPDEFINES=['_GLIBCXX_USE_CXX11_ABI=1'])
 
 def exists(env):
