@@ -29,5 +29,6 @@ cp $RECIPE_DIR/prefix.py $SP_DIR/SCons/site_scons/site_tools/prefix.py
 cp $RECIPE_DIR/system.py $SP_DIR/SCons/site_scons/site_tools/system.py
 cp $RECIPE_DIR/toolchain.py $SP_DIR/SCons/site_scons/site_tools/toolchain.py
 cp $RECIPE_DIR/conda.py $SP_DIR/SCons/site_scons/site_tools/conda.py
+cp $RECIPE_DIR/debug.py $SP_DIR/SCons/site_scons/site_tools/debug.py
 
 set +ve

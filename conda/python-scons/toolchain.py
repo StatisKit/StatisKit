@@ -15,6 +15,7 @@ def generate(env):
                 choices = ['32', '64'],
                 default = '64' if maxsize.bit_length() == 63 else '32')
       env.Tool('system')
+      env.Tool('debug')
       SYSTEM = env['SYSTEM']
       env['ARCH'] = GetOption('arch')
       ARCH = env['ARCH']
@@ -29,6 +30,16 @@ def generate(env):
                       help    = 'MSVC version',
                       default = '14.0') # str(get_build_version()))
         env['MSVC_VERSION'] = GetOption('msvc-version')
+      elif SYSTEM == 'linux':
+        AddOption('--diagnostics-color',
+              dest    = 'diagnostics-color',
+              type    = 'choice',
+              nargs   = 1,
+              action  = 'store',
+              help    = 'Diagnostics color',
+              default = 'always',
+              choices=['always', 'never'])
+        env['DIAGNOSTICS_COLOR'] = GetOption('diagnostics-color')
       env.Tool('default')
       env.Tool('prefix')
       if SYSTEM == 'win':
@@ -56,9 +67,11 @@ def generate(env):
           env.AppendUnique(CCFLAGS=['-ferror-limit=0'],
                            CXXFLAGS=['-stdlib=libc++'])
         else:
+          DIAGNOSTICS_COLOR = env['DIAGNOSTICS_COLOR']
           env.AppendUnique(CCFLAGS=['-fmax-errors=0',
                                     '-Wl,--no-undefined',
-                                    '-fvisibility=hidden'],
+                                    '-fvisibility=hidden',
+                                    '-fdiagnostics-color=' + DIAGNOSTICS_COLOR],
                            CPPDEFINES=['_GLIBCXX_USE_CXX11_ABI=1'])
 
 def exists(env):
