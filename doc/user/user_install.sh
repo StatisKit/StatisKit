@@ -114,6 +114,9 @@ fi
 
 if [[ "$ERROR" = "1" ]]; then
     echo "User installation failed."
+else
+    echo "rm -rf $CONDA_DIR" > uninstall.sh
+    echo "rm ~/.condarc" >> uninstall.sh
 fi 
 
 set +v
