@@ -55,7 +55,7 @@ before_script:
   - source before_script.sh
 
 script:
-  - if [[ "$RECIPE" = "libboost" && "$TRAVIS_OS_NAME" = "linux" ]]; then
+  - if [[ "$RECIPE" = "libboost" ]]; then
       export TRAVIS_WAIT=true;
     fi
   - source script.sh

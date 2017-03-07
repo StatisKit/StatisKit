@@ -1,5 +1,11 @@
 set +v
 
+if [[ "$ERROR" = "1" ]]; then
+    export CLEAN_ENVIRONMENT="false"
+else
+    export CLEAN_ENVIRONMENT="true"
+fi
+
 export ERROR=0
 
 case "$(uname -s)" in
@@ -18,7 +24,9 @@ case "$(uname -s)" in
 
 esac
 
-export CLEAN_INSTALL=1
+if [[ "$CLEAN_INSTALL" = "" ]]; then
+    export CLEAN_INSTALL=1
+fi
 if [[ ! -f user_install.sh && "$ERROR" = "0" ]]; then
     if [[ "$OS_NAME" = "MacOSX" ]]; then
         curl https://raw.githubusercontent.com/StatisKit/StatisKit/master/doc/user/user_install.sh -o user_install.sh
@@ -64,16 +72,19 @@ if [[ "$ERROR" = "0" ]]; then
         if [[ "$STATISKIT_DEV" = "" ]]; then
             export STATISKIT_DEV=statiskit-dev
         fi
-        conda env remove -y -n $STATISKIT_DEV >/dev/null 2>/dev/null 
+        if [[ "$CLEAN_ENVIRONMENT" = "true" ]]; then
+            conda env remove -y -n $STATISKIT_DEV >/dev/null 2>/dev/null 
+        fi
+        conda install ipython jupyter -n $STATISKIT_DEV -y -m -c statiskit -c conda-forge
         GIT=`which git`
         if [[ "$GIT" = "" ]]; then
-            conda install git -n $STATISKIT_DEV -y -m
+            conda install git -n $STATISKIT_DEV -y
             if [[ ! "$?" = "0" ]]; then
                 export ERROR="1"
             fi
             source activate $STATISKIT_DEV
         fi
-        if [[ -d StatisKit ]]; then
+        if [[ -d StatisKit && "$CLEAN_STATISKIT" = "" ]]; then
             export CLEAN_STATISKIT=false
         else
             export CLEAN_STATISKIT=true
@@ -91,7 +102,7 @@ if [[ "$ERROR" = "0" ]]; then
                 cd ..
                 export ERROR=1
             else
-                conda install -n $STATISKIT_DEV python-scons --use-local -c statiskit -c conda-forge -y -m
+                conda install -n $STATISKIT_DEV python-scons --use-local -c statiskit -c conda-forge -y
                 if [[ ! "$?" = "0" ]]; then
                     echo "Creation of the StatisKit development environment failed."
                     cd ..
@@ -114,7 +125,7 @@ if [[ "$ERROR" = "0" ]]; then
             fi
         fi
         if [[ "$ERROR" = "0" ]]; then
-            if [[ -d PyClangLite ]]; then
+            if [[ -d PyClangLite && "$CLEAN_PYCLANGLITE" = "" ]]; then
                 export CLEAN_PYCLANGLITE=false
             else
                 export CLEAN_PYCLANGLITE=true
@@ -135,7 +146,7 @@ if [[ "$ERROR" = "0" ]]; then
             fi
         fi
         if [[ "$ERROR" = "0" ]]; then
-            if [[ -d AutoWIG ]]; then
+            if [[ -d AutoWIG && "$CLEAN_AUTOWIG" = "" ]]; then
                 export CLEAN_AUTOWIG=false
             else
                 export CLEAN_AUTOWIG=true
