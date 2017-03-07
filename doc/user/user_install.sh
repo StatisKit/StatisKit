@@ -117,6 +117,7 @@ if [[ "$ERROR" = "1" ]]; then
 else
     echo "rm -rf $CONDA_DIR" > uninstall.sh
     echo "rm ~/.condarc" >> uninstall.sh
+    echo "rm uninstall.sh" >> uninstall.sh
 fi 
 
 set +v
