@@ -75,7 +75,7 @@ if [[ "$ERROR" = "0" ]]; then
         if [[ "$CLEAN_ENVIRONMENT" = "true" ]]; then
             conda env remove -y -n $STATISKIT_DEV >/dev/null 2>/dev/null 
         fi
-        conda install ipython jupyter -n $STATISKIT_DEV -y -m -c statiskit -c conda-forge
+        conda install ipython jupyter ipdb -n $STATISKIT_DEV -y -m -c statiskit -c conda-forge
         GIT=`which git`
         if [[ "$GIT" = "" ]]; then
             conda install git -n $STATISKIT_DEV -y
