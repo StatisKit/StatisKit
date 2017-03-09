@@ -17,6 +17,8 @@ requirements:
     - path.py
     - pywin32                      [win]
     - pyyaml
+    - nose
+    - coverage
   run:
     - python
     - setuptools
@@ -24,4 +26,5 @@ requirements:
     - path.py
     - pywin32                      [win]
     - pyyaml
-
+    - nose
+    - coverage
