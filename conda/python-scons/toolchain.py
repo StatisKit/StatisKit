@@ -20,7 +20,7 @@ def generate(env):
       env['ARCH'] = GetOption('arch')
       ARCH = env['ARCH']
       if SYSTEM == 'win':
-        env['TARGET_ARCH'] = 'x86_64' if ARCH == '64' else 'x86'
+        env['TARGET_ARCH'] = 'amd64' if ARCH == '64' else 'x86'
         env['HOST_ARCH'] = env['TARGET_ARCH']
         AddOption('--msvc-version',
                       dest    = 'msvc-version',
@@ -41,6 +41,8 @@ def generate(env):
               choices=['always', 'never'])
         env['DIAGNOSTICS_COLOR'] = GetOption('diagnostics-color')
       print env['ARCH'], env['HOST_ARCH'], env['TARGET_ARCH'], env['MSVC_VERSION']
+      print env
+      print env.get('HOST_ARCH')
       env.Tool('default')
       env.Tool('prefix')
       if SYSTEM == 'win':
