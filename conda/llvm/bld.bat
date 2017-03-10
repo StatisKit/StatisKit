@@ -10,11 +10,13 @@ set BUILD_CONFIG=Release
 :: Configure step
 if "%ARCH%"=="32" (
      set CMAKE_GENERATOR=Visual Studio 12 2013
-     :: 14 2015
 ) else (
      set CMAKE_GENERATOR=Visual Studio 12 2013 Win64
-     :: 14 2015 Win64
 )
+
+:: 14 2015
+:: 14 2015 Win64
+
 set CMAKE_GENERATOR_TOOLSET=v120_xp
 ::v140_xp
 

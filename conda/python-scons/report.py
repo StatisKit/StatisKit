@@ -100,7 +100,7 @@ def generate(env):
 
             return None
 
-        def CoverageReport(env, badge, report, annotate, sources, srcdirs=[], tgtdirs=[], red=75, orange=80, yellow=85, yellowgreen=90, green=95)
+        def CoverageReport(env, badge, report, annotate, sources, srcdirs=[], tgtdirs=[], red=75, orange=80, yellow=85, yellowgreen=90, green=95):
 
             covenv = env.Clone()
             covenv['BUILDERS']['_CoverageReport'] = Builder(action = Action(coverage_builder, 'coverage: Generating report ...'))
