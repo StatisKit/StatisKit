@@ -17,7 +17,7 @@ def generate(env):
 
       env['WITH_TEST'] = GetOption('with-test')
         
-      def Nosetests(env, sources, with_coverage=True, cover_tests=True, cover_inclusive=True, cover_package=''):
+      def Nosetests(env, sources, with_debug='pdb', with_coverage=True, cover_tests=True, cover_inclusive=True, cover_package=''):
         WITH_TEST = env['WITH_TEST']
         if WITH_TEST == 'none':
             sources = []
@@ -33,8 +33,14 @@ def generate(env):
             nosetests = subprocess.check_output(['where', 'nosetests']).strip()
         else:
             nosetests = subprocess.check_output(['which', 'nosetests']).strip()
+        if with_debug == 'none':
+            with_debug = ''
+        elif with_debug == 'pdb':
+            with_debug = ' --pdb'
+        elif with_debug == 'ipdb':
+            with_debug = ' --ipdb'
         if len(sources) > 0:
-            target = env.Command(".coverage", sources, nosetests + " $SOURCES -x -s -v" + " --with-coverage" * with_coverage + " --cover-tests" * cover_tests + " --cover-inclusive" * cover_inclusive + "".join(" --cover-package=" + packagename for packagename in cover_package.split(" ") if packagename))
+            target = env.Command(".coverage", sources, nosetests + " $SOURCES -x -s -v" + with_debug + " --with-coverage" * with_coverage + " --cover-tests" * cover_tests + " --cover-inclusive" * cover_inclusive + "".join(" --cover-package=" + packagename for packagename in cover_package.split(" ") if packagename))
             return target
 
       env.AddMethod(Nosetests)

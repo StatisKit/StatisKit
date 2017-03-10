@@ -40,7 +40,7 @@ def generate(env):
               default = 'always',
               choices=['always', 'never'])
         env['DIAGNOSTICS_COLOR'] = GetOption('diagnostics-color')
-      print env['ARCH'], env['TARGET_ARCH'], env['MSVC_VERSION']
+      print env['ARCH'], env['HOST_ARCH'], env['TARGET_ARCH'], env['MSVC_VERSION']
       env.Tool('default')
       env.Tool('prefix')
       if SYSTEM == 'win':
