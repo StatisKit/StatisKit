@@ -21,6 +21,7 @@ def generate(env):
       ARCH = env['ARCH']
       if SYSTEM == 'win':
         env['TARGET_ARCH'] = 'x86_64' if ARCH == '64' else 'x86'
+        env['HOST_ARCH'] = env['TARGET_ARCH']
         AddOption('--msvc-version',
                       dest    = 'msvc-version',
                       type    = 'string',
