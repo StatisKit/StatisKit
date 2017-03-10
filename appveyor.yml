@@ -10,14 +10,14 @@ platform:
 
 environment:
   matrix:
-    - RECIPE: vcs
+    # - RECIPE: vcs
     - RECIPE: python-scons
-    - RECIPE: python-parse
-    - RECIPE: libdev
-    - RECIPE: librun
-    - RECIPE: python-dev
-    - RECIPE: python-doc
-    - RECIPE: python-pkg
+    # - RECIPE: python-parse
+    # - RECIPE: libdev
+    # - RECIPE: librun
+    # - RECIPE: python-dev
+    # - RECIPE: python-doc
+    # - RECIPE: python-pkg
     - RECIPE: llvm
     - RECIPE: clang
     - RECIPE: python-clang
