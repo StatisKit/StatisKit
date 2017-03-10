@@ -22,11 +22,8 @@ test:
   files:
     - SConstruct
   commands:
-    - echo first [win]
-    - scons %SCONSFLAGS%    [win]
     - scons $SCONSFLAGS     [not win]
-    - echo second [win]
-    - scons
+    - scons                 [not win]
 
 about:
   home: http://www.scons.org/
