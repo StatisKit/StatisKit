@@ -20,7 +20,6 @@ def generate(env):
       env['ARCH'] = GetOption('arch')
       ARCH = env['ARCH']
       if SYSTEM == 'win':
-        #env['SHLIBSUFFIX'] = '.pyd'
         env['TARGET_ARCH'] = 'x86_64' if ARCH == '64' else 'x86'
         AddOption('--msvc-version',
                       dest    = 'msvc-version',
@@ -28,7 +27,7 @@ def generate(env):
                       nargs   = 1,
                       action  = 'store',
                       help    = 'MSVC version',
-                      default = '14.0') # str(get_build_version()))
+                      default = '12.0') # str(get_build_version()))
         env['MSVC_VERSION'] = GetOption('msvc-version')
       elif SYSTEM == 'linux':
         AddOption('--diagnostics-color',
@@ -40,6 +39,7 @@ def generate(env):
               default = 'always',
               choices=['always', 'never'])
         env['DIAGNOSTICS_COLOR'] = GetOption('diagnostics-color')
+    print env['ARCH'], env['TARGET_ARCH'], env['MSVC_VERSION']
       env.Tool('default')
       env.Tool('prefix')
       if SYSTEM == 'win':
