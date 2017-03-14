@@ -32,26 +32,25 @@ def generate(env):
         noseenv = env.Clone()
         noseenv['ENV'].update(os.environ)
         TEST_CATEGORY = noseenv['TEST_CATEGORY']
-        if not TEST_CATEGORY == "none":
-            SYSTEM = noseenv['SYSTEM']
-            categories = ['unit', 'inte', 'func']
-            eval_attr = "category <= " +str(categories.index(TEST_CATEGORY) + 1)
-            eval_attr += " and \"" + SYSTEM + "\" in system"
-            TEST_DEBUG = nosenv['TEST_DEBUG']
-            sources = [source for source in sources if source.suffix == '.py']
-            if TEST_DEBUG == 'none':
-                TEST_DEBUG = ''
-            else:
-                TEST_DEBUG = ' --' + TEST_DEBUG
-            if len(sources) > 0:
-                target = noseenv.Command(".coverage", sources, "nosetests $SOURCES -x -s -v"
-                                                                + TEST_DEBUG
-                                                                + " --with-coverage" * with_coverage
-                                                                + " --cover-tests" * cover_tests
-                                                                + " --cover-inclusive" * cover_inclusive
-                                                                + " -A " + eval_attr
-                                                                + "".join(" --cover-package=" + packagename for packagename in cover_package.split(" ") if packagename))
-            return target
+        SYSTEM = noseenv['SYSTEM']
+        categories = ['unit', 'inte', 'func']
+        eval_attr = "category <= " +str(categories.index(TEST_CATEGORY) + 1)
+        eval_attr += " and \"" + SYSTEM + "\" in system"
+        TEST_DEBUG = nosenv['TEST_DEBUG']
+        sources = [source for source in sources if source.suffix == '.py']
+        if TEST_DEBUG == 'none':
+            TEST_DEBUG = ''
+        else:
+            TEST_DEBUG = ' --' + TEST_DEBUG
+        if len(sources) > 0:
+            target = noseenv.Command(".coverage", sources, "nosetests $SOURCES -x -s -v"
+                                                            + TEST_DEBUG
+                                                            + " --with-coverage" * with_coverage
+                                                            + " --cover-tests" * cover_tests
+                                                            + " --cover-inclusive" * cover_inclusive
+                                                            + " -A " + eval_attr
+                                                            + "".join(" --cover-package=" + packagename for packagename in cover_package.split(" ") if packagename))
+        return target
 
       env.AddMethod(Nosetests)
 
