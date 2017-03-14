@@ -8,15 +8,15 @@ def generate(env):
     if not 'nose' in env['TOOLS'][:-1]:
       env.Tool('system')
 
-      AddOption('--test-category',
-                    dest    = 'test-category',
+      AddOption('--test-level',
+                    dest    = 'test-level',
                     type    = 'choice',
                     nargs   = 1,
                     action  = 'store',
                     help    = 'Degree of testing',
                     choices = ['none', 'unit', 'inte', 'func'],
                     default = 'unit')
-      env['TEST_CATEGORY'] = GetOption('test-category')
+      env['TEST_LEVEL'] = GetOption('test-level')
         
       AddOption('--test-debug',
                     dest    = 'test-debug',
@@ -31,10 +31,10 @@ def generate(env):
       def Nosetests(env, sources, with_coverage=True, cover_tests=True, cover_inclusive=True, cover_package=''):
         noseenv = env.Clone()
         noseenv['ENV'].update(os.environ)
-        TEST_CATEGORY = noseenv['TEST_CATEGORY']
+        TEST_LEVEL = noseenv['TEST_LEVEL']
         SYSTEM = noseenv['SYSTEM']
         categories = ['unit', 'inte', 'func']
-        eval_attr = "category <= " +str(categories.index(TEST_CATEGORY) + 1)
+        eval_attr = "level <= " +str(categories.index(TEST_LEVEL) + 1)
         eval_attr += " and \"" + SYSTEM + "\" in system"
         TEST_DEBUG = nosenv['TEST_DEBUG']
         sources = [source for source in sources if source.suffix == '.py']
