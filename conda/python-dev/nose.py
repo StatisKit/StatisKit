@@ -35,8 +35,8 @@ def generate(env):
         if not TEST_CATEGORY == "none":
             SYSTEM = noseenv['SYSTEM']
             categories = ['unit', 'inte', 'func']
-            eval_attr = "(" + " or ".join("category == \"" + category + "\"" for category in categories[:categories.index(TEST_CATEGORY)+1])
-            eval_attr += ") and \"" + SYSTEM + "\" in system"
+            eval_attr = "category <= " +str(categories.index(TEST_CATEGORY) + 1)
+            eval_attr += " and \"" + SYSTEM + "\" in system"
             TEST_DEBUG = nosenv['TEST_DEBUG']
             sources = [source for source in sources if source.suffix == '.py']
             if TEST_DEBUG == 'none':
