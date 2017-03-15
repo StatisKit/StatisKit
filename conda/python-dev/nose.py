@@ -34,7 +34,7 @@ def generate(env):
         TEST_LEVEL = noseenv['TEST_LEVEL']
         SYSTEM = noseenv['SYSTEM']
         categories = ['unit', 'inte', 'func']
-        eval_attr = SYSTEM + "and level <= " +str(categories.index(TEST_LEVEL) + 1)
+        eval_attr = "'" + SYSTEM + " and level <= " +str(categories.index(TEST_LEVEL) + 1) + "'"
         TEST_DEBUG = noseenv['TEST_DEBUG']
         sources = [source for source in sources if source.suffix == '.py']
         if TEST_DEBUG == 'none':
