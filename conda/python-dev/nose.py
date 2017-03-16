@@ -25,7 +25,7 @@ def generate(env):
                     action  = 'store',
                     help    = 'Debuger when testing',
                     choices = ['none', 'pdb', 'ipdb'],
-                    default = 'pdb')
+                    default = 'ipdb')
       env['TEST_DEBUG'] = GetOption('test-debug')
 
       def Nosetests(env, sources, with_coverage=True, cover_tests=True, cover_inclusive=True, cover_package=''):
