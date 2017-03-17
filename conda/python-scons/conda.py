@@ -1,4 +1,4 @@
-from path import path
+from path import Path
 import subprocess
 import itertools
 import yaml
@@ -48,7 +48,7 @@ def generate(env):
 
     def list_packages(env, sources):
         SYSTEM = env['SYSTEM']
-        sources = [path(source.abspath).abspath() for source in sources]
+        sources = [Path(source.abspath).abspath() for source in sources]
         if SYSTEM == 'win':
             recipes = [source.abspath() for source in sources if (source/'meta.yaml').exists() and (source/'bld.bat').exists()]
         else:
@@ -78,14 +78,14 @@ def generate(env):
                 if not metadata.get('build', {}).get('skip', False):
                     skip = False
                     cmd += ['--output']
-                    target = path(subprocess.check_output(cmd).strip())
+                    target = Path(subprocess.check_output(cmd).strip())
                     target = condaenv.Command(target, recipe,
                                          "conda build " + recipe + " " + " ".join(CONDA_CHANNELS))
                     if package in CONDA_PACKAGES:
                         targets.extend(target)
                     for build in metadata.get('requirements', {}).get('build', []):
                         if build in packages:
-                            archive = path(subprocess.check_output(['conda',
+                            archive = Path(subprocess.check_output(['conda',
                                                                     'build',
                                                                     packages[build],
                                                                     '--output']).strip())
@@ -117,7 +117,7 @@ def generate(env):
                 metadata = yaml.load(filehandler)
                 if not metadata.get('build', {}).get('skip', False):
                     cmd += ['--output']
-                    archive = path(subprocess.check_output(cmd).strip())
+                    archive = Path(subprocess.check_output(cmd).strip())
                     target = os.path.join(CONDA_PREFIX,
                                           'conda-meta',
                                           archive.name.replace('.tar.bz2', '.json', 1))
@@ -132,7 +132,7 @@ def generate(env):
                         targets.extend(target)
                     for run in metadata.get('requirements', {}).get('run', []):
                         if run in packages:
-                            archive = path(subprocess.check_output(['conda',
+                            archive = Path(subprocess.check_output(['conda',
                                                                     'build',
                                                                     packages[run],
                                                                     '--output']).strip())
@@ -157,7 +157,7 @@ def generate(env):
         targets = []
         for package, recipe in packages.iteritems():
             if package in CONDA_PACKAGES:
-                archive = path(subprocess.check_output(['conda', 'build', recipe, '--output']).strip())
+                archive = Path(subprocess.check_output(['conda', 'build', recipe, '--output']).strip())
                 targets.extend(condaenv.Command(archive + '.uploaded', archive, "anaconda upload " + archive.abspath() + " -u " * bool(ANACONDA_CHANNEL) + ANACONDA_CHANNEL + ' -f' * bool(ANACONDA_FORCE == 'yes')))
         return targets
 

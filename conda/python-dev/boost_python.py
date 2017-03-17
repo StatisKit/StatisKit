@@ -1,6 +1,6 @@
 import itertools
 import os
-from path import path
+from path import Path
 
 def generate(env):
     """Add Builders and construction variables to the Environment."""
@@ -47,7 +47,7 @@ def generate(env):
             if SYSTEM == 'win':
                 pyd, lib, exp = env.SharedLibrary(target, [], SHLIBPREFIX='',
                                                   SHLIBSUFFIX = '.pyd')
-                return env.Install(os.path.join(SP_DIR, path(target).parent), pyd)
+                return env.Install(os.path.join(SP_DIR, Path(target).parent), pyd)
             elif SYSTEM == 'osx':
                 return env.LoadableModule(target, [], SHLIBPREFIX='',
                                           SHLINKFLAGS='$LINKFLAGS -bundle',

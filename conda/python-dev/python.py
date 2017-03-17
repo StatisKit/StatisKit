@@ -1,6 +1,6 @@
 import sysconfig
 from SCons.Script import AddOption, GetOption
-from path import path
+from path import Path
 import os
 
 def generate(env, **kwargs):
@@ -34,7 +34,7 @@ def generate(env, **kwargs):
         env['SP_DIR'] = '$PREFIX/lib/python$PYTHON_VERSION/site-packages'
         
       def PythonPackage(env, source, pattern=None):
-        source = path(env.Dir(source).srcnode().abspath)
+        source = Path(env.Dir(source).srcnode().abspath)
         sources = source.walkfiles(pattern=pattern)
         targets = []
         SP_DIR = env['SP_DIR']
