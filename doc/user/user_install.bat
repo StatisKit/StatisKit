@@ -17,13 +17,14 @@ if errorlevel 1 (
 
 if "%BATCH_MODE%"=="" set BATCH_MODE=false
 
+if exist Miniconda%CONDA_VERSION%-latest-Windows-%PLATFORM%.exe (
+    set CLEAN_MINICONDA=0
+) else (
+    curl https://repo.continuum.io/miniconda/Miniconda%CONDA_VERSION%-latest-Windows-%PLATFORM%.exe -o miniconda.exe
+    set CLEAN_MINICONDA=1
+)
+    
 if not exist %CONDA_DIR% (
-    if exist Miniconda%CONDA_VERSION%-latest-Windows-%PLATFORM%.exe (
-        set CLEAN_MINICONDA=0
-    ) else (
-        curl https://repo.continuum.io/miniconda/Miniconda%CONDA_VERSION%-latest-Windows-%PLATFORM%.exe -o miniconda.exe
-        set CLEAN_MINICONDA=1
-    )
     if errorlevel 1 (
         echo Download of the Miniconda"%CONDA_VERSION%"-latest-Windows-"%PLATFORM%".exe file failed
         echo User installation failed.
@@ -39,8 +40,9 @@ if not exist %CONDA_DIR% (
         echo User installation failed.
         exit 1
     )
-    if "%CLEAN_MINICONDA%"=="1" del miniconda.exe
 )
+
+if "%CLEAN_MINICONDA%"=="1" del miniconda.exe
 
 attrib +h %CONDA_DIR%
 if errorlevel 1 echo Failed to hide the "%CONDA_DIR%" directory
