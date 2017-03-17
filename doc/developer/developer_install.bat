@@ -36,7 +36,7 @@ if errorlevel 1 (
     conda update -n root anaconda-client -y
 )
 
-if "%CONFIGURE_ONLY%"=="" set CONFIGURE_ONLY="false"
+if "%CONFIGURE_ONLY%"=="" set CONFIGURE_ONLY=false
 
 if "%CONFIGURE_ONLY%"=="false" (
     if "%STATISKIT_DEV%"== "" set STATISKIT_DEV=statiskit-dev
