@@ -21,7 +21,7 @@ requirements:
         - python
         - pyyaml
         - gitpython
-        - github3.py
+        # - github3.py
         - path.py
         - python-parse
         - mako

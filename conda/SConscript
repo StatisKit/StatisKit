@@ -8,6 +8,7 @@ sources = conda_env.Glob('*')
 
 # Exclude here all Conda recipes that must not be built
 exclude = """
+python-pkg
 """.split()
 
 sources = [source for source in sources if not source.name in exclude]
@@ -24,6 +25,7 @@ Alias("conda-build", targets)
 # is located in the current repository.
 exclude = """
 python-scons
+python-pkg
 """.split()
 
 sources = [source for source in sources if not source.name in exclude]
