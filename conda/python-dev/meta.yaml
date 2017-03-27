@@ -19,7 +19,6 @@ requirements:
     - pyyaml
     - nose
     - coverage
-    - ipdb
   run:
     - python
     - setuptools
@@ -29,4 +28,3 @@ requirements:
     - pyyaml
     - nose
     - coverage
-    - ipdb
