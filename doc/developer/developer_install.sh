@@ -75,7 +75,7 @@ if [[ "$ERROR" = "0" ]]; then
         if [[ "$CLEAN_ENVIRONMENT" = "true" ]]; then
             conda env remove -y -n $STATISKIT_DEV >/dev/null 2>/dev/null 
         fi
-        conda install ipython jupyter ipdb -n $STATISKIT_DEV -y -m -c statiskit -c conda-forge
+        conda install ipython jupyter -n $STATISKIT_DEV -y -m -c statiskit -c conda-forge
         GIT=`which git`
         if [[ "$GIT" = "" ]]; then
             conda install git -n $STATISKIT_DEV -y
@@ -125,21 +125,21 @@ if [[ "$ERROR" = "0" ]]; then
             fi
         fi
         if [[ "$ERROR" = "0" ]]; then
-            if [[ -d PyClangLite && "$CLEAN_PYCLANGLITE" = "" ]]; then
-                export CLEAN_PYCLANGLITE=false
+            if [[ -d ClangLite && "$CLEAN_CLANGLITE" = "" ]]; then
+                export CLEAN_CLANGLITE=false
             else
-                export CLEAN_PYCLANGLITE=true
-                git clone https://github.com/StatisKit/PyClangLite.git
+                export CLEAN_CLANGLITE=true
+                git clone https://github.com/StatisKit/ClangLite.git
                 if [[ ! "$?" = "0" ]]; then
-                    echo "Clone of the PyClangLite repository failed." 
+                    echo "Clone of the ClangLite repository failed." 
                     export ERROR=1
                 fi
             fi
             if [[ "$ERROR" = "0" ]]; then
-                cd PyClangLite
+                cd ClangLite
                 scons conda-install
                 if [[ ! "$?" = "0" ]]; then
-                    echo "Installation of PyClangLite in the development environment failed."
+                    echo "Installation of ClangLite in the development environment failed."
                     export ERROR=1
                 fi
                 cd ..
