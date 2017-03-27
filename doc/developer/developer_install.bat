@@ -93,7 +93,7 @@ if "%CONFIGURE_ONLY%"=="false" (
         echo Clone of the ClangLite repository failed.
         goto :failure
     )
-    cd PyClangLite
+    cd ClangLite
     scons conda-install
     if errorlevel 1 (
         cd ..
