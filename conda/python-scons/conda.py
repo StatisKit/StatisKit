@@ -109,7 +109,7 @@ def generate(env):
         if SYSTEM == 'win':
         	yes = 'echo y|'
         else:
-        	yes = 'yes | '
+        	yes = 'yes | '
         targets = []
         packages = list_packages(condaenv, sources)
         if 'all' in CONDA_PACKAGES:

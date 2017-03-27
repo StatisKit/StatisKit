@@ -102,7 +102,7 @@ if [[ "$ERROR" = "0" ]]; then
                 cd ..
                 export ERROR=1
             else
-                conda install -n $STATISKIT_DEV python-scons --use-local -c statiskit -c conda-forge -y
+                yes |conda install -n $STATISKIT_DEV python-scons --use-local -c statiskit -c conda-forge -y
                 if [[ ! "$?" = "0" ]]; then
                     echo "Creation of the StatisKit development environment failed."
                     cd ..
