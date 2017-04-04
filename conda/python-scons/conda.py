@@ -105,6 +105,11 @@ def generate(env):
         condaenv['ENV'].update(os.environ)
         CONDA_CHANNELS = condaenv['CONDA_CHANNELS']
         CONDA_PACKAGES = condaenv['CONDA_PACKAGES']
+        SYSTEM = condaenv['SYSTEM']
+        if SYSTEM == 'win':
+        	yes = 'echo y|'
+        else:
+        	yes = 'yes | '
         targets = []
         packages = list_packages(condaenv, sources)
         if 'all' in CONDA_PACKAGES:
@@ -122,7 +127,7 @@ def generate(env):
                                           'conda-meta',
                                           archive.name.replace('.tar.bz2', '.json', 1))
                     target = condaenv.Command(target, recipe,
-                                         'conda' + " install -n " + os.path.basename(CONDA_PREFIX) + " " + package + " -y --use-local " + " ".join(CONDA_CHANNELS))
+                                         yes + 'conda' + " install -n " + os.path.basename(CONDA_PREFIX) + " " + package + " -y --use-local " + " ".join(CONDA_CHANNELS))
                     if os.path.exists(target[0].abspath):
                         with open(target[0].abspath, 'r') as filehandler:
                             for filename in json.loads("".join(filehandler.readlines())).get('files', []):

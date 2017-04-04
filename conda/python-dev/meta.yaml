@@ -11,6 +11,7 @@ about:
 
 requirements:
   build:
+    - libdev
     - python
     - setuptools
     - python-scons
@@ -19,8 +20,8 @@ requirements:
     - pyyaml
     - nose
     - coverage
-    - ipdb
   run:
+    - libdev
     - python
     - setuptools
     - python-scons
@@ -29,4 +30,3 @@ requirements:
     - pyyaml
     - nose
     - coverage
-    -ipdb
