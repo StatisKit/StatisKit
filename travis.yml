@@ -58,7 +58,7 @@ script:
       export TRAVIS_WAIT=true;
     fi
   - if [[ "$RECIPE" = "libboost" && "$TRAVIS_OS_NAME" = "osx" ]]; then
-      export TRAVIS_WAIT="travis_wait 30";
+      export TRAVIS_WAIT=30;
     fi
   - source script.sh
 
