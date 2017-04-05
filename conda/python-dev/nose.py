@@ -40,11 +40,11 @@ def generate(env):
         if TEST_DEBUG == 'none':
             TEST_DEBUG = ''
         else:
-            TEST_DEBUG = ' --' + TEST_DEBUG
+            TEST_DEBUG = ' --' + TEST_DEBUG + ' --' + TEST_DEBUG + '-failures'
         if len(sources) > 0:
             target = noseenv.Command(".coverage", sources, "nosetests $SOURCES -x -s -v"
                                                             + TEST_DEBUG
-                                                            + " --with-coverage" * with_coverage
+                                                            + " --with-coverage --cover-erase" * with_coverage
                                                             + " --cover-tests" * cover_tests
                                                             + " --cover-inclusive" * cover_inclusive
                                                             + " -A " + eval_attr
