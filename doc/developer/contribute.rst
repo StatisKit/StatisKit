@@ -16,7 +16,7 @@ Contribute
     
       .. code-block:: batch
       
-        activate statiskit-dev
+        source activate statiskit-dev
 
 This development can be done in two ways:
 
