@@ -16,60 +16,99 @@
 Configuration
 #############
 
-In order to ease the development of this software suite on multiple operating systems, the **Conda** package and environment management system is used.
+.. _section-developer-configuration:
 
-`Visual Studio Community <https://www.visualstudio.com/downloads/>`_
+In order to ease the development of the **StatisKit** software suite on multiple operating systems, the **Conda** package and environment management system is used.
+We here presents how to install the **Conda** package and environment management system and the :code:`statiskit-dev` environment within which you can build from source code the **StatisKit** software suite.
 
-.. warning::
+.. note::
 
-    These scripts use scripts presented in the :ref:`section-user-install_it-prerequisites` section, there are therefore no need to run these scripts beforehand.
-    Nevertheless, refers to the :ref:`section-user-install_it-prerequisites` section to configure the following script executions.
+    For more information concerning **Conda**, please refers to its `documentation <http://conda.pydata.org/docs>`_.
 
-To install **Conda** and the development environment on:
+On windows
+----------
 
-* Linux and OS X, download the following :download:`script <developer_install.sh>`.
-  Then, open a shell in the same directory and type the following command:
+In order to develop on Windows, you must first install `Visual Studio Community 2013 <https://www.visualstudio.com/en-us/news/releasenotes/vs2013-community-vs>`_.
 
-  .. code-block:: bash
-    
-        source developer_install.sh
+Then, if you have a:
 
-* Windows, download the following :download:`script <developer_install.bat>`.
-  Then, open a shell in the same directory and type the following command:
+* 32-bit Windows OS, download the following `installer <https://github.com/StatisKit/StatisKit/raw/master/doc/win/32/developer_install.exe>`_.
 
-  .. code-block:: batch
+* 64-bit Windows OS, download the following `installer <https://github.com/StatisKit/StatisKit/raw/master/doc/win/64/developer_install.exe>`_.
 
-        call developer_install.bat
+Then, open a shell in the directory where the installer was downloaded and type
 
-Afterwards, the `statiskit-dev <https://raw.githubusercontent.com/StatisKit/StatisKit/master/conda/statiskit-dev.yml>`_ environment is installed and you can activate it by typing in the same shell:
+.. code-block:: batch
 
-* On Linux and OS X, 
-
-  .. code-block:: console
-
-      source activate statiskit-dev
-
-* On windows, 
-
-  .. code-block:: console
-
-      activate statiskit-dev
-
-
-If you want to configure your favorite editor:
-
-* to be used with **Git**,
-* to be able to use **SCons** from within.
-
-Download and execute the following scripts for:
-
-* The **Sublime Text** `software <https://www.sublimetext.com/3>`_ :download:`on Linux and OS X <sublime_text.sh>`.
-* The **gedit** `software <https://wiki.gnome.org/Apps/Gedit>`_ :download:`on Linux and OS X <gedit.sh>`.
-  
-  .. todo::
-  
-    Cannot use **SCons** from within.
+    developer_install.exe
 
 .. warning::
 
-    The chosen script must be executed -- in the same way as before -- in the same shell as the one used for the :code:`developer_install.sh` or :code:`developer_install.bat` scripts.
+    If you already installed **Conda**, type instead
+
+    .. code-block:: batch
+
+        developer_install.exe --prefix=<path\to\conda>
+
+    Where :code:`<path\to\conda>` has to replaced by the actual **Conda** directory.
+
+.. note::
+
+    More informations concerning this :code:`user_install.exe` installer can be obtained by typing
+
+    .. code-block:: batch
+
+        developer_install.exe -h 
+
+On Linux and Mac OS X
+---------------------
+
+.. warning::
+
+    For Unix OSes, we only provide 64-bit installers.
+    If you have a 32-bit Unix OS, use type following commands
+
+    .. code-block:: bash
+
+        git clone https://gist.github.com/8a8b5ea835ac3cf5c46f8e02b31f6f34.git install-scripts
+        cd install-scripts
+
+    Then, replace :code:`./developer_install` by :code:`python developer_install.py` in the following recommendations.
+
+
+
+If you have a:
+
+* Linux OS, download the following `installer <https://github.com/StatisKit/StatisKit/raw/master/doc/linux/developer_install>`_.
+
+* Mac OS X, download the following `installer <https://github.com/StatisKit/StatisKit/raw/master/doc/osx/developer_install>`_.
+
+Then, open a shell in the directory where the installer was downloaded and type
+
+.. code-block:: batch
+
+    sudo chmod a+rwx developer_install
+    ./developer_install
+
+.. warning::
+
+    If you already installed **Conda**, type instead
+
+    .. code-block:: batch
+
+        ./developer_install --prefix=<path/to/conda>
+
+    Where :code:`<path/to/conda>` has to replaced by the actual **Conda** directory.
+
+.. note::
+
+    More informations concerning this :code:`developer_install` installer can be obtained by typing
+
+    .. code-block:: batch
+
+        ./developer_install -h 
+        
+        
+.. note::
+
+    This installation also install some plugins for build systems for the **Sublime Text** `software <https://www.sublimetext.com/3>`_.
