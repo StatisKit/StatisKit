@@ -13,10 +13,10 @@
 ..                                                                                  ..
 .. ................................................................................ ..
 
-Configuration
-#############
+.. _section-developer-configure:
 
-.. _section-developer-configuration:
+Configure
+#########
 
 In order to ease the development of the **StatisKit** software suite on multiple operating systems, the **Conda** package and environment management system is used.
 We here presents how to install the **Conda** package and environment management system and the :code:`statiskit-dev` environment within which you can build from source code the **StatisKit** software suite.
