@@ -20,11 +20,11 @@ On windows
 
 If you have a:
 
-* 32-bit Windows OS, download the following `script <https://github.com/StatisKit/StatisKit/raw/master/doc/win/32/user_install.exe>`_.
+* 32-bit Windows OS, download the following `installer <https://github.com/StatisKit/StatisKit/raw/master/doc/win/32/user_install.exe>`_.
 
-* 64-bit Windows OS, download the following `script <https://github.com/StatisKit/StatisKit/raw/master/doc/win/64/user_install.exe>`_.
+* 64-bit Windows OS, download the following `installer <https://github.com/StatisKit/StatisKit/raw/master/doc/win/64/user_install.exe>`_.
 
-Then, open a shell in the directory where the script was downloaded and type
+Then, open a shell in the directory where the installer was downloaded and type
 
 .. code-block:: batch
 
@@ -67,11 +67,11 @@ On Linux and Mac OS X
 
 If you have a:
 
-* Linux OS, download the following `script <https://github.com/StatisKit/StatisKit/raw/master/doc/linux/user_install>`_.
+* Linux OS, download the following `installer <https://github.com/StatisKit/StatisKit/raw/master/doc/linux/user_install>`_.
 
-* Mac OS X, download the following `script <https://github.com/StatisKit/StatisKit/raw/master/doc/osx/user_install>`_.
+* Mac OS X, download the following `installer <https://github.com/StatisKit/StatisKit/raw/master/doc/osx/user_install>`_.
 
-Then, open a shell in the directory where the script was downloaded and type
+Then, open a shell in the directory where the installer was downloaded and type
 
 .. code-block:: batch
 
@@ -99,7 +99,7 @@ Then, open a shell in the directory where the script was downloaded and type
 Recommanded Installation
 ========================
 
-To install **StatisKit**, choose an interface and proceed as follows in a new shell:
+To install **StatisKit**, open a new shell, choose an interface and proceed as detailled the corresponding section:
 
 .. toctree::
     :maxdepth: 1
@@ -109,14 +109,11 @@ To install **StatisKit**, choose an interface and proceed as follows in a new sh
 
 .. warning::
 
-    If you are not in the same shell, depending on the precedent installation, **Conda** is likely to be inactivated.
+    Depending on the precedent installation, **Conda** is likely to be inactivated.
     To solve this, on:
     
     * Windows, use the *Anaconda Prompt* shell in place of the *CMD* shell or, follow instructions available in :ref:`section-activate-conda` the section.
-    * Linux and OS X, follow instructions available in :ref:`section-activate-conda` the section or, during the execution of :code:`user_install.sh`, answer :code:`yes` to the question 
-    
-      Do you wish the installer to prepend the Miniconda2 install location 
-      to PATH in your ~/.bashrc ? [yes|no]
+    * Linux and OS X, follow instructions available in :ref:`section-activate-conda` the section or use the :code:`--preprend-path=yes` option when runnning the installer.
 
 Custom Installations
 ====================
