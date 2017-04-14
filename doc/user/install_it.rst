@@ -6,81 +6,100 @@ Install it !
 Prerequisites
 =============
 
-In order to ease the installation of this software suite on multiple operating systems, the **Conda** package and environment management system is used.
+In order to ease the installation of the **StatisKit** software suite on multiple operating systems, the **Conda** package and environment management system is used.
+We here presents how to install the **Conda** package and environment management system.
 
 .. note::
 
     For more information concerning **Conda**, please refers to its `documentation <http://conda.pydata.org/docs>`_.
 
-To install **Conda** on:
 
-* Linux and OS X, download the following :download:`script <user_install.sh>`.
-  Then, open a shell in the same directory and type the following command:
 
-  .. code-block:: bash
-    
-        source user_install.sh
+On windows
+----------
 
-* Windows, download the following :download:`script <user_install.bat>`.
-  Then, open a shell in the same directory and type the following command:
+If you have a:
 
-  .. code-block:: batch
+* 32-bit Windows OS, download the following `script <https://github.com/StatisKit/StatisKit/raw/master/doc/win/32/user_install.exe>`_.
 
-        call user_install.bat
+* 64-bit Windows OS, download the following `script <https://github.com/StatisKit/StatisKit/raw/master/doc/win/64/user_install.exe>`_.
 
-  .. note::
+Then, open a shell in the directory where the script was downloaded and type
 
-    You must install the `cURL <https://curl.haxx.se/download.html#Win32>`_ program for this script to work.
-    If you are confused by code and have a compatible windows version (superior to 2000/XP), we recommend to use the installers present on this `website <http://www.confusedbycode.com/curl/>`_.
-    In the worst case scenario, download in the same directory the installer of your choice from this page `miniconda <http://conda.pydata.org/miniconda.html>`_ (but do not run it), then execute the :code:`user_install.bat` file.
+.. code-block:: batch
+
+    user_install.exe
 
 .. warning::
 
-    Refers to the table :ref:`table-env-vars-users` to configure the script execution.
-    If you already installed **Conda** you can, for example, type the following commands in a shell:
-    
-    * On Linux or OS X,
+    If you already installed **Conda**, type instead
 
-      .. code-block:: bash
-      
-        export CONDA_DIR=my/path/to/conda
-        source user_install.sh
-        
-    * On Windows,
-    
-      .. code-block:: batch
-      
-        set CONDA_DIR=my\path\to\conda
-        call user_install.bat
-        
-        
-.. _table-env-vars-users:
+    .. code-block:: batch
 
-.. table:: Environment variables for installation scripts
-   :widths: auto
+        user_install.exe --prefix=<path\to\conda>
 
-   +-----------------------+----------------------------------------------------------------------------------------------------------------+
-   |    **CONDA_DIR**      | | The directory within which **Conda** will be installed (default is                                           |
-   |                       | | :code:`$HOME/.miniconda$CONDA_VERSION` for Linux and OS X and                                                |
-   |                       | | :code:`%USERPROFILE%\Miniconda%CONDA_VERSION%` for Windows). Note that                                       |
-   |                       | | this directory is marked as hidden in Windows.                                                               |
-   +-----------------------+----------------------------------------------------------------------------------------------------------------+
-   |  **CONDA_VERSION**    | | The version of **Conda** to install (must be :code:`2` or :code:`3`, default is :code:`2`).                  |                                                       
-   +-----------------------+----------------------------------------------------------------------------------------------------------------+
-   | **CONDA_ALWAYS_YES**  | | Choose the :code:`yes` option whenever asked to proceed, such as when                                        |
-   |                       | | installing (must be :code:`false` or :code:`true`, default is :code:`false`)                                 |
-   +-----------------------+----------------------------------------------------------------------------------------------------------------+
-   | **CONDA_CHANGE_PS1**  | | When using activate, change the command prompt ($PS1) to include                                             |
-   |                       | | the activated environment (must be :code:`true` or :code:`false`, default is                                 |
-   |                       | | :code:`true`).                                                                                               |
-   +-----------------------+----------------------------------------------------------------------------------------------------------------+
+    Where :code:`<path\to\conda>` has to replaced by the actual **Conda** directory.
 
-.. _section-recommended-installation:
+.. note::
+
+    More informations concerning this :code:`user_install.exe` installer can be obtained by typing
+
+    .. code-block:: batch
+
+        user_install.exe -h 
+
+On Linux and Mac OS X
+---------------------
+
+.. warning::
+
+    For Unix OSes, we only provide 64-bit installers.
+    If you have a 32-bit Unix OS, use type following commands
+
+    .. code-block:: bash
+
+        git clone https://gist.github.com/8a8b5ea835ac3cf5c46f8e02b31f6f34.git install-scripts
+        cd install-scripts
+
+    Then, replace :code:`./user_install` by :code:`python user_install.py` in the following recommendations.
+
+
+
+If you have a:
+
+* Linux OS, download the following `script <https://github.com/StatisKit/StatisKit/raw/master/doc/linux/user_install>`_.
+
+* Mac OS X, download the following `script <https://github.com/StatisKit/StatisKit/raw/master/doc/osx/user_install>`_.
+
+Then, open a shell in the directory where the script was downloaded and type
+
+.. code-block:: batch
+
+    sudo chmod a+rwx user_install
+    ./user_install
+
+.. warning::
+
+    If you already installed **Conda**, type instead
+
+    .. code-block:: batch
+
+        ./user_install --prefix=<path\to\conda>
+
+    Where :code:`<path\to\conda>` has to replaced by the actual **Conda** directory.
+
+.. note::
+
+    More informations concerning this :code:`user_install` installer can be obtained by typing
+
+    .. code-block:: batch
+
+        ./user_install -h 
 
 Recommanded Installation
 ========================
 
-To install **StatisKit**, choose an interface and proceed as follows in the same shell:
+To install **StatisKit**, choose an interface and proceed as follows in a new shell:
 
 .. toctree::
     :maxdepth: 1
