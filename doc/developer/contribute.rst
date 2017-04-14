@@ -1,11 +1,22 @@
 Contribute
 ##########
 
-Development of a software in the **StatisKit** organization requires to use (see :doc:`configuration`):
+.. warning::
 
-* **Git** :abbr:`VCS (Version Control System)`, for version control of software files.
-* **Conda** :abbr:`PMS (Package Management System)` (see :doc:`configuration`), for deployment of software.
-* **Docker** for the reproducibility of examples.
+    In order to contribute to the **StatisKit** software suite, it is recommended to use the :code:`statiskit-dev` development environment.
+    To do so open a new shell and,
+    
+    * on Windows OSes, type
+    
+      .. code-block:: batch
+      
+        activate statiskit-dev
+        
+    * on Linux OSes and Mac OS X, type
+    
+      .. code-block:: batch
+      
+        activate statiskit-dev
 
 This development can be done in two ways:
 
