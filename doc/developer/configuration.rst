@@ -19,13 +19,13 @@ Configure
 #########
 
 In order to ease the development of the **StatisKit** software suite on multiple operating systems, the **Conda** package and environment management system is used.
-We here presents how to install the **Conda** package and environment management system and the :code:`statiskit-dev` environment within which you can build from source code the **StatisKit** software suite.
+We here presents how to install **Conda** and the :code:`statiskit-dev` environment within which you can build from source code the **StatisKit** software suite.
 
 .. note::
 
     For more information concerning **Conda**, please refers to its `documentation <http://conda.pydata.org/docs>`_.
 
-On windows
+On Windows
 ----------
 
 In order to develop on Windows, you must first install `Visual Studio Community 2013 <https://www.visualstudio.com/en-us/news/releasenotes/vs2013-community-vs>`_.
@@ -70,18 +70,22 @@ On Linux and Mac OS X
 
     .. code-block:: bash
 
-        git clone https://gist.github.com/8a8b5ea835ac3cf5c46f8e02b31f6f34.git install-scripts
+        git clone https://github.com/StatisKit/install-scripts.git
         cd install-scripts
+        python pre_install.py
+        python developer_install.py
 
-    Then, replace :code:`./developer_install` by :code:`python developer_install.py` in the following recommendations.
+    .. note::
+    
+        :code:`./developer_install` and :code:`python developer_install.py` share the same options as described below.
 
 
 
 If you have a:
 
-* Linux OS, download the following `installer <https://github.com/StatisKit/StatisKit/raw/master/doc/linux/developer_install>`_.
+* 64-bit Linux OS, download the following `installer <https://github.com/StatisKit/StatisKit/raw/master/doc/linux/developer_install>`_.
 
-* Mac OS X, download the following `installer <https://github.com/StatisKit/StatisKit/raw/master/doc/osx/developer_install>`_.
+* 64-bit Mac OS X, download the following `installer <https://github.com/StatisKit/StatisKit/raw/master/doc/osx/developer_install>`_.
 
 Then, open a shell in the directory where the installer was downloaded and type
 
@@ -98,7 +102,7 @@ Then, open a shell in the directory where the installer was downloaded and type
 
         ./developer_install --prefix=<path/to/conda>
 
-    Where :code:`<path/to/conda>` has to replaced by the actual **Conda** directory.
+    Where :code:`<path/to/conda>` has to be replaced by the actual **Conda** directory.
 
 .. note::
 
