@@ -19,11 +19,16 @@ Configure
 #########
 
 In order to ease the development of the **StatisKit** software suite on multiple operating systems, the **Conda** package and environment management system is used.
-We here presents how to install **Conda** and the :code:`statiskit-dev` environment within which you can build from source code the **StatisKit** software suite.
 
 .. note::
 
     For more information concerning **Conda**, please refers to its `documentation <http://conda.pydata.org/docs>`_.
+    
+We here presents how to install **Conda** and the :code:`statiskit-dev` environment within which you can build from source code the **StatisKit** software suite.
+    
+.. note::
+
+    The installers presented below also install some plugins for build systems for the **Sublime Text** `software <https://www.sublimetext.com/3>`_.
 
 On Windows
 ----------
@@ -111,8 +116,3 @@ Then, open a shell in the directory where the installer was downloaded and type
     .. code-block:: batch
 
         ./developer_install -h 
-        
-        
-.. note::
-
-    This installation also install some plugins for build systems for the **Sublime Text** `software <https://www.sublimetext.com/3>`_.
