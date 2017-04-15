@@ -59,7 +59,7 @@ Then, open a shell in the directory where the installer was downloaded and type
 
 .. note::
 
-    More informations concerning this :code:`user_install.exe` installer can be obtained by typing
+    More informations concerning this :code:`developer_install.exe` installer can be obtained by typing
 
     .. code-block:: batch
 
