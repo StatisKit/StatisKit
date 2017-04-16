@@ -26,6 +26,8 @@ cmake -G "Unix Makefiles" -DBUILD_SHARED_LIBS=ON \
 make -j$CPU_COUNT VERBOSE=1
 make install
 
+# rm $PREFIX/bin/*
+
                           # -DCMAKE_INSTALL_PREFIX=${PREFIX} \
                           # -DCMAKE_C_COMPILER=${PREFIX}/bin/gcc \
                           # -DCMAKE_CXX_COMPILER=${PREFIX}/bin/g++ \
