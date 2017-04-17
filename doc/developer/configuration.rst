@@ -41,6 +41,11 @@ Then, if you have a:
 
 * 64-bit Windows OS, download the following `installer <https://github.com/StatisKit/StatisKit/raw/master/doc/win/64/developer_install.exe>`_.
 
+.. note::
+
+    For some unknown reasons, the Windows installers requires to press a key to continue.
+    If, during the installation, the installer seems to have stopped, don't hesitate to press a key...
+    
 Then, open a shell in the directory where the installer was downloaded and type
 
 .. code-block:: batch
@@ -138,7 +143,6 @@ Then, open a shell in the directory where the installer was downloaded and type
         ./developer_install
         ...
         Installation failed.
-        Press Enter to continue...
         ...
         ./developer_install --clean=no
         
