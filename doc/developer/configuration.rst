@@ -46,7 +46,7 @@ Then, if you have a:
     For some unknown reasons, the Windows installers requires to press a key to continue.
     If, during the installation, the installer seems to have stopped, don't hesitate to press a key...
     
-Then, open a shell in the directory where the installer was downloaded and type
+Then, click on the installer or open a shell in the directory where the installer was downloaded and type
 
 .. code-block:: batch
 
