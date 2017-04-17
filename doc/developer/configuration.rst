@@ -65,6 +65,20 @@ Then, open a shell in the directory where the installer was downloaded and type
 
         developer_install.exe -h 
 
+    There is in particular a :code:`clean` option that can be used when some errors occurred after the first try:
+    
+    .. code-block:: batch
+    
+        developer_install.exe
+        ...
+        Installation failed.
+        Press Enter to continue...
+        ...
+        developer_install.exe --clean=no
+        
+    This option indicates to the installer not to reset the **StatisKit** environment.
+    Hence, features installed in the first attempt will not be re-installed.
+    
 On Linux and Mac OS X
 ---------------------
 
@@ -116,3 +130,17 @@ Then, open a shell in the directory where the installer was downloaded and type
     .. code-block:: batch
 
         ./developer_install -h 
+
+    There is in particular a :code:`clean` option that can be used when some errors occurred after the first try:
+    
+    .. code-block:: batch
+    
+        ./developer_install
+        ...
+        Installation failed.
+        Press Enter to continue...
+        ...
+        ./developer_install --clean=no
+        
+    This option indicates to the installer not to reset the **StatisKit** environment.
+    Hence, features installed in the first attempt will not be re-installed.
