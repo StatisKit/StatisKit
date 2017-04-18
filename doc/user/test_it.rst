@@ -19,7 +19,7 @@ Test the latest *Python* interface on this `server <http://mybinder.org/repo/sta
 
 .. warning::
 
-    **Binder** servers might be outdated but can be updated using links available on the following repositorie `python-binder <https://github.com/StatisKit/python-binder>`_.
+    **Binder** servers might be outdated but can be updated using links available on the following repository `python-binder <https://github.com/StatisKit/python-binder>`_.
     
 On your computer with **Docker**
 ================================
