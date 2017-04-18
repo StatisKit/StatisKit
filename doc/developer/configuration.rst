@@ -45,7 +45,7 @@ If you have a:
 
 .. note::
 
-    For some unknown reasons, the Windows installers requires to press a key to continue.
+    For some unknown reasons, the Windows installers sometimes require to press a key to continue.
     If, during the installation, the installer seems to have stopped, don't hesitate to press a key...
     
 Then, click on the installer or open a shell in the directory where the installer was downloaded and type
