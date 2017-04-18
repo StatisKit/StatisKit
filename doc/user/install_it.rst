@@ -7,15 +7,13 @@ Prerequisites
 =============
 
 In order to ease the installation of the **StatisKit** software suite on multiple operating systems, the **Conda** package and environment management system is used.
-We here presents how to install the **Conda** package and environment management system.
+We here presents how to install **Conda**.
 
 .. note::
 
     For more information concerning **Conda**, please refers to its `documentation <http://conda.pydata.org/docs>`_.
 
-
-
-On windows
+On Windows
 ----------
 
 If you have a:
@@ -24,7 +22,7 @@ If you have a:
 
 * 64-bit Windows OS, download the following `installer <https://github.com/StatisKit/StatisKit/raw/master/doc/win/64/user_install.exe>`_.
 
-Then, open a shell in the directory where the installer was downloaded and type
+Then, click on the :code:`user_install.exe` installer or open a shell in the directory where the installer was downloaded and type
 
 .. code-block:: batch
 
@@ -58,12 +56,14 @@ On Linux and Mac OS X
 
     .. code-block:: bash
 
-        git clone https://gist.github.com/8a8b5ea835ac3cf5c46f8e02b31f6f34.git install-scripts
+        git clone https://github.com/StatisKit/install-scripts.git
         cd install-scripts
+        python pre_install.py
+        python user_install.py
 
-    Then, replace :code:`./user_install` by :code:`python user_install.py` in the following recommendations.
-
-
+    .. note::
+    
+        :code:`./user_install` and :code:`python user_install.py` share the same options as described below.
 
 If you have a:
 
