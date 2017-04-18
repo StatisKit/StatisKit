@@ -33,9 +33,11 @@ We here presents how to install **Conda** and the :code:`statiskit-dev` environm
 On Windows
 ----------
 
-In order to develop on Windows, you must first install `Visual Studio Community 2013 <https://www.visualstudio.com/en-us/news/releasenotes/vs2013-community-vs>`_.
+.. warning::
 
-Then, if you have a:
+    In order to develop on Windows, you must first install `Visual Studio Community 2013 <https://www.visualstudio.com/en-us/news/releasenotes/vs2013-community-vs>`_.
+
+If you have a:
 
 * 32-bit Windows OS, download the following `installer <https://github.com/StatisKit/StatisKit/raw/master/doc/win/32/developer_install.exe>`_.
 
