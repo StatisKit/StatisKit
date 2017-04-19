@@ -54,6 +54,7 @@ def generate(env):
         else:
             recipes = [source.abspath() for source in sources if (source/'meta.yaml').exists() and (source/'build.sh').exists()]
         packages = dict()
+        conda = conda_path(env)
         for recipe in recipes:
             subprocess.check_output([conda, 'render', recipe, '-f', os.path.join(recipe, 'meta.yaml.rendered')]).strip()
             with open(os.path.join(recipe, 'meta.yaml.rendered'), 'r') as filehandler:
@@ -64,7 +65,8 @@ def generate(env):
     def conda_path(env):
         SYSTEM = env['SYSTEM']
         if SYSTEM == 'win':
-            for conda in subprocess.check_output(['which', 'conda']).splitlines().strip():
+            for conda in subprocess.check_output(['where', 'conda']).splitlines():
+                conda = conda.strip()
                 if conda.endswith('.bat'):
                     break
             return conda
@@ -73,6 +75,7 @@ def generate(env):
 
     def CondaPackages(env, sources):
         condaenv = env.Clone()
+        condaenv['ENV'].update(os.environ)
         CONDA_CHANNELS = condaenv['CONDA_CHANNELS']
         CONDA_PACKAGES = condaenv['CONDA_PACKAGES']
         targets = []
@@ -90,7 +93,7 @@ def generate(env):
                     cmd += ['--output']
                     target = Path(subprocess.check_output(cmd).strip())
                     target = condaenv.Command(target, recipe,
-                                         "conda build " + recipe + " " + " ".join(CONDA_CHANNELS))
+                                         conda + " build " + recipe + " " + " ".join(CONDA_CHANNELS))
                     if package in CONDA_PACKAGES:
                         targets.extend(target)
                     for build in metadata.get('requirements', {}).get('build', []):
