@@ -58,14 +58,28 @@ The **StatisKit** software suite is composed of multiple software
                         Follow this `link <http://statiskit.rtfd.io/projects/LinAlg>`_ for details."];
         C [label = "Core", shape="roundedbox",
            description="Classical statistical analyses for univariate and multivariate data.
-                        Follow this `link <http://statiskit.rtfd.io/projects/LinAlg>`_ for details."];
+                        Follow this `link <http://statiskit.rtfd.io/projects/Core>`_ for details."];
         D [label = "GLM", shape="roundedbox",
            description="Todo.
-                        Follow this `link <http://statiskit.rtfd.io/projects/LinAlg>`_ for details."];
+                        Follow this `link <http://statiskit.rtfd.io/projects/GLM>`_ for details."];
+        E [label = "PGM", shape="roundedbox",
+           description="Todo.
+                        Follow this `link <http://statiskit.rtfd.io/projects/PGM>`_ for details."];
+        
+        F [label = "SDM", shape="roundedbox",
+           description="Todo.
+                        Follow this `link <http://statiskit.rtfd.io/projects/Tree>`_ for details."];
+
+        G [label = "TDM", shape="roundedbox",
+           description="Todo.
+                        Follow this `link <http://statiskit.rtfd.io/projects/Tree>`_ for details."];
         
         A -> C;
         B -> C;
         C -> D;
+        C -> E;
+        E -> F;
+        E -> G;
 
     }
 
