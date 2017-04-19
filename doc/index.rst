@@ -66,20 +66,10 @@ The **StatisKit** software suite is composed of multiple software
            description="Todo.
                         Follow this `link <http://statiskit.rtfd.io/projects/PGM>`_ for details."];
         
-        F [label = "SDM", shape="roundedbox",
-           description="Todo.
-                        Follow this `link <http://statiskit.rtfd.io/projects/Tree>`_ for details."];
-
-        G [label = "TDM", shape="roundedbox",
-           description="Todo.
-                        Follow this `link <http://statiskit.rtfd.io/projects/Tree>`_ for details."];
-        
         A -> C;
         B -> C;
         C -> D;
         C -> E;
-        E -> F;
-        E -> G;
 
     }
 
