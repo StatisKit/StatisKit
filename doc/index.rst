@@ -39,6 +39,36 @@ Please, with regard to previous expressions, refers to the subsequent guides.
     developer/index.rst
     maintener/index.rst
 
+Software
+========
+
+The **StatisKit** software suite is composed of multiple software
+
+.. blockdiag::
+    :align: center
+    :desctable:
+    
+    blockdiag {
+
+        A [label = "STL", shape="roundedbox",
+           description="Minimal interpreted interfaces for the STL containers C++ template library.
+                        Follow this `link <http://statiskit.rtfd.io/projects/STL>`_ for details."];
+        B [label = "LinAlg", shape="roundedbox",
+           description="Minimal interpreted interfaces for the Eigen C++ template library.
+                        Follow this `link <http://statiskit.rtfd.io/projects/LinAlg>`_ for details."];
+        C [label = "Core", shape="roundedbox",
+           description="Classical statistical analyses for univariate and multivariate data.
+                        Follow this `link <http://statiskit.rtfd.io/projects/LinAlg>`_ for details."];
+        D [label = "GLM", shape="roundedbox",
+           description="Todo.
+                        Follow this `link <http://statiskit.rtfd.io/projects/LinAlg>`_ for details."];
+        
+        A -> C;
+        B -> C;
+        C -> D;
+
+    }
+
 License
 =======
 
