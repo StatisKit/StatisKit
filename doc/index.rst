@@ -55,16 +55,16 @@ For each software, its specific documentation can be found following the availab
 .. _LINALG: http://statiskit.rtfd.io/projects/LinAlg
 
 .. |CORE| unicode:: U+1F517
-.. _LINALG: http://statiskit.rtfd.io/projects/CORE
+.. _CORE: http://statiskit.rtfd.io/projects/CORE
 
 .. |GLM| unicode:: U+1F517
-.. _LINALG: http://statiskit.rtfd.io/projects/GLM
+.. _GLM: http://statiskit.rtfd.io/projects/GLM
 
 .. |PGM| unicode:: U+1F517
-.. _LINALG: http://statiskit.rtfd.io/projects/PGM
+.. _PGM: http://statiskit.rtfd.io/projects/PGM
 
 .. |DTP| unicode:: U+1F517
-.. _LINALG: http://statiskit.rtfd.io/projects/DTP
+.. _DTP: http://statiskit.rtfd.io/projects/DTP
 
 .. blockdiag::
     :align: center
