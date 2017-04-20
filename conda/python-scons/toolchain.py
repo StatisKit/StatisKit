@@ -1,4 +1,5 @@
-from distutils.version import StrictVersion
+from distutils.version import LooseVersion
+import subprocess
 from distutils.msvccompiler import get_build_version
 from sys import maxsize
 from SCons.Script import AddOption, GetOption
@@ -67,12 +68,11 @@ def generate(env):
           env.AppendUnique(CCFLAGS=['-ferror-limit=0'],
                            CXXFLAGS=['-stdlib=libc++'])
         else:
+          diagnostics_color = LooseVersion(subprocess.check_output(['gcc','-dumpversion']).strip()) >= LooseVersion('4.9')
           DIAGNOSTICS_COLOR = env['DIAGNOSTICS_COLOR']
           env.AppendUnique(CCFLAGS=['-fmax-errors=0',
                                     '-Wl,--no-undefined',
-                                    '-fvisibility=hidden',
-                                    '-fdiagnostics-color=' + DIAGNOSTICS_COLOR],
-                           CPPDEFINES=['_GLIBCXX_USE_CXX11_ABI=1'])
+                                    '-fvisibility=hidden'] + ['-fdiagnostics-color=' + DIAGNOSTICS_COLOR] * diagnostics_color)
 
 def exists(env):
     return 1
