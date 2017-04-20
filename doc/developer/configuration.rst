@@ -39,9 +39,9 @@ On Windows
 
 If you have a:
 
-* 32-bit Windows OS, download the following `installer <https://github.com/StatisKit/StatisKit/raw/master/doc/win/32/developer_install.exe>`_.
+* 32-bit Windows OS, download the following `installer <https://github.com/StatisKit/install-binaries/raw/master/doc/win/32/developer_install.exe>`_.
 
-* 64-bit Windows OS, download the following `installer <https://github.com/StatisKit/StatisKit/raw/master/doc/win/64/developer_install.exe>`_.
+* 64-bit Windows OS, download the following `installer <https://github.com/StatisKit/install-binaries/raw/master/doc/win/64/developer_install.exe>`_.
 
 .. note::
 
@@ -109,9 +109,9 @@ On Linux and Mac OS X
 
 If you have a:
 
-* 64-bit Linux OS, download the following `installer <https://github.com/StatisKit/StatisKit/raw/master/doc/linux/developer_install>`_.
+* 64-bit Linux OS, download the following `installer <https://github.com/StatisKit/install-binaries/raw/master/doc/linux/developer_install>`_.
 
-* 64-bit Mac OS X, download the following `installer <https://github.com/StatisKit/StatisKit/raw/master/doc/osx/developer_install>`_.
+* 64-bit Mac OS X, download the following `installer <https://github.com/StatisKit/install-binaries/raw/master/doc/osx/developer_install>`_.
 
 Then, open a shell in the directory where the installer was downloaded and type
 
