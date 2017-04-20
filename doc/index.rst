@@ -48,9 +48,23 @@ For each software, its specific documentation can be found following the availab
 
 .. |LINK| unicode:: U+1F517
 
+.. |STL| unicode:: U+1F517
+.. _STL: http://statiskit.rtfd.io/projects/STL
 
 .. |LINALG| unicode:: U+1F517
 .. _LINALG: http://statiskit.rtfd.io/projects/LinAlg
+
+.. |CORE| unicode:: U+1F517
+.. _LINALG: http://statiskit.rtfd.io/projects/CORE
+
+.. |GLM| unicode:: U+1F517
+.. _LINALG: http://statiskit.rtfd.io/projects/GLM
+
+.. |PGM| unicode:: U+1F517
+.. _LINALG: http://statiskit.rtfd.io/projects/PGM
+
+.. |DTP| unicode:: U+1F517
+.. _LINALG: http://statiskit.rtfd.io/projects/DTP
 
 .. blockdiag::
     :align: center
@@ -60,24 +74,24 @@ For each software, its specific documentation can be found following the availab
         orientation = portrait;
         
         A [label = "STL", shape="roundedbox",
-           description="Minimal interpreted interfaces for the STL containers C++ template library.
-                        Follow this `link <http://statiskit.rtfd.io/projects/STL>`_ for details."];
+           description="Minimal interpreted interfaces for the STL containers C++ template library |STL|_"];
         B [label = "LinAlg", shape="roundedbox",
            description="Minimal interpreted interfaces for the Eigen C++ template library |LINALG|_"];
         C [label = "Core", shape="roundedbox",
-           description="Classical statistical analyses for univariate and multivariate data.
-                        Follow this `link <http://statiskit.rtfd.io/projects/Core>`_ for details."];
+           description="Classical statistical analyses for univariate and multivariate data |CORE|_"];
         D [label = "GLM", shape="roundedbox",
-           description="Todo.
-                        Follow this `link <http://statiskit.rtfd.io/projects/GLM>`_ for details."];
+           description="Todo |GLM|_"];
         E [label = "PGM", shape="roundedbox",
-           description="Todo.
-                        Follow this `link <http://statiskit.rtfd.io/projects/PGM>`_ for details."];
+           description="Todo |PGM|_"];
+                        
+        F [label = "DTP", shape="roundedbox",
+           description="Todo |DTP|_"];
         
         A -> C;
         B -> C;
         C -> D;
         C -> E;
+        E -> F;
 
     }
 
