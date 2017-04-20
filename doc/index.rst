@@ -49,7 +49,8 @@ The **StatisKit** software suite is composed of multiple software
     :desctable:
     
     blockdiag {
-
+        orientation = portrait;
+        
         A [label = "STL", shape="roundedbox",
            description="Minimal interpreted interfaces for the STL containers C++ template library.
                         Follow this `link <http://statiskit.rtfd.io/projects/STL>`_ for details."];
