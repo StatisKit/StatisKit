@@ -15,8 +15,8 @@
 
 .. include:: ../README.rst
 
-Documentation
-=============
+General documentation
+=====================
 
 This documentation is dedicated to people using the **StatisKit** software suite.
 In this documentation, the following expressions shall have the following meaning:
@@ -39,10 +39,12 @@ Please, with regard to previous expressions, refers to the subsequent guides.
     developer/index.rst
     maintener/index.rst
 
-Software
-========
+Software specific documentation
+===============================
 
-The **StatisKit** software suite is composed of multiple software
+The **StatisKit** software suite is composed of multiple software.
+The following diagram presents dependency relations among software included in the **StatisKit** software suite.
+For each software, its specific documentation can be found following the available link.
 
 .. blockdiag::
     :align: center
@@ -54,9 +56,9 @@ The **StatisKit** software suite is composed of multiple software
         A [label = "STL", shape="roundedbox",
            description="Minimal interpreted interfaces for the STL containers C++ template library.
                         Follow this `link <http://statiskit.rtfd.io/projects/STL>`_ for details."];
-        B [label = "LinAlg", shape="roundedbox",
+        B [label = "LinAlg `link <http://statiskit.rtfd.io/projects/LinAlg>`_", shape="roundedbox",
            description="Minimal interpreted interfaces for the Eigen C++ template library.
-                        Follow this `link <http://statiskit.rtfd.io/projects/LinAlg>`_ for details."];
+                        Follow this  for details."];
         C [label = "Core", shape="roundedbox",
            description="Classical statistical analyses for univariate and multivariate data.
                         Follow this `link <http://statiskit.rtfd.io/projects/Core>`_ for details."];
