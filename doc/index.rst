@@ -44,7 +44,9 @@ Software specific documentation
 
 The **StatisKit** software suite is composed of multiple software.
 The following diagram presents dependency relations among software included in the **StatisKit** software suite.
-For each software, its specific documentation can be found following the available link.
+For each software, its specific documentation can be found following the available link denoted by |LINK|.
+
+.. |LINK| unicode:: U+1F517
 
 .. blockdiag::
     :align: center
@@ -56,8 +58,8 @@ For each software, its specific documentation can be found following the availab
         A [label = "STL", shape="roundedbox",
            description="Minimal interpreted interfaces for the STL containers C++ template library.
                         Follow this `link <http://statiskit.rtfd.io/projects/STL>`_ for details."];
-        B [label = "LinAlg `link <http://statiskit.rtfd.io/projects/LinAlg>`_", shape="roundedbox",
-           description="Minimal interpreted interfaces for the Eigen C++ template library.
+        B [label = "LinAlg", shape="roundedbox",
+           description="`|LINK| <http://statiskit.rtfd.io/projects/LinAlg>`_ Minimal interpreted interfaces for the Eigen C++ template library.
                         Follow this  for details."];
         C [label = "Core", shape="roundedbox",
            description="Classical statistical analyses for univariate and multivariate data.
