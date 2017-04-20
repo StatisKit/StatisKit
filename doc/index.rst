@@ -63,7 +63,7 @@ For each software, its specific documentation can be found following the availab
            description="Minimal interpreted interfaces for the STL containers C++ template library.
                         Follow this `link <http://statiskit.rtfd.io/projects/STL>`_ for details."];
         B [label = "LinAlg", shape="roundedbox",
-           description="Minimal interpreted interfaces for the Eigen C++ template library |LINKALG|_"];
+           description="Minimal interpreted interfaces for the Eigen C++ template library |LINALG|_"];
         C [label = "Core", shape="roundedbox",
            description="Classical statistical analyses for univariate and multivariate data.
                         Follow this `link <http://statiskit.rtfd.io/projects/Core>`_ for details."];
