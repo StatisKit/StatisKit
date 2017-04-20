@@ -48,6 +48,10 @@ For each software, its specific documentation can be found following the availab
 
 .. |LINK| unicode:: U+1F517
 
+
+.. |LINALG| unicode:: U+1F517
+.. _LINALG: http://statiskit.rtfd.io/projects/LinAlg
+
 .. blockdiag::
     :align: center
     :desctable:
@@ -59,8 +63,7 @@ For each software, its specific documentation can be found following the availab
            description="Minimal interpreted interfaces for the STL containers C++ template library.
                         Follow this `link <http://statiskit.rtfd.io/projects/STL>`_ for details."];
         B [label = "LinAlg", shape="roundedbox",
-           description="`|LINK| <http://statiskit.rtfd.io/projects/LinAlg>`_ Minimal interpreted interfaces for the Eigen C++ template library.
-                        Follow this  for details."];
+           description="Minimal interpreted interfaces for the Eigen C++ template library |LINKALG|_"];
         C [label = "Core", shape="roundedbox",
            description="Classical statistical analyses for univariate and multivariate data.
                         Follow this `link <http://statiskit.rtfd.io/projects/Core>`_ for details."];
