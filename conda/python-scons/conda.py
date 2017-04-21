@@ -103,14 +103,14 @@ def generate(env):
                                                                     packages[build],
                                                                     '--output']).strip())
                             condaenv.Depends(target, archive)
-                    path = metadata.get('build', {}).get('path', None)
+                    path = metadata.get('source', {}).get('path', None)
                     if path:
                         dirpath = env.Dir('.').abspath
-                        path = Path(env.Dir('.').abspath)/recipe/path
+                        path = Path(env.Dir('.').abspath)/recipe/path/'src'
                         for filepath in path.walkfiles():
-                            filepath = filepath.abspath()
-                            if not filepath.startswith(dirpath):
-                                condaenv.Depends(target, filepath)
+                            # filepath = filepath.abspath()
+                            # if not filepath.startswith(dirpath):
+                            condaenv.Depends(target, filepath)
 
                 else:
                     skip = True

@@ -1,3 +1,4 @@
+import os
 from distutils.version import LooseVersion
 import subprocess
 from distutils.msvccompiler import get_build_version
