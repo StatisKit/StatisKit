@@ -19,24 +19,36 @@ Configure
 #########
 
 In order to ease the development of the **StatisKit** software suite on multiple operating systems, the **Conda** package and environment management system is used.
-We here presents how to install the **Conda** package and environment management system and the :code:`statiskit-dev` environment within which you can build from source code the **StatisKit** software suite.
 
 .. note::
 
     For more information concerning **Conda**, please refers to its `documentation <http://conda.pydata.org/docs>`_.
+    
+We here presents how to install **Conda** and the :code:`statiskit-dev` environment within which you can build from source code the **StatisKit** software suite.
+    
+.. note::
 
-On windows
+    The installers presented below also install some plugins for build systems for the **Sublime Text** `software <https://www.sublimetext.com/3>`_.
+
+On Windows
 ----------
 
-In order to develop on Windows, you must first install `Visual Studio Community 2013 <https://www.visualstudio.com/en-us/news/releasenotes/vs2013-community-vs>`_.
+.. warning::
 
-Then, if you have a:
+    In order to develop on Windows, you must first install `Visual Studio Community 2013 <https://www.visualstudio.com/en-us/news/releasenotes/vs2013-community-vs>`_.
 
-* 32-bit Windows OS, download the following `installer <https://github.com/StatisKit/StatisKit/raw/master/doc/win/32/developer_install.exe>`_.
+If you have a:
 
-* 64-bit Windows OS, download the following `installer <https://github.com/StatisKit/StatisKit/raw/master/doc/win/64/developer_install.exe>`_.
+* 32-bit Windows OS, download the following `installer <https://github.com/StatisKit/install-binaries/raw/master/doc/win/32/developer_install.exe>`_.
 
-Then, open a shell in the directory where the installer was downloaded and type
+* 64-bit Windows OS, download the following `installer <https://github.com/StatisKit/install-binaries/raw/master/doc/win/64/developer_install.exe>`_.
+
+.. note::
+
+    For some unknown reasons, the Windows installers sometimes require to press a key to continue.
+    If, during the installation, the installer seems to have stopped, don't hesitate to press a key...
+    
+Then, click on the installer or open a shell in the directory where the installer was downloaded and type
 
 .. code-block:: batch
 
@@ -54,12 +66,26 @@ Then, open a shell in the directory where the installer was downloaded and type
 
 .. note::
 
-    More informations concerning this :code:`user_install.exe` installer can be obtained by typing
+    More informations concerning this :code:`developer_install.exe` installer can be obtained by typing
 
     .. code-block:: batch
 
         developer_install.exe -h 
 
+    There is in particular a :code:`clean` option that can be used when some errors occurred after the first try:
+    
+    .. code-block:: batch
+    
+        developer_install.exe
+        ...
+        Installation failed.
+        Press Enter to continue...
+        ...
+        developer_install.exe --clean=no
+        
+    This option indicates to the installer not to reset the **StatisKit** environment.
+    Hence, features installed in the first attempt will not be re-installed.
+    
 On Linux and Mac OS X
 ---------------------
 
@@ -70,18 +96,21 @@ On Linux and Mac OS X
 
     .. code-block:: bash
 
-        git clone https://gist.github.com/8a8b5ea835ac3cf5c46f8e02b31f6f34.git install-scripts
+        git clone https://github.com/StatisKit/install-scripts.git
         cd install-scripts
+        python pre_install.py
+        python developer_install.py
 
-    Then, replace :code:`./developer_install` by :code:`python developer_install.py` in the following recommendations.
-
+    .. note::
+    
+        :code:`./developer_install` and :code:`python developer_install.py` share the same options as described below.
 
 
 If you have a:
 
-* Linux OS, download the following `installer <https://github.com/StatisKit/StatisKit/raw/master/doc/linux/developer_install>`_.
+* 64-bit Linux OS, download the following `installer <https://github.com/StatisKit/install-binaries/raw/master/doc/linux/developer_install>`_.
 
-* Mac OS X, download the following `installer <https://github.com/StatisKit/StatisKit/raw/master/doc/osx/developer_install>`_.
+* 64-bit Mac OS X, download the following `installer <https://github.com/StatisKit/install-binaries/raw/master/doc/osx/developer_install>`_.
 
 Then, open a shell in the directory where the installer was downloaded and type
 
@@ -98,7 +127,7 @@ Then, open a shell in the directory where the installer was downloaded and type
 
         ./developer_install --prefix=<path/to/conda>
 
-    Where :code:`<path/to/conda>` has to replaced by the actual **Conda** directory.
+    Where :code:`<path/to/conda>` has to be replaced by the actual **Conda** directory.
 
 .. note::
 
@@ -107,8 +136,16 @@ Then, open a shell in the directory where the installer was downloaded and type
     .. code-block:: batch
 
         ./developer_install -h 
-        
-        
-.. note::
 
-    This installation also install some plugins for build systems for the **Sublime Text** `software <https://www.sublimetext.com/3>`_.
+    There is in particular a :code:`clean` option that can be used when some errors occurred after the first try:
+    
+    .. code-block:: batch
+    
+        ./developer_install
+        ...
+        Installation failed.
+        ...
+        ./developer_install --clean=no
+        
+    This option indicates to the installer not to reset the **StatisKit** environment.
+    Hence, features installed in the first attempt will not be re-installed.

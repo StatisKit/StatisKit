@@ -54,12 +54,24 @@ def generate(env):
         else:
             recipes = [source.abspath() for source in sources if (source/'meta.yaml').exists() and (source/'build.sh').exists()]
         packages = dict()
+        conda = conda_path(env)
         for recipe in recipes:
-            subprocess.check_output(['conda', 'render', recipe, '-f', os.path.join(recipe, 'meta.yaml.rendered')]).strip()
+            subprocess.check_output([conda, 'render', recipe, '-f', os.path.join(recipe, 'meta.yaml.rendered')]).strip()
             with open(os.path.join(recipe, 'meta.yaml.rendered'), 'r') as filehandler:
                 packages[yaml.load(filehandler)['package']['name']] = recipe
             os.unlink(os.path.join(recipe, 'meta.yaml.rendered'))
         return packages
+
+    def conda_path(env):
+        SYSTEM = env['SYSTEM']
+        if SYSTEM == 'win':
+            for conda in subprocess.check_output(['where', 'conda']).splitlines():
+                conda = conda.strip()
+                if conda.endswith('.bat'):
+                    break
+            return conda
+        else:
+            return subprocess.check_output(['which', 'conda']).splitlines()[0].strip()
 
     def CondaPackages(env, sources):
         condaenv = env.Clone()
@@ -68,10 +80,11 @@ def generate(env):
         CONDA_PACKAGES = condaenv['CONDA_PACKAGES']
         targets = []
         packages = list_packages(condaenv, sources)
+        conda = conda_path(condaenv)
         if 'all' in CONDA_PACKAGES:
             CONDA_PACKAGES = [package for package in packages.iterkeys()] + [package for package in CONDA_PACKAGES if not package == 'all']
         for package, recipe in packages.iteritems():
-            cmd = ['conda', 'render', recipe, '-f', os.path.join(recipe, 'meta.yaml.rendered')]
+            cmd = [conda, 'render', recipe, '-f', os.path.join(recipe, 'meta.yaml.rendered')]
             subprocess.check_output(cmd).strip()
             with open(os.path.join(recipe, 'meta.yaml.rendered'), 'r') as filehandler:
                 metadata = yaml.load(filehandler)
@@ -80,12 +93,12 @@ def generate(env):
                     cmd += ['--output']
                     target = Path(subprocess.check_output(cmd).strip())
                     target = condaenv.Command(target, recipe,
-                                         "conda build " + recipe + " " + " ".join(CONDA_CHANNELS))
+                                         conda + " build " + recipe + " " + " ".join(CONDA_CHANNELS))
                     if package in CONDA_PACKAGES:
                         targets.extend(target)
                     for build in metadata.get('requirements', {}).get('build', []):
                         if build in packages:
-                            archive = Path(subprocess.check_output(['conda',
+                            archive = Path(subprocess.check_output([conda,
                                                                     'build',
                                                                     packages[build],
                                                                     '--output']).strip())
@@ -106,17 +119,14 @@ def generate(env):
         CONDA_CHANNELS = condaenv['CONDA_CHANNELS']
         CONDA_PACKAGES = condaenv['CONDA_PACKAGES']
         SYSTEM = condaenv['SYSTEM']
-        if SYSTEM == 'win':
-        	yes = 'echo y|'
-        else:
-        	yes = 'yes | '
         targets = []
         packages = list_packages(condaenv, sources)
+        conda = conda_path(condaenv)
         if 'all' in CONDA_PACKAGES:
             CONDA_PACKAGES = [package for package in packages.iterkeys()] + [package for package in CONDA_PACKAGES if not package == 'all']
         CONDA_PREFIX = condaenv['ENV']['CONDA_PREFIX']
         for package, recipe in packages.iteritems():
-            cmd = ['conda', 'render', recipe, '-f', os.path.join(recipe, 'meta.yaml.rendered')]
+            cmd = [conda, 'render', recipe, '-f', os.path.join(recipe, 'meta.yaml.rendered')]
             subprocess.check_output(cmd).strip()
             with open(os.path.join(recipe, 'meta.yaml.rendered'), 'r') as filehandler:
                 metadata = yaml.load(filehandler)
@@ -126,8 +136,7 @@ def generate(env):
                     target = os.path.join(CONDA_PREFIX,
                                           'conda-meta',
                                           archive.name.replace('.tar.bz2', '.json', 1))
-                    target = condaenv.Command(target, recipe,
-                                         yes + 'conda' + " install -n " + os.path.basename(CONDA_PREFIX) + " " + package + " -y --use-local " + " ".join(CONDA_CHANNELS))
+                    target = condaenv.Command(target, recipe, conda + " install -n " + os.path.basename(CONDA_PREFIX) + " " + package + " -y --use-local " + " ".join(CONDA_CHANNELS))
                     if os.path.exists(target[0].abspath):
                         with open(target[0].abspath, 'r') as filehandler:
                             for filename in json.loads("".join(filehandler.readlines())).get('files', []):
@@ -137,7 +146,7 @@ def generate(env):
                         targets.extend(target)
                     for run in metadata.get('requirements', {}).get('run', []):
                         if run in packages:
-                            archive = Path(subprocess.check_output(['conda',
+                            archive = Path(subprocess.check_output([conda,
                                                                     'build',
                                                                     packages[run],
                                                                     '--output']).strip())
@@ -162,7 +171,7 @@ def generate(env):
         targets = []
         for package, recipe in packages.iteritems():
             if package in CONDA_PACKAGES:
-                archive = Path(subprocess.check_output(['conda', 'build', recipe, '--output']).strip())
+                archive = Path(subprocess.check_output([conda, 'build', recipe, '--output']).strip())
                 targets.extend(condaenv.Command(archive + '.uploaded', archive, "anaconda upload " + archive.abspath() + " -u " * bool(ANACONDA_CHANNEL) + ANACONDA_CHANNEL + ' -f' * bool(ANACONDA_FORCE == 'yes')))
         return targets
 

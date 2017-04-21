@@ -42,7 +42,7 @@ def generate(env):
         else:
             TEST_DEBUG = ' --' + TEST_DEBUG + ' --' + TEST_DEBUG + '-failures'
         if len(sources) > 0:
-            target = noseenv.Command(".coverage", sources, "nosetests $SOURCES -x -s -v"
+            target = noseenv.Command(".coverage", sources, "nosetests $SOURCES -s -v"
                                                             + TEST_DEBUG
                                                             + " --with-coverage --cover-erase" * with_coverage
                                                             + " --cover-tests" * cover_tests
