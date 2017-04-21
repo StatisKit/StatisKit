@@ -18,5 +18,5 @@ Developer guide
 
 .. toctree::
 
-    configuration
+    configure
     contribute

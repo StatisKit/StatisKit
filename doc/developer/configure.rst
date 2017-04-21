@@ -72,9 +72,11 @@ Then, click on the installer or open a shell in the directory where the installe
 
         developer_install.exe -h 
 
-    There is in particular a :code:`clean` option that can be used when some errors occurred after the first try:
+    There is in particular:
+
+    * A :code:`clean` option that can be used when some errors occurred after the first try:
     
-    .. code-block:: batch
+      .. code-block:: batch
     
         developer_install.exe
         ...
@@ -83,9 +85,17 @@ Then, click on the installer or open a shell in the directory where the installe
         ...
         developer_install.exe --clean=no
         
-    This option indicates to the installer not to reset the **StatisKit** environment.
-    Hence, features installed in the first attempt will not be re-installed.
+      This option indicates to the installer not to reset the **StatisKit** environment.
+      Hence, features installed in the first attempt will not be re-installed.
+
+    * A :code:`cpu-count` option that can be used to reduce the number of :abbr:`CPUs (Central Processing Units)` used during the installation:
     
+      .. code-block:: batch
+    
+        developer_install.exe --cpu-count=1
+
+      This option is useful if yout computer has a low memory.
+
 On Linux and Mac OS X
 ---------------------
 
@@ -137,9 +147,11 @@ Then, open a shell in the directory where the installer was downloaded and type
 
         ./developer_install -h 
 
-    There is in particular a :code:`clean` option that can be used when some errors occurred after the first try:
+    There is in particular:
+
+    * A :code:`clean` option that can be used when some errors occurred after the first try:
     
-    .. code-block:: batch
+      .. code-block:: batch
     
         ./developer_install
         ...
@@ -147,5 +159,13 @@ Then, open a shell in the directory where the installer was downloaded and type
         ...
         ./developer_install --clean=no
         
-    This option indicates to the installer not to reset the **StatisKit** environment.
-    Hence, features installed in the first attempt will not be re-installed.
+      This option indicates to the installer not to reset the **StatisKit** environment.
+      Hence, features installed in the first attempt will not be re-installed.
+
+    * A :code:`cpu-count` option that can be used to reduce the number of :abbr:`CPUs (Central Processing Units)` used during the installation:
+    
+      .. code-block:: batch
+    
+        ./developer_install --cpu-count=1
+
+      This option is useful if yout computer has a low memory.

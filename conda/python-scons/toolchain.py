@@ -68,7 +68,7 @@ def generate(env):
           env.AppendUnique(CCFLAGS=['-ferror-limit=0'],
                            CXXFLAGS=['-stdlib=libc++'])
         else:
-          diagnostics_color = LooseVersion(subprocess.check_output(['gcc','-dumpversion']).strip()) >= LooseVersion('4.9')
+          diagnostics_color = LooseVersion(subprocess.check_output(['gcc','-dumpversion']).strip()) >= LooseVersion('4.9') and not bool(int(os.environ.get('CONDA_BUILD', '0')))
           DIAGNOSTICS_COLOR = env['DIAGNOSTICS_COLOR']
           env.AppendUnique(CCFLAGS=['-fmax-errors=0',
                                     '-Wl,--no-undefined',
