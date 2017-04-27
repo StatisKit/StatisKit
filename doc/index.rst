@@ -33,7 +33,7 @@ Maintener
 Please, with regard to previous expressions, refers to the subsequent guides.
 
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 3
 
     user/index
     developer/index.rst
