@@ -69,7 +69,7 @@ In order to contribute to an official repository of **StatisKit** we therefore r
             color = "#FFFFFF";
             
             D -> E;
-            D -> B [label = "Yes"];
+            D -> A [label = "Yes"];
         }
     }
 
