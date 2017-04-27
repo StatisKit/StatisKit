@@ -90,7 +90,7 @@ For each software, its specific documentation can be found following the availab
         A -> C;
         B -> C;
         C -> D;
-        C -> E;
+        D -> E;
         E -> F;
 
     }
