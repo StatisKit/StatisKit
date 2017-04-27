@@ -63,14 +63,9 @@ In order to contribute to an official repository of **StatisKit** we therefore r
             
         D -> B;
         E -> B [label = "No"];
-
-        group {
-            orientation = portrait;
-            color = "#FFFFFF";
             
             D -> E;
             D -> A [label = "Yes"];
-        }
     }
 
 .. |br| raw:: html
