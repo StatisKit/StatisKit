@@ -18,9 +18,9 @@ On Windows
 
 If you have a:
 
-* 32-bit Windows OS, download the following `installer <https://github.com/StatisKit/install-binaries/raw/master/doc/win/32/user_install.exe>`_.
+* 32-bit Windows OS, download the following `installer <https://github.com/StatisKit/install-binaries/raw/master/win/32/user_install.exe>`_.
 
-* 64-bit Windows OS, download the following `installer <https://github.com/StatisKit/install-binaries/raw/master/doc/win/64/user_install.exe>`_.
+* 64-bit Windows OS, download the following `installer <https://github.com/StatisKit/install-binaries/raw/master/win/64/user_install.exe>`_.
 
 Then, click on the :code:`user_install.exe` installer or open a shell in the directory where the installer was downloaded and type
 
@@ -67,9 +67,9 @@ On Linux and Mac OS X
 
 If you have a:
 
-* Linux OS, download the following `installer <https://github.com/StatisKit/install-binaries/raw/master/doc/linux/user_install>`_.
+* Linux OS, download the following `installer <https://github.com/StatisKit/install-binaries/raw/master/linux/user_install>`_.
 
-* Mac OS X, download the following `installer <https://github.com/StatisKit/install-binaries/raw/master/doc/osx/user_install>`_.
+* Mac OS X, download the following `installer <https://github.com/StatisKit/install-binaries/raw/master/osx/user_install>`_.
 
 Then, open a shell in the directory where the installer was downloaded and type
 
