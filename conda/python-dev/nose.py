@@ -49,7 +49,7 @@ def generate(env):
                                                             + " --cover-inclusive" * cover_inclusive
                                                             + " -A " + eval_attr
                                                             + "".join(" --cover-package=" + packagename for packagename in cover_package.split(" ") if packagename))
-        return target
+            return target
 
       env.AddMethod(Nosetests)
 
