@@ -87,7 +87,7 @@ For each software, its specific documentation can be found following the availab
         F [label = "DTP", shape="roundedbox",
            description="Todo |DTP|_"];
         
-        A -> C;
+        A -> B;
         B -> C;
         C -> D;
         D -> E;
