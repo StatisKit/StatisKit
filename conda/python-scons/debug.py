@@ -7,23 +7,23 @@ def generate(env):
         env.Tool('system')
         env.Tool('prefix')
 
-        AddOption('--with-debug',
-                  dest    = 'with-debug',
+        AddOption('--with-nose-debug',
+                  dest    = 'with-nose-debug',
                   type    = 'choice',
                   nargs   = 1,
                   action  = 'store',
                   help    = 'Degree of testing',
-                  choices = ['none', 'full'],
+                  choices = ['none', 'gdb', 'pdb', 'ipdb'],
                   default = 'none')
 
-        env['WITH_DEBUG'] = GetOption('with-debug')
-        WITH_DEBUG = env['WITH_DEBUG']
+        env['WITH_NOSE_DEBUG'] = GetOption('with-nose-debug')
+        WITH_NOSE_DEBUG = env['WITH_NOSE_DEBUG']
         SYSTEM = env['SYSTEM']
         if SYSTEM == 'win':
-            if WITH_DEBUG == 'full':
+            if WITH_NOSE_DEBUG == 'gdb':
                 env.AppendUnique(CCFLAGS=['/DEBUG:FULL'])
         else:
-            if WITH_DEBUG == 'full':
+            if WITH_DEBUG == 'gdb':
                 env.AppendUnique(CCFLAGS=['-g'])
 
 def exists(env):

@@ -6,10 +6,11 @@ def generate(env):
     
     if not 'openmp' in env['TOOLS'][:-1]:
         env.Tool('system')
-      if SYSTEM == 'win':
-        env.AppendUnique(CCFLAGS=['/openmp'])
-      else:
-        env.PrependUnique(CFLAGS=["-fopenmp"])
+        SYSTEM = env['SYSTEM']
+        if SYSTEM == 'win':
+            env.AppendUnique(CCFLAGS=['/openmp'])
+        else:
+            env.PrependUnique(CCFLAGS=["-fopenmp"])
 
 def exists(env):
     return 1

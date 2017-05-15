@@ -7,16 +7,10 @@ def generate(env, **kwargs):
     """Add Builders and construction variables to the Environment."""
 
     if not 'python' in env['TOOLS'][:-1]:
+
       env.Tool('system')
-      AddOption('--python-version',
-                    dest    = 'python-version',
-                    type    = 'string',
-                    nargs   = 1,
-                    action  = 'store',
-                    help    = 'python version',
-                    default = sysconfig.get_python_version())
-      env['PYTHON_VERSION'] = GetOption('python-version')
-      PYTHON_VERSION = env['PYTHON_VERSION']
+      
+      PYTHON_VERSION = sysconfig.get_python_version()
       SYSTEM = env['SYSTEM']
       if PYTHON_VERSION == '2.7':
           if SYSTEM == 'win':
@@ -31,7 +25,7 @@ def generate(env, **kwargs):
       if SYSTEM == 'win':
         env['SP_DIR'] = '$PREFIX\..\Lib\site-packages'
       else:
-        env['SP_DIR'] = '$PREFIX/lib/python$PYTHON_VERSION/site-packages'
+        env['SP_DIR'] = '$PREFIX/lib/python' + PYTHON_VERSION + '/site-packages'
         
       def PythonPackage(env, source, pattern=None):
         source = Path(env.Dir(source).srcnode().abspath)
