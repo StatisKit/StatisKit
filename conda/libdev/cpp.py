@@ -8,30 +8,37 @@ def generate(env):
         env.Tool('system')
         env.Tool('prefix')
 
-        def CppLibrary(env, target, sources):
+        def CppDev(env, target, sources):
             # Code to build "target" from "source"
             SYSTEM = env['SYSTEM']
-            targets = env.Install(os.path.join(env['PREFIX'], "include", *target.split('_')),
-                                  [source for source in sources if source.suffix in ['.h', '.hpp', '.hxx', '.h++']])
+            return env.Install(os.path.join(env['PREFIX'], "include", *target.split('_')), sources)
+
+        env.AddMethod(CppDev)
+
+        def CppLib(env, target, sources):
+            # Code to build "target" from "source"
+            SYSTEM = env['SYSTEM']
+
             if SYSTEM == 'osx':
                 kwargs = dict(FRAMEWORKSFLAGS = '-flat_namespace -undefined suppress')
             else:
                 kwargs = dict()
 
 
+            targets = []
             if SYSTEM == 'win':
                 dll, lib, exp = env.SharedLibrary(os.path.join(env.Dir(".").abspath, target),
-                                                  [source for source in sources if source.suffix in ['.c', '.cpp', '.cxx', '.c++']],
+                                                  sources,
                                                   **kwargs)
                 targets += env.Install(os.path.join(env['PREFIX'], "bin"), dll)
                 targets += env.Install(os.path.join(env['PREFIX'], "lib"), lib)
             else:
                 targets += env.SharedLibrary(os.path.join(env['PREFIX'], "lib", target),
-                                             [source for source in sources if source.suffix in ['.c', '.cpp', '.cxx', '.c++']],
+                                             sources,
                                               **kwargs)
             return targets
 
-        env.AddMethod(CppLibrary)
+        env.AddMethod(CppLib)
 
 def exists(env):
     return 1

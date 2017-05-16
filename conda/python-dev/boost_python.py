@@ -16,6 +16,12 @@ def generate(env):
             # Code to build "target" from "source"
             SP_DIR = env['SP_DIR']
             SYSTEM = env['SYSTEM']
+            parents = []
+            parent = os.path.dirname(env.File(target).srcnode().abspath)
+            while os.path.exists(os.path.join(parent, '__init__.py')):
+                parents.append(os.path.basename(parent))
+                parent = os.path.dirname(parent)
+            target = os.path.join(os.path.join(*reversed(parents)), os.path.basename(target))
             if not SYSTEM == 'win':
                 target += '.so'
                 target = env.File(os.path.join(SP_DIR, target))

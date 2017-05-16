@@ -27,14 +27,17 @@ def generate(env, **kwargs):
       else:
         env['SP_DIR'] = '$PREFIX/lib/python' + PYTHON_VERSION + '/site-packages'
         
-      def PythonPackage(env, source, pattern=None):
-        source = Path(env.Dir(source).srcnode().abspath)
-        sources = source.walkfiles(pattern=pattern)
+      def PythonPackage(env, **kwargs):
+        pattern = kwargs.pop('pattern', None)
+        packages = {kwarg : Path(env.Dir(kwargs[kwarg]).srcnode().abspath).walkfiles(pattern=pattern) for kwarg in kwargs}
         targets = []
         SP_DIR = env['SP_DIR']
-        for src in sources:
-            if not src.ext in ['.lib', '.exp', '.so', '.dll']:
-                targets.append(env.Install(os.path.join(SP_DIR, src.relpath(env.Dir('.').srcnode().abspath).parent), src.abspath()))
+        for package in packages:
+            for source in packages[package]:
+                if not source.ext in ['.lib', '.exp', '.so', '.dll']:
+                    directory = os.path.join(SP_DIR, *package.split('.'))
+                    directory = os.path.join(directory, source.relpath(env.Dir(kwargs[package]).srcnode().abspath).parent)
+                    targets.append(env.Install(directory, source.abspath()))
         return targets
 
       env.AddMethod(PythonPackage)
