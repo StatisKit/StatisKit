@@ -7,7 +7,7 @@ RUN apt-get update
 RUN apt-get -y upgrade
 
 # Install useful tools
-RUN apt-get install -y vim build-essential wget curl
+RUN apt-get install -y vim build-essential wget curl software-properties-common
 # firefox
 RUN apt-get autoremove
 
