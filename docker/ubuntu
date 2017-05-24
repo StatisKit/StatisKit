@@ -29,4 +29,6 @@ RUN chmod -R a+rwx  /home/main/miniconda
 # select created user
 USER main
 
+RUN conda install vcs ipython jupyter -c statiskit -c conda-forge
+
 WORKDIR /home/main
