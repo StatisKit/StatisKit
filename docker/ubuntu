@@ -21,7 +21,7 @@ RUN apt-get install -qq gcc-5 g++-5
 RUN update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-5 60 --slave /usr/bin/g++ g++ /usr/bin/g++-5
 RUN curl https://raw.githubusercontent.com/StatisKit/install-binaries/master/linux/developer_install -o developer_install;
 RUN chmod a+rwx developer_install
-RUN ./developer_install --prepend-path=no --configure-only=yes --prefix=/home/main/miniconda --always-yes=yes
+RUN ./developer_install --prepend-path=no --configure-only=yes --prefix=/home/main/miniconda
 env PATH /home/main/miniconda:/home/main/miniconda/bin:$PATH
 RUN rm developer_install
 RUN chmod -R a+rwx  /home/main/miniconda
@@ -29,6 +29,7 @@ RUN chmod -R a+rwx  /home/main/miniconda
 # select created user
 USER main
 
+RUN conda config --set always_yes yes
 RUN conda install vcs ipython jupyter -c statiskit -c conda-forge
 
 WORKDIR /home/main
