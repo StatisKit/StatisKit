@@ -11,20 +11,22 @@ RUN apt-get install -y vim build-essential wget curl
 # firefox
 RUN apt-get autoremove
 
+# Install development prerequisites
+RUN add-apt-repository -y ppa:ubuntu-toolchain-r/test
+RUN apt-get update
+RUN apt-get install -qq gcc-5 g++-5
+RUN update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-5 60 --slave /usr/bin/g++ g++ /usr/bin/g++-5
+RUN curl https://raw.githubusercontent.com/StatisKit/install-binaries/master/linux/developer_install -o developer_install;
+RUN chmod a+rwx developer_install
+RUN ./developer_install --prepend-path=no --configure-only=yes --prefix=$HOME/miniconda
+RUN rm developer_install
+
 # Add user for future work
 RUN useradd -m main --shell /bin/bash && echo "main:main" | chpasswd && adduser main sudo
 
 # select created user
 USER main
 
-# Install development prerequisites
-RUN sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
-RUN sudo apt-get update
-RUN sudo apt-get install -qq gcc-5 g++-5
-RUN sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-5 60 --slave /usr/bin/g++ g++ /usr/bin/g++-5
-RUN curl https://raw.githubusercontent.com/StatisKit/install-binaries/master/linux/developer_install -o developer_install;
-RUN chmod a+rwx developer_install
-RUN ./developer_install --prepend-path=no --configure-only=yes --prefix=$HOME/miniconda
-RUN rm developer_install
+
 
 WORKDIR /home/main
