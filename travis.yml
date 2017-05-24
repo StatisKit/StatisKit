@@ -37,14 +37,17 @@ env:
   - RECIPE=libboost
   - UBUNTU=14.04
   - UBUNTU=16.04
-
+    
 matrix:
   exclude:
   - os: osx
     env: UBUNTU=14.04
   - os: osx
     env: UBUNTU=16.04
-    
+  allow_failures:
+    - os: osx
+      env: RECIPE=llvm
+      
 install:
   - git clone https://github.com/StatisKit/travis-ci.git
   - cd travis-ci
