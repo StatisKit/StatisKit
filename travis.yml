@@ -23,18 +23,18 @@ env:
   # - RECIPE=binutils
   # - RECIPE=gcc 
   # - RECIPE=libgcc
-  - RECIPE=vcs
-  - RECIPE=python-scons
-  - RECIPE=python-parse
-  - RECIPE=libdev
-  - RECIPE=librun
-  - RECIPE=python-dev
-  - RECIPE=python-doc
-  # - RECIPE=python-pkg
-  - RECIPE=llvm
-  - RECIPE=clang
-  - RECIPE=python-clang
-  - RECIPE=libboost
+  # - RECIPE=vcs
+  # - RECIPE=python-scons
+  # - RECIPE=python-parse
+  # - RECIPE=libdev
+  # - RECIPE=librun
+  # - RECIPE=python-dev
+  # - RECIPE=python-doc
+  # # - RECIPE=python-pkg
+  # - RECIPE=llvm
+  # - RECIPE=clang
+  # - RECIPE=python-clang
+  # - RECIPE=libboost
   - DOCKERFILE=ubuntu
     
 matrix:
