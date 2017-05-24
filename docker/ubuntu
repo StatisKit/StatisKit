@@ -1,4 +1,4 @@
-FROM statiskit/ubuntu
+FROM ubuntu:14.04
 
 # Update the OS
 RUN apt-get update
@@ -18,22 +18,8 @@ RUN useradd -m main --shell /bin/bash && echo "main:main" | chpasswd && adduser 
 USER main
 
 # Install miniconda2
-RUN wget https://repo.continuum.io/miniconda/Miniconda2-latest-Linux-x86_64.sh \
-         -O $HOME/miniconda2.sh
-RUN bash $HOME/miniconda2.sh -b -p $HOME/miniconda2
-RUN rm $HOME/miniconda2.sh
-RUN touch $HOME/miniconda2.sh
-RUN echo 'export PATH=$HOME/miniconda2/bin:$PATHBACK' >> $HOME/miniconda2.sh
-RUN echo 'source $HOME/miniconda2/bin/activate' >> $HOME/miniconda2.sh
-ENV PATH /home/main/miniconda2/bin:$PATH
-RUN conda config --set always_yes yes --set changeps1 no
-RUN conda update -q conda
-RUN conda info -a
-RUN conda install conda-build anaconda-client
-RUN mkdir $HOME/miniconda2/conda-bld
-RUN mkdir $HOME/miniconda2/conda-bld/linux-64
-
-#jupyter notebook --ip='*' --port=8888 --no-browser
-#You can then view the Jupyter Notebook by opening http://localhost:8888 in your browser, or http://<DOCKER-MACHINE-IP>:8888 if you are using a Docker Machine VM.
+RUN wget https://github.com/StatisKit/install-binaries/raw/master/linux/user_install
+RUN bash ./user_install
+RUN rm user_install
 
 WORKDIR /home/main

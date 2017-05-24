@@ -35,15 +35,12 @@ env:
   - RECIPE=clang
   - RECIPE=python-clang
   - RECIPE=libboost
-  - UBUNTU=14.04
-  - UBUNTU=16.04
+  - DOCKERFILE=ubuntu
     
 matrix:
   exclude:
   - os: osx
-    env: UBUNTU=14.04
-  - os: osx
-    env: UBUNTU=16.04
+    env: DOCKERFILE=ubuntu
   allow_failures:
     - os: osx
       env: RECIPE=llvm
