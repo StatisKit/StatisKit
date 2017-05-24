@@ -24,6 +24,7 @@ RUN chmod a+rwx developer_install
 RUN ./developer_install --prepend-path=no --configure-only=yes --prefix=/home/main/miniconda
 env PATH /home/main/miniconda:/home/main/miniconda/bin:$PATH
 RUN rm developer_install
+RUN chmod -R a+rwx  /home/main/miniconda
 
 # select created user
 USER main
