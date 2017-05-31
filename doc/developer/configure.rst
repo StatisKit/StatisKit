@@ -127,7 +127,7 @@ Then, open a shell in the directory where the installer was downloaded and type
 
 .. code-block:: batch
 
-    sudo chmod a+rwx developer_install
+    chmod a+rwx developer_install
     ./developer_install
 
 .. warning::
