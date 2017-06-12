@@ -53,7 +53,7 @@ You can type the following commands in a shell:
 
 .. code-block::
 
-    ssh -L 8889:localhost:8888 <username>@<servername?
+    ssh -L 8889:localhost:8888 <username>@<servername>
     jupyter notebook --ip='*' --port=8888 --no-browser
     
 Then, access to the URL provided in the terminal, by replacing the localhost:8888 with localhost:8889 from your computer favorite web browser.
