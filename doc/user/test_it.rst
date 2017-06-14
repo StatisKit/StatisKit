@@ -51,7 +51,7 @@ Test the latest *Python* interface installed on a ssh server.
     
 You can type the following commands in a shell:
 
-.. code-block::
+.. code-block:: console
 
     ssh -L 8889:localhost:8888 <username>@<servername>
     jupyter notebook --ip='*' --port=8888 --no-browser
