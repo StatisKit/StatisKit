@@ -1,4 +1,7 @@
-from path import Path
+try:
+    from path import Path
+except:
+    from path import path as Path
 import subprocess
 import itertools
 import yaml

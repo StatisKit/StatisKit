@@ -1,7 +1,10 @@
 import itertools
 import os
-from path import Path
-
+try:
+    from path import Path
+except:
+    from path import path as Path
+    
 def generate(env):
     """Add Builders and construction variables to the Environment."""
     

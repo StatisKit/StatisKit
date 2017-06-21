@@ -1,6 +1,9 @@
 import sysconfig
 from SCons.Script import AddOption, GetOption
-from path import Path
+try:
+    from path import Path
+except:
+    from path import path as Path
 import os
 
 def generate(env, **kwargs):
