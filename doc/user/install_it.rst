@@ -75,7 +75,7 @@ Then, open a shell in the directory where the installer was downloaded and type
 
 .. code-block:: batch
 
-    sudo chmod a+rwx user_install
+    chmod a+rwx user_install
     ./user_install
 
 .. warning::
