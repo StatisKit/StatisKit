@@ -17,11 +17,11 @@ requirements:
   build:
     - libdev
     - python
-    - icu 54.*          [unix]
+    - icu 58.*          [unix]
     - bzip2             [unix]
     - zlib
   run:
     - python
-    - icu 54.*          [unix]
+    - icu 58.*          [unix]
     - zlib
     - librun
