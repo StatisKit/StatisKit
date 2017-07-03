@@ -10,6 +10,7 @@ platform:
 
 environment:
   matrix:
+    - RECIPE: r-mglm
     - RECIPE: vcs
     - RECIPE: python-scons
     - RECIPE: python-parse

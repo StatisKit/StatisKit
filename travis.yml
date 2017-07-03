@@ -23,6 +23,7 @@ env:
   # - RECIPE=binutils
   # - RECIPE=gcc 
   # - RECIPE=libgcc
+  - RECIPE=r-mglm
   - RECIPE=vcs
   - RECIPE=python-scons
   - RECIPE=python-parse

@@ -1,0 +1,87 @@
+{% set version = '0.0.8' %}
+
+{% set posix = 'm2-' if win else '' %}
+{% set native = 'm2w64-' if win else '' %}
+
+package:
+  name: r-mglm
+  version: {{ version|replace("-", "_") }}
+
+source:
+  fn: MGLM_{{ version }}.tar.gz
+  url:
+    - https://cran.r-project.org/src/contrib/MGLM_{{ version }}.tar.gz
+    - https://cran.r-project.org/src/contrib/Archive/MGLM/MGLM_{{ version }}.tar.gz
+
+
+  sha256: 67975600b78ba868b4b166ce6e253fccc94919415f8d06fec4a99f2ad331f1fb
+  # patches:
+   # List any patch files here
+   # - fix.patch
+
+build:
+  # If this is a new build for the same version, increment the build number.
+  number: 0
+
+  # This is required to make R link correctly on Linux.
+  rpaths:
+    - lib/R/lib/
+    - lib/
+
+# Suggests: ggplot2, plyr, reshape2
+requirements:
+  build:
+    - r-base
+
+  run:
+    - r-base
+
+test:
+  commands:
+    # You can put additional test commands to be run here.
+    - $R -e "library('MGLM')"  # [not win]
+    - "\"%R%\" -e \"library('MGLM')\""  # [win]
+
+  # You can also put a file called run_test.py, run_test.sh, or run_test.bat
+  # in the recipe that will be run at test time.
+
+  # requires:
+    # Put any additional test requirements here.
+
+about:
+  home: https://CRAN.R-project.org/package=MGLM
+  license: GPL (>= 2)
+  summary: 'Provides functions that (1) fit multivariate discrete distributions, (2) generate
+    random numbers from multivariate discrete distributions, and (3) run regression
+    and penalized regression on the multivariate categorical response data.  Implemented
+    models include: multinomial logit model, Dirichlet multinomial model, generalized
+    Dirichlet multinomial model, and negative multinomial model. Making the best of
+    the minorization-maximization (MM) algorithm and Newton-Raphson method, we derive
+    and implement stable and efficient algorithms to find the maximum likelihood estimates.
+    On a multi-core machine, multi-threading is supported.'
+
+  license_family: GPL3
+
+# The original CRAN metadata for this package was:
+
+# Package: MGLM
+# Version: 0.0.8
+# Date: 2017-03-15
+# Title: Multivariate Response Generalized Linear Models
+# Author: Yiwen Zhang <zhangyiwen1015@gmail.com> and Hua Zhou <huazhou@ucla.edu>
+# Maintainer: Yiwen Zhang <zhangyiwen1015@gmail.com>
+# Depends: R (>= 3.0.0)
+# Imports: methods, stats, parallel
+# Suggests: ggplot2, plyr, reshape2
+# Description: Provides functions that (1) fit multivariate discrete distributions, (2) generate random numbers from multivariate discrete distributions, and (3) run regression and penalized regression on the multivariate categorical response data.  Implemented models include: multinomial logit model, Dirichlet multinomial model, generalized Dirichlet multinomial model, and negative multinomial model. Making the best of the minorization-maximization (MM) algorithm and Newton-Raphson method, we derive and implement stable and efficient algorithms to find the maximum likelihood estimates. On a multi-core machine, multi-threading is supported.
+# LazyLoad: yes
+# LazyData: yes
+# Repository: CRAN
+# License: GPL (>= 2)
+# NeedsCompilation: no
+# Packaged: 2017-03-25 23:30:37 UTC; huazhou
+# Date/Publication: 2017-03-27 15:21:50 UTC
+
+# See
+# http://docs.continuum.io/conda/build.html for
+# more information about meta.yaml
