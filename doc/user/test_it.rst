@@ -39,7 +39,7 @@ You can then view the **Jupyter** notebooks by opening http://localhost:8888/not
     By default, on some operating systems like Ubuntu, docker require to have administration rights.
     You can, for example, execute the preceeding lines after typing :code:`sudo -i` if you are on Ubuntu or follow these `instructions <https://docs.docker.com/engine/installation/linux/linux-postinstall/>`_.
     
-On your computer from a ssh server
+On your computer from a SSH server
 ==================================
 
 Test the latest *Python* interface installed on a ssh server.
