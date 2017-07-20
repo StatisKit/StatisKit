@@ -16,7 +16,7 @@ about:
   
 requirements:
   build:
-    - python
+    - python=2.7
     - python-scons
     - pywin32             [win]
     # - vs2008_runtime      [win and py27]
@@ -24,7 +24,7 @@ requirements:
     # - vs2015_runtime      [win and py35]
     - vs2015_runtime      [win]
   run:
-    - python
+    - python=2.7
     - python-scons
     - pywin32             [win]
     # - vs2008_runtime      [win and py27]
