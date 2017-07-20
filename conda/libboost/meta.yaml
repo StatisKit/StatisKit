@@ -15,14 +15,14 @@ about:
 
 requirements:
   build:
-    - python=2.7
+    - python 2.7
     - libdev
     - python
     - icu 58.*          [unix]
     - bzip2             [unix]
     - zlib
   run:
-    - python=2.7
+    - python 2.7
     - icu 58.*          [unix]
     - zlib
     - librun
