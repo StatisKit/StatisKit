@@ -16,13 +16,13 @@ about:
   
 requirements:
   build:
-    - python 2.7
+    - python 2.7*
     # - vs2008_runtime      [win and py27]
     # - vs2010_runtime      [win and py34]
     # - vs2015_runtime      [win and py35]
     - vs2015_runtime      [win]
   run:
-    - python 2.7
+    - python 2.7*
     # - vs2008_runtime      [win and py27]
     # - vs2010_runtime      [win and py34]
     # - vs2015_runtime      [win and py35]
