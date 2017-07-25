@@ -62,7 +62,7 @@ def generate(env):
                                           SHLINKFLAGS='$LINKFLAGS -bundle',
                                           FRAMEWORKSFLAGS='-flat_namespace -undefined suppress')
             else:
-                nv.AppendUnique(CCFLAGS=['-Wattributes', '-Wdeprecated-declarations'])
+                env.AppendUnique(CCFLAGS=['-Wattributes', '-Wdeprecated-declarations'])
                 return env.LoadableModule(target, [], SHLIBPREFIX='')
 
         env.AddMethod(BoostPythonExtension)
