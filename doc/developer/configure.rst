@@ -43,6 +43,10 @@ If you have a:
 
 * 64-bit Windows OS, download the following `installer <https://github.com/StatisKit/install-binaries/raw/master/win/64/developer_install.exe>`_.
 
+  .. warning::
+  
+    Some unresolved problems in our usage **SCons** seem to prevent the compilation of source code on 64-bit Windows OSes.
+
 .. note::
 
     For some unknown reasons, the Windows installers sometimes require to press a key to continue.
