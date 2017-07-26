@@ -1,10 +1,10 @@
 package:
   name: python-scons
-  version: "2.5.0"
+  version: "2.5.1"
 
 source:
-  fn: scons-2.5.0.tar.gz
-  url: https://sourceforge.net/projects/scons/files/scons/2.5.0/scons-2.5.0.tar.gz
+  fn: scons-2.5.1.tar.gz
+  url: https://sourceforge.net/projects/scons/files/scons/2.5.0/scons-2.5.1.tar.gz
 
 build:
   number: 0
