@@ -4,7 +4,7 @@ package:
 
 source:
   fn: scons-2.5.1.tar.gz
-  url: https://sourceforge.net/projects/scons/files/scons/2.5.0/scons-2.5.1.tar.gz
+  url: https://sourceforge.net/projects/scons/files/scons/2.5.1/scons-2.5.1.tar.gz
 
 build:
   number: 0
