@@ -10,18 +10,18 @@ platform:
 
 environment:
   matrix:
-    - RECIPE: vcs
-    - RECIPE: python-scons
-    - RECIPE: python-parse
-    - RECIPE: libdev
-    - RECIPE: librun
-    - RECIPE: python-dev
-    - RECIPE: python-doc
-    # - RECIPE: python-pkg
-    - RECIPE: llvm
-    - RECIPE: clang
-    - RECIPE: python-clang
-    - RECIPE: libboost
+    - CONDA_RECIPE: vcs
+    - CONDA_RECIPE: python-scons
+    - CONDA_RECIPE: python-parse
+    - CONDA_RECIPE: libdev
+    - CONDA_RECIPE: librun
+    - CONDA_RECIPE: python-dev
+    - CONDA_RECIPE: python-doc
+    # - CONDA_RECIPE: python-pkg
+    - CONDA_RECIPE: llvm
+    - CONDA_RECIPE: clang
+    - CONDA_RECIPE: python-clang
+    - CONDA_RECIPE: libboost
 
 install:
   - git clone https://github.com/StatisKit/appveyor-ci.git
