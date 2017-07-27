@@ -12,7 +12,7 @@ except EnvironmentError:
 except Exception:
     raise
 try:
-  SConscript(os.path.join('conda', 'SConscript'), exports="env")
+  SConscript(os.path.join('bin', 'SConscript'), exports="env")
   # except EnvironmentError:
   #   pass
 except Exception:
