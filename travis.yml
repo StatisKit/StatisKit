@@ -15,25 +15,25 @@ services:
   - docker
   
 env:
-  # - RECIPE=glibc
-  # - RECIPE=gmp
-  # - RECIPE=mpfr
-  # - RECIPE=mpc
-  # - RECIPE=isl
-  # - RECIPE=binutils
-  # - RECIPE=gcc 
-  # - RECIPE=libgcc
-  - RECIPE=vcs
-  - RECIPE=python-scons
-  - RECIPE=python-parse
-  - RECIPE=libdev
-  - RECIPE=librun
-  - RECIPE=python-dev
-  - RECIPE=python-doc
-  - RECIPE=llvm
-  - RECIPE=clang
-  - RECIPE=python-clang
-  - RECIPE=libboost
+  # - CONDA_RECIPE=glibc
+  # - CONDA_RECIPE=gmp
+  # - CONDA_RECIPE=mpfr
+  # - CONDA_RECIPE=mpc
+  # - CONDA_RECIPE=isl
+  # - CONDA_RECIPE=binutils
+  # - CONDA_RECIPE=gcc 
+  # - CONDA_RECIPE=libgcc
+  - CONDA_RECIPE=vcs
+  - CONDA_RECIPE=python-scons
+  - CONDA_RECIPE=python-parse
+  - CONDA_RECIPE=libdev
+  - CONDA_RECIPE=librun
+  - CONDA_RECIPE=python-dev
+  - CONDA_RECIPE=python-doc
+  - CONDA_RECIPE=llvm
+  - CONDA_RECIPE=clang
+  - CONDA_RECIPE=python-clang
+  - CONDA_RECIPE=libboost
   - DOCKERFILE=ubuntu
     
 matrix:
@@ -42,7 +42,7 @@ matrix:
     env: DOCKERFILE=ubuntu
   allow_failures:
     - os: osx
-      env: RECIPE=llvm
+      env: CONDA_RECIPE=llvm
       
 install:
   - git clone https://github.com/StatisKit/travis-ci.git
@@ -53,10 +53,10 @@ before_script:
   - source before_script.sh
 
 script:
-  - if [[ "$RECIPE" = "libboost" && "$TRAVIS_OS_NAME" = "linux" ]]; then
+  - if [[ "$CONDA_RECIPE" = "libboost" && "$TRAVIS_OS_NAME" = "linux" ]]; then
       export TRAVIS_WAIT=true;
     fi
-  - if [[ "$RECIPE" = "libboost" && "$TRAVIS_OS_NAME" = "osx" ]]; then
+  - if [[ "$CONDA_RECIPE" = "libboost" && "$TRAVIS_OS_NAME" = "osx" ]]; then
       export TRAVIS_WAIT=30;
     fi
   - source script.sh
