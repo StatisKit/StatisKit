@@ -22,6 +22,13 @@ If you have a:
 
 * 64-bit Windows OS, download the following `installer <https://github.com/StatisKit/install-binaries/raw/master/win/64/user_install.exe>`_.
 
+
+  .. warning::
+  
+    Some unresolved problems in our usage **SCons** seem to prevent the compilation of source code on 64-bit Windows OSes.
+    The installation is therefore prone to failures.
+
+
 Then, click on the :code:`user_install.exe` installer or open a shell in the directory where the installer was downloaded and type
 
 .. code-block:: batch

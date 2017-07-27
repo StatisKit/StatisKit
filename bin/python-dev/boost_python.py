@@ -34,6 +34,7 @@ def generate(env):
             targets = list(itertools.chain(*[env.SharedObject(None, source) for source in sources  if source.suffix in ['.cpp', '.cxx', '.c++']]))
             sources = [source for source in sources if source.suffix == '.h']
             if len(sources) == 1 and not SYSTEM == 'win':
+                env.AppendUnique(CCFLAGS=['-Wno-attributes', '-Wno-deprecated-declarations'])
                 cmd = env.subst('$CXX') + ' -o $TARGET -x c++-header -c -fPIC ' + env.subst('$SHCXXFLAGS $_CCCOMCOM').replace('-x c++', '') + ' $SOURCE'
                 if SYSTEM == 'linux':
                     cmd = env.Command(sources[0].target_from_source('', '.h.gch'), sources[0], cmd)

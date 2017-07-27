@@ -100,6 +100,7 @@ def generate(env):
                     if package in CONDA_PACKAGES:
                         targets.extend(target)
                     for build in metadata.get('requirements', {}).get('build', []):
+                        build = build.split(" ")[0]
                         if build in packages:
                             archive = Path(subprocess.check_output([conda,
                                                                     'build',
