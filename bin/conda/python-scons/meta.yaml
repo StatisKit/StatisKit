@@ -25,6 +25,7 @@ test:
   files:
     - SConstruct
   commands:
+    - echo $SCONSFLAGS      [not win]
     - scons $SCONSFLAGS     [not win]
     - scons                 [not win]
 

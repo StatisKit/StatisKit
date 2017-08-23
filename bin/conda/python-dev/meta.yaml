@@ -11,7 +11,7 @@ about:
 
 requirements:
   build:
-    - python 2.7*
+    - python
     - libdev
     - setuptools
     - python-scons
@@ -21,7 +21,7 @@ requirements:
     - nose
     - coverage
   run:
-    - python 2.7*
+    - python
     - libdev
     - setuptools
     - python-scons

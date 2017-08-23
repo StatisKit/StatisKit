@@ -20,6 +20,6 @@ requirements:
     - xz                         [unix]
     - m2w64-xz           [py27 and win] 
   run:
-    - python 2.7*
+    - python
     - clang
     - path.py

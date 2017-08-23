@@ -11,11 +11,11 @@ about:
 
 requirements:
   build:
-    - python 2.7*
+    - python
     - sphinx
     - cmake
     - pillow
   run:
-    - python 2.7*
+    - python
     - sphinx
     - pillow

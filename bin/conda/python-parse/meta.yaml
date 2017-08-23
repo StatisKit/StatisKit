@@ -15,6 +15,6 @@ about:
 
 requirements:
   build:
-    - python 2.7*
+    - python
   run:
-    - python 2.7*
+    - python
