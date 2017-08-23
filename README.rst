@@ -1,5 +1,5 @@
-StatisKit: A Software Suite for Statistical Analyses
-####################################################
+**StatisKit**: A Software Suite for Statistical Analyses
+########################################################
 
 .. sidebar:: Summary
 
