@@ -33,7 +33,13 @@ env:
   - CONDA_RECIPE=python-parse
     PYTHON_VERSION=3
   - CONDA_RECIPE=libdev
+    PYTHON_VERSION=2
+  - CONDA_RECIPE=libdev
+    PYTHON_VERSION=3
   - CONDA_RECIPE=librun
+    PYTHON_VERSION=2
+  - CONDA_RECIPE=librun
+    PYTHON_VERSION=3
   - CONDA_RECIPE=python-dev
     PYTHON_VERSION=2
   - CONDA_RECIPE=python-dev
