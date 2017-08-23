@@ -73,7 +73,10 @@ matrix:
   allow_failures:
     - os: osx
       env: CONDA_RECIPE=llvm
-      
+           PYTHON_VERSION=2
+    - os: osx
+      env: CONDA_RECIPE=llvm
+           PYTHON_VERSION=3      
 install:
   - git clone https://github.com/StatisKit/travis-ci.git
   - cd travis-ci
