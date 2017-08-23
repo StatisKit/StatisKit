@@ -22,7 +22,7 @@ unset SCONSFLAGS
 unset SCONS_CONDAENV
 EOL
 
-if [[ "$PY3K" = "1"]]; then
+if [[ "$PY3K" = "1" ]]; then
     2to3 -n -w prefix.py
     2to3 -n -w system.py
     2to3 -n -w toolchain.py
