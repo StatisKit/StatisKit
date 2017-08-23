@@ -21,6 +21,7 @@ requirements:
     - python
     - pyyaml
     - path.py
+    - six
 test:
   files:
     - SConstruct

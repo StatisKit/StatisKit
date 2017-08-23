@@ -4,6 +4,7 @@ import subprocess
 from distutils.msvccompiler import get_build_version
 from sys import maxsize
 from SCons.Script import AddOption, GetOption
+import six
 
 def generate(env):
     """Add Builders and construction variables to the Environment."""
@@ -83,7 +84,10 @@ def generate(env):
               env.AppendUnique(CCFLAGS=['-ferror-limit=0'],
                                CXXFLAGS=['-stdlib=libc++'])
             else:
-              diagnostics_color = LooseVersion(subprocess.check_output(['gcc','-dumpversion']).strip()) >= LooseVersion('4.9') and not bool(int(os.environ.get('CONDA_BUILD', '0')))
+              GCC_VERSION = subprocess.check_output(['gcc','-dumpversion']).strip()
+              if six.PY3:
+                GCC_VERSION = GCC_VERSION.decode('ascii', 'ignore')
+              diagnostics_color = LooseVersion(GCC_VERSION) >= LooseVersion('4.9') and not bool(int(os.environ.get('CONDA_BUILD', '0')))
               DIAGNOSTICS_COLOR = env['DIAGNOSTICS_COLOR']
               env.AppendUnique(CCFLAGS=['-fmax-errors=0',
                                         '-Wl,--no-undefined',
