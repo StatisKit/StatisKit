@@ -2,8 +2,6 @@ set -ve
 
 python setup.py install --standard-lib --prefix=$PREFIX
 
-echo "done !"
-
 mkdir -p $PREFIX/etc/conda/activate.d
 mkdir -p $PREFIX/etc/conda/deactivate.d
 touch $PREFIX/etc/conda/activate.d/scons_vars.sh
@@ -23,11 +21,11 @@ unset SCONS_CONDAENV
 EOL
 
 if [[ "$PY3K" = "1" ]]; then
-    2to3 -n -w prefix.py
-    2to3 -n -w system.py
-    2to3 -n -w toolchain.py
-    2to3 -n -w conda.py
-    2to3 -n -w report.py
+    2to3 -n -w $RECIPE_DIR/prefix.py
+    2to3 -n -w $RECIPE_DIR/system.py
+    2to3 -n -w $RECIPE_DIR/toolchain.py
+    2to3 -n -w $RECIPE_DIR/conda.py
+    2to3 -n -w $RECIPE_DIR/report.py
 fi
 
 mkdir -p $SP_DIR/SCons/site_scons
