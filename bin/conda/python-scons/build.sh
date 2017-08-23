@@ -2,6 +2,8 @@ set -ve
 
 python setup.py install --standard-lib --prefix=$PREFIX
 
+echo "done !"
+
 mkdir -p $PREFIX/etc/conda/activate.d
 mkdir -p $PREFIX/etc/conda/deactivate.d
 touch $PREFIX/etc/conda/activate.d/scons_vars.sh
