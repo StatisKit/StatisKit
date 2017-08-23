@@ -37,9 +37,6 @@ env:
   - CONDA_RECIPE=libdev
     PYTHON_VERSION=3
   - CONDA_RECIPE=librun
-    PYTHON_VERSION=2
-  - CONDA_RECIPE=librun
-    PYTHON_VERSION=3
   - CONDA_RECIPE=python-dev
     PYTHON_VERSION=2
   - CONDA_RECIPE=python-dev
@@ -49,13 +46,7 @@ env:
   - CONDA_RECIPE=python-doc
     PYTHON_VERSION=3
   - CONDA_RECIPE=llvm
-    PYTHON_VERSION=2
-  - CONDA_RECIPE=llvm
-    PYTHON_VERSION=3
   - CONDA_RECIPE=clang
-    PYTHON_VERSION=2
-  - CONDA_RECIPE=clang
-    PYTHON_VERSION=3
   - CONDA_RECIPE=python-clang
     PYTHON_VERSION=2
   - CONDA_RECIPE=python-clang
