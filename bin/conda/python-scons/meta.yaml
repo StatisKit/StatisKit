@@ -1,21 +1,24 @@
 package:
   name: python-scons
-  version: "2.5.1"
+  version: 3.0.0
+  # version: "2.5.1"
 
 source:
-  fn: scons-2.5.1.tar.gz
-  url: https://sourceforge.net/projects/scons/files/scons/2.5.1/scons-2.5.1.tar.gz
+  fn: scons-3.0.0.alpha.20170614.tar.gz
+  url: https://test-files.pythonhosted.org/packages/91/83/c225fafff98fc60c63bfb362e122cccdc2699017366185fc6ebdf45b7963/scons-3.0.0.alpha.20170614.tar.gz
+  # fn: scons-2.5.1.tar.gz
+  # url: https://sourceforge.net/projects/scons/files/scons/2.5.1/scons-2.5.1.tar.gz
 
 build:
   number: 0
 
 requirements:
   build:
-    - python 2.7*
+    - python
     - pyyaml
     - path.py
   run:
-    - python 2.7*
+    - python
     - pyyaml
     - path.py
 test:

@@ -25,6 +25,9 @@ env:
   # - CONDA_RECIPE=libgcc
   - CONDA_RECIPE=vcs
   - CONDA_RECIPE=python-scons
+    PYTHON_VERSION=2.7
+  - CONDA_RECIPE=python-scons
+    PYTHON_VERSION=3.5
   - CONDA_RECIPE=python-parse
   - CONDA_RECIPE=libdev
   - CONDA_RECIPE=librun
