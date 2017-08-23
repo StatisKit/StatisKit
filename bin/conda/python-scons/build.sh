@@ -20,6 +20,14 @@ unset SCONSFLAGS
 unset SCONS_CONDAENV
 EOL
 
+if [[ "$PY3K" = "1"]]; then
+    2to3 -n -w prefix.py
+    2to3 -n -w system.py
+    2to3 -n -w toolchain.py
+    2to3 -n -w conda.py
+    2to3 -n -w report.py
+fi
+
 mkdir -p $SP_DIR/SCons/site_scons
 touch $SP_DIR/SCons/site_scons/__init__.py
 touch $SP_DIR/SCons/site_scons/site_init.py

@@ -24,7 +24,6 @@ about:
 
 requirements:
   build:
-    - libboost
     - libdev
     - cmake
     - zlib
