@@ -15,7 +15,7 @@ def generate(env, **kwargs):
       
       PYTHON_VERSION = sysconfig.get_python_version()
       SYSTEM = env['SYSTEM']
-      if PYTHON_VERSION == '2.7':
+      if PYTHON_VERSION in ['2.7', '3.6']:
           if SYSTEM == 'win':
               env.AppendUnique(LIBS = ['python' + PYTHON_VERSION.replace('.', '')],
                                CPPPATH = ['$PREFIX\..\include'])
