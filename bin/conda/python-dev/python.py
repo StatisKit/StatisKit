@@ -15,14 +15,15 @@ def generate(env, **kwargs):
       
       PYTHON_VERSION = sysconfig.get_python_version()
       SYSTEM = env['SYSTEM']
-      if PYTHON_VERSION in ['2.7', '3.6']:
-          if SYSTEM == 'win':
-              env.AppendUnique(LIBS = ['python' + PYTHON_VERSION.replace('.', '')],
-                               CPPPATH = ['$PREFIX\..\include'])
-          else:
-              env.AppendUnique(CPPPATH = ['$PREFIX/include/python' + PYTHON_VERSION,
-                                          '$PREFIX/include/python' + PYTHON_VERSION + 'm'],
-                               LIBS = ['python' + PYTHON_VERSION, 'python' + PYTHON_VERSION + 'm'])
+      if SYSTEM == 'win':
+          env.AppendUnique(LIBS = ['python' + PYTHON_VERSION.replace('.', '')],
+                           CPPPATH = ['$PREFIX\..\include'])
+      elif PYTHON_VERSION == '2.7':
+              env.AppendUnique(CPPPATH = ['$PREFIX/include/python' + PYTHON_VERSION],
+                               LIBS = ['python' + PYTHON_VERSION])
+      elif PYTHON_VERSION == '3.6':
+              env.AppendUnique(CPPPATH = ['$PREFIX/include/python' + PYTHON_VERSION + 'm'],
+                               LIBS = ['python' + PYTHON_VERSION + 'm'])
       else:
           raise NotImplementedError('Python ' + PYTHON_VERSION)
 
