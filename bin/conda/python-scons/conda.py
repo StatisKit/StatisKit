@@ -145,6 +145,8 @@ def generate(env):
         targets = []
         packages = list_packages(condaenv, sources)
         conda = conda_path(condaenv)
+        if six.PY3:
+            conda = conda.decode('ascii', 'ignore')
         if 'all' in CONDA_PACKAGES:
             CONDA_PACKAGES = [package for package in packages.iterkeys()] + [package for package in CONDA_PACKAGES if not package == 'all']
         CONDA_PREFIX = condaenv['ENV']['CONDA_PREFIX']
@@ -189,6 +191,9 @@ def generate(env):
         SYSTEM = condaenv['SYSTEM']
         CONDA_PACKAGES = condaenv['CONDA_PACKAGES']
         packages = list_packages(condaenv, sources)
+        conda = conda_path(condaenv)
+        if six.PY3:
+            conda = conda.decode('ascii', 'ignore')
         if 'all' in CONDA_PACKAGES:
             CONDA_PACKAGES = [package for package in packages.iterkeys()] + [package for package in CONDA_PACKAGES if not package == 'all']
         targets = []
