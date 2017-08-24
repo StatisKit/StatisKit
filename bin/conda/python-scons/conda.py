@@ -67,7 +67,7 @@ def generate(env):
         packages = dict()
         conda = conda_path(env)
         for recipe in recipes:
-            subprocess.check_output([conda, 'render', recipe, '-f', os.path.join(recipe, 'meta.yaml.rendered')]).
+            subprocess.check_output([conda, 'render', recipe, '-f', os.path.join(recipe, 'meta.yaml.rendered')])
             with open(os.path.join(recipe, 'meta.yaml.rendered'), 'r') as filehandler:
                 packages[yaml.load(filehandler)['package']['name']] = recipe
             os.unlink(os.path.join(recipe, 'meta.yaml.rendered'))
