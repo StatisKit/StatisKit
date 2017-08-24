@@ -23,7 +23,7 @@ env:
   # - CONDA_RECIPE=binutils
   # - CONDA_RECIPE=gcc 
   # - CONDA_RECIPE=libgcc
-  - CONDA_RECIPE=vcs
+  # - CONDA_RECIPE=vcs
   - CONDA_RECIPE=python-scons
     PYTHON_VERSION=2
   - CONDA_RECIPE=python-scons
