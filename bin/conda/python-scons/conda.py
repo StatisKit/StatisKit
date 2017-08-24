@@ -8,46 +8,54 @@ import yaml
 from SCons.Script import AddOption, GetOption
 import json
 import os
+import six
 
 def generate(env):
     """Add Builders and construction variables to the Environment."""
     if not 'conda' in env['TOOLS'][:-1]:
-      env.Tool('system')
+        env.Tool('system')
 
-      AddOption('--conda-channels',
-                dest = 'conda-channels',
-                type = 'string',
-                nargs = '+',
-                action = 'store',
-                help = 'Channels to use for Conda build and install',
-                default = ['statiskit', 'conda-forge'])
-      env['CONDA_CHANNELS'] = list(itertools.chain(*[['-c', channel] for channel in GetOption('conda-channels')]))
+        AddOption('--conda-channels',
+                  dest = 'conda-channels',
+                  type = 'string',
+                  nargs = '+',
+                  action = 'store',
+                  help = 'Channels to use for Conda build and install',
+                  default = ['statiskit', 'conda-forge'])
+        if six.PY2:
+            env['CONDA_CHANNELS'] = list(itertools.chain(*[['-c', channel] for channel in GetOption('conda-channels')]))
+        else:
+            env['CONDA_CHANNELS'] = list(itertools.chain(*[['-c', channel.decode('ascii', 'ignore')] for channel in GetOption('conda-channels')]))
 
-      AddOption('--conda-packages',
+        AddOption('--conda-packages',
                 dest = 'conda-packages',
                 type = 'string',
                 nargs = '+',
                 action = 'store',
                 help = 'Conda packages to build, install or upload',
                 default = ['all'])
-      env['CONDA_PACKAGES'] = GetOption('conda-packages')
+        env['CONDA_PACKAGES'] = GetOption('conda-packages')
 
-      AddOption('--anaconda-channel',
+        AddOption('--anaconda-channel',
                 dest = 'anaconda-channel',
                 type = 'string',
                 action = 'store',
                 help = 'Anaconda channel to use for upload',
                 default = '')
-      env['ANACONDA_CHANNEL'] = GetOption('anaconda-channel')
+        env['ANACONDA_CHANNEL'] = GetOption('anaconda-channel')
+        if six.PY3 and env['ANACONDA_CHANNEL']:
+            env['ANACONDA_CHANNEL'] = env['ANACONDA_CHANNEL'].decode('ascii', 'ignore')
 
-      AddOption('--anaconda-force',
+        AddOption('--anaconda-force',
                 dest = 'anaconda-force',
                 type = 'choice',
                 choices = ['yes', 'no'],
                 action = 'store',
                 help = 'Force upload to the Anaconda channel',
                 default = 'no')
-      env['ANACONDA_FORCE'] = GetOption('anaconda-force')
+        env['ANACONDA_FORCE'] = GetOption('anaconda-force')
+        if six.PY3 and not env['ANACONDA_CHANNEL'] == 'no':
+            env['ANACONDA_FORCE'] = env['ANACONDA_FORCE'].decode('ascii', 'ignore')
 
     def list_packages(env, sources):
         SYSTEM = env['SYSTEM']
@@ -59,7 +67,7 @@ def generate(env):
         packages = dict()
         conda = conda_path(env)
         for recipe in recipes:
-            subprocess.check_output([conda, 'render', recipe, '-f', os.path.join(recipe, 'meta.yaml.rendered')]).strip()
+            subprocess.check_output([conda, 'render', recipe, '-f', os.path.join(recipe, 'meta.yaml.rendered')]).
             with open(os.path.join(recipe, 'meta.yaml.rendered'), 'r') as filehandler:
                 packages[yaml.load(filehandler)['package']['name']] = recipe
             os.unlink(os.path.join(recipe, 'meta.yaml.rendered'))
