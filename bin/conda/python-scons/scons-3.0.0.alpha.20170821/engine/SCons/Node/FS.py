@@ -1550,7 +1550,7 @@ class Dir(Base):
 
         # For directories, we make a difference between the directory
         # 'name' and the directory 'dirname'. The 'name' attribute is
-        # used when we need to print the 'name' of the directory or
+        # used when we need to the 'name' of the directory or
         # when we it is used as the last part of a path. The 'dirname'
         # is used when the directory is not the last element of the
         # path. The main reason for making that distinction is that
@@ -2648,13 +2648,13 @@ class File(Base):
         # strip them; etc.)  Just sidestep all the complication by
         # explicitly stripping the BOM before we decode().
         if contents[:len(codecs.BOM_UTF8)] == codecs.BOM_UTF8:
-            return contents[len(codecs.BOM_UTF8):].decode('utf-8')
+            return contents[len(codecs.BOM_UTF8):].decode('utf-8', "ignore")
         if contents[:len(codecs.BOM_UTF16_LE)] == codecs.BOM_UTF16_LE:
-            return contents[len(codecs.BOM_UTF16_LE):].decode('utf-16-le')
+            return contents[len(codecs.BOM_UTF16_LE):].decode('utf-16-le', "ignore")
         if contents[:len(codecs.BOM_UTF16_BE)] == codecs.BOM_UTF16_BE:
-            return contents[len(codecs.BOM_UTF16_BE):].decode('utf-16-be')
+            return contents[len(codecs.BOM_UTF16_BE):].decode('utf-16-be', "ignore")
         try:
-            return contents.decode()
+            return contents.decode(errors='ignore')
         except (UnicodeDecodeError, AttributeError) as e:
             print(e)
             print('error')
