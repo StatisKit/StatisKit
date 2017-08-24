@@ -20,8 +20,9 @@ def generate(env, **kwargs):
               env.AppendUnique(LIBS = ['python' + PYTHON_VERSION.replace('.', '')],
                                CPPPATH = ['$PREFIX\..\include'])
           else:
-              env.AppendUnique(CPPPATH = ['$PREFIX/include/python' + PYTHON_VERSION],
-                               LIBS = ['python' + PYTHON_VERSION])
+              env.AppendUnique(CPPPATH = ['$PREFIX/include/python' + PYTHON_VERSION,
+                                          '$PREFIX/include/python' + PYTHON_VERSION + 'm'],
+                               LIBS = ['python' + PYTHON_VERSION, 'python' + PYTHON_VERSION + 'm'])
       else:
           raise NotImplementedError('Python ' + PYTHON_VERSION)
 
