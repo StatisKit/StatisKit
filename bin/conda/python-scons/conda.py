@@ -22,10 +22,10 @@ def generate(env):
                   action = 'store',
                   help = 'Channels to use for Conda build and install',
                   default = ['statiskit', 'conda-forge'])
-        if six.PY2:
-            env['CONDA_CHANNELS'] = list(itertools.chain(*[['-c', channel] for channel in GetOption('conda-channels')]))
-        else:
-            env['CONDA_CHANNELS'] = list(itertools.chain(*[['-c', channel.decode('ascii', 'ignore')] for channel in GetOption('conda-channels')]))
+        # if six.PY2:
+        env['CONDA_CHANNELS'] = list(itertools.chain(*[['-c', channel] for channel in GetOption('conda-channels')]))
+        # else:
+        #     env['CONDA_CHANNELS'] = list(itertools.chain(*[['-c', channel.decode('ascii', 'ignore')] for channel in GetOption('conda-channels')]))
 
         AddOption('--conda-packages',
                 dest = 'conda-packages',
@@ -54,8 +54,8 @@ def generate(env):
                 help = 'Force upload to the Anaconda channel',
                 default = 'no')
         env['ANACONDA_FORCE'] = GetOption('anaconda-force')
-        if six.PY3 and not env['ANACONDA_CHANNEL'] == 'no':
-            env['ANACONDA_FORCE'] = env['ANACONDA_FORCE'].decode('ascii', 'ignore')
+        # if six.PY3 and not env['ANACONDA_CHANNEL'] == 'no':
+        #     env['ANACONDA_FORCE'] = env['ANACONDA_FORCE'].decode('ascii', 'ignore')
 
     def list_packages(env, sources):
         SYSTEM = env['SYSTEM']
