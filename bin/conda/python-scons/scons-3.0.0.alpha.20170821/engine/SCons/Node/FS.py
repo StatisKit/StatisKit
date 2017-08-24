@@ -2656,8 +2656,8 @@ class File(Base):
         try:
             return contents.decode()
         except (UnicodeDecodeError, AttributeError) as e:
-            print 'error'
-            print contents
+            print('error')
+            print(contents)
             return contents
 
 
