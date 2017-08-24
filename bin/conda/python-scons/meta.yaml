@@ -4,7 +4,7 @@ package:
   # version: "2.5.1"
 
 source:
-  path: scons-3.0.0.alpha.20170614
+  path: scons-3.0.0.alpha.20170821
   # fn: scons-3.0.0.alpha.20170614.tar.gz
   # url: https://test-files.pythonhosted.org/packages/91/83/c225fafff98fc60c63bfb362e122cccdc2699017366185fc6ebdf45b7963/scons-3.0.0.alpha.20170614.tar.gz
   # fn: scons-2.5.1.tar.gz
