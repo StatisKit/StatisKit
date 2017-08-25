@@ -5,6 +5,8 @@
 # mv cfe-3.8.1.src clang
 # cd ..
 
+sed -i -e 's/*B0/*BB0/g' $SRC_DIR/include/clang/Analysis/Analyses/ThreadSafetyTraverse.h
+
 mkdir build_clang
 cd build_clang
 if [ -n "$MACOSX_DEPLOYMENT_TARGET" ]; then
