@@ -15,6 +15,7 @@ about:
 
 requirements:
   build:
+    - python
     - python-dev
     - zlib
     - xz                         [unix]
