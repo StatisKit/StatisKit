@@ -17,7 +17,7 @@ def generate(env, **kwargs):
                   nargs   = 1,
                   action  = 'store',
                   help    = 'system',
-                  choices = SYSTEMS.values(),
+                  choices = list(SYSTEMS.values()),
                   default = system)
     env['SYSTEM'] = GetOption('system')
     if env['SYSTEM'] == 'unknown':
