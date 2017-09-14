@@ -65,13 +65,12 @@ env:
 matrix:
   exclude:
     - os: osx
-      env: 
-        - DOCKERFILE=ubuntu
-        - CONDA_VERSION=2
+      env: DOCKERFILE=ubuntu
+           CONDA_VERSION=2
     - os: osx
-      env: 
-        - DOCKERFILE=ubuntu
-        - CONDA_VERSION=3
+      env: DOCKERFILE=ubuntu
+           CONDA_VERSION=3
+           
   allow_failures:
     - os: osx
       env: CONDA_RECIPE=llvm
