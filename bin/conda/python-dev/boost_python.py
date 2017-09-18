@@ -24,7 +24,10 @@ def generate(env):
             while os.path.exists(os.path.join(parent, '__init__.py')):
                 parents.append(os.path.basename(parent))
                 parent = os.path.dirname(parent)
-            target = os.path.join(os.path.join(*reversed(parents)), os.path.basename(target))
+            if parents:
+                target = os.path.join(os.path.join(*reversed(parents)), os.path.basename(target))
+            else:
+                target = os.path.basename(target)
             if not SYSTEM == 'win':
                 target += '.so'
                 target = env.File(os.path.join(SP_DIR, target))
