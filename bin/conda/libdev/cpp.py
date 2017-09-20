@@ -11,7 +11,10 @@ def generate(env):
         def CppDev(env, target, sources):
             # Code to build "target" from "source"
             SYSTEM = env['SYSTEM']
-            return env.Install(os.path.join(env['PREFIX'], "include", *target.split('_')), sources)
+            if isinstance(target, (list, tuple)):
+                return env.Install(os.path.join(env['PREFIX'], "include", *target), sources)
+            else:
+                return env.Install(os.path.join(env['PREFIX'], "include", target), sources)
 
         env.AddMethod(CppDev)
 

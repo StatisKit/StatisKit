@@ -47,16 +47,26 @@ def generate(env):
                           help    = 'MSVC version',
                           default = '12.0') # str(get_build_version()))
             env['MSVC_VERSION'] = GetOption('msvc-version')
-        elif SYSTEM == 'linux':
-            AddOption('--diagnostics-color',
-                  dest    = 'diagnostics-color',
-                  type    = 'choice',
-                  nargs   = 1,
-                  action  = 'store',
-                  help    = 'Diagnostics color',
-                  default = 'always',
-                  choices=['always', 'never'])
-            env['DIAGNOSTICS_COLOR'] = GetOption('diagnostics-color')
+        else:
+            AddOption('--visbility',
+                dest = 'visibility',
+                type = 'choice',
+                nargs = 1,
+                action = 'store',
+                help = 'Symbol visibility',
+                choices = ['hidden', 'default'],
+                default = 'hidden')
+            env['VISIBILITY'] = GetOption('visibility')
+            if SYSTEM == 'linux':
+                AddOption('--diagnostics-color',
+                      dest    = 'diagnostics-color',
+                      type    = 'choice',
+                      nargs   = 1,
+                      action  = 'store',
+                      help    = 'Diagnostics color',
+                      default = 'always',
+                      choices=['always', 'never'])
+                env['DIAGNOSTICS_COLOR'] = GetOption('diagnostics-color')
         env.Tool('default')
         env.Tool('prefix')
         if SYSTEM == 'win':
@@ -74,9 +84,11 @@ def generate(env):
             env.PrependUnique(LIBPATH=['$PREFIX\lib',
                                        '$PREFIX\..\libs'])
         else:
+            VISIBILITY = env['VISIBILITY']
             env.PrependUnique(CPPPATH=['$PREFIX/include'],
                               LIBPATH=['$PREFIX/lib'],
                               CFLAGS=["-x", "c", "-std=c11"],
+                              CCFLAGS=['-fvisibility=' + VISIBILITY],
                               CXXFLAGS=["-x", "c++", "-std=c++11"])
             if ARCH == '32':
               env.AppendUnique(CCFLAGS=['-m32'])
@@ -90,8 +102,7 @@ def generate(env):
               diagnostics_color = LooseVersion(GCC_VERSION) >= LooseVersion('4.9') and not bool(int(os.environ.get('CONDA_BUILD', '0')))
               DIAGNOSTICS_COLOR = env['DIAGNOSTICS_COLOR']
               env.AppendUnique(CCFLAGS=['-fmax-errors=0',
-                                        '-Wl,--no-undefined',
-                                        '-fvisibility=hidden'] + ['-fdiagnostics-color=' + DIAGNOSTICS_COLOR] * diagnostics_color)
+                                        '-Wl,--no-undefined'] + ['-fdiagnostics-color=' + DIAGNOSTICS_COLOR] * diagnostics_color)
 
 def exists(env):
     return 1
