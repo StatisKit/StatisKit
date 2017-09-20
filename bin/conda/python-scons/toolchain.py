@@ -48,7 +48,7 @@ def generate(env):
                           default = '12.0') # str(get_build_version()))
             env['MSVC_VERSION'] = GetOption('msvc-version')
         else:
-            AddOption('--visbility',
+            AddOption('--visibility',
                 dest = 'visibility',
                 type = 'choice',
                 nargs = 1,
