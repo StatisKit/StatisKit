@@ -116,9 +116,10 @@ def generate(env):
                     if path:
                         dirpath = env.Dir('.').abspath
                         path = Path(env.Dir('.').abspath)/recipe/path/'src'
+                        if not path.exists():
+                            path = path.parent
                         for filepath in path.walkfiles():
                             condaenv.Depends(target, filepath)
-
                 else:
                     skip = True
             os.unlink(os.path.join(recipe, 'meta.yaml.rendered'))
