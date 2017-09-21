@@ -54,7 +54,7 @@ def generate(env):
                     return targets
             else:
                 if not WITH_NOSE_DEBUG == 'none':
-                    FLAGS += ' --' + WITH_NOSE_DEBUG + '-failures'
+                    FLAGS += ' --' + WITH_NOSE_DEBUG + ' --' + WITH_NOSE_DEBUG + '-failures'
                 if len(sources) > 0:
                     target = noseenv.Command(".coverage", sources, "nosetests $SOURCES" + FLAGS)
                     return target
