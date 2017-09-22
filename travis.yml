@@ -24,7 +24,7 @@ env:
   - CONDA_RECIPE=glibc
   - CONDA_RECIPE=linux-headers
   - CONDA_RECIPE=gcc
-    TRAVIS_WAIT=40
+    TRAVIS_WAIT=50
   # - CONDA_RECIPE=libgcc
   # - CONDA_RECIPE=vcs
   # - CONDA_RECIPE=python-scons
