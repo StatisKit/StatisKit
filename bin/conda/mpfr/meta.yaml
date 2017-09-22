@@ -1,10 +1,10 @@
 package:
   name: mpfr
-  version: "3.1.2"
+  version: "3.1.4"
 
 source:
-  fn: mpfr-3.1.2.tar.bz2
-  url: https://ftp.gnu.org/gnu/mpfr/mpfr-3.1.2.tar.bz2
+  fn: mpfr-3.1.4.tar.bz2
+  url: https://ftp.gnu.org/gnu/mpfr/mpfr-3.1.4.tar.bz2
   # url: http://www.mpfr.org/mpfr-3.1.2/mpfr-3.1.2.tar.bz2
   #md5: 8cb9c412e5f2d96bc6f459aa8c6282a1
 
@@ -15,10 +15,10 @@ build:
   
 requirements:
   build:
-    - gmp
+    - gmp >=6.1.0
     
   run:
-    - gmp
+    - gmp >=6.1.0
 
 about:
   home: http://www.mpfr.org/

@@ -12,9 +12,9 @@ build:
 
 requirements:
   build:
-    - gmp >=5.0.2
-    - isl
+    - gmp >=6.1.0
+    - isl >=0.16.1
 
   run:
-    - gmp
-    - isl
+    - gmp >=6.1.0
+    - isl >=0.16.1

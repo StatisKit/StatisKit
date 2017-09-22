@@ -1,10 +1,10 @@
 package:
   name: isl
-  version: 0.12.2
+  version: 0.16.1
 
 source:
-  fn: isl-0.12.2.tar.bz2
-  url: ftp://gcc.gnu.org/pub/gcc/infrastructure/isl-0.12.2.tar.bz2
+  fn: isl-0.16.1.tar.bz2
+  url: ftp://gcc.gnu.org/pub/gcc/infrastructure/isl-0.16.1.tar.bz2
   sha1: ca98a91e35fb3ded10d080342065919764d6f928
 
 build:
@@ -12,9 +12,9 @@ build:
   detect_binary_files_with_prefix: True
 requirements:
   build:
-    - gmp
+    - gmp >=6.1.0
   run:
-    - gmp
+    - gmp >=6.1.0
 
 about:
   license: MIT
