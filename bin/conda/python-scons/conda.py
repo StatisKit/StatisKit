@@ -115,11 +115,11 @@ def generate(env):
                     path = metadata.get('source', {}).get('path', None)
                     if path:
                         dirpath = env.Dir('.').abspath
-                        path = Path(env.Dir('.').abspath)/recipe/path/'src'
-                        if not path.exists():
-                            path = path.parent
+                        path = Path(env.Dir('.').abspath)/recipe/path
+                        forbidden = [file.abspath() for file in path.walkfiles()]
                         for filepath in path.walkfiles():
-                            condaenv.Depends(target, filepath)
+                            if not filepath in forbidden and not filepath.basename() == 'meta.yaml.rendered':
+                                condaenv.Depends(target, filepath)
                 else:
                     skip = True
             os.unlink(os.path.join(recipe, 'meta.yaml.rendered'))

@@ -15,13 +15,15 @@ services:
   - docker
   
 env:
-  # - CONDA_RECIPE=glibc
-  # - CONDA_RECIPE=gmp
-  # - CONDA_RECIPE=mpfr
-  # - CONDA_RECIPE=mpc
-  # - CONDA_RECIPE=isl
-  # - CONDA_RECIPE=binutils
-  # - CONDA_RECIPE=gcc 
+  - CONDA_RECIPE=gmp
+  - CONDA_RECIPE=mpfr
+  - CONDA_RECIPE=mpc
+  - CONDA_RECIPE=isl
+  - CONDA_RECIPE=cloog
+  - CONDA_RECIPE=binutils
+  - CONDA_RECIPE=glibc
+  - CONDA_RECIPE=linux-headers
+  - CONDA_RECIPE=gcc 
   # - CONDA_RECIPE=libgcc
   - CONDA_RECIPE=vcs
   - CONDA_RECIPE=python-scons
@@ -70,10 +72,13 @@ matrix:
     - os: osx
       env: DOCKERFILE=ubuntu
            CONDA_VERSION=3
-           
+    - os: osx
+      env: CONDA_RECIPE=glibc
+    - os: osx
+      env: CONDA_RECIPE=glibc
   allow_failures:
     - os: osx
-      env: CONDA_RECIPE=llvm
+      env: CONDA_RECIPE=linux-headers
          
 install:
   - git clone https://github.com/StatisKit/travis-ci.git
