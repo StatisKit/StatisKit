@@ -15,7 +15,7 @@ services:
   - docker
   
 env:
-  - CONDA_RECIPE=binutils
+  # - CONDA_RECIPE=binutils
   - CONDA_RECIPE=gmp
   - CONDA_RECIPE=mpfr
   - CONDA_RECIPE=mpc
