@@ -15,12 +15,12 @@ services:
   - docker
   
 env:
+  - CONDA_RECIPE=binutils
   - CONDA_RECIPE=gmp
   - CONDA_RECIPE=mpfr
   - CONDA_RECIPE=mpc
   - CONDA_RECIPE=isl
   - CONDA_RECIPE=cloog
-  - CONDA_RECIPE=binutils
   - CONDA_RECIPE=glibc
   - CONDA_RECIPE=linux-headers
   - CONDA_RECIPE=gcc

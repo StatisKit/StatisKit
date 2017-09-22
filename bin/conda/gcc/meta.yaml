@@ -5,7 +5,7 @@ package:
 source:
   fn: gcc-7.1.1-20170718.tar.bz2
   url: http://pkgs.fedoraproject.org/repo/pkgs/cross-gcc/gcc-7.1.1-20170718.tar.bz2/sha512/727b48bdcbee6b52ec8c64c930d4c1f714b35ffb7df25a9e548b53f5c7dfc5ecafcd82c2bfa04dc3a2ad5f939de196c3775b54bee2b608155eecc656242ed445/gcc-7.1.1-20170718.tar.bz2
-  md5: 727b48bdcbee6b52ec8c64c930d4c1f714b35ffb7df25a9e548b53f5c7dfc5ecafcd82c2bfa04dc3a2ad5f939de196c3775b54bee2b608155eecc656242ed445
+  md5: 1c99ce9a6dbcdcfa9de79b32347296b8
   # fn: gcc-4.8.2-20140120.tar.bz2
   # url: http://pkgs.fedoraproject.org/repo/pkgs/cross-gcc/gcc-4.8.2-20140120.tar.bz2/9f699b42394bd2754d9f77427553d923/gcc-4.8.2-20140120.tar.bz2
   # md5: 9f699b42394bd2754d9f77427553d923
@@ -16,6 +16,7 @@ build:
 requirements:
   build:
     # These are taken from the output of the configure scripts
+    - flex
     - gmp >=6.1.0
     - mpfr >=3.1.4
     - mpc >=1.0.3
