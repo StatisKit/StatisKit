@@ -1,0 +1,23 @@
+package:
+  name: python-statiskit_scons
+  version: "1.0.0"
+
+source:
+  path: .
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - python
+  run:
+    - python
+    - python-scons
+    - path.py
+
+about:
+  home: http://statiskit.rtfd.io/
+  license: Apache License 2.0
+  summary: SCons Tools for the StatisKit Software Suite
+

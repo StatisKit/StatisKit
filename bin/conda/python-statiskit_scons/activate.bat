@@ -1,0 +1,1 @@
+set SCONSFLAGS=--site-dir=%CONDA_PREFIX:/=\%\Lib\site-packages\statiskit_scons

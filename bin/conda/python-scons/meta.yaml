@@ -1,7 +1,6 @@
 package:
   name: python-scons
-  version: 3.0.0
-  # version: "2.5.1"
+  version: "3.0.0"
 
 source:
   path: scons-3.0.0.alpha.20170821
@@ -16,22 +15,10 @@ build:
 requirements:
   build:
     - python
-    - pyyaml
-    - path.py
   run:
     - python
-    - pyyaml
-    - path.py
-    - six
-test:
-  files:
-    - SConstruct
-  commands:
-    - echo $SCONSFLAGS      [not win]
-    - scons $SCONSFLAGS     [not win]
-    - scons                 [not win]
 
 about:
   home: http://www.scons.org/
   license: MIT
-  summary: 'Open Source next-generation build tool.'
+  summary: Open Source next-generation build tool.
