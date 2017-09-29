@@ -9,6 +9,9 @@ copy %RECIPE_DIR%\deactivate.bat %PREFIX%\etc\conda\activate.d\statiskit_scons_v
 set TGT_DIR=scons_tools
 mkdir %SP_DIR%\%TGT_DIR%
 type NUL > %SP_DIR%\%TGT_DIR%\__init__.py
+set TGT_DIR=%TGT_DIR%\site_tools
+mkdir %SP_DIR%\%TGT_DIR%
+type NUL > %SP_DIR%\%TGT_DIR%\__init__.py
 
 for /r %%i in (*) do (
     if "%PY3K%" == "1" (

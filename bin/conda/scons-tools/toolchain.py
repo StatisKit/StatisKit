@@ -1,7 +1,6 @@
 import os
 from distutils.version import LooseVersion
 import subprocess
-from distutils.msvccompiler import get_build_version
 from sys import maxsize
 from SCons.Script import AddOption, GetOption
 import six
@@ -45,7 +44,7 @@ def generate(env):
                           nargs   = 1,
                           action  = 'store',
                           help    = 'MSVC version',
-                          default = '12.0') # str(get_build_version()))
+                          default = '12.0')
             env['MSVC_VERSION'] = GetOption('msvc-version')
         else:
             AddOption('--visibility',
