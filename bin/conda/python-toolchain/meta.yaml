@@ -22,6 +22,7 @@ requirements:
     - sphinx
     - cmake
     - pillow
+    - libtoolchain
   run:
     - python
     - setuptools
