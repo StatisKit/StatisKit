@@ -1,5 +1,5 @@
 package:
-  name: python-dev
+  name: python-toolchain
   version: "1.0.0"
     
 build:
@@ -12,21 +12,24 @@ about:
 requirements:
   build:
     - python
-    - libdev
     - setuptools
-    - python-scons
+    - scons-tools
     - path.py
     - pywin32                      [win]
     - pyyaml
     - nose
     - coverage
+    - sphinx
+    - cmake
+    - pillow
   run:
     - python
-    - libdev
     - setuptools
-    - python-scons
+    - scons-tools
     - path.py
     - pywin32                      [win]
     - pyyaml
     - nose
     - coverage
+    - sphinx
+    - pillow

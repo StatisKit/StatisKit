@@ -1,1 +1,0 @@
-export SCONSFLAGS="--site-dir=`python -c "import statiskit_scons; print(statiskit_scons.__path__[0])"`"

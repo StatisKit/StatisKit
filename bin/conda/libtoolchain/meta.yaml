@@ -1,5 +1,5 @@
 package:
-  name: libdev
+  name: libtoolchain
   version: "1.0.0"
     
 build:
@@ -17,7 +17,7 @@ about:
 requirements:
   build:
     - python
-    - python-scons
+    - scons-tools
     - pywin32             [win]
     # - vs2008_runtime      [win and py27]
     # - vs2010_runtime      [win and py34]
@@ -25,7 +25,7 @@ requirements:
     - vs2015_runtime      [win]
   run:
     - python
-    - python-scons
+    - scons-tools
     - pywin32             [win]
     # - vs2008_runtime      [win and py27]
     # - vs2010_runtime      [win and py34]

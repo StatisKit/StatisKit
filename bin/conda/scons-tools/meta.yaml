@@ -1,5 +1,5 @@
 package:
-  name: python-statiskit_scons
+  name: scons-tools
   version: "1.0.0"
 
 source:
@@ -15,6 +15,8 @@ requirements:
     - python
     - python-scons
     - path.py
+    - six
+    - pyyaml
 
 about:
   home: http://statiskit.rtfd.io/

@@ -1,1 +1,0 @@
-set SCONSFLAGS=--site-dir=%CONDA_PREFIX:/=\%\Lib\site-packages\SCons\site_scons

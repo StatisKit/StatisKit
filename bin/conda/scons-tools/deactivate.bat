@@ -1,1 +1,2 @@
+set SP_DIR=
 set SCONSFLAGS=

@@ -1,8 +1,0 @@
-env = Environment(tools = ['prefix',
-                           'system',
-                           'toolchain'])
-          
-if 'PREFIX' not in env:
-    raise Exception('Installation of the \'prefix\' tool failed !')   
-if 'SYSTEM' not in env:
-    raise Exception('Installation of the \'system\' tool failed !')

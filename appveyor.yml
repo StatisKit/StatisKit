@@ -15,27 +15,23 @@ environment:
       CONDA_VERSION: 2
     - CONDA_RECIPE: python-scons
       CONDA_VERSION: 3
-    - CONDA_RECIPE: python-statiskit_scons
+    - CONDA_RECIPE: scons-tools
       CONDA_VERSION: 2
-    - CONDA_RECIPE: python-statiskit_scons
+    - CONDA_RECIPE: scons-tools
       CONDA_VERSION: 3
     # - CONDA_RECIPE: python-parse
     #   CONDA_VERSION: 2
     # - CONDA_RECIPE: python-parse
     #   CONDA_VERSION: 3
-    # - CONDA_RECIPE: libdev
-    #   CONDA_VERSION: 2
-    # - CONDA_RECIPE: libdev
-    #   CONDA_VERSION: 3
-    # - CONDA_RECIPE: librun
-    # - CONDA_RECIPE: python-dev
-    #   CONDA_VERSION: 2
-    # - CONDA_RECIPE: python-dev
-    #   CONDA_VERSION: 3
-    # - CONDA_RECIPE: python-doc
-    #   CONDA_VERSION: 2
-    # - CONDA_RECIPE: python-doc
-    #   CONDA_VERSION: 3
+    - CONDA_RECIPE: libtoolchain
+      CONDA_VERSION: 2
+    - CONDA_RECIPE: libtoolchain
+      CONDA_VERSION: 3
+    - CONDA_RECIPE: libruntime
+    - CONDA_RECIPE: python-toolchain
+      CONDA_VERSION: 2
+    - CONDA_RECIPE: python-toolchain
+      CONDA_VERSION: 3
     # - CONDA_RECIPE: llvm
     # - CONDA_RECIPE: clang
     # - CONDA_RECIPE: python-clang

@@ -8,7 +8,7 @@ def generate(env, **kwargs):
                    Windows = "win")
     system = str(platform.system())
     if not system in SYSTEMS:
-      system = "unknown"
+        raise ValueError('`' + system + '` is not a valid operating system')
     else:
       system = SYSTEMS[system]
     AddOption('--system',
@@ -20,8 +20,6 @@ def generate(env, **kwargs):
                   choices = list(SYSTEMS.values()),
                   default = system)
     env['SYSTEM'] = GetOption('system')
-    if env['SYSTEM'] == 'unknown':
-    	raise ValueError('Unknown system')
 
 def exists(env):
     return 1
