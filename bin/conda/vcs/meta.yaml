@@ -9,10 +9,10 @@ build:
 
 about:
   home: http://statiskit.readthedocs.io
-  license: CeCILL
+  license: Apache License 2.0
 
 requirements:
   build:
-    - git
+    - gitflow
   run:
-    - git
+    - gitflow

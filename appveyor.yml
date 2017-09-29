@@ -10,7 +10,8 @@ platform:
 
 environment:
   matrix:
-    # - CONDA_RECIPE: vcs
+    - CONDA_RECIPE: gitflow
+    - CONDA_RECIPE: vcs
     - CONDA_RECIPE: python-scons
       CONDA_VERSION: 2
     - CONDA_RECIPE: python-scons

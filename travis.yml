@@ -26,7 +26,8 @@ env:
   # - CONDA_RECIPE=gcc
   #   TRAVIS_WAIT=50
   # - CONDA_RECIPE=libgcc
-  # - CONDA_RECIPE=vcs
+  - CONDA_RECIPE=gitflow
+  - CONDA_RECIPE=vcs
   - CONDA_RECIPE=python-scons
     CONDA_VERSION=2
   - CONDA_RECIPE=python-scons
