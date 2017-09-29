@@ -8,7 +8,7 @@ cp $RECIPE_DIR/deactivate.sh $PREFIX/etc/conda/activate.d/scons_vars.sh
 
 export TGT_DIR=scons_tools
 mkdir $SP_DIR/$TGT_DIR
-touch SP_DIR/$TGT_DIR/__init__.py
+touch $SP_DIR/$TGT_DIR/__init__.py
 
 for SCONS_TOOL in `ls *.py`; do
     if [[ "$PY3K" = "1" ]]; then
