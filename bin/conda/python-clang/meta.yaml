@@ -16,7 +16,7 @@ about:
 requirements:
   build:
     - python
-    - python-dev
+    - python-toolchain
     - zlib
     - xz                         [unix]
     - m2w64-xz                   [win] 
