@@ -16,7 +16,7 @@ about:
 requirements:
   build:
     - python
-    - libdev
+    - libtoolchain
     - python
     - icu 58.*          [unix]
     - bzip2             [unix]
@@ -25,4 +25,4 @@ requirements:
     - python
     - icu 58.*          [unix]
     - zlib
-    - librun
+    - libruntime
