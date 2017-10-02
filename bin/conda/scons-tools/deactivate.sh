@@ -1,2 +1,2 @@
-unset SP_DIR
+unset STK_SP_DIR
 unset SCONSFLAGS

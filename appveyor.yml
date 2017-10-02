@@ -16,10 +16,10 @@ environment:
     #   CONDA_VERSION: 2
     # - CONDA_RECIPE: python-scons
     #   CONDA_VERSION: 3
-    # - CONDA_RECIPE: scons-tools
-    #   CONDA_VERSION: 2
-    # - CONDA_RECIPE: scons-tools
-    #   CONDA_VERSION: 3
+    - CONDA_RECIPE: scons-tools
+      CONDA_VERSION: 2
+    - CONDA_RECIPE: scons-tools
+      CONDA_VERSION: 3
     # # - CONDA_RECIPE: python-parse
     # #   CONDA_VERSION: 2
     # # - CONDA_RECIPE: python-parse
@@ -33,8 +33,8 @@ environment:
     #   CONDA_VERSION: 2
     # - CONDA_RECIPE: python-toolchain
     #   CONDA_VERSION: 3
-    - CONDA_RECIPE: llvm
-    - CONDA_RECIPE: clang
+    # - CONDA_RECIPE: llvm
+    # - CONDA_RECIPE: clang
     - CONDA_RECIPE: python-clang
       CONDA_VERSION: 2
     # - CONDA_RECIPE: python-clang
