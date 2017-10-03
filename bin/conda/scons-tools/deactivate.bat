@@ -1,1 +1,1 @@
-set SCONSFLAGS=
+set SITE_SCONS=

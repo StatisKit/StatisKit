@@ -1,1 +1,1 @@
-unset SCONSFLAGS
+unset SITE_SCONS
