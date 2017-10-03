@@ -1,2 +1,1 @@
-set STK_SP_DIR=
 set SCONSFLAGS=

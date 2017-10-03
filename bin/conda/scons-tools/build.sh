@@ -1,10 +1,10 @@
 set -ve
 
 mkdir -p $PREFIX/etc/conda/activate.d
-cp $RECIPE_DIR/activate.sh $PREFIX/etc/conda/activate.d/scons_vars.sh
+cp $RECIPE_DIR/activate.sh $PREFIX/etc/conda/activate.d/scons_tools_vars.sh
 
 mkdir -p $PREFIX/etc/conda/deactivate.d
-cp $RECIPE_DIR/deactivate.sh $PREFIX/etc/conda/deactivate.d/scons_vars.sh
+cp $RECIPE_DIR/deactivate.sh $PREFIX/etc/conda/deactivate.d/scons_tools_vars.sh
 
 export TGT_DIR=scons_tools
 mkdir $SP_DIR/$TGT_DIR
