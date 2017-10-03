@@ -14,11 +14,11 @@ set TGT_DIR=%TGT_DIR%\site_tools
 mkdir %SP_DIR%\%TGT_DIR%
 type NUL > %SP_DIR%\%TGT_DIR%\__init__.py
 
-for /r %%i in (*) do (
+for /r %%i in (*.py) do (
     if "%PY3K%" == "1" (
         2to3 -n -w %%i
     )
-    copy %%i %SP_DIR%\%TGT_DIR%\%%~ni
+    copy %%i %SP_DIR%\%TGT_DIR%\%%~ni%%~xi
 )
 
 echo OFF
