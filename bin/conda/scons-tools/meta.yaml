@@ -23,3 +23,10 @@ about:
   license: Apache License 2.0
   summary: SCons Tools for the StatisKit Software Suite
 
+test:
+  files:
+    - SConstruct
+  commands:
+    - scons -h
+    - scons
+
