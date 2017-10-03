@@ -1,0 +1,9 @@
+Environment(tools = ['system',
+                     'toolchain',
+                     'conda',
+                     'cpp',
+                     'debug',
+                     'nose',
+                     'openmp',
+                     'python',
+                     'boost_python'])
