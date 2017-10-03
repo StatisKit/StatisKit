@@ -18,7 +18,7 @@ for /r %%i in (*) do (
     if "%PY3K%" == "1" (
         2to3 -n -w %%i
     )
-    copy %%i %SP_DIR%\%TGT_DIR%\%%i
+    copy %%i %SP_DIR%\%TGT_DIR%\%%~ni
 )
 
 echo OFF
