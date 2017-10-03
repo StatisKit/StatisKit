@@ -23,13 +23,12 @@ about:
   license: Apache License 2.0
   summary: SCons Tools for the StatisKit Software Suite
 
-test:                   [not win]
-  files:                [not win]
-    - SConstruct        [not win]
-  commands:             [not win]
-    - echo "TESTING..." [not win]
+test:
+  files:
+    - SConstruct
+  commands:
     - echo $SCONSFLAGS  [not win]
-    - echo %SCONSFLAGS% [not win]
-    - scons -h          [not win]
-    - scons             [not win]
+    - echo %SCONSFLAGS%     [win]
+    - scons -h
+    - scons
 
