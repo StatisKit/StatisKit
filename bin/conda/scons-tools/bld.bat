@@ -21,4 +21,23 @@ for /r %%i in (*.py) do (
     copy %%i %SP_DIR%\%TGT_DIR%\%%~ni%%~xi
 )
 
+mkdir %SP_DIR%\scons_tools\site_autowig
+if errorlevel 1 exit 1
+type NUL > %SP_DIR%\scons_tools\site_autowig\__init__.py
+if errorlevel 1 exit 1
+mkdir %SP_DIR%\scons_tools\site_autowig\ASG
+if errorlevel 1 exit 1
+mkdir %SP_DIR%\scons_tools\site_autowig\parser
+if errorlevel 1 exit 1
+type NUL > %SP_DIR%\scons_tools\site_autowig\parser\__init__.py
+if errorlevel 1 exit 1
+mkdir %SP_DIR%\scons_tools\site_autowig\controller
+if errorlevel 1 exit 1
+type NUL > %SP_DIR%\scons_tools\site_autowig\controller\__init__.py
+if errorlevel 1 exit 1
+mkdir %SP_DIR%\scons_tools\site_autowig\generator
+if errorlevel 1 exit 1
+type NUL > %SP_DIR%\scons_tools\site_autowig\generator\__init__.py
+if errorlevel 1 exit 1
+
 echo OFF

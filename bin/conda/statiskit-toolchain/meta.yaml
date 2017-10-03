@@ -1,0 +1,23 @@
+package:
+  name: statiskit-toolchain
+  version: 1.0.0
+
+
+build:
+  number: 0
+
+about:
+  home: http://statiskit.rtfd.io/
+  license: Apache License 2.0
+
+requirements:
+  run:
+    - vcs
+    - libtoolchain
+    - python-toolchain
+    - python-autowig
+    - python-clanglite
+    - python
+    - matplotlib
+    - jupyter
+    - ipython

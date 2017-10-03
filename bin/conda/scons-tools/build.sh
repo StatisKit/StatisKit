@@ -21,4 +21,14 @@ for SCONS_TOOL in `ls *.py`; do
     cp $SCONS_TOOL $SP_DIR/$TGT_DIR/$SCONS_TOOL
 done
 
+mkdir $SP_DIR/scons_tools/site_autowig
+touch $SP_DIR/scons_tools/site_autowig/__init__.py
+mkdir -p $SP_DIR/scons_tools/site_autowig/ASG
+mkdir -p $SP_DIR/scons_tools/site_autowig/parser
+touch $SP_DIR/scons_tools/site_autowig/parser/__init__.py
+mkdir -p $SP_DIR/scons_tools/site_autowig/controller
+touch $SP_DIR/scons_tools/site_autowig/controller/__init__.py
+mkdir -p $SP_DIR/scons_tools/site_autowig/generator
+touch $SP_DIR/scons_tools/site_autowig/generator/__init__.py
+
 set +ve
