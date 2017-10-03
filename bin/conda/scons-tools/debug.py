@@ -23,7 +23,7 @@ def generate(env):
             if WITH_NOSE_DEBUG == 'gdb':
                 env.AppendUnique(CCFLAGS=['/DEBUG:FULL'])
         else:
-            if WITH_DEBUG == 'gdb':
+            if WITH_NOSE_DEBUG == 'gdb':
                 env.AppendUnique(CCFLAGS=['-g'])
 
 def exists(env):
