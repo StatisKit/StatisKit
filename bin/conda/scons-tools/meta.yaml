@@ -27,6 +27,7 @@ test:
   files:
     - SConstruct
   commands:
+    - echo "TESTING..."
     - echo $SCONSFLAGS  [not win]
     - echo %SCONSFLAGS% [win]
     - scons -h
