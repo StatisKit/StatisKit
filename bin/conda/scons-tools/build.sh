@@ -9,6 +9,7 @@ cp $RECIPE_DIR/deactivate.sh $PREFIX/etc/conda/deactivate.d/scons_tools_vars.sh
 export TGT_DIR=scons_tools
 mkdir $SP_DIR/$TGT_DIR
 touch $SP_DIR/$TGT_DIR/__init__.py
+touch $SP_DIR/$TGT_DIR/site_init.py
 export TGT_DIR=$TGT_DIR/site_tools
 mkdir $SP_DIR/$TGT_DIR
 touch $SP_DIR/$TGT_DIR/__init__.py

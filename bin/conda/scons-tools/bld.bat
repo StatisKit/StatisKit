@@ -9,6 +9,7 @@ copy %RECIPE_DIR%\deactivate.bat %PREFIX%\etc\conda\deactivate.d\scons_tools_var
 set TGT_DIR=scons_tools
 mkdir %SP_DIR%\%TGT_DIR%
 type NUL > %SP_DIR%\%TGT_DIR%\__init__.py
+type NUL > %SP_DIR%\%TGT_DIR%\site_init.py
 set TGT_DIR=%TGT_DIR%\site_tools
 mkdir %SP_DIR%\%TGT_DIR%
 type NUL > %SP_DIR%\%TGT_DIR%\__init__.py
