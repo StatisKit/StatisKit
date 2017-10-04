@@ -10,4 +10,4 @@
 **StatisKit**: A Software Suite for Statistical Analyses
 ########################################################
 
-**StatisKit** is a collection of open source software designed to provide an environement for performing statistical analyses in *C++* or *Python*.
+**StatisKit** is a collection of open source software designed to provide an environment for performing statistical analyses in *C++* or *Python*.
