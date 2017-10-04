@@ -1,8 +1,0 @@
-engines:
-  duplication:
-    enabled: true
-    languages:
-      - python:
-      
-exclude_paths:
-  - conda/python-scons/scons-*

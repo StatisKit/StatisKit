@@ -95,25 +95,7 @@ For each software, its specific documentation can be found following the availab
 
     }
 
-License
-=======
-
-StatisKit is distributed under the |LICENSENAME|_.
-
-.. note:: 
-
-    |LICENSENAME| is GPL compatible.
-
-
 Authors
 =======
 
 .. include:: ../AUTHORS.rst
-
-.. |LICENSENAME| replace:: CeCILL license
-
-.. _LICENSENAME : license.html
-
-.. |LICENSE| replace:: see `License`_ section
-
-.. |AUTHORS| replace:: see `Authors`_ section

@@ -64,8 +64,8 @@ after_build:
 
 deploy:
   provider: Script
-  on:
-    branch: master
+  # on:
+  #   branch: master
  
 before_deploy:
   - call before_deploy.bat
