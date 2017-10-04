@@ -15,6 +15,7 @@ requirements:
     - vcs
     - libtoolchain
     - python-toolchain
+    - libboost
     - python-autowig
     - python-clanglite
     - python
