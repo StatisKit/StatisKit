@@ -15,11 +15,11 @@ RUN useradd -m main --shell /bin/bash && echo "main:main" | chpasswd && adduser 
 USER main
 WORKDIR /home/main
 
-RUN curl https://raw.githubusercontent.com/StatisKit/install-binaries/master/linux/PY$CONDA_VERSION/developer_install -o developer_install
-RUN chmod a+rwx developer_install
-RUN ./developer_install --prepend-path=no --configure-only=yes --prefix=/home/main/miniconda
+RUN curl "https://repo.continuum.io/miniconda/Miniconda"$CONDA_VERSION"-latest-Linux-x86_64.sh" -o miniconda.sh
+RUN chmod a+rwx miniconda.sh
+RUN ./miniconda.sh -b -p =/home/main/miniconda
+RUN rm miniconda.sh
 env PATH /home/main/miniconda:/home/main/miniconda/bin:$PATH
-RUN rm developer_install
 RUN chmod -R a+rwx  /home/main/miniconda
 RUN conda config --set always_yes yes
 RUN conda install vcs ipython jupyter -c statiskit -c conda-forge
