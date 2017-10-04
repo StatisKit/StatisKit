@@ -12,6 +12,7 @@ build:
 about:
   home: http://www.boost.org/
   license: Boost-1.0
+  summary: Boost provides free peer-reviewed portable C++ source libraries.
 
 requirements:
   build:

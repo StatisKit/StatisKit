@@ -12,6 +12,7 @@ build:
 about:
   home: https://github.com/r1chardj0n3s/parse
   license: BSD license
+  summary: parse() is the opposite of format()
 
 requirements:
   build:

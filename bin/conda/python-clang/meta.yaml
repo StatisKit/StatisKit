@@ -12,6 +12,7 @@ build:
 about:
   home: http://www.llvm.org/
   license: The University of Illinois/NCSA Open Source License
+  summary: The Python interface to libclang library provides a relatively small API that exposes facilities for parsing source code into an abstract syntax tree (AST), loading already-parsed ASTs, traversing the AST, associating physical source locations with elements within the AST, and other facilities that support Clang-based development tools.
 
 requirements:
   build:

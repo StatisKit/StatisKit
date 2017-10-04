@@ -10,6 +10,7 @@ build:
 about:
   home: http://statiskit.readthedocs.io
   license: Apache License 2.0
+  summary: A collection of utilities for version control.
 
 requirements:
   build:

@@ -12,6 +12,7 @@ build:
 about:
   home: http://www.llvm.org/
   license: The University of Illinois/NCSA Open Source License
+  summary: The goal of the Clang project is to create a new C based language front-end (C, C++, Objective C/C++, OpenCL C and others) for the LLVM compiler.
 
 requirements:
   build:

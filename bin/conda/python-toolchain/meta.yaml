@@ -6,8 +6,9 @@ build:
   number: 0
 
 about:
-  home: http://statiskit.readthedocs.io
-  license: CeCILL
+  home: http://statiskit.rtfd.io/
+  license: Apache License 2.0
+  summary: Collection of utilities for building Python packages.
 
 requirements:
   build:

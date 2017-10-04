@@ -9,7 +9,8 @@ build:
 about:
   home: http://statiskit.rtfd.io/
   license: Apache License 2.0
-
+  summary: Collection of utilities for developing the StatisKit software suite.
+  
 requirements:
   run:
     - vcs

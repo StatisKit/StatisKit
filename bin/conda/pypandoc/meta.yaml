@@ -28,4 +28,4 @@ test:
 about:
   home: https://github.com/bebraw/pypandoc
   license: MIT
-  summary: 'Thin wrapper for "pandoc"'
+  summary: Python wrapper for "pandoc"
