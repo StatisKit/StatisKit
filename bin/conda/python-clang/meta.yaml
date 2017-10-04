@@ -20,8 +20,8 @@ requirements:
     - python-toolchain
     - zlib
     - xz                         [unix]
-    - m2w64-xz                   [win] 
-  run:
+    - m2w64-xz                    [win]
+run:
     - python
     - clang
     - path.py
