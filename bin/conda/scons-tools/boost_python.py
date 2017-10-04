@@ -38,7 +38,7 @@ def generate(env):
             sources = [source for source in sources if source.suffix == '.h']
             if len(sources) == 1 and not SYSTEM == 'win':
                 # env.AppendUnique(CCFLAGS=['-Wno-attributes', '-Wno-deprecated-declarations'])
-                cmd = env.subst('$CXX') + '-o $TARGET -x c++-header -c ' + env.subst('$SHCXXFLAGS $CCFLAGS $_CCCOMCOM').replace('-x c++', '') + ' $SOURCE'
+                cmd = env.subst('$CXX') + ' -o $TARGET -x c++-header -c ' + env.subst('$SHCXXFLAGS $CCFLAGS $_CCCOMCOM').replace('-x c++', '') + ' $SOURCE'
                 # cmd = env.subst('$CXX') + ' -o $TARGET -x c++-header -c -fPIC ' + env.subst('$SHCXXFLAGS $_CCCOMCOM').replace('-x c++', '') + ' $SOURCE'
                 # env.AppendUnique(CCFLAGS=['-Wno-attributes', '-Wno-deprecated-declarations'])
                 # cmd = env.subst('$CXX') + ' -o $TARGET -x c++-header ' + env.subst('$SHCXXFLAGS $SHCCFLAGS $_CCCOMCOM').replace('-x c++', '') + ' $SOURCE'
