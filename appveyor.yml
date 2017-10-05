@@ -37,8 +37,6 @@ environment:
     - CONDA_RECIPE: clang
     - CONDA_RECIPE: python-clang
       CONDA_VERSION: 2
-    - CONDA_RECIPE: python-clang
-      CONDA_VERSION: 3
     - CONDA_RECIPE: libboost
       CONDA_VERSION: 2
     - CONDA_RECIPE: libboost

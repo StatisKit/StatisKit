@@ -42,14 +42,12 @@ env:
   - CONDA_RECIPE=clang
   - CONDA_RECIPE=python-clang
     CONDA_VERSION=2
-  - CONDA_RECIPE=python-clang
-    CONDA_VERSION=3
   - CONDA_RECIPE=libboost
     CONDA_VERSION=2
-    TRAVIS_WAIT=30
+    TRAVIS_WAIT=40
   - CONDA_RECIPE=libboost
     CONDA_VERSION=3
-    TRAVIS_WAIT=30
+    TRAVIS_WAIT=40
   - CONDA_RECIPE=statiskit-toolchain
     CONDA_VERSION=2
   - CONDA_RECIPE=statiskit-toolchain
