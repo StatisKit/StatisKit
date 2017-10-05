@@ -19,158 +19,66 @@ Configure
 #########
 
 In order to ease the development of the **StatisKit** software suite on multiple operating systems, the **Conda** package and environment management system is used.
+To insall **Conda** refer to the section :ref:`_section-user-install_it-prerequisites`.
 
-.. note::
-
-    For more information concerning **Conda**, please refers to its `documentation <http://conda.pydata.org/docs>`_.
-    
-We here presents how to install **Conda** and the :code:`statiskit-dev` environment within which you can build from source code the **StatisKit** software suite.
-    
-.. note::
-
-    The installers presented below also install some plugins for build systems for the **Sublime Text** `software <https://www.sublimetext.com/3>`_.
-
-On Windows
-----------
+Once **Conda** installed, you need to create the development environment called :code:`statiskit-toolchain` on your machine.
 
 .. warning::
 
     In order to develop on Windows, you must first install `Visual Studio Community 2013 <https://www.visualstudio.com/en-us/news/releasenotes/vs2013-community-vs>`_.
 
-If you have a:
+To do so:
 
-* 32-bit Windows OS, download the following `installer <https://github.com/StatisKit/install-binaries/raw/master/win/32/developer_install.exe>`_.
+1. Install :code:`conda-build-all` package in the :code:`root` environment.
 
-* 64-bit Windows OS, download the following `installer <https://github.com/StatisKit/install-binaries/raw/master/win/64/developer_install.exe>`_.
+   .. code-block:: bash
 
-  .. warning::
-  
-    Some unresolved problems in our usage **SCons** seem to prevent the compilation of source code on 64-bit Windows OSes.
+     conda install -n root conda-build-all -c conda-forge
 
-.. note::
+2. Clone the :code:`StatisKit` repository of the :code:`StatisKit` organization.
 
-    For some unknown reasons, the Windows installers sometimes require to press a key to continue.
-    If, during the installation, the installer seems to have stopped, don't hesitate to press a key...
-    It seems that these inappropriate stops are due to some antivirus software.
-    
-Then, click on the installer or open a shell in the directory where the installer was downloaded and type
+   .. code-block:: bash
 
-.. code-block:: batch
+     git clone --recursive https://github.com/StatisKit/StatisKit.git
 
-    developer_install.exe
+   .. note::
 
-.. warning::
+     If **git** is not installed on your computer, you can install it with conda:
 
-    If you already installed **Conda**, type instead
+     .. code-block:: bash
 
-    .. code-block:: batch
+       conda install -n root git -c conda-forge
 
-        developer_install.exe --prefix=<path\to\conda>
+3. Build all **Conda** recipes available in this repository using :code:`conda-build-all`.
+   
+   * For the latest *Python 2* version
+     
+     .. code-block:: bash
 
-    Where :code:`<path\to\conda>` has to replaced by the actual **Conda** directory.
+       conda build-all --matrix-conditions 'python 2.*.*' --matrix-max-n-minor-versions 1 --no-inspect-conda-bld-directory
 
-.. note::
+   * For the latest *Python 3* version
+     
+     .. code-block:: bash
 
-    More informations concerning this :code:`developer_install.exe` installer can be obtained by typing
+       conda build-all --matrix-conditions 'python 3.*.*' --matrix-max-n-minor-versions 1 --no-inspect-conda-bld-directory
 
-    .. code-block:: batch
-
-        developer_install.exe -h 
-
-    There is in particular:
-
-    * A :code:`clean` option that can be used when some errors occurred after the first try:
-    
-      .. code-block:: batch
-    
-        developer_install.exe
-        ...
-        Installation failed.
-        Press Enter to continue...
-        ...
-        developer_install.exe --clean=no
-        
-      This option indicates to the installer not to reset the **StatisKit** environment.
-      Hence, features installed in the first attempt will not be re-installed.
-
-    * A :code:`cpu-count` option that can be used to reduce the number of :abbr:`CPUs (Central Processing Units)` used during the installation:
-    
-      .. code-block:: batch
-    
-        developer_install.exe --cpu-count=1
-
-      This option is useful if your computer has a low memory.
-
-On Linux and Mac OS X
----------------------
-
-.. warning::
-
-    For Unix OSes, we only provide 64-bit installers.
-    If you have a 32-bit Unix OS, use type following commands
+4. Install the :code:`statiskit-toolchain` package in an eponymous environment
 
     .. code-block:: bash
 
-        git clone https://github.com/StatisKit/install-scripts.git
-        cd install-scripts
-        python pre_install.py
-        python developer_install.py
+        conda create -n statiskit-toolchain statiskit-toolchain --use-local -c statiskit -c conda-forge
 
-    .. note::
-    
-        :code:`./developer_install` and :code:`python developer_install.py` share the same options as described below.
+5. The created environment is to use for each build of **Statiskit** software suite.
 
+    * For Windows OSes
 
-If you have a:
+        .. code-block:: bash
 
-* 64-bit Linux OS, download the following `installer <https://github.com/StatisKit/install-binaries/raw/master/linux/developer_install>`_.
+          activate statiskit-toolchain
 
-* 64-bit Mac OS X, download the following `installer <https://github.com/StatisKit/install-binaries/raw/master/osx/developer_install>`_.
+    * For Unix OSes
 
-Then, open a shell in the directory where the installer was downloaded and type
+        .. code-block:: bash
 
-.. code-block:: batch
-
-    chmod a+rwx developer_install
-    ./developer_install
-
-.. warning::
-
-    If you already installed **Conda**, type instead
-
-    .. code-block:: batch
-
-        ./developer_install --prefix=<path/to/conda>
-
-    Where :code:`<path/to/conda>` has to be replaced by the actual **Conda** directory.
-
-.. note::
-
-    More informations concerning this :code:`developer_install` installer can be obtained by typing
-
-    .. code-block:: batch
-
-        ./developer_install -h 
-
-    There is in particular:
-
-    * A :code:`clean` option that can be used when some errors occurred after the first try:
-    
-      .. code-block:: batch
-    
-        ./developer_install
-        ...
-        Installation failed.
-        ...
-        ./developer_install --clean=no
-        
-      This option indicates to the installer not to reset the **StatisKit** environment.
-      Hence, features installed in the first attempt will not be re-installed.
-
-    * A :code:`cpu-count` option that can be used to reduce the number of :abbr:`CPUs (Central Processing Units)` used during the installation:
-    
-      .. code-block:: batch
-    
-        ./developer_install --cpu-count=1
-
-      This option is useful if your computer has a low memory.
+          source activate statiskit-toolchain

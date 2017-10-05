@@ -7,106 +7,33 @@ Prerequisites
 =============
 
 In order to ease the installation of the **StatisKit** software suite on multiple operating systems, the **Conda** package and environment management system is used.
-We here presents how to install **Conda**.
 
 .. note::
 
     For more information concerning **Conda**, please refers to its `documentation <http://conda.pydata.org/docs>`_.
 
-On Windows
-----------
-
-If you have a:
-
-* 32-bit Windows OS, download the following `installer <https://github.com/StatisKit/install-binaries/raw/master/win/32/user_install.exe>`_.
-
-* 64-bit Windows OS, download the following `installer <https://github.com/StatisKit/install-binaries/raw/master/win/64/user_install.exe>`_.
-
-
-  .. warning::
-  
-    Some unresolved problems in our usage **SCons** seem to prevent the compilation of source code on 64-bit Windows OSes.
-    The installation is therefore prone to failures.
-
-
-Then, click on the :code:`user_install.exe` installer or open a shell in the directory where the installer was downloaded and type
-
-.. code-block:: batch
-
-    user_install.exe
-
-.. warning::
-
-    If you already installed **Conda**, type instead
-
-    .. code-block:: batch
-
-        user_install.exe --prefix=<path\to\conda>
-
-    Where :code:`<path\to\conda>` has to replaced by the actual **Conda** directory.
+To install conda, please refers to this `page <https://conda.io/docs/user-guide/install/index.html>`_.
 
 .. note::
 
-    More informations concerning this :code:`user_install.exe` installer can be obtained by typing
-
-    .. code-block:: batch
-
-        user_install.exe -h 
-
-On Linux and Mac OS X
----------------------
+    We recommand to follow the instruction for silent installation and to pay attention to the :code:`PATH` environement variable.
 
 .. warning::
 
-    For Unix OSes, we only provide 64-bit installers.
-    If you have a 32-bit Unix OS, use type following commands
-
-    .. code-block:: bash
-
-        git clone https://github.com/StatisKit/install-scripts.git
-        cd install-scripts
-        python pre_install.py
-        python user_install.py
-
-    .. note::
-    
-        :code:`./user_install` and :code:`python user_install.py` share the same options as described below.
-
-If you have a:
-
-* Linux OS, download the following `installer <https://github.com/StatisKit/install-binaries/raw/master/linux/user_install>`_.
-
-* Mac OS X, download the following `installer <https://github.com/StatisKit/install-binaries/raw/master/osx/user_install>`_.
-
-Then, open a shell in the directory where the installer was downloaded and type
-
-.. code-block:: batch
-
-    chmod a+rwx user_install
-    ./user_install
-
-.. warning::
-
-    If you already installed **Conda**, type instead
-
-    .. code-block:: batch
-
-        ./user_install --prefix=<path\to\conda>
-
-    Where :code:`<path\to\conda>` has to replaced by the actual **Conda** directory.
-
-.. note::
-
-    More informations concerning this :code:`user_install` installer can be obtained by typing
-
-    .. code-block:: batch
-
-        ./user_install -h 
+    In the following, it is assumed that the **Conda** :code:`activate` scripts are available from the command line.
 
 Recommanded Installation
 ========================
 
-To install **StatisKit**, open a new shell, choose an interface and proceed as detailled the corresponding section:
+Recommanded installation relie on **Conda** environment.
+You can download an environment with the :code:`anaconda-client`.
+If you don't have this package installed, it can be done using the following command line:
+    
+.. code-block:: console
+
+    conda install -n root anaconda-client
+
+Then, choose an interface and proceed as detailled the corresponding section:
 
 .. toctree::
     :maxdepth: 1
@@ -114,13 +41,6 @@ To install **StatisKit**, open a new shell, choose an interface and proceed as d
     c++
     python
 
-.. warning::
-
-    Depending on the precedent installation, **Conda** is likely to be inactivated.
-    To solve this, on:
-    
-    * Windows, use the *Anaconda Prompt* shell in place of the *CMD* shell or, follow instructions available in :ref:`section-activate-conda` the section.
-    * Linux and OS X, follow instructions available in :ref:`section-activate-conda` the section or use the :code:`--preprend-path=yes` option when runnning the installer.
 
 Custom Installations
 ====================
