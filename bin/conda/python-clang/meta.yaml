@@ -21,7 +21,7 @@ requirements:
     - zlib
     - xz                         [unix]
     - m2w64-xz                    [win]
-run:
+  run:
     - python
     - clang
     - path.py
