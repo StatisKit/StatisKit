@@ -13,6 +13,10 @@ In order to ease the installation of the **StatisKit** software suite on multipl
     For more information concerning **Conda**, please refers to its `documentation <http://conda.pydata.org/docs>`_.
 
 To install conda, please refers to this `page <https://conda.io/docs/user-guide/install/index.html>`_.
+Installers for:
+
+* **Miniconda** are available on this `page <https://conda.io/miniconda.html>`_.
+* **Anaconda** are available on this `page <https://www.anaconda.com/download/>`_.
 
 .. note::
 
