@@ -21,7 +21,7 @@ def generate(env):
                       action  = 'store',
                       metavar = 'DIR',
                       help    = '',
-                      default = os.path.join(get_python_lib(), 'scons_autowig'))
+                      default = os.path.join(get_python_lib(), 'scons_tools', 'site_autowig'))
         env['SITE_AUTOWIG'] = GetOption('site-autowig')
 
         def boost_python_builder(target, source, env):
