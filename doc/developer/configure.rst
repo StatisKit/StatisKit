@@ -55,13 +55,13 @@ To do so:
      
      .. code-block:: bash
 
-       conda build-all StatisKit --matrix-conditions 'python 2.*.*' --matrix-max-n-minor-versions 1 --no-inspect-conda-bld-directory
+       conda build-all StatisKit --matrix-conditions "python 2.*.*" --matrix-max-n-minor-versions 1 --no-inspect-conda-bld-directory
 
    * For the latest *Python 3* version
      
      .. code-block:: bash
 
-       conda build-all StatisKit --matrix-conditions 'python 3.*.*' --matrix-max-n-minor-versions 1 --no-inspect-conda-bld-directory
+       conda build-all StatisKit --matrix-conditions "python 3.*.*" --matrix-max-n-minor-versions 1 --no-inspect-conda-bld-directory
 
 4. Install the :code:`statiskit-toolchain` package in an eponymous environment
 
