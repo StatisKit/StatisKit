@@ -1,5 +1,5 @@
-Contribute
-##########
+Contribute to a Repository
+##########################
 
 .. warning::
 
