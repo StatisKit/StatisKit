@@ -20,7 +20,7 @@ Installers for:
 
 .. note::
 
-    We recommand to follow the instruction for silent installation and to pay attention to the :code:`PATH` environement variable.
+    We recommand to follow the instruction for silent installation and to pay attention to the :code:`PATH` environment variable.
 
 .. warning::
 
