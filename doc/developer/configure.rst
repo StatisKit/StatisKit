@@ -63,6 +63,11 @@ To do so:
 
        conda build-all StatisKit --matrix-conditions "python 3.*.*" --matrix-max-n-minor-versions 1 --no-inspect-conda-bld-directory
 
+   .. note::
+   
+     If one build failed, you can re-use the previous commands.
+     But, if you don't want to re-build successful builds, remove the :code:`--no-inspect-conda-bld-directory` option.
+     
 4. Install the :code:`statiskit-toolchain` package in an eponymous environment
 
     .. code-block:: bash
