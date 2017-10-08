@@ -20,7 +20,7 @@ env:
   # - CONDA_RECIPE=python-scons
   #   CONDA_VERSION=2
   # - CONDA_RECIPE=python-scons
-    CONDA_VERSION=3
+  #   CONDA_VERSION=3
   - CONDA_RECIPE=scons-tools
     CONDA_VERSION=2
   - CONDA_RECIPE=scons-tools
