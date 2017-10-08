@@ -35,7 +35,7 @@ def generate(env):
                     asg.merge(pickle.load(filehandler))
             AUTOWIG_PARSER = env['AUTOWIG_PARSER']
             if not AUTOWIG_PARSER in autowig.parser:
-                parser = import_module('autowig.site.parser.' +  AUTOWIG_PARSER)
+                parser = import_module('scons_tools.site_autowig.parser.' +  AUTOWIG_PARSER)
                 autowig.parser[AUTOWIG_PARSER] = parser.parser
             autowig.parser.plugin = AUTOWIG_PARSER
             autowig.parser(asg, [header.abspath for header in source],
@@ -43,14 +43,14 @@ def generate(env):
                            **{kwarg[len('AUTOWIG_parser_'):] : env[kwarg] for kwarg in env.Dictionary() if isinstance(kwarg, basestring) and kwarg.startswith('AUTOWIG_parser_')})
             AUTOWIG_CONTROLLER = env['AUTOWIG_CONTROLLER']
             if not AUTOWIG_CONTROLLER in autowig.controller:
-                controller = import_module('autowig.site.controller.' +  AUTOWIG_CONTROLLER)
+                controller = import_module('scons_tools.site_autowig.controller.' +  AUTOWIG_CONTROLLER)
                 autowig.controller[AUTOWIG_CONTROLLER] = controller.controller
             autowig.controller.plugin = AUTOWIG_CONTROLLER
             asg = autowig.controller(asg, 
                                      **{kwarg[len('AUTOWIG_controller_'):] : env[kwarg] for kwarg in env.Dictionary() if isinstance(kwarg, basestring) and kwarg.startswith('AUTOWIG_controller_')})
             AUTOWIG_GENERATOR = env['AUTOWIG_GENERATOR']
             if not AUTOWIG_GENERATOR in autowig.generator:
-                generator = import_module('autowig.site.generator.' +  AUTOWIG_GENERATOR)
+                generator = import_module('scons_tools.site_autowig.generator.' +  AUTOWIG_GENERATOR)
                 autowig.generator[AUTOWIG_GENERATOR] = generator.generator
             autowig.generator.plugin = AUTOWIG_GENERATOR
             wrappers = autowig.generator(asg,
