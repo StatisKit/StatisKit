@@ -48,7 +48,7 @@ To do so you must:
   
           conda install -n statiskit-toolchain statiskit-toolchain -c statiskit
           
-  5. Activate the created environment for each build of **Statiskit** software suite.
+  3. Activate the created environment for each build of **Statiskit** software suite.
 
         .. code-block:: bash
 
@@ -129,7 +129,7 @@ To do so you must:
 
       .. code-block:: bash
 
-        conda create -n statiskit-toolchain statiskit-toolchain --use-local -c statiskit -c conda-forge
+        conda install -n statiskit-toolchain statiskit-toolchain --use-local -c statiskit -c conda-forge
 
     5. Activate the created environment for each build of **Statiskit** software suite.
 
