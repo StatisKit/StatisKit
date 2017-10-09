@@ -16,10 +16,10 @@ environment:
     #   CONDA_VERSION: 2
     # - CONDA_RECIPE: python-scons
     #   CONDA_VERSION: 3
-    - CONDA_RECIPE: scons-tools
-      CONDA_VERSION: 2
-    - CONDA_RECIPE: scons-tools
-      CONDA_VERSION: 3
+    # - CONDA_RECIPE: scons-tools
+    #   CONDA_VERSION: 2
+    # - CONDA_RECIPE: scons-tools
+    #   CONDA_VERSION: 3
     # - CONDA_RECIPE: python-parse
     #   CONDA_VERSION: 2
     # - CONDA_RECIPE: python-parse
@@ -41,10 +41,10 @@ environment:
     #   CONDA_VERSION: 2
     # - CONDA_RECIPE: libboost
     #   CONDA_VERSION: 3
-    # - CONDA_RECIPE: statiskit-toolchain
-    #   CONDA_VERSION: 2
-    # - CONDA_RECIPE: statiskit-toolchain
-    #   CONDA_VERSION: 3
+    - CONDA_RECIPE: statiskit-toolchain
+      CONDA_VERSION: 2
+    - CONDA_RECIPE: statiskit-toolchain
+      CONDA_VERSION: 3
 
 install:
   - git clone https://github.com/StatisKit/appveyor-ci.git
