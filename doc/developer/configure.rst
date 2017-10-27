@@ -6,118 +6,94 @@ Configure your Computer
 In order to ease the development of the **StatisKit** software suite on multiple operating systems, the **Conda** package and environment management system is used.
 To insall **Conda** refer to the section :ref:`section-user-install_it-prerequisites`.
 
-Once **Conda** installed, you need to create the development environment called :code:`statiskit-toolchain` on your machine.
-
-
+Once **Conda** installed, you need to create the development environment called :code:`statiskit-dev` on your machine.
 To do so you must:
 
 * On Windows OSes, install `Visual Studio Community 2013 <https://www.visualstudio.com/en-us/news/releasenotes/vs2013-community-vs>`_ and then install the :code:`statiskit-toolchain` package in a eponymous environment as follows:
 
-  1. Create the :code:`statiskit-toolchain` environment with the desired *Python* version:
-
-      * For the latest *Python 2* version
-
-        .. code-block:: bash
-
-          conda create -n statiskit-toolchain python=2
-
-      * For the latest *Python 3* version
-
-        .. code-block:: bash
+  1. Install :code:`statiskit-dev` package in the :code:`statiskit-dev` environment.
   
-          conda create -n statiskit-toolchain python=3
-   
-  2. Install :code:`statiskit-toolchain` package in the :code:`statiskit-toolchain` environment.
+     .. code-block:: console
   
-        .. code-block:: bash
-  
-          conda install -n statiskit-toolchain statiskit-toolchain -c statiskit
+        conda install -n statiskit-dev statiskit-dev -c statiskit
           
-  3. Activate the created environment for each build of **Statiskit** software suite.
+  2. Activate the created environment for each build of **Statiskit** software suite.
 
-        .. code-block:: bash
+     .. code-block:: console
 
-          activate statiskit-toolchain
+        activate statiskit-dev
           
 * On Unix Oses, you can either:
 
   * Set your system configuration as the default **Travis CI** configuration (see this `page <https://docs.travis-ci.com/user/reference/osx/#OS-X-Version>`_ for OsX or install the version 5 of the :code:`gcc` compiler for Linux OSes) and install the :code:`statiskit-toolchain` package in a eponymous environment as follows:
     
-    1. Create the :code:`statiskit-toolchain` environment with the desired *Python* version:
-
-        * For the latest *Python 2* version
-
-          .. code-block:: bash
-
-            conda create -n statiskit-toolchain python=2
-
-        * For the latest *Python 3* version
-
-          .. code-block:: bash
+    1. Install :code:`statiskit-dev` package in the :code:`statiskit-dev` environment.
   
-            conda create -n statiskit-toolchain python=3
-   
-    2. Install :code:`statiskit-toolchain` package in the :code:`statiskit-toolchain` environment.
+       .. code-block:: console
   
-          .. code-block:: bash
-  
-            conda install -n statiskit-toolchain statiskit-toolchain -c statiskit
+          conda install -n statiskit-dev statiskit-toolchain -c statiskit
           
     3. Activate the created environment for each build of **Statiskit** software suite.
 
-          .. code-block:: bash
+       .. code-block:: console
 
-            source activate statiskit-toolchain
+          source activate statiskit-dev
           
-  * Build from sources the :code:`statiskit-toolchain` package and its dependencies and install it in a eponymous environment as follows:
+  * Build from sources the :code:`statiskit-dev` package and its dependencies and install it in a eponymous environment as follows:
   
-    1. Install :code:`conda-build-all` package in the :code:`root` environment.
+    1. Install :code:`conda-tools` package in the :code:`root` environment.
 
-      .. code-block:: bash
+       .. code-block:: console
 
-        conda install -n root conda-build-all -c conda-forge
+          conda install -n root conda-tools -c statiskit
 
     2. Clone the :code:`StatisKit` repository of the :code:`StatisKit` organization.
 
-      .. code-block:: bash
+       .. code-block:: console
 
-        git clone --recursive https://github.com/StatisKit/StatisKit.git
+          git clone --recursive https://github.com/StatisKit/StatisKit.git
 
-      .. note::
+       .. note::
 
-        If **git** is not installed on your computer, you can install it with conda:
+          If **git** is not installed on your computer, you can install it with conda
 
-        .. code-block:: bash
+          .. code-block:: console
 
-          conda install -n root git -c conda-forge
+             conda install -n root git -c conda-forge
 
-    3. Build all **Conda** recipes available in this repository using :code:`conda-build-all`.
+    3. Enter the :code:`StatisKit` directory.
+    
+       .. code-block:: console
+       
+          cd StatisKit
+          
+    4. Build all **Conda** recipes available in this repository using :code:`conda-release`.
 
-      * For the latest *Python 2* version
+       .. code-block:: console
+      
+          conda realease . -c statiskit
+         
+       .. warning::
+      
+          **git** submodules can be out of date, to update all submodules proceed as follows
+        
+          .. code-block:: console
+        
+             git submodule update --recursive --remote
 
-        .. code-block:: bash
-
-          conda build-all StatisKit --matrix-conditions "python 2.*.*" --matrix-max-n-minor-versions 1 --no-inspect-conda-bld-directory
-
-      * For the latest *Python 3* version
-
-        .. code-block:: bash
-
-          conda build-all StatisKit --matrix-conditions "python 3.*.*" --matrix-max-n-minor-versions 1 --no-inspect-conda-bld-directory
-
-        .. note::
+       .. note::
 
           If one build failed, you can re-use the previous commands.
-          But, if you don't want to re-build successful builds, remove the :code:`--no-inspect-conda-bld-directory` option.
+          But, if you want to re-build successful builds, add the :code:`--no-inspect-conda-bld-directory` option.
 
-    4. Install the :code:`statiskit-toolchain` package in an eponymous environment
+    5. Install the :code:`statiskit-dev` package in an eponymous environment
 
-      .. code-block:: bash
+       .. code-block:: console
 
-        conda install -n statiskit-toolchain statiskit-toolchain --use-local -c statiskit -c conda-forge
+          conda install -n statiskit-dev statiskit-dev --use-local -c statiskit
 
-    5. Activate the created environment for each build of **Statiskit** software suite.
+    6. Activate the created environment for each build of **Statiskit** software suite.
 
-      .. code-block:: bash
+       .. code-block:: console
 
-        source activate statiskit-toolchain
+          source activate statiskit-dev
