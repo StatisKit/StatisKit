@@ -1,3 +1,5 @@
+.. _section-user-install_it:
+
 Install it !
 ############
 
@@ -26,6 +28,8 @@ Installers for:
 
     In the following, it is assumed that the **Conda** :code:`activate` scripts are available from the command line.
 
+.. _section-user-install_it-recommanded:
+
 Recommanded Installation
 ========================
 
@@ -45,6 +49,7 @@ Then, choose an interface and proceed as detailled the corresponding section:
     c++
     python
 
+.. _section-user-install_it-custom:
 
 Custom Installations
 ====================
