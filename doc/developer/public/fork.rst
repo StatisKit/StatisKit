@@ -85,25 +85,3 @@ This command:
           .. code-block:: console
     
                 $ git diff master
-        
-
-    
-.. MngIt
-
-.. |NAME| replace:: StatisKit
-
-.. |BRIEF| replace:: meta-repository providing general documentation and tools for the **StatisKit** Organization
-
-.. |VERSION| replace:: v0.1.0
-
-.. |AUTHORSFILE| replace:: AUTHORS.rst
-
-.. _AUTHORSFILE : AUTHORS.rst
-
-.. |LICENSENAME| replace:: CeCILL-C
-
-.. |LICENSEFILE| replace:: LICENSE.rst
-
-.. _LICENSEFILE : LICENSE.rst
-
-.. MngIt

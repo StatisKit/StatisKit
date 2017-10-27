@@ -1,0 +1,19 @@
+package:
+  name: python-statiskit_all
+  version: 1.0.0
+
+build:
+  number: 0
+
+about:
+  home: http://statiskit.rtfd.io/
+  license: Apache License 2.0
+  summary: The Python package collection of the StatisKit software suite.
+  
+requirements:
+  run:
+    - python-statiskit_stl
+    - python-statiskit_linalg
+    - python-statiskit_core
+    - python-statiskit_glm
+    - python-statiskit_pgm
