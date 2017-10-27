@@ -9,7 +9,7 @@ To insall **Conda** refer to the section :ref:`section-user-install_it-prerequis
 Once **Conda** installed, you need to create the development environment called :code:`statiskit-dev` on your machine.
 To do so you must:
 
-* On Windows OSes, install `Visual Studio Community 2013 <https://www.visualstudio.com/en-us/news/releasenotes/vs2013-community-vs>`_ and then install the :code:`statiskit-toolchain` package in a eponymous environment as follows:
+* On Windows OSes, install `Visual Studio Community 2013 <https://www.visualstudio.com/en-us/news/releasenotes/vs2013-community-vs>`_ and,
 
   1. Install :code:`statiskit-dev` package in the :code:`statiskit-dev` environment.
   
@@ -25,7 +25,7 @@ To do so you must:
           
 * On Unix Oses, you can either:
 
-  * Set your system configuration as the default **Travis CI** configuration (see this `page <https://docs.travis-ci.com/user/reference/osx/#OS-X-Version>`_ for OsX or install the version 5 of the :code:`gcc` compiler for Linux OSes) and install the :code:`statiskit-toolchain` package in a eponymous environment as follows:
+  * Set your system configuration as the default **Travis CI** configuration (see this `page <https://docs.travis-ci.com/user/reference/osx/#OS-X-Version>`_ for OsX or install the version 5 of the :code:`gcc` compiler for Linux OSes) and,
     
     1. Install :code:`statiskit-dev` package in the :code:`statiskit-dev` environment.
   
@@ -39,7 +39,7 @@ To do so you must:
 
           source activate statiskit-dev
           
-  * Build from sources the :code:`statiskit-dev` package and its dependencies and install it in a eponymous environment as follows:
+  * Build from sources as follows,
   
     1. Install :code:`conda-tools` package in the :code:`root` environment.
 
