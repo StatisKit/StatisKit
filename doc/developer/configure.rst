@@ -4,7 +4,7 @@ Configure your Computer
 #######################
 
 In order to ease the development of the **StatisKit** software suite on multiple operating systems, the **Conda** package and environment management system is used.
-To insall **Conda** refer to the section :ref:`_section-user-install_it-prerequisites`.
+To insall **Conda** refer to the section :ref:`section-user-install_it-prerequisites`.
 
 Once **Conda** installed, you need to create the development environment called :code:`statiskit-toolchain` on your machine.
 
