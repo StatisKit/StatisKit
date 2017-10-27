@@ -31,7 +31,7 @@ To do so you must:
   
        .. code-block:: console
   
-          conda install -n statiskit-dev statiskit-toolchain -c statiskit
+          conda install -n statiskit-dev statiskit-dev -c statiskit
           
     3. Activate the created environment for each build of **Statiskit** software suite.
 
@@ -59,7 +59,7 @@ To do so you must:
 
           .. code-block:: console
 
-             conda install -n root git -c conda-forge
+             conda install -n root git
 
     3. Enter the :code:`StatisKit` directory.
     
@@ -90,7 +90,7 @@ To do so you must:
 
        .. code-block:: console
 
-          conda install -n statiskit-dev statiskit-dev --use-local -c statiskit
+          conda install -n statiskit-dev statiskit-dev --use-local
 
     6. Activate the created environment for each build of **Statiskit** software suite.
 
