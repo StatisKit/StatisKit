@@ -12,6 +12,8 @@ about:
   summary: Collection of utilities for developing the StatisKit software suite.
   
 requirements:
+  build:
+    - python
   run:
     - vcs
     - libtoolchain
