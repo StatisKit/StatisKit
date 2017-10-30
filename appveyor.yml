@@ -28,7 +28,7 @@ environment:
     #   CONDA_VERSION: 2
     # - CONDA_RECIPE: libtoolchain
     #   CONDA_VERSION: 3
-    # - CONDA_RECIPE: libruntime
+    - CONDA_RECIPE: libruntime
     # - CONDA_RECIPE: python-toolchain
     #   CONDA_VERSION: 2
     # - CONDA_RECIPE: python-toolchain
