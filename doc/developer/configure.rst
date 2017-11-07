@@ -15,7 +15,7 @@ To do so you must:
   
      .. code-block:: console
   
-        conda install -n statiskit-dev statiskit-dev -c statiskit
+        conda create -n statiskit-dev statiskit-dev -c statiskit
           
   2. Activate the created environment for each build of **Statiskit** software suite.
 
@@ -31,7 +31,7 @@ To do so you must:
   
        .. code-block:: console
   
-          conda install -n statiskit-dev statiskit-dev -c statiskit
+          conda create -n statiskit-dev statiskit-dev -c statiskit
           
     3. Activate the created environment for each build of **Statiskit** software suite.
 
@@ -46,6 +46,15 @@ To do so you must:
        .. code-block:: console
 
           conda install -n root conda-tools -c statiskit
+          
+       .. warning::
+       
+          You perhaps need to use the following commands to be able to use the :code:`conda release` command afterwards:
+          
+          .. code-block:: console
+          
+             source activate root
+             $CONDA_PREFIX/bin/conda-release -h
 
     2. Clone the :code:`StatisKit` repository of the :code:`StatisKit` organization.
 
@@ -90,7 +99,7 @@ To do so you must:
 
        .. code-block:: console
 
-          conda install -n statiskit-dev statiskit-dev --use-local
+          conda create -n statiskit-dev statiskit-dev --use-local
 
     6. Activate the created environment for each build of **Statiskit** software suite.
 
