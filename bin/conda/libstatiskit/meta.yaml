@@ -12,6 +12,7 @@ about:
   
 requirements:
   run:
+    - libruntime
     - libstatiskit_stl
     - libstatiskit_linalg
     - libstatiskit_core

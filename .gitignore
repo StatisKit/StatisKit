@@ -1,9 +1,13 @@
+.ipynb_checkpoints
 doc/_build
 doc/_static
-*~
-*.pyc
+*.*~
+*.swp
+*.so
+*.os
+*.py[cod]
+*.egg
 *.egg-info
-.coverage
 build
-setup.cfg
 .sconsign.dblite
+*.sublime-workspace

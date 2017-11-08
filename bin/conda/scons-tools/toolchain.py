@@ -92,16 +92,16 @@ def generate(env):
             if ARCH == '32':
               env.AppendUnique(CCFLAGS=['-m32'])
             if SYSTEM == 'osx':
+              env['CC'] = os.environ['CLANG']
+              env['CXX'] = os.environ['CLANGXX']
               env.AppendUnique(CCFLAGS=['-ferror-limit=0'],
                                CXXFLAGS=['-stdlib=libc++'])
             else:
-              GCC_VERSION = subprocess.check_output(['gcc','-dumpversion']).strip()
-              if six.PY3:
-                GCC_VERSION = GCC_VERSION.decode('ascii', 'ignore')
-              diagnostics_color = LooseVersion(GCC_VERSION) >= LooseVersion('4.9') and not bool(int(os.environ.get('CONDA_BUILD', '0')))
+              env['CC'] = os.environ['GCC']
+              env['CXX'] = os.environ['GXX']
               DIAGNOSTICS_COLOR = env['DIAGNOSTICS_COLOR']
               env.AppendUnique(CCFLAGS=['-fmax-errors=0',
-                                        '-Wl,--no-undefined'] + ['-fdiagnostics-color=' + DIAGNOSTICS_COLOR] * diagnostics_color)
+                                        '-Wl,--no-undefined'] + ['-fdiagnostics-color=' + DIAGNOSTICS_COLOR])
 
 def exists(env):
     return 1
