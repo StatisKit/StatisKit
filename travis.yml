@@ -88,9 +88,9 @@ env:
     CONDA_VERSION=2
   - CONDA_RECIPE=bin/conda/statiskit-dev
     CONDA_VERSION=3
-  - DOCKERFILE=ubuntu
+  - DOCKERFILE=bin/docker/ubuntu
     CONDA_VERSION=2
-  - DOCKERFILE=ubuntu
+  - DOCKERFILE=bin/docker/ubuntu
     CONDA_VERSION=3
 
 matrix:
