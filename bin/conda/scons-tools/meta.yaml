@@ -24,6 +24,13 @@ about:
   summary: SCons Tools for the StatisKit Software Suite
 
 test:
+  requires:
+    - gcc_linux-64          [linux]
+    - gxx_linux-64          [linux]
+    - gfortran_linux-64     [linux]
+    - clang_osx-64            [osx]
+    - clangxx_osx-64          [osx]
+    - gfortran_osx-64         [osx]
   files:
     - SConstruct
   commands:
