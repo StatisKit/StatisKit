@@ -1,5 +1,5 @@
 package:
-  name: libstatiskit_all
+  name: libstatiskit
   version: 1.0.0
 
 build:
@@ -8,12 +8,10 @@ build:
 about:
   home: http://statiskit.rtfd.io/
   license: Apache License 2.0
-  summary: The C++ library collection of the StatisKit software suite.
+  summary: The C++ API of the StatisKit software suite.
   
 requirements:
   run:
     - libstatiskit_stl
     - libstatiskit_linalg
     - libstatiskit_core
-    - libstatiskit_glm
-    - libstatiskit_pgm

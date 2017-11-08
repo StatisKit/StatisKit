@@ -22,6 +22,3 @@ requirements:
     - python-autowig
     - python-clanglite
     - python
-    - matplotlib
-    - jupyter
-    - ipython

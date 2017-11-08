@@ -1,0 +1,22 @@
+package:
+  name: statiskit-dev
+  version: 1.0.0
+
+build:
+  number: 0
+
+about:
+  home: http://statiskit.rtfd.io/
+  license: Apache License 2.0
+  summary: The developement environment of the StatisKit software suite.
+  
+requirements:
+  build:
+    - python
+  run:
+    - libstatiskit
+    - python
+    - matplotlib
+    - ipython
+    - jupyter
+    - python-statiskit
