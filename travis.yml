@@ -7,7 +7,7 @@ language: cpp
 
 os:
   - linux
-  - osx
+  # - osx
 
 sudo: required
 

@@ -14,6 +14,14 @@ about:
   
 requirements:
   build:
+    - libgcc-ng           [linux]
+    - libstdcxx-ng        [linux]
+    - libcxx              [osx]
+    - libcxxabi           [osx]
     - vs2013_runtime      [win]
   run:
+    - libgcc-ng           [linux]
+    - libstdcxx-ng        [linux]
+    - libcxx              [osx]
+    - libgfortran         [osx]
     - vs2013_runtime      [win]

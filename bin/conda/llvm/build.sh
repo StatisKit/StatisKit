@@ -7,7 +7,11 @@ if [ -n "$MACOSX_DEPLOYMENT_TARGET" ]; then
     export MACOSX_DEPLOYMENT_TARGET=10.9
 fi
 
-cmake -G "Unix Makefiles" -DBUILD_SHARED_LIBS=ON \
+cmake -G "Unix Makefiles" -DCMAKE_C_COMPILER=${GCC} \
+                          -DCMAKE_CXX_COMPILER=${GXX} \
+                          -DGCC_INSTALL_PREFIX=${PREFIX} \
+                          -DCMAKE_CXX_LINK_FLAGS="-L${PREFIX}/lib64 -Wl,-rpath,${PREFIX}/lib64" \
+                          -DBUILD_SHARED_LIBS=ON \
                           -DLLVM_INCLUDE_TESTS=OFF \
                           -DLLVM_INCLUDE_UTILS=OFF \
                           -DLLVM_INCLUDE_DOCS=OFF \
