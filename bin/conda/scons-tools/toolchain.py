@@ -89,6 +89,9 @@ def generate(env):
                               CFLAGS=["-x", "c", "-std=c11"],
                               CCFLAGS=['-fvisibility=' + VISIBILITY],
                               CXXFLAGS=["-x", "c++", "-std=c++11"])
+            env['SHLINK'] = os.environ['LD']
+            env['AR'] = os.environ['AR']
+            env['AS'] = os.environ['AS']
             if ARCH == '32':
               env.AppendUnique(CCFLAGS=['-m32'])
             if SYSTEM == 'osx':
