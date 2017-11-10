@@ -3,9 +3,6 @@ branches:
   - doc
   - win
   
-git:
-  submodules: false
-  
 language: cpp
 
 os:
