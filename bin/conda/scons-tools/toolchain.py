@@ -86,10 +86,10 @@ def generate(env):
             VISIBILITY = env['VISIBILITY']
             env.PrependUnique(CPPPATH=['$PREFIX/include'],
                               LIBPATH=['$PREFIX/lib'],
-                              CFLAGS=["-x", "c", "-std=c11"],
+                              CFLAGS=["-std=c11"],
                               CCFLAGS=['-fvisibility=' + VISIBILITY],
-                              CXXFLAGS=["-x", "c++", "-std=c++11"])
-            env['SHLINK'] = os.environ['LD']
+                              CXXFLAGS=["-std=c++11"])
+            # env['SHLINK'] = os.environ['LD']
             env['AR'] = os.environ['AR']
             env['AS'] = os.environ['AS']
             if ARCH == '32':
@@ -97,14 +97,13 @@ def generate(env):
             if SYSTEM == 'osx':
               env['CC'] = os.environ['CLANG']
               env['CXX'] = os.environ['CLANGXX']
-              env.AppendUnique(CCFLAGS=['-ferror-limit=0'],
-                               CXXFLAGS=['-stdlib=libc++'])
+              env.AppendUnique(
+                CXXFLAGS=['-stdlib=libc++'])
             else:
               env['CC'] = os.environ['GCC']
               env['CXX'] = os.environ['GXX']
               DIAGNOSTICS_COLOR = env['DIAGNOSTICS_COLOR']
-              env.AppendUnique(CCFLAGS=['-fmax-errors=0',
-                                        '-Wl,--no-undefined'] + ['-fdiagnostics-color=' + DIAGNOSTICS_COLOR])
+              env.AppendUnique(CCFLAGS=['-Wl,--no-undefined'] + ['-fdiagnostics-color=' + DIAGNOSTICS_COLOR])
 
 def exists(env):
     return 1
