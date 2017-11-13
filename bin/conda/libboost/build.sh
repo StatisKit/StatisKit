@@ -14,6 +14,20 @@ LIBRARY_PATH="${PREFIX}/lib"
 CXXFLAGS="${CXXFLAGS} -fPIC"
 
 if [ "$(uname)" == "Darwin" ]; then
+    TOOLSET=clang
+fi
+
+if [ "$(uname)" == "Linux" ]; then
+    TOOLSET=gcc
+fi
+
+# http://www.boost.org/build/doc/html/bbv2/tasks/crosscompile.html
+cat <<EOF > ${SRC_DIR}/tools/build/src/site-config.jam
+using ${TOOLSET} : custom : ${CXX} ;
+EOF
+
+if [ "$(uname)" == "Darwin" ]; then
+
     MACOSX_VERSION_MIN=10.7
     CXXFLAGS="-mmacosx-version-min=${MACOSX_VERSION_MIN}"
     CXXFLAGS="${CXXFLAGS} -stdlib=libc++ -std=c++11"
