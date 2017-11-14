@@ -1,8 +1,37 @@
 How to organize a repository
 ############################
 
-In order to help mainteners, a certain structure must be conserved within all repositories.
-This structure is depending on the programming languages used within a repository source code.
+In order to help mainteners, a certain directory structure must be conserved within all repositories.
+
++-------------------------+----------------------------------------------------------------------------------------------+
+| Directory               | Description                                                                                  |
++=========================+==============================================================================================+
+| :code:`/`               | Repository root directory                                                                    |
++-------------------------+----------------------------------------------------------------------------------------------+
+| :code:`/bin`            | Essential files that need to be available for mainteners                                     |
++-------------------------+----------------------------------------------------------------------------------------------+
+| :code:`/bin/conda`      | **Conda** recipes for generating **Conda** binaries                                          |
++-------------------------+----------------------------------------------------------------------------------------------+
+| :code:`/bin/docker`     | **Docker** contexts for generating **Docker** images containing generated **Conda** binaries |
++-------------------------+----------------------------------------------------------------------------------------------+
+| :code:`/doc`            | Essential files that need to be available for documenters                                    |
++-------------------------+----------------------------------------------------------------------------------------------+
+| :code:`/share`          | Essential files that need to be available for users                                          |
++-------------------------+----------------------------------------------------------------------------------------------+
+| :code:`/share/git`      | **Git** sub-modules that need to be available for users                                      |
++-------------------------+----------------------------------------------------------------------------------------------+
+| :code:`/share/jupyter`  | **Jupyter** notebooks that need to be available for users                                    |
++-------------------------+----------------------------------------------------------------------------------------------+
+| :code:`/src`            | Essential files that need to be available for developers                                     |
++-------------------------+----------------------------------------------------------------------------------------------+
+| :code:`/src/cpp`        | *C++* source code                                                                            |
++-------------------------+----------------------------------------------------------------------------------------------+
+| :code:`/src/py`         | *Python* source code                                                                         |
++-------------------------+----------------------------------------------------------------------------------------------+
+| :code:`/src/py/wrapper` | *Boost.Python* source code for interfacing the *C++* source code with *Python*               |
++-------------------------+----------------------------------------------------------------------------------------------+
+| :code:`/test`           | Essential files that need to be available for testers                                        |
++-------------------------+----------------------------------------------------------------------------------------------+
 
 .. toctree::
     :maxdepth: 2
