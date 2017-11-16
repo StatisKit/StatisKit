@@ -44,7 +44,7 @@ def generate(env):
                           nargs   = 1,
                           action  = 'store',
                           help    = 'MSVC version',
-                          default = '12.0')
+                          default = '14.0')
             env['MSVC_VERSION'] = GetOption('msvc-version')
         else:
             AddOption('--visibility',
