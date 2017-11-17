@@ -28,7 +28,7 @@ package:
 build:
   number: 0
   track_features:
-    - vc12                 [win]
+    - vc14                 [win]
 
 about:
   home: http://statiskit.rtfd.io/
@@ -46,7 +46,7 @@ requirements:
     - clangxx_osx-64      [osx]
     - gfortran_osx-64     [osx]
     - pywin32             [win]
-    - vs2013_runtime      [win]
+    - vs2015_runtime      [win]
   run:
     - python
     - scons-tools
@@ -57,4 +57,4 @@ requirements:
     - clangxx_osx-64      [osx]
     - gfortran_osx-64     [osx]
     - pywin32             [win]
-    - vs2013_runtime      [win]
+    - vs2015_runtime      [win]

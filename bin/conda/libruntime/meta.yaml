@@ -28,7 +28,7 @@ package:
 build:
   number: 0
   track_features:
-    - vc12                  [win]
+    - vc14                  [win]
     
 about:
   home: http://statiskit.rtfd.io/
@@ -41,10 +41,10 @@ requirements:
     - libstdcxx-ng        [linux]
     - libcxx              [osx]
     - libcxxabi           [osx]
-    - vs2013_runtime      [win]
+    - vs2015_runtime      [win]
   run:
     - libgcc-ng           [linux]
     - libstdcxx-ng        [linux]
     - libcxx              [osx]
     - libgfortran         [osx]
-    - vs2013_runtime      [win]
+    - vs2015_runtime      [win]
