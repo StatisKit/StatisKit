@@ -24,6 +24,14 @@
 The *C++* interface
 ===================
 
-.. todo::
+The *C++* interface of the software suite can be installed in a :code:`libstatiskit` environment using the following command line: 
 
-	Section under construction
+.. code-block:: console
+
+   conda install -n libstatiskit libstatiskit -c statiskit
+
+Then, activate the :code:`libstatiskit` environment by following the given instructions.
+
+.. note::
+
+    To use this *C++* interace, it is recommanded to read the developer guide.

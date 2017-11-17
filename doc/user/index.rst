@@ -29,4 +29,3 @@ User guide
 
     test_it
     install_it
-    use_it
