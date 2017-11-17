@@ -4,6 +4,8 @@ branches:
     - unix
     - test_gcc
     
+image: Visual Studio 2015 Update 2
+
 platform:
   - x86
   - x64
@@ -12,72 +14,40 @@ environment:
   matrix:
     - CONDA_RECIPE: bin\conda\vcs
     - CONDA_RECIPE: bin\conda\python-scons
-      CONDA_VERSION: 2
-    - CONDA_RECIPE: bin\conda\python-scons
       CONDA_VERSION: 3
-    - CONDA_RECIPE: bin\conda\scons-tools
-      CONDA_VERSION: 2
     - CONDA_RECIPE: bin\conda\scons-tools
       CONDA_VERSION: 3
     - CONDA_RECIPE: bin\conda\python-parse
-      CONDA_VERSION: 2
-    - CONDA_RECIPE: bin\conda\python-parse
       CONDA_VERSION: 3
-    - CONDA_RECIPE: bin\conda\libtoolchain
-      CONDA_VERSION: 2
     - CONDA_RECIPE: bin\conda\libtoolchain
       CONDA_VERSION: 3
     - CONDA_RECIPE: bin\conda\libruntime
     - CONDA_RECIPE: bin\conda\python-toolchain
-      CONDA_VERSION: 2
-    - CONDA_RECIPE: bin\conda\python-toolchain
       CONDA_VERSION: 3
-    - CONDA_RECIPE: bin\conda\libboost
-      CONDA_VERSION: 2
     - CONDA_RECIPE: bin\conda\libboost
       CONDA_VERSION: 3
     - CONDA_RECIPE: share\git\ClangLite\bin\conda\llvm
     - CONDA_RECIPE: share\git\ClangLite\bin\conda\clang
-    - CONDA_RECIPE: share\git\ClangLite\bin\conda\python-clang
-      CONDA_VERSION: 2
-    - CONDA_RECIPE: share\git\ClangLite\bin\conda\libclanglite
-      CONDA_VERSION: 2
     - CONDA_RECIPE: share\git\ClangLite\bin\conda\libclanglite
       CONDA_VERSION: 3
     - CONDA_RECIPE: share\git\ClangLite\bin\conda\python-clanglite
-      CONDA_VERSION: 2
-    - CONDA_RECIPE: share\git\ClangLite\bin\conda\python-clanglite
       CONDA_VERSION: 3
     - CONDA_RECIPE: share\git\AutoWIG\bin\conda\python-autowig
-      CONDA_VERSION: 2
-    - CONDA_RECIPE: share\git\AutoWIG\bin\conda\python-autowig
       CONDA_VERSION: 3
-    - CONDA_RECIPE: bin\conda\statiskit-toolchain
-      CONDA_VERSION: 2
     - CONDA_RECIPE: bin\conda\statiskit-toolchain
       CONDA_VERSION: 3
     - CONDA_RECIPE: share\git\STL\bin\conda\libstatiskit_stl
     - CONDA_RECIPE: share\git\STL\bin\conda\python-statiskit_stl
-      CONDA_VERSION: 2
-    - CONDA_RECIPE: share\git\STL\bin\conda\python-statiskit_stl
       CONDA_VERSION: 3
     - CONDA_RECIPE: share\git\LinAlg\bin\conda\libstatiskit_linalg
-    - CONDA_RECIPE: share\git\LinAlg\bin\conda\python-statiskit_linalg
-      CONDA_VERSION: 2
     - CONDA_RECIPE: share\git\LinAlg\bin\conda\python-statiskit_linalg
       CONDA_VERSION: 3
     - CONDA_RECIPE: share\git\LinAlg\bin\conda\libstatiskit_core
     - CONDA_RECIPE: share\git\LinAlg\bin\conda\python-statiskit_core
-      CONDA_VERSION: 2
-    - CONDA_RECIPE: share\git\LinAlg\bin\conda\python-statiskit_core
       CONDA_VERSION: 3
     - CONDA_RECIPE: bin\conda\libstatiskit
     - CONDA_RECIPE: bin\conda\python-statiskit
-      CONDA_VERSION: 2
-    - CONDA_RECIPE: bin\conda\python-statiskit
       CONDA_VERSION: 3
-    - CONDA_RECIPE: bin\conda\statiskit-dev
-      CONDA_VERSION: 2
     - CONDA_RECIPE: bin\conda\statiskit-dev
       CONDA_VERSION: 3
 
