@@ -21,14 +21,21 @@
 ## mplied. See the License for the specific language governing           ##
 ## permissions and limitations under the License.                        ##
 
-from SCons.Script import AddOption, GetOption
-import autowig
-import os
-import pickle
-from distutils.sysconfig import get_python_lib
-from SCons.Builder import Builder
-from SCons.Action import Action
-from importlib import import_module
+try:
+    from SCons.Script import AddOption, GetOption
+    import autowig
+    import os
+    import pickle
+    from distutils.sysconfig import get_python_lib
+    from SCons.Builder import Builder
+    from SCons.Action import Action
+    from importlib import import_module
+except:
+    def exists(env):
+        return False
+else:
+    def exists(env):
+        return True
 
 def generate(env):
     """Add Builders and construction variables to the Environment."""
@@ -123,6 +130,3 @@ def generate(env):
             return targets
 
         env.AddMethod(BoostPythonWIG)
-
-def exists(env):
-    return 1

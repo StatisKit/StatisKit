@@ -34,32 +34,32 @@ platform:
 
 environment:
   matrix:
-    - CONDA_RECIPE: bin\conda\vcs
-    - CONDA_RECIPE: bin\conda\python-scons
-      CONDA_VERSION: 2
-    - CONDA_RECIPE: bin\conda\python-scons
-      CONDA_VERSION: 3
+    # - CONDA_RECIPE: bin\conda\vcs
+    # - CONDA_RECIPE: bin\conda\python-scons
+    #   CONDA_VERSION: 2
+    # - CONDA_RECIPE: bin\conda\python-scons
+    #   CONDA_VERSION: 3
     - CONDA_RECIPE: bin\conda\scons-tools
       CONDA_VERSION: 2
     - CONDA_RECIPE: bin\conda\scons-tools
       CONDA_VERSION: 3
-    - CONDA_RECIPE: bin\conda\python-parse
-      CONDA_VERSION: 2
-    - CONDA_RECIPE: bin\conda\python-parse
-      CONDA_VERSION: 3
-    - CONDA_RECIPE: bin\conda\libtoolchain
-      CONDA_VERSION: 2
-    - CONDA_RECIPE: bin\conda\libtoolchain
-      CONDA_VERSION: 3
-    - CONDA_RECIPE: bin\conda\libruntime
-    - CONDA_RECIPE: bin\conda\python-toolchain
-      CONDA_VERSION: 2
-    - CONDA_RECIPE: bin\conda\python-toolchain
-      CONDA_VERSION: 3
-    - CONDA_RECIPE: bin\conda\libboost
-      CONDA_VERSION: 2
-    - CONDA_RECIPE: bin\conda\libboost
-      CONDA_VERSION: 3
+    # - CONDA_RECIPE: bin\conda\python-parse
+    #   CONDA_VERSION: 2
+    # - CONDA_RECIPE: bin\conda\python-parse
+    #   CONDA_VERSION: 3
+    # - CONDA_RECIPE: bin\conda\libtoolchain
+    #   CONDA_VERSION: 2
+    # - CONDA_RECIPE: bin\conda\libtoolchain
+    #   CONDA_VERSION: 3
+    # - CONDA_RECIPE: bin\conda\libruntime
+    # - CONDA_RECIPE: bin\conda\python-toolchain
+    #   CONDA_VERSION: 2
+    # - CONDA_RECIPE: bin\conda\python-toolchain
+    #   CONDA_VERSION: 3
+    # - CONDA_RECIPE: bin\conda\libboost
+    #   CONDA_VERSION: 2
+    # - CONDA_RECIPE: bin\conda\libboost
+    #   CONDA_VERSION: 3
     # - CONDA_RECIPE: share\git\ClangLite\bin\conda\llvm
     # - CONDA_RECIPE: share\git\ClangLite\bin\conda\clang
     # - CONDA_RECIPE: share\git\ClangLite\bin\conda\libclanglite

@@ -24,6 +24,9 @@
 import os
 from SCons.Defaults import Move, Delete
 
+def exists(env):
+    return True
+
 def generate(env):
     """Add Builders and construction variables to the Environment."""
     
@@ -65,6 +68,3 @@ def generate(env):
             return targets
 
         env.AddMethod(CppLib)
-
-def exists(env):
-    return 1

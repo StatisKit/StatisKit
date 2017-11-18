@@ -28,6 +28,9 @@ try:
 except:
     from path import path as Path
     
+def exists(env):
+    return True
+
 def generate(env):
     """Add Builders and construction variables to the Environment."""
     
@@ -96,6 +99,3 @@ def generate(env):
 
         env.AddMethod(BoostPythonExtension)
         env.Tool('python')
-
-def exists(env):
-    return 1
