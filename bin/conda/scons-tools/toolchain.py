@@ -28,6 +28,9 @@ from sys import maxsize
 from SCons.Script import AddOption, GetOption
 import six
 
+def exists(env):
+    return True
+
 def generate(env):
     """Add Builders and construction variables to the Environment."""
     if not 'toolchain' in env['TOOLS'][:-1]:
@@ -127,6 +130,3 @@ def generate(env):
               env['CXX'] = os.environ['GXX']
               DIAGNOSTICS_COLOR = env['DIAGNOSTICS_COLOR']
               env.AppendUnique(CCFLAGS=['-Wl,--no-undefined'] + ['-fdiagnostics-color=' + DIAGNOSTICS_COLOR])
-
-def exists(env):
-    return 1

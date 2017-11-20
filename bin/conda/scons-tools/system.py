@@ -24,6 +24,9 @@
 import platform
 from SCons.Script import AddOption, GetOption
     
+def exists(env):
+    return True
+
 def generate(env, **kwargs):
   if not 'system' in env['TOOLS'][:-1]:
     SYSTEMS = dict(Linux   = "linux",
@@ -43,6 +46,3 @@ def generate(env, **kwargs):
                   choices = list(SYSTEMS.values()),
                   default = system)
     env['SYSTEM'] = GetOption('system')
-
-def exists(env):
-    return 1

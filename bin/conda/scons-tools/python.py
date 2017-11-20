@@ -29,6 +29,9 @@ except:
     from path import path as Path
 import os
 
+def exists(env):
+    return True
+
 def generate(env, **kwargs):
     """Add Builders and construction variables to the Environment."""
 
@@ -69,6 +72,3 @@ def generate(env, **kwargs):
         return targets
 
       env.AddMethod(PythonPackage)
-
-def exists(env):
-    return 1

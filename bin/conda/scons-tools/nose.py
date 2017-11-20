@@ -25,6 +25,9 @@ from SCons.Script import AddOption, GetOption
 import subprocess
 import os
 
+def exists(env):
+  return True
+
 def generate(env):
     """Add Builders and construction variables to the Environment."""
     
@@ -83,6 +86,3 @@ def generate(env):
                     return target
 
         env.AddMethod(Nosetests)
-
-def exists(env):
-    return 1

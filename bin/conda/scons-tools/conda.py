@@ -33,6 +33,9 @@ import json
 import os
 import six
 
+def exists(env):
+    return True
+
 def generate(env):
     """Add Builders and construction variables to the Environment."""
     if not 'conda' in env['TOOLS'][:-1]:
@@ -221,6 +224,3 @@ def generate(env):
         return targets
 
     env.AddMethod(AnacondaUpload)
-
-def exists(env):
-    return 1

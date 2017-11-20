@@ -25,6 +25,9 @@ import sys
 import os
 from SCons.Script import AddOption, GetOption
     
+def exists(env):
+    return True
+
 def generate(env, **kwargs):
   if not 'prefix' in env['TOOLS'][:-1]:
     env.Tool('system')
@@ -42,6 +45,3 @@ def generate(env, **kwargs):
                   help    = 'installation prefix',
                   default = sysprefix)
     env['PREFIX'] = GetOption('prefix')
-
-def exists(env):
-    return 1

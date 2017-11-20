@@ -24,6 +24,9 @@
 import os
 from SCons.Defaults import Move, Delete
 
+def exists(env):
+    return True
+    
 def generate(env):
     """Add Builders and construction variables to the Environment."""
     
@@ -34,6 +37,3 @@ def generate(env):
             env.AppendUnique(CCFLAGS=['/openmp'])
         else:
             env.PrependUnique(CCFLAGS=["-fopenmp"])
-
-def exists(env):
-    return 1
