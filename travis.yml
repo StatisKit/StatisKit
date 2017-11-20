@@ -51,6 +51,7 @@ env:
     CONDA_VERSION=2
   - CONDA_RECIPE=bin/conda/python-parse
     CONDA_VERSION=3
+  - CONDA_RECIPE=bin/conda/llvm-suite
   - CONDA_RECIPE=bin/conda/libtoolchain
     CONDA_VERSION=2
   - CONDA_RECIPE=bin/conda/libtoolchain
@@ -123,7 +124,9 @@ matrix:
     - os: osx
       env: DOCKERFILE=bin/docker/ubuntu
            CONDA_VERSION=3
-         
+    - os: linux
+      env: CONDA_RECIPE=bin/conda/llvm-suite
+      
 install:
   - git clone https://github.com/StatisKit/travis-ci.git
   - cd travis-ci
