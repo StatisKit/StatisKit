@@ -10,5 +10,5 @@ cp "${SRC_DIR}"/deactivate-clang.sh "${PREFIX}"/etc/conda/deactivate.d/deactivat
 
 pushd "${PREFIX}"/bin
   # ln -s clang ${CHOST}-clang
-  cp clang ${CHOST}-clang
+  cp ${CHOST}-clang clang
 popd
