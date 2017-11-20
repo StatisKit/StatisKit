@@ -9,5 +9,6 @@ cp "${SRC_DIR}"/activate-clang.sh "${PREFIX}"/etc/conda/activate.d/activate_"${P
 cp "${SRC_DIR}"/deactivate-clang.sh "${PREFIX}"/etc/conda/deactivate.d/deactivate_"${PKG_NAME}".sh
 
 pushd "${PREFIX}"/bin
-  ln -s clang ${CHOST}-clang
+  # ln -s clang ${CHOST}-clang
+  cp clang ${CHOST}-clang
 popd
