@@ -77,7 +77,7 @@ def generate(env):
                     env['CXX'] += " -include " + sources[0].target_from_source('', '.h').abspath
             env.Depends(target, targets)
             if SYSTEM == 'win':
-                response_file = os.path.asbpath('response_file.rsp')
+                response_file = os.path.abspath('response_file.rsp')
                 with open(response_file, 'w') as filehandler:
                     filehandler.write(" ".join([tgt.abspath.replace('/','\\') for tgt in targets]))
                 env.Append(LINKFLAGS = '@' + response_file)
