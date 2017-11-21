@@ -77,15 +77,16 @@ def generate(env):
                     env['CXX'] += " -include " + sources[0].target_from_source('', '.h').abspath
             env.Depends(target, targets)
             if SYSTEM == 'win':
-                response = env.Textfile('response_file.rsp',
-                         [tgt.abspath.replace('/','\\') for tgt in targets],
-                         LINESEPARATOR=" ")
+                response_file = os.path.asbpath('response_file.rsp')
+                with open(response_file, 'w') as filehandler:
+                    filehandler.write(" ".join([tgt.abspath.replace('/','\\') for tgt in targets]))
+                env.Append(LINKFLAGS = '@' + response_file)
             else:
                 response = env.Textfile('response_file.rsp',
                          [tgt.abspath.replace('\\','/') for tgt in targets],
                          LINESEPARATOR=" ")
-            env.Append(LINKFLAGS = '@' + response[0].abspath)
-            env.Depends(target, response)
+                env.Append(LINKFLAGS = '@' + response[0].abspath)
+                env.Depends(target, response)
             if SYSTEM == 'win':
                 pyd, lib, exp = env.SharedLibrary(target, [], SHLIBPREFIX='',
                                                   SHLIBSUFFIX = '.pyd')
