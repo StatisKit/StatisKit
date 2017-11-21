@@ -105,6 +105,7 @@ _cmake_config+=(-DCMAKE_BUILD_TYPE:STRING=Release)
 # The bootstrap clang I use was built with a static libLLVMObject.a and I trying to get the same here
 # _cmake_config+=(-DBUILD_SHARED_LIBS:BOOL=ON)
 _cmake_config+=(-DLLVM_ENABLE_ASSERTIONS:BOOL=OFF)
+_cmake_config+=(-DLLVM_ENABLE_RTTI:BOOL=ON)
 _cmake_config+=(-DLINK_POLLY_INTO_TOOLS:BOOL=ON)
 # Urgh, llvm *really* wants to link to ncurses / terminfo and I really do not want it to.
 _cmake_config+=(-DHAVE_TERMINFO_CURSES=OFF)
