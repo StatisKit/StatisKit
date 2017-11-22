@@ -38,36 +38,37 @@ services:
   - docker
   
 env:
-  - CONDA_RECIPE=bin/conda/vcs
-  - CONDA_RECIPE=bin/conda/python-scons
-    CONDA_VERSION=2
-  - CONDA_RECIPE=bin/conda/python-scons
-    CONDA_VERSION=3
-  - CONDA_RECIPE=bin/conda/scons-tools
-    CONDA_VERSION=2
-  - CONDA_RECIPE=bin/conda/scons-tools
-    CONDA_VERSION=3
-  - CONDA_RECIPE=bin/conda/python-parse
-    CONDA_VERSION=2
-  - CONDA_RECIPE=bin/conda/python-parse
-    CONDA_VERSION=3
-  - CONDA_RECIPE=bin/conda/llvm-suite
-  - CONDA_RECIPE=bin/conda/clang
+  # - CONDA_RECIPE=bin/conda/vcs
+  # - CONDA_RECIPE=bin/conda/python-scons
+  #   CONDA_VERSION=2
+  # - CONDA_RECIPE=bin/conda/python-scons
+  #   CONDA_VERSION=3
+  # - CONDA_RECIPE=bin/conda/scons-tools
+  #   CONDA_VERSION=2
+  # - CONDA_RECIPE=bin/conda/scons-tools
+  #   CONDA_VERSION=3
+  # - CONDA_RECIPE=bin/conda/python-parse
+  #   CONDA_VERSION=2
+  # - CONDA_RECIPE=bin/conda/python-parse
+  #   CONDA_VERSION=3
+  # - CONDA_RECIPE=bin/conda/llvm-suite
+  # - CONDA_RECIPE=bin/conda/clang
+  - CONDA_RECIPE=bin/conda/glibc
   - CONDA_RECIPE=bin/conda/libtoolchain
     CONDA_VERSION=2
   - CONDA_RECIPE=bin/conda/libtoolchain
     CONDA_VERSION=3
-  - CONDA_RECIPE=bin/conda/libruntime
-  - CONDA_RECIPE=bin/conda/python-toolchain
-    CONDA_VERSION=2
-  - CONDA_RECIPE=bin/conda/python-toolchain
-    CONDA_VERSION=3
-  - CONDA_RECIPE=bin/conda/libboost
-    CONDA_VERSION=2
-    TRAVIS_WAIT=40
-  - CONDA_RECIPE=bin/conda/libboost
-    CONDA_VERSION=3
-    TRAVIS_WAIT=40
+  # - CONDA_RECIPE=bin/conda/libruntime
+  # - CONDA_RECIPE=bin/conda/python-toolchain
+  #   CONDA_VERSION=2
+  # - CONDA_RECIPE=bin/conda/python-toolchain
+  #   CONDA_VERSION=3
+  # - CONDA_RECIPE=bin/conda/libboost
+  #   CONDA_VERSION=2
+  #   TRAVIS_WAIT=40
+  # - CONDA_RECIPE=bin/conda/libboost
+  #   CONDA_VERSION=3
+  #   TRAVIS_WAIT=40
   # - CONDA_RECIPE=share/git/ClangLite/bin/conda/llvm
   # - CONDA_RECIPE=share/git/ClangLite/bin/conda/clang
   # - CONDA_RECIPE=share/git/ClangLite/bin/conda/python-clang
@@ -119,6 +120,8 @@ env:
 
 matrix:
   exclude:
+    - os: osx
+      env: CONDA_RECIPE=bin/docker/glibc
     - os: osx
       env: DOCKERFILE=bin/docker/ubuntu
            CONDA_VERSION=2
