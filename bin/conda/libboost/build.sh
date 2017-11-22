@@ -75,6 +75,7 @@ if [ "$(uname)" == "Darwin" ]; then
         include="${INCLUDE_PATH}" \
         cxxflags="${CXXFLAGS}" \
         linkflags="${LINKFLAGS}" \
+        --layout=system \
         -j$CPU_COUNT \
         -d0 \
         install | tee b2.log 2>&1
