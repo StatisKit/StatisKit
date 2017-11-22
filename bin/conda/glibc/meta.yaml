@@ -11,11 +11,11 @@ build:
   number: 0
   skip: true [not linux]
 
-requirements:
-  build:
-    - gcc_linux-64
-    - gxx_linux-64
-    - gfortran_linux-64
+# requirements:
+#   build:
+#     - gcc_linux-64
+#     - gxx_linux-64
+#     - gfortran_linux-64
 
 about:
   home: http://www.gnu.org/software/libc/
