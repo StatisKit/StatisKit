@@ -106,6 +106,7 @@ if [ "$(uname)" == "Linux" ]; then
         linkflags="${LINKFLAGS}" \
         --layout=system \
         -j$CPU_COUNT \
+        -d0 \
         install | tee b2.log 2>&1
 fi
 
