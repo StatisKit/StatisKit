@@ -80,7 +80,7 @@ def generate(env):
                 response_file = os.path.abspath('response_file.rsp')
                 with open(response_file, 'w') as filehandler:
                     filehandler.write(" ".join([tgt.abspath.replace('/','\\') for tgt in targets]))
-                env.Append(LINKFLAGS = '@' + response_file)
+                env.Append(LINKFLAGS = '@"' + response_file + '"')
             else:
                 response = env.Textfile('response_file.rsp',
                          [tgt.abspath.replace('\\','/') for tgt in targets],
