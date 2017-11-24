@@ -12,10 +12,12 @@ build:
   skip: true [not linux]
 
 requirements:
-  build:
-    - gcc_linux-64
-    - gxx_linux-64
-    - gfortran_linux-64
+  # build:
+  #   - gcc_linux-64
+  #   - gxx_linux-64
+  #   - gfortran_linux-64
+  run_exports:
+    - {{ pin_subpackage('glibc', exact=True) }}
 
 about:
   home: http://www.gnu.org/software/libc/

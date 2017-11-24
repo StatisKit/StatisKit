@@ -38,37 +38,35 @@ services:
   - docker
   
 env:
-  # - CONDA_RECIPE=bin/conda/vcs
-  # - CONDA_RECIPE=bin/conda/python-scons
-  #   CONDA_VERSION=2
-  # - CONDA_RECIPE=bin/conda/python-scons
-  #   CONDA_VERSION=3
-  # - CONDA_RECIPE=bin/conda/scons-tools
-  #   CONDA_VERSION=2
-  # - CONDA_RECIPE=bin/conda/scons-tools
-  #   CONDA_VERSION=3
-  # - CONDA_RECIPE=bin/conda/python-parse
-  #   CONDA_VERSION=2
-  # - CONDA_RECIPE=bin/conda/python-parse
-  #   CONDA_VERSION=3
-  # - CONDA_RECIPE=bin/conda/llvm-suite
-  # - CONDA_RECIPE=bin/conda/clang
+  - CONDA_RECIPE=bin/conda/vcs
+  - CONDA_RECIPE=bin/conda/python-scons
+    CONDA_VERSION=2
+  - CONDA_RECIPE=bin/conda/python-scons
+    CONDA_VERSION=3
+  - CONDA_RECIPE=bin/conda/scons-tools
+    CONDA_VERSION=2
+  - CONDA_RECIPE=bin/conda/scons-tools
+    CONDA_VERSION=3
+  - CONDA_RECIPE=bin/conda/python-parse
+    CONDA_VERSION=2
+  - CONDA_RECIPE=bin/conda/python-parse
+    CONDA_VERSION=3
+  - CONDA_RECIPE=bin/conda/llvm-suite
   - CONDA_RECIPE=bin/conda/glibc
   - CONDA_RECIPE=bin/conda/libtoolchain
     CONDA_VERSION=2
   - CONDA_RECIPE=bin/conda/libtoolchain
     CONDA_VERSION=3
-  # - CONDA_RECIPE=bin/conda/libruntime
-  # - CONDA_RECIPE=bin/conda/python-toolchain
-  #   CONDA_VERSION=2
-  # - CONDA_RECIPE=bin/conda/python-toolchain
-  #   CONDA_VERSION=3
-  # - CONDA_RECIPE=bin/conda/libboost
-  #   CONDA_VERSION=2
-  #   TRAVIS_WAIT=40
-  # - CONDA_RECIPE=bin/conda/libboost
-  #   CONDA_VERSION=3
-  #   TRAVIS_WAIT=40
+  - CONDA_RECIPE=bin/conda/python-toolchain
+    CONDA_VERSION=2
+  - CONDA_RECIPE=bin/conda/python-toolchain
+    CONDA_VERSION=3
+  - CONDA_RECIPE=bin/conda/boost-suite
+    CONDA_VERSION=2
+    TRAVIS_WAIT=40
+  - CONDA_RECIPE=bin/conda/boost-suite
+    CONDA_VERSION=3
+    TRAVIS_WAIT=40
   # - CONDA_RECIPE=share/git/ClangLite/bin/conda/llvm
   # - CONDA_RECIPE=share/git/ClangLite/bin/conda/clang
   # - CONDA_RECIPE=share/git/ClangLite/bin/conda/python-clang
@@ -85,40 +83,14 @@ env:
   #   CONDA_VERSION=2
   # - CONDA_RECIPE=share/git/AutoWIG/bin/conda/python-autowig
   #   CONDA_VERSION=3
-  # - CONDA_RECIPE=bin/conda/statiskit-toolchain
-  #   CONDA_VERSION=2
-  # - CONDA_RECIPE=bin/conda/statiskit-toolchain
-  #   CONDA_VERSION=3
-  # - CONDA_RECIPE=share/git/STL/bin/conda/libstatiskit_stl
-  # - CONDA_RECIPE=share/git/STL/bin/conda/python-statiskit_stl
-  #   CONDA_VERSION=2
-  # - CONDA_RECIPE=share/git/STL/bin/conda/python-statiskit_stl
-  #   CONDA_VERSION=3
-  # - CONDA_RECIPE=share/git/LinAlg/bin/conda/libstatiskit_linalg
-  # - CONDA_RECIPE=share/git/LinAlg/bin/conda/python-statiskit_linalg
-  #   CONDA_VERSION=2
-  # - CONDA_RECIPE=share/git/LinAlg/bin/conda/python-statiskit_linalg
-  #   CONDA_VERSION=3
-  # - CONDA_RECIPE=share/git/LinAlg/bin/conda/libstatiskit_core
-  # - CONDA_RECIPE=share/git/LinAlg/bin/conda/python-statiskit_core
-  #   CONDA_VERSION=2
-  # - CONDA_RECIPE=share/git/LinAlg/bin/conda/python-statiskit_core
-  #   CONDA_VERSION=3
-  # - CONDA_RECIPE=bin/conda/libstatiskit
-  # - CONDA_RECIPE=bin/conda/python-statiskit
-  #   CONDA_VERSION=2
-  # - CONDA_RECIPE=bin/conda/python-statiskit
-  #   CONDA_VERSION=3
-  # - CONDA_RECIPE=bin/conda/statiskit-dev
-  #   CONDA_VERSION=2
-  # - CONDA_RECIPE=bin/conda/statiskit-dev
-  #   CONDA_VERSION=3
-  # - DOCKERFILE=bin/docker/ubuntu
-  #   CONDA_VERSION=2
-  # - DOCKERFILE=bin/docker/ubuntu
-  #   CONDA_VERSION=3
+  - DOCKERFILE=bin/docker/ubuntu
+    CONDA_VERSION=2
+  - DOCKERFILE=bin/docker/ubuntu
+    CONDA_VERSION=3
+  - ANACONDA_RELABEL=main
 
 matrix:
+  fast_finish: true
   exclude:
     - os: osx
       env: CONDA_RECIPE=bin/docker/glibc
@@ -128,10 +100,12 @@ matrix:
     - os: osx
       env: DOCKERFILE=bin/docker/ubuntu
            CONDA_VERSION=3
+    - os: osx
+      env: CONDA_RECIPE=share/git/ClangLite/bin/conda/llvm
+    - os: osx
+      env: CONDA_RECIPE=share/git/ClangLite/bin/conda/clang
     - os: linux
       env: CONDA_RECIPE=bin/conda/llvm-suite
-    - os: linux
-      env: CONDA_RECIPE=bin/conda/clang
 
 install:
   - git clone https://github.com/StatisKit/travis-ci.git

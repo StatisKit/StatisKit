@@ -34,7 +34,7 @@ about:
   summary: Collection of utilities for building Python packages.
 
 requirements:
-  build:
+  run:
     - python
     - setuptools
     - scons-tools
@@ -47,14 +47,6 @@ requirements:
     - cmake
     - pillow
     - libtoolchain
-  run:
+  run_exports:
     - python
-    - setuptools
-    - scons-tools
-    - path.py
     - pywin32                      [win]
-    - pyyaml
-    - nose
-    - coverage
-    - sphinx
-    - pillow
