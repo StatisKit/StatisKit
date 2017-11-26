@@ -105,7 +105,7 @@ matrix:
       env: CONDA_RECIPE=share/git/ClangLite/bin/conda/clang
     - os: linux
       env: CONDA_RECIPE=bin/conda/llvm-suite
-  allowed_failure:
+  allowed_failures:
     - os: linux
       env: DOCKER_CONTEXT=bin/docker/ubuntu
            CONDA_VERSION=2
