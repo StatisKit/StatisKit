@@ -83,9 +83,9 @@ env:
   #   CONDA_VERSION=2
   # - CONDA_RECIPE=share/git/AutoWIG/bin/conda/python-autowig
   #   CONDA_VERSION=3
-  - DOCKERFILE=bin/docker/ubuntu
+  - DOCKER_CONTEXT=bin/docker/ubuntu
     CONDA_VERSION=2
-  - DOCKERFILE=bin/docker/ubuntu
+  - DOCKER_CONTEXT=bin/docker/ubuntu
     CONDA_VERSION=3
   - ANACONDA_RELABEL=main
 
@@ -94,10 +94,10 @@ matrix:
     # - os: osx
     #   env: CONDA_RECIPE=bin/conda/glibc
     - os: osx
-      env: DOCKERFILE=bin/docker/ubuntu
+      env: DOCKER_CONTEXT=bin/docker/ubuntu
            CONDA_VERSION=2
     - os: osx
-      env: DOCKERFILE=bin/docker/ubuntu
+      env: DOCKER_CONTEXT=bin/docker/ubuntu
            CONDA_VERSION=3
     - os: osx
       env: CONDA_RECIPE=share/git/ClangLite/bin/conda/llvm
