@@ -1,6 +1,7 @@
+ARG CONDA_VERSION=2
 FROM ubuntu:14.04
 
-ARG CONDA_VERSION=2
+ARG CONDA_VERSION
 
 RUN apt-get update
 RUN apt-get -y upgrade

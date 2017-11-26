@@ -47,10 +47,10 @@ requirements:
     - bzip2             [unix]
     - zlib
 
-test:
-  requires:
-    - libtoolchain
-    - python
+# test:
+#   requires:
+#     - libtoolchain
+#     - python
 
 outputs:
   - files:
@@ -70,8 +70,8 @@ outputs:
         - {{ pin_subpackage('libboost_core-dev', exact=True) }}
       run_exports:
         - {{ pin_subpackage('libboost_atomic', exact=True) }}
-    test:
-      script: run_test.py
+    # test:
+    #   script: run_test.py
   - files:
       - lib/libboost_chrono*     [not win]
       - Library\lib\libboost_chrono* [win]
@@ -91,8 +91,8 @@ outputs:
         - {{ pin_subpackage('libboost_system-dev', exact=True) }}
       run_exports:
         - {{ pin_subpackage('libboost_chrono', exact=True) }}
-    test:
-      script: run_test.py
+    # test:
+    #   script: run_test.py
   - files:
       - lib/libboost_container*     [not win]
       - Library\lib\libboost_container* [win]
@@ -106,8 +106,8 @@ outputs:
         - {{ pin_subpackage('libboost_core-dev', exact=True) }}
       run_exports:
         - {{ pin_subpackage('libboost_container', exact=True) }}
-    test:
-      script: run_test.py
+    # test:
+    #   script: run_test.py
   - files:
       - lib/libboost_python*     [not win]
       - Library\lib\libboost_python* [win]
@@ -126,8 +126,8 @@ outputs:
         - {{ pin_subpackage('libboost_core-dev', exact=True) }}
       run_exports:
         - {{ pin_subpackage('libboost_python', exact=True) }}
-    test:
-      script: run_test.py
+    # test:
+    #   script: run_test.py
   - files:
       - lib/libboost_context*     [not win]
       - Library\lib\libboost_context* [win]
@@ -141,8 +141,8 @@ outputs:
         - {{ pin_subpackage('libboost_core-dev', exact=True) }}
       run_exports:
         - {{ pin_subpackage('libboost_context', exact=True) }}
-    test:
-      script: run_test.py
+    # test:
+    #   script: run_test.py
   - files:
       - lib/libboost_coroutine*     [not win]
       - Library\lib\libboost_coroutine* [win]
@@ -166,8 +166,8 @@ outputs:
       run_exports:
         - {{ pin_subpackage('libboost_coroutine', exact=True) }}
         - {{ pin_subpackage('libboost_context-dev', exact=True) }}
-    test:
-      script: run_test.py
+    # test:
+    #   script: run_test.py
   - files:
       - lib/libboost_date_time*     [not win]
       - Library\lib\libboost_date_time* [win]
@@ -183,8 +183,8 @@ outputs:
         - {{ pin_subpackage('libboost_core-dev', exact=True) }}
       run_exports:
         - {{ pin_subpackage('libboost_date_time', exact=True) }}
-    test:
-      script: run_test.py
+    # test:
+    #   script: run_test.py
   - files:
       - lib/libboost_filesystem*     [not win]
       - Library\lib\libboost_filesystem* [win]
@@ -204,8 +204,8 @@ outputs:
         - {{ pin_subpackage('libboost_system-dev', exact=True) }}
       run_exports:
         - {{ pin_subpackage('libboost_filesystem', exact=True) }}
-    test:
-      script: run_test.py
+    # test:
+    #   script: run_test.py
   - files:
       - lib/libboost_graph*     [not win]
       - Library\lib\libboost_graph* [win]
@@ -225,8 +225,8 @@ outputs:
         - {{ pin_subpackage('libboost_serialization-dev', exact=True) }}
       run_exports:
         - {{ pin_subpackage('libboost_graph', exact=True) }}
-    test:
-      script: run_test.py
+    # test:
+    #   script: run_test.py
   - files:
       - lib/libboost_iostreams*     [not win]
       - Library\lib\libboost_iostreams* [win]
@@ -240,8 +240,8 @@ outputs:
         - {{ pin_subpackage('libboost_core-dev', exact=True) }}
       run_exports:
         - {{ pin_subpackage('libboost_iostreams', exact=True) }}
-    test:
-      script: run_test.py
+    # test:
+    #   script: run_test.py
   - files:
       - lib/libboost_locale*     [not win]
       - Library\lib\libboost_locale* [win]
@@ -263,8 +263,8 @@ outputs:
         - {{ pin_subpackage('libboost_core-dev', exact=True) }}
       run_exports:
         - {{ pin_subpackage('libboost_locale', exact=True) }}
-    test:
-      script: run_test.py
+    # test:
+    #   script: run_test.py
   - files:
       - lib/libboost_log*     [not win]
       - Library\lib\libboost_log* [win]
@@ -288,8 +288,8 @@ outputs:
         - {{ pin_subpackage('libboost_core-dev', exact=True) }}
       run_exports:
         - {{ pin_subpackage('libboost_log', exact=True) }}
-    test:
-      script: run_test.py
+    # test:
+    #   script: run_test.py
   - files:
       - lib/libboost_math*     [not win]
       - Library\lib\libboost_math* [win]
@@ -307,8 +307,8 @@ outputs:
         - {{ pin_subpackage('libboost_core-dev', exact=True) }}
       run_exports:
         - {{ pin_subpackage('libboost_math', exact=True) }}
-    test:
-      script: run_test.py
+    # test:
+    #   script: run_test.py
   - files:
       - lib/libboost_program_options*      [not win]
       - Library\lib\libboost_program_options*  [win]
@@ -326,8 +326,8 @@ outputs:
         - {{ pin_subpackage('libboost_math-dev', exact=True) }}
       run_exports:
         - {{ pin_subpackage('libboost_program_options', exact=True) }}
-    test:
-      script: run_test.py
+    # test:
+    #   script: run_test.py
   - files:
       - lib/libboost_random*     [not win]
       - Library\lib\libboost_random* [win]
@@ -350,8 +350,8 @@ outputs:
         - {{ pin_subpackage('libboost_container-dev', exact=True) }}
       run_exports:
         - {{ pin_subpackage('libboost_random', exact=True) }}
-    test:
-      script: run_test.py
+    # test:
+    #   script: run_test.py
   - files:
       - lib/libboost_regex*     [not win]
       - Library\lib\libboost_regex* [win]
@@ -376,8 +376,8 @@ outputs:
         - {{ pin_subpackage('libboost_core-dev', exact=True) }}
       run_exports:
         - {{ pin_subpackage('libboost_regex', exact=True) }}
-    test:
-      script: run_test.py
+    # test:
+    #   script: run_test.py
   - files:
       - lib/libboost_serialization*      [not win]
       - lib/libboost_wserialization*     [not win]
@@ -399,8 +399,8 @@ outputs:
         - {{ pin_subpackage('libboost_core-dev', exact=True) }}
       run_exports:
         - {{ pin_subpackage('libboost_serialization', exact=True) }}
-    test:
-      script: run_test.py
+    # test:
+    #   script: run_test.py
   - files:
       - lib/libboost_signals*     [not win]
       - Library\lib\libboost_signals* [win]
@@ -420,8 +420,8 @@ outputs:
         - {{ pin_subpackage('libboost_core-dev', exact=True) }}
       run_exports:
         - {{ pin_subpackage('libboost_signals', exact=True) }}
-    test:
-      script: run_test.py
+    # test:
+    #   script: run_test.py
   - files:
       - lib/libboost_system*     [not win]
       - Library\lib\libboost_system* [win]
@@ -435,8 +435,8 @@ outputs:
     requirements:
       run:
         - {{ pin_subpackage('libboost_core-dev', exact=True) }}
-    test:
-      script: run_test.py
+    # test:
+    #   script: run_test.py
   - files:
       - lib/libboost_thread*     [not win]
       - Library\lib\libboost_thread* [win]
@@ -464,8 +464,8 @@ outputs:
         - {{ pin_subpackage('libboost_atomic-dev', exact=True) }}
       run_exports:
         - {{ pin_subpackage('libboost_thread', exact=True) }}
-    test:
-      script: run_test.py
+    # test:
+    #   script: run_test.py
   - files:
       - lib/libboost_timer*     [not win]
       - Library\lib\libboost_timer* [win]
@@ -487,8 +487,8 @@ outputs:
         - {{ pin_subpackage('libboost_core-dev', exact=True) }}
       run_exports:
         - {{ pin_subpackage('libboost_timer', exact=True) }}
-    test:
-      script: run_test.py
+    # test:
+    #   script: run_test.py
   - files:
       - lib/libboost_type_erasure*     [not win]
       - Library\lib\libboost_type_erasure* [win]
@@ -507,8 +507,8 @@ outputs:
         - {{ pin_subpackage('libboost_core-dev', exact=True) }}
       run_exports:
         - {{ pin_subpackage('libboost_type_erasure', exact=True) }}
-    test:
-      script: run_test.py
+    # test:
+    #   script: run_test.py
   - files:
       - lib/libboost_unit_test_framework*      [not win]
       - lib/libboost_prg_exec_monitor*         [not win]
@@ -530,8 +530,8 @@ outputs:
         - {{ pin_subpackage('libboost_core-dev', exact=True) }}
       run_exports:
         - {{ pin_subpackage('libboost_test', exact=True) }}
-    test:
-      script: run_test.py
+    # test:
+    #   script: run_test.py
   - files:
       - lib/libboost_wave*     [not win]
       - Library\lib\libboost_wave* [win]
@@ -554,8 +554,8 @@ outputs:
         - {{ pin_subpackage('libboost_core-dev', exact=True) }}
       run_exports:
         - {{ pin_subpackage('libboost_wave', exact=True) }}
-    test:
-      script: run_test.py
+    # test:
+    #   script: run_test.py
   - files:
       - include/boost/accumulators [not win]
       - include/boost/algorithm [not win]

@@ -52,7 +52,7 @@ env:
   - CONDA_RECIPE=bin/conda/python-parse
     CONDA_VERSION=3
   - CONDA_RECIPE=bin/conda/llvm-suite
-  - CONDA_RECIPE=bin/conda/glibc
+  # - CONDA_RECIPE=bin/conda/glibc
   - CONDA_RECIPE=bin/conda/libtoolchain
     CONDA_VERSION=2
   - CONDA_RECIPE=bin/conda/libtoolchain
@@ -90,10 +90,9 @@ env:
   - ANACONDA_RELABEL=main
 
 matrix:
-  fast_finish: true
   exclude:
-    - os: osx
-      env: CONDA_RECIPE=bin/docker/glibc
+    # - os: osx
+    #   env: CONDA_RECIPE=bin/conda/glibc
     - os: osx
       env: DOCKERFILE=bin/docker/ubuntu
            CONDA_VERSION=2
