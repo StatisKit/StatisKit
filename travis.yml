@@ -63,10 +63,10 @@ env:
     CONDA_VERSION=3
   - CONDA_RECIPE=bin/conda/boost-suite
     CONDA_VERSION=2
-    TRAVIS_WAIT=40
+    TRAVIS_WAIT=50
   - CONDA_RECIPE=bin/conda/boost-suite
     CONDA_VERSION=3
-    TRAVIS_WAIT=40
+    TRAVIS_WAIT=50
   # - CONDA_RECIPE=share/git/ClangLite/bin/conda/llvm
   # - CONDA_RECIPE=share/git/ClangLite/bin/conda/clang
   # - CONDA_RECIPE=share/git/ClangLite/bin/conda/python-clang
@@ -105,6 +105,13 @@ matrix:
       env: CONDA_RECIPE=share/git/ClangLite/bin/conda/clang
     - os: linux
       env: CONDA_RECIPE=bin/conda/llvm-suite
+  allowed_failure:
+    - os: linux
+      env: DOCKER_CONTEXT=bin/docker/ubuntu
+           CONDA_VERSION=2
+    - os: linux
+      env: DOCKER_CONTEXT=bin/docker/ubuntu
+           CONDA_VERSION=3
 
 install:
   - git clone https://github.com/StatisKit/travis-ci.git
