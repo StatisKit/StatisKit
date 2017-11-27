@@ -67,6 +67,14 @@ env:
   - CONDA_RECIPE=bin/conda/boost-suite
     CONDA_VERSION=3
     TRAVIS_WAIT=50
+  - CONDA_RECIPE=share/git/conda-tools/bin/conda/conda-tools
+    CONDA_VERSION=2
+  - CONDA_RECIPE=share/git/conda-tools/bin/conda/conda-tools
+    CONDA_VERSION=3
+  - CONDA_RECIPE=share/git/SoftMaint/bin/conda/python-softmaint
+    CONDA_VERSION=2
+  - CONDA_RECIPE=share/git/SoftMaint/bin/conda/python-softmaint
+    CONDA_VERSION=3
   # - CONDA_RECIPE=share/git/ClangLite/bin/conda/llvm
   # - CONDA_RECIPE=share/git/ClangLite/bin/conda/clang
   # - CONDA_RECIPE=share/git/ClangLite/bin/conda/python-clang
@@ -83,11 +91,11 @@ env:
   #   CONDA_VERSION=2
   # - CONDA_RECIPE=share/git/AutoWIG/bin/conda/python-autowig
   #   CONDA_VERSION=3
+  - ANACONDA_RELABEL=main
   - DOCKER_CONTEXT=bin/docker/ubuntu
     CONDA_VERSION=2
   - DOCKER_CONTEXT=bin/docker/ubuntu
     CONDA_VERSION=3
-  - ANACONDA_RELABEL=main
 
 matrix:
   exclude:
@@ -117,6 +125,10 @@ matrix:
     - os: osx
       env: CONDA_RECIPE=bin/conda/boost-suite
            CONDA_VERSION=2
+           TRAVIS_WAIT=50
+    - os: osx
+      env: CONDA_RECIPE=bin/conda/boost-suite
+           CONDA_VERSION=3
            TRAVIS_WAIT=50
 install:
   - git clone https://github.com/StatisKit/travis-ci.git

@@ -128,10 +128,9 @@ outputs:
       run:
         - python
         - {{ pin_subpackage('libboost_core-dev', exact=True) }}
+        - {{ pin_subpackage('libboost_regex-dev', exact=True) }}
       run_exports:
         - {{ pin_subpackage('libboost_python', exact=True) }}
-        - {{ pin_subpackage('libboost_container-dev', exact=True) }}
-
     # test:
     #   script: run_test.py
   - files:
@@ -392,6 +391,7 @@ outputs:
     requirements:
       run:
         - {{ pin_subpackage('libboost_core-dev', exact=True) }}
+        - {{ pin_subpackage('libboost_container-dev', exact=True) }}
       run_exports:
         - {{ pin_subpackage('libboost_regex', exact=True) }}
     # test:
