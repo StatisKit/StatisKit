@@ -24,5 +24,5 @@
 mkdir build
 cd build
 ../configure --prefix=$PREFIX
-make
+make > log.txt 2>&1
 make install

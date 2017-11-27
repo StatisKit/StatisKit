@@ -130,6 +130,7 @@ matrix:
       env: CONDA_RECIPE=bin/conda/boost-suite
            CONDA_VERSION=3
            TRAVIS_WAIT=50
+           
 install:
   - git clone https://github.com/StatisKit/travis-ci.git
   - cd travis-ci
