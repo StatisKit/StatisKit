@@ -29,7 +29,7 @@ branches:
 language: cpp
 
 os:
-  # - linux
+  - linux
   - osx
 
 sudo: required
