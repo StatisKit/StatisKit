@@ -38,19 +38,19 @@ services:
   - docker
   
 env:
-  # - CONDA_RECIPE=bin/conda/vcs
-  # - CONDA_RECIPE=bin/conda/python-scons
-  #   CONDA_VERSION=2
-  # - CONDA_RECIPE=bin/conda/python-scons
-  #   CONDA_VERSION=3
-  # - CONDA_RECIPE=bin/conda/scons-tools
-  #   CONDA_VERSION=2
-  # - CONDA_RECIPE=bin/conda/scons-tools
-  #   CONDA_VERSION=3
-  # - CONDA_RECIPE=bin/conda/python-parse
-  #   CONDA_VERSION=2
-  # - CONDA_RECIPE=bin/conda/python-parse
-  #   CONDA_VERSION=3
+  - CONDA_RECIPE=bin/conda/vcs
+  - CONDA_RECIPE=bin/conda/python-scons
+    CONDA_VERSION=2
+  - CONDA_RECIPE=bin/conda/python-scons
+    CONDA_VERSION=3
+  - CONDA_RECIPE=bin/conda/scons-tools
+    CONDA_VERSION=2
+  - CONDA_RECIPE=bin/conda/scons-tools
+    CONDA_VERSION=3
+  - CONDA_RECIPE=bin/conda/python-parse
+    CONDA_VERSION=2
+  - CONDA_RECIPE=bin/conda/python-parse
+    CONDA_VERSION=3
   - CONDA_RECIPE=bin/conda/llvm-suite
   # - CONDA_RECIPE=bin/conda/glibc
   - CONDA_RECIPE=bin/conda/libtoolchain
@@ -112,6 +112,8 @@ matrix:
     - os: linux
       env: DOCKER_CONTEXT=bin/docker/ubuntu
            CONDA_VERSION=3
+    - os: osx
+      env: CONDA_RECIPE=bin/conda/llvm-suite
     - os: osx
       env: CONDA_RECIPE=bin/conda/boost-suite
            CONDA_VERSION=2
