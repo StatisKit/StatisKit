@@ -15,10 +15,10 @@ In particular, **Git** will not consider that your local :code:`<branchname>` br
 ..                       UMR AGAP CIRAD, EPI Virtual Plants Inria        ..
 .. Copyright [2015-2016] UMR AGAP CIRAD, EPI Virtual Plants Inria        ..
 ..                                                                       ..
-.. This file is part of the AutoWIG project. More information can be     ..
+.. This file is part of the StatisKit project. More information can be   ..
 .. found at                                                              ..
 ..                                                                       ..
-..     http://autowig.rtfd.io                                            ..
+..     http://statiskit.rtfd.io                                          ..
 ..                                                                       ..
 .. The Apache Software Foundation (ASF) licenses this file to you under  ..
 .. the Apache License, Version 2.0 (the "License"); you may not use this ..
