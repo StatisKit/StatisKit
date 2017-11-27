@@ -2,10 +2,10 @@
 ##                       UMR AGAP CIRAD, EPI Virtual Plants Inria        ##
 ## Copyright [2015-2016] UMR AGAP CIRAD, EPI Virtual Plants Inria        ##
 ##                                                                       ##
-## This file is part of the AutoWIG project. More information can be     ##
+## This file is part of the StatisKit project. More information can be   ##
 ## found at                                                              ##
 ##                                                                       ##
-##     http://autowig.rtfd.io                                            ##
+##     http://statiskit.rtfd.io                                          ##
 ##                                                                       ##
 ## The Apache Software Foundation (ASF) licenses this file to you under  ##
 ## the Apache License, Version 2.0 (the "License"); you may not use this ##
@@ -75,6 +75,7 @@ if [ "$(uname)" == "Darwin" ]; then
         include="${INCLUDE_PATH}" \
         cxxflags="${CXXFLAGS}" \
         linkflags="${LINKFLAGS}" \
+        --without-mpi \
         --layout=system \
         -j$CPU_COUNT \
         -d0 \
@@ -89,6 +90,7 @@ if [ "$(uname)" == "Linux" ]; then
         --prefix="${PREFIX}" \
         --with-python="${PYTHON}" \
         --with-python-root="${PREFIX} : ${PREFIX}/include/python${PY_VER}m ${PREFIX}/include/python${PY_VER}" \
+        --with-icu="${PREFIX}" \
         | tee bootstrap.log 2>&1
 
     ./b2 -q \
@@ -104,6 +106,7 @@ if [ "$(uname)" == "Linux" ]; then
         include="${INCLUDE_PATH}" \
         cxxflags="${CXXFLAGS}"\
         linkflags="${LINKFLAGS}" \
+        --without-mpi \
         --layout=system \
         -j$CPU_COUNT \
         -d0 \

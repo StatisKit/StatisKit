@@ -2,10 +2,10 @@
 ##                       UMR AGAP CIRAD, EPI Virtual Plants Inria        ##
 ## Copyright [2015-2016] UMR AGAP CIRAD, EPI Virtual Plants Inria        ##
 ##                                                                       ##
-## This file is part of the AutoWIG project. More information can be     ##
+## This file is part of the StatisKit project. More information can be   ##
 ## found at                                                              ##
 ##                                                                       ##
-##     http://autowig.rtfd.io                                            ##
+##     http://statiskit.rtfd.io                                          ##
 ##                                                                       ##
 ## The Apache Software Foundation (ASF) licenses this file to you under  ##
 ## the Apache License, Version 2.0 (the "License"); you may not use this ##
@@ -21,30 +21,12 @@
 ## mplied. See the License for the specific language governing           ##
 ## permissions and limitations under the License.                        ##
 
-package:
-  name: libruntime
-  version: "1.0.0"
-    
-build:
-  number: 0
-  track_features:
-    - vc14                  [win]
-    
-about:
-  home: http://statiskit.rtfd.io/
-  license: Apache License 2.0
-  summary: Collection of utilities for using compiled libraries.
-  
-requirements:
-  build:
-    - libgcc-ng           [linux]
-    - libstdcxx-ng        [linux]
-    - libcxx              [osx]
-    - libcxxabi           [osx]
-    - vs2015_runtime      [win]
-  run:
-    - libgcc-ng           [linux]
-    - libstdcxx-ng        [linux]
-    - libcxx              [osx]
-    - libgfortran         [osx]
-    - vs2015_runtime      [win]
+# -*-python-*-
+
+import os
+from SCons import Errors
+
+env = Environment(tools = ['system',
+                           'toolchain',
+                           'boost_python'])
+Program(source=Glob('*.cpp'), target='boost')

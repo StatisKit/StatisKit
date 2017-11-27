@@ -2,10 +2,10 @@
 ##                       UMR AGAP CIRAD, EPI Virtual Plants Inria        ##
 ## Copyright [2015-2016] UMR AGAP CIRAD, EPI Virtual Plants Inria        ##
 ##                                                                       ##
-## This file is part of the AutoWIG project. More information can be     ##
+## This file is part of the StatisKit project. More information can be   ##
 ## found at                                                              ##
 ##                                                                       ##
-##     http://autowig.rtfd.io                                            ##
+##     http://statiskit.rtfd.io                                          ##
 ##                                                                       ##
 ## The Apache Software Foundation (ASF) licenses this file to you under  ##
 ## the Apache License, Version 2.0 (the "License"); you may not use this ##
@@ -28,7 +28,8 @@ package:
 build:
   number: 0
   track_features:
-    - vc14                 [win]
+    - vc12                 [win]
+    # - vc14                 [win]
 
 about:
   home: http://statiskit.rtfd.io/
@@ -36,25 +37,21 @@ about:
   summary: Collection of utilities for compiling libraries.
   
 requirements:
-  build:
-    - python
-    - scons-tools
-    - gcc_linux-64        [linux]
-    - gxx_linux-64        [linux]
-    - gfortran_linux-64   [linux]
-    - clang_osx-64        [osx]
-    - clangxx_osx-64      [osx]
-    - gfortran_osx-64     [osx]
-    - pywin32             [win]
-    - vs2015_runtime      [win]
   run:
     - python
+    - python-scons
     - scons-tools
     - gcc_linux-64        [linux]
     - gxx_linux-64        [linux]
     - gfortran_linux-64   [linux]
+    # - glibc               [linux]
     - clang_osx-64        [osx]
     - clangxx_osx-64      [osx]
     - gfortran_osx-64     [osx]
     - pywin32             [win]
-    - vs2015_runtime      [win]
+    # - vs2015_runtime      [win]
+    # - vs2013_runtime      [win]
+  run_exports:
+    - pywin32             [win]
+    # - vs2015_runtime      [win]
+    - vs2013_runtime      [win]

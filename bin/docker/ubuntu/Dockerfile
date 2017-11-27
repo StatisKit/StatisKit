@@ -1,6 +1,7 @@
+ARG CONDA_VERSION=2
 FROM ubuntu:14.04
 
-ARG CONDA_VERSION=2
+ARG CONDA_VERSION
 
 RUN apt-get update
 RUN apt-get -y upgrade
@@ -22,4 +23,4 @@ RUN rm miniconda.sh
 env PATH /home/main/miniconda:/home/main/miniconda/bin:$PATH
 RUN chmod -R a+rwx /home/main/miniconda
 RUN conda config --set always_yes yes
-RUN conda install vcs ipython jupyter conda-build anaconda-client conda-tools -c statiskit -c conda-forge
+RUN conda install vcs ipython jupyter conda-build anaconda-client conda-tools python-softmaint python-autowig python-clanglite -c statiskit -c conda-forge

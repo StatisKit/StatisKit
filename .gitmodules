@@ -19,3 +19,9 @@
 [submodule "share/git/PGM"]
 	path = share/git/PGM
 	url = http://github.com/Statiskit/PGM
+[submodule "share/git/SoftMaint"]
+	path = share/git/SoftMaint
+	url = http://github.com/statiskit/SoftMaint
+[submodule "share/git/conda-tools"]
+	path = share/git/conda-tools
+	url = http://github.com/statiskit/conda-tools
