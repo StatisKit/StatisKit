@@ -1,1076 +1,280 @@
-## Copyright [2017-2018] UMR MISTEA INRA, UMR LEPSE INRA,                ##
-##                       UMR AGAP CIRAD, EPI Virtual Plants Inria        ##
-## Copyright [2015-2016] UMR AGAP CIRAD, EPI Virtual Plants Inria        ##
-##                                                                       ##
-## This file is part of the StatisKit project. More information can be   ##
-## found at                                                              ##
-##                                                                       ##
-##     http://statiskit.rtfd.io                                          ##
-##                                                                       ##
-## The Apache Software Foundation (ASF) licenses this file to you under  ##
-## the Apache License, Version 2.0 (the "License"); you may not use this ##
-## file except in compliance with the License. You should have received  ##
-## a copy of the Apache License, Version 2.0 along with this file; see   ##
-## the file LICENSE. If not, you may obtain a copy of the License at     ##
-##                                                                       ##
-##     http://www.apache.org/licenses/LICENSE-2.0                        ##
-##                                                                       ##
-## Unless required by applicable law or agreed to in writing, software   ##
-## distributed under the License is distributed on an "AS IS" BASIS,     ##
-## WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or       ##
-## mplied. See the License for the specific language governing           ##
-## permissions and limitations under the License.                        ##
-
-package:
-  name: libboost
-  version: 1.61.0
-
-source:
-  fn:  boost_1_61_0.tar.bz2
-  url: http://sourceforge.net/projects/boost/files/boost/1.61.0/boost_1_61_0.tar.bz2
-  sha256: a547bd06c2fd9a71ba1d169d9cf0339da7ebf4753849a8f7d6fdb8feee99b640
-
-build:
-  number: 0
-
 about:
   home: http://www.boost.org/
   license: Boost-1.0
   summary: Boost provides free peer-reviewed portable C++ source libraries.
-
-requirements:
-  build:
-    - python
-    - libtoolchain
-    - python
-    - icu 58.*          [unix]
-    - bzip2             [unix]
-    - zlib
-
-# test:
-#   requires:
-#     - libtoolchain
-#     - python
-
+build:
+  number: 0
 outputs:
   - files:
-      - lib/libboost_atomic*     [not win]
-      - Library\lib\libboost_atomic* [win]
-      - Library\bin\boost_atomic* [win]
+    - lib/libboost_atomic*     [not win]
+    - Library\lib\libboost_atomic* [win]
+    - Library\bin\boost_atomic* [win]
     name: libboost_atomic
-  - files:
-      - include/boost/atomic.hpp       [not win]
-      - include/boost/atomic           [not win]
-      - include/boost/memory_order.hpp [not win]
-      - Library\include\boost\atomic.hpp   [win]
-      - Library\include\boost\atomic       [win]
-      - Library\include\boost\memory order [win]
-    name: libboost_atomic-dev
     requirements:
-      run:
-        - {{ pin_subpackage('libboost_core-dev', exact=True) }}
       run_exports:
-        - {{ pin_subpackage('libboost_atomic', exact=True) }}
-    # test:
-    #   script: run_test.py
+        - {{ pin_subpackage("libboost_atomic", exact=True) }}
   - files:
-      - lib/libboost_chrono*     [not win]
-      - Library\lib\libboost_chrono* [win]
-      - Library\bin\boost_chrono* [win]
+    - lib/libboost_chrono*     [not win]
+    - Library\lib\libboost_chrono* [win]
+    - Library\bin\boost_chrono* [win]
     name: libboost_chrono
     requirements:
       run:
-        - {{ pin_subpackage('libboost_system', exact=True) }}
-  - files:
-      - include/boost/chrono.hpp      [not win]
-      - include/boost/chrono          [not win]
-      - Library\include\boost\chrono.hpp  [win]
-      - Library\include\boost\chrono      [win]
-    name: libboost_chrono-dev
-    requirements:
-      run:
-        - {{ pin_subpackage('libboost_core-dev', exact=True) }}
-        - {{ pin_subpackage('libboost_system-dev', exact=True) }}
+      - {{ pin_subpackage("libboost_system", exact=True) }}
       run_exports:
-        - {{ pin_subpackage('libboost_chrono', exact=True) }}
-    # test:
-    #   script: run_test.py
+        - {{ pin_subpackage("libboost_chrono", exact=True) }}
   - files:
-      - lib/libboost_container*     [not win]
-      - Library\lib\libboost_container* [win]
-      - Library\bin\boost_container* [win]
+    - lib/libboost_container*     [not win]
+    - Library\lib\libboost_container* [win]
+    - Library\bin\boost_container* [win]
     name: libboost_container
-  - files:
-      - include/boost/container          [not win]
-      - Library\include\boost\container      [win]
-    name: libboost_container-dev
     requirements:
-      run:
-        - {{ pin_subpackage('libboost_core-dev', exact=True) }}
       run_exports:
-        - {{ pin_subpackage('libboost_container', exact=True) }}
-    # test:
-    #   script: run_test.py
+        - {{ pin_subpackage("libboost_container", exact=True) }}
   - files:
-      - lib/libboost_python*     [not win]
-      - Library\lib\libboost_python* [win]
-      - Library\bin\boost_python* [win]
-    name: libboost_python
-    requirements:
-      - python
-  - files:
-      - include/boost/python.hpp     [not win]
-      - include/boost/python         [not win]
-      - Library\include\boost\python.hpp [win]
-      - Library\include\boost\python     [win]
-    name: libboost_python-dev
-    requirements:
-      run:
-        - python
-        - {{ pin_subpackage('libboost_core-dev', exact=True) }}
-        - {{ pin_subpackage('libboost_regex-dev', exact=True) }}
-      run_exports:
-        - {{ pin_subpackage('libboost_python', exact=True) }}
-    # test:
-    #   script: run_test.py
-  - files:
-      - lib/libboost_context*     [not win]
-      - Library\lib\libboost_context* [win]
-      - Library\bin\boost_context* [win]
+    - lib/libboost_context*     [not win]
+    - Library\lib\libboost_context* [win]
+    - Library\bin\boost_context* [win]
     name: libboost_context
   - files:
-      - include/boost/context          [not win]
-      - Library\include\boost\context      [win]
-    name: libboost_context-dev
-    requirements:
-      run:
-        - {{ pin_subpackage('libboost_core-dev', exact=True) }}
-      run_exports:
-        - {{ pin_subpackage('libboost_context', exact=True) }}
-    # test:
-    #   script: run_test.py
+    - include/boost [not win]
+    - Library\include\boost [win]
+    name: libboost_core-dev
   - files:
-      - lib/libboost_coroutine*     [not win]
-      - Library\lib\libboost_coroutine* [win]
-      - Library\bin\boost_coroutine* [win]
+    - lib/libboost_coroutine*     [not win]
+    - Library\lib\libboost_coroutine* [win]
+    - Library\bin\boost_coroutine* [win]
     name: libboost_coroutine
     requirements:
-      run:
-        - {{ pin_subpackage('libboost_system', exact=True) }}
-        - {{ pin_subpackage('libboost_chrono', exact=True) }}
-        - {{ pin_subpackage('libboost_thread', exact=True) }}
-        - {{ pin_subpackage('libboost_context', exact=True) }}
-  - files:
-      - include/boost/coroutine          [not win]
-      # - include/boost/coroutine2         [not win]
-      - Library\include\boost\coroutine      [win]
-      # - Library\include\boost\coroutine2     [win]
-    name: libboost_coroutine-dev
-    requirements:
-      run:
-        - {{ pin_subpackage('libboost_core-dev', exact=True) }}
-        - {{ pin_subpackage('libboost_context-dev', exact=True) }}
       run_exports:
-        - {{ pin_subpackage('libboost_coroutine', exact=True) }}
-        - {{ pin_subpackage('libboost_context-dev', exact=True) }}
-    # test:
-    #   script: run_test.py
+        - {{ pin_subpackage("libboost_coroutine", exact=True) }}
+      run:
+      - {{ pin_subpackage("libboost_system", exact=True) }}
+      - {{ pin_subpackage("libboost_chrono", exact=True) }}
+      - {{ pin_subpackage("libboost_thread", exact=True) }}
+      - {{ pin_subpackage("libboost_context", exact=True) }}
   - files:
-      - lib/libboost_date_time*     [not win]
-      - Library\lib\libboost_date_time* [win]
-      - Library\bin\boost_date_time* [win]
+    - lib/libboost_date_time*     [not win]
+    - Library\lib\libboost_date_time* [win]
+    - Library\bin\boost_date_time* [win]
     name: libboost_date_time
-  - files:
-      - include/boost/date_time.hpp      [not win]
-      - include/boost/date_time          [not win]
-      - Library\include\boost\date_time.hpp  [win]
-      - Library\include\boost\date_time      [win]
-    name: libboost_date_time-dev
     requirements:
-      run:
-        - {{ pin_subpackage('libboost_core-dev', exact=True) }}
       run_exports:
-        - {{ pin_subpackage('libboost_date_time', exact=True) }}
-    # test:
-    #   script: run_test.py
+        - {{ pin_subpackage("libboost_date_time", exact=True) }}
   - files:
-      - lib/libboost_filesystem*     [not win]
-      - Library\lib\libboost_filesystem* [win]
-      - Library\bin\boost_filesystem* [win]
+    - lib/libboost_filesystem*     [not win]
+    - Library\lib\libboost_filesystem* [win]
+    - Library\bin\boost_filesystem* [win]
     name: libboost_filesystem
     requirements:
-      run:
-        - {{ pin_subpackage('libboost_system', exact=True) }}
-  - files:
-      - include/boost/filesystem.hpp      [not win]
-      - include/boost/filesystem          [not win]
-      - Library\include\boost\filesystem.hpp  [win]
-      - Library\include\boost\filesystem      [win]
-    name: libboost_filesystem-dev
-    requirements:
-      run:
-        - {{ pin_subpackage('libboost_core-dev', exact=True) }}
-        - {{ pin_subpackage('libboost_system-dev', exact=True) }}
       run_exports:
-        - {{ pin_subpackage('libboost_filesystem', exact=True) }}
-    # test:
-    #   script: run_test.py
+        - {{ pin_subpackage("libboost_filesystem", exact=True) }}
+      run:
+      - {{ pin_subpackage("libboost_system", exact=True) }}
   - files:
-      - lib/libboost_graph*     [not win]
-      - Library\lib\libboost_graph* [win]
-      - Library\bin\boost_graph* [win]
+    - lib/libboost_graph*     [not win]
+    - Library\lib\libboost_graph* [win]
+    - Library\bin\boost_graph* [win]
     name: libboost_graph
     requirements:
-      run:
-        - {{ pin_subpackage('libboost_regex', exact=True) }}
-        - icu
-  - files: # TODO
-      - include/boost/graph          [not win]
-      - Library\include\boost\graph      [win]
-    name: libboost_graph-dev
-    requirements:
-      run:
-        - {{ pin_subpackage('libboost_core-dev', exact=True) }}
-        - {{ pin_subpackage('libboost_random-dev', exact=True) }}
-        - {{ pin_subpackage('libboost_serialization-dev', exact=True) }}
       run_exports:
-        - {{ pin_subpackage('libboost_graph', exact=True) }}
-    # test:
-    #   script: run_test.py
+        - {{ pin_subpackage("libboost_graph", exact=True) }}
+      run:
+      - {{ pin_subpackage("libboost_regex", exact=True) }}
+      - icu
   - files:
-      - lib/libboost_iostreams*     [not win]
-      - Library\lib\libboost_iostreams* [win]
-      - Library\bin\boost_iostreams* [win]
+    - lib/libboost_iostreams*     [not win]
+    - Library\lib\libboost_iostreams* [win]
+    - Library\bin\boost_iostreams* [win]
     name: libboost_iostreams
   - files:
-      - include/boost/iostreams          [not win]
-      - Library\include\boost\iostreams      [win]
-    name: libboost_iostreams-dev
-    requirements:
-      run:
-        - {{ pin_subpackage('libboost_core-dev', exact=True) }}
-      run_exports:
-        - {{ pin_subpackage('libboost_iostreams', exact=True) }}
-    # test:
-    #   script: run_test.py
-  - files:
-      - lib/libboost_locale*     [not win]
-      - Library\lib\libboost_locale* [win]
-      - Library\bin\boost_locale* [win]
+    - lib/libboost_locale*     [not win]
+    - Library\lib\libboost_locale* [win]
+    - Library\bin\boost_locale* [win]
     name: libboost_locale
     requirements:
-      run:
-        - {{ pin_subpackage('libboost_chrono', exact=True) }}
-        - {{ pin_subpackage('libboost_thread', exact=True) }}
-        - {{ pin_subpackage('libboost_system', exact=True) }}
-        - icu
-  - files:
-      - include/boost/locale.hpp      [not win]
-      - include/boost/locale          [not win]
-      - Library\include\boost\locale.hpp  [win]
-      - Library\include\boost\locale      [win]
-    name: libboost_locale-dev
-    requirements:
-      run:
-        - {{ pin_subpackage('libboost_core-dev', exact=True) }}
       run_exports:
-        - {{ pin_subpackage('libboost_locale', exact=True) }}
-    # test:
-    #   script: run_test.py
+        - {{ pin_subpackage("libboost_locale", exact=True) }}
+      run:
+      - {{ pin_subpackage("libboost_chrono", exact=True) }}
+      - {{ pin_subpackage("libboost_thread", exact=True) }}
+      - {{ pin_subpackage("libboost_system", exact=True) }}
+      - icu
   - files:
-      - lib/libboost_log*     [not win]
-      - Library\lib\libboost_log* [win]
-      - Library\bin\boost_log* [win]
+    - lib/libboost_log*     [not win]
+    - Library\lib\libboost_log* [win]
+    - Library\bin\boost_log* [win]
     name: libboost_log
     requirements:
-      run:
-        - {{ pin_subpackage('libboost_regex', exact=True) }}
-        - {{ pin_subpackage('libboost_filesystem', exact=True) }}
-        - {{ pin_subpackage('libboost_date_time', exact=True) }}
-        - {{ pin_subpackage('libboost_thread', exact=True) }}
-        - {{ pin_subpackage('libboost_chrono', exact=True) }}
-        - {{ pin_subpackage('libboost_system', exact=True) }}
-        - {{ pin_subpackage('libboost_atomic', exact=True) }}
-        - icu
-  - files:
-      - include/boost/log          [not win]
-      - Library\include\boost\log      [win]
-    name: libboost_log-dev
-    requirements:
-      run:
-        - {{ pin_subpackage('libboost_core-dev', exact=True) }}
       run_exports:
-        - {{ pin_subpackage('libboost_log', exact=True) }}
-    # test:
-    #   script: run_test.py
+        - {{ pin_subpackage("libboost_log", exact=True) }}
+      run:
+      - {{ pin_subpackage("libboost_regex", exact=True) }}
+      - {{ pin_subpackage("libboost_filesystem", exact=True) }}
+      - {{ pin_subpackage("libboost_date_time", exact=True) }}
+      - {{ pin_subpackage("libboost_thread", exact=True) }}
+      - {{ pin_subpackage("libboost_chrono", exact=True) }}
+      - {{ pin_subpackage("libboost_system", exact=True) }}
+      - {{ pin_subpackage("libboost_atomic", exact=True) }}
+      - icu
   - files:
-      - lib/libboost_math*     [not win]
-      - Library\lib\libboost_math* [win]
-      - Library\bin\boost_math* [win]
+    - lib/libboost_math*     [not win]
+    - Library\lib\libboost_math* [win]
+    - Library\bin\boost_math* [win]
     name: libboost_math
-  - files:
-      - include/boost/math              [not win]
-      - include/boost/math_fwd.hpp      [not win]
-      - include/boost/cstdfloat.hpp     [not win]
-      - Library\include\boost\math          [win]
-      - Library\include\boost\math_fwd.hpp  [win]
-      - Library\include\boost\cstdfloat.hpp [win]
-    name: libboost_math-dev
     requirements:
-      run:
-        - {{ pin_subpackage('libboost_core-dev', exact=True) }}
       run_exports:
-        - {{ pin_subpackage('libboost_math', exact=True) }}
-    # test:
-    #   script: run_test.py
+        - {{ pin_subpackage("libboost_math", exact=True) }}
   - files:
-      - lib/libboost_program_options*      [not win]
-      - Library\lib\libboost_program_options*  [win]
-      - Library\bin\boost_program_options*  [win]
+    - lib/libboost_program_options*      [not win]
+    - Library\lib\libboost_program_options*  [win]
+    - Library\bin\boost_program_options*  [win]
     name: libboost_program_options
-  - files:
-      - include/boost/program_options          [not win]
-      - include/boost/program_options.hpp      [not win]
-      - Library\include\boost\program_options      [win]
-      - Library\include\boost\program_options.hpp  [win]
-    name: libboost_program_options-dev
     requirements:
-      run:
-        - {{ pin_subpackage('libboost_core-dev', exact=True) }}
-        - {{ pin_subpackage('libboost_container-dev', exact=True) }}
-        - {{ pin_subpackage('libboost_math-dev', exact=True) }}
       run_exports:
-        - {{ pin_subpackage('libboost_program_options', exact=True) }}
-    # test:
-    #   script: run_test.py
+        - {{ pin_subpackage("libboost_program_options", exact=True) }}
   - files:
-      - lib/libboost_random*     [not win]
-      - Library\lib\libboost_random* [win]
-      - Library\bin\boost_random* [win]
+    - lib/libboost_python*     [not win]
+    - Library\lib\libboost_python* [win]
+    - Library\bin\boost_python* [win]
+    name: libboost_python
+    requirements:
+      run_exports:
+        - {{ pin_subpackage("libboost_python", exact=True) }}
+        - python
+      run:
+      - python
+  - files:
+    - lib/libboost_random*     [not win]
+    - Library\lib\libboost_random* [win]
+    - Library\bin\boost_random* [win]
     name: libboost_random
     requirements:
-      run:
-        - {{ pin_subpackage('libboost_system', exact=True) }}
-  - files:
-      - include/boost/random                [not win]
-      - include/boost/random.hpp            [not win]
-      - include/boost/nondet_random.hpp     [not win]
-      - Library\include\boost\random            [win]
-      - Library\include\boost\random.hpp        [win]
-      - Library\include\boost\nondet_random.hpp [win]
-    name: libboost_random-dev
-    requirements:
-      run:
-        - {{ pin_subpackage('libboost_core-dev', exact=True) }}
-        - {{ pin_subpackage('libboost_math-dev', exact=True) }}
-        - {{ pin_subpackage('libboost_container-dev', exact=True) }}
       run_exports:
-        - {{ pin_subpackage('libboost_random', exact=True) }}
-    # test:
-    #   script: run_test.py
+        - {{ pin_subpackage("libboost_random", exact=True) }}
+      run:
+      - {{ pin_subpackage("libboost_system", exact=True) }}
   - files:
-      - lib/libboost_regex*     [not win]
-      - Library\lib\libboost_regex* [win]
-      - Library\bin\boost_regex* [win]
+    - lib/libboost_regex*     [not win]
+    - Library\lib\libboost_regex* [win]
+    - Library\bin\boost_regex* [win]
     name: libboost_regex
     requirements:
-      run:
-        - icu
-  - files:
-      - include/boost/cregex.hpp        [not win]
-      - include/boost/regex             [not win]
-      - include/boost/regex.h           [not win]
-      - include/boost/regex_fwd.hpp     [not win]
-      - include/boost/regex.hpp         [not win]
-      - Library\include\boost\regex         [win]
-      - Library\include\boost\cregex.hpp    [win]
-      - Library\include\boost\regex.h       [win]
-      - Library\include\boost\regex_fwd.hpp [win]
-      - Library\include\boost\regex.hpp     [win]
-    name: libboost_regex-dev
-    requirements:
-      run:
-        - {{ pin_subpackage('libboost_core-dev', exact=True) }}
-        - {{ pin_subpackage('libboost_container-dev', exact=True) }}
       run_exports:
-        - {{ pin_subpackage('libboost_regex', exact=True) }}
-    # test:
-    #   script: run_test.py
+        - {{ pin_subpackage("libboost_regex", exact=True) }}
+      run:
+      - icu
   - files:
-      - lib/libboost_serialization*      [not win]
-      - lib/libboost_wserialization*     [not win]
-      - Library\lib\libboost_serialization*  [win]
-      - Library\bin\boost_serialization*  [win]
-      - Library\lib\libboost_wserialization* [win]
-      - Library\bin\boost_wserialization* [win]
+    - lib/libboost_serialization*      [not win]
+    - lib/libboost_wserialization*     [not win]
+    - Library\lib\libboost_serialization*  [win]
+    - Library\bin\boost_serialization*  [win]
+    - Library\lib\libboost_wserialization* [win]
+    - Library\bin\boost_wserialization* [win]
     name: libboost_serialization
     requirements:
-      run:
-        - {{ pin_subpackage('libboost_serialization', exact=True) }}
-        - icu
-  - files:
-      - include/boost/archive                [not win]
-      - include/boost/serialization          [not win]
-      - Library\include\boost\archive            [win]
-      - Library\include\boost\serialization      [win]
-    name: libboost_serialization-dev
-    requirements:
-      run:
-        - {{ pin_subpackage('libboost_core-dev', exact=True) }}
       run_exports:
-        - {{ pin_subpackage('libboost_serialization', exact=True) }}
-    # test:
-    #   script: run_test.py
+        - {{ pin_subpackage("libboost_serialization", exact=True) }}
+      run:
+      - icu
   - files:
-      - lib/libboost_signals*     [not win]
-      - Library\lib\libboost_signals* [win]
-      - Library\bin\boost_signals* [win]
+    - lib/libboost_signals*     [not win]
+    - Library\lib\libboost_signals* [win]
+    - Library\bin\boost_signals* [win]
     name: libboost_signals
-  - files:
-      - include/boost/signals            [not win]
-      - include/boost/last_value.hpp     [not win]
-      - include/boost/signal.hpp         [not win]
-      - include/boost/signals.hpp        [not win]
-      - Library\include\boost\signals        [win]
-      - Library\include\boost\last_value.hpp [win]
-      - Library\include\boost\signal.hpp     [win]
-      - Library\include\boost\signals.hpp    [win]
-    name: libboost_signals-dev
     requirements:
-      run:
-        - {{ pin_subpackage('libboost_core-dev', exact=True) }}
       run_exports:
-        - {{ pin_subpackage('libboost_signals', exact=True) }}
-    # test:
-    #   script: run_test.py
+        - {{ pin_subpackage("libboost_signals", exact=True) }}
   - files:
-      - lib/libboost_system*     [not win]
-      - Library\lib\libboost_system* [win]
-      - Library\bin\boost_system* [win]
+    - lib/libboost_system*     [not win]
+    - Library\lib\libboost_system* [win]
+    - Library\bin\boost_system* [win]
     name: libboost_system
-  - files:
-      - include/boost/system          [not win]
-      - include/boost/cerrno.hpp      [not win]
-      - Library\include\boost\system      [win]
-      - Library\include\boost\cerrno.hpp  [win]
-    name: libboost_system-dev
     requirements:
-      run:
-        - {{ pin_subpackage('libboost_core-dev', exact=True) }}
-    # test:
-    #   script: run_test.py
-  - files:
-      - lib/libboost_thread*     [not win]
-      - Library\lib\libboost_thread* [win]
-      - Library\bin\boost_thread* [win]
-    name: libboost_thread
-    requirements:
-      run:
-        - {{ pin_subpackage('libboost_system', exact=True) }}
-        - {{ pin_subpackage('libboost_chrono', exact=True) }}
-        - {{ pin_subpackage('libboost_date_time', exact=True) }}
-        - icu
-  - files:
-      - include/boost/thread          [not win]
-      - include/boost/thread.hpp      [not win]
-      - Library\include\boost\thread      [win]
-      - Library\include\boost\thread.hpp  [win]
-    name: libboost_thread-dev
-    requirements:
-      run:
-        - {{ pin_subpackage('libboost_core-dev', exact=True) }}
-        - {{ pin_subpackage('libboost_system-dev', exact=True) }}
-        - {{ pin_subpackage('libboost_date_time-dev', exact=True) }}
-        - {{ pin_subpackage('libboost_container-dev', exact=True) }}
-        - {{ pin_subpackage('libboost_math-dev', exact=True) }}
-        - {{ pin_subpackage('libboost_chrono-dev', exact=True) }}
-        - {{ pin_subpackage('libboost_atomic-dev', exact=True) }}
       run_exports:
-        - {{ pin_subpackage('libboost_thread', exact=True) }}
-    # test:
-    #   script: run_test.py
+        - {{ pin_subpackage("libboost_system", exact=True) }}
   - files:
-      - lib/libboost_timer*     [not win]
-      - Library\lib\libboost_timer* [win]
-      - Library\bin\boost_timer* [win]
-    name: libboost_timer
-    requirements:
-      run:
-        - {{ pin_subpackage('libboost_chrono', exact=True) }}
-        - {{ pin_subpackage('libboost_system', exact=True) }}
-  - files:
-      - include/boost/timer            [not win]
-      - include/boost/timer.hpp        [not win]
-      - include/boost/progress.hpp     [not win]
-      - Library\include\boost\timer        [win]
-      - Library\include\boost\timer.hpp    [win]
-      - Library\include\boost\progress.hpp [win]
-    name: libboost_timer-dev
-    requirements:
-      run:
-        - {{ pin_subpackage('libboost_core-dev', exact=True) }}
-      run_exports:
-        - {{ pin_subpackage('libboost_timer', exact=True) }}
-    # test:
-    #   script: run_test.py
-  - files:
-      - lib/libboost_type_erasure*     [not win]
-      - Library\lib\libboost_type_erasure* [win]
-      - Library\bin\boost_type_erasure* [win]
-    name: libboost_type_erasure
-    requirements:
-      run:
-        - {{ pin_subpackage('libboost_thread', exact=True) }}
-        - {{ pin_subpackage('libboost_chrono', exact=True) }}
-        - {{ pin_subpackage('libboost_system', exact=True) }}
-  - files:
-      - include/boost/type_erasure          [not win]
-      - Library\include\boost\type_erasure      [win]
-    name: libboost_type_erasure-dev
-    requirements:
-      run:
-        - {{ pin_subpackage('libboost_core-dev', exact=True) }}
-      run_exports:
-        - {{ pin_subpackage('libboost_type_erasure', exact=True) }}
-    # test:
-    #   script: run_test.py
-  - files:
-      - lib/libboost_unit_test_framework*      [not win]
-      - lib/libboost_prg_exec_monitor*         [not win]
-      - Library\lib\libboost_unit_test_framework*  [win]
-      - Library\bin\boost_unit_test_framework*  [win]
-      - Library\lib\libboost_prg_exec_monitor*     [win]
-      - Library\bin\boost_prg_exec_monitor*     [win]
+    - lib/libboost_unit_test_framework*      [not win]
+    - lib/libboost_prg_exec_monitor*         [not win]
+    - Library\lib\libboost_unit_test_framework*  [win]
+    - Library\bin\boost_unit_test_framework*  [win]
+    - Library\lib\libboost_prg_exec_monitor*     [win]
+    - Library\bin\boost_prg_exec_monitor*     [win]
     name: libboost_test
     requirements:
-      run:
-        - {{ pin_subpackage('libboost_timer', exact=True) }}
-        - {{ pin_subpackage('libboost_system', exact=True) }}
-        - {{ pin_subpackage('libboost_chrono', exact=True) }}
-        - icu
-  - files:
-      - include/boost/test          [not win]
-      - Library\include\boost\test      [win]
-    name: libboost_test-dev
-    requirements:
-      run:
-        - {{ pin_subpackage('libboost_core-dev', exact=True) }}
       run_exports:
-        - {{ pin_subpackage('libboost_test', exact=True) }}
-    # test:
-    #   script: run_test.py
+        - {{ pin_subpackage("libboost_test", exact=True) }}
+      run:
+      - {{ pin_subpackage("libboost_timer", exact=True) }}
+      - {{ pin_subpackage("libboost_system", exact=True) }}
+      - {{ pin_subpackage("libboost_chrono", exact=True) }}
+      - icu
   - files:
-      - lib/libboost_wave*     [not win]
-      - Library\lib\libboost_wave* [win]
-      - Library\bin\boost_wave* [win]
+    - lib/libboost_thread*     [not win]
+    - Library\lib\libboost_thread* [win]
+    - Library\bin\boost_thread* [win]
+    name: libboost_thread
+    requirements:
+      run_exports:
+        - {{ pin_subpackage("libboost_thread", exact=True) }}
+      run:
+      - {{ pin_subpackage("libboost_system", exact=True) }}
+      - {{ pin_subpackage("libboost_chrono", exact=True) }}
+      - {{ pin_subpackage("libboost_date_time", exact=True) }}
+      - icu
+  - files:
+    - lib/libboost_timer*     [not win]
+    - Library\lib\libboost_timer* [win]
+    - Library\bin\boost_timer* [win]
+    name: libboost_timer
+    requirements:
+      run_exports:
+        - {{ pin_subpackage("libboost_timer", exact=True) }}
+      run:
+      - {{ pin_subpackage("libboost_chrono", exact=True) }}
+      - {{ pin_subpackage("libboost_system", exact=True) }}
+  - files:
+    - lib/libboost_type_erasure*     [not win]
+    - Library\lib\libboost_type_erasure* [win]
+    - Library\bin\boost_type_erasure* [win]
+    name: libboost_type_erasure
+    requirements:
+      run_exports:
+        - {{ pin_subpackage("libboost_type_erasure", exact=True) }}
+      run:
+      - {{ pin_subpackage("libboost_thread", exact=True) }}
+      - {{ pin_subpackage("libboost_chrono", exact=True) }}
+      - {{ pin_subpackage("libboost_system", exact=True) }}
+  - files:
+    - lib/libboost_wave*     [not win]
+    - Library\lib\libboost_wave* [win]
+    - Library\bin\boost_wave* [win]
     name: libboost_wave
     requirements:
-      run:
-        - {{ pin_subpackage('libboost_filesystem', exact=True) }}
-        - {{ pin_subpackage('libboost_thread', exact=True) }}
-        - {{ pin_subpackage('libboost_date_time', exact=True) }}
-        - {{ pin_subpackage('libboost_chrono', exact=True) }}
-        - {{ pin_subpackage('libboost_system', exact=True) }}
-  - files:
-      - include/boost/wave          [not win]
-      - include/boost/wave.hpp      [not win]
-      - Library\include\boost\wave      [win]
-      - Library\include\boost\wave.hpp  [win]
-    name: libboost_wave-dev
-    requirements:
-      run:
-        - {{ pin_subpackage('libboost_core-dev', exact=True) }}
       run_exports:
-        - {{ pin_subpackage('libboost_wave', exact=True) }}
-    # test:
-    #   script: run_test.py
-  - files:
-      - include/boost/accumulators [not win]
-      - include/boost/algorithm [not win]
-      - include/boost/align [not win]
-      - include/boost/aligned_storage.hpp [not win]
-      - include/boost/align.hpp [not win]
-      - include/boost/any.hpp [not win]
-      # - include/boost/archive [not win]
-      - include/boost/array.hpp [not win]
-      - include/boost/asio [not win]
-      - include/boost/asio.hpp [not win]
-      - include/boost/assert.hpp [not win]
-      - include/boost/assign [not win]
-      - include/boost/assign.hpp [not win]
-      # - include/boost/atomic [not win]
-      # - include/boost/atomic.hpp [not win]
-      - include/boost/bimap [not win]
-      - include/boost/bimap.hpp [not win]
-      - include/boost/bind [not win]
-      - include/boost/bind.hpp [not win]
-      - include/boost/blank_fwd.hpp [not win]
-      - include/boost/blank.hpp [not win]
-      - include/boost/call_traits.hpp [not win]
-      - include/boost/cast.hpp [not win]
-      # - include/boost/cerrno.hpp [not win]
-      - include/boost/checked_delete.hpp [not win]
-      # - include/boost/chrono [not win]
-      # - include/boost/chrono.hpp [not win]
-      - include/boost/circular_buffer [not win]
-      - include/boost/circular_buffer_fwd.hpp [not win]
-      - include/boost/circular_buffer.hpp [not win]
-      - include/boost/compatibility [not win]
-      - include/boost/compressed_pair.hpp [not win]
-      - include/boost/compute [not win]
-      - include/boost/compute.hpp [not win]
-      - include/boost/concept [not win]
-      - include/boost/concept_archetype.hpp [not win]
-      - include/boost/concept_check [not win]
-      - include/boost/concept_check.hpp [not win]
-      - include/boost/config [not win]
-      - include/boost/config.hpp [not win]
-      # - include/boost/container [not win]
-      # - include/boost/context [not win]
-      - include/boost/convert [not win]
-      - include/boost/convert.hpp [not win]
-      - include/boost/core [not win]
-      # - include/boost/coroutine [not win]
-      - include/boost/coroutine2 [not win]
-      - include/boost/crc.hpp [not win]
-      # - include/boost/cregex.hpp [not win]
-      # - include/boost/cstdfloat.hpp [not win]
-      - include/boost/cstdint.hpp [not win]
-      - include/boost/cstdlib.hpp [not win]
-      - include/boost/current_function.hpp [not win]
-      - include/boost/cxx11_char_types.hpp [not win]
-      # - include/boost/date_time [not win]
-      # - include/boost/date_time.hpp [not win]
-      - include/boost/detail [not win]
-      - include/boost/dll [not win]
-      - include/boost/dll.hpp [not win]
-      - include/boost/dynamic_bitset [not win]
-      - include/boost/dynamic_bitset_fwd.hpp [not win]
-      - include/boost/dynamic_bitset.hpp [not win]
-      - include/boost/enable_shared_from_this.hpp [not win]
-      - include/boost/endian [not win]
-      - include/boost/exception [not win]
-      - include/boost/exception_ptr.hpp [not win]
-      # - include/boost/filesystem [not win]
-      # - include/boost/filesystem.hpp [not win]
-      - include/boost/flyweight [not win]
-      - include/boost/flyweight.hpp [not win]
-      - include/boost/foreach_fwd.hpp [not win]
-      - include/boost/foreach.hpp [not win]
-      - include/boost/format [not win]
-      - include/boost/format.hpp [not win]
-      - include/boost/function [not win]
-      - include/boost/functional [not win]
-      - include/boost/functional.hpp [not win]
-      - include/boost/function_equal.hpp [not win]
-      - include/boost/function.hpp [not win]
-      - include/boost/function_output_iterator.hpp [not win]
-      - include/boost/function_types [not win]
-      - include/boost/fusion [not win]
-      - include/boost/generator_iterator.hpp [not win]
-      - include/boost/geometry [not win]
-      - include/boost/geometry.hpp [not win]
-      - include/boost/get_pointer.hpp [not win]
-      - include/boost/gil [not win]
-      # - include/boost/graph [not win]
-      - include/boost/hana [not win]
-      - include/boost/hana.hpp [not win]
-      - include/boost/heap [not win]
-      - include/boost/icl [not win]
-      - include/boost/implicit_cast.hpp [not win]
-      - include/boost/indirect_reference.hpp [not win]
-      - include/boost/integer [not win]
-      - include/boost/integer_fwd.hpp [not win]
-      - include/boost/integer.hpp [not win]
-      - include/boost/integer_traits.hpp [not win]
-      - include/boost/interprocess [not win]
-      - include/boost/intrusive [not win]
-      - include/boost/intrusive_ptr.hpp [not win]
-      - include/boost/io [not win]
-      - include/boost/io_fwd.hpp [not win]
-      # - include/boost/iostreams [not win]
-      - include/boost/is_placeholder.hpp [not win]
-      - include/boost/iterator [not win]
-      - include/boost/iterator_adaptors.hpp [not win]
-      - include/boost/iterator.hpp [not win]
-      - include/boost/lambda [not win]
-      # - include/boost/last_value.hpp [not win]
-      - include/boost/lexical_cast [not win]
-      - include/boost/lexical_cast.hpp [not win]
-      - include/boost/limits.hpp [not win]
-      # - include/boost/locale [not win]
-      # - include/boost/locale.hpp [not win]
-      - include/boost/local_function [not win]
-      - include/boost/local_function.hpp [not win]
-      - include/boost/lockfree [not win]
-      # - include/boost/log [not win]
-      - include/boost/logic [not win]
-      - include/boost/make_default.hpp [not win]
-      - include/boost/make_shared.hpp [not win]
-      - include/boost/make_unique.hpp [not win]
-      # - include/boost/math [not win]
-      # - include/boost/math_fwd.hpp [not win]
-      - include/boost/mem_fn.hpp [not win]
-      # - include/boost/memory_order.hpp [not win]
-      - include/boost/metaparse [not win]
-      - include/boost/metaparse.hpp [not win]
-      - include/boost/move [not win]
-      - include/boost/mpi [not win]
-      - include/boost/mpi.hpp [not win]
-      - include/boost/mpl [not win]
-      - include/boost/msm [not win]
-      - include/boost/multi_array [not win]
-      - include/boost/multi_array.hpp [not win]
-      - include/boost/multi_index [not win]
-      - include/boost/multi_index_container_fwd.hpp [not win]
-      - include/boost/multi_index_container.hpp [not win]
-      - include/boost/multiprecision [not win]
-      - include/boost/next_prior.hpp [not win]
-      - include/boost/noncopyable.hpp [not win]
-      # - include/boost/nondet_random.hpp [not win]
-      - include/boost/none.hpp [not win]
-      - include/boost/none_t.hpp [not win]
-      - include/boost/non_type.hpp [not win]
-      - include/boost/numeric [not win]
-      - include/boost/operators.hpp [not win]
-      - include/boost/operators_v1.hpp [not win]
-      - include/boost/optional [not win]
-      - include/boost/optional.hpp [not win]
-      - include/boost/parameter [not win]
-      - include/boost/parameter.hpp [not win]
-      - include/boost/pending [not win]
-      - include/boost/phoenix [not win]
-      - include/boost/phoenix.hpp [not win]
-      - include/boost/pointee.hpp [not win]
-      - include/boost/pointer_cast.hpp [not win]
-      - include/boost/pointer_to_other.hpp [not win]
-      - include/boost/polygon [not win]
-      - include/boost/polymorphic_cast.hpp [not win]
-      - include/boost/polymorphic_pointer_cast.hpp [not win]
-      - include/boost/pool [not win]
-      - include/boost/predef [not win]
-      - include/boost/predef.h [not win]
-      - include/boost/preprocessor [not win]
-      - include/boost/preprocessor.hpp [not win]
-      # - include/boost/program_options [not win]
-      # - include/boost/program_options.hpp [not win]
-      # - include/boost/progress.hpp [not win]
-      - include/boost/property_map [not win]
-      - include/boost/property_tree [not win]
-      - include/boost/proto [not win]
-      - include/boost/ptr_container [not win]
-      # - include/boost/python [not win]
-      # - include/boost/python.hpp [not win]
-      # - include/boost/random [not win]
-      # - include/boost/random.hpp [not win]
-      - include/boost/range [not win]
-      - include/boost/range.hpp [not win]
-      - include/boost/ratio [not win]
-      - include/boost/ratio.hpp [not win]
-      - include/boost/rational.hpp [not win]
-      - include/boost/ref.hpp [not win]
-      # - include/boost/regex [not win]
-      # - include/boost/regex_fwd.hpp [not win]
-      # - include/boost/regex.h [not win]
-      # - include/boost/regex.hpp [not win]
-      - include/boost/scoped_array.hpp [not win]
-      - include/boost/scoped_ptr.hpp [not win]
-      - include/boost/scope_exit.hpp [not win]
-      # - include/boost/serialization [not win]
-      - include/boost/shared_array.hpp [not win]
-      - include/boost/shared_container_iterator.hpp [not win]
-      - include/boost/shared_ptr.hpp [not win]
-      # - include/boost/signal.hpp [not win]
-      # - include/boost/signals [not win]
-      - include/boost/signals2 [not win]
-      - include/boost/signals2.hpp [not win]
-      # - include/boost/signals.hpp [not win]
-      - include/boost/smart_ptr [not win]
-      - include/boost/smart_ptr.hpp [not win]
-      - include/boost/sort [not win]
-      - include/boost/spirit [not win]
-      - include/boost/spirit.hpp [not win]
-      - include/boost/statechart [not win]
-      - include/boost/static_assert.hpp [not win]
-      - include/boost/swap.hpp [not win]
-      # - include/boost/system [not win]
-      # - include/boost/test [not win]
-      # - include/boost/thread [not win]
-      # - include/boost/thread.hpp [not win]
-      - include/boost/throw_exception.hpp [not win]
-      # - include/boost/timer [not win]
-      # - include/boost/timer.hpp [not win]
-      - include/boost/token_functions.hpp [not win]
-      - include/boost/token_iterator.hpp [not win]
-      - include/boost/tokenizer.hpp [not win]
-      - include/boost/tr1 [not win]
-      - include/boost/tti [not win]
-      - include/boost/tuple [not win]
-      # - include/boost/type_erasure [not win]
-      - include/boost/type.hpp [not win]
-      - include/boost/type_index [not win]
-      - include/boost/type_index.hpp [not win]
-      - include/boost/typeof [not win]
-      - include/boost/type_traits [not win]
-      - include/boost/type_traits.hpp [not win]
-      - include/boost/units [not win]
-      - include/boost/unordered [not win]
-      - include/boost/unordered_map.hpp [not win]
-      - include/boost/unordered_set.hpp [not win]
-      - include/boost/utility [not win]
-      - include/boost/utility.hpp [not win]
-      - include/boost/uuid [not win]
-      - include/boost/variant [not win]
-      - include/boost/variant.hpp [not win]
-      - include/boost/version.hpp [not win]
-      - include/boost/visit_each.hpp [not win]
-      - include/boost/vmd [not win]
-      # - include/boost/wave [not win]
-      # - include/boost/wave.hpp [not win]
-      - include/boost/weak_ptr.hpp [not win]
-      - include/boost/xpressive [not win]
-      - Library\include\boost\accumulators [win]
-      - Library\include\boost\algorithm [win]
-      - Library\include\boost\align [win]
-      - Library\include\boost\aligned_storage.hpp [win]
-      - Library\include\boost\align.hpp [win]
-      - Library\include\boost\any.hpp [win]
-      # - Library\include\boost\archive [win]
-      - Library\include\boost\array.hpp [win]
-      - Library\include\boost\asio [win]
-      - Library\include\boost\asio.hpp [win]
-      - Library\include\boost\assert.hpp [win]
-      - Library\include\boost\assign [win]
-      - Library\include\boost\assign.hpp [win]
-      # - Library\include\boost\atomic [win]
-      # - Library\include\boost\atomic.hpp [win]
-      - Library\include\boost\bimap [win]
-      - Library\include\boost\bimap.hpp [win]
-      - Library\include\boost\bind [win]
-      - Library\include\boost\bind.hpp [win]
-      - Library\include\boost\blank_fwd.hpp [win]
-      - Library\include\boost\blank.hpp [win]
-      - Library\include\boost\call_traits.hpp [win]
-      - Library\include\boost\cast.hpp [win]
-      # - Library\include\boost\cerrno.hpp [win]
-      - Library\include\boost\checked_delete.hpp [win]
-      # - Library\include\boost\chrono [win]
-      # - Library\include\boost\chrono.hpp [win]
-      - Library\include\boost\circular_buffer [win]
-      - Library\include\boost\circular_buffer_fwd.hpp [win]
-      - Library\include\boost\circular_buffer.hpp [win]
-      - Library\include\boost\compatibility [win]
-      - Library\include\boost\compressed_pair.hpp [win]
-      - Library\include\boost\compute [win]
-      - Library\include\boost\compute.hpp [win]
-      - Library\include\boost\concept [win]
-      - Library\include\boost\concept_archetype.hpp [win]
-      - Library\include\boost\concept_check [win]
-      - Library\include\boost\concept_check.hpp [win]
-      - Library\include\boost\config [win]
-      - Library\include\boost\config.hpp [win]
-      # - Library\include\boost\container [win]
-      # - Library\include\boost\context [win]
-      - Library\include\boost\convert [win]
-      - Library\include\boost\convert.hpp [win]
-      - Library\include\boost\core [win]
-      # - Library\include\boost\coroutine [win]
-      - Library\include\boost\coroutine2 [win]
-      - Library\include\boost\crc.hpp [win]
-      # - Library\include\boost\cregex.hpp [win]
-      # - Library\include\boost\cstdfloat.hpp [win]
-      - Library\include\boost\cstdint.hpp [win]
-      - Library\include\boost\cstdlib.hpp [win]
-      - Library\include\boost\current_function.hpp [win]
-      - Library\include\boost\cxx11_char_types.hpp [win]
-      # - Library\include\boost\date_time [win]
-      # - Library\include\boost\date_time.hpp [win]
-      - Library\include\boost\detail [win]
-      - Library\include\boost\dll [win]
-      - Library\include\boost\dll.hpp [win]
-      - Library\include\boost\dynamic_bitset [win]
-      - Library\include\boost\dynamic_bitset_fwd.hpp [win]
-      - Library\include\boost\dynamic_bitset.hpp [win]
-      - Library\include\boost\enable_shared_from_this.hpp [win]
-      - Library\include\boost\endian [win]
-      - Library\include\boost\exception [win]
-      - Library\include\boost\exception_ptr.hpp [win]
-      # - Library\include\boost\filesystem [win]
-      # - Library\include\boost\filesystem.hpp [win]
-      - Library\include\boost\flyweight [win]
-      - Library\include\boost\flyweight.hpp [win]
-      - Library\include\boost\foreach_fwd.hpp [win]
-      - Library\include\boost\foreach.hpp [win]
-      - Library\include\boost\format [win]
-      - Library\include\boost\format.hpp [win]
-      - Library\include\boost\function [win]
-      - Library\include\boost\functional [win]
-      - Library\include\boost\functional.hpp [win]
-      - Library\include\boost\function_equal.hpp [win]
-      - Library\include\boost\function.hpp [win]
-      - Library\include\boost\function_output_iterator.hpp [win]
-      - Library\include\boost\function_types [win]
-      - Library\include\boost\fusion [win]
-      - Library\include\boost\generator_iterator.hpp [win]
-      - Library\include\boost\geometry [win]
-      - Library\include\boost\geometry.hpp [win]
-      - Library\include\boost\get_pointer.hpp [win]
-      - Library\include\boost\gil [win]
-      # - Library\include\boost\graph [win]
-      - Library\include\boost\hana [win]
-      - Library\include\boost\hana.hpp [win]
-      - Library\include\boost\heap [win]
-      - Library\include\boost\icl [win]
-      - Library\include\boost\implicit_cast.hpp [win]
-      - Library\include\boost\indirect_reference.hpp [win]
-      - Library\include\boost\integer [win]
-      - Library\include\boost\integer_fwd.hpp [win]
-      - Library\include\boost\integer.hpp [win]
-      - Library\include\boost\integer_traits.hpp [win]
-      - Library\include\boost\interprocess [win]
-      - Library\include\boost\intrusive [win]
-      - Library\include\boost\intrusive_ptr.hpp [win]
-      - Library\include\boost\io [win]
-      - Library\include\boost\io_fwd.hpp [win]
-      # - Library\include\boost\iostreams [win]
-      - Library\include\boost\is_placeholder.hpp [win]
-      - Library\include\boost\iterator [win]
-      - Library\include\boost\iterator_adaptors.hpp [win]
-      - Library\include\boost\iterator.hpp [win]
-      - Library\include\boost\lambda [win]
-      # - Library\include\boost\last_value.hpp [win]
-      - Library\include\boost\lexical_cast [win]
-      - Library\include\boost\lexical_cast.hpp [win]
-      - Library\include\boost\limits.hpp [win]
-      # - Library\include\boost\locale [win]
-      # - Library\include\boost\locale.hpp [win]
-      - Library\include\boost\local_function [win]
-      - Library\include\boost\local_function.hpp [win]
-      - Library\include\boost\lockfree [win]
-      # - Library\include\boost\log [win]
-      - Library\include\boost\logic [win]
-      - Library\include\boost\make_default.hpp [win]
-      - Library\include\boost\make_shared.hpp [win]
-      - Library\include\boost\make_unique.hpp [win]
-      # - Library\include\boost\math [win]
-      # - Library\include\boost\math_fwd.hpp [win]
-      - Library\include\boost\mem_fn.hpp [win]
-      # - Library\include\boost\memory_order.hpp [win]
-      - Library\include\boost\metaparse [win]
-      - Library\include\boost\metaparse.hpp [win]
-      - Library\include\boost\move [win]
-      - Library\include\boost\mpi [win]
-      - Library\include\boost\mpi.hpp [win]
-      - Library\include\boost\mpl [win]
-      - Library\include\boost\msm [win]
-      - Library\include\boost\multi_array [win]
-      - Library\include\boost\multi_array.hpp [win]
-      - Library\include\boost\multi_index [win]
-      - Library\include\boost\multi_index_container_fwd.hpp [win]
-      - Library\include\boost\multi_index_container.hpp [win]
-      - Library\include\boost\multiprecision [win]
-      - Library\include\boost\next_prior.hpp [win]
-      - Library\include\boost\noncopyable.hpp [win]
-      # - Library\include\boost\nondet_random.hpp [win]
-      - Library\include\boost\none.hpp [win]
-      - Library\include\boost\none_t.hpp [win]
-      - Library\include\boost\non_type.hpp [win]
-      - Library\include\boost\numeric [win]
-      - Library\include\boost\operators.hpp [win]
-      - Library\include\boost\operators_v1.hpp [win]
-      - Library\include\boost\optional [win]
-      - Library\include\boost\optional.hpp [win]
-      - Library\include\boost\parameter [win]
-      - Library\include\boost\parameter.hpp [win]
-      - Library\include\boost\pending [win]
-      - Library\include\boost\phoenix [win]
-      - Library\include\boost\phoenix.hpp [win]
-      - Library\include\boost\pointee.hpp [win]
-      - Library\include\boost\pointer_cast.hpp [win]
-      - Library\include\boost\pointer_to_other.hpp [win]
-      - Library\include\boost\polygon [win]
-      - Library\include\boost\polymorphic_cast.hpp [win]
-      - Library\include\boost\polymorphic_pointer_cast.hpp [win]
-      - Library\include\boost\pool [win]
-      - Library\include\boost\predef [win]
-      - Library\include\boost\predef.h [win]
-      - Library\include\boost\preprocessor [win]
-      - Library\include\boost\preprocessor.hpp [win]
-      # - Library\include\boost\program_options [win]
-      # - Library\include\boost\program_options.hpp [win]
-      # - Library\include\boost\progress.hpp [win]
-      - Library\include\boost\property_map [win]
-      - Library\include\boost\property_tree [win]
-      - Library\include\boost\proto [win]
-      - Library\include\boost\ptr_container [win]
-      # - Library\include\boost\python [win]
-      # - Library\include\boost\python.hpp [win]
-      # - Library\include\boost\random [win]
-      # - Library\include\boost\random.hpp [win]
-      - Library\include\boost\range [win]
-      - Library\include\boost\range.hpp [win]
-      - Library\include\boost\ratio [win]
-      - Library\include\boost\ratio.hpp [win]
-      - Library\include\boost\rational.hpp [win]
-      - Library\include\boost\ref.hpp [win]
-      # - Library\include\boost\regex [win]
-      # - Library\include\boost\regex_fwd.hpp [win]
-      # - Library\include\boost\regex.h [win]
-      # - Library\include\boost\regex.hpp [win]
-      - Library\include\boost\scoped_array.hpp [win]
-      - Library\include\boost\scoped_ptr.hpp [win]
-      - Library\include\boost\scope_exit.hpp [win]
-      # - Library\include\boost\serialization [win]
-      - Library\include\boost\shared_array.hpp [win]
-      - Library\include\boost\shared_container_iterator.hpp [win]
-      - Library\include\boost\shared_ptr.hpp [win]
-      # - Library\include\boost\signal.hpp [win]
-      # - Library\include\boost\signals [win]
-      - Library\include\boost\signals2 [win]
-      - Library\include\boost\signals2.hpp [win]
-      # - Library\include\boost\signals.hpp [win]
-      - Library\include\boost\smart_ptr [win]
-      - Library\include\boost\smart_ptr.hpp [win]
-      - Library\include\boost\sort [win]
-      - Library\include\boost\spirit [win]
-      - Library\include\boost\spirit.hpp [win]
-      - Library\include\boost\statechart [win]
-      - Library\include\boost\static_assert.hpp [win]
-      - Library\include\boost\swap.hpp [win]
-      # - Library\include\boost\system [win]
-      # - Library\include\boost\test [win]
-      # - Library\include\boost\thread [win]
-      # - Library\include\boost\thread.hpp [win]
-      - Library\include\boost\throw_exception.hpp [win]
-      # - Library\include\boost\timer [win]
-      # - Library\include\boost\timer.hpp [win]
-      - Library\include\boost\token_functions.hpp [win]
-      - Library\include\boost\token_iterator.hpp [win]
-      - Library\include\boost\tokenizer.hpp [win]
-      - Library\include\boost\tr1 [win]
-      - Library\include\boost\tti [win]
-      - Library\include\boost\tuple [win]
-      # - Library\include\boost\type_erasure [win]
-      - Library\include\boost\type.hpp [win]
-      - Library\include\boost\type_index [win]
-      - Library\include\boost\type_index.hpp [win]
-      - Library\include\boost\typeof [win]
-      - Library\include\boost\type_traits [win]
-      - Library\include\boost\type_traits.hpp [win]
-      - Library\include\boost\units [win]
-      - Library\include\boost\unordered [win]
-      - Library\include\boost\unordered_map.hpp [win]
-      - Library\include\boost\unordered_set.hpp [win]
-      - Library\include\boost\utility [win]
-      - Library\include\boost\utility.hpp [win]
-      - Library\include\boost\uuid [win]
-      - Library\include\boost\variant [win]
-      - Library\include\boost\variant.hpp [win]
-      - Library\include\boost\version.hpp [win]
-      - Library\include\boost\visit_each.hpp [win]
-      - Library\include\boost\vmd [win]
-      # - Library\include\boost\wave [win]
-      # - Library\include\boost\wave.hpp [win]
-      - Library\include\boost\weak_ptr.hpp [win]
-      - Library\include\boost\xpressive [win]
-    name: libboost_core-dev
+        - {{ pin_subpackage("libboost_wave", exact=True) }}
+      run:
+      - {{ pin_subpackage("libboost_filesystem", exact=True) }}
+      - {{ pin_subpackage("libboost_thread", exact=True) }}
+      - {{ pin_subpackage("libboost_date_time", exact=True) }}
+      - {{ pin_subpackage("libboost_chrono", exact=True) }}
+      - {{ pin_subpackage("libboost_system", exact=True) }}
+package:
+  name: boost-suite
+  version: 1.61.0
+requirements:
+  build:
+  - python
+  - libtoolchain
+  - python
+  - icu 58.*          [unix]
+  - bzip2             [unix]
+  - zlib
+source:
+  fn: boost_1_61_0.tar.bz2
+  sha256: a547bd06c2fd9a71ba1d169d9cf0339da7ebf4753849a8f7d6fdb8feee99b640
+  url: http://sourceforge.net/projects/boost/files/boost/1.61.0/boost_1_61_0.tar.bz2
+test:
+  requires:
+  - libtoolchain
+  - python
