@@ -52,8 +52,6 @@ set LIB_VER=140
 set MSVC_VER=12.0
 set LIB_VER=120
 
-
-
 call bootstrap.bat
 if errorlevel 1 exit 1
 
