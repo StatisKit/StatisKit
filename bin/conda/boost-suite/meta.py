@@ -396,7 +396,7 @@ write_meta()
 subprocess.check_output('conda build . -c statiskit', shell=True)
 subprocess.check_output('conda install libboost_core-dev --use-local -c statiskit -y', shell=True)
 
-def create_graph():
+def create_graph(non_only_header=False):
     LIBS_DIR = Path('boost')
     LIBS_DIR /= 'libs'
 
@@ -409,7 +409,6 @@ def create_graph():
                 libname = str(library.basename())
                 graph.add_node('libboost_' + libname + '-dev',
                                files = [str(file.relpath(INCLUDE_DIR)) for file in (library/'include').walkfiles()],
-                               include_dir = INCLUDE_DIR,
                                run_exports = ['libboost_' + libname] * bool(libname in NON_HEADER_ONLY))
     for lib_dir in LIBS_DIRS:
         libname = str(lib_dir.basename())
@@ -421,16 +420,20 @@ def create_graph():
         if not libname in graph.nodes:
             graph.add_node(libname,
                            files = [],
-                           include_dir = None,
                            run_exports = [])
         for sublibrary in lib_dir.dirs():
             INCLUDE_DIR = sublibrary/'include'
             if INCLUDE_DIR.exists():
                 sublibname = str(sublibrary.basename())
                 graph.add_edge('libboost_' + sublibname + '-dev', libname, capacity=0)
+    if non_only_header:
+        for node in graph.nodes:
+            if not node == 'libboost_core-dev' and len(graph.nodes[node]['run_exports']) == 0:
+                graph.nodes['libboost_core-dev']['files'].extend(graph.nodes[node]['files'])
+                graph.remove_node(node)
     return graph
 
-graph = create_graph()
+graph = create_graph(non_only_header=True)
 
 def add_edges(graph):
     inexisting = set()
