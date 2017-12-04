@@ -6,6 +6,7 @@ import shutil
 import re
 import itertools
 
+from tempfile import NamedTemporaryFile
 from path import Path
 
 NON_HEADER_ONLY = ['atomic',
@@ -427,10 +428,11 @@ def create_graph(non_only_header=False):
                 sublibname = str(sublibrary.basename())
                 graph.add_edge('libboost_' + sublibname + '-dev', libname, capacity=0)
     if non_only_header:
-        for node in graph.nodes:
-            if not node == 'libboost_core-dev' and len(graph.nodes[node]['run_exports']) == 0:
-                graph.nodes['libboost_core-dev']['files'].extend(graph.nodes[node]['files'])
-                graph.remove_node(node)
+        for node in graph.nodes.keys():
+            if not node == 'libboost_core-dev':
+                if len(graph.nodes[node]['run_exports']) == 0:
+                    graph.nodes['libboost_core-dev']['files'].extend(graph.nodes[node]['files'])
+                    graph.remove_node(node)
     return graph
 
 graph = create_graph(non_only_header=True)
@@ -441,8 +443,11 @@ def add_edges(graph):
     for node in graph.nodes:
         files.update({file : node for file in graph.nodes[node]['files']})
     for node in graph.nodes:
-        process = subprocess.Popen('bcp ' + ' '.join(file[6:] for file in graph.nodes[node]['files']) + ' --list --boost=$CONDA_PREFIX/include', cwd=os.environ['CONDA_PREFIX'] + '/include/boost', stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
+        with NamedTemporaryFile(dir=os.environ['CONDA_PREFIX'] + '/include/boost', suffix='.hpp', delete=False) as filehandler:
+            filehandler.write("\n".join("#include <" + file + ">" for file in graph.nodes[node]['files']))
+        process = subprocess.Popen('bcp --scan --list --boost=$CONDA_PREFIX/include '  + filehandler.name, cwd=os.environ['CONDA_PREFIX'] + '/include/boost', stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
         out, err = process.communicate()
+        os.unlink(filehandler.name)
         edges = {edge : 0 for edge in graph.nodes if not edge == node}
         for file in out.split():
             filenode = files.get(file, None)
@@ -458,8 +463,10 @@ def add_edges(graph):
 graph = add_edges(graph)
 
 def remove_edges(igraph):
-    ograph = create_graph()
-    for edge in sorted(igraph.edges, key=lambda edge: igraph.edges[edge]['capacity']):
+    ograph = igraph.copy()
+    for edge in ograph.edges.keys():
+        ograph.remove_edge(*edge)
+    for edge in sorted(igraph.edges, key=lambda edge: -igraph.edges[edge]['capacity']):
         ograph.add_edge(*edge)
         if not networkx.algorithms.is_directed_acyclic_graph(ograph):
             print edge
