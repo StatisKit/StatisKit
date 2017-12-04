@@ -477,8 +477,11 @@ graph = remove_edges(graph)
 
 def add_files(graph):
     for node in networkx.algorithms.topological_sort(graph):
-        process = subprocess.Popen('bcp ' + ' '.join(file[6:] for file in graph.nodes[node]['files']) + ' --list --boost=$CONDA_PREFIX/include', cwd=os.environ['CONDA_PREFIX'] + '/include/boost', stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
+        with NamedTemporaryFile(dir=os.environ['CONDA_PREFIX'] + '/include/boost', suffix='.hpp', delete=False) as filehandler:
+            filehandler.write("\n".join("#include <" + file + ">" for file in graph.nodes[node]['files']))
+        process = subprocess.Popen('bcp --scan --list --boost=$CONDA_PREFIX/include'  + filehandler.name, cwd=os.environ['CONDA_PREFIX'] + '/include/boost', stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
         out, err = process.communicate()
+        os.unlink(filehandler.name)
         files = set(graph.nodes[node]['files'])
         for ancestor in networkx.algorithms.ancestors(graph, node):
             files.update(graph.nodes[ancestor]['files'])
