@@ -96,7 +96,4 @@ call b2 install toolset=msvc-%MSVC_VER% ^
         --prefix=%LIBRARY_PREFIX%
 if errorlevel 1 exit 1
 
-move %LIBRARY_LIB%\boost_*.dll "%LIBRARY_BIN%"
-if errorlevel 1 exit 1
-
 echo OFF
