@@ -23418,6 +23418,7 @@ outputs:
       run_exports:
         - {{ pin_subpackage("libboost_python", exact=True) }}
       run:
+        - python
         - {{ pin_subpackage("libboost_math-dev", exact=True) }}
         - {{ pin_subpackage("libboost_container-dev", exact=True) }}
         - {{ pin_subpackage("libboost_core-dev", exact=True) }}

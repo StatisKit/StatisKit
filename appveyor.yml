@@ -30,8 +30,8 @@ branches:
 image: Visual Studio 2013
 
 platform:
-  - x86
-  # - x64
+  # - x86
+  - x64
 
 environment:
   matrix:
