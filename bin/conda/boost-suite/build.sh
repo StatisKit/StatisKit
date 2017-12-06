@@ -78,7 +78,7 @@ if [ "$(uname)" == "Darwin" ]; then
         --without-mpi \
         --layout=system \
         -j$CPU_COUNT \
-        -d1 \
+        -d0 \
         install | tee b2.log 2>&1
 fi
 
@@ -109,7 +109,7 @@ if [ "$(uname)" == "Linux" ]; then
         --without-mpi \
         --layout=system \
         -j$CPU_COUNT \
-        -d1 \
+        -d0 \
         install | tee b2.log 2>&1
 fi
 
