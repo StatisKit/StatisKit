@@ -32,9 +32,9 @@ outputs:
       - Library\lib\boost_atomic*    [win]
       - Library\lib\libboost_atomic* [win]
       - Library\bin\boost_atomic*    [win]
-    requirements:
-      # run_exports:
-      #  - {{ pin_subpackage("libboost_atomic", exact=True) }}
+    # requirements:
+    #   # run_exports:
+    #   #  - {{ pin_subpackage("libboost_atomic", exact=True) }}
   - name: libboost_chrono
     files:
       - lib/libboost_chrono*         [not win]
@@ -52,9 +52,9 @@ outputs:
       - Library\lib\boost_container*    [win]
       - Library\lib\libboost_container* [win]
       - Library\bin\boost_container*    [win]
-    requirements:
-      # run_exports:
-      #  - {{ pin_subpackage("libboost_container", exact=True) }}
+    # requirements:
+    #   # run_exports:
+    #   #  - {{ pin_subpackage("libboost_container", exact=True) }}
   - name: libboost_context
     files:
       - lib/libboost_context*         [not win]
@@ -81,9 +81,9 @@ outputs:
       - Library\lib\boost_date_time*    [win]
       - Library\lib\libboost_date_time* [win]
       - Library\bin\boost_date_time*   [win]
-    requirements:
-      # run_exports:
-      #  - {{ pin_subpackage("libboost_date_time", exact=True) }}
+    # requirements:
+    #   # run_exports:
+    #   #  - {{ pin_subpackage("libboost_date_time", exact=True) }}
   - name: libboost_filesystem
     files:
       - lib/libboost_filesystem*         [not win]
@@ -151,18 +151,18 @@ outputs:
       - Library\lib\boost_math*    [win]
       - Library\lib\libboost_math* [win]
       - Library\bin\boost_math*    [win]
-    requirements:
-      # run_exports:
-      #  - {{ pin_subpackage("libboost_math", exact=True) }}
+    # requirements:
+    #   # run_exports:
+    #   #  - {{ pin_subpackage("libboost_math", exact=True) }}
   - name: libboost_program_options
     files:
       - lib/libboost_program_options*          [not win]
       - Library\lib\boost_program_options*     [win]
       - Library\lib\libboost_program_options*  [win]
       - Library\bin\boost_program_options*     [win]
-    requirements:
-      # run_exports:
-      #  - {{ pin_subpackage("libboost_program_options", exact=True) }}
+    # requirements:
+    #   # run_exports:
+    #   #  - {{ pin_subpackage("libboost_program_options", exact=True) }}
   - name: libboost_python
     files:
       - lib/libboost_python*         [not win]
@@ -170,8 +170,8 @@ outputs:
       - Library\lib\libboost_python* [win]
       - Library\bin\boost_python*    [win]
     requirements:
-      # run_exports:
-      #  - {{ pin_subpackage("libboost_python", exact=True) }}
+      run_exports:
+        #  - {{ pin_subpackage("libboost_python", exact=True) }}
         - python
       run:
         - python
@@ -220,18 +220,18 @@ outputs:
       - Library\lib\boost_signals*    [win]
       - Library\lib\libboost_signals* [win]
       - Library\bin\boost_signals*    [win]
-    requirements:
-      # run_exports:
-      #  - {{ pin_subpackage("libboost_signals", exact=True) }}
+    # requirements:
+    #   # run_exports:
+    #   #  - {{ pin_subpackage("libboost_signals", exact=True) }}
   - name: libboost_system
     files:
       - lib/libboost_system*         [not win]
       - Library\lib\boost_system*    [win]
       - Library\lib\libboost_system* [win]
       - Library\bin\boost_system*    [win]
-    requirements:
-      # run_exports:
-      #  - {{ pin_subpackage("libboost_system", exact=True) }}
+    # requirements:
+    #   # run_exports:
+    #   #  - {{ pin_subpackage("libboost_system", exact=True) }}
   - name: libboost_test
     files:
       - lib/libboost_unit_test_framework*          [not win]
