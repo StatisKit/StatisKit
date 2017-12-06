@@ -25,11 +25,6 @@ about:
   license: Boost-1.0
   summary: Boost provides free peer-reviewed portable C++ source libraries.
 
-test:
-  requires:
-    - libtoolchain
-    - python
-
 outputs:
   - name: libboost_atomic
     files:
@@ -335,3 +330,7 @@ outputs:
       - {{ pin_subpackage("libboost_timer", exact=True) }}
       - {{ pin_subpackage("libboost_type_erasure", exact=True) }}
       - {{ pin_subpackage("libboost_wave", exact=True) }}
+  - name: libboost_core-dev
+    files:
+      - include/boost         [not win]
+      - Library\include\boost [win]

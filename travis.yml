@@ -30,7 +30,7 @@ language: cpp
 
 os:
   - linux
-  # - osx
+  - osx
 
 sudo: required
 
@@ -61,10 +61,10 @@ env:
     CONDA_VERSION=2
   - CONDA_RECIPE=bin/conda/python-toolchain
     CONDA_VERSION=3
-  - CONDA_RECIPE=bin/conda/libboost
+  - CONDA_RECIPE=bin/conda/boost-suite
     CONDA_VERSION=2
     TRAVIS_WAIT=50
-  - CONDA_RECIPE=bin/conda/libboost
+  - CONDA_RECIPE=bin/conda/boost-suite
     CONDA_VERSION=3
     TRAVIS_WAIT=50
   - CONDA_RECIPE=bin/conda/boost-dev

@@ -30,7 +30,7 @@ branches:
 image: Visual Studio 2013
 
 platform:
-  # - x86
+  - x86
   - x64
 
 environment:
@@ -56,9 +56,9 @@ environment:
       CONDA_VERSION: 2
     - CONDA_RECIPE: bin\conda\python-toolchain
       CONDA_VERSION: 3
-    - CONDA_RECIPE: bin\conda\libboost
+    - CONDA_RECIPE: bin\conda\boost-suite
       CONDA_VERSION: 2
-    - CONDA_RECIPE: bin\conda\libboost
+    - CONDA_RECIPE: bin\conda\boost-suite
       CONDA_VERSION: 3
     - CONDA_RECIPE: bin\conda\boost-dev
       CONDA_VERSION: 2
@@ -89,6 +89,7 @@ environment:
     - CONDA_RECIPE: share\git\AutoWIG\bin\conda\python-autowig
       CONDA_VERSION: 2
     - CONDA_RECIPE: share\git\AutoWIG\bin\conda\python-autowig
+      CONDA_VERSION: 3
     - ANACONDA_RELABEL: main
 
 matrix:
