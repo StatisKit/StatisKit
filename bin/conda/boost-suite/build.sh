@@ -23,8 +23,6 @@
 
 set -ve
 
-echo 'Begin'
-
 unset CXXFLAGS
 unset CPPFLAGS
 unset CFLAGS
@@ -114,7 +112,5 @@ if [ "$(uname)" == "Linux" ]; then
         -d0 \
         install | tee b2.log 2>&1
 fi
-
-echo 'End'
 
 set +ve

@@ -203,7 +203,7 @@ outputs:
     files:
       - lib/libboost_serialization*          [not win]
       - lib/libboost_wserialization*         [not win]
-      - Library\lib\boost_serialization*    [win]
+      - Library\lib\boost_serialization*     [win]
       - Library\lib\libboost_serialization*  [win]
       - Library\bin\boost_serialization*     [win]
       - Library\lib\boost_wserialization*    [win]
