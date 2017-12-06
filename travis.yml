@@ -63,10 +63,10 @@ env:
   #   CONDA_VERSION=3
   - CONDA_RECIPE=bin/conda/boost-suite
     CONDA_VERSION=2
-    TRAVIS_WAIT=50
+    # TRAVIS_WAIT=50
   - CONDA_RECIPE=bin/conda/boost-suite
     CONDA_VERSION=3
-    TRAVIS_WAIT=50
+    # TRAVIS_WAIT=50
   - CONDA_RECIPE=bin/conda/boost-dev
     CONDA_VERSION=2
     TRAVIS_WAIT=50
