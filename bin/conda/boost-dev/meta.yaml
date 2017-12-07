@@ -1,17 +1,39 @@
 
 package:
-  name: boost-dev
+  name: boost-suite
   version: 1.61.0
+
+source:
+  git_url: https://github.com/boostorg/boost.git
+  git_tag: boost-1.61.0
 
 build:
   number: 0
+
+requirements:
+  build:
+    - python
+    - libtoolchain
+    - python
+    - icu 58.*          [unix]
+    - bzip2             [unix]
+    - zlib
 
 about:
   home: http://www.boost.org/
   license: Boost-1.0
   summary: Boost provides free peer-reviewed portable C++ source libraries.
 
+test:
+  requires:
+    - libtoolchain
+    - python
+
 outputs:
+  - name: libboost_core-dev
+    files:
+      - include/boost         [not win]
+      - Library\include\boost [win]
   - name: libboost_lambda-dev
     requirements:
       run:
@@ -30,6 +52,7 @@ outputs:
         - {{ pin_subpackage("libboost_iostreams", exact=True) }}
       run:
         - {{ pin_subpackage("libboost_core-dev", exact=True) }}
+        - {{ pin_subpackage("libboost_iostreams", exact=True) }}
   - name: libboost_vmd-dev
     requirements:
       run:
@@ -56,6 +79,7 @@ outputs:
         - {{ pin_subpackage("libboost_math", exact=True) }}
       run:
         - {{ pin_subpackage("libboost_core-dev", exact=True) }}
+        - {{ pin_subpackage("libboost_math", exact=True) }}
   - name: libboost_unordered-dev
     requirements:
       run:
@@ -130,12 +154,14 @@ outputs:
         - {{ pin_subpackage("libboost_program_options", exact=True) }}
       run:
         - {{ pin_subpackage("libboost_core-dev", exact=True) }}
+        - {{ pin_subpackage("libboost_program_options", exact=True) }}
   - name: libboost_context-dev
     requirements:
       run_exports:
         - {{ pin_subpackage("libboost_context", exact=True) }}
       run:
         - {{ pin_subpackage("libboost_core-dev", exact=True) }}
+        - {{ pin_subpackage("libboost_context", exact=True) }}
   - name: libboost_crc-dev
     requirements:
       run:
@@ -150,18 +176,21 @@ outputs:
         - {{ pin_subpackage("libboost_test", exact=True) }}
       run:
         - {{ pin_subpackage("libboost_core-dev", exact=True) }}
+        - {{ pin_subpackage("libboost_test", exact=True) }}
   - name: libboost_type_erasure-dev
     requirements:
       run_exports:
         - {{ pin_subpackage("libboost_type_erasure", exact=True) }}
       run:
         - {{ pin_subpackage("libboost_core-dev", exact=True) }}
+        - {{ pin_subpackage("libboost_type_erasure", exact=True) }}
   - name: libboost_date_time-dev
     requirements:
       run_exports:
         - {{ pin_subpackage("libboost_date_time", exact=True) }}
       run:
         - {{ pin_subpackage("libboost_core-dev", exact=True) }}
+        - {{ pin_subpackage("libboost_date_time", exact=True) }}
   - name: libboost_asio-dev
     requirements:
       run:
@@ -172,6 +201,7 @@ outputs:
         - {{ pin_subpackage("libboost_atomic", exact=True) }}
       run:
         - {{ pin_subpackage("libboost_core-dev", exact=True) }}
+        - {{ pin_subpackage("libboost_atomic", exact=True) }}
   - name: libboost_poly_collection-dev
     requirements:
       run:
@@ -186,6 +216,7 @@ outputs:
         - {{ pin_subpackage("libboost_regex", exact=True) }}
       run:
         - {{ pin_subpackage("libboost_core-dev", exact=True) }}
+        - {{ pin_subpackage("libboost_regex", exact=True) }}
   - name: libboost_heap-dev
     requirements:
       run:
@@ -204,6 +235,7 @@ outputs:
         - {{ pin_subpackage("libboost_locale", exact=True) }}
       run:
         - {{ pin_subpackage("libboost_core-dev", exact=True) }}
+        - {{ pin_subpackage("libboost_locale", exact=True) }}
   - name: libboost_interprocess-dev
     requirements:
       run:
@@ -246,6 +278,7 @@ outputs:
         - {{ pin_subpackage("libboost_signals", exact=True) }}
       run:
         - {{ pin_subpackage("libboost_core-dev", exact=True) }}
+        - {{ pin_subpackage("libboost_signals", exact=True) }}
   - name: libboost_compute-dev
     requirements:
       run:
@@ -256,6 +289,7 @@ outputs:
         - {{ pin_subpackage("libboost_system", exact=True) }}
       run:
         - {{ pin_subpackage("libboost_core-dev", exact=True) }}
+        - {{ pin_subpackage("libboost_system", exact=True) }}
   - name: libboost_process-dev
     requirements:
       run:
@@ -314,6 +348,7 @@ outputs:
         - {{ pin_subpackage("libboost_thread", exact=True) }}
       run:
         - {{ pin_subpackage("libboost_core-dev", exact=True) }}
+        - {{ pin_subpackage("libboost_thread", exact=True) }}
   - name: libboost_phoenix-dev
     requirements:
       run:
@@ -341,6 +376,7 @@ outputs:
       run:
         - {{ pin_subpackage("libboost_stopwatches-dev", exact=True) }}
         - {{ pin_subpackage("libboost_core-dev", exact=True) }}
+        - {{ pin_subpackage("libboost_chrono", exact=True) }}
   - name: libboost_integer-dev
     requirements:
       run:
@@ -387,6 +423,7 @@ outputs:
         - {{ pin_subpackage("libboost_wave", exact=True) }}
       run:
         - {{ pin_subpackage("libboost_core-dev", exact=True) }}
+        - {{ pin_subpackage("libboost_wave", exact=True) }}
   - name: libboost_detail-dev
     requirements:
       run:
@@ -408,6 +445,7 @@ outputs:
       run:
         - python
         - {{ pin_subpackage("libboost_core-dev", exact=True) }}
+        - {{ pin_subpackage("libboost_python", exact=True) }}
   - name: libboost_fiber-dev
     requirements:
       run:
@@ -442,6 +480,7 @@ outputs:
         - {{ pin_subpackage("libboost_random", exact=True) }}
       run:
         - {{ pin_subpackage("libboost_core-dev", exact=True) }}
+        - {{ pin_subpackage("libboost_random", exact=True) }}
   - name: libboost_tti-dev
     requirements:
       run:
@@ -468,6 +507,7 @@ outputs:
         - {{ pin_subpackage("libboost_graph", exact=True) }}
       run:
         - {{ pin_subpackage("libboost_core-dev", exact=True) }}
+        - {{ pin_subpackage("libboost_graph", exact=True) }}
   - name: libboost_multi_index-dev
     requirements:
       run:
@@ -486,18 +526,21 @@ outputs:
         - {{ pin_subpackage("libboost_serialization", exact=True) }}
       run:
         - {{ pin_subpackage("libboost_core-dev", exact=True) }}
+        - {{ pin_subpackage("libboost_serialization", exact=True) }}
   - name: libboost_timer-dev
     requirements:
       run_exports:
         - {{ pin_subpackage("libboost_timer", exact=True) }}
       run:
         - {{ pin_subpackage("libboost_core-dev", exact=True) }}
+        - {{ pin_subpackage("libboost_timer", exact=True) }}
   - name: libboost_coroutine-dev
     requirements:
       run_exports:
         - {{ pin_subpackage("libboost_coroutine", exact=True) }}
       run:
         - {{ pin_subpackage("libboost_core-dev", exact=True) }}
+        - {{ pin_subpackage("libboost_coroutine", exact=True) }}
   - name: libboost_callable_traits-dev
     requirements:
       run:
@@ -508,6 +551,7 @@ outputs:
         - {{ pin_subpackage("libboost_log", exact=True) }}
       run:
         - {{ pin_subpackage("libboost_core-dev", exact=True) }}
+        - {{ pin_subpackage("libboost_log", exact=True) }}
   - name: libboost_assert-dev
     requirements:
       run:
@@ -522,6 +566,7 @@ outputs:
         - {{ pin_subpackage("libboost_container", exact=True) }}
       run:
         - {{ pin_subpackage("libboost_core-dev", exact=True) }}
+        - {{ pin_subpackage("libboost_container", exact=True) }}
   - name: libboost_multi_array-dev
     requirements:
       run:
@@ -568,6 +613,7 @@ outputs:
         - {{ pin_subpackage("libboost_filesystem", exact=True) }}
       run:
         - {{ pin_subpackage("libboost_core-dev", exact=True) }}
+        - {{ pin_subpackage("libboost_filesystem", exact=True) }}
   - name: libboost_icl-dev
     requirements:
       run:

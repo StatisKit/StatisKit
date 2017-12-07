@@ -83,51 +83,37 @@ test:
 outputs:
 """)
 
-        # filehandler.write('  - name: libboost\n')
-        # filehandler.write('    run:\n')
-        # for library in NON_HEADER_ONLY:
-        #     filehandler.write('      - {{ pin_subpackage("libboost_' + library + '", exact=True) }}\n')
-
-        if graph:
-            for node in networkx.algorithms.topological_sort(graph):
-                filehandler.write('  - name: ' + node + '\n')
-                files = graph.nodes[node]['files']
-                if len(files) > 0:
-                    filehandler.write('    files:' + '\n')
-                    for file in files:
-                        filehandler.write('      - include/' + file + '         [not win]\n')
-                        filehandler.write('      - Library\include\\' + file.replace('/', '\\') + ' [win]\n')
-                run_exports = graph.nodes[node].get('run_exports', [])
-                predecessors = list(graph.predecessors(node))
-                if len(predecessors + run_exports) > 0:
-                    filehandler.write('    requirements:' + '\n')
+        for node in networkx.algorithms.topological_sort(graph):
+            filehandler.write('  - name: ' + node + '\n')
+            files = graph.nodes[node]['files']
+            if len(files) > 0:
+                filehandler.write('    files:' + '\n')
+                for file in files:
+                    filehandler.write('      - include/' + file + '         [not win]\n')
+                    filehandler.write('      - Library\include\\' + file.replace('/', '\\') + ' [win]\n')
+            run_exports = graph.nodes[node].get('run_exports', [])
+            predecessors = list(graph.predecessors(node))
+            if len(predecessors + run_exports) > 0:
+                filehandler.write('    requirements:' + '\n')
+                if node == 'libboost_python-dev':
+                    filehandler.write('      build:' + '\n')
+                    filehandler.write('        - python\n')
+                if len(run_exports) > 0:
+                    filehandler.write('      run_exports:' + '\n')
+                    for run_export in run_exports:
+                        filehandler.write('        - {{ pin_subpackage("' + run_export + '", exact=True) }}\n')
+                if len(predecessors) > 0:
+                    filehandler.write('      run:' + '\n')
                     if node == 'libboost_python-dev':
-                        filehandler.write('      build:' + '\n')
                         filehandler.write('        - python\n')
+                    for predecessor in predecessors:
+                        filehandler.write('        - {{ pin_subpackage("' + predecessor + '", exact=True) }}\n')
                     if len(run_exports) > 0:
-                        filehandler.write('      run_exports:' + '\n')
                         for run_export in run_exports:
                             filehandler.write('        - {{ pin_subpackage("' + run_export + '", exact=True) }}\n')
-                    if len(predecessors) > 0:
-                        filehandler.write('      run:' + '\n')
-                        if node == 'libboost_python-dev':
-                            filehandler.write('        - python\n')
-                        for predecessor in predecessors:
-                            filehandler.write('        - {{ pin_subpackage("' + predecessor + '", exact=True) }}\n')
-        else:
-            filehandler.write('  - name: libboost_core-dev\n')
-            filehandler.write('    files:\n')
-            filehandler.write('      - include/boost         [not win]\n')
-            filehandler.write('      - Library\include\\boost [win]\n')
-            filehandler.write('    requirements:\n')
-            filehandler.write('      build:\n')
-            filehandler.write('        - python\n')
-            filehandler.write('      run:\n')
-            filehandler.write('        - python\n')
 
-write_meta()
 
-subprocess.check_output('conda build . -c statiskit', shell=True)
+# subprocess.check_output('conda build . -c statiskit', shell=True)
 subprocess.call('conda remove libboost_core-dev -y', shell=True)
 subprocess.check_output('conda install libboost_core-dev --use-local -c statiskit -y', shell=True)
 
@@ -173,69 +159,69 @@ def create_graph(dispatch_files=True):
 graph = create_graph(dispatch_files=False)
 write_meta(graph)
 
-def add_edges(graph):
-    inexisting = set()
-    files = dict()
-    for node in graph.nodes:
-        files.update({file : node for file in graph.nodes[node]['files']})
-    for node in graph.nodes:
-        with NamedTemporaryFile(dir=os.environ['CONDA_PREFIX'] + '/include/boost', suffix='.hpp', delete=False) as filehandler:
-            filehandler.write("\n".join("#include <" + file + ">" for file in graph.nodes[node]['files']))
-        process = subprocess.Popen('bcp --scan --list --boost=$CONDA_PREFIX/include '  + filehandler.name, cwd=os.environ['CONDA_PREFIX'] + '/include/boost', stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
-        out, err = process.communicate()
-        os.unlink(filehandler.name)
-        edges = {edge : 0 for edge in graph.nodes if not edge == node}
-        for file in out.split():
-            filenode = files.get(file, None)
-            if not filenode:
-                inexisting.add(file)
-            if filenode and not filenode == node:
-                edges[filenode] = edges[filenode] + 1
-        for edge, capacity in edges.iteritems():
-            if capacity > 0:
-                graph.add_edge(edge, node, capacity=capacity)
-    return graph
+# def add_edges(graph):
+#     inexisting = set()
+#     files = dict()
+#     for node in graph.nodes:
+#         files.update({file : node for file in graph.nodes[node]['files']})
+#     for node in graph.nodes:
+#         with NamedTemporaryFile(dir=os.environ['CONDA_PREFIX'] + '/include/boost', suffix='.hpp', delete=False) as filehandler:
+#             filehandler.write("\n".join("#include <" + file + ">" for file in graph.nodes[node]['files']))
+#         process = subprocess.Popen('bcp --scan --list --boost=$CONDA_PREFIX/include '  + filehandler.name, cwd=os.environ['CONDA_PREFIX'] + '/include/boost', stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
+#         out, err = process.communicate()
+#         os.unlink(filehandler.name)
+#         edges = {edge : 0 for edge in graph.nodes if not edge == node}
+#         for file in out.split():
+#             filenode = files.get(file, None)
+#             if not filenode:
+#                 inexisting.add(file)
+#             if filenode and not filenode == node:
+#                 edges[filenode] = edges[filenode] + 1
+#         for edge, capacity in edges.iteritems():
+#             if capacity > 0:
+#                 graph.add_edge(edge, node, capacity=capacity)
+#     return graph
 
-graph = add_edges(graph)
+# graph = add_edges(graph)
 
-def remove_edges(igraph):
-    ograph = igraph.copy()
-    for edge in ograph.edges.keys():
-        ograph.remove_edge(*edge)
-    for edge in sorted(igraph.edges, key=lambda edge: -igraph.edges[edge]['capacity']):
-        ograph.add_edge(*edge)
-        if not networkx.algorithms.is_directed_acyclic_graph(ograph):
-            print edge
-            ograph.remove_edge(*edge)
-    return ograph
+# def remove_edges(igraph):
+#     ograph = igraph.copy()
+#     for edge in ograph.edges.keys():
+#         ograph.remove_edge(*edge)
+#     for edge in sorted(igraph.edges, key=lambda edge: -igraph.edges[edge]['capacity']):
+#         ograph.add_edge(*edge)
+#         if not networkx.algorithms.is_directed_acyclic_graph(ograph):
+#             print edge
+#             ograph.remove_edge(*edge)
+#     return ograph
 
-graph = remove_edges(graph)
+# graph = remove_edges(graph)
 
-def add_files(graph):
-    for node in networkx.algorithms.topological_sort(graph):
-        with NamedTemporaryFile(dir=os.environ['CONDA_PREFIX'] + '/include/boost', suffix='.hpp', delete=False) as filehandler:
-            filehandler.write("\n".join("#include <" + file + ">" for file in graph.nodes[node]['files']))
-        process = subprocess.Popen('bcp --scan --list --boost=$CONDA_PREFIX/include'  + filehandler.name, cwd=os.environ['CONDA_PREFIX'] + '/include/boost', stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
-        out, err = process.communicate()
-        os.unlink(filehandler.name)
-        files = set(graph.nodes[node]['files'])
-        for ancestor in networkx.algorithms.ancestors(graph, node):
-            files.update(graph.nodes[ancestor]['files'])
-        for file in out.split():
-            if not file in files and file.startswith('boost/'):
-                graph.nodes[node]['files'].append(file)
-    return graph
+# def add_files(graph):
+#     for node in networkx.algorithms.topological_sort(graph):
+#         with NamedTemporaryFile(dir=os.environ['CONDA_PREFIX'] + '/include/boost', suffix='.hpp', delete=False) as filehandler:
+#             filehandler.write("\n".join("#include <" + file + ">" for file in graph.nodes[node]['files']))
+#         process = subprocess.Popen('bcp --scan --list --boost=$CONDA_PREFIX/include'  + filehandler.name, cwd=os.environ['CONDA_PREFIX'] + '/include/boost', stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
+#         out, err = process.communicate()
+#         os.unlink(filehandler.name)
+#         files = set(graph.nodes[node]['files'])
+#         for ancestor in networkx.algorithms.ancestors(graph, node):
+#             files.update(graph.nodes[ancestor]['files'])
+#         for file in out.split():
+#             if not file in files and file.startswith('boost/'):
+#                 graph.nodes[node]['files'].append(file)
+#     return graph
 
-graph = add_files(graph)
+# graph = add_files(graph)
 
-def remove_files(graph):
-    for node in graph.nodes:
-        directories = {}
-        for directory in {Path(os.environ['CONDA_PREFIX'] + '/include/' + file).parent for file in graph.nodes['files']}:
-            if all(str(item.relpath(os.environ['CONDA_PREFIX'] + '/include/')) in graph.nodes['files'] for item in directory.listdir()):
-                directories.add(directory.relpath(os.environ['CONDA_PREFIX'] + '/include/'))
-    return graph
+# def remove_files(graph):
+#     for node in graph.nodes:
+#         directories = {}
+#         for directory in {Path(os.environ['CONDA_PREFIX'] + '/include/' + file).parent for file in graph.nodes['files']}:
+#             if all(str(item.relpath(os.environ['CONDA_PREFIX'] + '/include/')) in graph.nodes['files'] for item in directory.listdir()):
+#                 directories.add(directory.relpath(os.environ['CONDA_PREFIX'] + '/include/'))
+#     return graph
 
-graph = remove_files(graph)
+# graph = remove_files(graph)
 
-write_meta(graph)
+# write_meta(graph)
