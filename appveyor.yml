@@ -29,10 +29,6 @@ branches:
 # image: Visual Studio 2015 Update 2
 image: Visual Studio 2013
 
-platform:
-  - x86
-  - x64
-
 environment:
   matrix:
     - CONDA_RECIPE: bin\conda\vcs
@@ -91,6 +87,10 @@ environment:
     - CONDA_RECIPE: share\git\AutoWIG\bin\conda\python-autowig
       CONDA_VERSION: 3
     - ANACONDA_RELABEL: main
+
+platform:
+  - x86
+  - x64
 
 matrix:
   fast_finish: true
