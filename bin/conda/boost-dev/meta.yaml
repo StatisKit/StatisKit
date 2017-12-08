@@ -30,10 +30,6 @@ test:
     - python
 
 outputs:
-  - name: libboost_core-dev
-    files:
-      - include/boost         [not win]
-      - Library\include\boost [win]
   - name: libboost_lambda-dev
     requirements:
       run:
