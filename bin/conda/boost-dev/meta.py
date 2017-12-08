@@ -84,38 +84,40 @@ outputs:
 """)
 
         for node in networkx.algorithms.topological_sort(graph):
-            filehandler.write('  - name: ' + node + '\n')
-            files = graph.nodes[node]['files']
-            if len(files) > 0:
-                filehandler.write('    files:' + '\n')
-                for file in files:
-                    filehandler.write('      - include/' + file + '         [not win]\n')
-                    filehandler.write('      - Library\include\\' + file.replace('/', '\\') + ' [win]\n')
-            run_exports = graph.nodes[node].get('run_exports', [])
-            predecessors = list(graph.predecessors(node))
-            if len(predecessors + run_exports) > 0:
-                filehandler.write('    requirements:' + '\n')
-                if node == 'libboost_python-dev':
-                    filehandler.write('      build:' + '\n')
-                    filehandler.write('        - python\n')
-                if len(run_exports) > 0:
-                    filehandler.write('      run_exports:' + '\n')
-                    for run_export in run_exports:
-                        filehandler.write('        - {{ pin_subpackage("' + run_export + '", exact=True) }}\n')
-                if len(predecessors) > 0:
-                    filehandler.write('      run:' + '\n')
+            if not node == 'libboost_core-dev' and len(graph.nodes[node]['files']) + len(graph.nodes[node].get('run_exports', [])) > 0:
+                filehandler.write('  - name: ' + node + '\n')
+                files = graph.nodes[node]['files']
+                if len(files) > 0:
+                    filehandler.write('    files:' + '\n')
+                    for file in files:
+                        filehandler.write('      - include/' + file + '         [not win]\n')
+                        filehandler.write('      - Library\include\\' + file.replace('/', '\\') + ' [win]\n')
+                run_exports = graph.nodes[node].get('run_exports', [])
+                predecessors = list(graph.predecessors(node))
+                if len(predecessors + run_exports) > 0:
+                    filehandler.write('    requirements:' + '\n')
                     if node == 'libboost_python-dev':
+                        filehandler.write('      build:' + '\n')
                         filehandler.write('        - python\n')
-                    for predecessor in predecessors:
-                        filehandler.write('        - {{ pin_subpackage("' + predecessor + '", exact=True) }}\n')
                     if len(run_exports) > 0:
+                        filehandler.write('      run_exports:' + '\n')
                         for run_export in run_exports:
                             filehandler.write('        - {{ pin_subpackage("' + run_export + '", exact=True) }}\n')
+                    if len(predecessors) > 0:
+                        filehandler.write('      run:' + '\n')
+                        if node == 'libboost_python-dev':
+                            filehandler.write('        - python\n')
+                        for predecessor in predecessors:
+                            if  len(graph.nodes[predecessor]['files']) + len(graph.nodes[predecessor].get('run_exports', [])) > 0:
+                                filehandler.write('        - {{ pin_subpackage("' + predecessor + '", exact=True) }}\n')
+                        if len(run_exports) > 0:
+                            for run_export in run_exports:
+                                filehandler.write('        - {{ pin_subpackage("' + run_export + '", exact=True) }}\n')
 
 
 # subprocess.check_output('conda build . -c statiskit', shell=True)
-subprocess.call('conda remove libboost_core-dev -y', shell=True)
-subprocess.check_output('conda install libboost_core-dev --use-local -c statiskit -y', shell=True)
+# subprocess.call('conda remove libboost_core-dev -y', shell=True)
+# subprocess.check_output('conda install libboost_core-dev --use-local -c statiskit -y', shell=True)
 
 def create_graph(dispatch_files=True):
     LIBS_DIR = Path('boost')
@@ -128,8 +130,12 @@ def create_graph(dispatch_files=True):
             INCLUDE_DIR = library/'include'
             if INCLUDE_DIR.exists():
                 libname = str(library.basename())
+                if dispatch_files:
+                    files = [str(file.relpath(INCLUDE_DIR)) for file in (library/'include').walkfiles()]
+                else:
+                    files = []
                 graph.add_node('libboost_' + libname + '-dev',
-                               files = [str(file.relpath(INCLUDE_DIR)) for file in (library/'include').walkfiles()],
+                               files = files,
                                run_exports = ['libboost_' + libname] * bool(libname in NON_HEADER_ONLY))
     for lib_dir in LIBS_DIRS:
         libname = str(lib_dir.basename())
@@ -150,10 +156,7 @@ def create_graph(dispatch_files=True):
     if not dispatch_files:
         for node in graph.nodes.keys():
             if not node == 'libboost_core-dev':
-                graph.nodes[node]['files'] = []
                 graph.add_edge('libboost_core-dev', node)
-            else:
-                graph.nodes[node]['files'] = ['boost']
     return graph
 
 graph = create_graph(dispatch_files=False)
