@@ -35,51 +35,51 @@ platform:
 
 environment:
   matrix:
-    - CONDA_RECIPE: bin\conda\vcs
-    - CONDA_RECIPE: bin\conda\python-scons
-      CONDA_VERSION: 2
+    # - CONDA_RECIPE: bin\conda\vcs
+    # - CONDA_RECIPE: bin\conda\python-scons
+      # CONDA_VERSION: 2
     # - CONDA_RECIPE: bin\conda\python-scons
     #   CONDA_VERSION: 3
-    - CONDA_RECIPE: bin\conda\scons-tools
-      CONDA_VERSION: 2
+    # - CONDA_RECIPE: bin\conda\scons-tools
+    #   CONDA_VERSION: 2
     # - CONDA_RECIPE: bin\conda\scons-tools
     #   CONDA_VERSION: 3
-    - CONDA_RECIPE: bin\conda\python-parse
-      CONDA_VERSION: 2
+    # - CONDA_RECIPE: bin\conda\python-parse
+    #   CONDA_VERSION: 2
     # - CONDA_RECIPE: bin\conda\python-parse
     #   CONDA_VERSION: 3
-    - CONDA_RECIPE: bin\conda\libtoolchain
-      CONDA_VERSION: 2
+    # - CONDA_RECIPE: bin\conda\libtoolchain
+    #   CONDA_VERSION: 2
     # - CONDA_RECIPE: bin\conda\libtoolchain
     #   CONDA_VERSION: 3
-    - CONDA_RECIPE: bin\conda\python-toolchain
-      CONDA_VERSION: 2
+    # - CONDA_RECIPE: bin\conda\python-toolchain
+    #   CONDA_VERSION: 2
     # - CONDA_RECIPE: bin\conda\python-toolchain
     #   CONDA_VERSION: 3
-    - CONDA_RECIPE: bin\conda\boost-suite
-      CONDA_VERSION: 2
+    # - CONDA_RECIPE: bin\conda\boost-suite
+    #   CONDA_VERSION: 2
     # - CONDA_RECIPE: bin\conda\boost-suite
     #   CONDA_VERSION: 3
-    - CONDA_RECIPE: bin\conda\boost-dev
-      CONDA_VERSION: 2
+    # - CONDA_RECIPE: bin\conda\boost-dev
+    #   CONDA_VERSION: 2
     # - CONDA_RECIPE: bin\conda\boost-dev
     #   CONDA_VERSION: 3
-    - CONDA_RECIPE: share\git\conda-tools\bin\conda\conda-tools
-      CONDA_VERSION: 2
+    # - CONDA_RECIPE: share\git\conda-tools\bin\conda\conda-tools
+    #   CONDA_VERSION: 2
     # - CONDA_RECIPE: share\git\conda-tools\bin\conda\conda-tools
     #   CONDA_VERSION: 3
     # - CONDA_RECIPE: share\git\SoftMaint\bin\conda\python-softmaint
     #   CONDA_VERSION: 2
     # - CONDA_RECIPE: share\git\SoftMaint\bin\conda\python-softmaint
     #   CONDA_VERSION: 3
-    - CONDA_RECIPE: share\git\ClangLite\bin\conda\llvm
-    - CONDA_RECIPE: share\git\ClangLite\bin\conda\clang
-    - CONDA_RECIPE: share\git\ClangLite\bin\conda\python-clang
-      CONDA_VERSION: 2
+    # - CONDA_RECIPE: share\git\ClangLite\bin\conda\llvm
+    # - CONDA_RECIPE: share\git\ClangLite\bin\conda\clang
+    # - CONDA_RECIPE: share\git\ClangLite\bin\conda\python-clang
+    #   CONDA_VERSION: 2
     # - CONDA_RECIPE: share\git\ClangLite\bin\conda\python-clang
     #   CONDA_VERSION: 3
-    - CONDA_RECIPE: share\git\ClangLite\bin\conda\libclanglite
-      CONDA_VERSION: 2
+    # - CONDA_RECIPE: share\git\ClangLite\bin\conda\libclanglite
+    #   CONDA_VERSION: 2
     # - CONDA_RECIPE: share\git\ClangLite\bin\conda\libclanglite
     #   CONDA_VERSION: 3
     - CONDA_RECIPE: share\git\ClangLite\bin\conda\python-clanglite
