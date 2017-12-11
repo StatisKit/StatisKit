@@ -37,6 +37,8 @@ about:
   summary: Collection of utilities for compiling libraries.
   
 requirements:
+  build:
+    - python
   run:
     - python
     - python-scons
