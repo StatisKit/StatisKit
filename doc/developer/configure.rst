@@ -9,7 +9,7 @@ To insall **Conda** refer to the section :ref:`section-user-install_it-prerequis
 Once **Conda** installed, you need to create the development environment called :code:`statiskit-dev` on your machine.
 To do so you must:
 
-* On Windows OSes, install `Visual Studio Community 2013 <https://www.visualstudio.com/en-us/news/releasenotes/vs2013-community-vs>`_ and,
+* On Windows OSes, download and install Visual Studio Community 2013 on this `page <https://www.visualstudio.com/vs/older-downloads/>`_ and,
 
   1. Install :code:`statiskit-dev` package in the :code:`statiskit-dev` environment.
   
