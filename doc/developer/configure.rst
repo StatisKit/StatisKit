@@ -38,6 +38,6 @@ To do so you must type:
 
 .. warning::
 
-  On Windows OSes you must first download and install **Visual Studio Community 2013** (available on this `page <https://www.visualstudio.com/vs/older-downloads/>`_).
+   On Windows OSes you must first download and install **Visual Studio Community 2013** (available on this `page <https://www.visualstudio.com/vs/older-downloads/>`_).
 
-Then, you activate the created environment for each build of **Statiskit** software suite components by following instructions given after the installation.
+Then, you can activate the created environment for each build of **Statiskit** software suite components by following instructions given after the installation.
