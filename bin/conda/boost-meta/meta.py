@@ -51,7 +51,7 @@ def write_meta(graph=None):
     with open('meta.yaml', "w") as filehandler:
         filehandler.write("""
 package:
-  name: boost-suite
+  name: boost-meta
   version: 1.61.0
 
 source:

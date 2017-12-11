@@ -128,10 +128,10 @@ matrix:
            CONDA_VERSION=3
     - os: osx
       env: CONDA_RECIPE=bin/conda/llvm-suite
-    # - os: osx
-    #   env: CONDA_RECIPE=bin/conda/boost-suite
-    #        CONDA_VERSION=2
-    #        TRAVIS_WAIT=50
+    - os: osx
+      env: CONDA_RECIPE=bin/conda/boost-suite
+           CONDA_VERSION=2
+           TRAVIS_WAIT=50
     # - os: osx
     #   env: CONDA_RECIPE=bin/conda/boost-suite
     #        CONDA_VERSION=3
