@@ -15,7 +15,6 @@ requirements:
   build:
     - python
     - libtoolchain
-    - python
     - icu 58.*          [unix]
     - bzip2             [unix]
     - zlib
@@ -32,8 +31,7 @@ outputs:
       - Library\lib\boost_atomic*    [win]
       - Library\lib\libboost_atomic* [win]
       - Library\bin\boost_atomic*    [win]
-    requirements:
-      run_exports:
+    run_exports:
        - {{ pin_subpackage("libboost_atomic", exact=True) }}
   - name: libboost_chrono
     files:
@@ -44,7 +42,7 @@ outputs:
     requirements:
       run:
         - {{ pin_subpackage("libboost_system", exact=True) }}
-      run_exports:
+    run_exports:
        - {{ pin_subpackage("libboost_chrono", exact=True) }}
   - name: libboost_container
     files:
@@ -52,8 +50,7 @@ outputs:
       - Library\lib\boost_container*    [win]
       - Library\lib\libboost_container* [win]
       - Library\bin\boost_container*    [win]
-    requirements:
-      run_exports:
+    run_exports:
        - {{ pin_subpackage("libboost_container", exact=True) }}
   - name: libboost_context
     files:
@@ -67,9 +64,9 @@ outputs:
       - Library\lib\boost_coroutine*    [win]
       - Library\lib\libboost_coroutine* [win]
       - Library\bin\boost_coroutine*    [win]
-    requirements:
-      run_exports:
+    run_exports:
        - {{ pin_subpackage("libboost_coroutine", exact=True) }}
+    requirements:
       run:
         - {{ pin_subpackage("libboost_system", exact=True) }}
         - {{ pin_subpackage("libboost_chrono", exact=True) }}
@@ -81,8 +78,7 @@ outputs:
       - Library\lib\boost_date_time*    [win]
       - Library\lib\libboost_date_time* [win]
       - Library\bin\boost_date_time*   [win]
-    requirements:
-      run_exports:
+    run_exports:
        - {{ pin_subpackage("libboost_date_time", exact=True) }}
   - name: libboost_filesystem
     files:
@@ -90,9 +86,9 @@ outputs:
       - Library\lib\boost_filesystem*    [win]
       - Library\lib\libboost_filesystem* [win]
       - Library\bin\boost_filesystem*    [win]
-    requirements:
-      run_exports:
+    run_exports:
        - {{ pin_subpackage("libboost_filesystem", exact=True) }}
+    requirements:
       run:
         - {{ pin_subpackage("libboost_system", exact=True) }}
   - name: libboost_graph
@@ -101,9 +97,9 @@ outputs:
       - Library\lib\boost_graph*    [win]
       - Library\lib\libboost_graph* [win]
       - Library\bin\boost_graph*    [win]
-    requirements:
-      run_exports:
+    run_exports:
        - {{ pin_subpackage("libboost_graph", exact=True) }}
+    requirements:
       run:
         - {{ pin_subpackage("libboost_regex", exact=True) }}
         - icu 58.*                  [linux]
@@ -119,9 +115,9 @@ outputs:
       - Library\lib\boost_locale*    [win]
       - Library\lib\libboost_locale* [win]
       - Library\bin\boost_locale*    [win]
-    requirements:
-      run_exports:
+    run_exports:
        - {{ pin_subpackage("libboost_locale", exact=True) }}
+    requirements:
       run:
         - {{ pin_subpackage("libboost_chrono", exact=True) }}
         - {{ pin_subpackage("libboost_thread", exact=True) }}
@@ -133,9 +129,9 @@ outputs:
       - Library\lib\boost_log*    [win]
       - Library\lib\libboost_log* [win]
       - Library\bin\boost_log*    [win]
-    requirements:
-      run_exports:
+    run_exports:
        - {{ pin_subpackage("libboost_log", exact=True) }}
+    requirements:
       run:
         - {{ pin_subpackage("libboost_regex", exact=True) }}
         - {{ pin_subpackage("libboost_filesystem", exact=True) }}
@@ -151,8 +147,7 @@ outputs:
       - Library\lib\boost_math*    [win]
       - Library\lib\libboost_math* [win]
       - Library\bin\boost_math*    [win]
-    requirements:
-      run_exports:
+    run_exports:
        - {{ pin_subpackage("libboost_math", exact=True) }}
   - name: libboost_program_options
     files:
@@ -160,8 +155,7 @@ outputs:
       - Library\lib\boost_program_options*     [win]
       - Library\lib\libboost_program_options*  [win]
       - Library\bin\boost_program_options*     [win]
-    requirements:
-      run_exports:
+    run_exports:
        - {{ pin_subpackage("libboost_program_options", exact=True) }}
   - name: libboost_python
     files:
@@ -169,13 +163,12 @@ outputs:
       - Library\lib\boost_python*    [win]
       - Library\lib\libboost_python* [win]
       - Library\bin\boost_python*    [win]
-    requirements:
-      run_exports:
+    run_exports:
         - {{ pin_subpackage("libboost_python", exact=True) }}
-        - python
-      run:
-        - python
+    requirements:
       build:
+        - python-toolchain
+      run:
         - python
   - name: libboost_random
     files:
@@ -183,9 +176,9 @@ outputs:
       - Library\lib\boost_random*    [win]
       - Library\lib\libboost_random* [win]
       - Library\bin\boost_random*    [win]
-    requirements:
-      run_exports:
+    run_exports:
        - {{ pin_subpackage("libboost_random", exact=True) }}
+    requirements:
       run:
         - {{ pin_subpackage("libboost_system", exact=True) }}
   - name: libboost_regex
@@ -194,9 +187,9 @@ outputs:
       - Library\lib\boost_regex*    [win]
       - Library\lib\libboost_regex* [win]
       - Library\bin\boost_regex*    [win]
-    requirements:
-      run_exports:
+    run_exports:
        - {{ pin_subpackage("libboost_regex", exact=True) }}
+    requirements:
       run:
         - icu 58.*                  [linux]
   - name: libboost_serialization
@@ -209,9 +202,9 @@ outputs:
       - Library\lib\boost_wserialization*    [win]
       - Library\lib\libboost_wserialization* [win]
       - Library\bin\boost_wserialization*    [win]
-    requirements:
-      run_exports:
+    run_exports:
        - {{ pin_subpackage("libboost_serialization", exact=True) }}
+    requirements:
       run:
         - icu 58.*                  [linux]
   - name: libboost_signals
@@ -220,8 +213,7 @@ outputs:
       - Library\lib\boost_signals*    [win]
       - Library\lib\libboost_signals* [win]
       - Library\bin\boost_signals*    [win]
-    requirements:
-      run_exports:
+    run_exports:
        - {{ pin_subpackage("libboost_signals", exact=True) }}
   - name: libboost_system
     files:
@@ -229,8 +221,7 @@ outputs:
       - Library\lib\boost_system*    [win]
       - Library\lib\libboost_system* [win]
       - Library\bin\boost_system*    [win]
-    requirements:
-      run_exports:
+    run_exports:
        - {{ pin_subpackage("libboost_system", exact=True) }}
   - name: libboost_test
     files:
@@ -242,9 +233,9 @@ outputs:
       - Library\lib\boost_prg_exec_monitor*        [win]
       - Library\lib\libboost_prg_exec_monitor*     [win]
       - Library\bin\boost_prg_exec_monitor*        [win]
-    requirements:
-      run_exports:
+    run_exports:
        - {{ pin_subpackage("libboost_test", exact=True) }}
+    requirements:
       run:
         - {{ pin_subpackage("libboost_timer", exact=True) }}
         - {{ pin_subpackage("libboost_system", exact=True) }}
@@ -256,9 +247,9 @@ outputs:
       - Library\lib\boost_thread*    [win]
       - Library\lib\libboost_thread* [win]
       - Library\bin\boost_thread*    [win]
-    requirements:
-      run_exports:
+    run_exports:
        - {{ pin_subpackage("libboost_thread", exact=True) }}
+    requirements:
       run:
         - {{ pin_subpackage("libboost_system", exact=True) }}
         - {{ pin_subpackage("libboost_chrono", exact=True) }}
@@ -270,9 +261,9 @@ outputs:
       - Library\lib\boost_timer*    [win]
       - Library\lib\libboost_timer* [win]
       - Library\bin\boost_timer*    [win]
-    requirements:
-      run_exports:
+    run_exports:
        - {{ pin_subpackage("libboost_timer", exact=True) }}
+    requirements:
       run:
         - {{ pin_subpackage("libboost_chrono", exact=True) }}
         - {{ pin_subpackage("libboost_system", exact=True) }}
@@ -282,9 +273,9 @@ outputs:
       - Library\lib\boost_type_erasure*    [win]
       - Library\lib\libboost_type_erasure* [win]
       - Library\bin\boost_type_erasure*    [win]
-    requirements:
-      run_exports:
+    run_exports:
        - {{ pin_subpackage("libboost_type_erasure", exact=True) }}
+    requirements:
       run:
         - {{ pin_subpackage("libboost_thread", exact=True) }}
         - {{ pin_subpackage("libboost_chrono", exact=True) }}
@@ -295,9 +286,9 @@ outputs:
       - Library\lib\boost_wave*    [win]
       - Library\lib\libboost_wave* [win]
       - Library\bin\boost_wave*    [win]
-    requirements:
-      run_exports:
+    run_exports:
        - {{ pin_subpackage("libboost_wave", exact=True) }}
+    requirements:
       run:
         - {{ pin_subpackage("libboost_filesystem", exact=True) }}
         - {{ pin_subpackage("libboost_thread", exact=True) }}
@@ -305,31 +296,32 @@ outputs:
         - {{ pin_subpackage("libboost_chrono", exact=True) }}
         - {{ pin_subpackage("libboost_system", exact=True) }}
   - name: libboost
-    run:
-      - {{ pin_subpackage("libboost_atomic", exact=True) }}
-      - {{ pin_subpackage("libboost_chrono", exact=True) }}
-      - {{ pin_subpackage("libboost_container", exact=True) }}
-      - {{ pin_subpackage("libboost_context", exact=True) }}
-      - {{ pin_subpackage("libboost_coroutine", exact=True) }}
-      - {{ pin_subpackage("libboost_date_time", exact=True) }}
-      - {{ pin_subpackage("libboost_filesystem", exact=True) }}
-      - {{ pin_subpackage("libboost_graph", exact=True) }}
-      - {{ pin_subpackage("libboost_iostreams", exact=True) }}
-      - {{ pin_subpackage("libboost_locale", exact=True) }}
-      - {{ pin_subpackage("libboost_log", exact=True) }}
-      - {{ pin_subpackage("libboost_math", exact=True) }}
-      - {{ pin_subpackage("libboost_program_options", exact=True) }}
-      - {{ pin_subpackage("libboost_python", exact=True) }}
-      - {{ pin_subpackage("libboost_random", exact=True) }}
-      - {{ pin_subpackage("libboost_regex", exact=True) }}
-      - {{ pin_subpackage("libboost_serialization", exact=True) }}
-      - {{ pin_subpackage("libboost_signals", exact=True) }}
-      - {{ pin_subpackage("libboost_system", exact=True) }}
-      - {{ pin_subpackage("libboost_test", exact=True) }}
-      - {{ pin_subpackage("libboost_thread", exact=True) }}
-      - {{ pin_subpackage("libboost_timer", exact=True) }}
-      - {{ pin_subpackage("libboost_type_erasure", exact=True) }}
-      - {{ pin_subpackage("libboost_wave", exact=True) }}
+    requirements:
+      run:
+        - {{ pin_subpackage("libboost_atomic", exact=True) }}
+        - {{ pin_subpackage("libboost_chrono", exact=True) }}
+        - {{ pin_subpackage("libboost_container", exact=True) }}
+        - {{ pin_subpackage("libboost_context", exact=True) }}
+        - {{ pin_subpackage("libboost_coroutine", exact=True) }}
+        - {{ pin_subpackage("libboost_date_time", exact=True) }}
+        - {{ pin_subpackage("libboost_filesystem", exact=True) }}
+        - {{ pin_subpackage("libboost_graph", exact=True) }}
+        - {{ pin_subpackage("libboost_iostreams", exact=True) }}
+        - {{ pin_subpackage("libboost_locale", exact=True) }}
+        - {{ pin_subpackage("libboost_log", exact=True) }}
+        - {{ pin_subpackage("libboost_math", exact=True) }}
+        - {{ pin_subpackage("libboost_program_options", exact=True) }}
+        - {{ pin_subpackage("libboost_python", exact=True) }}
+        - {{ pin_subpackage("libboost_random", exact=True) }}
+        - {{ pin_subpackage("libboost_regex", exact=True) }}
+        - {{ pin_subpackage("libboost_serialization", exact=True) }}
+        - {{ pin_subpackage("libboost_signals", exact=True) }}
+        - {{ pin_subpackage("libboost_system", exact=True) }}
+        - {{ pin_subpackage("libboost_test", exact=True) }}
+        - {{ pin_subpackage("libboost_thread", exact=True) }}
+        - {{ pin_subpackage("libboost_timer", exact=True) }}
+        - {{ pin_subpackage("libboost_type_erasure", exact=True) }}
+        - {{ pin_subpackage("libboost_wave", exact=True) }}
   - name: libboost_core-dev
     files:
       - include/boost         [not win]

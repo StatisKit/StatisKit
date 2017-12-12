@@ -14,7 +14,6 @@ requirements:
   build:
     - python
     - libtoolchain
-    - python
     - icu 58.*          [unix]
     - bzip2             [unix]
     - zlib
@@ -24,181 +23,176 @@ about:
   license: Boost-1.0
   summary: Boost provides free peer-reviewed portable C++ source libraries.
 
-test:
-  requires:
-    - libtoolchain
-    - python
-
 outputs:
   - name: libboost_iostreams-dev
-    requirements:
-      run_exports:
+    run_exports:
         - {{ pin_subpackage("libboost_iostreams", exact=True) }}
+    requirements:
       run:
         - {{ pin_subpackage("libboost_core-dev", exact=True) }}
         - {{ pin_subpackage("libboost_iostreams", exact=True) }}
   - name: libboost_math-dev
-    requirements:
-      run_exports:
+    run_exports:
         - {{ pin_subpackage("libboost_math", exact=True) }}
+    requirements:
       run:
         - {{ pin_subpackage("libboost_core-dev", exact=True) }}
         - {{ pin_subpackage("libboost_math", exact=True) }}
   - name: libboost_program_options-dev
-    requirements:
-      run_exports:
+    run_exports:
         - {{ pin_subpackage("libboost_program_options", exact=True) }}
+    requirements:
       run:
         - {{ pin_subpackage("libboost_core-dev", exact=True) }}
         - {{ pin_subpackage("libboost_program_options", exact=True) }}
   - name: libboost_context-dev
-    requirements:
-      run_exports:
+    run_exports:
         - {{ pin_subpackage("libboost_context", exact=True) }}
+    requirements:
       run:
         - {{ pin_subpackage("libboost_core-dev", exact=True) }}
         - {{ pin_subpackage("libboost_context", exact=True) }}
   - name: libboost_test-dev
-    requirements:
-      run_exports:
+    run_exports:
         - {{ pin_subpackage("libboost_test", exact=True) }}
+    requirements:
       run:
         - {{ pin_subpackage("libboost_core-dev", exact=True) }}
         - {{ pin_subpackage("libboost_test", exact=True) }}
   - name: libboost_type_erasure-dev
-    requirements:
-      run_exports:
+    run_exports:
         - {{ pin_subpackage("libboost_type_erasure", exact=True) }}
+    requirements:
       run:
         - {{ pin_subpackage("libboost_core-dev", exact=True) }}
         - {{ pin_subpackage("libboost_type_erasure", exact=True) }}
   - name: libboost_date_time-dev
-    requirements:
-      run_exports:
+    run_exports:
         - {{ pin_subpackage("libboost_date_time", exact=True) }}
+    requirements:
       run:
         - {{ pin_subpackage("libboost_core-dev", exact=True) }}
         - {{ pin_subpackage("libboost_date_time", exact=True) }}
   - name: libboost_atomic-dev
-    requirements:
-      run_exports:
+    run_exports:
         - {{ pin_subpackage("libboost_atomic", exact=True) }}
+    requirements:
       run:
         - {{ pin_subpackage("libboost_core-dev", exact=True) }}
         - {{ pin_subpackage("libboost_atomic", exact=True) }}
   - name: libboost_regex-dev
-    requirements:
-      run_exports:
+    run_exports:
         - {{ pin_subpackage("libboost_regex", exact=True) }}
+    requirements:
       run:
         - {{ pin_subpackage("libboost_core-dev", exact=True) }}
         - {{ pin_subpackage("libboost_regex", exact=True) }}
   - name: libboost_locale-dev
-    requirements:
-      run_exports:
+    run_exports:
         - {{ pin_subpackage("libboost_locale", exact=True) }}
+    requirements:
       run:
         - {{ pin_subpackage("libboost_core-dev", exact=True) }}
         - {{ pin_subpackage("libboost_locale", exact=True) }}
   - name: libboost_signals-dev
-    requirements:
-      run_exports:
+    run_exports:
         - {{ pin_subpackage("libboost_signals", exact=True) }}
+    requirements:
       run:
         - {{ pin_subpackage("libboost_core-dev", exact=True) }}
         - {{ pin_subpackage("libboost_signals", exact=True) }}
   - name: libboost_system-dev
-    requirements:
-      run_exports:
+    run_exports:
         - {{ pin_subpackage("libboost_system", exact=True) }}
+    requirements:
       run:
         - {{ pin_subpackage("libboost_core-dev", exact=True) }}
         - {{ pin_subpackage("libboost_system", exact=True) }}
   - name: libboost_thread-dev
-    requirements:
-      run_exports:
+    run_exports:
         - {{ pin_subpackage("libboost_thread", exact=True) }}
+    requirements:
       run:
         - {{ pin_subpackage("libboost_core-dev", exact=True) }}
         - {{ pin_subpackage("libboost_thread", exact=True) }}
   - name: libboost_chrono-dev
-    requirements:
-      run_exports:
+    run_exports:
         - {{ pin_subpackage("libboost_chrono", exact=True) }}
+    requirements:
       run:
         - {{ pin_subpackage("libboost_stopwatches-dev", exact=True) }}
         - {{ pin_subpackage("libboost_core-dev", exact=True) }}
         - {{ pin_subpackage("libboost_chrono", exact=True) }}
   - name: libboost_wave-dev
-    requirements:
-      run_exports:
+    run_exports:
         - {{ pin_subpackage("libboost_wave", exact=True) }}
+    requirements:
       run:
         - {{ pin_subpackage("libboost_core-dev", exact=True) }}
         - {{ pin_subpackage("libboost_wave", exact=True) }}
   - name: libboost_python-dev
+    run_exports:
+        - {{ pin_subpackage("libboost_python", exact=True) }}
     requirements:
       build:
-        - python
-      run_exports:
-        - {{ pin_subpackage("libboost_python", exact=True) }}
+        - python-toolchain
       run:
-        - python
         - {{ pin_subpackage("libboost_core-dev", exact=True) }}
         - {{ pin_subpackage("libboost_python", exact=True) }}
+        - python
   - name: libboost_random-dev
-    requirements:
-      run_exports:
+    run_exports:
         - {{ pin_subpackage("libboost_random", exact=True) }}
+    requirements:
       run:
         - {{ pin_subpackage("libboost_core-dev", exact=True) }}
         - {{ pin_subpackage("libboost_random", exact=True) }}
   - name: libboost_graph-dev
-    requirements:
-      run_exports:
+    run_exports:
         - {{ pin_subpackage("libboost_graph", exact=True) }}
+    requirements:
       run:
         - {{ pin_subpackage("libboost_core-dev", exact=True) }}
         - {{ pin_subpackage("libboost_graph", exact=True) }}
   - name: libboost_serialization-dev
-    requirements:
-      run_exports:
+    run_exports:
         - {{ pin_subpackage("libboost_serialization", exact=True) }}
+    requirements:
       run:
         - {{ pin_subpackage("libboost_core-dev", exact=True) }}
         - {{ pin_subpackage("libboost_serialization", exact=True) }}
   - name: libboost_timer-dev
-    requirements:
-      run_exports:
+    run_exports:
         - {{ pin_subpackage("libboost_timer", exact=True) }}
+    requirements:
       run:
         - {{ pin_subpackage("libboost_core-dev", exact=True) }}
         - {{ pin_subpackage("libboost_timer", exact=True) }}
   - name: libboost_coroutine-dev
-    requirements:
-      run_exports:
+    run_exports:
         - {{ pin_subpackage("libboost_coroutine", exact=True) }}
+    requirements:
       run:
         - {{ pin_subpackage("libboost_core-dev", exact=True) }}
         - {{ pin_subpackage("libboost_coroutine", exact=True) }}
   - name: libboost_log-dev
-    requirements:
-      run_exports:
+    run_exports:
         - {{ pin_subpackage("libboost_log", exact=True) }}
+    requirements:
       run:
         - {{ pin_subpackage("libboost_core-dev", exact=True) }}
         - {{ pin_subpackage("libboost_log", exact=True) }}
   - name: libboost_container-dev
-    requirements:
-      run_exports:
+    run_exports:
         - {{ pin_subpackage("libboost_container", exact=True) }}
+    requirements:
       run:
         - {{ pin_subpackage("libboost_core-dev", exact=True) }}
         - {{ pin_subpackage("libboost_container", exact=True) }}
   - name: libboost_filesystem-dev
-    requirements:
-      run_exports:
+    run_exports:
         - {{ pin_subpackage("libboost_filesystem", exact=True) }}
+    requirements:
       run:
         - {{ pin_subpackage("libboost_core-dev", exact=True) }}
         - {{ pin_subpackage("libboost_filesystem", exact=True) }}
