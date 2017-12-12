@@ -27,13 +27,19 @@ package:
     
 build:
   number: 0
-
+  run_exports:
+    - python
+    - pywin32                      [win]
+    
 about:
   home: http://statiskit.rtfd.io/
   license: Apache License 2.0
   summary: Collection of utilities for building Python packages.
 
 requirements:
+  build:
+    - python
+    - pip
   run:
     - python
     - setuptools
@@ -47,6 +53,9 @@ requirements:
     - cmake
     - pillow
     - libtoolchain
-  run_exports:
+
+test:
+  requires:
     - python
-    - pywin32                      [win]
+  commands:
+    - nosetests -h
