@@ -146,7 +146,7 @@ before_script:
   - source before_script.sh
 
 script:
-  - source script.sh
+  - bash script.sh
 
 after_success:
   - source after_success.sh
