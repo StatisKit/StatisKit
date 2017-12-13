@@ -68,10 +68,10 @@ environment:
       CONDA_VERSION: 2
     - CONDA_RECIPE: share\git\conda-tools\bin\conda\conda-tools
       CONDA_VERSION: 3
-    - CONDA_RECIPE: share\git\SoftMaint\bin\conda\python-softmaint
-      CONDA_VERSION: 2
-    - CONDA_RECIPE: share\git\SoftMaint\bin\conda\python-softmaint
-      CONDA_VERSION: 3
+    # - CONDA_RECIPE: share\git\SoftMaint\bin\conda\python-softmaint
+    #   CONDA_VERSION: 2
+    # - CONDA_RECIPE: share\git\SoftMaint\bin\conda\python-softmaint
+    #   CONDA_VERSION: 3
     - CONDA_RECIPE: share\git\ClangLite\bin\conda\llvm
     - CONDA_RECIPE: share\git\ClangLite\bin\conda\clang
     - CONDA_RECIPE: share\git\ClangLite\bin\conda\python-clang
