@@ -98,9 +98,9 @@ env:
   # - CONDA_RECIPE=share/git/AutoWIG/bin/conda/python-autowig
   #   CONDA_VERSION=3
   - ANACONDA_RELABEL=main
-  - DOCKER_CONTEXT=bin/docker/ubuntu
+  - DOCKER_CONTEXT=bin/docker/ubuntu-64
     CONDA_VERSION=2
-  - DOCKER_CONTEXT=bin/docker/ubuntu
+  - DOCKER_CONTEXT=bin/docker/ubuntu-64
     CONDA_VERSION=3
 
 matrix:

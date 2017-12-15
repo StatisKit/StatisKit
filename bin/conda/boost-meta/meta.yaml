@@ -9,13 +9,17 @@ source:
 
 build:
   number: 0
+  features:
+    - vc12                [win]
+  track_features:
+    - vc12                [win]
 
 requirements:
   build:
     - python
     - libtoolchain
-    - icu 58.*          [unix]
-    - bzip2             [unix]
+    - icu 58.*             [unix]
+    - bzip2                [unix]
     - zlib
 
 about:
@@ -132,6 +136,7 @@ outputs:
         - {{ pin_subpackage("libboost_wave", exact=True) }}
   - name: libboost_python-dev
     run_exports:
+        - python
         - {{ pin_subpackage("libboost_python", exact=True) }}
     requirements:
       build:

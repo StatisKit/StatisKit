@@ -30,6 +30,10 @@ source:
 
 build:
   number: 0
+  features:
+    - vc12                [win]
+  track_features:
+    - vc12                [win]
 
 requirements:
   build:
@@ -48,12 +52,12 @@ about:
 
 test:
   requires:
-    - gcc_linux-64          [linux]
-    - gxx_linux-64          [linux]
-    - gfortran_linux-64     [linux]
-    - clang_osx-64            [osx]
-    - clangxx_osx-64          [osx]
-    - gfortran_osx-64         [osx]
+    - gcc_linux-{{ ARCH }}          [linux]
+    - gxx_linux-{{ ARCH }}          [linux]
+    - gfortran_linux-{{ ARCH }}     [linux]
+    - clang_osx-{{ ARCH }}            [osx]
+    - clangxx_osx-{{ ARCH }}          [osx]
+    - gfortran_osx-{{ ARCH }}         [osx]
   files:
     - SConstruct
   commands:

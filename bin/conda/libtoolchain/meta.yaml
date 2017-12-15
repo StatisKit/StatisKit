@@ -27,12 +27,12 @@ package:
     
 build:
   number: 0
+  features:
+    - vc12                [win]
   track_features:
     - vc12                 [win]
-    # - vc14                 [win]
   run_exports:
-    # - vs2015_runtime      [win]
-    - vs2013_runtime      [win]
+    - vs2013_runtime       [win]
 
 about:
   home: http://statiskit.rtfd.io/
@@ -46,13 +46,13 @@ requirements:
     - python
     - python-scons
     - scons-tools
-    - gcc_linux-64        [linux]
-    - gxx_linux-64        [linux]
-    - gfortran_linux-64   [linux]
-    # - glibc               [linux]
-    - clang_osx-64        [osx]
-    - clangxx_osx-64      [osx]
-    - gfortran_osx-64     [osx]
-    - pywin32             [win]
-    # - vs2015_runtime      [win]
-    - vs2013_runtime      [win]
+    - gcc_linux-{{ ARCH }}        [linux]
+    - gxx_linux-{{ ARCH }}        [linux]
+    - gfortran_linux-{{ ARCH }}   [linux]
+    # - glibc                      [linux]
+    - clang_osx-{{ ARCH }}        [osx]
+    - clangxx_osx-{{ ARCH }}      [osx]
+    - gfortran_osx-{{ ARCH }}     [osx]
+    - pywin32                     [win]
+    # - vs2015_runtime             [win]
+    - vs2013_runtime              [win]

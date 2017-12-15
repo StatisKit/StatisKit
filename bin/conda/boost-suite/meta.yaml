@@ -15,9 +15,13 @@ requirements:
   build:
     - python
     - libtoolchain
-    - icu 58.*          [unix]
-    - bzip2             [unix]
+    - icu 58.*             [unix]
+    - bzip2                [unix]
     - zlib
+  features:
+    - vc12                 [win]
+  track_features:
+    - vc12                 [win]
 
 about:
   home: http://www.boost.org/
@@ -164,6 +168,7 @@ outputs:
       - Library\lib\libboost_python* [win]
       - Library\bin\boost_python*    [win]
     run_exports:
+        - python
         - {{ pin_subpackage("libboost_python", exact=True) }}
     requirements:
       build:

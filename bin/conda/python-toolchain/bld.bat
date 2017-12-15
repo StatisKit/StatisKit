@@ -23,8 +23,8 @@
 
 echo ON
 
-rem pip install ipdb
-rem pip install ipdbplugin
+pip install ipdb
+pip install ipdbplugin
 rem pip install sphinxcontrib-blockdiag
 rem pip install chios
 
