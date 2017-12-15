@@ -168,11 +168,10 @@ outputs:
       - Library\lib\libboost_python* [win]
       - Library\bin\boost_python*    [win]
     run_exports:
-        - python
         - {{ pin_subpackage("libboost_python", exact=True) }}
     requirements:
       build:
-        - python-toolchain
+        - python
       run:
         - python
   - name: libboost_random

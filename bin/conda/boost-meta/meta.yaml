@@ -136,11 +136,10 @@ outputs:
         - {{ pin_subpackage("libboost_wave", exact=True) }}
   - name: libboost_python-dev
     run_exports:
-        - python
         - {{ pin_subpackage("libboost_python", exact=True) }}
     requirements:
       build:
-        - python-toolchain
+        - python
       run:
         - {{ pin_subpackage("libboost_core-dev", exact=True) }}
         - {{ pin_subpackage("libboost_python", exact=True) }}

@@ -28,7 +28,6 @@ package:
 build:
   number: 0
   run_exports:
-    - python
     - pywin32                      [win]
     
 about:
