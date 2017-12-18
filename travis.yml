@@ -81,26 +81,30 @@ env:
     CONDA_VERSION=2
   - CONDA_RECIPE=share/git/SoftMaint/bin/conda/python-softmaint
     CONDA_VERSION=3
-  # - CONDA_RECIPE=share/git/ClangLite/bin/conda/llvm
-  # - CONDA_RECIPE=share/git/ClangLite/bin/conda/clang
+  - CONDA_RECIPE=share/git/ClangLite/bin/conda/llvm
+  - CONDA_RECIPE=share/git/ClangLite/bin/conda/clang
   # - CONDA_RECIPE=share/git/ClangLite/bin/conda/python-clang
   #   CONDA_VERSION=2
-  # - CONDA_RECIPE=share/git/ClangLite/bin/conda/libclanglite
-  #   CONDA_VERSION=2
-  # - CONDA_RECIPE=share/git/ClangLite/bin/conda/libclanglite
-  #   CONDA_VERSION=3
-  # - CONDA_RECIPE=share/git/ClangLite/bin/conda/python-clanglite
-  #   CONDA_VERSION=2
-  # - CONDA_RECIPE=share/git/ClangLite/bin/conda/python-clanglite
-  #   CONDA_VERSION=3
-  # - CONDA_RECIPE=share/git/AutoWIG/bin/conda/python-autowig
-  #   CONDA_VERSION=2
-  # - CONDA_RECIPE=share/git/AutoWIG/bin/conda/python-autowig
-  #   CONDA_VERSION=3
-  - ANACONDA_RELABEL=main
-  - DOCKER_CONTEXT=bin/docker/ubuntu-64
+  - CONDA_RECIPE=share/git/ClangLite/bin/conda/libclanglite
     CONDA_VERSION=2
-  - DOCKER_CONTEXT=bin/docker/ubuntu-64
+  - CONDA_RECIPE=share/git/ClangLite/bin/conda/libclanglite
+    CONDA_VERSION=3
+  - CONDA_RECIPE=share/git/ClangLite/bin/conda/python-clanglite
+    CONDA_VERSION=2
+  - CONDA_RECIPE=share/git/ClangLite/bin/conda/python-clanglite
+    CONDA_VERSION=3
+  - CONDA_RECIPE=share/git/AutoWIG/bin/conda/python-autowig
+    CONDA_VERSION=2
+  - CONDA_RECIPE=share/git/AutoWIG/bin/conda/python-autowig
+    CONDA_VERSION=3
+  - ANACONDA_RELABEL=main
+  - DOCKER_CONTEXT=bin/docker/linux-32
+    CONDA_VERSION=2
+  - DOCKER_CONTEXT=bin/docker/linux-32
+    CONDA_VERSION=3
+  - DOCKER_CONTEXT=bin/docker/linux-64
+    CONDA_VERSION=2
+  - DOCKER_CONTEXT=bin/docker/linux-64
     CONDA_VERSION=3
 
 matrix:
@@ -108,15 +112,39 @@ matrix:
     # - os: osx
     #   env: CONDA_RECIPE=bin/conda/glibc
     - os: osx
-      env: DOCKER_CONTEXT=bin/docker/ubuntu
+      env: DOCKER_CONTEXT=bin/docker/linux-32
            CONDA_VERSION=2
     - os: osx
-      env: DOCKER_CONTEXT=bin/docker/ubuntu
+      env: DOCKER_CONTEXT=bin/docker/linux-32
+           CONDA_VERSION=3
+    - os: osx
+      env: DOCKER_CONTEXT=bin/docker/linux-64
+           CONDA_VERSION=2
+    - os: osx
+      env: DOCKER_CONTEXT=bin/docker/linux-64
            CONDA_VERSION=3
     - os: osx
       env: CONDA_RECIPE=share/git/ClangLite/bin/conda/llvm
     - os: osx
       env: CONDA_RECIPE=share/git/ClangLite/bin/conda/clang
+    - os: osx
+      env: CONDA_RECIPE=share/git/ClangLite/bin/conda/libclanglite
+           CONDA_VERSION=2
+    - os: osx
+      env: CONDA_RECIPE=share/git/ClangLite/bin/conda/libclanglite
+           CONDA_VERSION=3
+    - os: osx
+      env: CONDA_RECIPE=share/git/ClangLite/bin/conda/python-clanglite
+           CONDA_VERSION=2
+    - os: osx
+      env: CONDA_RECIPE=share/git/ClangLite/bin/conda/python-clanglite
+           CONDA_VERSION=3
+    - os: osx
+      env: CONDA_RECIPE=share/git/AutoWIG/bin/conda/python-autowig
+           CONDA_VERSION=2
+    - os: osx
+      env: CONDA_RECIPE=share/git/AutoWIG/bin/conda/python-autowig
+           CONDA_VERSION=3
     - os: linux
       env: CONDA_RECIPE=bin/conda/llvm-suite
   allow_failures:
@@ -132,10 +160,6 @@ matrix:
       env: CONDA_RECIPE=bin/conda/boost-suite
            CONDA_VERSION=2
            TRAVIS_WAIT=50
-    # - os: osx
-    #   env: CONDA_RECIPE=bin/conda/boost-suite
-    #        CONDA_VERSION=3
-    #        TRAVIS_WAIT=50
            
 install:
   - git clone https://github.com/StatisKit/travis-ci.git
