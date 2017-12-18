@@ -30,28 +30,28 @@ branches:
 image: Visual Studio 2013
 
 platform:
-  - x86
+  # - x86
   - x64
 
 environment:
   matrix:
-    # - CONDA_RECIPE: bin\conda\vcs
-    # - CONDA_RECIPE: bin\conda\python-scons
-    #   CONDA_VERSION: 2
-    # - CONDA_RECIPE: bin\conda\python-scons
-    #   CONDA_VERSION: 3
-    # - CONDA_RECIPE: bin\conda\scons-tools
-    #   CONDA_VERSION: 2
-    # - CONDA_RECIPE: bin\conda\scons-tools
-    #   CONDA_VERSION: 3
-    # - CONDA_RECIPE: bin\conda\python-parse
-    #   CONDA_VERSION: 2
-    # - CONDA_RECIPE: bin\conda\python-parse
-    #   CONDA_VERSION: 3
-    # - CONDA_RECIPE: bin\conda\libtoolchain
-    #   CONDA_VERSION: 2
-    # - CONDA_RECIPE: bin\conda\libtoolchain
-    #   CONDA_VERSION: 3
+    - CONDA_RECIPE: bin\conda\vcs
+    - CONDA_RECIPE: bin\conda\python-scons
+      CONDA_VERSION: 2
+    - CONDA_RECIPE: bin\conda\python-scons
+      CONDA_VERSION: 3
+    - CONDA_RECIPE: bin\conda\scons-tools
+      CONDA_VERSION: 2
+    - CONDA_RECIPE: bin\conda\scons-tools
+      CONDA_VERSION: 3
+    - CONDA_RECIPE: bin\conda\python-parse
+      CONDA_VERSION: 2
+    - CONDA_RECIPE: bin\conda\python-parse
+      CONDA_VERSION: 3
+    - CONDA_RECIPE: bin\conda\libtoolchain
+      CONDA_VERSION: 2
+    - CONDA_RECIPE: bin\conda\libtoolchain
+      CONDA_VERSION: 3
     - CONDA_RECIPE: bin\conda\python-toolchain
       CONDA_VERSION: 2
     - CONDA_RECIPE: bin\conda\python-toolchain
