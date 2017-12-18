@@ -6,7 +6,7 @@ ARG CONDA_VERSION
 
 RUN apt-get update
 RUN apt-get -y upgrade
-RUN apt-get install wget curl bzip2 build-essential -y
+RUN apt-get install vim wget curl bzip2 build-essential -y
 RUN apt-get purge 
 RUN apt-get clean
 
