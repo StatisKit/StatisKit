@@ -41,6 +41,7 @@ env:
   - CONDA_RECIPE=bin/conda/vcs
   - CONDA_RECIPE=bin/conda/python-scons
     CONDA_VERSION=2
+    CPU_COUNT=1
   - CONDA_RECIPE=bin/conda/python-scons
     CONDA_VERSION=3
   - CONDA_RECIPE=bin/conda/scons-tools
