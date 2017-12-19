@@ -56,37 +56,37 @@ environment:
       CONDA_VERSION: 2
     - CONDA_RECIPE: bin\conda\python-toolchain
       CONDA_VERSION: 3
-    - CONDA_RECIPE: bin\conda\boost-suite
-      CONDA_VERSION: 2
-    - CONDA_RECIPE: bin\conda\boost-suite
-      CONDA_VERSION: 3
-    - CONDA_RECIPE: bin\conda\boost-meta
-      CONDA_VERSION: 2
-    - CONDA_RECIPE: bin\conda\boost-meta
-      CONDA_VERSION: 3
-    - CONDA_RECIPE: share\git\conda-tools\bin\conda\conda-tools
-      CONDA_VERSION: 2
-    - CONDA_RECIPE: share\git\conda-tools\bin\conda\conda-tools
-      CONDA_VERSION: 3
-    - CONDA_RECIPE: share\git\ClangLite\bin\conda\llvm
-    - CONDA_RECIPE: share\git\ClangLite\bin\conda\clang
-    - CONDA_RECIPE: share\git\ClangLite\bin\conda\python-clang
-      CONDA_VERSION: 2
-    - CONDA_RECIPE: share\git\ClangLite\bin\conda\python-clang
-      CONDA_VERSION: 3
-    - CONDA_RECIPE: share\git\ClangLite\bin\conda\libclanglite
-      CONDA_VERSION: 2
-    - CONDA_RECIPE: share\git\ClangLite\bin\conda\libclanglite
-      CONDA_VERSION: 3
-    - CONDA_RECIPE: share\git\ClangLite\bin\conda\python-clanglite
-      CONDA_VERSION: 2
-    - CONDA_RECIPE: share\git\ClangLite\bin\conda\python-clanglite
-      CONDA_VERSION: 3
-    - CONDA_RECIPE: share\git\AutoWIG\bin\conda\python-autowig
-      CONDA_VERSION: 2
-    - CONDA_RECIPE: share\git\AutoWIG\bin\conda\python-autowig
-      CONDA_VERSION: 3
-    - ANACONDA_RELABEL: main
+    # - CONDA_RECIPE: bin\conda\boost-suite
+    #   CONDA_VERSION: 2
+    # - CONDA_RECIPE: bin\conda\boost-suite
+    #   CONDA_VERSION: 3
+    # - CONDA_RECIPE: bin\conda\boost-meta
+    #   CONDA_VERSION: 2
+    # - CONDA_RECIPE: bin\conda\boost-meta
+    #   CONDA_VERSION: 3
+    # - CONDA_RECIPE: share\git\conda-tools\bin\conda\conda-tools
+    #   CONDA_VERSION: 2
+    # - CONDA_RECIPE: share\git\conda-tools\bin\conda\conda-tools
+    #   CONDA_VERSION: 3
+    # - CONDA_RECIPE: share\git\ClangLite\bin\conda\llvm
+    # - CONDA_RECIPE: share\git\ClangLite\bin\conda\clang
+    # - CONDA_RECIPE: share\git\ClangLite\bin\conda\python-clang
+    #   CONDA_VERSION: 2
+    # - CONDA_RECIPE: share\git\ClangLite\bin\conda\python-clang
+    #   CONDA_VERSION: 3
+    # - CONDA_RECIPE: share\git\ClangLite\bin\conda\libclanglite
+    #   CONDA_VERSION: 2
+    # - CONDA_RECIPE: share\git\ClangLite\bin\conda\libclanglite
+    #   CONDA_VERSION: 3
+    # - CONDA_RECIPE: share\git\ClangLite\bin\conda\python-clanglite
+    #   CONDA_VERSION: 2
+    # - CONDA_RECIPE: share\git\ClangLite\bin\conda\python-clanglite
+    #   CONDA_VERSION: 3
+    # - CONDA_RECIPE: share\git\AutoWIG\bin\conda\python-autowig
+    #   CONDA_VERSION: 2
+    # - CONDA_RECIPE: share\git\AutoWIG\bin\conda\python-autowig
+    #   CONDA_VERSION: 3
+    # - ANACONDA_RELABEL: main
 
 matrix:
   allow_failures:
