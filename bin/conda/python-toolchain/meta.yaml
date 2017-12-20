@@ -54,7 +54,5 @@ requirements:
     - libtoolchain
 
 test:
-  requires:
-    - python
   commands:
     - nosetests -h
