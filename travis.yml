@@ -109,6 +109,7 @@ env:
     CONDA_VERSION=3
 
 matrix:
+  fast_finish: true
   exclude:
     # - os: osx
     #   env: CONDA_RECIPE=bin/conda/glibc
