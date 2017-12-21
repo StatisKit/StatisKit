@@ -150,10 +150,10 @@ matrix:
       env: CONDA_RECIPE=bin/conda/llvm-suite
   allow_failures:
     - os: linux
-      env: DOCKER_CONTEXT=bin/docker/ubuntu
+      env: CONDA_RECIPE=bin/conda/python-scons
            CONDA_VERSION=2
     - os: linux
-      env: DOCKER_CONTEXT=bin/docker/ubuntu
+      env: CONDA_RECIPE=bin/conda/python-scons
            CONDA_VERSION=3
     - os: osx
       env: CONDA_RECIPE=bin/conda/llvm-suite
@@ -163,7 +163,7 @@ matrix:
            TRAVIS_WAIT=50
            
 install:
-  - git clone https://github.com/StatisKit/travis-ci.git
+  - git clone https://github.com/StatisKit/travis-ci.git --depth=1
   - cd travis-ci
   - source install.sh
 

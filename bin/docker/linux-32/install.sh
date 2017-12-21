@@ -11,6 +11,5 @@ conda install vcs \
               python-clanglite \
               --use-local \
               -c statiskit \
-              -c conda-forge
 
 set +ve
