@@ -30,7 +30,7 @@ branches:
 image: Visual Studio 2013
 
 platform:
-  # - x86
+  - x86
   - x64
 
 environment:
@@ -89,7 +89,6 @@ environment:
     - ANACONDA_RELABEL: main
 
 matrix:
-  fast_finish: true
   allow_failures:
     - platform: x86
       CONDA_RECIPE: share\git\ClangLite\bin\conda\python-clanglite
