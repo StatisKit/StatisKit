@@ -105,7 +105,7 @@ env:
     CONDA_VERSION=2
   - DOCKER_CONTEXT=bin/docker/linux-64
     CONDA_VERSION=3
-  - ANACONDA_RELABEL=main
+  - ANACONDA_RELEASE=true
 
 matrix:
   exclude:
