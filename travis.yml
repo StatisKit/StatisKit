@@ -108,7 +108,6 @@ env:
   - ANACONDA_RELABEL=main
 
 matrix:
-  fast_finish: true
   exclude:
     # - os: osx
     #   env: CONDA_RECIPE=bin/conda/glibc
@@ -171,7 +170,7 @@ before_script:
   - source before_script.sh
 
 script:
-  - bash script.sh
+  - source script.sh
 
 after_success:
   - source after_success.sh
