@@ -52,20 +52,20 @@ set LIB_VER=140
 set MSVC_VER=12.0
 set LIB_VER=120
 
-call bootstrap.bat
+call .\bootstrap.bat
 if errorlevel 1 exit 1
 
-call b2 install toolset=msvc-%MSVC_VER% ^
-        address-model=%ARCH% ^
-        variant=release ^
-        threading=multi ^
-        link=static,shared ^
-        define=BOOST_ALL_NO_LIB ^
-        -j%CPU_COUNT% ^
-        --without-mpi ^
-        --layout=system ^
-        --build-dir=buildboost ^
-        --prefix=%LIBRARY_PREFIX%
+call .\b2 install toolset=msvc-%MSVC_VER% ^
+          address-model=%ARCH% ^
+          variant=release ^
+          threading=multi ^
+          link=static,shared ^
+          define=BOOST_ALL_NO_LIB ^
+          -j%CPU_COUNT% ^
+          --without-mpi ^
+          --layout=system ^
+          --build-dir=buildboost ^
+          --prefix=%LIBRARY_PREFIX%
 if errorlevel 1 exit 1
 
 move %LIBRARY_LIB%\boost_*.dll "%LIBRARY_BIN%"
