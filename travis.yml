@@ -63,16 +63,12 @@ env:
     CONDA_VERSION=3
   - CONDA_RECIPE=bin/conda/boost-suite
     CONDA_VERSION=2
-    TRAVIS_WAIT=50
   - CONDA_RECIPE=bin/conda/boost-suite
     CONDA_VERSION=3
-    TRAVIS_WAIT=50
   - CONDA_RECIPE=bin/conda/boost-meta
     CONDA_VERSION=2
-    TRAVIS_WAIT=50
   - CONDA_RECIPE=bin/conda/boost-meta
     CONDA_VERSION=3
-    TRAVIS_WAIT=50
   - CONDA_RECIPE=share/git/conda-tools/bin/conda/conda-tools
     CONDA_VERSION=2
   - CONDA_RECIPE=share/git/conda-tools/bin/conda/conda-tools
@@ -156,10 +152,10 @@ matrix:
            CONDA_VERSION=3
     - os: osx
       env: CONDA_RECIPE=bin/conda/llvm-suite
-    - os: osx
-      env: CONDA_RECIPE=bin/conda/boost-suite
-           CONDA_VERSION=2
-           TRAVIS_WAIT=50
+    # - os: osx
+    #   env: CONDA_RECIPE=bin/conda/boost-suite
+    #        CONDA_VERSION=2
+    #        TRAVIS_WAIT=50
            
 install:
   - git clone https://github.com/StatisKit/travis-ci.git --depth=1
