@@ -53,6 +53,6 @@ requirements:
     - pillow
     - libtoolchain
 
-test:
-  commands:
-    - nosetests -h
+test:                          [not win]
+  commands:                    [not win]
+    - nosetests -h             [not win]
