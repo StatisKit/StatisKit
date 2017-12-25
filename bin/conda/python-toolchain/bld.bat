@@ -25,7 +25,8 @@ echo ON
 
 pip install ipdb
 pip install ipdbplugin
-rem pip install sphinxcontrib-blockdiag
-rem pip install chios
+pip install nose
+:: pip install sphinxcontrib-blockdiag
+:: pip install chios
 
 echo OFF

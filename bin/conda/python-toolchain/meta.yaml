@@ -46,13 +46,13 @@ requirements:
     - path.py
     - pywin32                      [win]
     - pyyaml
-    - nose
+    # - nose
     - coverage
     - sphinx
     - cmake
     - pillow
     - libtoolchain
 
-test:                          [not win]
-  commands:                    [not win]
-    - nosetests -h             [not win]
+test:                          
+  commands:                    
+    - nosetests -h             
