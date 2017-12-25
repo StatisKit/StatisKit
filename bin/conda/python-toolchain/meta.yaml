@@ -46,7 +46,7 @@ requirements:
     - path.py
     - pywin32                      [win]
     - pyyaml
-    # - nose
+    - nose
     - coverage
     - sphinx
     - cmake
