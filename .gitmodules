@@ -1,6 +1,6 @@
 [submodule "share/git/ClangLite"]
 	path = share/git/ClangLite
-	url = https://github.com/statiskit/ClangLite.git
+	url = https://github.com/StatisKit/ClangLite
 [submodule "share/git/AutoWIG"]
 	path = share/git/AutoWIG
 	url = https://github.com/statiskit/AutoWIG.git
