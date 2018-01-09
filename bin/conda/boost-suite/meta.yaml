@@ -333,7 +333,7 @@ outputs:
       - {{ pin_subpackage("libboost_timer", exact=True) }}
       - {{ pin_subpackage("libboost_type_erasure", exact=True) }}
       - {{ pin_subpackage("libboost_wave", exact=True) }}
-  - name: libboost_core-dev
-    files:
+  - name: libboost_core-dev                                            [py2k]
+    files:                                                             [py2k]
       - include/boost                                      [not win and py2k]
       - Library\include\boost                                  [win and py2k]
