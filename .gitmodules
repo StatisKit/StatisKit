@@ -4,21 +4,6 @@
 [submodule "share/git/AutoWIG"]
 	path = share/git/AutoWIG
 	url = https://github.com/statiskit/AutoWIG.git
-[submodule "share/git/STL"]
-	path = share/git/STL
-	url = http://github.com/Statiskit/STL
-[submodule "share/git/LinAlg"]
-	path = share/git/LinAlg
-	url = http://github.com/Statiskit/LinAlg
-[submodule "share/git/Core"]
-	path = share/git/Core
-	url = http://github.com/Statiskit/Core
-[submodule "share/git/GLM"]
-	path = share/git/GLM
-	url = http://github.com/Statiskit/GLM
-[submodule "share/git/PGM"]
-	path = share/git/PGM
-	url = http://github.com/Statiskit/PGM
 [submodule "share/git/SoftMaint"]
 	path = share/git/SoftMaint
 	url = http://github.com/statiskit/SoftMaint
