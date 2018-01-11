@@ -67,7 +67,7 @@
 package:
   name: llvm-suite
   version: {{ version }}
-
+  
 source:
   # - git_url: https://github.com/llvm/llvm
   #   git_tag: master
@@ -212,6 +212,7 @@ outputs:
         # but that is not possible when bootstrapping as it would cause a build dependency cycle.
         - {{ pin_subpackage('libcxx', exact=True) }}        # [osx]
     build:
+      skip: true [not osx]
       ignore_run_exports:
         - zlib
 
@@ -223,6 +224,7 @@ outputs:
         # but that is not possible when bootstrapping as it would cause a build dependency cycle.
         - {{ pin_subpackage('libcxx', exact=True) }}        # [osx]
     build:
+      skip: true [not osx]
       ignore_run_exports:
         - zlib
     about:
@@ -244,6 +246,7 @@ outputs:
         # but that is not possible when bootstrapping as it would cause a build dependency cycle.
         - {{ pin_subpackage('libcxx', exact=True) }}        # [osx]
     build:
+      skip: true [not osx]
       ignore_run_exports:
         - zlib
     about:
@@ -266,6 +269,7 @@ outputs:
         - {{ pin_subpackage('cctools', exact=True) }}
         - {{ pin_subpackage('ld64', exact=True) }}
     build:
+      skip: true [not osx]
       ignore_run_exports:
         - zlib
     about:
@@ -297,6 +301,7 @@ outputs:
         # but that is not possible when bootstrapping as it would cause a build dependency cycle.
         - {{ pin_subpackage('libcxx', exact=True) }}        # [osx]
     build:
+      skip: true [not osx]
       ignore_run_exports:
         - zlib
     # We do *not* list compiler_rt as a run_export as it is statically linked into binaries.
@@ -354,6 +359,7 @@ outputs:
       strong:
         - {{ pin_subpackage('libcxx', min_pin='x.x.x.x.x.x.x.x.x', max_pin=None) }}
     build:
+      skip: true [not osx]
       ignore_run_exports:
         - zlib
     about:
@@ -377,6 +383,7 @@ outputs:
         # but that is not possible when bootstrapping as it would cause a build dependency cycle.
         - {{ pin_subpackage('libcxx', exact=True) }}        # [osx]
     build:
+      skip: true [not osx]
       ignore_run_exports:
         - zlib
     about:
@@ -400,6 +407,7 @@ outputs:
       run:
         - {{ pin_subpackage('libcxxabi', exact=True) }}
     build:
+      skip: true [not osx]
       ignore_run_exports:
         - zlib
     about:
@@ -419,6 +427,7 @@ outputs:
       build:
         - cmake-binary
     build:
+      skip: true [not osx]
       ignore_run_exports:
         - zlib
     about:
@@ -442,6 +451,7 @@ outputs:
         # but that is not possible when bootstrapping as it would cause a build dependency cycle.
         - {{ pin_subpackage('libcxx', exact=True) }}        # [osx]
     build:
+      skip: true [not osx]
       ignore_run_exports:
         - zlib
     about:
@@ -461,6 +471,7 @@ outputs:
       build:
         - cmake-binary
     build:
+      skip: true [not osx]
       ignore_run_exports:
         - zlib
     about:
@@ -480,6 +491,7 @@ outputs:
       build:
         - cmake-binary
     build:
+      skip: true [not osx]
       ignore_run_exports:
         - zlib
     about:
