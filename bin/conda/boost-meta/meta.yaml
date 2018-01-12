@@ -3,9 +3,9 @@ package:
   name: boost-meta
   version: 1.61.0
 
-source:
-  git_url: https://github.com/boostorg/boost.git
-  git_tag: boost-1.61.0
+# source:
+#   git_url: https://github.com/boostorg/boost.git
+#   git_tag: boost-1.61.0
 
 build:
   number: 0
