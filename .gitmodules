@@ -4,9 +4,9 @@
 [submodule "share/git/AutoWIG"]
 	path = share/git/AutoWIG
 	url = https://github.com/statiskit/AutoWIG.git
-[submodule "share/git/SoftMaint"]
-	path = share/git/SoftMaint
-	url = http://github.com/statiskit/SoftMaint
 [submodule "share/git/conda-tools"]
 	path = share/git/conda-tools
 	url = http://github.com/statiskit/conda-tools
+[submodule "share/git/devops-tools"]
+	path = share/git/devops-tools
+	url = https://github.com/StatisKit/devops-tools
