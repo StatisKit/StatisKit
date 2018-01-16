@@ -50,6 +50,7 @@ else:
         if not 'autowig' in env['TOOLS'][:-1]:
 
             env.Tool('textfile')
+            env.Tool('system')
 
             AddOption('--site-autowig',
                       dest    = 'site-autowig',
@@ -79,6 +80,8 @@ else:
                                flags = ['-x', 'c++'] + env.subst('$CCFLAGS $CXXFLAGS $CPPFLAGS $_CPPDEFFLAGS $_CPPINCFLAGS').split(),
                                **{kwarg[len('AUTOWIG_parser_'):] : env[kwarg] for kwarg in env.Dictionary() if isinstance(kwarg, basestring) and kwarg.startswith('AUTOWIG_parser_')})
                 AUTOWIG_CONTROLLER = env['AUTOWIG_CONTROLLER']
+                if env['SYSTEM'] == 'win' and 'MSVC_VERSION' in env and not 'AUTOWIG_controller_msvc_version' in AUTOWIG_CONTROLLER:
+                    AUTOWIG_CONTROLLER['AUTOWIG_controller_msvc_version'] = env['MSVC_VERSION']
                 if not AUTOWIG_CONTROLLER in autowig.controller:
                     controller = import_module('scons_tools.site_autowig.controller.' +  AUTOWIG_CONTROLLER)
                     autowig.controller[AUTOWIG_CONTROLLER] = controller.controller
