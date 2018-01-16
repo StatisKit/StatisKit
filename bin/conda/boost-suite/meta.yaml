@@ -175,6 +175,8 @@ outputs:
       - Library\lib\libboost_python*                                    [win]
       - Library\bin\boost_python*                                       [win]
     requirements:
+      build:
+        - python
       run_exports:
         - {{ pin_subpackage("libboost_python", exact=True) }}
         - python
@@ -333,6 +335,11 @@ outputs:
       - {{ pin_subpackage("libboost_timer", exact=True) }}
       - {{ pin_subpackage("libboost_type_erasure", exact=True) }}
       - {{ pin_subpackage("libboost_wave", exact=True) }}
+    requirements:
+      build:
+        - python
+      run:
+        - python
   - name: libboost_core-dev                                            [py2k]
     files:                                                             [py2k]
       - include/boost                                      [not win and py2k]
