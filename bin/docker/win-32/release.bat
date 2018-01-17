@@ -11,8 +11,7 @@ conda build python-scons ^
             python-toolchain ^
             boost-suite ^
             boost-meta ^
-            python-parse ^
-            --old-build-string
+            python-parse
 if errorlevel 1 exit 1
 
 cd ..\..\share\git\ClangLite\bin\conda
@@ -20,14 +19,19 @@ if errorlevel 1 exit 1
 conda build llvm ^
             clang ^
             libclanglite ^
-            python-clanglite ^
-            --old-build-string
+            python-clanglite
 if errorlevel 1 exit 1
 
 cd ..\..\..\AutoWIG\bin\conda
 if errorlevel 1 exit 1
-conda build python-autowig ^
-            --old-build-string
+conda build python-autowig
 if errorlevel 1 exit 1
 
-set +ve
+cd ..\..\..\..\..\..\bin\conda
+if errorlevel 1 exit 1
+
+conda build statiskit-dev
+
+cd ..\..\..
+
+echo OFF

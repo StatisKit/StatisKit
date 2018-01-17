@@ -9,18 +9,20 @@ conda build python-scons \
             python-toolchain \
             boost-suite \
             boost-meta \
-            python-parse \
-            --old-build-string
+            python-parse
 
 cd ../../share/git/ClangLite/bin/conda
 conda build llvm \
             clang \
             libclanglite \
-            python-clanglite \
-            --old-build-string
+            python-clanglite
 
 cd ../../../AutoWIG/bin/conda
-conda build python-autowig \
-            --old-build-string
+conda build python-autowig
+
+cd ../../../../../../bin/conda
+conda build statiskit-dev
+
+cd ../../..
 
 set +ve

@@ -23,6 +23,7 @@
 
 try:
     from SCons.Script import AddOption, GetOption
+    from SCons.Node.FS import File
     import autowig
     import os
     import pickle
@@ -76,9 +77,13 @@ else:
                     parser = import_module('scons_tools.site_autowig.parser.' +  AUTOWIG_PARSER)
                     autowig.parser[AUTOWIG_PARSER] = parser.parser
                 autowig.parser.plugin = AUTOWIG_PARSER
+                kwargs = {kwarg[len('AUTOWIG_parser_'):] : env[kwarg] for kwarg in env.Dictionary() if isinstance(kwarg, basestring) and kwarg.startswith('AUTOWIG_parser_')}
+                for key, value in kwargs.items():
+                    if isinstance(value, File):
+                        kwargs[key] = str(value.abspath)
                 autowig.parser(asg, [header.abspath for header in source],
                                flags = ['-x', 'c++'] + env.subst('$CCFLAGS $CXXFLAGS $CPPFLAGS $_CPPDEFFLAGS $_CPPINCFLAGS').split(),
-                               **{kwarg[len('AUTOWIG_parser_'):] : env[kwarg] for kwarg in env.Dictionary() if isinstance(kwarg, basestring) and kwarg.startswith('AUTOWIG_parser_')})
+                               **kwargs)
                 AUTOWIG_CONTROLLER = env['AUTOWIG_CONTROLLER']
                 if env['SYSTEM'] == 'win' and 'MSVC_VERSION' in env and not 'AUTOWIG_controller_msvc_version' in AUTOWIG_CONTROLLER:
                     AUTOWIG_CONTROLLER['AUTOWIG_controller_msvc_version'] = env['MSVC_VERSION']
@@ -86,15 +91,23 @@ else:
                     controller = import_module('scons_tools.site_autowig.controller.' +  AUTOWIG_CONTROLLER)
                     autowig.controller[AUTOWIG_CONTROLLER] = controller.controller
                 autowig.controller.plugin = AUTOWIG_CONTROLLER
+                kwargs = {kwarg[len('AUTOWIG_controller_'):] : env[kwarg] for kwarg in env.Dictionary() if isinstance(kwarg, basestring) and kwarg.startswith('AUTOWIG_controller_')}
+                for key, value in kwargs.items():
+                    if isinstance(value, File):
+                        kwargs[key] = str(value.abspath)
                 asg = autowig.controller(asg, 
-                                         **{kwarg[len('AUTOWIG_controller_'):] : env[kwarg] for kwarg in env.Dictionary() if isinstance(kwarg, basestring) and kwarg.startswith('AUTOWIG_controller_')})
+                                         **kwargs)
                 AUTOWIG_GENERATOR = env['AUTOWIG_GENERATOR']
                 if not AUTOWIG_GENERATOR in autowig.generator:
                     generator = import_module('scons_tools.site_autowig.generator.' +  AUTOWIG_GENERATOR)
                     autowig.generator[AUTOWIG_GENERATOR] = generator.generator
                 autowig.generator.plugin = AUTOWIG_GENERATOR
+                kwargs = {kwarg[len('AUTOWIG_generator_'):] : env[kwarg] for kwarg in env.Dictionary() if isinstance(kwarg, basestring) and kwarg.startswith('AUTOWIG_generator_')}
+                for key, value in kwargs.items():
+                    if isinstance(value, File):
+                        kwargs[key] = str(value.abspath)
                 wrappers = autowig.generator(asg,
-                                             **{kwarg[len('AUTOWIG_generator_'):] : env[kwarg] for kwarg in env.Dictionary() if isinstance(kwarg, basestring) and kwarg.startswith('AUTOWIG_generator_')})
+                                             **kwargs)
                 wrappers.header.helder = env['AUTOWIG_HELDER']
                 wrappers.write()
                 with open(target[-1].abspath, 'wb') as filehandler:
