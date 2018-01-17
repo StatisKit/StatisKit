@@ -1,5 +1,9 @@
 set -ve
 
+source activate
+rm -rf ${CONDA_PREFIX}/conda-bld/osx-64
+
+
 git clone --recursive http://github.com/StatisKit/StatisKit
 
 cd StatisKit/bin/conda

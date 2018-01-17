@@ -1,5 +1,11 @@
 echo ON
 
+activate
+if errorlevel 1 exit 1
+
+rmdir ${CONDA_PREFIX}/conda-bld/win-64 /S /q
+if errorlevel 1 exit 1
+
 git clone --recursive http://github.com/StatisKit/StatisKit
 if errorlevel 1 exit 1
 
