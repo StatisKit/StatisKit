@@ -22,7 +22,7 @@ env PATH /home/main/miniconda:/home/main/miniconda/bin:$PATH
 RUN chmod -R a+rwx /home/main/miniconda
 COPY .condarc /home/main/.condarc
 RUN conda install conda=4.3.30 conda-build=3.0.30 anaconda-client git
-RUN echo "source activate" >> .bashrc
+RUN echo "source activate statiskit-dev" >> .bashrc
 
-COPY release.sh /home/main/release.sh
-COPY deploy.sh /home/main/deploy.sh
+RUN conda create -n statiskit-dev statiskit-dev
+RUN git clone --recursive https://github.com/StatisKit/StatisKit

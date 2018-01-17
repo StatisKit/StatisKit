@@ -1,12 +1,11 @@
 set -ve
 
 source activate
-rm -rf ${CONDA_PREFIX}/conda-bld/linux-32
+rm -rf ${CONDA_PREFIX}/conda-bld/
 
-git clone --recursive http://github.com/StatisKit/StatisKit
-
-cd StatisKit/bin/conda
-conda build python-scons \
+cd ../../bin/conda
+conda build llvm-suite \
+            python-scons \
             scons-tools \
             libtoolchain \
             python-toolchain \
@@ -15,9 +14,8 @@ conda build python-scons \
             python-parse
 
 cd ../../share/git/ClangLite/bin/conda
-conda build llvm \
-            clang \
-            libclanglite \
+git checkout v4.0.1 origin/v4.0.1
+conda build libclanglite \
             python-clanglite
 
 cd ../../../AutoWIG/bin/conda
@@ -26,6 +24,6 @@ conda build python-autowig
 cd ../../../../../../bin/conda
 conda build statiskit-dev
 
-cd ../../..
+cd ../script/osx
 
 set +ve

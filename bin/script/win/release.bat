@@ -1,15 +1,6 @@
 echo ON
 
-activate
-if errorlevel 1 exit 1
-
-rmdir ${CONDA_PREFIX}/conda-bld/win-64 /S /q
-if errorlevel 1 exit 1
-
-git clone --recursive http://github.com/StatisKit/StatisKit
-if errorlevel 1 exit 1
-
-cd StatisKit\bin\conda
+cd ..\..\bin\conda
 if errorlevel 1 exit 1
 conda build python-scons ^
             scons-tools ^
@@ -38,6 +29,6 @@ if errorlevel 1 exit 1
 
 conda build statiskit-dev
 
-cd ..\..\..
+cd ..\script\win
 
 echo OFF
