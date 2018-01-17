@@ -20,9 +20,9 @@ RUN ./miniconda.sh -b -p /home/main/miniconda
 RUN rm miniconda.sh
 env PATH /home/main/miniconda:/home/main/miniconda/bin:$PATH
 RUN chmod -R a+rwx /home/main/miniconda
-RUN conda config --set always_yes yes
-RUN conda install git conda-build anaconda-client
-RUN echo "source activate root" >> .bashrc
+COPY .condarc /home/main/.condarc
+RUN conda install conda=4.3.30 conda-build=3.0.30 anaconda-client git
+RUN echo "source activate" >> .bashrc
 
 COPY release.sh /home/main/release.sh
 COPY deploy.sh /home/main/deploy.sh
