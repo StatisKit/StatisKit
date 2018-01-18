@@ -1,6 +1,10 @@
 echo ON
 
-cd ..\..\bin\conda
+:: activate
+:: if errorlevel 1 exit 1
+rmdir %CONDA_PREFIX%\conda-bld\ /S /q
+
+cd ..\..\conda
 if errorlevel 1 exit 1
 conda build python-scons ^
             scons-tools ^
