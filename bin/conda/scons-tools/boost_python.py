@@ -41,25 +41,33 @@ def generate(env):
         env.AppendUnique(CPPDEFINES = ['BOOST_PYTHON_DYNAMIC_LIB',
                                        'BOOST_ALL_NO_LIB'])
 
-        def BoostPythonExtension(env, target, sources):
+        def BoostPythonExtension(env, target, sources, preserve_egg_dir=False):
             # Code to build "target" from "source"
             SP_DIR = env['SP_DIR']
             SYSTEM = env['SYSTEM']
             parents = []
-            parent = os.path.dirname(env.File(target).srcnode().abspath)
-            while os.path.exists(os.path.join(parent, '__init__.py')):
-                parents.append(os.path.basename(parent))
-                parent = os.path.dirname(parent)
-            if parents:
-                target = os.path.join(os.path.join(*reversed(parents)), os.path.basename(target))
+            if not preserve_egg_dir:
+                parent = os.path.dirname(os.path.dirname(env.File(target).srcnode().abspath))
+                while os.path.exists(os.path.join(parent, '__init__.py')):
+                    parents.append(os.path.basename(parent))
+                    parent = os.path.dirname(parent)
+                if parents:
+                    target = os.path.join(os.path.join(*reversed(parents)), os.path.basename(target))
+                else:
+                    target = os.path.basename(target)
+                if not SYSTEM == 'win':
+                    target += '.so'
+                    target = env.File(os.path.join(SP_DIR, target))
+                else:
+                    target += '.pyd'
+                    target = env.File(target)
             else:
-                target = os.path.basename(target)
-            if not SYSTEM == 'win':
-                target += '.so'
-                target = env.File(os.path.join(SP_DIR, target))
-            else:
-                target += '.pyd'
-                target = env.File(target)
+                if not SYSTEM == 'win':
+                    target += '.so'
+                    target = env.File(target).srcnode()
+                else:
+                    target += '.pyd'
+                    target = env.File(target)
             targets = list(itertools.chain(*[env.SharedObject(None, source) for source in sources  if source.suffix in ['.cpp', '.cxx', '.c++']]))
             sources = [source for source in sources if source.suffix == '.h']
             if len(sources) == 1 and not SYSTEM == 'win':
@@ -90,7 +98,10 @@ def generate(env):
             if SYSTEM == 'win':
                 pyd, lib, exp = env.SharedLibrary(target, [], SHLIBPREFIX='',
                                                   SHLIBSUFFIX = '.pyd')
-                return env.Install(os.path.join(SP_DIR, Path(target).parent), pyd)
+                if preserve_egg_dir:
+                    return env.Install(target.srcnode(), pyd)
+                else:
+                    return env.Install(os.path.join(SP_DIR, Path(target).parent), pyd)
             elif SYSTEM == 'osx':
                 return env.LoadableModule(target, [], SHLIBPREFIX='',
                                           SHLINKFLAGS='$LINKFLAGS -bundle',
