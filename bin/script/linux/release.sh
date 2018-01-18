@@ -21,7 +21,7 @@ conda build llvm \
 cd ../../../AutoWIG/bin/conda
 conda build python-autowig
 
-cd ../../../../../../bin/conda
+cd ../../../../../bin/conda
 conda build statiskit-dev
 
 cd ../script/linux

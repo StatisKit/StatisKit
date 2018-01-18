@@ -28,7 +28,7 @@ if errorlevel 1 exit 1
 conda build python-autowig
 if errorlevel 1 exit 1
 
-cd ..\..\..\..\..\..\bin\conda
+cd ..\..\..\..\..\bin\conda
 if errorlevel 1 exit 1
 
 conda build statiskit-dev
