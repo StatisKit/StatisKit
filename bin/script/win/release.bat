@@ -9,6 +9,8 @@ rmdir %CONDA_PREFIX%\conda-bld /S /q
 
 cd ..\..\conda
 if errorlevel 1 exit 1
+conda build vcs
+if errorlevel 1 exit 1
 conda build python-scons --python=%PY2K%
 if errorlevel 1 exit 1
 conda build python-scons --python=%PY3K%

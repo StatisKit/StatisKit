@@ -47,7 +47,7 @@ def generate(env):
             SYSTEM = env['SYSTEM']
             parents = []
             if not preserve_egg_dir:
-                parent = os.path.dirname(os.path.dirname(env.File(target).srcnode().abspath))
+                parent = os.path.dirname(env.File(target).srcnode().abspath)
                 while os.path.exists(os.path.join(parent, '__init__.py')):
                     parents.append(os.path.basename(parent))
                     parent = os.path.dirname(parent)

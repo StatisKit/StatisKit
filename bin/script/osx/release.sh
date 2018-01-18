@@ -7,6 +7,7 @@ source activate
 rm -rf ${CONDA_PREFIX}/conda-bld
 
 cd ../../conda
+conda build vcs
 conda build llvm-suite
 conda build python-scons --python=${PY2K}
 conda build python-scons --python=${PY3K}
