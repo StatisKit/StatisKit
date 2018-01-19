@@ -99,7 +99,7 @@ def generate(env):
                 pyd, lib, exp = env.SharedLibrary(target, [], SHLIBPREFIX='',
                                                   SHLIBSUFFIX = '.pyd')
                 if preserve_egg_dir:
-                    return env.Install(target.srcnode(), pyd)
+                    return env.Install(os.path.dirname(target.srcnode().abspath), pyd)
                 else:
                     return env.Install(os.path.join(SP_DIR, Path(target).parent), pyd)
             elif SYSTEM == 'osx':
