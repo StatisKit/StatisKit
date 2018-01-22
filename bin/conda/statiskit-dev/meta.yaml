@@ -19,7 +19,6 @@ requirements:
     - python-autowig
     - python-clanglite
     - vcs
-    - conda-tools
     - devops-tools
   run:
     - python
@@ -30,6 +29,5 @@ requirements:
     - {{ pin_compatible('python-autowig', exact=True) }}
     - {{ pin_compatible('python-clanglite', exact=True) }}
     - {{ pin_compatible('vcs', exact=True) }}
-    - {{ pin_compatible('conda-tools', exact=True) }}
     - {{ pin_compatible('devops-tools', exact=True) }}
 
