@@ -24,5 +24,5 @@ COPY .condarc /home/main/.condarc
 RUN conda install conda=4.3.30 conda-build=3.0.30 anaconda-client git
 RUN echo "source activate statiskit-dev" >> .bashrc
 
-RUN conda create -n statiskit-dev statiskit-dev
+# RUN conda create -n statiskit-dev statiskit-dev
 RUN git clone --recursive https://github.com/StatisKit/StatisKit
