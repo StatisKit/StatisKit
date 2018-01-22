@@ -11,3 +11,9 @@ doc/_static
 build
 .sconsign.dblite
 *.sublime-workspace
+travis_build.sh
+travis_job_*.sh
+travis-ci
+appveyor_build.bat
+appveyor_job_*.bat
+appveyor-ci
