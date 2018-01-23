@@ -101,12 +101,16 @@ env:
   - CONDA_RECIPE=bin/conda/statiskit-dev
     CONDA_VERSION=3
   - DOCKER_CONTEXT=bin/docker/linux-32
+    DOCKER_CONTAINER=linux-32
     CONDA_VERSION=2
   - DOCKER_CONTEXT=bin/docker/linux-32
+    DOCKER_CONTAINER=linux-32
     CONDA_VERSION=3
   - DOCKER_CONTEXT=bin/docker/linux-64
+    DOCKER_CONTAINER=linux-64
     CONDA_VERSION=2
   - DOCKER_CONTEXT=bin/docker/linux-64
+    DOCKER_CONTAINER=linux-64
     CONDA_VERSION=3
   - ANACONDA_RELEASE=true
 

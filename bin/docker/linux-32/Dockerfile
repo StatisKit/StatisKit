@@ -16,13 +16,14 @@ WORKDIR /home/main
 
 RUN curl "https://repo.continuum.io/miniconda/Miniconda"$CONDA_VERSION"-latest-Linux-x86.sh" -o miniconda.sh
 RUN chmod a+rwx miniconda.sh
-RUN ./miniconda.sh -b -p /home/main/miniconda
+RUN ./miniconda.sh -b -p /home/main/.miniconda
 RUN rm miniconda.sh
-env PATH /home/main/miniconda:/home/main/miniconda/bin:$PATH
-RUN chmod -R a+rwx /home/main/miniconda
+env PATH /home/main/.miniconda:/home/main/.miniconda/bin:$PATH
+RUN chmod -R a+rwx /home/main/.miniconda
 COPY .condarc /home/main/.condarc
 RUN conda install conda=4.3.30 conda-build=3.0.30 anaconda-client git
 RUN echo "source activate statiskit-dev" >> .bashrc
 
 # RUN conda create -n statiskit-dev statiskit-dev
 RUN git clone --recursive https://github.com/StatisKit/StatisKit
+env ARCH x86
