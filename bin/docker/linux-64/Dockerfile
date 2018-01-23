@@ -19,11 +19,9 @@ RUN chmod a+rwx miniconda.sh
 RUN ./miniconda.sh -b -p /home/main/.miniconda
 RUN rm miniconda.sh
 env PATH /home/main/.miniconda:/home/main/.miniconda/bin:$PATH
-RUN chmod -R a+rwx /home/main
-COPY .condarc /home/main/.condarc
+COPY --chown=main .condarc /home/main/.condarc
 RUN conda install conda=4.3.30 conda-build=3.0.30 anaconda-client git
-RUN echo "source activate statiskit-dev" >> .bashrc
+RUN echo "source activate" >> .bashrc
 
-RUN conda create -n statiskit-dev statiskit-dev
 RUN git clone --recursive https://github.com/StatisKit/StatisKit
 env ARCH x86_64
