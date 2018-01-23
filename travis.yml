@@ -155,7 +155,7 @@ matrix:
     #        TRAVIS_WAIT=50
            
 install:
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then; cd share/git/ClangLite && git checkout v4.0.1 && cd ../../..; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then cd share/git/ClangLite && git checkout v4.0.1 && cd ../../..; fi;
   - git clone https://github.com/StatisKit/travis-ci.git --depth=1
   - cd travis-ci
   - source install.sh
