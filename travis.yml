@@ -52,7 +52,6 @@ env:
   - CONDA_RECIPE=bin/conda/python-parse
     CONDA_VERSION=3
   - CONDA_RECIPE=bin/conda/llvm-suite
-  # - CONDA_RECIPE=bin/conda/glibc
   - CONDA_RECIPE=bin/conda/libtoolchain
     CONDA_VERSION=2
   - CONDA_RECIPE=bin/conda/libtoolchain
@@ -116,8 +115,6 @@ env:
 
 matrix:
   exclude:
-    # - os: osx
-    #   env: CONDA_RECIPE=bin/conda/glibc
     - os: osx
       env: DOCKER_CONTEXT=bin/docker/linux-32
            CONDA_VERSION=2
@@ -135,24 +132,6 @@ matrix:
            TRAVIS_WAIT=40
     - os: osx
       env: CONDA_RECIPE=share/git/ClangLite/bin/conda/clang
-    - os: osx
-      env: CONDA_RECIPE=share/git/ClangLite/bin/conda/libclanglite
-           CONDA_VERSION=2
-    - os: osx
-      env: CONDA_RECIPE=share/git/ClangLite/bin/conda/libclanglite
-           CONDA_VERSION=3
-    - os: osx
-      env: CONDA_RECIPE=share/git/ClangLite/bin/conda/python-clanglite
-           CONDA_VERSION=2
-    - os: osx
-      env: CONDA_RECIPE=share/git/ClangLite/bin/conda/python-clanglite
-           CONDA_VERSION=3
-    - os: osx
-      env: CONDA_RECIPE=share/git/AutoWIG/bin/conda/python-autowig
-           CONDA_VERSION=2
-    - os: osx
-      env: CONDA_RECIPE=share/git/AutoWIG/bin/conda/python-autowig
-           CONDA_VERSION=3
     - os: linux
       env: CONDA_RECIPE=bin/conda/llvm-suite
   allow_failures:
@@ -176,6 +155,7 @@ matrix:
     #        TRAVIS_WAIT=50
            
 install:
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then; cd share/git/ClangLite && git checkout v4.0.1 && cd ../../..; fi
   - git clone https://github.com/StatisKit/travis-ci.git --depth=1
   - cd travis-ci
   - source install.sh
