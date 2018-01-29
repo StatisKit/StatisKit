@@ -64,10 +64,10 @@ environment:
       CONDA_VERSION: 2
     - CONDA_RECIPE: bin\conda\boost-meta
       CONDA_VERSION: 3
-    - CONDA_RECIPE: share\git\conda-tools\bin\conda\conda-tools
-      CONDA_VERSION: 2
-    - CONDA_RECIPE: share\git\conda-tools\bin\conda\conda-tools
-      CONDA_VERSION: 3
+    # - CONDA_RECIPE: share\git\conda-tools\bin\conda\conda-tools
+    #   CONDA_VERSION: 2
+    # - CONDA_RECIPE: share\git\conda-tools\bin\conda\conda-tools
+    #   CONDA_VERSION: 3
     - CONDA_RECIPE: share\git\devops-tools\bin\conda\devops-tools
       CONDA_VERSION: 2
     - CONDA_RECIPE: share\git\devops-tools\bin\conda\devops-tools
