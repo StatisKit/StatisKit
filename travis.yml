@@ -79,7 +79,7 @@ env:
   - CONDA_RECIPE=share/git/devops-tools/bin/conda/devops-tools
     CONDA_VERSION=3
   - CONDA_RECIPE=share/git/ClangLite/bin/conda/llvm
-    TRAVIS_WAIT=40
+    TRAVIS_WAIT=45
   - CONDA_RECIPE=share/git/ClangLite/bin/conda/clang
   # - CONDA_RECIPE=share/git/ClangLite/bin/conda/python-clang
   #   CONDA_VERSION=2
@@ -175,7 +175,7 @@ matrix:
            CONDA_VERSION=3
     - os: osx
       env: CONDA_RECIPE=share/git/ClangLite/bin/conda/llvm
-           TRAVIS_WAIT=40
+           TRAVIS_WAIT=45
     - os: osx
       env: CONDA_RECIPE=share/git/ClangLite/bin/conda/clang
     - os: linux

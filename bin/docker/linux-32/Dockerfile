@@ -6,7 +6,7 @@ ARG CONDA_VERSION
 
 RUN apt-get update
 RUN apt-get -y upgrade
-RUN apt-get install vim wget curl bzip2 build-essential -y
+RUN apt-get install vim wget curl bzip2 build-essential git -y --fix-missing
 RUN apt-get purge 
 RUN apt-get clean
 
@@ -20,7 +20,7 @@ RUN ./miniconda.sh -b -p /home/main/.miniconda
 RUN rm miniconda.sh
 env PATH /home/main/.miniconda:/home/main/.miniconda/bin:$PATH
 COPY --chown=main .condarc /home/main/.condarc
-RUN conda install conda=4.3.30 conda-build=3.0.30 anaconda-client git
+RUN conda install conda=4.3.30 conda-build=3.0.30 anaconda-client=1.6.5
 RUN echo "source activate" >> .bashrc
 
 RUN git clone --recursive https://github.com/StatisKit/StatisKit
