@@ -147,6 +147,14 @@ matrix:
     - platform: x64
       CONDA_RECIPE: share\git\ClangLite\bin\conda\python-clanglite
       CONDA_VERSION: 3
+    - platform: x86
+      CONDA_PACKAGES: fp17
+      JUPYTER_NOTEBOOK: share\git\FP17\share\jupyter\basic.ipynb
+      CONDA_VERSION: 2
+    - platform: x64
+      CONDA_PACKAGES: fp17
+      JUPYTER_NOTEBOOK: share\git\FP17\share\jupyter\basic.ipynb
+      CONDA_VERSION: 2
 
 install:
   - git clone https://github.com/StatisKit/appveyor-ci.git --depth=1
