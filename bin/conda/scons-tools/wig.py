@@ -81,12 +81,15 @@ else:
                 for key, value in kwargs.items():
                     if isinstance(value, File):
                         kwargs[key] = str(value.abspath)
+                if env['SYSTEM'] == 'win' and 'MSVC_VERSION' in env and not 'msvc_version' in kwargs:
+                    kwargs['msvc_version'] = env['MSVC_VERSION']
+                print(env)
+                import pdb
+                pdb.set_trace()
                 autowig.parser(asg, [header.abspath for header in source],
                                flags = ['-x', 'c++'] + env.subst('$CCFLAGS $CXXFLAGS $CPPFLAGS $_CPPDEFFLAGS $_CPPINCFLAGS').split(),
                                **kwargs)
                 AUTOWIG_CONTROLLER = env['AUTOWIG_CONTROLLER']
-                if env['SYSTEM'] == 'win' and 'MSVC_VERSION' in env and not 'AUTOWIG_controller_msvc_version' in AUTOWIG_CONTROLLER:
-                    AUTOWIG_CONTROLLER['AUTOWIG_controller_msvc_version'] = env['MSVC_VERSION']
                 if not AUTOWIG_CONTROLLER in autowig.controller:
                     controller = import_module('scons_tools.site_autowig.controller.' +  AUTOWIG_CONTROLLER)
                     autowig.controller[AUTOWIG_CONTROLLER] = controller.controller
