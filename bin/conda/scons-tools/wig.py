@@ -83,9 +83,6 @@ else:
                         kwargs[key] = str(value.abspath)
                 if env['SYSTEM'] == 'win' and 'MSVC_VERSION' in env and not 'msvc_version' in kwargs:
                     kwargs['msvc_version'] = env['MSVC_VERSION']
-                print(env)
-                import pdb
-                pdb.set_trace()
                 autowig.parser(asg, [header.abspath for header in source],
                                flags = ['-x', 'c++'] + env.subst('$CCFLAGS $CXXFLAGS $CPPFLAGS $_CPPDEFFLAGS $_CPPINCFLAGS').split(),
                                **kwargs)
