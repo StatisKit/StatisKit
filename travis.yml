@@ -155,15 +155,19 @@ matrix:
   exclude:
     - os: osx
       env: DOCKER_CONTEXT=bin/docker/linux-32
+           DOCKER_CONTAINER=linux-32
            CONDA_VERSION=2
     - os: osx
       env: DOCKER_CONTEXT=bin/docker/linux-32
+           DOCKER_CONTAINER=linux-32
            CONDA_VERSION=3
     - os: osx
       env: DOCKER_CONTEXT=bin/docker/linux-64
+           DOCKER_CONTAINER=linux-64
            CONDA_VERSION=2
     - os: osx
       env: DOCKER_CONTEXT=bin/docker/linux-64
+           DOCKER_CONTAINER=linux-64
            CONDA_VERSION=3
     - os: osx
       env: DOCKER_CONTEXT=share/git/FP17/bin/docker/linux-64
@@ -195,10 +199,6 @@ matrix:
            CONDA_VERSION=3
     - os: osx
       env: CONDA_RECIPE=bin/conda/llvm-suite
-    # - os: osx
-    #   env: CONDA_RECIPE=bin/conda/boost-suite
-    #        CONDA_VERSION=2
-    #        TRAVIS_WAIT=50
     - os: linux
       env: CONDA_VERSION=2
            CONDA_PACKAGES=fp17
