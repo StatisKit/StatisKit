@@ -186,12 +186,6 @@ matrix:
       env: CONDA_RECIPE=bin/conda/llvm-suite
   allow_failures:
     - os: linux
-      env: CONDA_RECIPE=bin/conda/python-scons
-           CONDA_VERSION=2
-    - os: linux
-      env: CONDA_RECIPE=bin/conda/python-scons
-           CONDA_VERSION=3
-    - os: linux
       env: CONDA_RECIPE=share/git/ClangLite/bin/conda/python-clanglite
            CONDA_VERSION=2
     - os: linux
