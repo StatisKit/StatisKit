@@ -122,7 +122,7 @@ def generate(env):
               env.AppendUnique(CCFLAGS=['-m32'])
             if SYSTEM == 'osx':
               env['CC'] = os.environ['CLANG']
-              env['CXX'] = os.environ['CLANGXX']
+              env['CXX'] = os.environ.get('CLANGXX', os.environ.get('CLANG__'))
               env.AppendUnique(
                 CXXFLAGS=['-stdlib=libc++'])
             else:

@@ -23,6 +23,8 @@
 
 #!/bin/bash
 
+sed -i -e 's/*B0/*BB0/g' $SRC_DIR/tools/clang/include/clang/Analysis/Analyses/ThreadSafetyTraverse.h
+
 # Ensure we do not end up linking to a shared libz
 rm -f "${PREFIX}"/lib/libz*${SHLIB_EXT}
 # .. if this doesn't work we will need to pass LLVM_ENABLE_ZLIB
