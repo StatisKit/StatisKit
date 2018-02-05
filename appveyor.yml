@@ -101,45 +101,15 @@ environment:
       JUPYTER_NOTEBOOK: share\git\FP17\share\jupyter\basic.ipynb
       CONDA_VERSION: 2
     - CONDA_PACKAGES: fp17
-      JUPYTER_NOTEBOOK: share\git\FP17\share\jupyter\subset.ipynb
-      CONDA_VERSION: 2
-    - CONDA_PACKAGES: fp17
       JUPYTER_NOTEBOOK: share\git\FP17\share\jupyter\template.ipynb
       CONDA_VERSION: 2
     - CONDA_PACKAGES: fp17
       JUPYTER_NOTEBOOK: share\git\FP17\share\jupyter\basic.ipynb
-      CONDA_VERSION: 3
-    - CONDA_PACKAGES: fp17
-      JUPYTER_NOTEBOOK: share\git\FP17\share\jupyter\subset.ipynb
       CONDA_VERSION: 3
     - CONDA_PACKAGES: fp17
       JUPYTER_NOTEBOOK: share\git\FP17\share\jupyter\template.ipynb
       CONDA_VERSION: 3
     - ANACONDA_RELEASE: true
-    
-matrix:
-  allow_failures:
-    - platform: x64
-      CONDA_RECIPE: bin\conda\python-toolchain
-      CONDA_VERSION: 2
-    - platform: x64
-      CONDA_RECIPE: bin\conda\python-toolchain
-      CONDA_RECIPE: share\git\ClangLite\bin\conda\python-clanglite
-      CONDA_VERSION: 3
-    - platform: x64
-      CONDA_RECIPE: share\git\ClangLite\bin\conda\python-clanglite
-      CONDA_VERSION: 2
-    - platform: x64
-      CONDA_RECIPE: share\git\ClangLite\bin\conda\python-clanglite
-      CONDA_VERSION: 3
-    - platform: x64
-      CONDA_PACKAGES: fp17
-      JUPYTER_NOTEBOOK: share\git\FP17\share\jupyter\basic.ipynb
-      CONDA_VERSION: 2
-    - platform: x64
-      CONDA_PACKAGES: fp17
-      JUPYTER_NOTEBOOK: share\git\FP17\share\jupyter\subset.ipynb
-      CONDA_VERSION: 3
       
 install:
   - git clone https://github.com/StatisKit/appveyor-ci.git --depth=1
