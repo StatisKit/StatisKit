@@ -93,22 +93,6 @@ environment:
       CONDA_VERSION: 2
     - CONDA_RECIPE: bin\conda\statiskit-dev
       CONDA_VERSION: 3
-    - CONDA_VERSION: 2
-      CONDA_RECIPE: share\git\FP17\bin\conda\fp17
-    - CONDA_VERSION: 3
-      CONDA_RECIPE: share\git\FP17\bin\conda\fp17
-    - CONDA_PACKAGES: fp17
-      JUPYTER_NOTEBOOK: share\git\FP17\share\jupyter\basic.ipynb
-      CONDA_VERSION: 2
-    - CONDA_PACKAGES: fp17
-      JUPYTER_NOTEBOOK: share\git\FP17\share\jupyter\template.ipynb
-      CONDA_VERSION: 2
-    - CONDA_PACKAGES: fp17
-      JUPYTER_NOTEBOOK: share\git\FP17\share\jupyter\basic.ipynb
-      CONDA_VERSION: 3
-    - CONDA_PACKAGES: fp17
-      JUPYTER_NOTEBOOK: share\git\FP17\share\jupyter\template.ipynb
-      CONDA_VERSION: 3
     - ANACONDA_RELEASE: true
       
 install:

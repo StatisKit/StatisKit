@@ -10,6 +10,3 @@
 [submodule "share/git/conda-tools"]
 	path = share/git/conda-tools
 	url = https://github.com/StatisKit/conda-tools
-[submodule "share/git/FP17"]
-	path = share/git/FP17
-	url = https://github.com/StatisKit/FP17
