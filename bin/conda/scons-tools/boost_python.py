@@ -72,7 +72,7 @@ def generate(env):
             sources = [source for source in sources if source.suffix == '.h']
             if len(sources) == 1 and not SYSTEM == 'win':
                 env.AppendUnique(CCFLAGS = ['-Winvalid-pch'])
-                cmd = env.subst('$CXX') + ' -o $TARGET -x c++-header -c -fPIC ' + env.subst('$SHCXXFLAGS $_CCCOMCOM').replace('-x c++', '') + ' $SOURCE'
+                cmd = env.subst('$CXX') + ' -o $TARGET -x c++-header -c -fPIC ' + env.subst('$SHCXXFLAGS $CCFLAGS $_CCCOMCOM').replace('-x c++', '') + ' $SOURCE'
                 cmd = env.Command(sources[0].target_from_source('', '.h.gch'), sources[0], cmd)
                 env.Depends(targets, cmd)
                 if SYSTEM == 'osx':
