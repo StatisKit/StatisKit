@@ -15,7 +15,9 @@ requirements:
     - libboost
     - libboost_core-dev
     - libtoolchain
-    - libtoolchain-dev
+    - python-autowig
+    - python-clanglite
+    - python-clang                                   [win]
     - python-toolchain
     - vcs
     - devops-tools
@@ -25,7 +27,9 @@ requirements:
     - {{ pin_compatible('libboost_core-dev', exact=True) }}
     - {{ pin_compatible('libtoolchain', exact=True) }}
     - {{ pin_compatible('python-toolchain', exact=True) }}
-    - {{ pin_compatible('libtoolchain-dev', exact=True) }}
+    - {{ pin_compatible('python-autowig', exact=True) }}
+    - {{ pin_compatible('python-clanglite', exact=True) }}
+    - {{ pin_compatible('python-clang', exact=True) }}      [win]
     - {{ pin_compatible('vcs', exact=True) }}
     - {{ pin_compatible('devops-tools', exact=True) }}
 
