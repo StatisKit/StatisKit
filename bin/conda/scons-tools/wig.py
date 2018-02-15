@@ -63,12 +63,12 @@ else:
                       default = os.path.join(get_python_lib(), 'scons_tools', 'site_autowig'))
             env['SITE_AUTOWIG'] = GetOption('site-autowig')
 
-            AddOption('--autowig-dry-run',
-                      dest = 'autowig_dry_run',
+            AddOption('--autowig-no-wrappers',
+                      dest = 'autowig_no_wrappers',
                       action = 'store_true',
                       default = False,
                       help = "Do not write wrappers")
-            env['AUTOWIG_DRY_RUN'] = GetOption('autowig_dry_run')
+            env['AUTOWIG_NO_WRAPPERS'] = GetOption('autowig_no_wrappers')
 
             def boost_python_builder(target, source, env):
                 SITE_AUTOWIG = env['SITE_AUTOWIG']
@@ -116,7 +116,7 @@ else:
                 wrappers = autowig.generator(asg,
                                              **kwargs)
                 wrappers.header.helder = env['AUTOWIG_HELDER']
-                if not env['AUTOWIG_DRY_RUN']:
+                if not env['AUTOWIG_NO_WRAPPERS']:
                     wrappers.write()
                 with open(target[-1].abspath, 'wb') as filehandler:
                     pickle.dump(asg, filehandler)
