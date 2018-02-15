@@ -63,22 +63,12 @@ else:
                       default = os.path.join(get_python_lib(), 'scons_tools', 'site_autowig'))
             env['SITE_AUTOWIG'] = GetOption('site-autowig')
 
-            AddOption('--dry-run',
-                      dest = 'dry_run',
+            AddOption('--autowig-dry-run',
+                      dest = 'autowig_dry_run',
                       action = 'store_true',
                       default = False,
                       help = "Do not write wrappers")
-            env['AUTOWIG_DRY_RUN'] = GetOption('dry_run')
-
-            AddOption('--site-autowig',
-                      dest    = 'site-autowig',
-                      type    = 'string',
-                      nargs   = 1,
-                      action  = 'store',
-                      metavar = 'DIR',
-                      help    = '',
-                      default = os.path.join(get_python_lib(), 'scons_tools', 'site_autowig'))
-            env['SITE_AUTOWIG'] = GetOption('site-autowig')
+            env['AUTOWIG_DRY_RUN'] = GetOption('autowig_dry_run')
 
             def boost_python_builder(target, source, env):
                 SITE_AUTOWIG = env['SITE_AUTOWIG']
