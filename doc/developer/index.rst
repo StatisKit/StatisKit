@@ -21,10 +21,17 @@
 .. mplied. See the License for the specific language governing           ..
 .. permissions and limitations under the License.                        ..
 
+.. _section-developer:
+
 Developer guide
 ###############
+
+.. warning::
+
+    Section under construction.
 
 .. toctree::
 
     configure
     contribute
+    FAQ

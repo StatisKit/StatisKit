@@ -27,17 +27,30 @@ Configure your Computer
 #######################
 
 In order to ease the development of the **StatisKit** software suite on multiple operating systems, the **Conda** package and environment management system is used.
-To insall **Conda** refer to the section :ref:`section-user-install_it-prerequisites`.
+To install **Conda** refer to the section :ref:`section-user-install-prerequisites`.
 
-Once **Conda** installed, you need to create the development environment called :code:`statiskit-dev` on your machine.
-To do so you must type:
+Once **Conda** is installed, you need to create a development environment called :code:`statiskit` containing the meta-package :code:`statiskit` on your computer.
+To do so, type the following command line
   
 .. code-block:: console
 
-   conda create -n statiskit-dev statiskit-dev -c statiskit
+   conda create -n statiskit statiskit -c statiskit/label/develop -c statiskit -c defaults --override-channels
 
 .. warning::
 
    On Windows OSes you must first download and install **Visual Studio Community 2013** (available on this `page <https://www.visualstudio.com/vs/older-downloads/>`_).
 
-Then, you can activate the created environment for each build of **Statiskit** software suite components by following instructions given after the installation.
+Then, you can activate the created environment for each build of **StatisKit** software suite components by following instructions given after the installation.
+
+.. note::
+
+   Later on, you could need to update your development environment.
+   To do so, type the following command line
+
+   .. code-block:: console
+
+      conda update --all --no-pin -c statiskit/label/develop -c statiskit -c defaults --override-channels
+
+   .. warning::
+
+      The environment must to be activated

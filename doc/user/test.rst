@@ -38,7 +38,7 @@ Using **Docker** images, **Binder** servers and **Jupyter** notebooks, we are ab
 Online with **Binder**
 ======================
 
-Test the latest *Python* interface on this `server <https://beta.mybinder.org/v2/gh/statiskit/statiskit/master?filepath=share/jupyter/index.ipynb>`_.
+To reproduce the various examples from a **Binder** server, follow this `link <https://beta.mybinder.org/v2/gh/statiskit/statiskit/master?filepath=share/jupyter/index.ipynb>`_.
 
     
 On your computer with **Docker**
@@ -74,8 +74,7 @@ Then, follow the given instructions.
 On your computer from a SSH server
 ==================================
 
-To reproduce the various examples with a **SSH** server.
-You can type the following commands in a shell:
+To reproduce the various examples from a **SSH** server, you can type the following commands in a shell:
 
 .. code-block:: console
 

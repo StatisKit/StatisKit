@@ -1,6 +1,5 @@
-## Copyright [2017-2018] UMR MISTEA INRA, UMR LEPSE INRA,                ##
-##                       UMR AGAP CIRAD, EPI Virtual Plants Inria        ##
-## Copyright [2015-2016] UMR AGAP CIRAD, EPI Virtual Plants Inria        ##
+## Copyright [2017] UMR MISTEA INRA, UMR LEPSE INRA, UMR AGAP CIRAD,     ##
+##                  EPI Virtual Plants Inria                             ##
 ##                                                                       ##
 ## This file is part of the StatisKit project. More information can be   ##
 ## found at                                                              ##
@@ -21,8 +20,4 @@
 ## mplied. See the License for the specific language governing           ##
 ## permissions and limitations under the License.                        ##
 
-name: statiskit-doc
-channels:
-  - statiskit
-dependencies:
-  - statiskit-dev
+from .__version__ import __version__

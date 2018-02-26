@@ -21,17 +21,15 @@
 .. mplied. See the License for the specific language governing           ..
 .. permissions and limitations under the License.                        ..
 
-The *C++* interface
-===================
+Maintainer guide
+################
 
-The *C++* interface of the software suite can be installed in a :code:`libstatiskit` environment using the following command line: 
+.. warning::
 
-.. code-block:: console
+    Section under construction.
 
-   conda install -n libstatiskit libstatiskit -c statiskit
+.. toctree::
 
-Then, activate the :code:`libstatiskit` environment by following the given instructions.
-
-.. note::
-
-    To use this *C++* interace, it is recommanded to read the developer guide.
+    configure
+    create
+    FAQ

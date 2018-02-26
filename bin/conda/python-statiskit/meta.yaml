@@ -1,0 +1,19 @@
+package:
+  name: python-statiskit
+  version: GIT_TAG
+
+build:
+    number: 0
+
+about:
+    home: http://statiskit.readthedocs.io/
+    license: Apache License 2.0
+    summary: A meta-package containing the python interface to the StatisKit software suite
+
+requirements:
+  build:
+    - python
+    - python-statiskit_stl
+  run:
+    - python
+    - {{ pin_compatible('python-statiskit_stl', exact=True) }}

@@ -21,14 +21,18 @@
 .. mplied. See the License for the specific language governing           ..
 .. permissions and limitations under the License.                        ..
 
-Public development
-==================
+The *C++* interface
+===================
 
-The workflow describe here is mainly inspired from OpenAlea and Virtual Plants `public development workflow <http://virtualplants.github.io/contribute/devel/git-workflow.html>`_.
+The *C++* interface of the software suite can be installed into a :code:`libstatiskit` environment.
+To do so, type the following command line
 
-.. toctree::
-    :maxdepth: 2
+.. code-block:: console
 
-    create
-    fork
-    contribute
+   conda install -n libstatiskit libstatiskit -c statiskit -c defaults --override-channels
+
+Then, activate the :code:`libstatiskit` environment by following the given instructions.
+
+.. note::
+
+    To use this *C++* interface, it is recommended to read the developer guide.
