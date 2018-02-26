@@ -1,6 +1,5 @@
-## Copyright [2017-2018] UMR MISTEA INRA, UMR LEPSE INRA,                ##
-##                       UMR AGAP CIRAD, EPI Virtual Plants Inria        ##
-## Copyright [2015-2016] UMR AGAP CIRAD, EPI Virtual Plants Inria        ##
+## Copyright [2017] UMR MISTEA INRA, UMR LEPSE INRA, UMR AGAP CIRAD,     ##
+##                  EPI Virtual Plants Inria                             ##
 ##                                                                       ##
 ## This file is part of the StatisKit project. More information can be   ##
 ## found at                                                              ##
@@ -21,8 +20,13 @@
 ## mplied. See the License for the specific language governing           ##
 ## permissions and limitations under the License.                        ##
 
-name: statiskit-doc
-channels:
-  - statiskit
-dependencies:
-  - statiskit-dev
+set -ev
+
+if [[ "$PY3K" = 1 ]]; then
+  2to3 -n -w $SRC_DIR/src/py/statiskit_dev
+  # 2to3 -n -w $SRC_DIR/test
+fi
+
+$PYTHON setup.py install --prefix=$PREFIX
+
+set +ev

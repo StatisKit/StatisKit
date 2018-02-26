@@ -24,8 +24,13 @@
 User guide
 ##########
 
+.. warning::
+
+    Section under construction.
+
 .. toctree::
 	:maxdepth: 2
 
-    test_it
-    install_it
+    test
+    install
+    FAQ

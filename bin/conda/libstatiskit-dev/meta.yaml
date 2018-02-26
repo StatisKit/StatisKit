@@ -1,0 +1,20 @@
+package:
+    name: libstatiskit-dev
+    version: {{ environ.get('GIT_DESCRIBE_TAG', '0.9.0') }}
+
+build:
+    number: {{ environ.get('GIT_DESCRIBE_NUMBER', 0) }}
+
+build:
+    number: 0
+
+about:
+    home: http://statiskit.readthedocs.io/
+    license: Apache License 2.0
+    summary: A meta-package containing the C++ declarations of the StatisKit software suite
+
+requirements:
+    build:
+        - libstatiskit_stl-dev
+    run:
+        - {{ pin_compatible('libstatiskit_stl-dev', exact=True) }}

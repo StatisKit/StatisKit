@@ -21,8 +21,46 @@
 .. mplied. See the License for the specific language governing           ..
 .. permissions and limitations under the License.                        ..
 
-Coding guidelines
-#################
+.. _section-user-install:
 
-Details concerning conventions for specific programming languages.
-These conventions concern recommended programming style, practices and methods for each aspect of a repository written in this language.
+Install it !
+############
+
+.. _section-user-install-prerequisites:
+
+Prerequisites
+=============
+
+In order to ease the installation of the **StatisKit** software suite on multiple operating systems, the **Conda** package and environment management system is used.
+
+.. note::
+
+    For more information refers to the **Conda** `documentation <http://conda.pydata.org/docs>`_.
+
+To install **Conda**, please refers to this `page <https://conda.io/docs/user-guide/install/index.html>`_.
+Installers for:
+
+* **Miniconda** are available on this `page <https://conda.io/miniconda.html>`_.
+* **Anaconda** are available on this `page <https://www.anaconda.com/download/>`_.
+
+.. note::
+
+    We recommend to follow the instructions given for silent installation and to pay attention to the :code:`PATH` environment variable.
+
+.. warning::
+
+    In the following, it is assumed that the **Conda** :code:`activate` scripts are available from the command line (see the :code:`PATH` environment variable).
+
+.. _section-user-install-recommanded:
+
+Recommanded Installations
+=========================
+
+The recommended installations rely on **Conda** meta-packages.
+Choose an interface and proceed as detailed in the corresponding section:
+
+.. toctree::
+    :maxdepth: 1
+
+    API/cpp
+    API/python

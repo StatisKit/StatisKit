@@ -1,6 +1,5 @@
-## Copyright [2017-2018] UMR MISTEA INRA, UMR LEPSE INRA,                ##
-##                       UMR AGAP CIRAD, EPI Virtual Plants Inria        ##
-## Copyright [2015-2016] UMR AGAP CIRAD, EPI Virtual Plants Inria        ##
+## Copyright [2017] UMR MISTEA INRA, UMR LEPSE INRA, UMR AGAP CIRAD,     ##
+##                  EPI Virtual Plants Inria                             ##
 ##                                                                       ##
 ## This file is part of the StatisKit project. More information can be   ##
 ## found at                                                              ##
@@ -21,8 +20,26 @@
 ## mplied. See the License for the specific language governing           ##
 ## permissions and limitations under the License.                        ##
 
-name: statiskit-doc
-channels:
-  - statiskit
-dependencies:
-  - statiskit-dev
+import argparse
+import os
+
+from . import sublime_text
+
+def main_build_system():
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument('editor',
+                        help = "Editor to configure",
+                        choices = ["sublime_text"])
+    args = parser.parse_args()
+
+    if args.editor == "sublime_text":
+        configs = sublime_text.config_paths()
+        for config in configs:
+            directory = os.path.join(config, 'Packages', 'StatisKit')
+            if not os.path.exists(directory):
+                os.makedirs(directory)
+            with open(os.path.join(directory, 'StatisKit.sublime-build'), 'w') as filehandler:
+                filehandler.write(sublime_text.BUILD_SYSTEM.replace('{{ prefix }}', conda.current_prefix()).replace('{{ environment }}', conda.current_environment()))
+            with open(os.path.join(directory, 'StatisKit.py'), 'w') as filehandler:
+                filehandler.write(sublime_text.BUILD_TARGET)

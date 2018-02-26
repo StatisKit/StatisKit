@@ -21,46 +21,10 @@
 .. mplied. See the License for the specific language governing           ..
 .. permissions and limitations under the License.                        ..
 
-.. _section-user-install_it:
+.. _section-maintainer-configure:
 
-Install it !
-############
+Configure your Computer
+#######################
 
-.. _section-user-install_it-prerequisites:
-
-Prerequisites
-=============
-
-In order to ease the installation of the **StatisKit** software suite on multiple operating systems, the **Conda** package and environment management system is used.
-
-.. note::
-
-    For more information refers to the **Conda** `documentation <http://conda.pydata.org/docs>`_.
-
-To install **Conda**, please refers to this `page <https://conda.io/docs/user-guide/install/index.html>`_.
-Installers for:
-
-* **Miniconda** are available on this `page <https://conda.io/miniconda.html>`_.
-* **Anaconda** are available on this `page <https://www.anaconda.com/download/>`_.
-
-.. note::
-
-    We recommand to follow the instructions given for silent installation and to pay attention to the :code:`PATH` environment variable.
-
-.. warning::
-
-    In the following, it is assumed that the **Conda** :code:`activate` scripts are available from the command line (see he :code:`PATH` environment variable).
-
-.. _section-user-install_it-recommanded:
-
-Recommanded Installations
-=========================
-
-The recommanded installations rely on **Conda** meta-packages.
-Choose an interface and proceed as detailled the corresponding section:
-
-.. toctree::
-    :maxdepth: 1
-
-    c++
-    python
+In order to ease the deployment of the **StatisKit** software suite on multiple operating systems, the **Conda** package and environment management system is used.
+To install and configure **Conda** refer to the section :ref:`section-developer-configure`.
