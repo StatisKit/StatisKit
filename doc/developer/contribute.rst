@@ -131,19 +131,23 @@ In order to contribute to an official repository of **StatisKit** we recommend t
 
       github end
 
+   .. warning::
+
+      If there are untracked files or uncommitted changes on your local branch, this command will fail.
+
    .. note::
 
       At any point, to seek information about a particular issue using your Web browser, type the following command in your console
 
       .. code-block:: console
 
-         github issue <ISSUENUMBER>
+         github issue <ISSUENUMBER> --browser
 
-      If you are currently working on a branch and want to seek information about the corresponding issue, type the following command in your console
+      If you are currently working on a branch and want to seek information about the corresponding issue using your Web browser, type the following command in your console
 
       .. code-block:: console
 
-         github issue <ISSUENUMBER>
+         github issue --browser
 
       This is particularly helpful if you forgot the meaning of an issue number you were working on.
 
@@ -156,4 +160,8 @@ In order to contribute to an official repository of **StatisKit** we recommend t
 
    .. code-block:: console
 
-      github flow end --suggest
+      github end --suggest
+
+   .. warning::
+
+      If your local branch is at least one commit behind the :code:`master` branch of the repository located on the organization account or is ahead of the corresponding branch on the repository location on your personal account, this command will fail.
