@@ -8,7 +8,7 @@ source:
 build:
     number: 0
     entry_points:
-        - build_system = statiskit_tools.cli:main_build_system
+        - build_system = statiskit.tools.cli:main_build_system
     preserve_egg_dir: False
 
 about:
