@@ -4,8 +4,6 @@ To do so, type the following commands in your console
 
    git pull
    git push
-   git pull upstream master
-   git push
 
 .. warning::
 
