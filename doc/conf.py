@@ -60,8 +60,8 @@ extensions = [
     'sphinx.ext.mathjax',
     'sphinx.ext.ifconfig',
     'sphinx.ext.viewcode',
-    'sphinxcontrib.blockdiag',
-    'chios.remotecode',
+    # 'sphinxcontrib.blockdiag',
+    # 'chios.remotecode',
 ]
 
 numfig = True
