@@ -43,7 +43,7 @@ In order to contribute to an official repository of **StatisKit** we recommend t
       * The :code:`upstream` remote pointing to the repository located on the organization account.
       * The :code:`origin` remote pointing to the repository located on your personal account.
 
-3. Activate Continuous Integration and Deployment services for the repository located on your personal account.
+3. Activate Continuous Integration and Deployment (CI&D) services for the repository located on your personal account.
    This step is not mandatory but is recommended.
    To do so, type the following commands in your console
 
@@ -51,6 +51,13 @@ In order to contribute to an official repository of **StatisKit** we recommend t
 
       travis_ci init --anaconda-label=main
       appveyor_ci init --anaconda-label=main
+
+   .. warning::
+
+      To activate CI&D services, you need to have:
+
+      * A Travis CI `account <https://travis-ci.org/>`_.
+      * A AppVeyor CI `account <https://ci.appveyor.com>`_.
 
 3. Retrieve the latest code from the repository located on the organization account and push it together with your modifications to the repository located on your personal account.
    This step is particularly important if you skipped one of the first two.
@@ -80,43 +87,75 @@ In order to contribute to an official repository of **StatisKit** we recommend t
 
    .. code-block:: console
 
-      github issues --only-me
+      github issues --assigned
 
-   In the following, we consider that an issue is identified by its number denoted by :code:`<ISSUENUMBER>`.
+   In the following, we consider that an issue is identified by its number denoted by :code:`<ISSUE>`.
    If this issue corresponds to:
 
-   * a bug, the work must typically be situated on a branch named :code:`hotfix_<ISSUENUMBER>` created from the :code:`master` branch of the repository located on the organization account.
+   * a bug, the work must typically be situated on a branch named :code:`hotfix_<ISSUE>` created from the :code:`master` branch of the repository located on the organization account.
      Thus, type the following command in your console
    
      .. code-block:: console
 
-        github hotfix <ISSUENUMBER>
+        github hotfix --issue=<ISSUE>
 
-   * a feature, the work must typically be situated on a branch named :code:`feature_<ISSUENUMBER>` created from the :code:`master` branch of the repository located on your personal account.
+     Yet, if you do not have the necessary permissions to write on the repository located on the organization account, the branch must be created from the :code:`master` branch of your personal account.
+     To do so, type the following command in your console
+   
+     .. code-block:: console
+
+        github hotfix --issue=<ISSUE> --remote=origin
+
+   * an enhancement, the work must typically be situated on a branch named :code:`feature_<ISSUE>` created from the :code:`master` branch of the repository located on your personal account.
      Thus, type the following command in your console
 
      .. code-block:: console
 
-        github feature <ISSUENUMBER>
+        github feature --issue=<ISSUE>
 
-     If the feature should be assigned to more than one developer, type instead the following command in your console
+     If the enhancement should be assigned to more than one developer (large ones), the branch must be create from the :code:`master` branch of the organization repository.
+     To do so, type the following command in your console
 
      .. code-block:: console
 
-        github feature <ISSUENUMBER> --shared
-
-     This command will create a branch named :code:`feature_<ISSUENUMBER>` from the :code:`master` branch of the repository located on the organization account instead of your personal account in order to share more efficiently developers' modifications.
+        github feature --issue=<ISSUE> --remote=upstream
 
    .. note::
 
       If the bug or the feature covers more than one issue, create a new issue referencing all those issues.
+      In all those issues:
+
+      * add the :code:`Duplicate of #<ISSUE>` comment,
+      * add the :code:`duplicate` label.
+
+   .. warning::
+
+      If the branch name given by the `github hotfix` or `github fixture` commands corresponds to a remote branch, the remote will be set to the existing remote branch. 
 
    For more information concerning how to amend a repository, refer to the :ref:`section-developer-FAQ` section.
-   If this step has already been made once on your local repository, type the following command in your console
+   If this step has already been made once on your local repository, type one the following commands in your console
 
    .. code-block:: console
 
-      github start <ISSUENUMBER>
+      github start hotfix_<ISSUE>
+
+   or
+
+   .. code-block:: console
+
+      github start feature_<ISSUE>
+
+   To see all available branches of your local repository, type the following command in your console
+
+   .. code-block:: console
+
+      git branch
+
+   To see all available branches of all repositories, type the following command in your console 
+
+   .. code-block:: console
+
+      git branch -a
 
    An easiest way if you have no concurrent branches is to use the following command line
 
@@ -124,7 +163,12 @@ In order to contribute to an official repository of **StatisKit** we recommend t
 
       github start
 
-   This command will ensure that you are currently working on the latest branch edited.
+   This command will ensure that you are currently working on the latest branch you edited using these commands.
+
+   .. warning::
+
+      If there are untracked files or uncommitted changes on your current local branch, this command will fail.
+
    Similarly, to go back to the local :code:`master` branch, type the following command
 
    .. code-block:: console
@@ -133,7 +177,7 @@ In order to contribute to an official repository of **StatisKit** we recommend t
 
    .. warning::
 
-      If there are untracked files or uncommitted changes on your local branch, this command will fail.
+      If there are untracked files or uncommitted changes on your current local branch, this command will fail.
 
    .. note::
 
@@ -141,7 +185,7 @@ In order to contribute to an official repository of **StatisKit** we recommend t
 
       .. code-block:: console
 
-         github issue <ISSUENUMBER> --browser
+         github issue <ISSUE> --browser
 
       If you are currently working on a branch and want to seek information about the corresponding issue using your Web browser, type the following command in your console
 

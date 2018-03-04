@@ -23,7 +23,7 @@
 set -ev
 
 if [[ "$PY3K" = 1 ]]; then
-  2to3 -n -w $SRC_DIR/src/py/statiskit_dev
+  2to3 -n -w $SRC_DIR/src/py/statiskit
   # 2to3 -n -w $SRC_DIR/test
 fi
 
