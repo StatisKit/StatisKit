@@ -1,9 +1,9 @@
 package:
-  name: python-statiskit
-  version: GIT_TAG
+    name: python-statiskit
+    version: {{ environ.get('GIT_DESCRIBE_TAG', '0.9.0') }}
 
 build:
-    number: 0
+    number: {{ environ.get('GIT_DESCRIBE_NUMBER', 0) }}
 
 about:
     home: http://statiskit.readthedocs.io/
@@ -14,6 +14,10 @@ requirements:
   build:
     - python
     - python-statiskit_stl
+    - python-statiskit_linalg
+    - python-statiskit_core
   run:
     - python
     - {{ pin_compatible('python-statiskit_stl', exact=True) }}
+    - {{ pin_compatible('python-statiskit_linalg', exact=True) }}
+    - {{ pin_compatible('python-statiskit_core', exact=True) }}
