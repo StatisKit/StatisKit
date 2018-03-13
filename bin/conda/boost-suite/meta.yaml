@@ -266,30 +266,30 @@ outputs:
         - {{ pin_subpackage("libboost_system", exact=True) }}          [py2k]
   - name: libboost
     run:
-      - {{ pin_subpackage("libboost_atomic", exact=True) }}
-      - {{ pin_subpackage("libboost_chrono", exact=True) }}
-      - {{ pin_subpackage("libboost_container", exact=True) }}
-      - {{ pin_subpackage("libboost_context", exact=True) }}
-      - {{ pin_subpackage("libboost_coroutine", exact=True) }}
-      - {{ pin_subpackage("libboost_date_time", exact=True) }}
-      - {{ pin_subpackage("libboost_filesystem", exact=True) }}
-      - {{ pin_subpackage("libboost_graph", exact=True) }}
-      - {{ pin_subpackage("libboost_iostreams", exact=True) }}
-      - {{ pin_subpackage("libboost_locale", exact=True) }}
-      - {{ pin_subpackage("libboost_log", exact=True) }}
-      - {{ pin_subpackage("libboost_math", exact=True) }}
-      - {{ pin_subpackage("libboost_program_options", exact=True) }}
-      - {{ pin_subpackage("libboost_python", exact=True) }}
-      - {{ pin_subpackage("libboost_random", exact=True) }}
-      - {{ pin_subpackage("libboost_regex", exact=True) }}
-      - {{ pin_subpackage("libboost_serialization", exact=True) }}
-      - {{ pin_subpackage("libboost_signals", exact=True) }}
-      - {{ pin_subpackage("libboost_system", exact=True) }}
-      - {{ pin_subpackage("libboost_test", exact=True) }}
-      - {{ pin_subpackage("libboost_thread", exact=True) }}
-      - {{ pin_subpackage("libboost_timer", exact=True) }}
-      - {{ pin_subpackage("libboost_type_erasure", exact=True) }}
-      - {{ pin_subpackage("libboost_wave", exact=True) }}
+      - {{ pin_compatible("libboost_atomic", exact=True) }}
+      - {{ pin_compatible("libboost_chrono", exact=True) }}
+      - {{ pin_compatible("libboost_container", exact=True) }}
+      - {{ pin_compatible("libboost_context", exact=True) }}
+      - {{ pin_compatible("libboost_coroutine", exact=True) }}
+      - {{ pin_compatible("libboost_date_time", exact=True) }}
+      - {{ pin_compatible("libboost_filesystem", exact=True) }}
+      - {{ pin_compatible("libboost_graph", exact=True) }}
+      - {{ pin_compatible("libboost_iostreams", exact=True) }}
+      - {{ pin_compatible("libboost_locale", exact=True) }}
+      - {{ pin_compatible("libboost_log", exact=True) }}
+      - {{ pin_compatible("libboost_math", exact=True) }}
+      - {{ pin_compatible("libboost_program_options", exact=True) }}
+      - {{ pin_compatible("libboost_python", exact=True) }}
+      - {{ pin_compatible("libboost_random", exact=True) }}
+      - {{ pin_compatible("libboost_regex", exact=True) }}
+      - {{ pin_compatible("libboost_serialization", exact=True) }}
+      - {{ pin_compatible("libboost_signals", exact=True) }}
+      - {{ pin_compatible("libboost_system", exact=True) }}
+      - {{ pin_compatible("libboost_test", exact=True) }}
+      - {{ pin_compatible("libboost_thread", exact=True) }}
+      - {{ pin_compatible("libboost_timer", exact=True) }}
+      - {{ pin_compatible("libboost_type_erasure", exact=True) }}
+      - {{ pin_compatible("libboost_wave", exact=True) }}
     requirements:
       build:
         - python
