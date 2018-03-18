@@ -21,7 +21,9 @@ requirements:
     - icu 58.*             [unix]
     - bzip2                [unix]
     - zlib
-
+    - libboost_core-dev
+    - libboost
+    
 about:
   home: http://www.boost.org/
   license: Boost-1.0
