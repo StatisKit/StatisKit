@@ -33,124 +33,124 @@ outputs:
   - name: libboost_iostreams-dev
     requirements:
       run:
-        - {{ pin_compatible("libboost_core-dev", exact=True) }}
-        - {{ pin_compatible("libboost_iostreams", exact=True) }}
+        - libboost_core-dev
+        - libboost_iostreams
   - name: libboost_math-dev
     requirements:
       run:
-        - {{ pin_compatible("libboost_core-dev", exact=True) }}
-        - {{ pin_compatible("libboost_math", exact=True) }}
+        - libboost_core-dev
+        - libboost_math
   - name: libboost_program_options-dev
     requirements:
       run:
-        - {{ pin_compatible("libboost_core-dev", exact=True) }}
-        - {{ pin_compatible("libboost_program_options", exact=True) }}
+        - libboost_core-dev
+        - libboost_program_options
   - name: libboost_context-dev
     requirements:
       run:
-        - {{ pin_compatible("libboost_core-dev", exact=True) }}
-        - {{ pin_compatible("libboost_context", exact=True) }}
+        - libboost_core-dev
+        - libboost_context
   - name: libboost_test-dev
     requirements:
       run:
-        - {{ pin_compatible("libboost_core-dev", exact=True) }}
-        - {{ pin_compatible("libboost_test", exact=True) }}
+        - libboost_core-dev
+        - libboost_test
   - name: libboost_type_erasure-dev
     requirements:
       run:
-        - {{ pin_compatible("libboost_core-dev", exact=True) }}
-        - {{ pin_compatible("libboost_type_erasure", exact=True) }}
+        - libboost_core-dev
+        - libboost_type_erasure
   - name: libboost_date_time-dev
     requirements:
       run:
-        - {{ pin_compatible("libboost_core-dev", exact=True) }}
-        - {{ pin_compatible("libboost_date_time", exact=True) }}
+        - libboost_core-dev
+        - libboost_date_time
   - name: libboost_atomic-dev
     requirements:
       run:
-        - {{ pin_compatible("libboost_core-dev", exact=True) }}
-        - {{ pin_compatible("libboost_atomic", exact=True) }}
+        - libboost_core-dev
+        - libboost_atomic
   - name: libboost_regex-dev
     requirements:
       run:
-        - {{ pin_compatible("libboost_core-dev", exact=True) }}
-        - {{ pin_compatible("libboost_regex", exact=True) }}
+        - libboost_core-dev
+        - libboost_regex
   - name: libboost_locale-dev
     requirements:
       run:
-        - {{ pin_compatible("libboost_core-dev", exact=True) }}
-        - {{ pin_compatible("libboost_locale", exact=True) }}
+        - libboost_core-dev
+        - libboost_locale
   - name: libboost_signals-dev
     requirements:
       run:
-        - {{ pin_compatible("libboost_core-dev", exact=True) }}
-        - {{ pin_compatible("libboost_signals", exact=True) }}
+        - libboost_core-dev
+        - libboost_signals
   - name: libboost_system-dev
     requirements:
       run:
-        - {{ pin_compatible("libboost_core-dev", exact=True) }}
-        - {{ pin_compatible("libboost_system", exact=True) }}
+        - libboost_core-dev
+        - libboost_system
   - name: libboost_thread-dev
     requirements:
       run:
-        - {{ pin_compatible("libboost_core-dev", exact=True) }}
-        - {{ pin_compatible("libboost_thread", exact=True) }}
+        - libboost_core-dev
+        - libboost_thread
   - name: libboost_chrono-dev
     requirements:
       run:
-        - {{ pin_compatible("libboost_stopwatches-dev", exact=True) }}
-        - {{ pin_compatible("libboost_core-dev", exact=True) }}
-        - {{ pin_compatible("libboost_chrono", exact=True) }}
+        - libboost_stopwatches-dev
+        - libboost_core-dev
+        - libboost_chrono
   - name: libboost_wave-dev
     requirements:
       run:
-        - {{ pin_compatible("libboost_core-dev", exact=True) }}
-        - {{ pin_compatible("libboost_wave", exact=True) }}
+        - libboost_core-dev
+        - libboost_wave
   - name: libboost_python-dev
     requirements:
       build:
         - python
       run:
-        - {{ pin_compatible("libboost_core-dev", exact=True) }}
-        - {{ pin_compatible("libboost_python", exact=True) }}
+        - libboost_core-dev
+        - libboost_python
         - python
   - name: libboost_random-dev
     requirements:
       run:
-        - {{ pin_compatible("libboost_core-dev", exact=True) }}
-        - {{ pin_compatible("libboost_random", exact=True) }}
+        - libboost_core-dev
+        - libboost_random
   - name: libboost_graph-dev
     requirements:
       run:
-        - {{ pin_compatible("libboost_core-dev", exact=True) }}
-        - {{ pin_compatible("libboost_graph", exact=True) }}
+        - libboost_core-dev
+        - libboost_graph
   - name: libboost_serialization-dev
     requirements:
       run:
-        - {{ pin_compatible("libboost_core-dev", exact=True) }}
-        - {{ pin_compatible("libboost_serialization", exact=True) }}
+        - libboost_core-dev
+        - libboost_serialization
   - name: libboost_timer-dev
     requirements:
       run:
-        - {{ pin_compatible("libboost_core-dev", exact=True) }}
-        - {{ pin_compatible("libboost_timer", exact=True) }}
+        - libboost_core-dev
+        - libboost_timer
   - name: libboost_coroutine-dev
     requirements:
       run:
-        - {{ pin_compatible("libboost_core-dev", exact=True) }}
-        - {{ pin_compatible("libboost_coroutine", exact=True) }}
+        - libboost_core-dev
+        - libboost_coroutine
   - name: libboost_log-dev
     requirements:
       run:
-        - {{ pin_compatible("libboost_core-dev", exact=True) }}
-        - {{ pin_compatible("libboost_log", exact=True) }}
+        - libboost_core-dev
+        - libboost_log
   - name: libboost_container-dev
     requirements:
       run:
-        - {{ pin_compatible("libboost_core-dev", exact=True) }}
-        - {{ pin_compatible("libboost_container", exact=True) }}
+        - libboost_core-dev
+        - libboost_container
   - name: libboost_filesystem-dev
     requirements:
       run:
-        - {{ pin_compatible("libboost_core-dev", exact=True) }}
-        - {{ pin_compatible("libboost_filesystem", exact=True) }}
+        - libboost_core-dev
+        - libboost_filesystem
