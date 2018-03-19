@@ -85,14 +85,14 @@ environment:
     #   CONDA_VERSION: 2
     # - CONDA_RECIPE: bin\conda\libtoolchain-dev
     #   CONDA_VERSION: 3
-    - CONDA_RECIPE: share\git\devops-tools\bin\conda\devops-tools
-      CONDA_VERSION: 2
-    - CONDA_RECIPE: share\git\devops-tools\bin\conda\devops-tools
-      CONDA_VERSION: 3
-    - CONDA_RECIPE: bin\conda\statiskit-tools
-      CONDA_VERSION: 2
-    - CONDA_RECIPE: bin\conda\statiskit-tools
-      CONDA_VERSION: 3
+    # - CONDA_RECIPE: share\git\devops-tools\bin\conda\devops-tools
+    #   CONDA_VERSION: 2
+    # - CONDA_RECIPE: share\git\devops-tools\bin\conda\devops-tools
+    #   CONDA_VERSION: 3
+    # - CONDA_RECIPE: bin\conda\statiskit-tools
+    #   CONDA_VERSION: 2
+    # - CONDA_RECIPE: bin\conda\statiskit-tools
+    #   CONDA_VERSION: 3
     # - CONDA_RECIPE: share\git\STL\bin\conda\libstatiskit_stl-dev
     # - CONDA_RECIPE: share\git\STL\bin\conda\libstatiskit_stl
     # - CONDA_RECIPE: share\git\STL\bin\conda\python-statiskit_stl
@@ -111,16 +111,19 @@ environment:
     #   CONDA_VERSION: 2
     # - CONDA_RECIPE: share\git\LinAlg\bin\conda\python-statiskit_core
     #   CONDA_VERSION: 3
-    # - CONDA_RECIPE: bin\conda\libstatiskit-dev
-    # - CONDA_RECIPE: bin\conda\libstatiskit
-    # - CONDA_RECIPE: bin\conda\python-statiskit
-    #   CONDA_VERSION: 2
-    # - CONDA_RECIPE: bin\conda\python-statiskit
-    #   CONDA_VERSION: 3
-    # - CONDA_RECIPE: bin\conda\statiskit
-    #   CONDA_VERSION: 2
-    # - CONDA_RECIPE: bin\conda\statiskit
-    #   CONDA_VERSION: 3
+    - CONDA_RECIPE: bin\conda\libstatiskit-dev
+      CONDA_VERSION: 2
+    - CONDA_RECIPE: bin\conda\libstatiskit-dev
+      CONDA_VERSION: 3
+    - CONDA_RECIPE: bin\conda\libstatiskit
+    - CONDA_RECIPE: bin\conda\python-statiskit
+      CONDA_VERSION: 2
+    - CONDA_RECIPE: bin\conda\python-statiskit
+      CONDA_VERSION: 3
+    - CONDA_RECIPE: bin\conda\statiskit
+      CONDA_VERSION: 2
+    - CONDA_RECIPE: bin\conda\statiskit
+      CONDA_VERSION: 3
     - ANACONDA_RELEASE: true
       
 install:
