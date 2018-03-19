@@ -45,7 +45,10 @@ Installers for:
 
 .. note::
 
-    We recommend to follow the instructions given for silent installation and to pay attention to the :code:`PATH` environment variable.
+    We recommend to:
+    
+    * follow the instructions given for silent installation and to pay attention to the :code:`PATH` environment variable. 
+    * install **Miniconda** if you are only interested by **Statiskit**.
 
 .. warning::
 
