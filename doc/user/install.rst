@@ -48,7 +48,7 @@ Installers for:
     We recommend to:
     
     * follow the instructions given for silent installation and to pay attention to the :code:`PATH` environment variable. 
-    * install **Miniconda** if you are only interested by **Statiskit**.
+    * install **Miniconda** if you are only interested by **Statiskit**. Moreover, **Miniconda 3** is recommended since the supported version of Statiskit is depending on *Python 3*. 
 
 .. warning::
 
