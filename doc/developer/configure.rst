@@ -30,7 +30,7 @@ In order to ease the development of the **StatisKit** software suite on multiple
 To install **Conda** refer to the section :ref:`section-user-install-prerequisites`.
 
 Once **Conda** is installed, you need to create a development environment called :code:`statiskit` containing the meta-package :code:`statiskit` on your computer.
-To do so, type the following command line
+To do so, type the following command line in your console
   
 .. code-block:: console
 
@@ -45,7 +45,7 @@ Then, you can activate the created environment for each build of **StatisKit** s
 .. note::
 
    Later on, you could need to update your development environment.
-   To do so, type the following command line
+   To do so, type the following command line in your console
 
    .. code-block:: console
 
@@ -54,3 +54,13 @@ Then, you can activate the created environment for each build of **StatisKit** s
    .. warning::
 
       The environment must to be activated
+
+   In the worst case scenario, you can first uninstall your development environment and re-install it.
+   To do so, type the following command lines in your console
+   
+   .. code-block:: console
+   
+      conda activate
+      conda remove -n statiskit -y
+      conda clean --all -y
+      conda create -n statiskit statiskit -c statiskit/label/develop -c statiskit -c defaults --override-channels
