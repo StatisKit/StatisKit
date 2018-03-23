@@ -110,15 +110,18 @@ environment:
     #   CONDA_VERSION: 2
     # - CONDA_RECIPE: share\git\LinAlg\bin\conda\python-statiskit_core
     #   CONDA_VERSION: 3
-    # - CONDA_RECIPE: bin\conda\libstatiskit-dev
-    #   CONDA_VERSION: 2
-    # - CONDA_RECIPE: bin\conda\libstatiskit-dev
-    #   CONDA_VERSION: 3
-    # - CONDA_RECIPE: bin\conda\libstatiskit
-    # - CONDA_RECIPE: bin\conda\python-statiskit
-    #   CONDA_VERSION: 2
-    # - CONDA_RECIPE: bin\conda\python-statiskit
-    #   CONDA_VERSION: 3
+    - CONDA_RECIPE: bin\conda\libstatiskit-dev
+      CONDA_VERSION: 2
+    - CONDA_RECIPE: bin\conda\libstatiskit-dev
+      CONDA_VERSION: 3
+    - CONDA_RECIPE: bin\conda\libstatiskit
+      CONDA_VERSION: 2
+    - CONDA_RECIPE: bin\conda\libstatiskit
+      CONDA_VERSION: 3
+    - CONDA_RECIPE: bin\conda\python-statiskit
+      CONDA_VERSION: 2
+    - CONDA_RECIPE: bin\conda\python-statiskit
+      CONDA_VERSION: 3
     - CONDA_RECIPE: bin\conda\statiskit
       CONDA_VERSION: 2
     - CONDA_RECIPE: bin\conda\statiskit

@@ -17,22 +17,22 @@ requirements:
     - vcs
     - statiskit-tools
     - libtoolchain-dev
-    # - libstatiskit-dev
+    - libstatiskit-dev
     - libtoolchain
-    # - libstatiskit
+    - libstatiskit
     - python-toolchain
-    # - python-statiskit
+    - python-statiskit
   run:
     - python
     - {{ pin_compatible('devops-tools', exact=True) }}
     - {{ pin_compatible('vcs', exact=True) }}
     - {{ pin_compatible('statiskit-tools', exact=True) }}
     - {{ pin_compatible('libtoolchain-dev', exact=True) }}
-    # - {{ pin_compatible('libstatiskit-dev', exact=True) }}
+    - {{ pin_compatible('libstatiskit-dev', exact=True) }}
     - {{ pin_compatible('libtoolchain', exact=True) }}
-    # - {{ pin_compatible('libstatiskit', exact=True) }}
+    - {{ pin_compatible('libstatiskit', exact=True) }}
     - {{ pin_compatible('python-toolchain', exact=True) }}
-    # - {{ pin_compatible('python-statiskit', exact=True) }}
+    - {{ pin_compatible('python-statiskit', exact=True) }}
     - matplotlib
     - ipython
     - jupyter
