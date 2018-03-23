@@ -60,7 +60,7 @@ Then, you can activate the created environment for each build of **StatisKit** s
    
    .. code-block:: console
    
-      conda remove -n statiskit -y
+      conda env remove -n statiskit -y
       conda clean --all -y
       conda create -n statiskit statiskit -c statiskit/label/develop -c statiskit -c defaults --override-channels
 
