@@ -73,7 +73,10 @@ else:
             def boost_python_builder(target, source, env):
                 SITE_AUTOWIG = env['SITE_AUTOWIG']
                 if 'AUTOWIG_ASG' in env:
-                    env['AUTOWIG_ASG'][env['AUTOWIG_generator_module'].abspath].remove()
+                    try:
+                        env['AUTOWIG_ASG'][env['AUTOWIG_generator_module'].abspath].remove()
+                    except:
+                        pass
                 env['AUTOWIG_ASG'] = autowig.AbstractSemanticGraph()
                 asg = env['AUTOWIG_ASG']
                 for dependency in env['AUTOWIG_DEPENDS']:
