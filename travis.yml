@@ -55,10 +55,10 @@ env:
   #   CONDA_VERSION=2
   # - CONDA_RECIPE=bin/conda/python-scons
   #   CONDA_VERSION=3
-  # - CONDA_RECIPE=bin/conda/scons-tools
-  #   CONDA_VERSION=2
-  # - CONDA_RECIPE=bin/conda/scons-tools
-  #   CONDA_VERSION=3
+  - CONDA_RECIPE=bin/conda/scons-tools
+    CONDA_VERSION=2
+  - CONDA_RECIPE=bin/conda/scons-tools
+    CONDA_VERSION=3
   # - CONDA_RECIPE=bin/conda/python-parse
   #   CONDA_VERSION=2
   # - CONDA_RECIPE=bin/conda/python-parse
