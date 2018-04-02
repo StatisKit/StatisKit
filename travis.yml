@@ -50,7 +50,6 @@ env:
   # - DOCKER_CONTEXT=bin/docker/linux-64
   #   DOCKER_CONTAINER=linux-64
   #   CONDA_VERSION=3
-  - CONDA_RECIPE=bin/conda/vcs
   - CONDA_RECIPE=bin/conda/python-scons
     CONDA_VERSION=2
   - CONDA_RECIPE=bin/conda/python-scons
