@@ -23,9 +23,10 @@
 
 echo ON
 
-:: pip install ipdb
-:: pip install ipdbplugin
-:: pip install sphinxcontrib-blockdiag
-:: pip install chios
+pip install 3to2
+pip install ipdb
+pip install ipdbplugin
+pip install sphinxcontrib-blockdiag
+pip install chios
 
 echo OFF
