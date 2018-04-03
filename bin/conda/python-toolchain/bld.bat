@@ -25,7 +25,7 @@ echo ON
 
 pip install 3to2
 pip install ipdb
-pip install ipdbplugin
+rem pip install ipdbplugin
 pip install sphinxcontrib-blockdiag
 pip install chios
 
