@@ -26,7 +26,7 @@ set -ve
 pip install 3to2
 pip install ipdb
 # pip install ipdbplugin
-pip install sphinxcontrib-blockdiag
-pip install chios
+# pip install sphinxcontrib-blockdiag
+# pip install chios
 
 set +ve
