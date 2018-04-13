@@ -28,10 +28,11 @@ Developer guide
 
 .. warning::
 
-    Section under construction.
+   Section under construction.
 
 .. toctree::
+   :maxedepth: 2
 
-    configure
-    contribute
-    FAQ
+   configure
+   contribute
+   FAQ

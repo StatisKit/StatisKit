@@ -11,3 +11,4 @@ Here we try to give some answers to questions that regularly pop up or that coul
     FAQ/IDE
     FAQ/cpp_style
     FAQ/python_style
+    FAQ/update
