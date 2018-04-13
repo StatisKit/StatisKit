@@ -1,7 +1,7 @@
 How to update the development environment ?
 ###########################################
 
-I you need to update your development environment, type the following command line in your console
+If you need to update your development environment, type the following command line in your console
 
 .. code-block:: console
 
