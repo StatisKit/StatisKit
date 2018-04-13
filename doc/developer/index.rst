@@ -31,7 +31,7 @@ Developer guide
    Section under construction.
 
 .. toctree::
-   :maxedepth: 2
+   :maxdepth: 2
 
    configure
    contribute
