@@ -23,6 +23,8 @@
 import argparse
 import os
 
+from devops_tools import conda
+
 from . import sublime_text
 
 def main_build_system():
@@ -40,6 +42,6 @@ def main_build_system():
             if not os.path.exists(directory):
                 os.makedirs(directory)
             with open(os.path.join(directory, 'StatisKit.sublime-build'), 'w') as filehandler:
-                filehandler.write(sublime_text.BUILD_SYSTEM.replace('{{ prefix }}', conda.current_prefix()).replace('{{ environment }}', conda.current_environment()))
+                filehandler.write(sublime_text.BUILD_SYSTEM.replace('{{ prefix }}', conda.default_prefix()).replace('{{ environment }}', conda.current_environment()))
             with open(os.path.join(directory, 'StatisKit.py'), 'w') as filehandler:
                 filehandler.write(sublime_text.BUILD_TARGET)

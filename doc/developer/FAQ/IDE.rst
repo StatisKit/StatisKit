@@ -1,3 +1,5 @@
+.. _section-developer-FAQ-IDE:
+
 How to configure my :abbr:`IDE (Integrated Development Environment)` ?
 ######################################################################
 
@@ -9,7 +11,7 @@ Currently, each repository can be used with:
 
   .. code-block:: console
 
-     build_system --editor=sublime_text
+     build_system sublime_text
      
 .. note::
 
