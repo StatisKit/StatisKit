@@ -21,7 +21,7 @@
 .. mplied. See the License for the specific language governing           ..
 .. permissions and limitations under the License.                        ..
 
-The *Python* interface
+The *Python* Interface
 ======================
 
 The *Python* interface of the **StatisKit** software suite can be installed into a :code:`python-statiskit` environment.

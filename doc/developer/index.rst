@@ -23,7 +23,7 @@
 
 .. _section-developer:
 
-Developer guide
+Developer Guide
 ###############
 
 .. warning::

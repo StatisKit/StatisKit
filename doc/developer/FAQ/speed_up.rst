@@ -1,6 +1,6 @@
 .. _section-developer-FAQ-speed-up:
 
-How to speed up build time ?
+How to Speed Up Build Time ?
 ############################
 
 For projects using **SCons** or developers using build systems in IDEs (see the :ref:`section-developer-FAQ-IDE` section), it is possible to speed up the build time by parallelizing most of *C++* compilations.

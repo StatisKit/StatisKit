@@ -21,7 +21,7 @@
 .. mplied. See the License for the specific language governing           ..
 .. permissions and limitations under the License.                        ..
 
-The *C++* interface
+The *C++* Interface
 ===================
 
 The *C++* interface of the software suite can be installed into a :code:`libstatiskit` environment.

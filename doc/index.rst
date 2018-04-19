@@ -23,7 +23,7 @@
 
 .. include:: ../README.rst
 
-General documentation
+General Documentation
 =====================
 
 This documentation is dedicated to people using the **StatisKit** software suite.

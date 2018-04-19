@@ -1,4 +1,4 @@
-How to update the development environment ?
+How to Update the Development Environment ?
 ###########################################
 
 If you need to update your development environment, type the following command line in your console

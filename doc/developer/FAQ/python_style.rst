@@ -1,6 +1,6 @@
 .. _section-developer-FAQ-python:
 
-What is the *Python* style guide ?
+What is the *Python* Style Guide ?
 ==================================
 
 .. warning::

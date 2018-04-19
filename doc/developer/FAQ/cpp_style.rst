@@ -1,6 +1,6 @@
 .. _section-developer-FAQ-C++:
 
-What is the *C++* style guide ?
+What is the *C++* Style Guide ?
 ===============================
 
 .. warning::

@@ -1,6 +1,6 @@
 .. _section-maintainer-create:
 
-Create a new repository
+Create a New Repository
 #######################
 
 .. warning::

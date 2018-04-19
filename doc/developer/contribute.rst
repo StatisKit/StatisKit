@@ -1,6 +1,6 @@
 .. _section-developer-contribute:
 
-Contribute to a repository
+Contribute to a Repository
 ##########################
 
 .. warning::

@@ -1,6 +1,6 @@
 .. _section-developer-FAQ-IDE:
 
-How to configure my :abbr:`IDE (Integrated Development Environment)` ?
+How to Configure my :abbr:`IDE (Integrated Development Environment)` ?
 ######################################################################
 
 For developers, it can be convenient to use an `IDE <https://en.wikipedia.org/wiki/Integrated_development_environment>`_.
