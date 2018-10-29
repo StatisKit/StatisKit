@@ -21,9 +21,7 @@ requirements:
     - icu 58.*             [unix]
     - bzip2                [unix]
     - zlib
-    - libboost_core-dev
-    - libboost
-    
+
 about:
   home: http://www.boost.org/
   license: Boost-1.0
@@ -31,126 +29,174 @@ about:
 
 outputs:
   - name: libboost_iostreams-dev
+    run_exports:
+        - {{ pin_compatible("libboost_iostreams", exact=True) }}
     requirements:
       run:
-        - libboost_core-dev
-        - libboost_iostreams
+        - {{ pin_compatible("libboost_core-dev", exact=True) }}
+        - {{ pin_compatible("libboost_iostreams", exact=True) }}
   - name: libboost_math-dev
+    run_exports:
+        - {{ pin_compatible("libboost_math", exact=True) }}
     requirements:
       run:
-        - libboost_core-dev
-        - libboost_math
+        - {{ pin_compatible("libboost_core-dev", exact=True) }}
+        - {{ pin_compatible("libboost_math", exact=True) }}
   - name: libboost_program_options-dev
+    run_exports:
+        - {{ pin_compatible("libboost_program_options", exact=True) }}
     requirements:
       run:
-        - libboost_core-dev
-        - libboost_program_options
+        - {{ pin_compatible("libboost_core-dev", exact=True) }}
+        - {{ pin_compatible("libboost_program_options", exact=True) }}
   - name: libboost_context-dev
+    run_exports:
+        - {{ pin_compatible("libboost_context", exact=True) }}
     requirements:
       run:
-        - libboost_core-dev
-        - libboost_context
+        - {{ pin_compatible("libboost_core-dev", exact=True) }}
+        - {{ pin_compatible("libboost_context", exact=True) }}
   - name: libboost_test-dev
+    run_exports:
+        - {{ pin_compatible("libboost_test", exact=True) }}
     requirements:
       run:
-        - libboost_core-dev
-        - libboost_test
+        - {{ pin_compatible("libboost_core-dev", exact=True) }}
+        - {{ pin_compatible("libboost_test", exact=True) }}
   - name: libboost_type_erasure-dev
+    run_exports:
+        - {{ pin_compatible("libboost_type_erasure", exact=True) }}
     requirements:
       run:
-        - libboost_core-dev
-        - libboost_type_erasure
+        - {{ pin_compatible("libboost_core-dev", exact=True) }}
+        - {{ pin_compatible("libboost_type_erasure", exact=True) }}
   - name: libboost_date_time-dev
+    run_exports:
+        - {{ pin_compatible("libboost_date_time", exact=True) }}
     requirements:
       run:
-        - libboost_core-dev
-        - libboost_date_time
+        - {{ pin_compatible("libboost_core-dev", exact=True) }}
+        - {{ pin_compatible("libboost_date_time", exact=True) }}
   - name: libboost_atomic-dev
+    run_exports:
+        - {{ pin_compatible("libboost_atomic", exact=True) }}
     requirements:
       run:
-        - libboost_core-dev
-        - libboost_atomic
+        - {{ pin_compatible("libboost_core-dev", exact=True) }}
+        - {{ pin_compatible("libboost_atomic", exact=True) }}
   - name: libboost_regex-dev
+    run_exports:
+        - {{ pin_compatible("libboost_regex", exact=True) }}
     requirements:
       run:
-        - libboost_core-dev
-        - libboost_regex
+        - {{ pin_compatible("libboost_core-dev", exact=True) }}
+        - {{ pin_compatible("libboost_regex", exact=True) }}
   - name: libboost_locale-dev
+    run_exports:
+        - {{ pin_compatible("libboost_locale", exact=True) }}
     requirements:
       run:
-        - libboost_core-dev
-        - libboost_locale
+        - {{ pin_compatible("libboost_core-dev", exact=True) }}
+        - {{ pin_compatible("libboost_locale", exact=True) }}
   - name: libboost_signals-dev
+    run_exports:
+        - {{ pin_compatible("libboost_signals", exact=True) }}
     requirements:
       run:
-        - libboost_core-dev
-        - libboost_signals
+        - {{ pin_compatible("libboost_core-dev", exact=True) }}
+        - {{ pin_compatible("libboost_signals", exact=True) }}
   - name: libboost_system-dev
+    run_exports:
+        - {{ pin_compatible("libboost_system", exact=True) }}
     requirements:
       run:
-        - libboost_core-dev
-        - libboost_system
+        - {{ pin_compatible("libboost_core-dev", exact=True) }}
+        - {{ pin_compatible("libboost_system", exact=True) }}
   - name: libboost_thread-dev
+    run_exports:
+        - {{ pin_compatible("libboost_thread", exact=True) }}
     requirements:
       run:
-        - libboost_core-dev
-        - libboost_thread
+        - {{ pin_compatible("libboost_core-dev", exact=True) }}
+        - {{ pin_compatible("libboost_thread", exact=True) }}
   - name: libboost_chrono-dev
+    run_exports:
+        - {{ pin_compatible("libboost_chrono", exact=True) }}
     requirements:
       run:
-        - libboost_stopwatches-dev
-        - libboost_core-dev
-        - libboost_chrono
+        - {{ pin_compatible("libboost_stopwatches-dev", exact=True) }}
+        - {{ pin_compatible("libboost_core-dev", exact=True) }}
+        - {{ pin_compatible("libboost_chrono", exact=True) }}
   - name: libboost_wave-dev
+    run_exports:
+        - {{ pin_compatible("libboost_wave", exact=True) }}
     requirements:
       run:
-        - libboost_core-dev
-        - libboost_wave
+        - {{ pin_compatible("libboost_core-dev", exact=True) }}
+        - {{ pin_compatible("libboost_wave", exact=True) }}
   - name: libboost_python-dev
+    run_exports:
+        - {{ pin_compatible("libboost_python", exact=True) }}
     requirements:
       build:
         - python
       run:
-        - libboost_core-dev
-        - libboost_python
+        - {{ pin_compatible("libboost_core-dev", exact=True) }}
+        - {{ pin_compatible("libboost_python", exact=True) }}
         - python
   - name: libboost_random-dev
+    run_exports:
+        - {{ pin_compatible("libboost_random", exact=True) }}
     requirements:
       run:
-        - libboost_core-dev
-        - libboost_random
+        - {{ pin_compatible("libboost_core-dev", exact=True) }}
+        - {{ pin_compatible("libboost_random", exact=True) }}
   - name: libboost_graph-dev
+    run_exports:
+        - {{ pin_compatible("libboost_graph", exact=True) }}
     requirements:
       run:
-        - libboost_core-dev
-        - libboost_graph
+        - {{ pin_compatible("libboost_core-dev", exact=True) }}
+        - {{ pin_compatible("libboost_graph", exact=True) }}
   - name: libboost_serialization-dev
+    run_exports:
+        - {{ pin_compatible("libboost_serialization", exact=True) }}
     requirements:
       run:
-        - libboost_core-dev
-        - libboost_serialization
+        - {{ pin_compatible("libboost_core-dev", exact=True) }}
+        - {{ pin_compatible("libboost_serialization", exact=True) }}
   - name: libboost_timer-dev
+    run_exports:
+        - {{ pin_compatible("libboost_timer", exact=True) }}
     requirements:
       run:
-        - libboost_core-dev
-        - libboost_timer
+        - {{ pin_compatible("libboost_core-dev", exact=True) }}
+        - {{ pin_compatible("libboost_timer", exact=True) }}
   - name: libboost_coroutine-dev
+    run_exports:
+        - {{ pin_compatible("libboost_coroutine", exact=True) }}
     requirements:
       run:
-        - libboost_core-dev
-        - libboost_coroutine
+        - {{ pin_compatible("libboost_core-dev", exact=True) }}
+        - {{ pin_compatible("libboost_coroutine", exact=True) }}
   - name: libboost_log-dev
+    run_exports:
+        - {{ pin_compatible("libboost_log", exact=True) }}
     requirements:
       run:
-        - libboost_core-dev
-        - libboost_log
+        - {{ pin_compatible("libboost_core-dev", exact=True) }}
+        - {{ pin_compatible("libboost_log", exact=True) }}
   - name: libboost_container-dev
+    run_exports:
+        - {{ pin_compatible("libboost_container", exact=True) }}
     requirements:
       run:
-        - libboost_core-dev
-        - libboost_container
+        - {{ pin_compatible("libboost_core-dev", exact=True) }}
+        - {{ pin_compatible("libboost_container", exact=True) }}
   - name: libboost_filesystem-dev
+    run_exports:
+        - {{ pin_compatible("libboost_filesystem", exact=True) }}
     requirements:
       run:
-        - libboost_core-dev
-        - libboost_filesystem
+        - {{ pin_compatible("libboost_core-dev", exact=True) }}
+        - {{ pin_compatible("libboost_filesystem", exact=True) }}
