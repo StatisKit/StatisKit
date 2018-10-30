@@ -71,7 +71,7 @@ if errorlevel 1 exit 1
 move %LIBRARY_LIB%\boost_*.dll "%LIBRARY_BIN%"
 if errorlevel 1 exit 1
 
-move %SRC_DIR%\\Library %SRC_DIR%\
+move %LIBRARY_PREFIX% %SRC_DIR%\
 if errorlevel 1 exit 1
 
 echo OFF
