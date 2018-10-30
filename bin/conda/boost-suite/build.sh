@@ -113,4 +113,8 @@ if [ "$(uname)" == "Linux" ]; then
         install | tee b2.log 2>&1
 fi
 
+mkdir ${SRC_DIR}/prefix
+mv -v ${PREFIX}/include ${SRC_DIR}/prefix
+mv -v ${PREFIX}/lib ${SRC_DIR}/prefix
+
 set +ve

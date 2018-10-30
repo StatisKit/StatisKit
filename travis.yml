@@ -77,10 +77,6 @@ env:
   - CONDA_RECIPE=bin/conda/boost-suite
     CONDA_VERSION=3
     TRAVIS_WAIT=50
-  - CONDA_RECIPE=bin/conda/boost-meta
-    CONDA_VERSION=2
-  - CONDA_RECIPE=bin/conda/boost-meta
-    CONDA_VERSION=3
   - CONDA_RECIPE=share/git/ClangLite/bin/conda/llvm
     TRAVIS_WAIT=45
   - CONDA_RECIPE=share/git/ClangLite/bin/conda/clang
