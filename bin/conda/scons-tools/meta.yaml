@@ -51,13 +51,13 @@ about:
   summary: SCons Tools for the StatisKit Software Suite
 
 test:
-  requires:
-    - gcc_linux-{{ ARCH }}          [linux]
-    - gxx_linux-{{ ARCH }}          [linux]
-    - gfortran_linux-{{ ARCH }}     [linux]
-    - clang_osx-{{ ARCH }}            [osx]
-    - clangxx_osx-{{ ARCH }}          [osx]
-    - gfortran_osx-{{ ARCH }}         [osx]
+  # requires:
+  #   - gcc_linux-{{ ARCH }}          [linux]
+  #   - gxx_linux-{{ ARCH }}          [linux]
+  #   - gfortran_linux-{{ ARCH }}     [linux]
+  #   - clang_osx-{{ ARCH }}            [osx]
+  #   - clangxx_osx-{{ ARCH }}          [osx]
+  #   - gfortran_osx-{{ ARCH }}         [osx]
   files:
     - SConstruct
   commands:

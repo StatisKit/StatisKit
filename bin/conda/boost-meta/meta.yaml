@@ -84,6 +84,7 @@ outputs:
       run:
         - {{ pin_compatible("libboost_core-dev", exact=True) }}
         - {{ pin_compatible("libboost_atomic", exact=True) }}
+        - {{ pin_compatible("libboost_iostreams", exact=True) }}
   - name: libboost_regex-dev
     run_exports:
         - {{ pin_compatible("libboost_regex", exact=True) }}
