@@ -58,7 +58,6 @@ env:
   - CONDA_RECIPE=share/git/AutoWIG/bin/conda/python-autowig
   - CONDA_RECIPE=bin/conda/libtoolchain-dev
   - CONDA_RECIPE=share/git/devops-tools/bin/conda/devops-tools
-  - CONDA_RECIPE=bin/conda/statiskit-tools
   # - CONDA_RECIPE=share/git/STL/bin/conda/libstatiskit_stl-dev
   # - CONDA_RECIPE=share/git/STL/bin/conda/libstatiskit_stl
   # - CONDA_RECIPE=share/git/STL/bin/conda/python-statiskit_stl
@@ -79,21 +78,26 @@ env:
 matrix:
   exclude:
     - os: osx
-      env: DOCKER_CONTEXT=bin/docker/linux-32
-           DOCKER_CONTAINER=linux-32
+      env:
+        DOCKER_CONTEXT=bin/docker/linux-32
+        DOCKER_CONTAINER=linux-32
     - os: osx
-      env: DOCKER_CONTEXT=bin/docker/linux-64
-           DOCKER_CONTAINER=linux-64
+      env:
+        DOCKER_CONTEXT=bin/docker/linux-64
+        DOCKER_CONTAINER=linux-64
     - os: osx
-      env: CONDA_RECIPE=share/git/ClangLite/bin/conda/llvm
-           TRAVIS_WAIT=50
+      env:
+        CONDA_RECIPE=share/git/ClangLite/bin/conda/llvm
+        TRAVIS_WAIT=50
     - os: osx
       env: CONDA_RECIPE=share/git/ClangLite/bin/conda/clang
     - os: linux
       env: CONDA_RECIPE=bin/conda/llvm-suite
   allow_failures:
     - os: linux
-      env: CONDA_RECIPE=share/git/ClangLite/bin/conda/llvm
+      env:
+        CONDA_RECIPE=share/git/ClangLite/bin/conda/llvm
+        TRAVIS_WAIT=50
     - os: linux
       env: CONDA_RECIPE=share/git/ClangLite/bin/conda/python-clanglite
 

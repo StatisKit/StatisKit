@@ -30,7 +30,7 @@ In order to ease the development of the **StatisKit** software suite on multiple
 To install **Conda** refer to the section :ref:`section-user-install-prerequisites`.
 
 Once **Conda** is installed, you need to create a development environment called :code:`statiskit` containing the meta-package :code:`statiskit` on your computer.
-To do so, type the following command line in your console
+To do so, type the following command line
   
 .. code-block:: console
 
@@ -40,7 +40,11 @@ To do so, type the following command line in your console
 
    On Windows OSes you must first download and install **Visual Studio Community 2013** (available on this `page <https://www.visualstudio.com/vs/older-downloads/>`_).
 
-Then, you can activate the created environment for each build of **StatisKit** software suite components by following instructions given after the installation.
+Then, to activate the :code:`statiskit` environment for each build of **StatisKit** software suite components, type the following command line
+
+.. code-block:: console
+
+  conda activate statiskit
 
 .. note::
 
