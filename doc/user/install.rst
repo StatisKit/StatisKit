@@ -57,11 +57,12 @@ Recommanded Installations
 =========================
 
 The recommended installations rely on **Conda** meta-packages.
-If all interfaces need to be installed, type the following command line
+If all interfaces need to be installed, type the following command lines
 
 .. code-block:: console
 
-   conda create -n statiskit statiskit -c statiskit -c defaults --override-channels
+  conda activate
+  conda create -n statiskit statiskit -c statiskit -c defaults --override-channels
 
 Then, to activate the :code:`statiskit` environment, type the following command line
 

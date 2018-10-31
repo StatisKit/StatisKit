@@ -56,7 +56,7 @@ In order to contribute to an official repository of **StatisKit** we recommend t
 
       To activate CI&D services, you need to have:
 
-      * A Travis CI `account <https://travis-ci.org>`_.
+      * A Travis CI `account <https://travis-ci.org>`_.
       * A AppVeyor CI `account <https://ci.appveyor.com>`_.
 
 3. Retrieve the latest code from the repository located on the organization account and push it together with your modifications to the repository located on your personal account.
