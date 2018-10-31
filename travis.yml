@@ -49,7 +49,7 @@ env:
   - CONDA_RECIPE=bin/conda/libtoolchain
   - CONDA_RECIPE=bin/conda/python-toolchain
   - CONDA_RECIPE=bin/conda/boost-suite
-    TRAVIS_WAIT=50
+    TRAVIS_WAIT=15
   - CONDA_RECIPE=share/git/ClangLite/bin/conda/llvm
     TRAVIS_WAIT=50
   - CONDA_RECIPE=share/git/ClangLite/bin/conda/clang
@@ -92,6 +92,8 @@ matrix:
     - os: linux
       env: CONDA_RECIPE=bin/conda/llvm-suite
   allow_failures:
+    - os: linux
+      env: CONDA_RECIPE=share/git/ClangLite/bin/conda/llvm
     - os: linux
       env: CONDA_RECIPE=share/git/ClangLite/bin/conda/python-clanglite
 
