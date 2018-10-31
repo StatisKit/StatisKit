@@ -30,27 +30,24 @@ test:
     - python
 
 outputs:
-  - name: libboost-dev            [not py2k]
-    script: libboost_dev.py       [not py2k]
-    requirements:                 [not py2k]
-      build:                      [not py2k]
-        - path.py                 [not py2k]
-        - libtoolchain            [not py2k]
-        - icu 58.*                [linux and not py2k]
-  - name: libboost                [not py2k]
-    script: libboost.py           [not py2k]
-    requirements:                 [not py2k]
-      build:                      [not py2k]
-        - path.py                 [not py2k]
-        - libtoolchain            [not py2k]
-        - icu 58.*                [linux and not py2k]
-      run:                        [not py2k]
-        - icu 58.*                [linux and not py2k]
+  - name: libboost-dev            
+    script: libboost_dev.py       
+    requirements:                 
+      build:                      
+        - libtoolchain            
+        - icu 58.*                [linux]
+  - name: libboost                
+    script: libboost.py           
+    requirements:                 
+      build:                      
+        - libtoolchain            
+        - icu 58.*                [linux]
+      run:                        
+        - icu 58.*                [linux]
   - name: libboost_python
     script: libboost_python.py
     requirements:
       build:
-        - path.py
         - icu 58.*                [linux]
         - libtoolchain
       run:

@@ -1,18 +1,21 @@
 import os
 import shutil
-from path import Path
 
-if "win" in os.environ["target_platform"]:
-    PREFIX = os.path.join(os.environ['SRC_DIR'], 'Library', 'include')
-    BUILD_PREFIX = os.path.join(os.environ['BUILD_PREFIX'], 'Library', 'include')
+SRC_DIR = os.environ['SRC_DIR']
+if not "win" in os.environ["target_platform"]:
+    SRC_DIR = os.path.join(SRC_DIR, 'Library')
+    PREFIX = os.path.join(SRC_DIR, 'include')
 else:
-    PREFIX = os.path.join(os.environ['SRC_DIR'], 'prefix', 'include')
-    BUILD_PREFIX = os.path.join(os.environ['BUILD_PREFIX'], 'include')
+    PREFIX = os.path.join(SRC_DIR, 'Library', 'include')
+BUILD_PREFIX = os.environ['BUILD_PREFIX']
 
-for oldpath in Path(PREFIX).walkfiles():
-    if PREFIX in oldpath:
-        newpath = oldpath.replace(PREFIX, BUILD_PREFIX, 1)
-        dirpath = os.path.dirname(newpath)
-        if not os.path.exists(dirpath):
-            os.makedirs(dirpath)
-        shutil.move(oldpath, newpath)
+for root, dirs, files in os.walk(PREFIX):
+    root = os.path.abspath(root)
+    for file in files:
+        oldpath = os.path.join(root, file)
+        if not os.path.islink(oldpath):
+            newpath = oldpath.replace(SRC_DIR, BUILD_PREFIX, 1)
+            dirpath = os.path.dirname(newpath)
+            if not os.path.exists(dirpath):
+                os.makedirs(dirpath)
+            shutil.move(oldpath, newpath)
