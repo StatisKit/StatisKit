@@ -40,12 +40,12 @@ environment:
     - CONDA_RECIPE: bin\conda\libtoolchain
     - CONDA_RECIPE: bin\conda\python-toolchain
     - CONDA_RECIPE: bin\conda\boost-suite
-    - CONDA_RECIPE: share\git\ClangLite\bin\conda\llvm
-    - CONDA_RECIPE: share\git\ClangLite\bin\conda\clang
-    - CONDA_RECIPE: share\git\ClangLite\bin\conda\python-clang
-    - CONDA_RECIPE: share\git\ClangLite\bin\conda\libclanglite
-    - CONDA_RECIPE: share\git\ClangLite\bin\conda\python-clanglite
-    - CONDA_RECIPE: share\git\AutoWIG\bin\conda\python-autowig
+    # - CONDA_RECIPE: share\git\ClangLite\bin\conda\llvm
+    # - CONDA_RECIPE: share\git\ClangLite\bin\conda\clang
+    # - CONDA_RECIPE: share\git\ClangLite\bin\conda\python-clang
+    # - CONDA_RECIPE: share\git\ClangLite\bin\conda\libclanglite
+    # - CONDA_RECIPE: share\git\ClangLite\bin\conda\python-clanglite
+    # - CONDA_RECIPE: share\git\AutoWIG\bin\conda\python-autowig
     - CONDA_RECIPE: bin\conda\libtoolchain-dev
     - CONDA_RECIPE: share\git\devops-tools\bin\conda\devops-tools
     - CONDA_RECIPE: bin\conda\statiskit-tools
