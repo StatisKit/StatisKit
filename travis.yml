@@ -102,7 +102,7 @@ matrix:
       env: CONDA_RECIPE=share/git/ClangLite/bin/conda/python-clanglite
     - os: osx
       env:
-        CONDA_RECIPE=share/git/ClangLite/bin/conda/llvm
+        CONDA_RECIPE=bin/conda/llvm-suite
         TRAVIS_WAIT=50
         
 install:
