@@ -12,6 +12,14 @@ about:
 
 requirements:
     build:
+        - python
         - libstatiskit_stl
+        - libstatiskit_linalg
+        - libstatiskit_core
+        - libstatiskit_glm
     run:
+        - python
         - {{ pin_compatible('libstatiskit_stl', exact=True) }}
+        - {{ pin_compatible('libstatiskit_linalg', exact=True) }}
+        - {{ pin_compatible('libstatiskit_core', exact=True) }}
+        - {{ pin_compatible('libstatiskit_glm', exact=True) }}

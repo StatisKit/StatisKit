@@ -5,21 +5,21 @@ from devops_tools.system import SYSTEM
 BUILD_SYSTEM="""
 {
     "working_dir": "${project_path}",
-    "target": "StatisKit",   
+    "target": "statiskit",
     "file_regex": "^\\\\[Build error - file \\"(...*?)\\" at line ([0-9]*), (.*)\\\\]$",
     "linux":
     {
-        "cmd": "bash -c 'source {{ prefix }}/bin/activate {{ environment }} && scons autowig -j$CPU_COUNT --diagnostics-color=never && scons -j$CPU_COUNT --diagnostics-color=never --with-nose-debug=none'",
+        "cmd": "bash -c 'source {{ prefix }}/bin/activate {{ environment }} && scons autowig --diagnostics-color=never && scons --diagnostics-color=never --with-nose-debug=none'",
         "shell": true
     },
     "osx":
     {
-        "cmd": "bash -c 'source {{ prefix }}/bin/activate {{ environment }} && scons autowig -j$CPU_COUNT && scons -j$CPU_COUNT --with-nose-debug=none'",
+        "cmd": "bash -c 'source {{ prefix }}/bin/activate {{ environment }} && scons autowig && scons --with-nose-debug=none'",
         "shell": true
     },
     "windows":
     {
-        "cmd": "call {{ prefix }}\\\\Scripts\\\\activate.bat {{ environment }} && scons autowig -j%CPU_COUNT% & scons -j%CPU_COUNT% --with-nose-debug=none",
+        "cmd": "call {{ prefix }}\\\\Scripts\\\\activate.bat {{ environment }} && scons autowig & scons --with-nose-debug=none",
         "shell": true
     },
     "variants":
@@ -28,17 +28,17 @@ BUILD_SYSTEM="""
             "name": "C++",
             "linux":
             {
-                "cmd": "bash -c 'source {{ prefix }}/bin/activate {{ environment }} && scons cpp -j$CPU_COUNT --diagnostics-color=never'",
+                "cmd": "bash -c 'source {{ prefix }}/bin/activate {{ environment }} && scons cpp --diagnostics-color=never'",
                 "shell": true
             },
             "osx":
             {
-                "cmd": "bash -c 'source {{ prefix }}/bin/activate {{ environment }} && scons cpp -j$CPU_COUNT'",
+                "cmd": "bash -c 'source {{ prefix }}/bin/activate {{ environment }} && scons cpp'",
                 "shell": true
             },
             "windows":
             {
-                "cmd": "call {{ prefix }}\\\\Scripts\\\\activate.bat {{ environment }} & scons cpp -j%CPU_COUNT%",
+                "cmd": "call {{ prefix }}\\\\Scripts\\\\activate.bat {{ environment }} & scons cpp",
                 "shell": true
             },
         },
@@ -46,17 +46,17 @@ BUILD_SYSTEM="""
             "name": "Python",
             "linux":
             {
-                "cmd": "bash -c 'source {{ prefix }}/bin/activate {{ environment }} && scons py -j$CPU_COUNT --diagnostics-color=never'",
+                "cmd": "bash -c 'source {{ prefix }}/bin/activate {{ environment }} && scons py --diagnostics-color=never'",
                 "shell": true
             },
             "osx":
             {
-                "cmd": "bash -c 'source {{ prefix }}/bin/activate {{ environment }} && scons py -j$CPU_COUNT'",
+                "cmd": "bash -c 'source {{ prefix }}/bin/activate {{ environment }} && scons py'",
                 "shell": true
             },
             "windows":
             {
-                "cmd": "call {{ prefix }}\\\\Scripts\\\\activate.bat {{ environment }} & scons py -j%CPU_COUNT%",
+                "cmd": "call {{ prefix }}\\\\Scripts\\\\activate.bat {{ environment }} & scons py",
                 "shell": true
             },
         },
@@ -64,17 +64,17 @@ BUILD_SYSTEM="""
             "name": "Test",
             "linux":
             {
-                "cmd": "bash -c 'source {{ prefix }}/bin/activate {{ environment }} && scons test -j$CPU_COUNT --diagnostics-color=never --with-nose-debug=none'",
+                "cmd": "bash -c 'source {{ prefix }}/bin/activate {{ environment }} && scons test --diagnostics-color=never --with-nose-debug=none'",
                 "shell": true
             },
             "osx":
             {
-                "cmd": "bash -c 'source {{ prefix }}/bin/activate {{ environment }} && scons test -j$CPU_COUNT --with-nose-debug=none'",
+                "cmd": "bash -c 'source {{ prefix }}/bin/activate {{ environment }} && scons test --with-nose-debug=none'",
                 "shell": true
             },
             "windows":
             {
-                "cmd": "call {{ prefix }}\\\\Scripts\\\\activate.bat {{ environment }} & scons test -j%CPU_COUNT% --with-nose-debug=none",
+                "cmd": "call {{ prefix }}\\\\Scripts\\\\activate.bat {{ environment }} & scons test --with-nose-debug=none",
                 "shell": true
             },
         },
@@ -82,17 +82,17 @@ BUILD_SYSTEM="""
             "name": "AutoWIG",
             "linux":
             {
-                "cmd": "bash -c 'source {{ prefix }}/bin/activate {{ environment }} && scons autowig -j$CPU_COUNT --diagnostics-color=never'",
+                "cmd": "bash -c 'source {{ prefix }}/bin/activate {{ environment }} && scons autowig --diagnostics-color=never'",
                 "shell": true
             },
             "osx":
             {
-                "cmd": "bash -c 'source {{ prefix }}/bin/activate {{ environment }} && scons autowig -j$CPU_COUNT",
+                "cmd": "bash -c 'source {{ prefix }}/bin/activate {{ environment }} && scons autowig",
                 "shell": true
             },
             "windows":
             {
-                "cmd": "call {{ prefix }}\\\\Scripts\\\\activate.bat {{ environment }} & scons autowig -j%CPU_COUNT%",
+                "cmd": "call {{ prefix }}\\\\Scripts\\\\activate.bat {{ environment }} & scons autowig",
                 "shell": true
             },
         },
@@ -275,7 +275,7 @@ class AsyncProcess(object):
                 break
 
 
-class SconsCommand(sublime_plugin.WindowCommand, ProcessListener):
+class StatiskitCommand(sublime_plugin.WindowCommand, ProcessListener):
     BLOCK_SIZE = 2**14
     text_queue = collections.deque()
     text_queue_proc = None
@@ -499,9 +499,10 @@ class SconsCommand(sublime_plugin.WindowCommand, ProcessListener):
             at_line = characters.endswith('\\n')
             characters = characters.splitlines()
 
-            file_regexes = ["^[ ]*File \"(...*?)\", line ([0-9]*)",
+            file_regexes = ["^[ ]*File \\"(...*?)\\", line ([0-9]*)",
                             "^(..[^:]*):([0-9]+):?([0-9]+)?:? error: (.*)$"]
             variant_dirs = {'^.*/build/(.*)' : '',
+                            '^build/(.*)' : '',
                             '^.*/site-packages/(.*)' : 'src/py/',
                             '^.*/include/statiskit/[^/]*/(.*)' : 'src/cpp/'}
             cache = set()

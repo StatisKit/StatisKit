@@ -1,6 +1,6 @@
 .. _section-developer-FAQ-repository:
 
-How to organize a repository ?
+How to Organize a Repository ?
 ##############################
 
 It is important to have a common structure shared between all repositories.

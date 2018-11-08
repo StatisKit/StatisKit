@@ -1,6 +1,6 @@
 .. _section-maintainer-create:
 
-Create a new repository
+Create a New Repository
 #######################
 
 .. warning::
@@ -54,10 +54,8 @@ In order to create an official repository of **StatisKit** we recommend to proce
 
 4. Retrieve the latest code from the repository located on the organization account and push your modifications to the repository located on the organization account.
 
-   .. code-block:: console
-
-      github flow sync
-      
+   .. include:: sync.rst
+         
 .. note::
 
   For more information concerning naming conventions and places for files specific to further repository developments, refer to the :ref:`section-developer-FAQ` section.

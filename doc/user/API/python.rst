@@ -21,33 +21,32 @@
 .. mplied. See the License for the specific language governing           ..
 .. permissions and limitations under the License.                        ..
 
-The *Python* interface
+The *Python* Interface
 ======================
 
 The *Python* interface of the **StatisKit** software suite can be installed into a :code:`python-statiskit` environment.
-To do so, type the following command line 
+To do so, type the following command lines 
 
 .. code-block:: console
 
-   conda install -n python-statiskit python-statiskit -c statiskit -c defaults --override-channels
+  conda activate
+  conda install -n python-statiskit python-statiskit -c statiskit -c defaults --override-channels
 
-Then, activate the :code:`python-statiskit` environment by following the given instructions.
+Then, to activate the :code:`python-statiskit` environment, type the following command line
+
+.. code-block:: console
+
+  conda activate python-statiskit
 
 .. note::
 
-    If you installed **Conda 2** but want the *Python 3* interface of the software suite, proceed as follows:
+  If you installed **Conda 2** proceed as follows:
 
-    .. code-block:: console
+  .. code-block:: console
 
-       conda install -n python-statiskit python=3 -c statiskit -c defaults --override-channels
-
-    Then, activate the :code:`python-statiskit` environment by following the given instructions.
-    Then, install the *Python 3* interface of the **StatisKit** software suite.
-
-    .. code-block:: console
-
-       conda install python-statiskit -c statiskit -c defaults --override-channels
-
-    Similarly, for the *Python 2* interface of the software suite when **Conda 3** is installed, replace :code:`python=3` by :code:`python=2`.
+    conda activate
+    conda install -n python-statiskit python=3 -c statiskit -c defaults --override-channels
+    conda activate python-statiskit
+    conda install python-statiskit -c statiskit -c defaults --override-channels
 
 The *Python* interface of the **StatisKit** software suite can be used as usual for *Python* packages as *Python* scripts that need to be executed, in the *Python* or **IPython** console or from within **Jupyter** notebooks.

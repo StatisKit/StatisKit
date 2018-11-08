@@ -22,3 +22,4 @@
 :: permissions and limitations under the License.                        ::
 
 set SITE_SCONS=
+set SCONSFLAGS=

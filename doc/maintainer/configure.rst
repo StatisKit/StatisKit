@@ -23,7 +23,7 @@
 
 .. _section-maintainer-configure:
 
-Configure your Computer
+Configure Your Computer
 #######################
 
 In order to ease the deployment of the **StatisKit** software suite on multiple operating systems, the **Conda** package and environment management system is used.

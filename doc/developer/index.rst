@@ -23,15 +23,16 @@
 
 .. _section-developer:
 
-Developer guide
+Developer Guide
 ###############
 
 .. warning::
 
-    Section under construction.
+   Section under construction.
 
 .. toctree::
+   :maxdepth: 2
 
-    configure
-    contribute
-    FAQ
+   configure
+   contribute
+   FAQ

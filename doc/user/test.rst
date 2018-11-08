@@ -35,29 +35,21 @@ Using **Docker** images, **Binder** servers and **Jupyter** notebooks, we are ab
     * The **Binder** `documentation <http://docs.mybinder.org/>`_.
     * The **Docker** `documentation <https://docs.docker.com/>`_.
     
-Online with **Binder**
+Online With **Binder**
 ======================
 
 To reproduce the various examples from a **Binder** server, follow this `link <https://beta.mybinder.org/v2/gh/statiskit/statiskit/master?filepath=share/jupyter/index.ipynb>`_.
 
     
-On your computer with **Docker**
+On Your Computer With **Docker**
 ================================
 
 To reproduce the various examples with **Docker** use these `images <https://hub.docker.com/r/statiskit/statiskit/tags>`_.
-After `installing <https://docs.docker.com/engine/installation/>`_ **Docker**, you can type the following commands in a shell:
-  
-* For the *Python 2* interface 
+After `installing <https://docs.docker.com/engine/installation/>`_ **Docker**, you can type the following command in a shell:
 
-  .. code-block:: console
+.. code-block:: console
 
-    docker run -i -t -p 8888:8888 statiskit/statiskit:latest-py2k
-   
-* For the *Python 3* interface 
-
-  .. code-block:: console
-
-    docker run -i -t -p 8888:8888 statiskit/statiskit:latest-py3k
+  docker run -i -t -p 8888:8888 statiskit/statiskit:latest
 
    
 Then, follow the given instructions.
@@ -69,25 +61,25 @@ Then, follow the given instructions.
     
 .. note::
 
-    If your port :code:`8888` is already used, replace this number in these command lines and instructions given by another one (e.g., :code:`8889`).
+  If your port :code:`8888` is already used, replace this number in these command lines and instructions given by another one (e.g., :code:`8889`).
 
-On your computer from a SSH server
+On Your Computer From a SSH Server
 ==================================
 
 To reproduce the various examples from a **SSH** server, you can type the following commands in a shell:
 
 .. code-block:: console
 
-    ssh -L 8888:localhost:8888 <username>@<servername>
-    jupyter notebook --ip='*' --port=8888 --no-browser
+   ssh -L 8888:localhost:8888 <username>@<servername>
+   jupyter notebook --ip='*' --port=8888 --no-browser
     
 .. note::
 
-    The username on the **SSH** server (resp. the **SSH** servername) is denoted in the following by :code:`<username>` (resp. :code:`<servername>`).
-    Please replace it by the appropriate username (resp. servername).
+   The username on the **SSH** server (resp. the **SSH** servername) is denoted in the following by :code:`<username>` (resp. :code:`<servername>`).
+   Please replace it by the appropriate username (resp. servername).
 
 Then, follow the given instructions.
 
 .. note::
 
-    If your port :code:`8888` is already used, replace this number in these command lines and instructions given by another one (e.g., :code:`8889`).
+   If your port :code:`8888` is already used, replace this number in these command lines and instructions given by another one (e.g., :code:`8889`).

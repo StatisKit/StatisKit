@@ -43,20 +43,20 @@ def generate(env, **kwargs):
       SYSTEM = env['SYSTEM']
       if SYSTEM == 'win':
           env.AppendUnique(LIBS = ['python' + PYTHON_VERSION.replace('.', '')],
-                           CPPPATH = ['$PREFIX\..\include'])
+                           CPPPATH = [os.path.join('$PREFIX', '..', 'include')])
       elif PYTHON_VERSION == '2.7':
-              env.AppendUnique(CPPPATH = ['$PREFIX/include/python' + PYTHON_VERSION],
+              env.AppendUnique(CPPPATH = [os.path.join('$PREFIX', 'include', 'python' + PYTHON_VERSION)],
                                LIBS = ['python' + PYTHON_VERSION])
-      elif PYTHON_VERSION == '3.6':
-              env.AppendUnique(CPPPATH = ['$PREFIX/include/python' + PYTHON_VERSION + 'm'],
+      elif PYTHON_VERSION in ['3.6', '3.7']:
+              env.AppendUnique(CPPPATH = [os.path.join('$PREFIX', 'include', 'python' + PYTHON_VERSION + 'm')],
                                LIBS = ['python' + PYTHON_VERSION + 'm'])
       else:
           raise NotImplementedError('Python ' + PYTHON_VERSION)
 
       if SYSTEM == 'win':
-        env['SP_DIR'] = '$PREFIX\..\Lib\site-packages'
+        env['SP_DIR'] = os.path.join('%PREFIX%', '..', 'Lib', 'site-packages')
       else:
-        env['SP_DIR'] = '$PREFIX/lib/python' + PYTHON_VERSION + '/site-packages'
+        env['SP_DIR'] = os.path.join('$PREFIX', 'lib', 'python' + PYTHON_VERSION, 'site-packages')
         
       def PythonPackage(env, **kwargs):
         pattern = kwargs.pop('pattern', None)

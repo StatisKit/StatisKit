@@ -22,3 +22,4 @@
 ## permissions and limitations under the License.                        ##
 
 unset SITE_SCONS
+unset SCONSFLAGS

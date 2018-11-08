@@ -45,11 +45,11 @@ Installers for:
 
 .. note::
 
-    We recommend to follow the instructions given for silent installation and to pay attention to the :code:`PATH` environment variable.
-
-.. warning::
-
-    In the following, it is assumed that the **Conda** :code:`activate` scripts are available from the command line (see the :code:`PATH` environment variable).
+    We recommend to:
+    
+    * Follow the instructions given for the regular installation.
+    * Install **Miniconda** if you are only interested by **Statiskit**.
+    * Install **Miniconda 3** or **Anaconda 3** since the supported version of **Statiskit** is based on *Python 3*. 
 
 .. _section-user-install-recommanded:
 
@@ -57,7 +57,20 @@ Recommanded Installations
 =========================
 
 The recommended installations rely on **Conda** meta-packages.
-Choose an interface and proceed as detailed in the corresponding section:
+If all interfaces need to be installed, type the following command lines
+
+.. code-block:: console
+
+  conda activate
+  conda create -n statiskit statiskit -c statiskit -c defaults --override-channels
+
+Then, to activate the :code:`statiskit` environment, type the following command line
+
+.. code-block:: console
+
+  conda activate statiskit
+
+Otherwise, choose an interface and proceed as detailed in the corresponding section:
 
 .. toctree::
     :maxdepth: 1

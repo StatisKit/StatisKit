@@ -1,7 +1,7 @@
 .. _section-developer-faq:
 
-Frequently Ask Questions
-========================
+Frequently Asked Questions
+==========================
 
 Here we try to give some answers to questions that regularly pop up or that could pop up on the mailing list.
 
@@ -9,5 +9,7 @@ Here we try to give some answers to questions that regularly pop up or that coul
 
     FAQ/repository
     FAQ/IDE
+    FAQ/speed_up
     FAQ/cpp_style
     FAQ/python_style
+    FAQ/update

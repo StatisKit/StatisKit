@@ -25,4 +25,4 @@ name: statiskit-doc
 channels:
   - statiskit
 dependencies:
-  - statiskit-dev
+  - python >= 3.*

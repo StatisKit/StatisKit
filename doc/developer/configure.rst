@@ -40,17 +40,12 @@ To do so, type the following command line
 
    On Windows OSes you must first download and install **Visual Studio Community 2013** (available on this `page <https://www.visualstudio.com/vs/older-downloads/>`_).
 
-Then, you can activate the created environment for each build of **StatisKit** software suite components by following instructions given after the installation.
+Then, to activate the :code:`statiskit` environment for each build of **StatisKit** software suite components, type the following command line
+
+.. code-block:: console
+
+  conda activate statiskit
 
 .. note::
 
-   Later on, you could need to update your development environment.
-   To do so, type the following command line
-
-   .. code-block:: console
-
-      conda update --all --no-pin -c statiskit/label/develop -c statiskit -c defaults --override-channels
-
-   .. warning::
-
-      The environment must to be activated
+   If you want a fine grained configuration, report to the :ref:`section-developer-faq` section.

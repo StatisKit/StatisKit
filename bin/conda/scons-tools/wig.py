@@ -63,10 +63,20 @@ else:
                       default = os.path.join(get_python_lib(), 'scons_tools', 'site_autowig'))
             env['SITE_AUTOWIG'] = GetOption('site-autowig')
 
+            AddOption('--autowig-no-wrappers',
+                      dest = 'autowig_no_wrappers',
+                      action = 'store_true',
+                      default = False,
+                      help = "Do not write wrappers")
+            env['AUTOWIG_NO_WRAPPERS'] = GetOption('autowig_no_wrappers')
+
             def boost_python_builder(target, source, env):
                 SITE_AUTOWIG = env['SITE_AUTOWIG']
                 if 'AUTOWIG_ASG' in env:
-                    env['AUTOWIG_ASG'][env['AUTOWIG_generator_module'].abspath].remove()
+                    try:
+                        env['AUTOWIG_ASG'][env['AUTOWIG_generator_module'].abspath].remove()
+                    except:
+                        pass
                 env['AUTOWIG_ASG'] = autowig.AbstractSemanticGraph()
                 asg = env['AUTOWIG_ASG']
                 for dependency in env['AUTOWIG_DEPENDS']:
@@ -109,7 +119,8 @@ else:
                 wrappers = autowig.generator(asg,
                                              **kwargs)
                 wrappers.header.helder = env['AUTOWIG_HELDER']
-                wrappers.write()
+                if not env['AUTOWIG_NO_WRAPPERS']:
+                    wrappers.write()
                 with open(target[-1].abspath, 'wb') as filehandler:
                     pickle.dump(asg, filehandler)
                 return None
