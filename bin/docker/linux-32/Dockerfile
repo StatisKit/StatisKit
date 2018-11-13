@@ -14,7 +14,7 @@ env CONDA_PREFIX /home/${USER_PASSWORD}/${CONDA_PREFIX}
 
 RUN apt-get update
 RUN apt-get -y upgrade
-RUN apt-get install vim wget curl bzip2 build-essential git python -y
+RUN apt-get install vim wget curl bzip2 build-essential git python python-six -y
 RUN apt-get purge 
 RUN apt-get clean
 
