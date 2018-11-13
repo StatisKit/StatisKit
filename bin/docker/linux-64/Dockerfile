@@ -23,7 +23,7 @@ USER ${USER_LOGIN}
 WORKDIR /home/${USER_LOGIN}
 
 RUN git clone https://github.com/StatisKit/travis-ci.git travis-ci --depth=1
-RUN cd travis-ci && export CONDA_PREFIX=${CONDA_PREFIX} && bash install.sh 
+RUN cd travis-ci && export CONDA_PREFIX=${CONDA_PREFIX} && export ANACONDA_LABEL=release && bash install.sh 
 RUN echo "source ${CONDA_PREFIX}/etc/profile.d/conda.sh" >> .bashrc
 
 env CONDA_ACTIVATE source ${CONDA_PREFIX}/etc/profile.d/conda.sh
