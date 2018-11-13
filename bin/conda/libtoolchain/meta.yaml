@@ -23,10 +23,10 @@
 
 package:
   name: libtoolchain
-  version: "1.0.0"
+  version: {{ environ.get('GIT_DESCRIBE_TAG', '0.9.0') }}
     
 build:
-  number: 0
+  number: {{ environ.get('GIT_DESCRIBE_NUMBER', 0) }}
   features:
     - vc12                [win]
   track_features:
