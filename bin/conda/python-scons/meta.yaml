@@ -33,7 +33,7 @@ source:
   # url: https://sourceforge.net/projects/scons/files/scons/2.5.1/scons-2.5.1.tar.gz
 
 build:
-  number: {{ GIT_DESCRIBE_NUMBER }}
+  number: 0
 
 requirements:
   build:
