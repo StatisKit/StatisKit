@@ -1,5 +1,6 @@
 import os
 import shutil
+import re
 
 SRC_DIR = os.environ['SRC_DIR']
 if not "win" in os.environ["target_platform"]:
@@ -20,6 +21,13 @@ for root, dirs, files in os.walk(PREFIX):
                 if not os.path.exists(dirpath):
                     os.makedirs(dirpath)
                 shutil.move(oldpath, newpath)
+                if "linux" in os.environ["target_platform"]:
+                    sympath = re.sub('(.*)libboost_(.*).so(.*)', '\g<1>libboost_\g<2>.so', newpath)
+                    if not sympath == newpath:
+                        os.symlink(newpath, sympath)
+                    sympath = re.sub('(.*)libboost_python(.*).so(.*)', '\g<1>libboost_python.so', newpath)
+                    if not os.path.exists(sympath) and not sympath == newpath:
+                        os.symlink(newpath, sympath)
 
 if "win" in os.environ["target_platform"]:
     PREFIX = os.path.join(SRC_DIR, 'Library', 'bin')
