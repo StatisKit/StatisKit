@@ -10,8 +10,6 @@ ARG USER_LOGIN
 ARG USER_PASSWORD
 ARG CONDA_PREFIX
 
-ENV PATH ${CONDA_PREFIX}/bin:${PATH}
-
 RUN apt-get update
 RUN apt-get -y upgrade
 RUN apt-get install vim wget curl bzip2 git python -y
@@ -23,7 +21,7 @@ USER ${USER_LOGIN}
 WORKDIR /home/${USER_LOGIN}
 
 RUN git clone https://github.com/StatisKit/travis-ci.git travis-ci --depth=1
-RUN cd travis-ci && bash install.sh 
+RUN cd travis-ci && export CONDA_PREFIX=/home/${USER_LOGIN}/${CONDA_PREFIX} && bash install.sh 
 RUN rm -rf travis-ci
 
 env ARCH x86
