@@ -10,6 +10,8 @@ ARG USER_LOGIN
 ARG USER_PASSWORD
 ARG CONDA_PREFIX
 
+ENV PATH /home/${USER_LOGIN}/${CONDA_PREFIX}/bin:${PATH}
+
 RUN apt-get update
 RUN apt-get -y upgrade
 RUN apt-get install vim wget curl bzip2 git python -y
