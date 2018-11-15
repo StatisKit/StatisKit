@@ -23,7 +23,9 @@ USER ${USER_LOGIN}
 WORKDIR /home/${USER_LOGIN}
 
 RUN git clone https://github.com/StatisKit/travis-ci.git travis-ci --depth=1
-RUN cd travis-ci && bash install.sh 
+RUN cd travis-ci && sed -i -e 's/conda activate$/set +e\nconda activate\nset -e/g' post_configure.sh
+RUN cd travis-ci && sed -i -e 's|conda activate py\${CONDA_VERSION}k|set +e\nconda activate py\${CONDA_VERSION}k\nset -e|g' post_configure.sh
+RUN cd travis-ci && export CONDA_PREFIX=/home/${USER_LOGIN}/${CONDA_PREFIX} && bash install.sh 
 RUN rm -rf travis-ci
 
 env ARCH x86_64
