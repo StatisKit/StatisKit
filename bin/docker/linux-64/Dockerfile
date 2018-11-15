@@ -10,7 +10,7 @@ ARG USER_LOGIN
 ARG USER_PASSWORD
 ARG CONDA_PREFIX
 
-ENV PATH ${CONDA_PREFIX}/bin:${PATH}
+ENV PATH /home/${USER_LOGIN}/${CONDA_PREFIX}/bin:${PATH}
 
 RUN apt-get update
 RUN apt-get -y upgrade
