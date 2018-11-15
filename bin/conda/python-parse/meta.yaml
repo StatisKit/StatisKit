@@ -23,12 +23,13 @@
 
 package:
   name: python-parse
-  version: 1.6.6
+  version: 1.9.0
 
 source:
-  fn: parse-1.6.6.tar.gz
-  url: https://pypi.python.org/packages/c3/e3/c2ca7f10c481b84ba7bf8c35c595ee4825d828fce7838fffc57f0ea0acc9/parse-1.6.6.tar.gz
-
+  fn: parse-1.9.0.tar.gz
+  url: https://files.pythonhosted.org/packages/b6/98/809e53e5778c59c4af9eb920605e7a8ab439407efbe89a6d51a46efd1937/parse-1.9.0.tar.gz
+  sha256: 9dd6048ea212cd032a342f9f6aa2b7bc222f7407c7e37bdc2777fecd36897437
+  
 build:
   number: {{ environ.get('GIT_DESCRIBE_NUMBER', 0) }}
 
