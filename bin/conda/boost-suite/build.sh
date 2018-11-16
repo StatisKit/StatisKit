@@ -53,13 +53,10 @@ LINKFLAGS="${LINKFLAGS} -L${LIBRARY_PATH}"
 
 ./bootstrap.sh \
     --prefix="${PREFIX}" \
-    --with-toolset=cc \
     --with-python="${PYTHON}" \
     --with-python-root="${PREFIX} : ${PREFIX}/include/python${PY_VER}m ${PREFIX}/include/python${PY_VER}" \
     --with-icu="${PREFIX}" \
     | tee bootstrap.log 2>&1
-
-sed -i.bak "s,cc,${TOOLSET},g" ${SRC_DIR}/project-config.jam
 
 ./b2 -q \
     variant=release \
