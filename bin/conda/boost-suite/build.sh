@@ -23,13 +23,13 @@
 
 set -ve
 
-unset CXXFLAGS
-unset CPPFLAGS
-unset CFLAGS
-unset LDFLAGS
-unset LDFLAGS_CC
-unset DEBUG_CFLAGS
-unset DEBUG_CXXFLAGS
+# unset CXXFLAGS
+# unset CPPFLAGS
+# unset CFLAGS
+# unset LDFLAGS
+# unset LDFLAGS_CC
+# unset DEBUG_CFLAGS
+# unset DEBUG_CXXFLAGS
 
 INCLUDE_PATH="${PREFIX}/include"
 LIBRARY_PATH="${PREFIX}/lib"
