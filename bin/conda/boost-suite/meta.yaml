@@ -36,16 +36,24 @@ outputs:
     script: libboost_dev.py       
     requirements:                 
       build:                      
-        - libtoolchain            
-        - icu                     [linux]
+        - libtoolchain
+      host:
+        - icu               [unix]
+        - bzip2             [unix]
+        - libiconv          [osx]
+        - xz
+        - zlib            
   - name: libboost                
     script: libboost.py           
     requirements:                 
       build:                      
-        - libtoolchain            
-        - icu                     [linux]
-      run:                        
-        - icu                     [linux]
+        - libtoolchain
+      host:
+        - icu               [unix]
+        - bzip2             [unix]
+        - libiconv          [osx]
+        - xz
+        - zlib            
   - name: libboost_python
     script: libboost_python.py
     requirements:
