@@ -58,7 +58,7 @@ LINKFLAGS="${LINKFLAGS} -L${LIBRARY_PATH}"
     --with-icu="${PREFIX}" \
     | tee bootstrap.log 2>&1
 
-./b2 -q -d+2 \
+./b2 -q -d0 \
     variant=release \
     address-model="${ARCH}" \
     architecture=x86 \

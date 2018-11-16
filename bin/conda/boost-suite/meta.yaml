@@ -12,11 +12,13 @@ build:
 
 requirements:
   build:
-    - python
     - libtoolchain
+  host:
     - python
-    - icu 58.*          [unix]
+    - icu               [unix]
     - bzip2             [unix]
+    - libiconv          [osx]
+    - xz
     - zlib
 
 about:
@@ -35,20 +37,20 @@ outputs:
     requirements:                 
       build:                      
         - libtoolchain            
-        - icu 58.*                [linux]
+        - icu                     [linux]
   - name: libboost                
     script: libboost.py           
     requirements:                 
       build:                      
         - libtoolchain            
-        - icu 58.*                [linux]
+        - icu                     [linux]
       run:                        
-        - icu 58.*                [linux]
+        - icu                     [linux]
   - name: libboost_python
     script: libboost_python.py
     requirements:
       build:
-        - icu 58.*                [linux]
+        - icu                     [linux]
         - libtoolchain
       run:
         - python
