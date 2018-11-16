@@ -58,14 +58,14 @@ LINKFLAGS="${LINKFLAGS} -L${LIBRARY_PATH}"
     --with-icu="${PREFIX}" \
     | tee bootstrap.log 2>&1
 
-./b2 -q \
+./b2 -q -d+2 \
     variant=release \
     address-model="${ARCH}" \
     architecture=x86 \
     debug-symbols=off \
     threading=multi \
     runtime-link=shared \
-    link=shared \
+    link=static,shared \
     toolset=${TOOLSET}-custom \
     python="${PY_VER}" \
     include="${INCLUDE_PATH}" \
@@ -74,7 +74,6 @@ LINKFLAGS="${LINKFLAGS} -L${LIBRARY_PATH}"
     --without-mpi \
     --layout=system \
     -j$CPU_COUNT \
-    -d0 \
     install | tee b2.log 2>&1
 
 # if [ "$(uname)" == "Darwin" ]; then
