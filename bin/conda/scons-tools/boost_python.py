@@ -23,6 +23,7 @@
 
 import itertools
 import os
+import sysconfig
 try:
     from path import Path
 except:
@@ -37,7 +38,10 @@ def generate(env):
     if not 'boost_python' in env['TOOLS'][:-1]:
         env.Tool('system')
         env.Tool('textfile')
-        env.AppendUnique(LIBS = ['boost_python'])
+
+        PYTHON_VERSION = sysconfig.get_python_version()
+
+        env.AppendUnique(LIBS = ['boost_python' + PYTHON_VERSION.replace(".", "")])
         env.AppendUnique(CPPDEFINES = ['BOOST_PYTHON_DYNAMIC_LIB',
                                        'BOOST_ALL_NO_LIB'])
 
