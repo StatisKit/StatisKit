@@ -34,7 +34,7 @@ unset DEBUG_CXXFLAGS
 INCLUDE_PATH="${PREFIX}/include"
 LIBRARY_PATH="${PREFIX}/lib"
 
-CXXFLAGS="${CXXFLAGS} -fPIC"
+CXXFLAGS="${CXXFLAGS} -fPIC -Wno-deprecated-declarations"
 
 if [ "$(uname)" == "Darwin" ]; then
     TOOLSET=clang
@@ -49,69 +49,99 @@ cat <<EOF > ${SRC_DIR}/tools/build/src/site-config.jam
 using ${TOOLSET} : custom : ${CXX} ;
 EOF
 
-if [ "$(uname)" == "Darwin" ]; then
+LINKFLAGS="${LINKFLAGS} -L${LIBRARY_PATH}"
 
-    MACOSX_VERSION_MIN=10.13
-    CXXFLAGS="-mmacosx-version-min=${MACOSX_VERSION_MIN}"
-    CXXFLAGS="${CXXFLAGS} -stdlib=libc++ -std=c++11"
-    LINKFLAGS="-mmacosx-version-min=${MACOSX_VERSION_MIN}"
-    LINKFLAGS="${LINKFLAGS} -stdlib=libc++ -std=c++11 -L${LIBRARY_PATH}"
+./bootstrap.sh \
+    --prefix="${PREFIX}" \
+    --with-python="${PYTHON}" \
+    --with-python-root="${PREFIX} : ${PREFIX}/include/python${PY_VER}m ${PREFIX}/include/python${PY_VER}" \
+    --with-icu="${PREFIX}" \
+    | tee bootstrap.log 2>&1
 
-    ./bootstrap.sh \
-        --prefix="${PREFIX}" \
-        --with-python="${PYTHON}" \
-        --with-python-root="${PREFIX} : ${PREFIX}/include/python${PY_VER}m ${PREFIX}/include/python${PY_VER}" \
-        --with-icu="${PREFIX}" \
-        | tee bootstrap.log 2>&1
+sed -i.bak "s,cc,${TOOLSET},g" ${SRC_DIR}/project-config.jam
 
-    ./b2 -q \
-        variant=release \
-        address-model=64 \
-        architecture=x86 \
-        debug-symbols=off \
-        threading=multi \
-        link=shared \
-        toolset=clang \
-        include="${INCLUDE_PATH}" \
-        cxxflags="${CXXFLAGS}" \
-        linkflags="${LINKFLAGS}" \
-        --without-mpi \
-        --layout=system \
-        -j$CPU_COUNT \
-        -d0 \
-        install | tee b2.log 2>&1
-fi
+./b2 -q \
+    variant=release \
+    address-model="${ARCH}" \
+    architecture=x86 \
+    debug-symbols=off \
+    threading=multi \
+    runtime-link=shared \
+    link=shared \
+    toolset=gcc \
+    python="${PY_VER}" \
+    include="${INCLUDE_PATH}" \
+    cxxflags="${CXXFLAGS}" \
+    linkflags="${LINKFLAGS}" \
+    --without-mpi \
+    --layout=system \
+    -j$CPU_COUNT \
+    -d0 \
+    install | tee b2.log 2>&1
 
-if [ "$(uname)" == "Linux" ]; then
-    CXXFLAGS="${CXXFLAGS} -std=c++11"
-    LINKFLAGS="${LINKFLAGS} -std=c++11 -L${LIBRARY_PATH}"
+# if [ "$(uname)" == "Darwin" ]; then
+
+#     MACOSX_VERSION_MIN=10.13
+#     CXXFLAGS="-mmacosx-version-min=${MACOSX_VERSION_MIN}"
+#     CXXFLAGS="${CXXFLAGS} -stdlib=libc++ -std=c++11"
+#     LINKFLAGS="-mmacosx-version-min=${MACOSX_VERSION_MIN}"
+#     LINKFLAGS="${LINKFLAGS} -stdlib=libc++ -std=c++11 -L${LIBRARY_PATH}"
+
+#     ./bootstrap.sh \
+#         --prefix="${PREFIX}" \
+#         --with-python="${PYTHON}" \
+#         --with-python-root="${PREFIX} : ${PREFIX}/include/python${PY_VER}m ${PREFIX}/include/python${PY_VER}" \
+#         --with-icu="${PREFIX}" \
+#         | tee bootstrap.log 2>&1
+
+#     ./b2 -q \
+#         variant=release \
+#         address-model=64 \
+#         architecture=x86 \
+#         debug-symbols=off \
+#         threading=multi \
+#         link=shared \
+#         toolset=clang \
+#         include="${INCLUDE_PATH}" \
+#         cxxflags="${CXXFLAGS}" \
+#         linkflags="${LINKFLAGS}" \
+#         --without-mpi \
+#         --layout=system \
+#         -j$CPU_COUNT \
+#         -d0 \
+#         install | tee b2.log 2>&1
+# fi
+
+# if [ "$(uname)" == "Linux" ]; then
+#     CXXFLAGS="${CXXFLAGS} -std=c++11"
+#     LINKFLAGS="${LINKFLAGS} -std=c++11 -L${LIBRARY_PATH}"
     
-    ./bootstrap.sh \
-        --prefix="${PREFIX}" \
-        --with-python="${PYTHON}" \
-        --with-python-root="${PREFIX} : ${PREFIX}/include/python${PY_VER}m ${PREFIX}/include/python${PY_VER}" \
-        --with-icu="${PREFIX}" \
-        | tee bootstrap.log 2>&1
+#     ./bootstrap.sh \
+#         --prefix="${PREFIX}" \
+#         --with-python="${PYTHON}" \
+#         --with-python-root="${PREFIX} : ${PREFIX}/include/python${PY_VER}m ${PREFIX}/include/python${PY_VER}" \
+#         --with-icu="${PREFIX}" \
+#         | tee bootstrap.log 2>&1
 
-    ./b2 -q \
-        variant=release \
-        address-model="${ARCH}" \
-        architecture=x86 \
-        debug-symbols=off \
-        threading=multi \
-        runtime-link=shared \
-        link=shared \
-        toolset=gcc \
-        python="${PY_VER}" \
-        include="${INCLUDE_PATH}" \
-        cxxflags="${CXXFLAGS}"\
-        linkflags="${LINKFLAGS}" \
-        --without-mpi \
-        --layout=system \
-        -j$CPU_COUNT \
-        -d0 \
-        install | tee b2.log 2>&1
-fi
+#     ./b2 -q \
+#         variant=release \
+#         address-model="${ARCH}" \
+#         architecture=x86 \
+#         debug-symbols=off \
+#         threading=multi \
+#         runtime-link=shared \
+#         link=shared \
+#         toolset=gcc \
+#         python="${PY_VER}" \
+#         include="${INCLUDE_PATH}" \
+#         cxxflags="${CXXFLAGS}"\
+#         linkflags="${LINKFLAGS}" \
+#         --without-mpi \
+#         --layout=system \
+#         -j$CPU_COUNT \
+#         -d0 \
+#         install | tee b2.log 2>&1
+# fi
 
 mkdir ${SRC_DIR}/Library
 mv -v ${PREFIX}/include ${SRC_DIR}/Library
