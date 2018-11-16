@@ -34,7 +34,7 @@ unset DEBUG_CXXFLAGS
 INCLUDE_PATH="${PREFIX}/include"
 LIBRARY_PATH="${PREFIX}/lib"
 
-CXXFLAGS="${CXXFLAGS} -fPIC -Wno-deprecated-declarations"
+CXXFLAGS="${CXXFLAGS} -Wno-deprecated-declarations"
 
 if [ "$(uname)" == "Darwin" ]; then
     TOOLSET=clang
