@@ -10,11 +10,14 @@ else:
     PREFIX = os.path.join(SRC_DIR, 'Library', 'lib')
 BUILD_PREFIX = os.environ['BUILD_PREFIX']
 
+def is_lib(filepath):
+    return filepath.endswith('.lib') or filepath.endswith('.a') or filepath.endswith('.so') or filepath.endswith('.dylib') or filepath.endswidth('.dll')
+
 for root, dirs, files in os.walk(PREFIX):
     root = os.path.abspath(root)
     for file in files:
         oldpath = os.path.join(root, file)
-        if not os.path.islink(oldpath):
+        if is_lib(oldpath): #not os.path.islink(oldpath):
             if not 'boost_python' in oldpath:
                 newpath = oldpath.replace(SRC_DIR, BUILD_PREFIX, 1)
                 dirpath = os.path.dirname(newpath)
@@ -32,7 +35,7 @@ if "win" in os.environ["target_platform"]:
         root = os.path.abspath(root)
         for file in files:
             oldpath = os.path.join(root, file)
-            if not os.path.islink(oldpath):
+            if is_lib(oldpath): #not os.path.islink(oldpath):
                 if not 'boost_python' in oldpath:
                     newpath = oldpath.replace(SRC_DIR, BUILD_PREFIX, 1)
                     dirpath = os.path.dirname(newpath)
