@@ -53,11 +53,11 @@ EOF
 
 LINKFLAGS="${LINKFLAGS} -L${LIBRARY_PATH}"
 
-if [[ "${CI}" = "true" ]]; then
-    export DFLAG="0"
-else
-    export DFLAG="+2"
-fi
+# if [[ "${CI}" = "true" ]]; then
+#     export DFLAG="0"
+# else
+#     export DFLAG="+2"
+# fi
 
 ./bootstrap.sh \
     --prefix="${PREFIX}" \
