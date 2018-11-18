@@ -33,7 +33,7 @@ test:
 
 outputs:
   - name: libboost-dev            
-    script: libboost_dev.py       
+    script: libboost-dev.sh   
     requirements:                 
       build:                      
         - libtoolchain
@@ -44,7 +44,7 @@ outputs:
         - xz
         - zlib            
   - name: libboost                
-    script: libboost.py           
+    script: libboost.sh           
     requirements:                 
       build:                      
         - libtoolchain
@@ -55,11 +55,17 @@ outputs:
         - xz
         - zlib            
   - name: libboost_python
-    script: libboost_python.py
+    script: libboost_python.sh
     requirements:
       build:
-        - icu                     [linux]
         - libtoolchain
+      host:
+        - python
+        - icu               [unix]
+        - bzip2             [unix]
+        - libiconv          [osx]
+        - xz
+        - zlib
       run:
         - python
-        # - {{ pin_subpackage("libboost", exact=True) }}
+        - {{ pin_subpackage("libboost", exact=True) }}

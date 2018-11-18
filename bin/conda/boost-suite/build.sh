@@ -31,6 +31,8 @@ set -ve
 # unset DEBUG_CFLAGS
 # unset DEBUG_CXXFLAGS
 
+python ${RECIPE_DIR}/filter.py --src=${PREFIX} --dst=filtered.pkl
+
 INCLUDE_PATH="${PREFIX}/include"
 LIBRARY_PATH="${PREFIX}/lib"
 
@@ -51,6 +53,12 @@ EOF
 
 LINKFLAGS="${LINKFLAGS} -L${LIBRARY_PATH}"
 
+if [[ "${CI}" = "true" ]]; then
+    export DFLAG="0"
+else
+    export DFLAG="+2"
+fi
+
 ./bootstrap.sh \
     --prefix="${PREFIX}" \
     --with-python="${PYTHON}" \
@@ -58,14 +66,14 @@ LINKFLAGS="${LINKFLAGS} -L${LIBRARY_PATH}"
     --with-icu="${PREFIX}" \
     | tee bootstrap.log 2>&1
 
-./b2 -q -d0 \
+./b2 -q -d${DFLAG} \
     variant=release \
     address-model="${ARCH}" \
     architecture=x86 \
     debug-symbols=off \
     threading=multi \
     runtime-link=shared \
-    link=static,shared \
+    link=shared \
     toolset=${TOOLSET}-custom \
     python="${PY_VER}" \
     include="${INCLUDE_PATH}" \
@@ -140,8 +148,7 @@ LINKFLAGS="${LINKFLAGS} -L${LIBRARY_PATH}"
 #         install | tee b2.log 2>&1
 # fi
 
-mkdir ${SRC_DIR}/Library
-mv -v ${PREFIX}/include ${SRC_DIR}/Library
-mv -v ${PREFIX}/lib ${SRC_DIR}/Library
+python ${RECIPE_DIR}/move.py --src=${PREFIX}/include --dst=${SRC_DIR}/Library/include --filtered=filtered.pkl
+python ${RECIPE_DIR}/move.py --src=${PREFIX}/lib --dst=${SRC_DIR}/Library/lib --filtered=filtered.pkl
 
 set +ve

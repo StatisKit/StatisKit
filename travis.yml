@@ -38,16 +38,16 @@ services:
   - docker
   
 env:
-  # - DOCKER_CONTEXT=bin/docker/linux-32
-  #   DOCKER_CONTAINER=linux-32
-  # - DOCKER_CONTEXT=bin/docker/linux-64
-  #   DOCKER_CONTAINER=linux-64
-  # - CONDA_RECIPE=bin/conda/python-scons
-  # - CONDA_RECIPE=bin/conda/scons-tools
-  # - CONDA_RECIPE=bin/conda/python-parse
-  # - CONDA_RECIPE=bin/conda/llvm-suite
-  # - CONDA_RECIPE=bin/conda/libtoolchain
-  # - CONDA_RECIPE=bin/conda/python-toolchain
+  - DOCKER_CONTEXT=bin/docker/linux-32
+    DOCKER_CONTAINER=linux-32
+  - DOCKER_CONTEXT=bin/docker/linux-64
+    DOCKER_CONTAINER=linux-64
+  - CONDA_RECIPE=bin/conda/python-scons
+  - CONDA_RECIPE=bin/conda/scons-tools
+  - CONDA_RECIPE=bin/conda/python-parse
+  - CONDA_RECIPE=bin/conda/llvm-suite
+  - CONDA_RECIPE=bin/conda/libtoolchain
+  - CONDA_RECIPE=bin/conda/python-toolchain
   - CONDA_RECIPE=bin/conda/boost-suite
     TRAVIS_WAIT=25
   # - CONDA_RECIPE=share/git/ClangLite/bin/conda/llvm
@@ -73,7 +73,7 @@ env:
   # - CONDA_RECIPE=bin/conda/statiskit
   # - DOCKER_CONTEXT=bin/docker/statiskit
   #   DOCKER_CONTAINER=statiskit
-  # - ANACONDA_RELEASE=true
+  - ANACONDA_RELEASE=true
 
 matrix:
   exclude:
