@@ -59,6 +59,8 @@ LINKFLAGS="${LINKFLAGS} -L${LIBRARY_PATH}"
 #     export DFLAG="+2"
 # fi
 
+export DFLAGS="0"
+
 ./bootstrap.sh \
     --prefix="${PREFIX}" \
     --with-python="${PYTHON}" \
