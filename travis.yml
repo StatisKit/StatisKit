@@ -38,6 +38,7 @@ services:
   - docker
   
 env:
+  - CONDA_RECIPE=bin/conda/statiskit-stable
   - CONDA_RECIPE=bin/conda/statiskit-unstable
   - DOCKER_CONTEXT=bin/docker/linux-32
     DOCKER_CONTAINER=linux-32

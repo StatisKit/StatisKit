@@ -32,8 +32,10 @@ build:
   number: {{ environ.get('GIT_DESCRIBE_NUMBER', 0) }}
   features:
     - vc12                [win]
+    - {{ environ.get('CONDA_FEATURE', 'stable') }}
   track_features:
     - vc12                [win]
+    - {{ environ.get('CONDA_FEATURE', 'stable') }}
 
 requirements:
   build:

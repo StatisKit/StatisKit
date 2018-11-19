@@ -34,6 +34,10 @@ source:
 
 build:
   number: 0
+  features:
+    - {{ environ.get('CONDA_FEATURE', 'stable') }}
+  track_features:
+    - {{ environ.get('CONDA_FEATURE', 'stable') }}
 
 requirements:
   build:

@@ -9,6 +9,10 @@ source:
 
 build:
   number: {{ environ.get('GIT_DESCRIBE_NUMBER', 0) }}
+  features:
+      - {{ environ.get('CONDA_FEATURE', 'stable') }}
+  track_features:
+      - {{ environ.get('CONDA_FEATURE', 'stable') }}
 
 requirements:
   build:

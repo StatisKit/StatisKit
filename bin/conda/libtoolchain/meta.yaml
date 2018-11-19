@@ -28,11 +28,13 @@ package:
 build:
   number: {{ environ.get('GIT_DESCRIBE_NUMBER', 0) }}
   features:
-    - vc12                [win]
+    - vc14                 [win]
+    - {{ environ.get('CONDA_FEATURE', 'stable') }}
   track_features:
-    - vc12                 [win]
+    - vc14                 [win]
+    - {{ environ.get('CONDA_FEATURE', 'stable') }}
   run_exports:
-    - vs2013_runtime       [win]
+    - vs2015_runtime       [win]
 
 about:
   home: http://statiskit.rtfd.io/
@@ -54,5 +56,4 @@ requirements:
     - clangxx_osx-{{ ARCH }}      [osx]
     - gfortran_osx-{{ ARCH }}     [osx]
     - pywin32                     [win]
-    # - vs2015_runtime             [win]
-    - vs2013_runtime              [win]
+    - vs2015_runtime              [win]
