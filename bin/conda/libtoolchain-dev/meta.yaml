@@ -39,6 +39,6 @@ requirements:
   run:
     - python
     - libtoolchain
-    - python-autowig                                 [not win]
-    - python-clanglite                               [not win]
-    - python-clang                                   [not win]
+    # - python-autowig                                 [not win]
+    # - python-clanglite                               [not win]
+    # - python-clang                                   [not win]

@@ -61,7 +61,7 @@ environment:
     # - CONDA_RECIPE: bin\conda\libstatiskit
     # - CONDA_RECIPE: bin\conda\python-statiskit
     # - CONDA_RECIPE: bin\conda\statiskit
-    - ANACONDA_RELEASE: true
+    - ANACONDA_RELEASE: True
       
 install:
   - git clone https://github.com/StatisKit/appveyor-ci.git --depth=1

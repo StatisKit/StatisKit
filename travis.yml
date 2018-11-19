@@ -29,7 +29,7 @@ branches:
 language: cpp
 
 os:
-  # - linux
+  - linux
   - osx
 
 sudo: required
@@ -38,26 +38,26 @@ services:
   - docker
   
 env:
-  # - DOCKER_CONTEXT=bin/docker/linux-32
-  #   DOCKER_CONTAINER=linux-32
-  # - DOCKER_CONTEXT=bin/docker/linux-64
-  #   DOCKER_CONTAINER=linux-64
-  # - CONDA_RECIPE=bin/conda/python-scons
-  # - CONDA_RECIPE=bin/conda/scons-tools
-  # - CONDA_RECIPE=bin/conda/python-parse
-  # - CONDA_RECIPE=bin/conda/llvm-suite
-  # - CONDA_RECIPE=bin/conda/libtoolchain
-  # - CONDA_RECIPE=bin/conda/python-toolchain
+  - DOCKER_CONTEXT=bin/docker/linux-32
+    DOCKER_CONTAINER=linux-32
+  - DOCKER_CONTEXT=bin/docker/linux-64
+    DOCKER_CONTAINER=linux-64
+  - CONDA_RECIPE=bin/conda/python-scons
+  - CONDA_RECIPE=bin/conda/scons-tools
+  - CONDA_RECIPE=bin/conda/python-parse
+  - CONDA_RECIPE=bin/conda/llvm-suite
+  - CONDA_RECIPE=bin/conda/libtoolchain
+  - CONDA_RECIPE=bin/conda/python-toolchain
   - CONDA_RECIPE=bin/conda/boost-suite
-  #  TRAVIS_WAIT=25
+    TRAVIS_WAIT=25
   # - CONDA_RECIPE=share/git/ClangLite/bin/conda/llvm
   #   TRAVIS_WAIT=50
   # - CONDA_RECIPE=share/git/ClangLite/bin/conda/clang
   # - CONDA_RECIPE=share/git/ClangLite/bin/conda/libclanglite
   # - CONDA_RECIPE=share/git/ClangLite/bin/conda/python-clanglite
   # - CONDA_RECIPE=share/git/AutoWIG/bin/conda/python-autowig
-  # - CONDA_RECIPE=bin/conda/libtoolchain-dev
-  # - CONDA_RECIPE=share/git/devops-tools/bin/conda/devops-tools
+  - CONDA_RECIPE=bin/conda/libtoolchain-dev
+  - CONDA_RECIPE=share/git/devops-tools/bin/conda/devops-tools
   # - CONDA_RECIPE=share/git/STL/bin/conda/libstatiskit_stl-dev
   # - CONDA_RECIPE=share/git/STL/bin/conda/libstatiskit_stl
   # - CONDA_RECIPE=share/git/STL/bin/conda/python-statiskit_stl
@@ -73,7 +73,7 @@ env:
   # - CONDA_RECIPE=bin/conda/statiskit
   # - DOCKER_CONTEXT=bin/docker/statiskit
   #   DOCKER_CONTAINER=statiskit
-  # - ANACONDA_RELEASE=true
+  - ANACONDA_RELEASE=true
 
 matrix:
   exclude:
@@ -103,7 +103,11 @@ matrix:
     - os: osx
       env:
         CONDA_RECIPE=bin/conda/llvm-suite
-        
+    - os: osx
+      env:
+        CONDA_RECIPE=bin/conda/boost-suite
+        TRAVIS_WAIT=25
+
 install:
   - git clone https://github.com/StatisKit/travis-ci.git --depth=1
   - cd travis-ci
