@@ -38,6 +38,7 @@ services:
   - docker
   
 env:
+  - CONDA_RECIPE=bin/conda/statiskit-unstable
   - DOCKER_CONTEXT=bin/docker/linux-32
     DOCKER_CONTAINER=linux-32
   - DOCKER_CONTEXT=bin/docker/linux-64
@@ -56,8 +57,8 @@ env:
   # - CONDA_RECIPE=share/git/ClangLite/bin/conda/libclanglite
   # - CONDA_RECIPE=share/git/ClangLite/bin/conda/python-clanglite
   # - CONDA_RECIPE=share/git/AutoWIG/bin/conda/python-autowig
-  - CONDA_RECIPE=bin/conda/libtoolchain-dev
-  - CONDA_RECIPE=share/git/devops-tools/bin/conda/devops-tools
+  # - CONDA_RECIPE=bin/conda/libtoolchain-dev
+  # - CONDA_RECIPE=share/git/devops-tools/bin/conda/devops-tools
   # - CONDA_RECIPE=share/git/STL/bin/conda/libstatiskit_stl-dev
   # - CONDA_RECIPE=share/git/STL/bin/conda/libstatiskit_stl
   # - CONDA_RECIPE=share/git/STL/bin/conda/python-statiskit_stl
