@@ -64,6 +64,7 @@ export DFLAGS="0"
 ./bootstrap.sh \
     --prefix="${PREFIX}" \
     --with-python="${PYTHON}" \
+    --without-libraries=system \
     --with-python-root="${PREFIX} : ${PREFIX}/include/python${PY_VER}m ${PREFIX}/include/python${PY_VER}" \
     --with-icu="${PREFIX}" \
     | tee bootstrap.log 2>&1
