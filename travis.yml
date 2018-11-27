@@ -32,6 +32,8 @@ os:
   - linux
   - osx
 
+osx_image: xcode10
+
 sudo: required
 
 services:
