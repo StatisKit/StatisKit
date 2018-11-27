@@ -24,15 +24,8 @@
 branches:
   except:
   - doc
-  - win
   
 language: cpp
-
-os:
-  - linux
-  - osx
-
-osx_image: xcode8.3
 
 sudo: required
 
@@ -40,20 +33,20 @@ services:
   - docker
   
 env:
-  - CONDA_RECIPE=bin/conda/statiskit-stable
-  - CONDA_RECIPE=bin/conda/statiskit-unstable
-  - DOCKER_CONTEXT=bin/docker/linux-32
-    DOCKER_CONTAINER=linux-32
-  - DOCKER_CONTEXT=bin/docker/linux-64
-    DOCKER_CONTAINER=linux-64
-  - CONDA_RECIPE=bin/conda/python-scons
-  - CONDA_RECIPE=bin/conda/scons-tools
-  - CONDA_RECIPE=bin/conda/python-parse
-  - CONDA_RECIPE=bin/conda/llvm-suite
-  - CONDA_RECIPE=bin/conda/libtoolchain
-  - CONDA_RECIPE=bin/conda/python-toolchain
+  # - CONDA_RECIPE=bin/conda/statiskit-stable
+  # - CONDA_RECIPE=bin/conda/statiskit-unstable
+  # - DOCKER_CONTEXT=bin/docker/linux-32
+  #   DOCKER_CONTAINER=linux-32
+  # - DOCKER_CONTEXT=bin/docker/linux-64
+  #   DOCKER_CONTAINER=linux-64
+  # - CONDA_RECIPE=bin/conda/python-scons
+  # - CONDA_RECIPE=bin/conda/scons-tools
+  # - CONDA_RECIPE=bin/conda/python-parse
+  # - CONDA_RECIPE=bin/conda/llvm-suite
+  # - CONDA_RECIPE=bin/conda/libtoolchain
+  # - CONDA_RECIPE=bin/conda/python-toolchain
   - CONDA_RECIPE=bin/conda/boost-suite
-    TRAVIS_WAIT=25
+    TRAVIS_WAIT=30
   # - CONDA_RECIPE=share/git/ClangLite/bin/conda/llvm
   #   TRAVIS_WAIT=50
   # - CONDA_RECIPE=share/git/ClangLite/bin/conda/clang
@@ -80,6 +73,12 @@ env:
   - ANACONDA_RELEASE=true
 
 matrix:
+  include:
+    - os: linux
+      dist: precise
+    - os: osx
+      osx_image: xcode8.3
+    - os: windows
   exclude:
     - os: osx
       env:
@@ -110,7 +109,7 @@ matrix:
     - os: osx
       env:
         CONDA_RECIPE=bin/conda/boost-suite
-        TRAVIS_WAIT=25
+        TRAVIS_WAIT=30
 
 install:
   - git clone https://github.com/StatisKit/travis-ci.git --depth=1
