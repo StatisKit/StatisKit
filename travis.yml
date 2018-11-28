@@ -76,9 +76,15 @@ matrix:
   include:
     # - os: linux
     #   dist: precise
-    # - os: osx
-    #   osx_image: xcode8.3
+    #   env:
+    #     EXT=sh
+    - os: osx
+      osx_image: xcode8.3
+      env:
+        EXT=sh
     - os: windows
+      env:
+        EXT=bat
   exclude:
     - os: osx
       env:
@@ -114,37 +120,32 @@ matrix:
 install:
   - git clone https://github.com/StatisKit/travis-ci.git --depth=1
   - cd travis-ci
-  - if [[ "${TRAVIS_OS_NAME}" = "windows" ]]; then
-      export EXT=bat;
-    else
-      export EXT=sh;
-    fi
   - ./install.${EXT}
 
 before_script:
-  - source before_script.sh
+  - ./before_script.${EXT}
 
 script:
-  - source script.sh
+  - ./script.${EXT}
 
 after_success:
-  - source after_success.sh
+  - ./after_success.${EXT}
 
 after_failure:
-  - source after_failure.sh
+  - ./after_failure.${EXT}
 
 before_deploy:
-  - source before_deploy.sh
+  - ./before_deploy.${EXT}
 
 deploy:
   skip_cleanup: true
   provider: script
   on:
       all_branches: true
-  script: bash deploy_script.sh
+  script: ./deploy_script.${EXT}
 
 after_deploy:
-  - source after_deploy.sh
+  - ./after_deploy.${EXT}
 
 after_script:
-  - source after_script.sh
+  - ./after_script.${EXT}
