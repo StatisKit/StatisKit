@@ -70,7 +70,7 @@ env:
   # - CONDA_RECIPE=bin/conda/statiskit
   # - DOCKER_CONTEXT=bin/docker/statiskit
   #   DOCKER_CONTAINER=statiskit
-  - ANACONDA_RELEASE=true
+  # - ANACONDA_RELEASE=true
 
 matrix:
   include:
