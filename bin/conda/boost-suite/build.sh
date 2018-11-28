@@ -59,7 +59,7 @@ LINKFLAGS="${LINKFLAGS} -L${LIBRARY_PATH}"
 #     export DFLAG="+2"
 # fi
 
-export DFLAGS="0"
+export DFLAGS="1"
 
 ./bootstrap.sh \
     --prefix="${PREFIX}" \
