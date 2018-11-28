@@ -10,7 +10,7 @@ doc/_static
 *.egg-info
 build
 .sconsign.dblite
-*.sublime-workspace
+*.sublime-*
 travis_build.sh
 travis_job_*.sh
 travis-ci

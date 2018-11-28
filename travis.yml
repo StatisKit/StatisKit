@@ -33,7 +33,7 @@ services:
   - docker
   
 env:
-  # - CONDA_RECIPE=bin/conda/statiskit-stable
+  - CONDA_RECIPE=bin/conda/statiskit-stable
   # - CONDA_RECIPE=bin/conda/statiskit-unstable
   # - DOCKER_CONTEXT=bin/docker/linux-32
   #   DOCKER_CONTAINER=linux-32
@@ -45,8 +45,8 @@ env:
   # - CONDA_RECIPE=bin/conda/llvm-suite
   # - CONDA_RECIPE=bin/conda/libtoolchain
   # - CONDA_RECIPE=bin/conda/python-toolchain
-  - CONDA_RECIPE=bin/conda/boost-suite
-  #    TRAVIS_WAIT=30
+  # - CONDA_RECIPE=bin/conda/boost-suite
+  #   TRAVIS_WAIT=30
   # - CONDA_RECIPE=share/git/ClangLite/bin/conda/llvm
   #   TRAVIS_WAIT=50
   # - CONDA_RECIPE=share/git/ClangLite/bin/conda/clang
@@ -76,8 +76,8 @@ matrix:
   include:
     # - os: linux
     #   dist: precise
-    - os: osx
-      osx_image: xcode8.3
+    # - os: osx
+    #   osx_image: xcode8.3
     - os: windows
   exclude:
     - os: osx
