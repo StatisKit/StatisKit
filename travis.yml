@@ -114,7 +114,12 @@ matrix:
 install:
   - git clone https://github.com/StatisKit/travis-ci.git --depth=1
   - cd travis-ci
-  - source install.sh
+  - if [[ "${TRAVIS_OS_NAME}" = "windows" ]]; then
+      export EXT=bat;
+    else
+      export EXT=sh;
+    fi
+  - ./install.${EXT}
 
 before_script:
   - source before_script.sh
