@@ -74,8 +74,8 @@ env:
 
 matrix:
   include:
-    # - os: linux
-    #   dist: precise
+    - os: linux
+      dist: precise
     - os: osx
       osx_image: xcode8.3
     - os: windows
