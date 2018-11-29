@@ -76,15 +76,9 @@ matrix:
   include:
     # - os: linux
     #   dist: precise
-    #   env:
-    #     EXT=sh
     - os: osx
       osx_image: xcode8.3
-      env:
-        EXT=sh
     - os: windows
-      env:
-        EXT=bat
   exclude:
     - os: osx
       env:
@@ -117,35 +111,39 @@ matrix:
         CONDA_RECIPE=bin/conda/boost-suite
         TRAVIS_WAIT=30
 
-install:
+before_install:
   - git clone https://github.com/StatisKit/travis-ci.git --depth=1
   - cd travis-ci
-  - ./install.${EXT}
+  - python before_install.py
+  - ./before_install
+
+install:
+  - ./install
 
 before_script:
-  - ./before_script.${EXT}
+  - ./before_script
 
 script:
-  - ./script.${EXT}
+  - ./script
 
 after_success:
-  - ./after_success.${EXT}
+  - ./after_success
 
 after_failure:
-  - ./after_failure.${EXT}
+  - ./after_failure
 
 before_deploy:
-  - ./before_deploy.${EXT}
+  - ./before_deploy
 
 deploy:
   skip_cleanup: true
   provider: script
   on:
       all_branches: true
-  script: ./deploy_script.${EXT}
+  script: ./deploy_script
 
 after_deploy:
-  - ./after_deploy.${EXT}
+  - ./after_deploy
 
 after_script:
-  - ./after_script.${EXT}
+  - ./after_script
