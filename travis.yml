@@ -114,7 +114,7 @@ matrix:
 before_install:
   - git clone https://github.com/StatisKit/travis-ci.git --depth=1
   - cd travis-ci
-  - python before_install.py
+  - ./before_install
 
 install:
   - ./install
