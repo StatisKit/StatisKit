@@ -8,6 +8,11 @@ build:
         - {{ environ.get('CONDA_FEATURE', 'stable') }}
     track_features:
         - stable
+
+requirements:
+    build:
+        - libarchive [win]
+        
 about:
     home: http://statiskit.readthedocs.io/
     license: Apache License 2.0
