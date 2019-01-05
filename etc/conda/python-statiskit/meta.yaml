@@ -1,5 +1,5 @@
 package:
-  name: statiskit 
+  name: python-statiskit 
   version: {{ GIT_DESCRIBE_TAG }}
 
 build:
