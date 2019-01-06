@@ -16,6 +16,7 @@ requirements:
     - libtoolchain-dev
     - python-toolchain
     - autowig-toolchain
+    - devops-tools
     - libstatiskit_stl-dev
     - libstatiskit_linalg-dev
     - libstatiskit_core-dev
@@ -26,6 +27,7 @@ requirements:
     - {{ pin_compatible('libtoolchain-dev', min_pin='x.x', max_pin='x.x') }}
     - {{ pin_compatible('python-toolchain', min_pin='x.x', max_pin='x.x') }}
     - {{ pin_compatible('autowig-toolchain', min_pin='x.x', max_pin='x.x') }}
+    - {{ pin_compatible('devops-tools', min_pin='x.x', max_pin='x.x') }}
     - {{ pin_compatible('libstatiskit_stl-dev', min_pin='x.x', max_pin='x.x') }}
     - {{ pin_compatible('libstatiskit_linalg-dev', min_pin='x.x', max_pin='x.x') }}
     - {{ pin_compatible('libstatiskit_core-dev', min_pin='x.x', max_pin='x.x') }}
