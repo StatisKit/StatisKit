@@ -44,16 +44,19 @@ dist: trusty
 osx_image: xcode8.3
 
 env:
-  - DOCKER_CONTEXT=bin/docker/linux-32
-    DOCKER_CONTAINER=linux-32
-  - DOCKER_CONTEXT=bin/docker/linux-64
-    DOCKER_CONTAINER=linux-64
-  - CONDA_RECIPE=etc/conda/python-statiskit
-  - CONDA_RECIPE=etc/conda/statiskit-toolchain
-  - DOCKER_CONTEXT=bin/docker/python-statiskit
-    DOCKER_CONTAINER=python-statiskit
-  - DOCKER_CONTEXT=bin/docker/statiskit-toolchain
-    DOCKER_CONTAINER=statiskit-toolchain
+  global:
+    - ANACONDA_CHANNEL=release
+  matrix:
+    - DOCKER_CONTEXT=bin/docker/linux-32
+      DOCKER_CONTAINER=linux-32
+    - DOCKER_CONTEXT=bin/docker/linux-64
+      DOCKER_CONTAINER=linux-64
+    - CONDA_RECIPE=etc/conda/python-statiskit
+    - CONDA_RECIPE=etc/conda/statiskit-toolchain
+    - DOCKER_CONTEXT=bin/docker/python-statiskit
+      DOCKER_CONTAINER=python-statiskit
+    - DOCKER_CONTEXT=bin/docker/statiskit-toolchain
+      DOCKER_CONTAINER=statiskit-toolchain
 
 matrix:
   exclude:
