@@ -45,7 +45,7 @@ osx_image: xcode8.3
 
 env:
   global:
-    - ANACONDA_CHANNEL=release
+    - ANACONDA_LABEL=release
   matrix:
     - DOCKER_CONTEXT=bin/docker/linux-32
       DOCKER_CONTAINER=linux-32
