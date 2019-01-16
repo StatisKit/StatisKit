@@ -59,28 +59,12 @@ matrix:
   exclude:
     - os: osx
       env:
-        DOCKER_CONTEXT=bin/docker/linux-32
-        DOCKER_CONTAINER=linux-32
-    - os: osx
-      env:
-        DOCKER_CONTEXT=bin/docker/linux-64
-        DOCKER_CONTAINER=linux-64
-    - os: osx
-      env:
         DOCKER_CONTEXT=bin/docker/python-statiskit
         DOCKER_CONTAINER=python-statiskit
     - os: osx
       env:
         DOCKER_CONTEXT=bin/docker/statiskit-toolchain
         DOCKER_CONTAINER=statiskit-toolchain
-    - os: windows
-      env:
-        DOCKER_CONTEXT=bin/docker/linux-32
-        DOCKER_CONTAINER=linux-32
-    - os: windows
-      env:
-        DOCKER_CONTEXT=bin/docker/linux-64
-        DOCKER_CONTAINER=linux-64
     - os: windows
       env:
         DOCKER_CONTEXT=bin/docker/python-statiskit
