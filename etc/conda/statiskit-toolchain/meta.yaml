@@ -23,6 +23,8 @@ requirements:
     # - libstatiskit_glm-dev
     # - python-statiskit
   run:
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
     - {{ pin_compatible('libtoolchain', min_pin='x.x', max_pin='x.x') }}
     - {{ pin_compatible('libtoolchain-dev', min_pin='x.x', max_pin='x.x') }}
     - {{ pin_compatible('python-toolchain', min_pin='x.x', max_pin='x.x') }}
