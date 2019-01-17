@@ -49,9 +49,9 @@ env:
   matrix:
     # - CONDA_RECIPE=etc/conda/python-statiskit
     - CONDA_RECIPE=etc/conda/statiskit-toolchain
-    # - DOCKER_CONTEXT=bin/docker/python-statiskit
+    # - DOCKER_CONTEXT=etc/docker/python-statiskit
     #   DOCKER_CONTAINER=python-statiskit
-    - DOCKER_CONTEXT=bin/docker/statiskit-toolchain
+    - DOCKER_CONTEXT=etc/docker/statiskit-toolchain
       DOCKER_CONTAINER=statiskit-toolchain
     - ANACONDA_RELEASE=true
 
@@ -59,19 +59,19 @@ matrix:
   exclude:
     - os: osx
       env:
-        DOCKER_CONTEXT=bin/docker/python-statiskit
+        DOCKER_CONTEXT=etc/docker/python-statiskit
         DOCKER_CONTAINER=python-statiskit
     - os: osx
       env:
-        DOCKER_CONTEXT=bin/docker/statiskit-toolchain
+        DOCKER_CONTEXT=etc/docker/statiskit-toolchain
         DOCKER_CONTAINER=statiskit-toolchain
     - os: windows
       env:
-        DOCKER_CONTEXT=bin/docker/python-statiskit
+        DOCKER_CONTEXT=etc/docker/python-statiskit
         DOCKER_CONTAINER=python-statiskit
     - os: windows
       env:
-        DOCKER_CONTEXT=bin/docker/statiskit-toolchain
+        DOCKER_CONTEXT=etc/docker/statiskit-toolchain
         DOCKER_CONTAINER=statiskit-toolchain
 
 before_install:
