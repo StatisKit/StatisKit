@@ -47,27 +47,16 @@ env:
   global:
     - ANACONDA_LABEL=release
   matrix:
-    - DOCKER_CONTEXT=bin/docker/linux-32
-      DOCKER_CONTAINER=linux-32
-    - DOCKER_CONTEXT=bin/docker/linux-64
-      DOCKER_CONTAINER=linux-64
-    - CONDA_RECIPE=etc/conda/python-statiskit
+    # - CONDA_RECIPE=etc/conda/python-statiskit
     - CONDA_RECIPE=etc/conda/statiskit-toolchain
-    - DOCKER_CONTEXT=bin/docker/python-statiskit
-      DOCKER_CONTAINER=python-statiskit
+    # - DOCKER_CONTEXT=bin/docker/python-statiskit
+    #   DOCKER_CONTAINER=python-statiskit
     - DOCKER_CONTEXT=bin/docker/statiskit-toolchain
       DOCKER_CONTAINER=statiskit-toolchain
+    - ANACONDA_RELEASE=true
 
 matrix:
   exclude:
-    - os: osx
-      env:
-        DOCKER_CONTEXT=bin/docker/linux-32
-        DOCKER_CONTAINER=linux-32
-    - os: osx
-      env:
-        DOCKER_CONTEXT=bin/docker/linux-64
-        DOCKER_CONTAINER=linux-64
     - os: osx
       env:
         DOCKER_CONTEXT=bin/docker/python-statiskit
@@ -76,14 +65,6 @@ matrix:
       env:
         DOCKER_CONTEXT=bin/docker/statiskit-toolchain
         DOCKER_CONTAINER=statiskit-toolchain
-    - os: windows
-      env:
-        DOCKER_CONTEXT=bin/docker/linux-32
-        DOCKER_CONTAINER=linux-32
-    - os: windows
-      env:
-        DOCKER_CONTEXT=bin/docker/linux-64
-        DOCKER_CONTAINER=linux-64
     - os: windows
       env:
         DOCKER_CONTEXT=bin/docker/python-statiskit
