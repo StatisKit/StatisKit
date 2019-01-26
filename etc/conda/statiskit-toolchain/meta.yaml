@@ -1,9 +1,9 @@
 package:
-  name: statiskit-dev
-  version: {{ GIT_DESCRIBE_TAG }}
+  name: statiskit-toolchain
+  version: {{ DATETIME_DESCRIBE_TAG }}
 
 build:
-  number: {{ GIT_DESCRIBE_NUMBER }}
+  number: {{ DATETIME_DESCRIBE_NUMBER }}
 
 about:
   home: http://statiskit.readthedocs.io/
@@ -25,13 +25,13 @@ requirements:
   run:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    - {{ pin_compatible('libtoolchain', min_pin='x.x', max_pin='x.x') }}
-    - {{ pin_compatible('libtoolchain-dev', min_pin='x.x', max_pin='x.x') }}
-    - {{ pin_compatible('python-toolchain', min_pin='x.x', max_pin='x.x') }}
-    - {{ pin_compatible('autowig-toolchain', min_pin='x.x', max_pin='x.x') }}
-    - {{ pin_compatible('devops-tools', min_pin='x.x', max_pin='x.x') }}
-    # - {{ pin_compatible('libstatiskit_stl-dev', min_pin='x.x', max_pin='x.x') }}
-    # - {{ pin_compatible('libstatiskit_linalg-dev', min_pin='x.x', max_pin='x.x') }}
-    # - {{ pin_compatible('libstatiskit_core-dev', min_pin='x.x', max_pin='x.x') }}
-    # - {{ pin_compatible('libstatiskit_glm-dev', min_pin='x.x', max_pin='x.x') }}
-    # - {{ pin_compatible('python-statiskit', min_pin='x.x', max_pin='x.x') }}
+    - {{ pin_compatible('libtoolchain', exact=True) }}
+    - {{ pin_compatible('libtoolchain-dev', exact=True) }}
+    - {{ pin_compatible('python-toolchain', exact=True) }}
+    - {{ pin_compatible('autowig-toolchain', exact=True) }}
+    - {{ pin_compatible('devops-tools', exact=True) }}
+    # - {{ pin_compatible('libstatiskit_stl-dev', exact=True) }}
+    # - {{ pin_compatible('libstatiskit_linalg-dev', exact=True) }}
+    # - {{ pin_compatible('libstatiskit_core-dev', exact=True) }}
+    # - {{ pin_compatible('libstatiskit_glm-dev', exact=True) }}
+    # - {{ pin_compatible('python-statiskit', exact=True) }}
