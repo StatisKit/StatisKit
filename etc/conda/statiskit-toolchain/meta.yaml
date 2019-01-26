@@ -1,6 +1,6 @@
 package:
   name: statiskit-toolchain
-  version: {{ DATETIME_DESCRIBE_TAG }}
+  version: {{ DATETIME_DESCRIBE_VERSION }}
 
 build:
   number: {{ DATETIME_DESCRIBE_NUMBER }}

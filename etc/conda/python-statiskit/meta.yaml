@@ -1,6 +1,6 @@
 package:
   name: python-statiskit 
-  version: {{ DATETIME_DESCRIBE_TAG }}
+  version: {{ DATETIME_DESCRIBE_VERSION }}
 
 build:
   number: {{ DATETIME_DESCRIBE_NUMBER }}
