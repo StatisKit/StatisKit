@@ -12,11 +12,11 @@ However, here is the current structure emerging from actual repositories
 +====================================+====================================================================================================+
 | :code:`/`                          | Repository root directory                                                                          |
 +------------------------------------+----------------------------------------------------------------------------------------------------+
-| :code:`/bin`                       | Essential files that need to be available for maintainers                                          |
+| :code:`/etc`                       | Essential files that need to be available for maintainers                                          |
 +------------------------------------+----------------------------------------------------------------------------------------------------+
-| :code:`/bin/conda`                 | **Conda** recipes for generating **Conda** binaries                                                |
+| :code:`/etc/conda`                 | **Conda** recipes for generating **Conda** binaries                                                |
 +------------------------------------+----------------------------------------------------------------------------------------------------+
-| :code:`/bin/docker`                | **Docker** contexts for generating **Docker** images                                               |
+| :code:`/etc/docker`                | **Docker** contexts for generating **Docker** images                                               |
 +------------------------------------+----------------------------------------------------------------------------------------------------+
 | :code:`/doc`                       | Essential files that need to be available for documenters                                          |
 +------------------------------------+----------------------------------------------------------------------------------------------------+
