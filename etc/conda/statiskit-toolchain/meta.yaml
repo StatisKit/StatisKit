@@ -10,7 +10,7 @@ about:
   license: Apache License 2.0
   summary: A meta-package containing all components of the StatisKit software suite and toolchains used to develop them
 
-requirements:
+requirements: 
   host:
     - libtoolchain
     - libtoolchain-dev
