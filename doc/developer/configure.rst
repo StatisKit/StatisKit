@@ -34,18 +34,48 @@ To do so, type the following command line
   
 .. code-block:: console
 
-   conda create -n statiskit statiskit -c statiskit/label/develop -c statiskit -c defaults --override-channels
+   conda create -n statiskit-toolchain statiskit-toolchain -c statiskit -c defaults --override-channels
 
 .. warning::
 
-   On Windows OSes you must first download and install **Visual Studio Community 2013** (available on this `page <https://www.visualstudio.com/vs/older-downloads/>`_).
+   On:
+
+   * Windows OSes, you must first download and install **Visual Studio Community 2017** (available on this `page <https://visualstudio.microsoft.com/downloads/>`_).
+     Then, you need to download this :code:`conda_build_config.yaml` `file <https://raw.githubusercontent.com/StatisKit/travis-ci/master/conda_build_config.yaml>`_ and put in your home folder.
+     This can be done using the following command line
+
+     .. code-block:: console
+
+        curl https://raw.githubusercontent.com/StatisKit/travis-ci/master/conda_build_config.yaml -o %USERPROFILE%\conda_build_config.yaml
+
+     .. warning::
+
+       if **Curl** is not installed, you can install it in the :code:`base` conda environment using the following command lines
+       
+       .. code-block:: console   
+
+         conda activate
+         conda install curl -y
+
+   * Mac OSes, you must first download and install **macOS 10.9 SDK**.
+     This can be done using the following command lines
+
+     .. code-block:: console
+
+       git clone https://github.com/phracker/MacOSX-SDKs.git --depth=1
+       sudo cp -r MacOSX-SDKs/MacOSX10.9.sdk /opt/MacOSX10.9.sdk
+       rm -rf MacOSX-SDKs
+
+     Then, you need to download this :code:`conda_build_config.yaml` `file <https://raw.githubusercontent.com/StatisKit/travis-ci/master/conda_build_config.yaml>`_and put in your home folder.
+     This can be done using the following command line
+
+     .. code-block:: console
+
+        curl https://raw.githubusercontent.com/StatisKit/travis-ci/master/conda_build_config.yaml -o ${HOME}/conda_build_config.yaml
+
 
 Then, to activate the :code:`statiskit` environment for each build of **StatisKit** software suite components, type the following command line
 
 .. code-block:: console
 
-  conda activate statiskit
-
-.. note::
-
-   If you want a fine grained configuration, report to the :ref:`section-developer-faq` section.
+  conda activate statiskit-toolchain

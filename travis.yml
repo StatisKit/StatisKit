@@ -23,7 +23,7 @@
 
 branches:
   except:
-  - doc
+  - doc/*
   
 language: cpp
 
