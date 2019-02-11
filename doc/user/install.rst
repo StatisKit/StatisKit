@@ -48,32 +48,38 @@ Installers for:
     We recommend to:
     
     * Follow the instructions given for the regular installation.
-    * Install **Miniconda** if you are only interested by **Statiskit**.
+    * Install **Miniconda** if you are only interested by **StatisKit**.
+    * Install **Conda** from :code:`.pkg` installer on **Mac Os X**.
     * Install **Miniconda 3** or **Anaconda 3** since the supported version of **Statiskit** is based on *Python 3*. 
 
 .. _section-user-install-recommanded:
 
-Recommanded Installations
-=========================
+.. warning::
 
-The recommended installations rely on **Conda** meta-packages.
-If all interfaces need to be installed, type the following command lines
+  From that point on, any command line should be typed 
+
+  * For **Windows** users, in the **Anaconda Prompt** console that is available in the **Windows** start menu.
+  * For **Unix** users, in your favorite **Terminal** configured to use **Conda**.
+    To do so, for **Linux** users, it can be required to type the following command line
+
+    .. code-block:: console
+
+      echo ". <CONDA_PREFIX>/etc/profile.d/conda.sh" >> ~/.bashrc  
+
+    where :code:`<CONDA_PREFIX>` must be replaced by the path where **Conda** has been installed.
+
+Recommanded Installation
+========================
+
+The recommended installation rely on a **Conda** meta-package.
+To install the *Python* interface, type the following command lines
 
 .. code-block:: console
 
-  conda activate
-  conda create -n statiskit statiskit -c statiskit -c defaults --override-channels
+  conda create -n python-statiskit python-statiskit -c statiskit -c defaults --override-channels
 
-Then, to activate the :code:`statiskit` environment, type the following command line
+Then, to activate the :code:`python-statiskit` environment, type the following command line
 
 .. code-block:: console
 
-  conda activate statiskit
-
-Otherwise, choose an interface and proceed as detailed in the corresponding section:
-
-.. toctree::
-    :maxdepth: 1
-
-    API/cpp
-    API/python
+  conda activate python-statiskit
