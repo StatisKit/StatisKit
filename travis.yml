@@ -23,7 +23,7 @@
 
 branches:
   except:
-  - doc/*
+  - doc/.*
   
 language: cpp
 
@@ -50,7 +50,6 @@ env:
     - ANACONDA_RELEASE=start
     # - CONDA_RECIPE=etc/conda/python-statiskit
     - CONDA_RECIPE=etc/conda/statiskit-toolchain
-    - ANACONDA_RELEASE=finish
     # - DOCKER_CONTEXT=etc/docker/python-statiskit
     #   DOCKER_CONTAINER=python-statiskit
     - DOCKER_CONTEXT=etc/docker/statiskit-toolchain
