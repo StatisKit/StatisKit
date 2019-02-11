@@ -40,6 +40,7 @@ We usually install this SDK at /opt/MacOSX10.9.sdk but you may install it anywhe
 
 Edit your conda_build_config.yaml file to point to it, like this:
 
+
 CONDA_BUILD_SYSROOT:
   - /opt/MacOSX10.9.sdk        # [osx]
 At Anaconda we have this configuration setting in a centralized conda_build_config.yaml at the root of our recipe repository. Since we run build commands from that location, the file and the setting are used for all recipes.
