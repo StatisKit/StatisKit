@@ -55,7 +55,9 @@ env:
     #   DOCKER_CONTAINER=python-statiskit
     - DOCKER_CONTEXT=etc/docker/statiskit-toolchain
       DOCKER_CONTAINER=statiskit-toolchain
-      
+    - ANACONDA_RELEASE=finish
+
+matrix:
   exclude:
     - os: osx
       env:
