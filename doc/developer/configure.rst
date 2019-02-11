@@ -48,24 +48,24 @@ Moreover, for
     sudo cp -r MacOSX-SDKs/MacOSX10.9.sdk /opt/MacOSX10.9.sdk
     rm -rf MacOSX-SDKs
 
- Then, you need to download this :code:`conda_build_config.yaml` `file <https://raw.githubusercontent.com/StatisKit/travis-ci/master/conda_build_config.yaml>`_ and put in your home folder.
-To do so, 
+.. Then, you need to download this :code:`conda_build_config.yaml` `file <https://raw.githubusercontent.com/StatisKit/travis-ci/master/conda_build_config.yaml>`_ and put in your home folder.
+.. To do so, 
 
-* **Windows** users should type the following command lines.
+.. * **Windows** users should type the following command lines.
 
-  .. code-block:: console
+..   .. code-block:: console
     
-    curl https://raw.githubusercontent.com/StatisKit/travis-ci/master/conda_build_config.yaml -o %USERPROFILE%\conda_build_config.yaml
+..     curl https://raw.githubusercontent.com/StatisKit/travis-ci/master/conda_build_config.yaml -o %USERPROFILE%\conda_build_config.yaml
 
-* **Unix** users should type the following command lines
+.. * **Unix** users should type the following command lines
 
-  .. code-block:: console
+..   .. code-block:: console
     
-    curl https://raw.githubusercontent.com/StatisKit/travis-ci/master/conda_build_config.yaml -o ${HOME}\conda_build_config.yaml
+..     curl https://raw.githubusercontent.com/StatisKit/travis-ci/master/conda_build_config.yaml -o ${HOME}\conda_build_config.yaml
 
-For conveniance, you can put this file into another directory.
-To do so, move it manually and update your conda configuration file accordingly.
-For more information, refer to this `page <https://docs.conda.io/projects/conda-build/en/latest/source/variants.html?highlight=variants#creating-conda-build-variant-config-files>`_.
+.. For conveniance, you can put this file into another directory.
+.. To do so, move it manually and update your conda configuration file accordingly.
+.. For more information, refer to this `page <https://docs.conda.io/projects/conda-build/en/latest/source/variants.html?highlight=variants#creating-conda-build-variant-config-files>`_.
 
 .. warning::
 
