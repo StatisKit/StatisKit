@@ -61,7 +61,7 @@ matrix:
   exclude:
     - os: osx
       env:
-        CONDA_RECIPE=etc/docker/libstatiskit-wig
+        CONDA_RECIPE=etc/conda/libstatiskit-wig
     - os: osx
       env:
         DOCKER_CONTEXT=etc/docker/python-statiskit
@@ -72,7 +72,7 @@ matrix:
         DOCKER_CONTAINER=statiskit-toolchain
     - os: windows
       env:
-        CONDA_RECIPE=etc/docker/libstatiskit-wig
+        CONDA_RECIPE=etc/conda/libstatiskit-wig
     - os: windows
       env:
         DOCKER_CONTEXT=etc/docker/python-statiskit
