@@ -1,0 +1,27 @@
+package:
+  name: libstatiskit-dev
+  version: {{ DATETIME_DESCRIBE_VERSION }}
+
+build:
+  number: {{ DATETIME_DESCRIBE_NUMBER }}
+
+about:
+  home: http://statiskit.readthedocs.io/
+  license: Apache License 2.0
+  summary: A meta-package containing all C++ headers of the StatisKit software suite
+
+requirements:
+  host:
+    - libstatiskit_stl-dev
+    - libstatiskit_linalg-dev
+    # - libstatiskit_core-dev
+    # - libstatiskit_glm-dev
+    # - libstatiskit_pgm-dev
+  run:
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+    - {{ pin_compatible('libstatiskit_stl-dev', exact=True) }}
+    - {{ pin_compatible('libstatiskit_linalg-dev', exact=True) }}
+    # - {{ pin_compatible('libstatiskit_core-dev', exact=True) }}
+    # - {{ pin_compatible('libstatiskit_glm-dev', exact=True) }}
+    # - {{ pin_compatible('libstatiskit_pgm-dev', exact=True) }}

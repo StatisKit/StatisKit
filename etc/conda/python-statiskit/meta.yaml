@@ -8,19 +8,19 @@ build:
 about:
   home: http://statiskit.readthedocs.io/
   license: Apache License 2.0
-  summary: A meta-package containing all components of the StatisKit software suite
+  summary: A meta-package containing all Python packages of the StatisKit software suite
 
 requirements:
   host:
     - python-statiskit_stl
     - python-statiskit_linalg
-    - python-statiskit_core
-    - python-statiskit_glm
+    # - python-statiskit_core
+    # - python-statiskit_glm
   run:
     - {{ pin_compatible('python-statiskit_stl', exact=True) }}
     - {{ pin_compatible('python-statiskit_linalg', exact=True) }}
-    - {{ pin_compatible('python-statiskit_core', exact=True) }}
-    - {{ pin_compatible('python-statiskit_glm', exact=True) }}
+    # - {{ pin_compatible('python-statiskit_core', exact=True) }}
+    # - {{ pin_compatible('python-statiskit_glm', exact=True) }}
     - python
     - ipython
     - jupyter

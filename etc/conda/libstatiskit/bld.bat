@@ -25,11 +25,11 @@ echo ON
 
 if not exist %PREFIX%\etc\conda\activate.d mkdir %PREFIX%\etc\conda\activate.d
 if errorlevel 1 exit 1
-copy %RECIPE_DIR%\activate.bat %PREFIX%\etc\conda\activate.d\python-statiskit_vars.bat
+copy %RECIPE_DIR%\activate.bat %PREFIX%\etc\conda\activate.d\libstatiskit_vars.bat
 
 if not exist %PREFIX%\etc\conda\deactivate.d mkdir %PREFIX%\etc\conda\deactivate.d
 if errorlevel 1 exit 1
-copy %RECIPE_DIR%\deactivate.bat %PREFIX%\etc\conda\deactivate.d\python-statiskit_vars.bat
+copy %RECIPE_DIR%\deactivate.bat %PREFIX%\etc\conda\deactivate.d\libstatiskit_vars.bat
 
 
 echo OFF

@@ -1,0 +1,27 @@
+package:
+  name: libstatiskit-wig
+  version: {{ DATETIME_DESCRIBE_VERSION }}
+
+build:
+  number: {{ DATETIME_DESCRIBE_NUMBER }}
+
+about:
+  home: http://statiskit.readthedocs.io/
+  license: Apache License 2.0
+  summary: A meta-package containing all C++ headers of the StatisKit software suite
+
+requirements:
+  host:
+    - libstatiskit_stl-wig
+    - libstatiskit_linalg-wig
+    # - libstatiskit_core-wig
+    # - libstatiskit_glm-wig
+    # - libstatiskit_pgm-wig
+  run:
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+    - {{ pin_compatible('libstatiskit_stl-wig', exact=True) }}
+    - {{ pin_compatible('libstatiskit_linalg-wig', exact=True) }}
+    # - {{ pin_compatible('libstatiskit_core-wig', exact=True) }}
+    # - {{ pin_compatible('libstatiskit_glm-wig', exact=True) }}
+    # - {{ pin_compatible('libstatiskit_pgm-wig', exact=True) }}

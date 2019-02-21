@@ -12,26 +12,22 @@ about:
 
 requirements: 
   host:
-    - libtoolchain
     - libtoolchain-dev
+    - libstatiskit-dev
+    - libtoolchain
+    - libstatiskit
     - python-toolchain
+    - python-statiskit
     - autowig-toolchain
+    - libstatiskit-wig                                       # [linux]
     - devops-tools
-    # - libstatiskit_stl-dev
-    # - libstatiskit_linalg-dev
-    # - libstatiskit_core-dev
-    # - libstatiskit_glm-dev
-    # - python-statiskit
   run:
-    - {{ compiler('c') }}
-    - {{ compiler('cxx') }}
-    - {{ pin_compatible('libtoolchain', exact=True) }}
     - {{ pin_compatible('libtoolchain-dev', exact=True) }}
+    - {{ pin_compatible('libstatiskit-dev', exact=True) }}
+    - {{ pin_compatible('libtoolchain', exact=True) }}
+    - {{ pin_compatible('libstatiskit', exact=True) }}
     - {{ pin_compatible('python-toolchain', exact=True) }}
+    - {{ pin_compatible('python-statiskit', exact=True) }}
     - {{ pin_compatible('autowig-toolchain', exact=True) }}
+    - {{ pin_compatible('libstatiskit-wig', exact=True) }}   # [linux]
     - {{ pin_compatible('devops-tools', exact=True) }}
-    # - {{ pin_compatible('libstatiskit_stl-dev', exact=True) }}
-    # - {{ pin_compatible('libstatiskit_linalg-dev', exact=True) }}
-    # - {{ pin_compatible('libstatiskit_core-dev', exact=True) }}
-    # - {{ pin_compatible('libstatiskit_glm-dev', exact=True) }}
-    # - {{ pin_compatible('python-statiskit', exact=True) }}

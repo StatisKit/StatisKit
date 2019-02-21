@@ -21,12 +21,4 @@
 ## mplied. See the License for the specific language governing           ##
 ## permissions and limitations under the License.                        ##
 
-set -ve
-
-mkdir -p ${PREFIX}/etc/conda/activate.d
-cp ${RECIPE_DIR}/activate.sh ${PREFIX}/etc/conda/activate.d/python-statiskit_vars.sh
-
-mkdir -p ${PREFIX}/etc/conda/deactivate.d
-cp ${RECIPE_DIR}/deactivate.sh ${PREFIX}/etc/conda/deactivate.d/python-statiskit_vars.sh
-
-set +ve
+unset MACOSX_DEPLOYMENT_TARGET

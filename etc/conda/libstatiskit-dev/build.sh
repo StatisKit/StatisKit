@@ -24,9 +24,9 @@
 set -ve
 
 mkdir -p ${PREFIX}/etc/conda/activate.d
-cp ${RECIPE_DIR}/activate.sh ${PREFIX}/etc/conda/activate.d/python-statiskit_vars.sh
+cp ${RECIPE_DIR}/activate.sh ${PREFIX}/etc/conda/activate.d/libstatiskit-dev_vars.sh
 
 mkdir -p ${PREFIX}/etc/conda/deactivate.d
-cp ${RECIPE_DIR}/deactivate.sh ${PREFIX}/etc/conda/deactivate.d/python-statiskit_vars.sh
+cp ${RECIPE_DIR}/deactivate.sh ${PREFIX}/etc/conda/deactivate.d/libstatiskit-dev_vars.sh
 
 set +ve
