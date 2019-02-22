@@ -13,13 +13,13 @@ about:
 requirements: 
   host:
     - libstatiskit-dev
-    - autowig-libstatiskit                                   # [linux]
+    - autowig-libstatiskit                                      # [linux]
     - libstatiskit
     - python-statiskit
     - devops-tools
   run:
     - {{ pin_compatible('libstatiskit-dev', exact=True) }}
-    - {{ pin_compatible('autowig-statiskit', exact=True) }}  # [linux]
+    - {{ pin_compatible('autowig-libstatiskit', exact=True) }}  # [linux]
     - {{ pin_compatible('libstatiskit', exact=True) }}
     - {{ pin_compatible('python-statiskit', exact=True) }}
     - {{ pin_compatible('devops-tools', exact=True) }}
