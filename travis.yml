@@ -49,7 +49,7 @@ env:
   matrix:
     - ANACONDA_RELEASE=start
     - CONDA_RECIPE=etc/conda/libstatiskit-dev
-    - CONDA_RECIPE=etc/conda/libstatiskit-wig
+    - CONDA_RECIPE=etc/conda/autowig-libstatiskit
     - CONDA_RECIPE=etc/conda/libstatiskit
     - CONDA_RECIPE=etc/conda/python-statiskit
     - CONDA_RECIPE=etc/conda/statiskit-toolchain
@@ -61,7 +61,7 @@ matrix:
   exclude:
     - os: osx
       env:
-        CONDA_RECIPE=etc/conda/libstatiskit-wig
+        CONDA_RECIPE=etc/conda/autowig-libstatiskit
     - os: osx
       env:
         DOCKER_CONTEXT=etc/docker/python-statiskit
@@ -72,7 +72,7 @@ matrix:
         DOCKER_CONTAINER=statiskit-toolchain
     - os: windows
       env:
-        CONDA_RECIPE=etc/conda/libstatiskit-wig
+        CONDA_RECIPE=etc/conda/autowig-libstatiskit
     - os: windows
       env:
         DOCKER_CONTEXT=etc/docker/python-statiskit
