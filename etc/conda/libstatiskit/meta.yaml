@@ -11,6 +11,10 @@ about:
   summary: A meta-package containing all C++ headers of the StatisKit software suite
 
 requirements:
+  build:
+    - libtoolchain
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
   host:
     - libstatiskit_stl
     - libstatiskit_linalg
@@ -20,6 +24,7 @@ requirements:
   run:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
+    - {{ pin_compatible('libtoolchain', exact=True) }}
     - {{ pin_compatible('libstatiskit_stl', exact=True) }}
     - {{ pin_compatible('libstatiskit_linalg', exact=True) }}
     # - {{ pin_compatible('libstatiskit_core', exact=True) }}

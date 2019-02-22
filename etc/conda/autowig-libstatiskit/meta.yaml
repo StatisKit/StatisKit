@@ -1,0 +1,28 @@
+package:
+  name: autowig-libstatiskit
+  version: {{ DATETIME_DESCRIBE_VERSION }}
+
+build:
+  number: {{ DATETIME_DESCRIBE_NUMBER }}
+
+about:
+  home: http://statiskit.readthedocs.io/
+  license: Apache License 2.0
+  summary: A meta-package containing all C++ headers of the StatisKit software suite
+
+requirements:
+  build:
+    - autowig-toolchain
+  host:
+    - autowig-libstatiskit_stl
+    - autowig-libstatiskit_linalg
+    # - autowig-libstatiskit_core
+    # - autowig-libstatiskit_glm
+    # - autowig-libstatiskit_pgm
+  run:
+    - {{ pin_compatible('autowig-toolchain', exact=True) }}
+    - {{ pin_compatible('autowig-libstatiskit_stl', exact=True) }}
+    - {{ pin_compatible('autowig-libstatiskit_linalg', exact=True) }}
+    # - {{ pin_compatible('autowig-libstatiskit_core', exact=True) }}
+    # - {{ pin_compatible('autowig-libstatiskit_glm', exact=True) }}
+    # - {{ pin_compatible('autowig-libstatiskit_pgm', exact=True) }}

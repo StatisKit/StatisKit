@@ -12,22 +12,14 @@ about:
 
 requirements: 
   host:
-    - libtoolchain-dev
     - libstatiskit-dev
-    - libtoolchain
+    - autowig-libstatiskit                                   # [linux]
     - libstatiskit
-    - python-toolchain
     - python-statiskit
-    - autowig-toolchain
-    - libstatiskit-wig                                       # [linux]
     - devops-tools
   run:
-    - {{ pin_compatible('libtoolchain-dev', exact=True) }}
     - {{ pin_compatible('libstatiskit-dev', exact=True) }}
-    - {{ pin_compatible('libtoolchain', exact=True) }}
+    - {{ pin_compatible('autowig-statiskit', exact=True) }}  # [linux]
     - {{ pin_compatible('libstatiskit', exact=True) }}
-    - {{ pin_compatible('python-toolchain', exact=True) }}
     - {{ pin_compatible('python-statiskit', exact=True) }}
-    - {{ pin_compatible('autowig-toolchain', exact=True) }}
-    - {{ pin_compatible('libstatiskit-wig', exact=True) }}   # [linux]
     - {{ pin_compatible('devops-tools', exact=True) }}
