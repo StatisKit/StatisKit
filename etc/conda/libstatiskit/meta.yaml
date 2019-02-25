@@ -12,12 +12,12 @@ about:
 
 requirements:
   build:
-    - libtoolchain
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
+    - libtoolchain
   host:
-    - libstatiskit_stl
-    - libstatiskit_linalg
+    # - libstatiskit_stl
+    # - libstatiskit_linalg
     # - libstatiskit_core
     # - libstatiskit_glm
     # - libstatiskit_pgm
@@ -25,8 +25,8 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - {{ pin_compatible('libtoolchain', exact=True) }}
-    - {{ pin_compatible('libstatiskit_stl', exact=True) }}
-    - {{ pin_compatible('libstatiskit_linalg', exact=True) }}
+    # - {{ pin_compatible('libstatiskit_stl', exact=True) }}
+    # - {{ pin_compatible('libstatiskit_linalg', exact=True) }}
     # - {{ pin_compatible('libstatiskit_core', exact=True) }}
     # - {{ pin_compatible('libstatiskit_glm', exact=True) }}
     # - {{ pin_compatible('libstatiskit_pgm', exact=True) }}
