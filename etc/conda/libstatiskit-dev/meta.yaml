@@ -16,17 +16,17 @@ requirements:
     - {{ compiler('cxx') }}
     - libtoolchain-dev
   host:
-    # - libstatiskit_stl-dev
-    # - libstatiskit_linalg-dev
-    # - libstatiskit_core-dev
-    # - libstatiskit_glm-dev
+    - libstatiskit_stl-dev
+    - libstatiskit_linalg-dev
+    - libstatiskit_core-dev
+    - libstatiskit_glm-dev
     # - libstatiskit_pgm-dev
   run:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - {{ pin_compatible('libtoolchain-dev', exact=True) }}
-    # - {{ pin_compatible('libstatiskit_stl-dev', exact=True) }}
-    # - {{ pin_compatible('libstatiskit_linalg-dev', exact=True) }}
-    # - {{ pin_compatible('libstatiskit_core-dev', exact=True) }}
-    # - {{ pin_compatible('libstatiskit_glm-dev', exact=True) }}
+    - {{ pin_compatible('libstatiskit_stl-dev', exact=True) }}
+    - {{ pin_compatible('libstatiskit_linalg-dev', exact=True) }}
+    - {{ pin_compatible('libstatiskit_core-dev', exact=True) }}
+    - {{ pin_compatible('libstatiskit_glm-dev', exact=True) }}
     # - {{ pin_compatible('libstatiskit_pgm-dev', exact=True) }}
