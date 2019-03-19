@@ -23,8 +23,8 @@
 
 echo ON
 
-echo "Exiting..."
-if errorlevel 1 exit 1
+cd .
+
 if not exist %PREFIX%\etc\conda\activate.d mkdir %PREFIX%\etc\conda\activate.d
 if errorlevel 1 exit 1
 copy %RECIPE_DIR%\activate.bat %PREFIX%\etc\conda\activate.d\statiskit-toolchain_vars.bat
