@@ -36,8 +36,8 @@ services:
   - docker
 
 os:
-  - linux
-  - osx
+  # - linux
+  # - osx
   - windows
 
 dist: trusty
@@ -48,13 +48,13 @@ env:
     - ANACONDA_LABEL=release
   matrix:
     - ANACONDA_RELEASE=start
-    - CONDA_RECIPE=etc/conda/libstatiskit-dev
-    - CONDA_RECIPE=etc/conda/autowig-libstatiskit
-    - CONDA_RECIPE=etc/conda/libstatiskit
-    - CONDA_RECIPE=etc/conda/python-statiskit
+    # - CONDA_RECIPE=etc/conda/libstatiskit-dev
+    # - CONDA_RECIPE=etc/conda/autowig-libstatiskit
+    # - CONDA_RECIPE=etc/conda/libstatiskit
+    # - CONDA_RECIPE=etc/conda/python-statiskit
     - CONDA_RECIPE=etc/conda/statiskit-toolchain
-    - DOCKER_CONTEXT=etc/docker/statiskit-toolchain
-      DOCKER_CONTAINER=statiskit-toolchain
+    # - DOCKER_CONTEXT=etc/docker/statiskit-toolchain
+    #   DOCKER_CONTAINER=statiskit-toolchain
     - ANACONDA_RELEASE=finish
 
 matrix:
