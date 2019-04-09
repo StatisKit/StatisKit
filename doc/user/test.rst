@@ -49,7 +49,7 @@ After `installing <https://docs.docker.com/engine/installation/>`_ **Docker**, y
 
 .. code-block:: console
 
-  docker run -i -t -p 8888:8888 statiskit/statiskit:latest
+  docker run -i -t -p 8888:8888 statiskit/python-statiskit:latest
 
    
 Then, follow the given instructions.

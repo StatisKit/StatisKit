@@ -57,23 +57,14 @@ Recommanded Installations
 =========================
 
 The recommended installations rely on **Conda** meta-packages.
-If all interfaces need to be installed, type the following command lines
+To install the latest *Python 3* interface to **StatisKit**, type the following command line
 
 .. code-block:: console
 
-  conda activate
-  conda create -n statiskit statiskit -c statiskit -c defaults --override-channels
+  conda create -n python-statiskit python-statiskit -c statiskit -c defaults --override-channels
 
-Then, to activate the :code:`statiskit` environment, type the following command line
+Then, to activate the :code:`python-statiskit` environment, type the following command line
 
 .. code-block:: console
 
-  conda activate statiskit
-
-Otherwise, choose an interface and proceed as detailed in the corresponding section:
-
-.. toctree::
-    :maxdepth: 1
-
-    API/cpp
-    API/python
+  conda activate python-statiskit

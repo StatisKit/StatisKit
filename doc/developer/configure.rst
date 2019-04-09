@@ -34,17 +34,17 @@ To do so, type the following command line
   
 .. code-block:: console
 
-   conda create -n statiskit statiskit -c statiskit/label/develop -c statiskit -c defaults --override-channels
+   conda create -n statiskit-toolchain statiskit-toolchain -c statiskit -c defaults --override-channels
 
 .. warning::
 
-   On Windows OSes you must first download and install **Visual Studio Community 2013** (available on this `page <https://www.visualstudio.com/vs/older-downloads/>`_).
+   On Windows OSes you must first download and install **Visual Studio Community 2017** (available on this `page <https://visualstudio.microsoft.com/downloads/>`_).
 
 Then, to activate the :code:`statiskit` environment for each build of **StatisKit** software suite components, type the following command line
 
 .. code-block:: console
 
-  conda activate statiskit
+  conda activate statiskit-toolchain
 
 .. note::
 
